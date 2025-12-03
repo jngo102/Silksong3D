@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://36gmo74w6e2q"]
+
+[ext_resource type="PackedScene" uid="uid://djok8768tq4tr" path="res://game/gameplay/combat/health.tscn" id="1_hr3hk"]
+[ext_resource type="Script" uid="uid://nfgwo51p2xih" path="res://game/actors/actor.gd" id="1_oka2p"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hr3hk"]
+
+[node name="Actor" type="CharacterBody3D"]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_oka2p")
+
+[node name="Animator" type="AnimationPlayer" parent="."]
+
+[node name="AnimationTree" type="AnimationTree" parent="Animator"]
+root_node = NodePath("../..")
+advance_expression_base_node = NodePath("../..")
+anim_player = NodePath("..")
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_hr3hk")
+
+[node name="Health" parent="." instance=ExtResource("1_hr3hk")]

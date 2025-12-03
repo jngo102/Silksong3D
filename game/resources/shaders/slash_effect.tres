@@ -1,0 +1,75 @@
+[gd_resource type="VisualShader" load_steps=8 format=3 uid="uid://d2adeewmk07rq"]
+
+[sub_resource type="Gradient" id="Gradient_33lnv"]
+offsets = PackedFloat32Array(0, 0.33164984, 0.84175086)
+colors = PackedColorArray(0, 0, 0, 1, 0.5890956, 0.5890956, 0.5890956, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_7bbtc"]
+gradient = SubResource("Gradient_33lnv")
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_ayb8v"]
+texture = SubResource("GradientTexture1D_7bbtc")
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_33lnv"]
+input_name = "uv"
+
+[sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_7bbtc"]
+default_input_values = [1, Vector2(1, 0), 2, Vector2(0, 0)]
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_33lnv"]
+parameter_name = "SlashGradientSlider"
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_33lnv"]
+default_input_values = [0, Vector2(0, 0), 1, Vector2(0.125, 0)]
+op_type = 0
+operator = 2
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, depth_test_default, cull_back, diffuse_lambert, specular_schlick_ggx;
+
+uniform float SlashGradientSlider;
+uniform sampler2D tex_frg_2;
+
+
+
+void fragment() {
+// Input:3
+	vec2 n_out3p0 = UV;
+
+
+// VectorOp:6
+	vec2 n_in6p1 = vec2(0.12500, 0.00000);
+	vec2 n_out6p0 = n_out3p0 * n_in6p1;
+
+
+// FloatParameter:5
+	float n_out5p0 = SlashGradientSlider;
+
+
+// UVFunc:4
+	vec2 n_in4p1 = vec2(1.00000, 0.00000);
+	vec2 n_out4p0 = vec2(n_out5p0) * n_in4p1 + n_out6p0;
+
+
+// Texture2D:2
+	vec4 n_out2p0 = texture(tex_frg_2, n_out4p0);
+
+
+// Output:0
+	ALPHA = n_out2p0.x;
+
+
+}
+"
+nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_ayb8v")
+nodes/fragment/2/position = Vector2(-660, 160)
+nodes/fragment/3/node = SubResource("VisualShaderNodeInput_33lnv")
+nodes/fragment/3/position = Vector2(-2540, 220)
+nodes/fragment/4/node = SubResource("VisualShaderNodeUVFunc_7bbtc")
+nodes/fragment/4/position = Vector2(-1260, 160)
+nodes/fragment/5/node = SubResource("VisualShaderNodeFloatParameter_33lnv")
+nodes/fragment/5/position = Vector2(-1980, 520)
+nodes/fragment/6/node = SubResource("VisualShaderNodeVectorOp_33lnv")
+nodes/fragment/6/position = Vector2(-1800, 100)
+nodes/fragment/connections = PackedInt32Array(2, 0, 0, 1, 5, 0, 4, 2, 4, 0, 2, 0, 3, 0, 6, 0, 6, 0, 4, 0)

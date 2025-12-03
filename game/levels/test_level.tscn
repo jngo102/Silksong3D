@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://bx1fy5obuyvl"]
+
+[ext_resource type="Script" uid="uid://b2erw6j0ld612" path="res://game/gameplay/camera_controller.gd" id="1_giiqr"]
+[ext_resource type="PackedScene" uid="uid://bk5l50c7ma8dr" path="res://game/actors/player/player.tscn" id="2_80l8l"]
+[ext_resource type="PackedScene" uid="uid://c1fle5fyo6r8h" path="res://game/actors/enemies/cogwork_dancers/cogwork_dancer.tscn" id="3_3m0nd"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_34lg8"]
+size = Vector3(25, 1, 25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_34lg8"]
+size = Vector3(25, 1, 25)
+
+[node name="TestLevel" type="Node3D"]
+
+[node name="Platform" type="StaticBody3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 0, 0)
+collision_layer = 4
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="Platform"]
+mesh = SubResource("BoxMesh_34lg8")
+
+[node name="Collision" type="CollisionShape3D" parent="Platform"]
+shape = SubResource("BoxShape3D_34lg8")
+
+[node name="CameraYaw" type="Node3D" parent="." node_paths=PackedStringArray("target")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 4.327, 5)
+script = ExtResource("1_giiqr")
+target = NodePath("../Player")
+min_yaw_degrees = -30.0
+max_yaw_degrees = 35.0
+
+[node name="CameraPitch" type="Node3D" parent="CameraYaw"]
+
+[node name="Camera" type="Camera3D" parent="CameraYaw/CameraPitch"]
+transform = Transform3D(-1, -2.7015124e-08, 8.3144e-08, 0, 0.95105654, 0.309017, -8.742278e-08, 0.309017, -0.95105654, 5.684342e-14, 7.9999995, -12)
+current = true
+
+[node name="Player" parent="." node_paths=PackedStringArray("_cam_pivot") instance=ExtResource("2_80l8l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.8727574, 5)
+_cam_pivot = NodePath("../CameraYaw")
+
+[node name="Light" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.7254783, -0.20325898, 0.6575463, -0.058854267, 0.9335742, 0.35351858, -0.6857241, -0.29516938, 0.66532516, 0, 7.683483, -2.23426)
+
+[node name="DancerA" parent="." instance=ExtResource("3_3m0nd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.172846, 9.410442, -2.674884)
+
+[node name="DancerB" parent="." instance=ExtResource("3_3m0nd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.755234, 9.410442, -2.674884)
