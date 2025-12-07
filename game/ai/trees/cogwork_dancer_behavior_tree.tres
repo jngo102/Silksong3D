@@ -1,4 +1,4 @@
-[gd_resource type="BehaviorTree" load_steps=400 format=3 uid="uid://chh6lvoe5ufr8"]
+[gd_resource type="BehaviorTree" load_steps=423 format=3 uid="uid://chh6lvoe5ufr8"]
 
 [ext_resource type="Script" uid="uid://co46fdui830i2" path="res://game/ai/tasks/scene/get_all_in_group.gd" id="2_f75ub"]
 [ext_resource type="Script" uid="uid://oufr1n61rgt6" path="res://game/ai/tasks/audio/get_current_music_player.gd" id="3_ngxa6"]
@@ -6,14 +6,14 @@
 [ext_resource type="Script" uid="uid://mlatxrl7ycqj" path="res://game/ai/tasks/audio/get_current_music_bpm.gd" id="5_bljor"]
 [ext_resource type="Script" uid="uid://dk83bvpdnmmni" path="res://game/ai/tasks/math/get_reciprocal.gd" id="6_oa2qd"]
 [ext_resource type="Script" uid="uid://cvw5s3jjrdnkq" path="res://game/ai/tasks/transform/face_target.gd" id="7_qj0wi"]
-[ext_resource type="AudioStream" uid="uid://6y6ehraiacsn" path="res://game/copyrighted/CogD_attack_large_01.wav" id="8_34w61"]
+[ext_resource type="AudioStream" uid="uid://6y6ehraiacsn" path="res://game/copyrighted/cogwork_dancers/CogD_attack_large_01.wav" id="8_34w61"]
 [ext_resource type="Script" uid="uid://bug3tp3tel5tp" path="res://game/ai/tasks/audio/get_music_playback_position.gd" id="8_ngxa6"]
-[ext_resource type="AudioStream" uid="uid://djwjsycd18yof" path="res://game/copyrighted/CogD_attack_large_02.wav" id="9_3guyw"]
+[ext_resource type="AudioStream" uid="uid://djwjsycd18yof" path="res://game/copyrighted/cogwork_dancers/CogD_attack_large_02.wav" id="9_3guyw"]
 [ext_resource type="Script" uid="uid://ctcqnu636xckk" path="res://game/ai/tasks/math/float_modulo.gd" id="9_6mje8"]
 [ext_resource type="Script" uid="uid://ycnpkfx0h776" path="res://game/ai/tasks/transform/get_position.gd" id="9_mmu5o"]
-[ext_resource type="AudioStream" uid="uid://do0weqwbma1co" path="res://game/copyrighted/CogD_attack_large_03.wav" id="10_a4ig0"]
+[ext_resource type="AudioStream" uid="uid://do0weqwbma1co" path="res://game/copyrighted/cogwork_dancers/CogD_attack_large_03.wav" id="10_a4ig0"]
 [ext_resource type="Script" uid="uid://bia8f8kue467p" path="res://game/ai/tasks/logic/tween_to_position.gd" id="10_nf1r4"]
-[ext_resource type="AudioStream" uid="uid://dvdperp7jn1qi" path="res://game/copyrighted/CogD_attack_large_04.wav" id="11_i3yf6"]
+[ext_resource type="AudioStream" uid="uid://dvdperp7jn1qi" path="res://game/copyrighted/cogwork_dancers/CogD_attack_large_04.wav" id="11_i3yf6"]
 [ext_resource type="Script" uid="uid://c1x0iqb5iong2" path="res://game/ai/tasks/physics/set_velocity_in_direction.gd" id="12_ttsve"]
 [ext_resource type="Script" uid="uid://cgf5y1ojrwk1x" path="res://game/ai/tasks/utility/concatenate_to_string.gd" id="13_t3oje"]
 [ext_resource type="Script" uid="uid://bc4fs5sdsr0yj" path="res://game/ai/tasks/physics/check_on_ground.gd" id="14_u83xx"]
@@ -24,21 +24,30 @@
 [ext_resource type="Script" uid="uid://c0p66kb4ewpj5" path="res://game/ai/tasks/math/floor.gd" id="20_34w61"]
 [ext_resource type="Script" uid="uid://cnvl4kjqa7qju" path="res://game/ai/tasks/transform/set_position_x_y_z.gd" id="20_a4ig0"]
 [ext_resource type="Script" uid="uid://5qpw7k5phkni" path="res://game/ai/tasks/audio/play_random_audio.gd" id="20_ucsdq"]
+[ext_resource type="AudioStream" uid="uid://huqy8mpc427n" path="res://game/copyrighted/cogwork_dancers/clockwork_dancers_halo.wav" id="21_biu47"]
 [ext_resource type="Script" uid="uid://dt2awuygt37mg" path="res://game/ai/tasks/transform/set_rotation_x_y_z.gd" id="21_i3yf6"]
+[ext_resource type="AudioStream" uid="uid://dkqjngri23cmb" path="res://game/copyrighted/cogwork_dancers/clockwork_dancer_look_up_after_bow.wav" id="21_lgqnu"]
 [ext_resource type="Script" uid="uid://d03jex37smyoc" path="res://game/ai/tasks/logic/kill_tween.gd" id="22_dphll"]
-[ext_resource type="AudioStream" uid="uid://c37ttq771h03h" path="res://game/copyrighted/CogD_move_01.wav" id="24_dphll"]
-[ext_resource type="AudioStream" uid="uid://3t0smv5pkx46" path="res://game/copyrighted/CogD_move_02.wav" id="25_tidaw"]
-[ext_resource type="AudioStream" uid="uid://bxmrtmxllech2" path="res://game/copyrighted/CogD_move_03.wav" id="26_pappx"]
-[ext_resource type="AudioStream" uid="uid://c1qb6xifxmopq" path="res://game/copyrighted/CogD_move_04.wav" id="27_biu47"]
-[ext_resource type="AudioStream" uid="uid://h7b6at64xa5u" path="res://game/copyrighted/CogD_move_05.wav" id="28_x3uvo"]
-[ext_resource type="AudioStream" uid="uid://bs5wfj47moh8d" path="res://game/copyrighted/CogD_move_06.wav" id="29_lgqnu"]
-[ext_resource type="AudioStream" uid="uid://b04dh80m6h6cq" path="res://game/copyrighted/CogD_move_07.wav" id="30_eme4l"]
-[ext_resource type="AudioStream" uid="uid://dbmrccyfw0ho8" path="res://game/copyrighted/CogD_move_08.wav" id="31_iegny"]
-[ext_resource type="AudioStream" uid="uid://dipy0qxmy4a5n" path="res://game/copyrighted/CogD_move_09.wav" id="32_7weh2"]
-[ext_resource type="AudioStream" uid="uid://bjqyvn53fu65x" path="res://game/copyrighted/CogD_move_10.wav" id="33_vksgl"]
-[ext_resource type="AudioStream" uid="uid://7rd800ejnq32" path="res://game/copyrighted/CogD_move_11.wav" id="34_1jkmb"]
-[ext_resource type="AudioStream" uid="uid://d0j27uuo2rmp1" path="res://game/copyrighted/CogD_move_12.wav" id="35_ueah8"]
-[ext_resource type="AudioStream" uid="uid://dauv2fkm2tquj" path="res://game/copyrighted/CogD_move_13.wav" id="36_3g83i"]
+[ext_resource type="AudioStream" uid="uid://ci01hprg2606n" path="res://game/copyrighted/cogwork_dancers/clockwork_dancers_halov2_1.wav" id="22_x3uvo"]
+[ext_resource type="AudioStream" uid="uid://dhqe1gm1b00fp" path="res://game/copyrighted/cogwork_dancers/clockwork_dancers_halov2_2.wav" id="23_lgqnu"]
+[ext_resource type="AudioStream" uid="uid://c37ttq771h03h" path="res://game/copyrighted/cogwork_dancers/CogD_move_01.wav" id="24_dphll"]
+[ext_resource type="AudioStream" uid="uid://w0nx0pa6do37" path="res://game/copyrighted/cogwork_dancers/clockwork_dancers_halov2_3.wav" id="24_eme4l"]
+[ext_resource type="AudioStream" uid="uid://b6su1yu645ctj" path="res://game/copyrighted/cogwork_dancers/clockwork_dancers_halov2_4.wav" id="25_iegny"]
+[ext_resource type="AudioStream" uid="uid://3t0smv5pkx46" path="res://game/copyrighted/cogwork_dancers/CogD_move_02.wav" id="25_tidaw"]
+[ext_resource type="AudioStream" uid="uid://bxmrtmxllech2" path="res://game/copyrighted/cogwork_dancers/CogD_move_03.wav" id="26_pappx"]
+[ext_resource type="AudioStream" uid="uid://c1qb6xifxmopq" path="res://game/copyrighted/cogwork_dancers/CogD_move_04.wav" id="27_biu47"]
+[ext_resource type="AudioStream" uid="uid://h7b6at64xa5u" path="res://game/copyrighted/cogwork_dancers/CogD_move_05.wav" id="28_x3uvo"]
+[ext_resource type="AudioStream" uid="uid://bs5wfj47moh8d" path="res://game/copyrighted/cogwork_dancers/CogD_move_06.wav" id="29_lgqnu"]
+[ext_resource type="AudioStream" uid="uid://b04dh80m6h6cq" path="res://game/copyrighted/cogwork_dancers/CogD_move_07.wav" id="30_eme4l"]
+[ext_resource type="AudioStream" uid="uid://dbmrccyfw0ho8" path="res://game/copyrighted/cogwork_dancers/CogD_move_08.wav" id="31_iegny"]
+[ext_resource type="AudioStream" uid="uid://dipy0qxmy4a5n" path="res://game/copyrighted/cogwork_dancers/CogD_move_09.wav" id="32_7weh2"]
+[ext_resource type="AudioStream" uid="uid://bjqyvn53fu65x" path="res://game/copyrighted/cogwork_dancers/CogD_move_10.wav" id="33_vksgl"]
+[ext_resource type="AudioStream" uid="uid://7rd800ejnq32" path="res://game/copyrighted/cogwork_dancers/CogD_move_11.wav" id="34_1jkmb"]
+[ext_resource type="AudioStream" uid="uid://d0j27uuo2rmp1" path="res://game/copyrighted/cogwork_dancers/CogD_move_12.wav" id="35_ueah8"]
+[ext_resource type="AudioStream" uid="uid://dauv2fkm2tquj" path="res://game/copyrighted/cogwork_dancers/CogD_move_13.wav" id="36_3g83i"]
+[ext_resource type="AudioStream" uid="uid://bgvisrxe34cex" path="res://game/copyrighted/cogwork_dancers/clockwork_dancers_dash.wav" id="37_a4ig0"]
+[ext_resource type="AudioStream" uid="uid://crxrpq1kv5o0c" path="res://game/copyrighted/cogwork_dancers/clockwork_dancers_land_and_sword.wav" id="40_3guyw"]
+[ext_resource type="AudioStream" uid="uid://dnxylfo58548u" path="res://game/copyrighted/cogwork_dancers/clockwork_dancers_spin_and_bow.wav" id="47_x3uvo"]
 
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_ucsdq"]
 prefetch_nodepath_vars = false
@@ -417,7 +426,7 @@ script = ExtResource("9_mmu5o")
 target_var = &"self"
 output_position_var = &"self_position"
 
-[sub_resource type="BTAction" id="BTAction_2jhbf"]
+[sub_resource type="BTAction" id="BTAction_ttsve"]
 script = ExtResource("20_ucsdq")
 clips_array = Array[AudioStream]([ExtResource("8_34w61"), ExtResource("9_3guyw"), ExtResource("10_a4ig0"), ExtResource("11_i3yf6")])
 play_position_var = &"self_position"
@@ -433,7 +442,7 @@ method = &"play_antic"
 
 [sub_resource type="BTSequence" id="BTSequence_qqr1w"]
 custom_name = "Look At Center"
-children = [SubResource("BTAction_qqr1w"), SubResource("BTAction_hkw83"), SubResource("BTPlayAnimation_io532"), SubResource("BTPlayAnimation_ucsdq"), SubResource("BTAction_a4ig0"), SubResource("BTAction_2jhbf"), SubResource("BTCallMethod_bljor")]
+children = [SubResource("BTAction_qqr1w"), SubResource("BTAction_hkw83"), SubResource("BTPlayAnimation_io532"), SubResource("BTPlayAnimation_ucsdq"), SubResource("BTAction_a4ig0"), SubResource("BTAction_ttsve"), SubResource("BTCallMethod_bljor")]
 
 [sub_resource type="BTAction" id="BTAction_bljor"]
 script = ExtResource("8_ngxa6")
@@ -571,7 +580,7 @@ script = ExtResource("9_mmu5o")
 target_var = &"self"
 output_position_var = &"self_position"
 
-[sub_resource type="BTAction" id="BTAction_dphll"]
+[sub_resource type="BTAction" id="BTAction_u83xx"]
 script = ExtResource("20_ucsdq")
 clips_array = Array[AudioStream]([ExtResource("8_34w61"), ExtResource("9_3guyw"), ExtResource("10_a4ig0"), ExtResource("11_i3yf6")])
 play_position_var = &"self_position"
@@ -596,7 +605,7 @@ method = &"play_slashes"
 
 [sub_resource type="BTSequence" id="BTSequence_kk73g"]
 custom_name = "Spin At Center"
-children = [SubResource("BTAction_efeba"), SubResource("BTAction_42gir"), SubResource("BTPlayAnimation_maqif"), SubResource("BTAction_x3uvo"), SubResource("BTAction_dphll"), SubResource("BTCallMethod_g5k6k"), SubResource("BTCallMethod_6mje8")]
+children = [SubResource("BTAction_efeba"), SubResource("BTAction_42gir"), SubResource("BTPlayAnimation_maqif"), SubResource("BTAction_x3uvo"), SubResource("BTAction_u83xx"), SubResource("BTCallMethod_g5k6k"), SubResource("BTCallMethod_6mje8")]
 
 [sub_resource type="BTAction" id="BTAction_3guyw"]
 script = ExtResource("8_ngxa6")
@@ -978,7 +987,7 @@ script = ExtResource("9_mmu5o")
 target_var = &"self"
 output_position_var = &"self_position"
 
-[sub_resource type="BTAction" id="BTAction_7weh2"]
+[sub_resource type="BTAction" id="BTAction_3g83i"]
 script = ExtResource("20_ucsdq")
 clips_array = Array[AudioStream]([ExtResource("8_34w61"), ExtResource("9_3guyw"), ExtResource("10_a4ig0"), ExtResource("11_i3yf6")])
 play_position_var = &"self_position"
@@ -991,7 +1000,7 @@ move_to_tween_var = &""
 
 [sub_resource type="BTSequence" id="BTSequence_ueah8"]
 custom_name = "Do Teleport"
-children = [SubResource("BTPlayAnimation_3guyw"), SubResource("BTAction_pappx"), SubResource("BTAction_iegny"), SubResource("BTAction_7weh2"), SubResource("BTAction_tidaw")]
+children = [SubResource("BTPlayAnimation_3guyw"), SubResource("BTAction_pappx"), SubResource("BTAction_iegny"), SubResource("BTAction_3g83i"), SubResource("BTAction_tidaw")]
 
 [sub_resource type="BBNode" id="BBNode_3guyw"]
 value_source = 1
@@ -1211,6 +1220,25 @@ z = 0.0
 script = ExtResource("12_ttsve")
 direction_var = &"dash_direction"
 
+[sub_resource type="BBVariant" id="BBVariant_drhsk"]
+type = 21
+saved_value = &"Idle 6"
+resource_name = "Idle 6"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_877ps"]
+variable = &"idle_animation_name"
+check_type = 5
+value = SubResource("BBVariant_drhsk")
+
+[sub_resource type="BTAction" id="BTAction_wmffp"]
+script = ExtResource("20_ucsdq")
+clips_array = Array[AudioStream]([ExtResource("21_lgqnu")])
+play_position_var = &"self_position"
+
+[sub_resource type="BTSelector" id="BTSelector_nxqfg"]
+custom_name = "Check If Bowing"
+children = [SubResource("BTCheckVar_877ps"), SubResource("BTAction_wmffp")]
+
 [sub_resource type="BTAction" id="BTAction_esq63"]
 script = ExtResource("13_t3oje")
 first_var = &"look_animation_prefix"
@@ -1388,9 +1416,19 @@ resource_name = "Direction/Animator"
 animation_player = SubResource("BBNode_ykvq3")
 animation_name = &"Show Direction"
 
+[sub_resource type="BTAction" id="BTAction_ipxx0"]
+script = ExtResource("9_mmu5o")
+target_var = &"self"
+output_position_var = &"self_position"
+
+[sub_resource type="BTAction" id="BTAction_7weh2"]
+script = ExtResource("20_ucsdq")
+clips_array = Array[AudioStream]([ExtResource("21_biu47"), ExtResource("22_x3uvo"), ExtResource("23_lgqnu"), ExtResource("24_eme4l"), ExtResource("25_iegny")])
+play_position_var = &"self_position"
+
 [sub_resource type="BTSequence" id="BTSequence_ykvq3"]
 custom_name = "Show Direction"
-children = [SubResource("BTAction_oa2qd"), SubResource("BTPlayAnimation_vfpbh")]
+children = [SubResource("BTAction_oa2qd"), SubResource("BTPlayAnimation_vfpbh"), SubResource("BTAction_ipxx0"), SubResource("BTAction_7weh2")]
 
 [sub_resource type="BTSequence" id="BTSequence_wsaw8"]
 custom_name = "Get Next Waypoint"
@@ -1398,7 +1436,7 @@ children = [SubResource("BTCallMethod_1jkmb"), SubResource("BTAction_ucsdq"), Su
 
 [sub_resource type="BTSequence" id="BTSequence_euuuy"]
 custom_name = "Look"
-children = [SubResource("BTAction_f75ub"), SubResource("BTAction_pnomj"), SubResource("BTAction_esq63"), SubResource("BTSequence_x3uvo"), SubResource("BTSelector_hkw83"), SubResource("BTSequence_wsaw8")]
+children = [SubResource("BTAction_f75ub"), SubResource("BTAction_pnomj"), SubResource("BTSelector_nxqfg"), SubResource("BTAction_esq63"), SubResource("BTSequence_x3uvo"), SubResource("BTSelector_hkw83"), SubResource("BTSequence_wsaw8")]
 
 [sub_resource type="BTAction" id="BTAction_34w61"]
 script = ExtResource("8_ngxa6")
@@ -1512,9 +1550,14 @@ script = ExtResource("9_mmu5o")
 target_var = &"self"
 output_position_var = &"self_position"
 
-[sub_resource type="BTAction" id="BTAction_ydubj"]
+[sub_resource type="BTAction" id="BTAction_jn4d2"]
 script = ExtResource("20_ucsdq")
 clips_array = Array[AudioStream]([ExtResource("24_dphll"), ExtResource("25_tidaw"), ExtResource("26_pappx"), ExtResource("27_biu47"), ExtResource("28_x3uvo"), ExtResource("29_lgqnu"), ExtResource("30_eme4l"), ExtResource("31_iegny"), ExtResource("32_7weh2"), ExtResource("33_vksgl"), ExtResource("34_1jkmb"), ExtResource("35_ueah8"), ExtResource("36_3g83i")])
+play_position_var = &"self_position"
+
+[sub_resource type="BTAction" id="BTAction_lgqnu"]
+script = ExtResource("20_ucsdq")
+clips_array = Array[AudioStream]([ExtResource("37_a4ig0")])
 play_position_var = &"self_position"
 
 [sub_resource type="BBVariant" id="BBVariant_maqif"]
@@ -1647,6 +1690,16 @@ resource_name = "Direction/Animator"
 animation_player = SubResource("BBNode_vfpbh")
 animation_name = &"RESET"
 
+[sub_resource type="BTAction" id="BTAction_lkiki"]
+script = ExtResource("9_mmu5o")
+target_var = &"self"
+output_position_var = &"self_position"
+
+[sub_resource type="BTAction" id="BTAction_dphll"]
+script = ExtResource("20_ucsdq")
+clips_array = Array[AudioStream]([ExtResource("40_3guyw")])
+play_position_var = &"self_position"
+
 [sub_resource type="BBVariant" id="BBVariant_dphll"]
 type = 1
 saved_value = true
@@ -1657,7 +1710,7 @@ variable = &"just_landed"
 value = SubResource("BBVariant_dphll")
 
 [sub_resource type="BTSequence" id="BTSequence_mlmyu"]
-children = [SubResource("BTRepeatUntilSuccess_id8m2"), SubResource("BTAction_e4fjb"), SubResource("BTAction_ljjtg"), SubResource("BTAction_ryvp0"), SubResource("BTAction_g2jil"), SubResource("BTPlayAnimation_hkw83"), SubResource("BTPlayAnimation_ykvq3"), SubResource("BTPlayAnimation_mlmyu"), SubResource("BTSetVar_tidaw")]
+children = [SubResource("BTRepeatUntilSuccess_id8m2"), SubResource("BTAction_e4fjb"), SubResource("BTAction_ljjtg"), SubResource("BTAction_ryvp0"), SubResource("BTAction_g2jil"), SubResource("BTPlayAnimation_hkw83"), SubResource("BTPlayAnimation_ykvq3"), SubResource("BTPlayAnimation_mlmyu"), SubResource("BTAction_lkiki"), SubResource("BTAction_dphll"), SubResource("BTSetVar_tidaw")]
 
 [sub_resource type="BTSequence" id="BTSequence_42gir"]
 custom_name = "Dash To Ground"
@@ -1717,9 +1770,33 @@ resource_name = "Direction/Animator"
 animation_player = SubResource("BBNode_6ctaq")
 animation_name = &"RESET"
 
+[sub_resource type="BBVariant" id="BBVariant_mdpca"]
+type = 21
+saved_value = &"Idle 6"
+resource_name = "Idle 6"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_drhsk"]
+variable = &"idle_animation_name"
+check_type = 5
+value = SubResource("BBVariant_mdpca")
+
+[sub_resource type="BTAction" id="BTAction_o08b3"]
+script = ExtResource("9_mmu5o")
+target_var = &"self"
+output_position_var = &"self_position"
+
+[sub_resource type="BTAction" id="BTAction_tvm2c"]
+script = ExtResource("20_ucsdq")
+clips_array = Array[AudioStream]([ExtResource("47_x3uvo")])
+play_position_var = &"self_position"
+
+[sub_resource type="BTSelector" id="BTSelector_biu47"]
+custom_name = "Check If Should Bow"
+children = [SubResource("BTCheckVar_drhsk"), SubResource("BTAction_o08b3"), SubResource("BTAction_tvm2c")]
+
 [sub_resource type="BTSequence" id="BTSequence_6ctaq"]
 custom_name = "Idle"
-children = [SubResource("BTAction_mlmyu"), SubResource("BTAction_vfpbh"), SubResource("BTPlayAnimation_nx7ud"), SubResource("BTPlayAnimation_wsaw8")]
+children = [SubResource("BTAction_mlmyu"), SubResource("BTAction_vfpbh"), SubResource("BTPlayAnimation_nx7ud"), SubResource("BTPlayAnimation_wsaw8"), SubResource("BTSelector_biu47")]
 
 [sub_resource type="BTSequence" id="BTSequence_hkw83"]
 custom_name = "Dash In Air"
@@ -1734,7 +1811,7 @@ children = [SubResource("BTSelector_vfpbh"), SubResource("BTSelector_dio41")]
 
 [sub_resource type="BTSequence" id="BTSequence_g5k6k"]
 custom_name = "Dash To Waypoint"
-children = [SubResource("BTAction_i3yf6"), SubResource("BTAction_ydubj"), SubResource("BTSelector_x1e8o"), SubResource("BTPlayAnimation_id8m2"), SubResource("BTPlayAnimation_6ctaq"), SubResource("BTSequence_id8m2")]
+children = [SubResource("BTAction_i3yf6"), SubResource("BTAction_jn4d2"), SubResource("BTAction_lgqnu"), SubResource("BTSelector_x1e8o"), SubResource("BTPlayAnimation_id8m2"), SubResource("BTPlayAnimation_6ctaq"), SubResource("BTSequence_id8m2")]
 
 [sub_resource type="BTAction" id="BTAction_o5el3"]
 script = ExtResource("8_ngxa6")

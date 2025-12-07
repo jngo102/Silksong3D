@@ -9,4 +9,4 @@ func _ready() -> void:
 
 func _play_music() -> void:
 	if music_track:
-			AudioManager.play_music(music_track)
+		AudioManager.play_music(music_track)
