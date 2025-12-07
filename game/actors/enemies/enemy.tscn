@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dubnsno8bya0v"]
+[gd_scene load_steps=6 format=3 uid="uid://dubnsno8bya0v"]
 
 [ext_resource type="PackedScene" uid="uid://36gmo74w6e2q" path="res://game/actors/actor.tscn" id="1_7k104"]
 [ext_resource type="Script" uid="uid://bk2r1xw7g054s" path="res://game/actors/enemies/enemy.gd" id="2_4gyqm"]
@@ -10,6 +10,8 @@ height = 11.586121
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_iifgy"]
 radius = 2.1767578
 height = 12.215332
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_nyryn"]
 
 [node name="Enemy" instance=ExtResource("1_7k104")]
 collision_layer = 2
@@ -28,6 +30,9 @@ max_health = 100.0
 [node name="Collision" parent="Health" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.8212891, 0)
 shape = SubResource("CapsuleShape3D_iifgy")
+
+[node name="BehaviorTree" type="BTPlayer" parent="." index="4"]
+blackboard_plan = SubResource("BlackboardPlan_nyryn")
 
 [connection signal="took_damage" from="Health" to="." method="_on_health_took_damage"]
 

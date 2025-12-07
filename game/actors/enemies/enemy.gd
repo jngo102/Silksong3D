@@ -1,10 +1,6 @@
 class_name Enemy extends Actor
 
-@onready var _dancer_mesh: MeshInstance3D = $Model/Armature/Skeleton3D/Dancer
-
-var mesh: ArrayMesh:
-	get:
-		return _dancer_mesh.mesh
+@onready var behavior_tree: BTPlayer = $BehaviorTree
 
 func _on_health_took_damage(damage_amount: float) -> void:
 	pass

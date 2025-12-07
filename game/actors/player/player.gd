@@ -74,7 +74,7 @@ func _process(delta: float) -> void:
 	_check_landed()
 	_check_down_spike_bounce(delta)
 	was_on_floor = is_on_floor()
-	move_and_slide()
+	super._process(delta)
 
 func _check_walk(delta: float) -> void:
 	if sprinting:

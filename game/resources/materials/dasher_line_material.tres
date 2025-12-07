@@ -1,0 +1,65 @@
+[gd_resource type="VisualShader" load_steps=7 format=3 uid="uid://bqpwb2xcsxigd"]
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_1wnuf"]
+input_name = "uv"
+
+[sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_ehc0q"]
+default_input_values = [1, Vector2(0, 100), 2, Vector2(0, 0)]
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_rjbv2"]
+parameter_name = "HorizontalFade"
+
+[sub_resource type="Gradient" id="Gradient_td4wx"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.25, 0.75, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_206bv"]
+gradient = SubResource("Gradient_td4wx")
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_8a1lb"]
+texture = SubResource("GradientTexture1D_206bv")
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, depth_test_default, cull_back, diffuse_lambert, specular_schlick_ggx;
+
+uniform float HorizontalFade;
+uniform sampler2D tex_frg_5;
+
+
+
+void fragment() {
+// Input:2
+	vec2 n_out2p0 = UV;
+
+
+// FloatParameter:4
+	float n_out4p0 = HorizontalFade;
+
+
+// UVFunc:3
+	vec2 n_in3p1 = vec2(0.00000, 100.00000);
+	vec2 n_out3p0 = vec2(n_out4p0) * n_in3p1 + n_out2p0;
+
+
+// Texture2D:5
+	vec4 n_out5p0 = texture(tex_frg_5, n_out3p0);
+
+
+// Output:0
+	ALPHA = n_out5p0.x;
+
+
+}
+"
+nodes/fragment/0/position = Vector2(420, 520)
+nodes/fragment/2/node = SubResource("VisualShaderNodeInput_1wnuf")
+nodes/fragment/2/position = Vector2(-2060, 380)
+nodes/fragment/3/node = SubResource("VisualShaderNodeUVFunc_ehc0q")
+nodes/fragment/3/position = Vector2(-1220, 540)
+nodes/fragment/4/node = SubResource("VisualShaderNodeFloatParameter_rjbv2")
+nodes/fragment/4/position = Vector2(-2020, 880)
+nodes/fragment/5/node = SubResource("VisualShaderNodeTexture_8a1lb")
+nodes/fragment/5/position = Vector2(-500, 440)
+nodes/fragment/connections = PackedInt32Array(2, 0, 3, 0, 4, 0, 3, 2, 3, 0, 5, 0, 5, 0, 0, 1)

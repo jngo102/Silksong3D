@@ -11,9 +11,14 @@ config_version=5
 [application]
 
 config/name="Silksong 3D"
-config/version="0.1.0"
-run/main_scene="uid://bx1fy5obuyvl"
+config/version="0.2.0"
+run/main_scene="uid://dugp1elqcy03h"
 config/features=PackedStringArray("4.5", "Forward Plus")
+
+[autoload]
+
+SaveManager="*res://game/autoload/save/save_manager.gd"
+AudioManager="*res://game/autoload/audio/audio_manager.tscn"
 
 [display]
 
@@ -21,6 +26,18 @@ window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/size/initial_position_type=3
 window/stretch/mode="viewport"
+
+[editor]
+
+movie_writer/video_quality=1.0
+movie_writer/ogv/audio_quality=1.0
+movie_writer/ogv/encoding_speed=1
+movie_writer/movie_file="D:/GameDev/Godot/silksong3d/movies/dancers.avi"
+movie_writer/disable_vsync=true
+
+[global_group]
+
+Players=""
 
 [input]
 
@@ -110,6 +127,11 @@ Sprint={
 3d_physics/layer_3="Terrain"
 3d_physics/layer_4="Player Attack"
 3d_physics/layer_5="Enemy Attack"
+
+[limbo_ai]
+
+behavior_tree/behavior_tree_default_dir="res://game/ai/trees"
+behavior_tree/user_task_dirs=PackedStringArray("res://game/ai/tasks")
 
 [rendering]
 

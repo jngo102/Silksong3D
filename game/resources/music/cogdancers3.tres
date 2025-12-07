@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="MusicTrack" load_steps=3 format=3 uid="uid://b8l05qok73wph"]
+
+[ext_resource type="AudioStream" uid="uid://dv5tar6epyjkf" path="res://game/copyrighted/H181ClockworkDancers3rdPhase.wav" id="1_iqy31"]
+[ext_resource type="Script" uid="uid://q4qqnvxnwemw" path="res://game/autoload/audio/music_track.gd" id="2_vunld"]
+
+[resource]
+script = ExtResource("2_vunld")
+bpm = 120
+music_clip = ExtResource("1_iqy31")
+metadata/_custom_type_script = "uid://q4qqnvxnwemw"

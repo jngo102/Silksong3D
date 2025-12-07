@@ -1,8 +1,8 @@
-[gd_scene load_steps=31 format=4 uid="uid://dpkqjvyr32cys"]
+[gd_scene load_steps=13 format=4 uid="uid://dpkqjvyr32cys"]
 
 [ext_resource type="Script" uid="uid://iji6ec63s7tt" path="res://game/actors/player/needle.gd" id="1_bb050"]
 [ext_resource type="PackedScene" uid="uid://xal232da7bpf" path="res://game/gameplay/combat/damager.tscn" id="2_s1w8d"]
-[ext_resource type="ArrayMesh" uid="uid://dd0baypuifoba" path="res://game/actors/player/effects/attacks/slash.obj" id="3_xhj71"]
+[ext_resource type="PackedScene" uid="uid://dqqog7us3m1g3" path="res://game/gameplay/combat/slash.tscn" id="3_g78k6"]
 
 [sub_resource type="Animation" id="Animation_7s2iq"]
 resource_name = "Down Spike"
@@ -298,161 +298,6 @@ shadow_mesh = SubResource("ArrayMesh_a5vur")
 [sub_resource type="BoxShape3D" id="BoxShape3D_fynfr"]
 size = Vector3(1, 1, 4.25)
 
-[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_16jqo"]
-default_input_values = [0, Vector2(0, 0), 1, Vector2(1, 1)]
-op_type = 0
-operator = 2
-
-[sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_inpd5"]
-default_input_values = [1, Vector2(0, 1), 2, Vector2(0, 0)]
-
-[sub_resource type="Gradient" id="Gradient_jkg7i"]
-offsets = PackedFloat32Array(0, 0.667, 1)
-colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_16jqo"]
-gradient = SubResource("Gradient_jkg7i")
-fill_from = Vector2(0.48504272, 0.3525641)
-fill_to = Vector2(0.48290598, 0.034188036)
-
-[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_dq67i"]
-texture = SubResource("GradientTexture2D_16jqo")
-
-[sub_resource type="Gradient" id="Gradient_33lnv"]
-offsets = PackedFloat32Array(0, 0.167, 0.333, 0.5)
-colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_7bbtc"]
-gradient = SubResource("Gradient_33lnv")
-
-[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_jkg7i"]
-texture = SubResource("GradientTexture1D_7bbtc")
-
-[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_16jqo"]
-input_name = "uv"
-
-[sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_dq67i"]
-default_input_values = [1, Vector2(1, 0), 2, Vector2(0, 0)]
-
-[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_inpd5"]
-parameter_name = "SlashGradientSliderX"
-
-[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_nn7m2"]
-default_input_values = [0, Vector2(0, 0), 1, Vector2(0.5, 0)]
-op_type = 0
-operator = 2
-
-[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_jkg7i"]
-default_input_values = [0, Quaternion(0, 0, 0, 0), 1, Quaternion(0, 0, 0, 0)]
-op_type = 2
-operator = 2
-
-[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_nn7m2"]
-input_name = "uv"
-
-[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_g27at"]
-parameter_name = "SlashGradientSliderY"
-
-[sub_resource type="VisualShader" id="VisualShader_g27at"]
-code = "shader_type spatial;
-render_mode blend_mix, depth_draw_opaque, depth_test_default, cull_back, diffuse_lambert, specular_schlick_ggx;
-
-uniform float SlashGradientSliderX;
-uniform sampler2D tex_frg_2;
-uniform float SlashGradientSliderY;
-uniform sampler2D tex_frg_13;
-
-
-
-void fragment() {
-// Input:3
-	vec2 n_out3p0 = UV;
-
-
-// VectorOp:6
-	vec2 n_in6p1 = vec2(0.50000, 0.00000);
-	vec2 n_out6p0 = n_out3p0 * n_in6p1;
-
-
-// FloatParameter:5
-	float n_out5p0 = SlashGradientSliderX;
-
-
-// UVFunc:4
-	vec2 n_in4p1 = vec2(1.00000, 0.00000);
-	vec2 n_out4p0 = vec2(n_out5p0) * n_in4p1 + n_out6p0;
-
-
-// Texture2D:2
-	vec4 n_out2p0 = texture(tex_frg_2, n_out4p0);
-
-
-// Input:8
-	vec2 n_out8p0 = UV;
-
-
-// VectorOp:10
-	vec2 n_in10p1 = vec2(1.00000, 1.00000);
-	vec2 n_out10p0 = n_out8p0 * n_in10p1;
-
-
-// FloatParameter:9
-	float n_out9p0 = SlashGradientSliderY;
-
-
-// UVFunc:12
-	vec2 n_in12p1 = vec2(0.00000, 1.00000);
-	vec2 n_out12p0 = vec2(n_out9p0) * n_in12p1 + n_out10p0;
-
-
-// Texture2D:13
-	vec4 n_out13p0 = texture(tex_frg_13, n_out12p0);
-
-
-// VectorOp:7
-	vec4 n_out7p0 = n_out2p0 * n_out13p0;
-
-
-// Output:0
-	ALPHA = n_out7p0.x;
-
-
-}
-"
-nodes/fragment/0/position = Vector2(640, 500)
-nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_jkg7i")
-nodes/fragment/2/position = Vector2(-620, 160)
-nodes/fragment/3/node = SubResource("VisualShaderNodeInput_16jqo")
-nodes/fragment/3/position = Vector2(-2540, 220)
-nodes/fragment/4/node = SubResource("VisualShaderNodeUVFunc_dq67i")
-nodes/fragment/4/position = Vector2(-1260, 160)
-nodes/fragment/5/node = SubResource("VisualShaderNodeFloatParameter_inpd5")
-nodes/fragment/5/position = Vector2(-1980, 520)
-nodes/fragment/6/node = SubResource("VisualShaderNodeVectorOp_nn7m2")
-nodes/fragment/6/position = Vector2(-1800, 100)
-nodes/fragment/7/node = SubResource("VisualShaderNodeVectorOp_jkg7i")
-nodes/fragment/7/position = Vector2(20, 760)
-nodes/fragment/8/node = SubResource("VisualShaderNodeInput_nn7m2")
-nodes/fragment/8/position = Vector2(-2580, 1140)
-nodes/fragment/9/node = SubResource("VisualShaderNodeFloatParameter_g27at")
-nodes/fragment/9/position = Vector2(-2020, 1440)
-nodes/fragment/10/node = SubResource("VisualShaderNodeVectorOp_16jqo")
-nodes/fragment/10/position = Vector2(-1840, 1020)
-nodes/fragment/12/node = SubResource("VisualShaderNodeUVFunc_inpd5")
-nodes/fragment/12/position = Vector2(-1300, 1080)
-nodes/fragment/13/node = SubResource("VisualShaderNodeTexture_dq67i")
-nodes/fragment/13/position = Vector2(-620, 900)
-nodes/fragment/connections = PackedInt32Array(5, 0, 4, 2, 3, 0, 6, 0, 6, 0, 4, 0, 9, 0, 12, 2, 8, 0, 10, 0, 10, 0, 12, 0, 12, 0, 13, 0, 13, 0, 7, 1, 4, 0, 2, 0, 2, 0, 7, 0, 7, 0, 0, 1)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jkg7i"]
-render_priority = 0
-shader = SubResource("VisualShader_g27at")
-shader_parameter/SlashGradientSliderX = 0.5
-shader_parameter/SlashGradientSliderY = 0.75
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_7s2iq"]
-size = Vector3(4, 2, 8)
-
 [node name="Needle" type="Node3D"]
 script = ExtResource("1_bb050")
 
@@ -476,23 +321,9 @@ transform = Transform3D(0.9999995, -1.5795231e-06, -7.56979e-06, 4.4703484e-07, 
 shape = SubResource("BoxShape3D_fynfr")
 disabled = true
 
-[node name="SlashEffect" type="MeshInstance3D" parent="."]
-transform = Transform3D(1.1804705, -0.41108328, 0, 0.35600856, 1.0223173, 0.625, -0.20554164, -0.59023523, 1.0825317, 0, 2.2247343, 0)
-mesh = ExtResource("3_xhj71")
-surface_material_override/0 = SubResource("ShaderMaterial_jkg7i")
-
-[node name="SlashEffectDamager" parent="SlashEffect" instance=ExtResource("2_s1w8d")]
-transform = Transform3D(0.45452905, -0.32446226, 0.57282436, -0.19439706, 0.5989014, 0.4934845, -0.6289781, -0.41957295, 0.2614294, -0.5068957, -1.4556062, -0.8898939)
-rotation_edit_mode = 1
-collision_layer = 8
-collision_mask = 0
-
-[node name="Collision" parent="SlashEffect/SlashEffectDamager" index="0"]
-transform = Transform3D(0.9999969, -1.6763806e-07, -9.685755e-08, -6.787479e-06, 0.99999774, -2.9802322e-08, -7.450581e-09, -3.2782555e-07, 1, 1.2229998, 1.6729993, 4)
-shape = SubResource("BoxShape3D_7s2iq")
-disabled = true
+[node name="SlashEffect" parent="." instance=ExtResource("3_g78k6")]
+transform = Transform3D(1.1804705, -0.41108325, 0, 0.35600856, 1.0223173, 0.625, -0.20554164, -0.5902352, 1.0825317, 0, 2.2247343, 0)
 
 [connection signal="area_entered" from="Mesh/DownSpikeDamager" to="." method="_on_down_spike_damager_area_entered"]
 
 [editable path="Mesh/DownSpikeDamager"]
-[editable path="SlashEffect/SlashEffectDamager"]

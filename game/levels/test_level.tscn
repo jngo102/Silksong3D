@@ -1,16 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://bx1fy5obuyvl"]
+[gd_scene load_steps=8 format=3 uid="uid://bx1fy5obuyvl"]
 
+[ext_resource type="Script" uid="uid://hssorlhiwg5v" path="res://game/levels/base_level.gd" id="1_80l8l"]
 [ext_resource type="Script" uid="uid://b2erw6j0ld612" path="res://game/gameplay/camera_controller.gd" id="1_giiqr"]
+[ext_resource type="Resource" uid="uid://s05a04ohrxuf" path="res://game/resources/music/cogdancers1.tres" id="2_3m0nd"]
 [ext_resource type="PackedScene" uid="uid://bk5l50c7ma8dr" path="res://game/actors/player/player.tscn" id="2_80l8l"]
 [ext_resource type="PackedScene" uid="uid://c1fle5fyo6r8h" path="res://game/actors/enemies/cogwork_dancers/cogwork_dancer.tscn" id="3_3m0nd"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_34lg8"]
-size = Vector3(25, 1, 25)
+[sub_resource type="PlaneMesh" id="PlaneMesh_giiqr"]
+size = Vector2(25, 25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_34lg8"]
 size = Vector3(25, 1, 25)
 
 [node name="TestLevel" type="Node3D"]
+script = ExtResource("1_80l8l")
+music_track = ExtResource("2_3m0nd")
 
 [node name="Platform" type="StaticBody3D" parent="."]
 transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 0, 0)
@@ -18,7 +22,7 @@ collision_layer = 4
 collision_mask = 0
 
 [node name="Mesh" type="MeshInstance3D" parent="Platform"]
-mesh = SubResource("BoxMesh_34lg8")
+mesh = SubResource("PlaneMesh_giiqr")
 
 [node name="Collision" type="CollisionShape3D" parent="Platform"]
 shape = SubResource("BoxShape3D_34lg8")
@@ -27,7 +31,7 @@ shape = SubResource("BoxShape3D_34lg8")
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 4.327, 5)
 script = ExtResource("1_giiqr")
 target = NodePath("../Player")
-min_yaw_degrees = -30.0
+min_yaw_degrees = -80.0
 max_yaw_degrees = 35.0
 
 [node name="CameraPitch" type="Node3D" parent="CameraYaw"]
@@ -44,7 +48,11 @@ _cam_pivot = NodePath("../CameraYaw")
 transform = Transform3D(0.7254783, -0.20325898, 0.6575463, -0.058854267, 0.9335742, 0.35351858, -0.6857241, -0.29516938, 0.66532516, 0, 7.683483, -2.23426)
 
 [node name="DancerA" parent="." instance=ExtResource("3_3m0nd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.172846, 9.410442, -2.674884)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -8.172846, 4.0316696, -2.674884)
 
 [node name="DancerB" parent="." instance=ExtResource("3_3m0nd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.755234, 9.410442, -2.674884)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 8.755234, 4.0316696, -2.674884)
+
+[editable path="DancerA"]
+[editable path="DancerA/Health"]
+[editable path="DancerA/Model"]

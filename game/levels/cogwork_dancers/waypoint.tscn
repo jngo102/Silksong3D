@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bs1v5xrhsia2d"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i41jy"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.2509804)
+
+[sub_resource type="SphereMesh" id="SphereMesh_4irxg"]
+material = SubResource("StandardMaterial3D_i41jy")
+radius = 1.0
+height = 2.0
+
+[node name="Waypoint" type="Marker3D" groups=["Waypoints"]]
+
+[node name="Visual" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("SphereMesh_4irxg")
