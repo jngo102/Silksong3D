@@ -1,13 +1,14 @@
-[gd_scene load_steps=36 format=3 uid="uid://dugp1elqcy03h"]
+[gd_scene load_steps=39 format=3 uid="uid://dugp1elqcy03h"]
 
 [ext_resource type="Script" uid="uid://hssorlhiwg5v" path="res://game/levels/base_level.gd" id="1_xe0e6"]
 [ext_resource type="Resource" uid="uid://s05a04ohrxuf" path="res://game/resources/music/cogdancers1.tres" id="2_sd8jx"]
 [ext_resource type="Script" uid="uid://b2erw6j0ld612" path="res://game/gameplay/camera_controller.gd" id="3_y2jbv"]
-[ext_resource type="VoxelGIData" uid="uid://by1powbbumaue" path="res://game/resources/voxel_gi_data/cogwork_dancers.VoxelGI_data.res" id="4_4nkp7"]
 [ext_resource type="PackedScene" uid="uid://bk5l50c7ma8dr" path="res://game/actors/player/player.tscn" id="4_sd8jx"]
+[ext_resource type="Texture2D" uid="uid://cddh7us3g7l8c" path="res://game/levels/cogwork_dancers/GroundDiffuse.png" id="5_1nr1l"]
 [ext_resource type="PackedScene" uid="uid://bs1v5xrhsia2d" path="res://game/levels/cogwork_dancers/waypoint.tscn" id="5_sd8jx"]
 [ext_resource type="PackedScene" uid="uid://c1fle5fyo6r8h" path="res://game/actors/enemies/cogwork_dancers/cogwork_dancer.tscn" id="5_xmi2e"]
 [ext_resource type="Script" uid="uid://ecvq3yiktph3" path="res://game/levels/dancer_manager.gd" id="6_jgp2n"]
+[ext_resource type="Texture2D" uid="uid://b02pbhqu2cqf" path="res://game/levels/cogwork_dancers/GroundNormal.png" id="6_t6wio"]
 [ext_resource type="Script" uid="uid://dxbi27aygq70q" path="res://game/levels/spinner.gd" id="6_y2jbv"]
 [ext_resource type="Script" uid="uid://b5oj3iqy1cnm" path="res://game/levels/cogwork_dancers/spin_slashes.gd" id="9_vv8co"]
 [ext_resource type="PackedScene" uid="uid://xal232da7bpf" path="res://game/gameplay/combat/damager.tscn" id="9_xmi2e"]
@@ -16,8 +17,15 @@
 [ext_resource type="AudioStream" uid="uid://dpp1bvp5t1cfq" path="res://game/copyrighted/cogwork_dancers/clockwork_dancers_centre_meet_and_slashes.wav" id="12_a4ncn"]
 [ext_resource type="PackedScene" uid="uid://bcaddbgdttgyu" path="res://game/levels/cogwork_dancers/dasher.tscn" id="12_awspu"]
 [ext_resource type="Environment" uid="uid://dpsb82o3h1rey" path="res://game/resources/world_environments/cogwork_dancers_environment.tres" id="13_tpwk1"]
+[ext_resource type="PackedScene" uid="uid://bqltw4st6n5jx" path="res://game/levels/cogwork_dancers/cogwork_dancers_environment.glb" id="17_glf46"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4y2hd"]
+albedo_texture = ExtResource("5_1nr1l")
+normal_enabled = true
+normal_texture = ExtResource("6_t6wio")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_giiqr"]
+material = SubResource("StandardMaterial3D_4y2hd")
 size = Vector2(60, 60)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_34lg8"]
@@ -25,6 +33,7 @@ size = Vector3(60, 10, 60)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_awspu"]
 cull_mode = 2
+albedo_color = Color(0.099985994, 0.099985994, 0.099985994, 1)
 
 [sub_resource type="Animation" id="Animation_vv8co"]
 length = 0.001
@@ -720,17 +729,21 @@ music_track = ExtResource("2_sd8jx")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
 environment = ExtResource("13_tpwk1")
 
-[node name="VoxelGI" type="VoxelGI" parent="Environment"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0)
-size = Vector3(60, 40, 60)
-data = ExtResource("4_4nkp7")
+[node name="WindowLight" type="SpotLight3D" parent="Environment"]
+transform = Transform3D(-1, -1.6984853e-15, -8.7422784e-08, -1.526795e-08, 0.98463154, 0.17464499, 8.607922e-08, 0.17464499, -0.98463154, 0, 15.592891, -66.64813)
+light_color = Color(0.88897, 0.918843, 0.9286584, 1)
+shadow_enabled = true
+spot_range = 128.0
+spot_attenuation = 2.0
+spot_angle = 30.0
+spot_angle_attenuation = 1.2745608
 
 [node name="Ground" type="StaticBody3D" parent="."]
 collision_layer = 4
 collision_mask = 0
 
 [node name="Mesh" type="MeshInstance3D" parent="Ground"]
-transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, -1.882)
 mesh = SubResource("PlaneMesh_giiqr")
 
 [node name="Collision" type="CollisionShape3D" parent="Ground"]
@@ -743,7 +756,7 @@ collision_layer = 4
 collision_mask = 0
 
 [node name="Mesh" type="MeshInstance3D" parent="Ceiling"]
-transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 16.19)
 mesh = SubResource("PlaneMesh_giiqr")
 surface_material_override/0 = SubResource("StandardMaterial3D_awspu")
 
@@ -956,5 +969,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, 25)
 [node name="Dasher11" parent="DasherAttack" instance=ExtResource("12_awspu")]
 
 [node name="Dasher12" parent="DasherAttack" instance=ExtResource("12_awspu")]
+
+[node name="Scene" parent="." instance=ExtResource("17_glf46")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0.08052063, 3.7522936, -37.72847)
 
 [editable path="DancerManager/SpinSlashes/Damager"]

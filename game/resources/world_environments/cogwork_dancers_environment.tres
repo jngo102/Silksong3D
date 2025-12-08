@@ -3,7 +3,6 @@
 [resource]
 background_mode = 1
 background_color = Color(0.8138989, 0.86985713, 0.892254, 1)
-ambient_light_source = 3
 ambient_light_color = Color(1, 1, 1, 1)
 sdfgi_use_occlusion = true
 glow_enabled = true

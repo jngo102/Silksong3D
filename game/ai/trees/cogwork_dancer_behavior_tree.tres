@@ -996,6 +996,7 @@ play_position_var = &"self_position"
 script = ExtResource("10_nf1r4")
 target_position_var = &"teleport_point_position"
 time = 0.25
+ease_type = 3
 move_to_tween_var = &""
 
 [sub_resource type="BTSequence" id="BTSequence_ueah8"]
