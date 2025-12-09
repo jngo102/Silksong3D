@@ -5,6 +5,6 @@
 
 [resource]
 script = ExtResource("2_vunld")
-bpm = 120
+bpm = 90
 music_clip = ExtResource("1_iqy31")
 metadata/_custom_type_script = "uid://q4qqnvxnwemw"

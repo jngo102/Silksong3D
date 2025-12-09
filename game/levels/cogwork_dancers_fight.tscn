@@ -1,6 +1,7 @@
-[gd_scene load_steps=39 format=3 uid="uid://dugp1elqcy03h"]
+[gd_scene load_steps=43 format=3 uid="uid://dugp1elqcy03h"]
 
-[ext_resource type="Script" uid="uid://hssorlhiwg5v" path="res://game/levels/base_level.gd" id="1_xe0e6"]
+[ext_resource type="Script" uid="uid://ob43xcsgefpw" path="res://game/levels/cogwork_dancers_fight.gd" id="1_0qq8w"]
+[ext_resource type="Resource" uid="uid://cbxskjf0ajc00" path="res://game/resources/music/cogdancers2.tres" id="2_0qq8w"]
 [ext_resource type="Resource" uid="uid://s05a04ohrxuf" path="res://game/resources/music/cogdancers1.tres" id="2_sd8jx"]
 [ext_resource type="Script" uid="uid://b2erw6j0ld612" path="res://game/gameplay/camera_controller.gd" id="3_y2jbv"]
 [ext_resource type="PackedScene" uid="uid://bk5l50c7ma8dr" path="res://game/actors/player/player.tscn" id="4_sd8jx"]
@@ -10,10 +11,13 @@
 [ext_resource type="Script" uid="uid://ecvq3yiktph3" path="res://game/levels/dancer_manager.gd" id="6_jgp2n"]
 [ext_resource type="Texture2D" uid="uid://b02pbhqu2cqf" path="res://game/levels/cogwork_dancers/GroundNormal.png" id="6_t6wio"]
 [ext_resource type="Script" uid="uid://dxbi27aygq70q" path="res://game/levels/spinner.gd" id="6_y2jbv"]
+[ext_resource type="Script" uid="uid://q4qqnvxnwemw" path="res://game/autoload/audio/music_track.gd" id="9_4y2hd"]
 [ext_resource type="Script" uid="uid://b5oj3iqy1cnm" path="res://game/levels/cogwork_dancers/spin_slashes.gd" id="9_vv8co"]
 [ext_resource type="PackedScene" uid="uid://xal232da7bpf" path="res://game/gameplay/combat/damager.tscn" id="9_xmi2e"]
+[ext_resource type="Resource" uid="uid://b8l05qok73wph" path="res://game/resources/music/cogdancers3.tres" id="11_42bj1"]
 [ext_resource type="AudioStream" uid="uid://b1pa7q3ccdpaw" path="res://game/copyrighted/cogwork_dancers/clockwork_dancers_middle_white_circle.wav" id="11_uj4lg"]
 [ext_resource type="PackedScene" uid="uid://chkk3uavdu205" path="res://game/levels/cogwork_dancers/spin_slash_effect.tscn" id="11_x4adb"]
+[ext_resource type="Resource" uid="uid://fkmii6aywjmi" path="res://game/resources/music/cogdancers4.tres" id="12_42bj1"]
 [ext_resource type="AudioStream" uid="uid://dpp1bvp5t1cfq" path="res://game/copyrighted/cogwork_dancers/clockwork_dancers_centre_meet_and_slashes.wav" id="12_a4ncn"]
 [ext_resource type="PackedScene" uid="uid://bcaddbgdttgyu" path="res://game/levels/cogwork_dancers/dasher.tscn" id="12_awspu"]
 [ext_resource type="Environment" uid="uid://dpsb82o3h1rey" path="res://game/resources/world_environments/cogwork_dancers_environment.tres" id="13_tpwk1"]
@@ -721,8 +725,7 @@ height = 24.0
 radius = 12.0
 
 [node name="CogworkDancersFight" type="Node3D"]
-script = ExtResource("1_xe0e6")
-music_track = ExtResource("2_sd8jx")
+script = ExtResource("1_0qq8w")
 
 [node name="Environment" type="Node3D" parent="."]
 
@@ -743,7 +746,7 @@ collision_layer = 4
 collision_mask = 0
 
 [node name="Mesh" type="MeshInstance3D" parent="Ground"]
-transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, -1.882)
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
 mesh = SubResource("PlaneMesh_giiqr")
 
 [node name="Collision" type="CollisionShape3D" parent="Ground"]
@@ -792,6 +795,13 @@ omni_range = 50.0
 [node name="DancerManager" type="Node3D" parent="." node_paths=PackedStringArray("starting_waypoint1", "starting_waypoint2", "dashers")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14, 0)
 script = ExtResource("6_jgp2n")
+starting_phase = 3
+music_list = Dictionary[int, ExtResource("9_4y2hd")]({
+1: ExtResource("2_sd8jx"),
+2: ExtResource("2_0qq8w"),
+3: ExtResource("11_42bj1"),
+4: ExtResource("12_42bj1")
+})
 starting_waypoint1 = NodePath("../Waypoints/BottomLayer/Waypoint1")
 starting_waypoint2 = NodePath("../Waypoints/BottomLayer/Waypoint3")
 dashers = [NodePath("../DasherAttack/Dasher1"), NodePath("../DasherAttack/Dasher2"), NodePath("../DasherAttack/Dasher3"), NodePath("../DasherAttack/Dasher4"), NodePath("../DasherAttack/Dasher5"), NodePath("../DasherAttack/Dasher6"), NodePath("../DasherAttack/Dasher7"), NodePath("../DasherAttack/Dasher8"), NodePath("../DasherAttack/Dasher9"), NodePath("../DasherAttack/Dasher10"), NodePath("../DasherAttack/Dasher11"), NodePath("../DasherAttack/Dasher12")]

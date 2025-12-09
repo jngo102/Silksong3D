@@ -1,4 +1,4 @@
-[gd_resource type="BehaviorTree" load_steps=423 format=3 uid="uid://chh6lvoe5ufr8"]
+[gd_resource type="BehaviorTree" load_steps=811 format=3 uid="uid://chh6lvoe5ufr8"]
 
 [ext_resource type="Script" uid="uid://co46fdui830i2" path="res://game/ai/tasks/scene/get_all_in_group.gd" id="2_f75ub"]
 [ext_resource type="Script" uid="uid://oufr1n61rgt6" path="res://game/ai/tasks/audio/get_current_music_player.gd" id="3_ngxa6"]
@@ -9,7 +9,6 @@
 [ext_resource type="AudioStream" uid="uid://6y6ehraiacsn" path="res://game/copyrighted/cogwork_dancers/CogD_attack_large_01.wav" id="8_34w61"]
 [ext_resource type="Script" uid="uid://bug3tp3tel5tp" path="res://game/ai/tasks/audio/get_music_playback_position.gd" id="8_ngxa6"]
 [ext_resource type="AudioStream" uid="uid://djwjsycd18yof" path="res://game/copyrighted/cogwork_dancers/CogD_attack_large_02.wav" id="9_3guyw"]
-[ext_resource type="Script" uid="uid://ctcqnu636xckk" path="res://game/ai/tasks/math/float_modulo.gd" id="9_6mje8"]
 [ext_resource type="Script" uid="uid://ycnpkfx0h776" path="res://game/ai/tasks/transform/get_position.gd" id="9_mmu5o"]
 [ext_resource type="AudioStream" uid="uid://do0weqwbma1co" path="res://game/copyrighted/cogwork_dancers/CogD_attack_large_03.wav" id="10_a4ig0"]
 [ext_resource type="Script" uid="uid://bia8f8kue467p" path="res://game/ai/tasks/logic/tween_to_position.gd" id="10_nf1r4"]
@@ -89,6 +88,11 @@ var/dash_z/type = 3
 var/dash_z/value = 0.0
 var/dash_z/hint = 0
 var/dash_z/hint_string = ""
+var/epsilon/name = &"epsilon"
+var/epsilon/type = 3
+var/epsilon/value = 0.01
+var/epsilon/hint = 0
+var/epsilon/hint_string = ""
 var/direction_light/name = &"direction_light"
 var/direction_light/type = 24
 var/direction_light/value = Object(Node3D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(2, 7.993606e-15, -1.1368684e-13, 2.6645353e-15, 2, -3.7252903e-09, 0, 0, 3, 0, 2, 0),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":null)
@@ -154,6 +158,11 @@ var/music_playback_position/type = 3
 var/music_playback_position/value = 0.0
 var/music_playback_position/hint = 0
 var/music_playback_position/hint_string = ""
+var/music_wrap_around_time/name = &"music_wrap_around_time"
+var/music_wrap_around_time/type = 3
+var/music_wrap_around_time/value = 0.0
+var/music_wrap_around_time/hint = 0
+var/music_wrap_around_time/hint_string = ""
 var/next_measure_time/name = &"next_measure_time"
 var/next_measure_time/type = 3
 var/next_measure_time/value = 0.0
@@ -171,6 +180,16 @@ var/other_dancer_next_waypoint/name = &"other_dancer_next_waypoint"
 var/other_dancer_next_waypoint/type = 24
 var/other_dancer_next_waypoint/hint = 34
 var/other_dancer_next_waypoint/hint_string = ""
+var/other_dancer_ready_for_special_attack/name = &"other_dancer_ready_for_special_attack"
+var/other_dancer_ready_for_special_attack/type = 1
+var/other_dancer_ready_for_special_attack/value = false
+var/other_dancer_ready_for_special_attack/hint = 0
+var/other_dancer_ready_for_special_attack/hint_string = ""
+var/phase/name = &"phase"
+var/phase/type = 2
+var/phase/value = 1
+var/phase/hint = 1
+var/phase/hint_string = "1,4"
 var/self/name = &"self"
 var/self/type = 24
 var/self/value = Object(CharacterBody3D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"disable_mode":0,"collision_layer":2,"collision_mask":4,"collision_priority":1.0,"input_ray_pickable":true,"input_capture_on_drag":false,"axis_lock_linear_x":false,"axis_lock_linear_y":false,"axis_lock_linear_z":false,"axis_lock_angular_x":false,"axis_lock_angular_y":false,"axis_lock_angular_z":false,"motion_mode":0,"up_direction":Vector3(0, 1, 0),"slide_on_ceiling":true,"velocity":Vector3(0, 0, 0),"max_slides":6,"wall_min_slide_angle":0.2617994,"floor_stop_on_slope":true,"floor_constant_speed":false,"floor_block_on_wall":true,"floor_max_angle":0.7853982,"floor_snap_length":0.1,"platform_on_leave":0,"platform_floor_layers":4294967295,"platform_wall_layers":0,"safe_margin":0.001,"script":Resource("res://game/actors/enemies/cogwork_dancers/cogwork_dancer.gd"),"top":false)
@@ -267,6 +286,16 @@ script = ExtResource("4_6mje8")
 audio_player_var = &"current_music_player"
 output_duration_var = &"music_duration"
 
+[sub_resource type="BBVariant" id="BBVariant_i63ae"]
+value_source = 1
+variable = &"epsilon"
+resource_name = "$epsilon"
+
+[sub_resource type="BTSetVar" id="BTSetVar_i0816"]
+variable = &"music_duration"
+value = SubResource("BBVariant_i63ae")
+operation = 2
+
 [sub_resource type="BTAction" id="BTAction_nx7ud"]
 script = ExtResource("5_bljor")
 output_bpm_var = &"music_bpm"
@@ -294,6 +323,37 @@ variable = &"measure_length"
 value = SubResource("BBVariant_dio41")
 operation = 3
 
+[sub_resource type="BBVariant" id="BBVariant_kk73g"]
+value_source = 1
+variable = &"measure_length"
+resource_name = "$measure_length"
+
+[sub_resource type="BTSetVar" id="BTSetVar_maqif"]
+variable = &"next_measure_time"
+value = SubResource("BBVariant_kk73g")
+
+[sub_resource type="BTComment" id="BTComment_x3uvo"]
+custom_name = "Penultimate measure in the current track"
+
+[sub_resource type="BBVariant" id="BBVariant_1j8g6"]
+value_source = 1
+variable = &"music_duration"
+resource_name = "$music_duration"
+
+[sub_resource type="BTSetVar" id="BTSetVar_ah2pd"]
+variable = &"music_wrap_around_time"
+value = SubResource("BBVariant_1j8g6")
+
+[sub_resource type="BBVariant" id="BBVariant_kq56s"]
+value_source = 1
+variable = &"measure_length"
+resource_name = "$measure_length"
+
+[sub_resource type="BTSetVar" id="BTSetVar_0dlsi"]
+variable = &"music_wrap_around_time"
+value = SubResource("BBVariant_kq56s")
+operation = 2
+
 [sub_resource type="BBVariant" id="BBVariant_mexuy"]
 value_source = 1
 variable = &"measure_length"
@@ -313,18 +373,9 @@ variable = &"move_to_tween_time"
 value = SubResource("BBVariant_g2jil")
 operation = 4
 
-[sub_resource type="BBVariant" id="BBVariant_kk73g"]
-value_source = 1
-variable = &"measure_length"
-resource_name = "$measure_length"
-
-[sub_resource type="BTSetVar" id="BTSetVar_maqif"]
-variable = &"next_measure_time"
-value = SubResource("BBVariant_kk73g")
-
 [sub_resource type="BTSequence" id="BTSequence_nx7ud"]
 custom_name = "Set Music Parameters"
-children = [SubResource("BTAction_5382o"), SubResource("BTAction_nx7ud"), SubResource("BTSetVar_vxhi2"), SubResource("BTAction_io532"), SubResource("BTSetVar_ev603"), SubResource("BTSetVar_u7re6"), SubResource("BTSetVar_mexuy"), SubResource("BTSetVar_maqif")]
+children = [SubResource("BTAction_5382o"), SubResource("BTSetVar_i0816"), SubResource("BTAction_nx7ud"), SubResource("BTSetVar_vxhi2"), SubResource("BTAction_io532"), SubResource("BTSetVar_ev603"), SubResource("BTSetVar_maqif"), SubResource("BTComment_x3uvo"), SubResource("BTSetVar_ah2pd"), SubResource("BTSetVar_0dlsi"), SubResource("BTSetVar_u7re6"), SubResource("BTSetVar_mexuy")]
 
 [sub_resource type="BBVariant" id="BBVariant_ykvq3"]
 value_source = 1
@@ -362,6 +413,164 @@ children = [SubResource("BTAction_sh7if")]
 custom_name = "Initialization"
 children = [SubResource("BTSequence_vfpbh"), SubResource("BTSequence_nx7ud"), SubResource("BTSequence_maqif"), SubResource("BTSequence_tvm2c")]
 
+[sub_resource type="BBVariant" id="BBVariant_tfrvw"]
+type = 2
+saved_value = 3
+resource_name = "3"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_wmffp"]
+variable = &"phase"
+check_type = 5
+value = SubResource("BBVariant_tfrvw")
+
+[sub_resource type="BBVariant" id="BBVariant_mb14r"]
+type = 1
+saved_value = false
+resource_name = "false"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_nxqfg"]
+variable = &"top"
+value = SubResource("BBVariant_mb14r")
+
+[sub_resource type="BBVariant" id="BBVariant_x3uvo"]
+value_source = 1
+variable = &"music_playback_position"
+resource_name = "$music_playback_position"
+
+[sub_resource type="BTSetVar" id="BTSetVar_lgqnu"]
+variable = &"next_measure_time"
+value = SubResource("BBVariant_x3uvo")
+
+[sub_resource type="BBVariant" id="BBVariant_tvm2c"]
+value_source = 1
+variable = &"measure_length"
+resource_name = "$measure_length"
+
+[sub_resource type="BTSetVar" id="BTSetVar_ipxx0"]
+variable = &"next_measure_time"
+value = SubResource("BBVariant_tvm2c")
+operation = 4
+
+[sub_resource type="BTAction" id="BTAction_e8anh"]
+script = ExtResource("20_34w61")
+value_var = &"next_measure_time"
+
+[sub_resource type="BBVariant" id="BBVariant_877ps"]
+type = 2
+saved_value = 1
+resource_name = "1"
+
+[sub_resource type="BTSetVar" id="BTSetVar_tfrvw"]
+variable = &"next_measure_time"
+value = SubResource("BBVariant_877ps")
+operation = 1
+
+[sub_resource type="BBVariant" id="BBVariant_wmffp"]
+type = 2
+value_source = 1
+variable = &"measure_length"
+resource_name = "$measure_length"
+
+[sub_resource type="BTSetVar" id="BTSetVar_mb14r"]
+variable = &"next_measure_time"
+value = SubResource("BBVariant_wmffp")
+operation = 3
+
+[sub_resource type="BTSequence" id="BTSequence_nxqfg"]
+custom_name = "Reset Next Measure Time"
+children = [SubResource("BTSetVar_lgqnu"), SubResource("BTSetVar_ipxx0"), SubResource("BTAction_e8anh"), SubResource("BTSetVar_tfrvw"), SubResource("BTSetVar_mb14r")]
+
+[sub_resource type="BTConsolePrint" id="BTConsolePrint_i63ae"]
+text = "Look				Next: %f		Play: %f"
+bb_format_parameters = PackedStringArray("next_measure_time", "music_playback_position")
+_enabled = false
+
+[sub_resource type="BTAction" id="BTAction_i0816"]
+script = ExtResource("8_ngxa6")
+audio_player_var = &"current_music_player"
+
+[sub_resource type="BBVariant" id="BBVariant_q8ous"]
+type = 3
+value_source = 1
+variable = &"epsilon"
+resource_name = "$epsilon"
+
+[sub_resource type="BTSetVar" id="BTSetVar_7wjj6"]
+variable = &"music_playback_position"
+value = SubResource("BBVariant_q8ous")
+operation = 1
+
+[sub_resource type="BBVariant" id="BBVariant_5do71"]
+value_source = 1
+variable = &"next_measure_time"
+resource_name = "$next_measure_time"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_ojnlc"]
+variable = &"music_playback_position"
+check_type = 4
+value = SubResource("BBVariant_5do71")
+
+[sub_resource type="BBVariant" id="BBVariant_b865g"]
+value_source = 1
+variable = &"music_duration"
+resource_name = "$music_duration"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_p3fr0"]
+variable = &"next_measure_time"
+check_type = 4
+value = SubResource("BBVariant_b865g")
+
+[sub_resource type="BBVariant" id="BBVariant_22rkn"]
+value_source = 1
+variable = &"music_wrap_around_time"
+resource_name = "$music_wrap_around_time"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_uyp3b"]
+variable = &"music_playback_position"
+check_type = 1
+value = SubResource("BBVariant_22rkn")
+
+[sub_resource type="BTAction" id="BTAction_si1s8"]
+script = ExtResource("8_ngxa6")
+audio_player_var = &"current_music_player"
+
+[sub_resource type="BBVariant" id="BBVariant_o7vs3"]
+value_source = 1
+variable = &"measure_length"
+resource_name = "$measure_length"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_qm002"]
+variable = &"music_playback_position"
+check_type = 4
+value = SubResource("BBVariant_o7vs3")
+
+[sub_resource type="BTSequence" id="BTSequence_bwuyh"]
+children = [SubResource("BTAction_si1s8"), SubResource("BTCheckVar_qm002")]
+
+[sub_resource type="BTRepeatUntilSuccess" id="BTRepeatUntilSuccess_uu8my"]
+children = [SubResource("BTSequence_bwuyh")]
+
+[sub_resource type="BTSequence" id="BTSequence_8s2vd"]
+children = [SubResource("BTCheckVar_p3fr0"), SubResource("BTCheckVar_uyp3b"), SubResource("BTRepeatUntilSuccess_uu8my")]
+
+[sub_resource type="BTSelector" id="BTSelector_1k733"]
+children = [SubResource("BTCheckVar_ojnlc"), SubResource("BTSequence_8s2vd")]
+
+[sub_resource type="BTSequence" id="BTSequence_yk1c7"]
+children = [SubResource("BTConsolePrint_i63ae"), SubResource("BTAction_i0816"), SubResource("BTSetVar_7wjj6"), SubResource("BTSelector_1k733")]
+
+[sub_resource type="BTRepeatUntilSuccess" id="BTRepeatUntilSuccess_0p5ck"]
+custom_name = "Check Music Playback Position"
+children = [SubResource("BTSequence_yk1c7")]
+
+[sub_resource type="BTSequence" id="BTSequence_57pd4"]
+custom_name = "Wait Until Next Measure"
+children = [SubResource("BTSequence_nxqfg"), SubResource("BTRepeatUntilSuccess_0p5ck")]
+
+[sub_resource type="BTSelector" id="BTSelector_lgqnu"]
+custom_name = "Check Phase 3 Delay"
+children = [SubResource("BTCheckVar_wmffp"), SubResource("BTCheckVar_nxqfg"), SubResource("BTSequence_57pd4")]
+
 [sub_resource type="BBVariant" id="BBVariant_io532"]
 type = 1
 saved_value = false
@@ -370,6 +579,105 @@ resource_name = "false"
 [sub_resource type="BTCheckVar" id="BTCheckVar_qqr1w"]
 variable = &"should_spin"
 value = SubResource("BBVariant_io532")
+
+[sub_resource type="BTAction" id="BTAction_vksgl"]
+script = ExtResource("8_ngxa6")
+audio_player_var = &"current_music_player"
+
+[sub_resource type="BBVariant" id="BBVariant_1iok6"]
+type = 3
+value_source = 1
+variable = &"epsilon"
+resource_name = "$epsilon"
+
+[sub_resource type="BTSetVar" id="BTSetVar_lxq5a"]
+variable = &"music_playback_position"
+value = SubResource("BBVariant_1iok6")
+operation = 1
+
+[sub_resource type="BBVariant" id="BBVariant_c57wm"]
+value_source = 1
+variable = &"music_playback_position"
+resource_name = "$music_playback_position"
+
+[sub_resource type="BTSetVar" id="BTSetVar_45lfl"]
+variable = &"next_measure_time"
+value = SubResource("BBVariant_c57wm")
+
+[sub_resource type="BBVariant" id="BBVariant_buhy5"]
+value_source = 1
+variable = &"measure_length"
+resource_name = "$measure_length"
+
+[sub_resource type="BTSetVar" id="BTSetVar_wsgol"]
+variable = &"next_measure_time"
+value = SubResource("BBVariant_buhy5")
+operation = 4
+
+[sub_resource type="BTAction" id="BTAction_7cdio"]
+script = ExtResource("20_34w61")
+value_var = &"next_measure_time"
+
+[sub_resource type="BBVariant" id="BBVariant_u43jt"]
+type = 2
+saved_value = 1
+resource_name = "1"
+
+[sub_resource type="BTSetVar" id="BTSetVar_egiim"]
+variable = &"next_measure_time"
+value = SubResource("BBVariant_u43jt")
+operation = 1
+
+[sub_resource type="BBVariant" id="BBVariant_4qb1o"]
+type = 2
+value_source = 1
+variable = &"measure_length"
+resource_name = "$measure_length"
+
+[sub_resource type="BTSetVar" id="BTSetVar_6pemf"]
+variable = &"next_measure_time"
+value = SubResource("BBVariant_4qb1o")
+operation = 3
+
+[sub_resource type="BTSequence" id="BTSequence_ft10h"]
+custom_name = "Reset Next Measure Time"
+children = [SubResource("BTAction_vksgl"), SubResource("BTSetVar_lxq5a"), SubResource("BTSetVar_45lfl"), SubResource("BTSetVar_wsgol"), SubResource("BTAction_7cdio"), SubResource("BTSetVar_egiim"), SubResource("BTSetVar_6pemf")]
+
+[sub_resource type="BBVariant" id="BBVariant_7weh2"]
+value_source = 1
+variable = &"self"
+resource_name = "$self"
+
+[sub_resource type="BBVariant" id="BBVariant_ueah8"]
+type = 1
+saved_value = true
+resource_name = "true"
+
+[sub_resource type="BBNode" id="BBNode_3g83i"]
+value_source = 1
+variable = &"manager_path"
+resource_name = "$manager_path"
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_jn4d2"]
+node = SubResource("BBNode_3g83i")
+method = &"set_ready_for_special_attack"
+args = Array[BBVariant]([SubResource("BBVariant_7weh2"), SubResource("BBVariant_ueah8")])
+
+[sub_resource type="BBVariant" id="BBVariant_o5el3"]
+type = 1
+saved_value = true
+resource_name = "true"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_lalf6"]
+variable = &"other_dancer_ready_for_special_attack"
+value = SubResource("BBVariant_o5el3")
+
+[sub_resource type="BTSequence" id="BTSequence_si1s8"]
+children = [SubResource("BTSequence_ft10h"), SubResource("BTCallMethod_jn4d2"), SubResource("BTCheckVar_lalf6")]
+
+[sub_resource type="BTRepeatUntilSuccess" id="BTRepeatUntilSuccess_o7vs3"]
+custom_name = "Wait For Other Dancer"
+children = [SubResource("BTSequence_si1s8")]
 
 [sub_resource type="BBVariant" id="BBVariant_iegny"]
 type = 1
@@ -444,75 +752,140 @@ method = &"play_antic"
 custom_name = "Look At Center"
 children = [SubResource("BTAction_qqr1w"), SubResource("BTAction_hkw83"), SubResource("BTPlayAnimation_io532"), SubResource("BTPlayAnimation_ucsdq"), SubResource("BTAction_a4ig0"), SubResource("BTAction_ttsve"), SubResource("BTCallMethod_bljor")]
 
-[sub_resource type="BTAction" id="BTAction_bljor"]
-script = ExtResource("8_ngxa6")
-audio_player_var = &"current_music_player"
-
-[sub_resource type="BBVariant" id="BBVariant_oa2qd"]
+[sub_resource type="BBVariant" id="BBVariant_3b8xs"]
 value_source = 1
-variable = &"next_measure_time"
-resource_name = "$next_measure_time"
-
-[sub_resource type="BTCheckVar" id="BTCheckVar_qj0wi"]
 variable = &"music_playback_position"
-check_type = 4
-value = SubResource("BBVariant_oa2qd")
+resource_name = "$music_playback_position"
 
-[sub_resource type="BBVariant" id="BBVariant_albun"]
-value_source = 1
-variable = &"music_duration"
-resource_name = "$music_duration"
-
-[sub_resource type="BTCheckVar" id="BTCheckVar_mmu5o"]
+[sub_resource type="BTSetVar" id="BTSetVar_e8anh"]
 variable = &"next_measure_time"
-check_type = 4
-value = SubResource("BBVariant_albun")
+value = SubResource("BBVariant_3b8xs")
 
-[sub_resource type="BBVariant" id="BBVariant_nf1r4"]
+[sub_resource type="BBVariant" id="BBVariant_i0816"]
 value_source = 1
 variable = &"measure_length"
 resource_name = "$measure_length"
 
-[sub_resource type="BTCheckVar" id="BTCheckVar_efeba"]
-variable = &"music_playback_position"
-check_type = 1
-value = SubResource("BBVariant_nf1r4")
+[sub_resource type="BTSetVar" id="BTSetVar_q8ous"]
+variable = &"next_measure_time"
+value = SubResource("BBVariant_i0816")
+operation = 4
 
-[sub_resource type="BTSequence" id="BTSequence_ttsve"]
-children = [SubResource("BTCheckVar_mmu5o"), SubResource("BTCheckVar_efeba")]
-
-[sub_resource type="BTAction" id="BTAction_t3oje"]
-script = ExtResource("9_6mje8")
+[sub_resource type="BTAction" id="BTAction_7wjj6"]
+script = ExtResource("20_34w61")
 value_var = &"next_measure_time"
-modulo_value_var = &"music_duration"
 
-[sub_resource type="BTSequence" id="BTSequence_u83xx"]
-children = [SubResource("BTSequence_ttsve"), SubResource("BTAction_t3oje")]
+[sub_resource type="BBVariant" id="BBVariant_ojnlc"]
+type = 2
+saved_value = 1
+resource_name = "1"
 
-[sub_resource type="BTSelector" id="BTSelector_ydubj"]
-children = [SubResource("BTCheckVar_qj0wi"), SubResource("BTSequence_u83xx")]
+[sub_resource type="BTSetVar" id="BTSetVar_b865g"]
+variable = &"next_measure_time"
+value = SubResource("BBVariant_ojnlc")
+operation = 1
 
-[sub_resource type="BTSequence" id="BTSequence_2jhbf"]
-children = [SubResource("BTAction_bljor"), SubResource("BTSelector_ydubj")]
-
-[sub_resource type="BTRepeatUntilSuccess" id="BTRepeatUntilSuccess_sh7if"]
-custom_name = "Check Music Playback Position"
-children = [SubResource("BTSequence_2jhbf")]
-
-[sub_resource type="BBVariant" id="BBVariant_34w61"]
+[sub_resource type="BBVariant" id="BBVariant_p3fr0"]
 type = 2
 value_source = 1
 variable = &"measure_length"
 resource_name = "$measure_length"
 
-[sub_resource type="BTSetVar" id="BTSetVar_3guyw"]
+[sub_resource type="BTSetVar" id="BTSetVar_6ba46"]
 variable = &"next_measure_time"
-value = SubResource("BBVariant_34w61")
+value = SubResource("BBVariant_p3fr0")
+operation = 3
+
+[sub_resource type="BTSequence" id="BTSequence_22rkn"]
+custom_name = "Reset Next Measure Time"
+children = [SubResource("BTSetVar_e8anh"), SubResource("BTSetVar_q8ous"), SubResource("BTAction_7wjj6"), SubResource("BTSetVar_b865g"), SubResource("BTSetVar_6ba46")]
+
+[sub_resource type="BTConsolePrint" id="BTConsolePrint_uyp3b"]
+text = "Look				Next: %f		Play: %f"
+bb_format_parameters = PackedStringArray("next_measure_time", "music_playback_position")
+_enabled = false
+
+[sub_resource type="BTAction" id="BTAction_o7vs3"]
+script = ExtResource("8_ngxa6")
+audio_player_var = &"current_music_player"
+
+[sub_resource type="BBVariant" id="BBVariant_qm002"]
+type = 3
+value_source = 1
+variable = &"epsilon"
+resource_name = "$epsilon"
+
+[sub_resource type="BTSetVar" id="BTSetVar_bwuyh"]
+variable = &"music_playback_position"
+value = SubResource("BBVariant_qm002")
 operation = 1
 
-[sub_resource type="BTSequence" id="BTSequence_a4ig0"]
+[sub_resource type="BBVariant" id="BBVariant_uu8my"]
+value_source = 1
+variable = &"next_measure_time"
+resource_name = "$next_measure_time"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_8s2vd"]
+variable = &"music_playback_position"
+check_type = 4
+value = SubResource("BBVariant_uu8my")
+
+[sub_resource type="BBVariant" id="BBVariant_yk1c7"]
+value_source = 1
+variable = &"music_duration"
+resource_name = "$music_duration"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_0p5ck"]
+variable = &"next_measure_time"
+check_type = 4
+value = SubResource("BBVariant_yk1c7")
+
+[sub_resource type="BBVariant" id="BBVariant_0dlsi"]
+value_source = 1
+variable = &"music_wrap_around_time"
+resource_name = "$music_wrap_around_time"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_so0oi"]
+variable = &"music_playback_position"
+check_type = 1
+value = SubResource("BBVariant_0dlsi")
+
+[sub_resource type="BTAction" id="BTAction_14n6s"]
+script = ExtResource("8_ngxa6")
+audio_player_var = &"current_music_player"
+
+[sub_resource type="BBVariant" id="BBVariant_qkeg5"]
+value_source = 1
+variable = &"measure_length"
+resource_name = "$measure_length"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_g3jwx"]
+variable = &"music_playback_position"
+check_type = 4
+value = SubResource("BBVariant_qkeg5")
+
+[sub_resource type="BTSequence" id="BTSequence_6m7i6"]
+children = [SubResource("BTAction_14n6s"), SubResource("BTCheckVar_g3jwx")]
+
+[sub_resource type="BTRepeatUntilSuccess" id="BTRepeatUntilSuccess_1j8g6"]
+children = [SubResource("BTSequence_6m7i6")]
+
+[sub_resource type="BTSequence" id="BTSequence_ah2pd"]
+children = [SubResource("BTCheckVar_0p5ck"), SubResource("BTCheckVar_so0oi"), SubResource("BTRepeatUntilSuccess_1j8g6")]
+
+[sub_resource type="BTSelector" id="BTSelector_q81r8"]
+children = [SubResource("BTCheckVar_8s2vd"), SubResource("BTSequence_ah2pd")]
+
+[sub_resource type="BTSequence" id="BTSequence_dwi0u"]
+children = [SubResource("BTConsolePrint_uyp3b"), SubResource("BTAction_o7vs3"), SubResource("BTSetVar_bwuyh"), SubResource("BTSelector_q81r8")]
+
+[sub_resource type="BTRepeatUntilSuccess" id="BTRepeatUntilSuccess_py6fg"]
+custom_name = "Check Music Playback Position"
+children = [SubResource("BTSequence_dwi0u")]
+
+[sub_resource type="BTSequence" id="BTSequence_buhy5"]
 custom_name = "Wait Until Next Measure"
-children = [SubResource("BTRepeatUntilSuccess_sh7if"), SubResource("BTSetVar_3guyw")]
+children = [SubResource("BTSequence_22rkn"), SubResource("BTRepeatUntilSuccess_py6fg")]
 
 [sub_resource type="BBNode" id="BBNode_2ggjy"]
 saved_value = NodePath("Model/AnimationPlayer")
@@ -607,112 +980,140 @@ method = &"play_slashes"
 custom_name = "Spin At Center"
 children = [SubResource("BTAction_efeba"), SubResource("BTAction_42gir"), SubResource("BTPlayAnimation_maqif"), SubResource("BTAction_x3uvo"), SubResource("BTAction_u83xx"), SubResource("BTCallMethod_g5k6k"), SubResource("BTCallMethod_6mje8")]
 
-[sub_resource type="BTAction" id="BTAction_3guyw"]
-script = ExtResource("8_ngxa6")
-audio_player_var = &"current_music_player"
-
-[sub_resource type="BBVariant" id="BBVariant_i3yf6"]
-value_source = 1
-variable = &"next_measure_time"
-resource_name = "$next_measure_time"
-
-[sub_resource type="BTCheckVar" id="BTCheckVar_dphll"]
-variable = &"music_playback_position"
-check_type = 4
-value = SubResource("BBVariant_i3yf6")
-
-[sub_resource type="BBVariant" id="BBVariant_tidaw"]
-value_source = 1
-variable = &"music_duration"
-resource_name = "$music_duration"
-
-[sub_resource type="BTCheckVar" id="BTCheckVar_pappx"]
-variable = &"next_measure_time"
-check_type = 4
-value = SubResource("BBVariant_tidaw")
-
-[sub_resource type="BBVariant" id="BBVariant_x3uvo"]
-value_source = 1
-variable = &"measure_length"
-resource_name = "$measure_length"
-
-[sub_resource type="BTCheckVar" id="BTCheckVar_lgqnu"]
-variable = &"music_playback_position"
-check_type = 1
-value = SubResource("BBVariant_x3uvo")
-
-[sub_resource type="BTSequence" id="BTSequence_eme4l"]
-children = [SubResource("BTCheckVar_pappx"), SubResource("BTCheckVar_lgqnu")]
-
-[sub_resource type="BTAction" id="BTAction_ueah8"]
-script = ExtResource("9_6mje8")
-value_var = &"next_measure_time"
-modulo_value_var = &"music_duration"
-
-[sub_resource type="BTSequence" id="BTSequence_jn4d2"]
-children = [SubResource("BTSequence_eme4l"), SubResource("BTAction_ueah8")]
-
-[sub_resource type="BTSelector" id="BTSelector_tvm2c"]
-children = [SubResource("BTCheckVar_dphll"), SubResource("BTSequence_jn4d2")]
-
-[sub_resource type="BTSequence" id="BTSequence_mdpca"]
-children = [SubResource("BTAction_3guyw"), SubResource("BTSelector_tvm2c")]
-
-[sub_resource type="BTRepeatUntilSuccess" id="BTRepeatUntilSuccess_drhsk"]
-custom_name = "Check Music Playback Position"
-children = [SubResource("BTSequence_mdpca")]
-
-[sub_resource type="BBVariant" id="BBVariant_877ps"]
+[sub_resource type="BBVariant" id="BBVariant_7cdio"]
 value_source = 1
 variable = &"music_playback_position"
 resource_name = "$music_playback_position"
 
-[sub_resource type="BTSetVar" id="BTSetVar_tfrvw"]
+[sub_resource type="BTSetVar" id="BTSetVar_qaoko"]
 variable = &"next_measure_time"
-value = SubResource("BBVariant_877ps")
+value = SubResource("BBVariant_7cdio")
 
-[sub_resource type="BBVariant" id="BBVariant_wmffp"]
+[sub_resource type="BBVariant" id="BBVariant_6deqr"]
 value_source = 1
 variable = &"measure_length"
 resource_name = "$measure_length"
 
-[sub_resource type="BTSetVar" id="BTSetVar_mb14r"]
+[sub_resource type="BTSetVar" id="BTSetVar_hne5c"]
 variable = &"next_measure_time"
-value = SubResource("BBVariant_wmffp")
+value = SubResource("BBVariant_6deqr")
 operation = 4
 
-[sub_resource type="BTAction" id="BTAction_nxqfg"]
+[sub_resource type="BTAction" id="BTAction_u43jt"]
 script = ExtResource("20_34w61")
 value_var = &"next_measure_time"
 
-[sub_resource type="BBVariant" id="BBVariant_i63ae"]
+[sub_resource type="BBVariant" id="BBVariant_bxjok"]
 type = 2
 saved_value = 1
 resource_name = "1"
 
-[sub_resource type="BTSetVar" id="BTSetVar_i0816"]
+[sub_resource type="BTSetVar" id="BTSetVar_u6auq"]
 variable = &"next_measure_time"
-value = SubResource("BBVariant_i63ae")
+value = SubResource("BBVariant_bxjok")
 operation = 1
 
-[sub_resource type="BBVariant" id="BBVariant_q8ous"]
+[sub_resource type="BBVariant" id="BBVariant_6cc3t"]
 type = 2
 value_source = 1
 variable = &"measure_length"
 resource_name = "$measure_length"
 
-[sub_resource type="BTSetVar" id="BTSetVar_7wjj6"]
+[sub_resource type="BTSetVar" id="BTSetVar_2vg5i"]
 variable = &"next_measure_time"
-value = SubResource("BBVariant_q8ous")
+value = SubResource("BBVariant_6cc3t")
 operation = 3
 
-[sub_resource type="BTSequence" id="BTSequence_t5cqu"]
+[sub_resource type="BTSequence" id="BTSequence_ukh2m"]
 custom_name = "Reset Next Measure Time"
-children = [SubResource("BTSetVar_tfrvw"), SubResource("BTSetVar_mb14r"), SubResource("BTAction_nxqfg"), SubResource("BTSetVar_i0816"), SubResource("BTSetVar_7wjj6")]
+children = [SubResource("BTSetVar_qaoko"), SubResource("BTSetVar_hne5c"), SubResource("BTAction_u43jt"), SubResource("BTSetVar_u6auq"), SubResource("BTSetVar_2vg5i")]
 
-[sub_resource type="BTSequence" id="BTSequence_5do71"]
+[sub_resource type="BTConsolePrint" id="BTConsolePrint_rd271"]
+text = "Look				Next: %f		Play: %f"
+bb_format_parameters = PackedStringArray("next_measure_time", "music_playback_position")
+_enabled = false
+
+[sub_resource type="BTAction" id="BTAction_4qb1o"]
+script = ExtResource("8_ngxa6")
+audio_player_var = &"current_music_player"
+
+[sub_resource type="BBVariant" id="BBVariant_ft10h"]
+type = 3
+value_source = 1
+variable = &"epsilon"
+resource_name = "$epsilon"
+
+[sub_resource type="BTSetVar" id="BTSetVar_ixqjv"]
+variable = &"music_playback_position"
+value = SubResource("BBVariant_ft10h")
+operation = 1
+
+[sub_resource type="BBVariant" id="BBVariant_vfk1d"]
+value_source = 1
+variable = &"next_measure_time"
+resource_name = "$next_measure_time"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_a1xiv"]
+variable = &"music_playback_position"
+check_type = 4
+value = SubResource("BBVariant_vfk1d")
+
+[sub_resource type="BBVariant" id="BBVariant_ro6js"]
+value_source = 1
+variable = &"music_duration"
+resource_name = "$music_duration"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_ceurk"]
+variable = &"next_measure_time"
+check_type = 4
+value = SubResource("BBVariant_ro6js")
+
+[sub_resource type="BBVariant" id="BBVariant_k0syu"]
+value_source = 1
+variable = &"music_wrap_around_time"
+resource_name = "$music_wrap_around_time"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_ms6i8"]
+variable = &"music_playback_position"
+check_type = 1
+value = SubResource("BBVariant_k0syu")
+
+[sub_resource type="BTAction" id="BTAction_1iok6"]
+script = ExtResource("8_ngxa6")
+audio_player_var = &"current_music_player"
+
+[sub_resource type="BBVariant" id="BBVariant_i4ssc"]
+value_source = 1
+variable = &"measure_length"
+resource_name = "$measure_length"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_c74vd"]
+variable = &"music_playback_position"
+check_type = 4
+value = SubResource("BBVariant_i4ssc")
+
+[sub_resource type="BTSequence" id="BTSequence_33k7o"]
+children = [SubResource("BTAction_1iok6"), SubResource("BTCheckVar_c74vd")]
+
+[sub_resource type="BTRepeatUntilSuccess" id="BTRepeatUntilSuccess_8h7gk"]
+children = [SubResource("BTSequence_33k7o")]
+
+[sub_resource type="BTSequence" id="BTSequence_h2tsv"]
+children = [SubResource("BTCheckVar_ceurk"), SubResource("BTCheckVar_ms6i8"), SubResource("BTRepeatUntilSuccess_8h7gk")]
+
+[sub_resource type="BTSelector" id="BTSelector_akwv7"]
+children = [SubResource("BTCheckVar_a1xiv"), SubResource("BTSequence_h2tsv")]
+
+[sub_resource type="BTSequence" id="BTSequence_xil71"]
+children = [SubResource("BTConsolePrint_rd271"), SubResource("BTAction_4qb1o"), SubResource("BTSetVar_ixqjv"), SubResource("BTSelector_akwv7")]
+
+[sub_resource type="BTRepeatUntilSuccess" id="BTRepeatUntilSuccess_ds064"]
+custom_name = "Check Music Playback Position"
+children = [SubResource("BTSequence_xil71")]
+
+[sub_resource type="BTSequence" id="BTSequence_7lud5"]
 custom_name = "Wait Until Next Measure"
-children = [SubResource("BTRepeatUntilSuccess_drhsk"), SubResource("BTSequence_t5cqu")]
+children = [SubResource("BTSequence_ukh2m"), SubResource("BTRepeatUntilSuccess_ds064")]
 
 [sub_resource type="BBNode" id="BBNode_g5k6k"]
 value_source = 1
@@ -830,116 +1231,1062 @@ move_to_tween_var = &""
 custom_name = "Gaze"
 children = [SubResource("BTCallMethod_kk73g"), SubResource("BTCallMethod_qj0wi"), SubResource("BTAction_qj0wi"), SubResource("BTAction_albun"), SubResource("BTSelector_3guyw"), SubResource("BTSelector_ucsdq"), SubResource("BTAction_nf1r4"), SubResource("BTAction_mmu5o")]
 
-[sub_resource type="BTAction" id="BTAction_ojnlc"]
-script = ExtResource("8_ngxa6")
-audio_player_var = &"current_music_player"
-
-[sub_resource type="BBVariant" id="BBVariant_b865g"]
-value_source = 1
-variable = &"next_measure_time"
-resource_name = "$next_measure_time"
-
-[sub_resource type="BTCheckVar" id="BTCheckVar_p3fr0"]
-variable = &"music_playback_position"
-check_type = 4
-value = SubResource("BBVariant_b865g")
-
-[sub_resource type="BBVariant" id="BBVariant_6ba46"]
-value_source = 1
-variable = &"music_duration"
-resource_name = "$music_duration"
-
-[sub_resource type="BTCheckVar" id="BTCheckVar_22rkn"]
-variable = &"next_measure_time"
-check_type = 4
-value = SubResource("BBVariant_6ba46")
-
-[sub_resource type="BBVariant" id="BBVariant_uyp3b"]
-value_source = 1
-variable = &"measure_length"
-resource_name = "$measure_length"
-
-[sub_resource type="BTCheckVar" id="BTCheckVar_o5el3"]
-variable = &"music_playback_position"
-check_type = 1
-value = SubResource("BBVariant_uyp3b")
-
-[sub_resource type="BTSequence" id="BTSequence_lalf6"]
-children = [SubResource("BTCheckVar_22rkn"), SubResource("BTCheckVar_o5el3")]
-
-[sub_resource type="BTAction" id="BTAction_si1s8"]
-script = ExtResource("9_6mje8")
-value_var = &"next_measure_time"
-modulo_value_var = &"music_duration"
-
-[sub_resource type="BTSequence" id="BTSequence_o7vs3"]
-children = [SubResource("BTSequence_lalf6"), SubResource("BTAction_si1s8")]
-
-[sub_resource type="BTSelector" id="BTSelector_qm002"]
-children = [SubResource("BTCheckVar_p3fr0"), SubResource("BTSequence_o7vs3")]
-
-[sub_resource type="BTSequence" id="BTSequence_bwuyh"]
-children = [SubResource("BTAction_ojnlc"), SubResource("BTSelector_qm002")]
-
-[sub_resource type="BTRepeatUntilSuccess" id="BTRepeatUntilSuccess_uu8my"]
-custom_name = "Check Music Playback Position"
-children = [SubResource("BTSequence_bwuyh")]
-
-[sub_resource type="BBVariant" id="BBVariant_8s2vd"]
+[sub_resource type="BBVariant" id="BBVariant_epy5o"]
 value_source = 1
 variable = &"music_playback_position"
 resource_name = "$music_playback_position"
 
-[sub_resource type="BTSetVar" id="BTSetVar_1k733"]
+[sub_resource type="BTSetVar" id="BTSetVar_i41ga"]
 variable = &"next_measure_time"
-value = SubResource("BBVariant_8s2vd")
+value = SubResource("BBVariant_epy5o")
 
-[sub_resource type="BBVariant" id="BBVariant_yk1c7"]
+[sub_resource type="BBVariant" id="BBVariant_efp7u"]
 value_source = 1
 variable = &"measure_length"
 resource_name = "$measure_length"
 
-[sub_resource type="BTSetVar" id="BTSetVar_0p5ck"]
+[sub_resource type="BTSetVar" id="BTSetVar_mvgc7"]
 variable = &"next_measure_time"
-value = SubResource("BBVariant_yk1c7")
+value = SubResource("BBVariant_efp7u")
 operation = 4
 
-[sub_resource type="BTAction" id="BTAction_57pd4"]
+[sub_resource type="BTAction" id="BTAction_1t7kx"]
 script = ExtResource("20_34w61")
 value_var = &"next_measure_time"
 
-[sub_resource type="BBVariant" id="BBVariant_m1jhj"]
+[sub_resource type="BBVariant" id="BBVariant_u61q6"]
 type = 2
 saved_value = 1
 resource_name = "1"
 
-[sub_resource type="BTSetVar" id="BTSetVar_kq56s"]
+[sub_resource type="BTSetVar" id="BTSetVar_odpkm"]
 variable = &"next_measure_time"
-value = SubResource("BBVariant_m1jhj")
+value = SubResource("BBVariant_u61q6")
 operation = 1
 
-[sub_resource type="BBVariant" id="BBVariant_0dlsi"]
+[sub_resource type="BBVariant" id="BBVariant_3xmps"]
 type = 2
 value_source = 1
 variable = &"measure_length"
 resource_name = "$measure_length"
 
-[sub_resource type="BTSetVar" id="BTSetVar_so0oi"]
+[sub_resource type="BTSetVar" id="BTSetVar_rr1tb"]
 variable = &"next_measure_time"
-value = SubResource("BBVariant_0dlsi")
+value = SubResource("BBVariant_3xmps")
 operation = 3
 
-[sub_resource type="BTSequence" id="BTSequence_14n6s"]
+[sub_resource type="BTSequence" id="BTSequence_fx6v6"]
 custom_name = "Reset Next Measure Time"
-children = [SubResource("BTSetVar_1k733"), SubResource("BTSetVar_0p5ck"), SubResource("BTAction_57pd4"), SubResource("BTSetVar_kq56s"), SubResource("BTSetVar_so0oi")]
+children = [SubResource("BTSetVar_i41ga"), SubResource("BTSetVar_mvgc7"), SubResource("BTAction_1t7kx"), SubResource("BTSetVar_odpkm"), SubResource("BTSetVar_rr1tb")]
 
-[sub_resource type="BTSequence" id="BTSequence_57nll"]
+[sub_resource type="BTConsolePrint" id="BTConsolePrint_rerkj"]
+text = "Look				Next: %f		Play: %f"
+bb_format_parameters = PackedStringArray("next_measure_time", "music_playback_position")
+_enabled = false
+
+[sub_resource type="BTAction" id="BTAction_djijo"]
+script = ExtResource("8_ngxa6")
+audio_player_var = &"current_music_player"
+
+[sub_resource type="BBVariant" id="BBVariant_ejr6d"]
+type = 3
+value_source = 1
+variable = &"epsilon"
+resource_name = "$epsilon"
+
+[sub_resource type="BTSetVar" id="BTSetVar_phhuc"]
+variable = &"music_playback_position"
+value = SubResource("BBVariant_ejr6d")
+operation = 1
+
+[sub_resource type="BBVariant" id="BBVariant_ngr5d"]
+value_source = 1
+variable = &"next_measure_time"
+resource_name = "$next_measure_time"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_ubspb"]
+variable = &"music_playback_position"
+check_type = 4
+value = SubResource("BBVariant_ngr5d")
+
+[sub_resource type="BBVariant" id="BBVariant_i0pie"]
+value_source = 1
+variable = &"music_duration"
+resource_name = "$music_duration"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_lmr6b"]
+variable = &"next_measure_time"
+check_type = 4
+value = SubResource("BBVariant_i0pie")
+
+[sub_resource type="BBVariant" id="BBVariant_elnjc"]
+value_source = 1
+variable = &"music_wrap_around_time"
+resource_name = "$music_wrap_around_time"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_n2ywm"]
+variable = &"music_playback_position"
+check_type = 1
+value = SubResource("BBVariant_elnjc")
+
+[sub_resource type="BTAction" id="BTAction_xtbhf"]
+script = ExtResource("8_ngxa6")
+audio_player_var = &"current_music_player"
+
+[sub_resource type="BBVariant" id="BBVariant_xpmf0"]
+value_source = 1
+variable = &"measure_length"
+resource_name = "$measure_length"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_beyjq"]
+variable = &"music_playback_position"
+check_type = 4
+value = SubResource("BBVariant_xpmf0")
+
+[sub_resource type="BTSequence" id="BTSequence_ilgs3"]
+children = [SubResource("BTAction_xtbhf"), SubResource("BTCheckVar_beyjq")]
+
+[sub_resource type="BTRepeatUntilSuccess" id="BTRepeatUntilSuccess_8e3t8"]
+children = [SubResource("BTSequence_ilgs3")]
+
+[sub_resource type="BTSequence" id="BTSequence_tbx31"]
+children = [SubResource("BTCheckVar_lmr6b"), SubResource("BTCheckVar_n2ywm"), SubResource("BTRepeatUntilSuccess_8e3t8")]
+
+[sub_resource type="BTSelector" id="BTSelector_awgom"]
+children = [SubResource("BTCheckVar_ubspb"), SubResource("BTSequence_tbx31")]
+
+[sub_resource type="BTSequence" id="BTSequence_c00ov"]
+children = [SubResource("BTConsolePrint_rerkj"), SubResource("BTAction_djijo"), SubResource("BTSetVar_phhuc"), SubResource("BTSelector_awgom")]
+
+[sub_resource type="BTRepeatUntilSuccess" id="BTRepeatUntilSuccess_mg4fk"]
+custom_name = "Check Music Playback Position"
+children = [SubResource("BTSequence_c00ov")]
+
+[sub_resource type="BTSequence" id="BTSequence_20vmj"]
 custom_name = "Wait Until Next Measure"
-children = [SubResource("BTRepeatUntilSuccess_uu8my"), SubResource("BTSequence_14n6s")]
+children = [SubResource("BTSequence_fx6v6"), SubResource("BTRepeatUntilSuccess_mg4fk")]
+
+[sub_resource type="BTAction" id="BTAction_1jkmb"]
+script = ExtResource("12_ttsve")
+direction_var = &"dash_direction"
+
+[sub_resource type="BBVariant" id="BBVariant_nxqfg"]
+type = 21
+saved_value = &"Idle 6"
+resource_name = "Idle 6"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_i63ae"]
+variable = &"idle_animation_name"
+check_type = 5
+value = SubResource("BBVariant_nxqfg")
+
+[sub_resource type="BTAction" id="BTAction_q8ous"]
+script = ExtResource("20_ucsdq")
+clips_array = Array[AudioStream]([ExtResource("21_lgqnu")])
+play_position_var = &"self_position"
+
+[sub_resource type="BTSelector" id="BTSelector_7wjj6"]
+custom_name = "Check If Bowing"
+children = [SubResource("BTCheckVar_i63ae"), SubResource("BTAction_q8ous")]
+
+[sub_resource type="BTAction" id="BTAction_t5cqu"]
+script = ExtResource("13_t3oje")
+first_var = &"look_animation_prefix"
+second_var = &"animation_index"
+output_string_var = &"look_animation_name"
+
+[sub_resource type="BBVariant" id="BBVariant_si1s8"]
+type = 1
+saved_value = true
+resource_name = "true"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_o7vs3"]
+variable = &"spun_this_loop"
+value = SubResource("BBVariant_si1s8")
+
+[sub_resource type="BBNode" id="BBNode_qm002"]
+saved_value = NodePath("Model/AnimationPlayer")
+resource_name = "Model/AnimationPlayer"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_bwuyh"]
+animation_player = SubResource("BBNode_qm002")
+blend = 0.125
+script = ExtResource("15_ydubj")
+animation_var = &"look_animation_name"
+
+[sub_resource type="BTSelector" id="BTSelector_uu8my"]
+children = [SubResource("BTCheckVar_o7vs3"), SubResource("BTPlayAnimation_bwuyh")]
+
+[sub_resource type="BBNode" id="BBNode_8s2vd"]
+saved_value = NodePath("Model/AnimationPlayer")
+resource_name = "Model/AnimationPlayer"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_1k733"]
+animation_player = SubResource("BBNode_8s2vd")
+blend = 0.35
+custom_name = "Slow Look"
+script = ExtResource("15_ydubj")
+animation_var = &"look_animation_name"
+
+[sub_resource type="BTSequence" id="BTSequence_0p5ck"]
+custom_name = "Check Spun"
+children = [SubResource("BTSelector_uu8my"), SubResource("BTPlayAnimation_1k733")]
+
+[sub_resource type="BBVariant" id="BBVariant_57pd4"]
+type = 1
+saved_value = true
+resource_name = "true"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_m1jhj"]
+variable = &"just_landed"
+value = SubResource("BBVariant_57pd4")
+
+[sub_resource type="BTInvert" id="BTInvert_kq56s"]
+children = [SubResource("BTCheckVar_m1jhj")]
+
+[sub_resource type="BBVariant" id="BBVariant_57nll"]
+type = 4
+saved_value = "Drop Look"
+resource_name = "Drop Look"
+
+[sub_resource type="BTSetVar" id="BTSetVar_c57wm"]
+variable = &"look_animation_name"
+value = SubResource("BBVariant_57nll")
+
+[sub_resource type="BBVariant" id="BBVariant_6m7i6"]
+type = 1
+saved_value = false
+resource_name = "false"
+
+[sub_resource type="BTSetVar" id="BTSetVar_1j8g6"]
+variable = &"just_landed"
+value = SubResource("BBVariant_6m7i6")
+
+[sub_resource type="BTSelector" id="BTSelector_ah2pd"]
+custom_name = "Check Just Landed"
+children = [SubResource("BTInvert_kq56s"), SubResource("BTSetVar_c57wm"), SubResource("BTSetVar_1j8g6")]
+
+[sub_resource type="BBVariant" id="BBVariant_wsgol"]
+value_source = 1
+variable = &"self"
+resource_name = "$self"
+
+[sub_resource type="BBNode" id="BBNode_7cdio"]
+value_source = 1
+variable = &"manager_path"
+resource_name = "$manager_path"
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_qaoko"]
+node = SubResource("BBNode_7cdio")
+method = &"request_next_waypoint"
+result_var = &"next_waypoint"
+args = Array[BBVariant]([SubResource("BBVariant_wsgol")])
+
+[sub_resource type="BTAction" id="BTAction_6deqr"]
+script = ExtResource("7_qj0wi")
+target_var = &"next_waypoint"
+
+[sub_resource type="BTAction" id="BTAction_egiim"]
+script = ExtResource("9_mmu5o")
+target_var = &"next_waypoint"
+output_position_var = &"waypoint_position"
+
+[sub_resource type="BTAction" id="BTAction_bpi8i"]
+script = ExtResource("17_sh7if")
+target_var = &"next_waypoint"
+output_direction_var = &"dash_direction"
+
+[sub_resource type="BTAction" id="BTAction_rcovl"]
+script = ExtResource("18_34w61")
+vector_var = &"dash_direction"
+output_x_var = &""
+output_y_var = &"dash_y"
+output_z_var = &""
+
+[sub_resource type="BBVariant" id="BBVariant_ki3kd"]
+type = 4
+saved_value = "Dash 1"
+resource_name = "Dash 1"
+
+[sub_resource type="BTSetVar" id="BTSetVar_bxjok"]
+variable = &"dash_animation"
+value = SubResource("BBVariant_ki3kd")
+
+[sub_resource type="BBVariant" id="BBVariant_u6auq"]
+type = 3
+saved_value = 1.0
+resource_name = "1.0"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_6cc3t"]
+variable = &"dash_y"
+value = SubResource("BBVariant_u6auq")
+custom_name = "Check Going Straight Up"
+
+[sub_resource type="BBVariant" id="BBVariant_2vg5i"]
+type = 3
+saved_value = -1.0
+resource_name = "-1.0"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_ukh2m"]
+variable = &"dash_y"
+value = SubResource("BBVariant_2vg5i")
+custom_name = "Check Going Straight Down"
+
+[sub_resource type="BTSelector" id="BTSelector_rd271"]
+children = [SubResource("BTCheckVar_6cc3t"), SubResource("BTCheckVar_ukh2m")]
+
+[sub_resource type="BTInvert" id="BTInvert_d2yui"]
+children = [SubResource("BTSelector_rd271")]
+
+[sub_resource type="BBVariant" id="BBVariant_ixqjv"]
+type = 4
+saved_value = "Jump"
+resource_name = "Jump"
+
+[sub_resource type="BTSetVar" id="BTSetVar_vfk1d"]
+variable = &"dash_animation"
+value = SubResource("BBVariant_ixqjv")
+
+[sub_resource type="BTSelector" id="BTSelector_a1xiv"]
+custom_name = "Check Should Jump"
+children = [SubResource("BTInvert_d2yui"), SubResource("BTSetVar_vfk1d")]
+
+[sub_resource type="BTAction" id="BTAction_hov5n"]
+script = ExtResource("7_qj0wi")
+node_var = &"direction_light"
+target_var = &"next_waypoint"
+face_x = true
+face_z = true
+
+[sub_resource type="BBNode" id="BBNode_ro6js"]
+saved_value = NodePath("Direction/Animator")
+resource_name = "Direction/Animator"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_ceurk"]
+animation_player = SubResource("BBNode_ro6js")
+animation_name = &"Show Direction"
+
+[sub_resource type="BTAction" id="BTAction_ksxkt"]
+script = ExtResource("9_mmu5o")
+target_var = &"self"
+output_position_var = &"self_position"
+
+[sub_resource type="BTAction" id="BTAction_yjjwa"]
+script = ExtResource("20_ucsdq")
+clips_array = Array[AudioStream]([ExtResource("21_biu47"), ExtResource("22_x3uvo"), ExtResource("23_lgqnu"), ExtResource("24_eme4l"), ExtResource("25_iegny")])
+play_position_var = &"self_position"
+
+[sub_resource type="BTSequence" id="BTSequence_ms6i8"]
+custom_name = "Show Direction"
+children = [SubResource("BTAction_hov5n"), SubResource("BTPlayAnimation_ceurk"), SubResource("BTAction_ksxkt"), SubResource("BTAction_yjjwa")]
+
+[sub_resource type="BTSequence" id="BTSequence_lxq5a"]
+custom_name = "Get Next Waypoint"
+children = [SubResource("BTCallMethod_qaoko"), SubResource("BTAction_6deqr"), SubResource("BTAction_egiim"), SubResource("BTAction_bpi8i"), SubResource("BTAction_rcovl"), SubResource("BTSetVar_bxjok"), SubResource("BTSelector_a1xiv"), SubResource("BTSequence_ms6i8")]
+
+[sub_resource type="BTSequence" id="BTSequence_k74v3"]
+custom_name = "Look"
+children = [SubResource("BTAction_1jkmb"), SubResource("BTSelector_7wjj6"), SubResource("BTAction_t5cqu"), SubResource("BTSequence_0p5ck"), SubResource("BTSelector_ah2pd"), SubResource("BTSequence_lxq5a")]
+
+[sub_resource type="BBVariant" id="BBVariant_c74vd"]
+value_source = 1
+variable = &"music_playback_position"
+resource_name = "$music_playback_position"
+
+[sub_resource type="BTSetVar" id="BTSetVar_33k7o"]
+variable = &"next_measure_time"
+value = SubResource("BBVariant_c74vd")
+
+[sub_resource type="BBVariant" id="BBVariant_sxf4k"]
+value_source = 1
+variable = &"measure_length"
+resource_name = "$measure_length"
+
+[sub_resource type="BTSetVar" id="BTSetVar_3gut0"]
+variable = &"next_measure_time"
+value = SubResource("BBVariant_sxf4k")
+operation = 4
+
+[sub_resource type="BTAction" id="BTAction_0eyi3"]
+script = ExtResource("20_34w61")
+value_var = &"next_measure_time"
+
+[sub_resource type="BBVariant" id="BBVariant_ds064"]
+type = 2
+saved_value = 1
+resource_name = "1"
+
+[sub_resource type="BTSetVar" id="BTSetVar_tiu6q"]
+variable = &"next_measure_time"
+value = SubResource("BBVariant_ds064")
+operation = 1
+
+[sub_resource type="BBVariant" id="BBVariant_7lud5"]
+type = 2
+value_source = 1
+variable = &"measure_length"
+resource_name = "$measure_length"
+
+[sub_resource type="BTSetVar" id="BTSetVar_epy5o"]
+variable = &"next_measure_time"
+value = SubResource("BBVariant_7lud5")
+operation = 3
+
+[sub_resource type="BTSequence" id="BTSequence_i41ga"]
+custom_name = "Reset Next Measure Time"
+children = [SubResource("BTSetVar_33k7o"), SubResource("BTSetVar_3gut0"), SubResource("BTAction_0eyi3"), SubResource("BTSetVar_tiu6q"), SubResource("BTSetVar_epy5o")]
+
+[sub_resource type="BTConsolePrint" id="BTConsolePrint_b7f3b"]
+text = "Look				Next: %f		Play: %f"
+bb_format_parameters = PackedStringArray("next_measure_time", "music_playback_position")
+_enabled = false
+
+[sub_resource type="BTAction" id="BTAction_efp7u"]
+script = ExtResource("8_ngxa6")
+audio_player_var = &"current_music_player"
+
+[sub_resource type="BBVariant" id="BBVariant_1t7kx"]
+type = 3
+value_source = 1
+variable = &"epsilon"
+resource_name = "$epsilon"
+
+[sub_resource type="BTSetVar" id="BTSetVar_u61q6"]
+variable = &"music_playback_position"
+value = SubResource("BBVariant_1t7kx")
+operation = 1
+
+[sub_resource type="BBVariant" id="BBVariant_odpkm"]
+value_source = 1
+variable = &"next_measure_time"
+resource_name = "$next_measure_time"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_3xmps"]
+variable = &"music_playback_position"
+check_type = 4
+value = SubResource("BBVariant_odpkm")
+
+[sub_resource type="BBVariant" id="BBVariant_xeiqd"]
+value_source = 1
+variable = &"music_duration"
+resource_name = "$music_duration"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_fx6v6"]
+variable = &"next_measure_time"
+check_type = 4
+value = SubResource("BBVariant_xeiqd")
+
+[sub_resource type="BBVariant" id="BBVariant_rerkj"]
+value_source = 1
+variable = &"music_wrap_around_time"
+resource_name = "$music_wrap_around_time"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_djijo"]
+variable = &"music_playback_position"
+check_type = 1
+value = SubResource("BBVariant_rerkj")
+
+[sub_resource type="BTAction" id="BTAction_phhuc"]
+script = ExtResource("8_ngxa6")
+audio_player_var = &"current_music_player"
+
+[sub_resource type="BBVariant" id="BBVariant_ubspb"]
+value_source = 1
+variable = &"measure_length"
+resource_name = "$measure_length"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_i0pie"]
+variable = &"music_playback_position"
+check_type = 4
+value = SubResource("BBVariant_ubspb")
+
+[sub_resource type="BTSequence" id="BTSequence_elnjc"]
+children = [SubResource("BTAction_phhuc"), SubResource("BTCheckVar_i0pie")]
+
+[sub_resource type="BTRepeatUntilSuccess" id="BTRepeatUntilSuccess_n2ywm"]
+children = [SubResource("BTSequence_elnjc")]
+
+[sub_resource type="BTSequence" id="BTSequence_dndkg"]
+children = [SubResource("BTCheckVar_fx6v6"), SubResource("BTCheckVar_djijo"), SubResource("BTRepeatUntilSuccess_n2ywm")]
+
+[sub_resource type="BTSelector" id="BTSelector_xtbhf"]
+children = [SubResource("BTCheckVar_3xmps"), SubResource("BTSequence_dndkg")]
+
+[sub_resource type="BTSequence" id="BTSequence_77b38"]
+children = [SubResource("BTConsolePrint_b7f3b"), SubResource("BTAction_efp7u"), SubResource("BTSetVar_u61q6"), SubResource("BTSelector_xtbhf")]
+
+[sub_resource type="BTRepeatUntilSuccess" id="BTRepeatUntilSuccess_xpmf0"]
+custom_name = "Check Music Playback Position"
+children = [SubResource("BTSequence_77b38")]
+
+[sub_resource type="BTSequence" id="BTSequence_beyjq"]
+custom_name = "Wait Until Next Measure"
+children = [SubResource("BTSequence_i41ga"), SubResource("BTRepeatUntilSuccess_xpmf0")]
+
+[sub_resource type="BTAction" id="BTAction_ilgs3"]
+script = ExtResource("9_mmu5o")
+target_var = &"self"
+output_position_var = &"self_position"
+
+[sub_resource type="BTAction" id="BTAction_tbx31"]
+script = ExtResource("20_ucsdq")
+clips_array = Array[AudioStream]([ExtResource("24_dphll"), ExtResource("25_tidaw"), ExtResource("26_pappx"), ExtResource("27_biu47"), ExtResource("28_x3uvo"), ExtResource("29_lgqnu"), ExtResource("30_eme4l"), ExtResource("31_iegny"), ExtResource("32_7weh2"), ExtResource("33_vksgl"), ExtResource("34_1jkmb"), ExtResource("35_ueah8"), ExtResource("36_3g83i")])
+play_position_var = &"self_position"
+
+[sub_resource type="BTAction" id="BTAction_awgom"]
+script = ExtResource("20_ucsdq")
+clips_array = Array[AudioStream]([ExtResource("37_a4ig0")])
+play_position_var = &"self_position"
+
+[sub_resource type="BBVariant" id="BBVariant_c00ov"]
+type = 21
+saved_value = &"Jump"
+resource_name = "Jump"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_mg4fk"]
+variable = &"dash_animation"
+value = SubResource("BBVariant_c00ov")
+
+[sub_resource type="BTAction" id="BTAction_20vmj"]
+script = ExtResource("7_qj0wi")
+target_var = &"next_waypoint"
+
+[sub_resource type="BTSelector" id="BTSelector_a5k7h"]
+custom_name = "Check If Should Face"
+children = [SubResource("BTCheckVar_mg4fk"), SubResource("BTAction_20vmj")]
+
+[sub_resource type="BBNode" id="BBNode_ana4t"]
+saved_value = NodePath("Model/AnimationPlayer")
+resource_name = "Model/AnimationPlayer"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_efih2"]
+animation_player = SubResource("BBNode_ana4t")
+blend = 0.125
+script = ExtResource("15_ydubj")
+animation_var = &"dash_animation"
+
+[sub_resource type="BBNode" id="BBNode_lff1t"]
+saved_value = NodePath("Direction/Animator")
+resource_name = "Direction/Animator"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_6po7a"]
+animation_player = SubResource("BBNode_lff1t")
+animation_name = &"RESET"
+
+[sub_resource type="BBVariant" id="BBVariant_u4cgx"]
+type = 3
+saved_value = 0.0
+resource_name = "0.0"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_6fxvw"]
+variable = &"dash_y"
+check_type = 4
+value = SubResource("BBVariant_u4cgx")
+
+[sub_resource type="BTAction" id="BTAction_ryvuf"]
+script = ExtResource("18_34w61")
+vector_var = &"waypoint_position"
+output_x_var = &""
+output_y_var = &"waypoint_y"
+output_z_var = &""
+
+[sub_resource type="BBVariant" id="BBVariant_hu6pe"]
+type = 3
+saved_value = 16.0
+resource_name = "16.0"
+
+[sub_resource type="BTSetVar" id="BTSetVar_88qa8"]
+variable = &"waypoint_y"
+value = SubResource("BBVariant_hu6pe")
+operation = 2
+
+[sub_resource type="BTAction" id="BTAction_x52fg"]
+script = ExtResource("19_3guyw")
+vector_var = &"waypoint_position"
+x_var = &""
+y_var = &"waypoint_y"
+z_var = &""
+
+[sub_resource type="BTAction" id="BTAction_2fnkc"]
+script = ExtResource("10_nf1r4")
+target_position_var = &"waypoint_position"
+time = 0.5
+transition_type = 4
+ease_type = 1
+wait_for_finish = false
+
+[sub_resource type="BTAction" id="BTAction_dj5pt"]
+script = ExtResource("14_u83xx")
+
+[sub_resource type="BTRepeatUntilSuccess" id="BTRepeatUntilSuccess_gyehm"]
+children = [SubResource("BTAction_dj5pt")]
+
+[sub_resource type="BTAction" id="BTAction_372lc"]
+script = ExtResource("20_a4ig0")
+x = nan
+y = 4.0
+z = nan
+
+[sub_resource type="BTAction" id="BTAction_3woqu"]
+script = ExtResource("21_i3yf6")
+target_var = &"self"
+x = 0.0
+y = nan
+z = nan
+
+[sub_resource type="BTAction" id="BTAction_knh5b"]
+script = ExtResource("22_dphll")
+tween_var = &"move_to_tween"
+
+[sub_resource type="BTAction" id="BTAction_tj05u"]
+script = ExtResource("12_ttsve")
+direction_var = &"dash_direction"
+
+[sub_resource type="BBNode" id="BBNode_sscbu"]
+saved_value = NodePath("Model/AnimationPlayer")
+resource_name = "Model/AnimationPlayer"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_p1a7k"]
+animation_player = SubResource("BBNode_sscbu")
+animation_name = &"Drop Slash"
+blend = 0.05
+
+[sub_resource type="BBNode" id="BBNode_x8iu8"]
+saved_value = NodePath("Animator")
+resource_name = "Animator"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_4kugs"]
+animation_player = SubResource("BBNode_x8iu8")
+animation_name = &"Drop Slash"
+blend = 0.05
+
+[sub_resource type="BBNode" id="BBNode_02iu5"]
+saved_value = NodePath("Direction/Animator")
+resource_name = "Direction/Animator"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_3nrf2"]
+animation_player = SubResource("BBNode_02iu5")
+animation_name = &"RESET"
+
+[sub_resource type="BTAction" id="BTAction_xgy0o"]
+script = ExtResource("9_mmu5o")
+target_var = &"self"
+output_position_var = &"self_position"
+
+[sub_resource type="BTAction" id="BTAction_4iru6"]
+script = ExtResource("20_ucsdq")
+clips_array = Array[AudioStream]([ExtResource("40_3guyw")])
+play_position_var = &"self_position"
+
+[sub_resource type="BBVariant" id="BBVariant_5cuvf"]
+type = 1
+saved_value = true
+resource_name = "true"
+
+[sub_resource type="BTSetVar" id="BTSetVar_pdjar"]
+variable = &"just_landed"
+value = SubResource("BBVariant_5cuvf")
+
+[sub_resource type="BTSequence" id="BTSequence_3gfkp"]
+children = [SubResource("BTRepeatUntilSuccess_gyehm"), SubResource("BTAction_372lc"), SubResource("BTAction_3woqu"), SubResource("BTAction_knh5b"), SubResource("BTAction_tj05u"), SubResource("BTPlayAnimation_p1a7k"), SubResource("BTPlayAnimation_4kugs"), SubResource("BTPlayAnimation_3nrf2"), SubResource("BTAction_xgy0o"), SubResource("BTAction_4iru6"), SubResource("BTSetVar_pdjar")]
+
+[sub_resource type="BTSequence" id="BTSequence_k0swp"]
+custom_name = "Dash To Ground"
+children = [SubResource("BTAction_ryvuf"), SubResource("BTSetVar_88qa8"), SubResource("BTAction_x52fg"), SubResource("BTAction_2fnkc"), SubResource("BTSequence_3gfkp")]
+
+[sub_resource type="BTSelector" id="BTSelector_juop0"]
+custom_name = "Check Dashing Up/Horizontally"
+children = [SubResource("BTCheckVar_6fxvw"), SubResource("BTSequence_k0swp")]
+
+[sub_resource type="BBVariant" id="BBVariant_ckv0l"]
+type = 3
+saved_value = 0.0
+resource_name = "<null>"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_253gg"]
+variable = &"dash_y"
+check_type = 1
+value = SubResource("BBVariant_ckv0l")
+
+[sub_resource type="BTAction" id="BTAction_t1h38"]
+script = ExtResource("10_nf1r4")
+target_position_var = &"waypoint_position"
+time = 0.5
+transition_type = 4
+ease_type = 1
+move_to_tween_var = &""
+
+[sub_resource type="BTAction" id="BTAction_l67pb"]
+script = ExtResource("21_i3yf6")
+target_var = &"self"
+x = 0.0
+y = nan
+z = nan
+
+[sub_resource type="BTAction" id="BTAction_ud0sg"]
+script = ExtResource("13_t3oje")
+first_var = &"idle_animation_prefix"
+second_var = &"animation_index"
+output_string_var = &"idle_animation_name"
+
+[sub_resource type="BBNode" id="BBNode_mvymf"]
+saved_value = NodePath("Model/AnimationPlayer")
+resource_name = "Model/AnimationPlayer"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_x2cwm"]
+animation_player = SubResource("BBNode_mvymf")
+blend = 0.125
+script = ExtResource("15_ydubj")
+animation_var = &"idle_animation_name"
+wait_for_finish = true
+
+[sub_resource type="BBNode" id="BBNode_1asp5"]
+saved_value = NodePath("Direction/Animator")
+resource_name = "Direction/Animator"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_gk3pq"]
+animation_player = SubResource("BBNode_1asp5")
+animation_name = &"RESET"
+
+[sub_resource type="BBVariant" id="BBVariant_lna21"]
+type = 21
+saved_value = &"Idle 6"
+resource_name = "Idle 6"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_cs13o"]
+variable = &"idle_animation_name"
+check_type = 5
+value = SubResource("BBVariant_lna21")
+
+[sub_resource type="BTAction" id="BTAction_vlyhi"]
+script = ExtResource("9_mmu5o")
+target_var = &"self"
+output_position_var = &"self_position"
+
+[sub_resource type="BTAction" id="BTAction_5g1pi"]
+script = ExtResource("20_ucsdq")
+clips_array = Array[AudioStream]([ExtResource("47_x3uvo")])
+play_position_var = &"self_position"
+
+[sub_resource type="BTSelector" id="BTSelector_wsbva"]
+custom_name = "Check If Should Bow"
+children = [SubResource("BTCheckVar_cs13o"), SubResource("BTAction_vlyhi"), SubResource("BTAction_5g1pi")]
+
+[sub_resource type="BTSequence" id="BTSequence_4wwyn"]
+custom_name = "Idle"
+children = [SubResource("BTAction_l67pb"), SubResource("BTAction_ud0sg"), SubResource("BTPlayAnimation_x2cwm"), SubResource("BTPlayAnimation_gk3pq"), SubResource("BTSelector_wsbva")]
+
+[sub_resource type="BTSequence" id="BTSequence_toye2"]
+custom_name = "Dash In Air"
+children = [SubResource("BTAction_t1h38"), SubResource("BTSequence_4wwyn")]
+
+[sub_resource type="BTSelector" id="BTSelector_n2t01"]
+custom_name = "Check Dashing Down"
+children = [SubResource("BTCheckVar_253gg"), SubResource("BTSequence_toye2")]
+
+[sub_resource type="BTSequence" id="BTSequence_6m1kk"]
+children = [SubResource("BTSelector_juop0"), SubResource("BTSelector_n2t01")]
+
+[sub_resource type="BTSequence" id="BTSequence_xpnyx"]
+custom_name = "Dash To Waypoint"
+children = [SubResource("BTAction_ilgs3"), SubResource("BTAction_tbx31"), SubResource("BTAction_awgom"), SubResource("BTSelector_a5k7h"), SubResource("BTPlayAnimation_efih2"), SubResource("BTPlayAnimation_6po7a"), SubResource("BTSequence_6m1kk")]
+
+[sub_resource type="BBVariant" id="BBVariant_262fg"]
+value_source = 1
+variable = &"music_playback_position"
+resource_name = "$music_playback_position"
+
+[sub_resource type="BTSetVar" id="BTSetVar_148fs"]
+variable = &"next_measure_time"
+value = SubResource("BBVariant_262fg")
+
+[sub_resource type="BBVariant" id="BBVariant_ewbim"]
+value_source = 1
+variable = &"measure_length"
+resource_name = "$measure_length"
+
+[sub_resource type="BTSetVar" id="BTSetVar_8hf8u"]
+variable = &"next_measure_time"
+value = SubResource("BBVariant_ewbim")
+operation = 4
+
+[sub_resource type="BTAction" id="BTAction_24rja"]
+script = ExtResource("20_34w61")
+value_var = &"next_measure_time"
+
+[sub_resource type="BBVariant" id="BBVariant_4mpcf"]
+type = 2
+saved_value = 1
+resource_name = "1"
+
+[sub_resource type="BTSetVar" id="BTSetVar_oibc6"]
+variable = &"next_measure_time"
+value = SubResource("BBVariant_4mpcf")
+operation = 1
+
+[sub_resource type="BBVariant" id="BBVariant_spim5"]
+type = 2
+value_source = 1
+variable = &"measure_length"
+resource_name = "$measure_length"
+
+[sub_resource type="BTSetVar" id="BTSetVar_m21h6"]
+variable = &"next_measure_time"
+value = SubResource("BBVariant_spim5")
+operation = 3
+
+[sub_resource type="BTSequence" id="BTSequence_3arx4"]
+custom_name = "Reset Next Measure Time"
+children = [SubResource("BTSetVar_148fs"), SubResource("BTSetVar_8hf8u"), SubResource("BTAction_24rja"), SubResource("BTSetVar_oibc6"), SubResource("BTSetVar_m21h6")]
+
+[sub_resource type="BTConsolePrint" id="BTConsolePrint_l0scc"]
+text = "Look				Next: %f		Play: %f"
+bb_format_parameters = PackedStringArray("next_measure_time", "music_playback_position")
+_enabled = false
+
+[sub_resource type="BTAction" id="BTAction_54t1i"]
+script = ExtResource("8_ngxa6")
+audio_player_var = &"current_music_player"
+
+[sub_resource type="BBVariant" id="BBVariant_r7yip"]
+type = 3
+value_source = 1
+variable = &"epsilon"
+resource_name = "$epsilon"
+
+[sub_resource type="BTSetVar" id="BTSetVar_r34r7"]
+variable = &"music_playback_position"
+value = SubResource("BBVariant_r7yip")
+operation = 1
+
+[sub_resource type="BBVariant" id="BBVariant_gygj1"]
+value_source = 1
+variable = &"next_measure_time"
+resource_name = "$next_measure_time"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_3mfio"]
+variable = &"music_playback_position"
+check_type = 4
+value = SubResource("BBVariant_gygj1")
+
+[sub_resource type="BBVariant" id="BBVariant_yqoka"]
+value_source = 1
+variable = &"music_duration"
+resource_name = "$music_duration"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_50xhl"]
+variable = &"next_measure_time"
+check_type = 4
+value = SubResource("BBVariant_yqoka")
+
+[sub_resource type="BBVariant" id="BBVariant_ba4ej"]
+value_source = 1
+variable = &"music_wrap_around_time"
+resource_name = "$music_wrap_around_time"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_nniyr"]
+variable = &"music_playback_position"
+check_type = 1
+value = SubResource("BBVariant_ba4ej")
+
+[sub_resource type="BTAction" id="BTAction_kdjaf"]
+script = ExtResource("8_ngxa6")
+audio_player_var = &"current_music_player"
+
+[sub_resource type="BBVariant" id="BBVariant_0howl"]
+value_source = 1
+variable = &"measure_length"
+resource_name = "$measure_length"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_1pp1c"]
+variable = &"music_playback_position"
+check_type = 4
+value = SubResource("BBVariant_0howl")
+
+[sub_resource type="BTSequence" id="BTSequence_i7wtv"]
+children = [SubResource("BTAction_kdjaf"), SubResource("BTCheckVar_1pp1c")]
+
+[sub_resource type="BTRepeatUntilSuccess" id="BTRepeatUntilSuccess_5gysh"]
+children = [SubResource("BTSequence_i7wtv")]
+
+[sub_resource type="BTSequence" id="BTSequence_lms7u"]
+children = [SubResource("BTCheckVar_50xhl"), SubResource("BTCheckVar_nniyr"), SubResource("BTRepeatUntilSuccess_5gysh")]
+
+[sub_resource type="BTSelector" id="BTSelector_qh8w2"]
+children = [SubResource("BTCheckVar_3mfio"), SubResource("BTSequence_lms7u")]
+
+[sub_resource type="BTSequence" id="BTSequence_5jwxv"]
+children = [SubResource("BTConsolePrint_l0scc"), SubResource("BTAction_54t1i"), SubResource("BTSetVar_r34r7"), SubResource("BTSelector_qh8w2")]
+
+[sub_resource type="BTRepeatUntilSuccess" id="BTRepeatUntilSuccess_n1563"]
+custom_name = "Check Music Playback Position"
+children = [SubResource("BTSequence_5jwxv")]
+
+[sub_resource type="BTSequence" id="BTSequence_7m1qr"]
+custom_name = "Wait Until Next Measure"
+children = [SubResource("BTSequence_3arx4"), SubResource("BTRepeatUntilSuccess_n1563")]
+
+[sub_resource type="BBVariant" id="BBVariant_qaoko"]
+type = 2
+saved_value = 3
+resource_name = "3"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_wqhru"]
+variable = &"phase"
+check_type = 5
+value = SubResource("BBVariant_qaoko")
+
+[sub_resource type="BBVariant" id="BBVariant_egiim"]
+type = 1
+saved_value = false
+resource_name = "false"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_bpi8i"]
+variable = &"top"
+value = SubResource("BBVariant_egiim")
+
+[sub_resource type="BBVariant" id="BBVariant_rcovl"]
+value_source = 1
+variable = &"music_playback_position"
+resource_name = "$music_playback_position"
+
+[sub_resource type="BTSetVar" id="BTSetVar_ki3kd"]
+variable = &"next_measure_time"
+value = SubResource("BBVariant_rcovl")
+
+[sub_resource type="BBVariant" id="BBVariant_rd271"]
+value_source = 1
+variable = &"measure_length"
+resource_name = "$measure_length"
+
+[sub_resource type="BTSetVar" id="BTSetVar_d2yui"]
+variable = &"next_measure_time"
+value = SubResource("BBVariant_rd271")
+operation = 4
+
+[sub_resource type="BTAction" id="BTAction_ft10h"]
+script = ExtResource("20_34w61")
+value_var = &"next_measure_time"
+
+[sub_resource type="BBVariant" id="BBVariant_hov5n"]
+type = 2
+saved_value = 1
+resource_name = "1"
+
+[sub_resource type="BTSetVar" id="BTSetVar_ro6js"]
+variable = &"next_measure_time"
+value = SubResource("BBVariant_hov5n")
+operation = 1
+
+[sub_resource type="BBVariant" id="BBVariant_ceurk"]
+type = 2
+value_source = 1
+variable = &"measure_length"
+resource_name = "$measure_length"
+
+[sub_resource type="BTSetVar" id="BTSetVar_ksxkt"]
+variable = &"next_measure_time"
+value = SubResource("BBVariant_ceurk")
+operation = 3
+
+[sub_resource type="BTSequence" id="BTSequence_i4ssc"]
+custom_name = "Reset Next Measure Time"
+children = [SubResource("BTSetVar_ki3kd"), SubResource("BTSetVar_d2yui"), SubResource("BTAction_ft10h"), SubResource("BTSetVar_ro6js"), SubResource("BTSetVar_ksxkt")]
+
+[sub_resource type="BTConsolePrint" id="BTConsolePrint_c74vd"]
+text = "Look				Next: %f		Play: %f"
+bb_format_parameters = PackedStringArray("next_measure_time", "music_playback_position")
+_enabled = false
+
+[sub_resource type="BTAction" id="BTAction_33k7o"]
+script = ExtResource("8_ngxa6")
+audio_player_var = &"current_music_player"
+
+[sub_resource type="BBVariant" id="BBVariant_0eyi3"]
+type = 3
+value_source = 1
+variable = &"epsilon"
+resource_name = "$epsilon"
+
+[sub_resource type="BTSetVar" id="BTSetVar_xil71"]
+variable = &"music_playback_position"
+value = SubResource("BBVariant_0eyi3")
+operation = 1
+
+[sub_resource type="BBVariant" id="BBVariant_tiu6q"]
+value_source = 1
+variable = &"next_measure_time"
+resource_name = "$next_measure_time"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_7lud5"]
+variable = &"music_playback_position"
+check_type = 4
+value = SubResource("BBVariant_tiu6q")
+
+[sub_resource type="BBVariant" id="BBVariant_i41ga"]
+value_source = 1
+variable = &"music_duration"
+resource_name = "$music_duration"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_b7f3b"]
+variable = &"next_measure_time"
+check_type = 4
+value = SubResource("BBVariant_i41ga")
+
+[sub_resource type="BBVariant" id="BBVariant_djijo"]
+value_source = 1
+variable = &"music_wrap_around_time"
+resource_name = "$music_wrap_around_time"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_ejr6d"]
+variable = &"music_playback_position"
+check_type = 1
+value = SubResource("BBVariant_djijo")
+
+[sub_resource type="BTAction" id="BTAction_ngr5d"]
+script = ExtResource("8_ngxa6")
+audio_player_var = &"current_music_player"
+
+[sub_resource type="BBVariant" id="BBVariant_lmr6b"]
+value_source = 1
+variable = &"measure_length"
+resource_name = "$measure_length"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_elnjc"]
+variable = &"music_playback_position"
+check_type = 4
+value = SubResource("BBVariant_lmr6b")
+
+[sub_resource type="BTSequence" id="BTSequence_xpmf0"]
+children = [SubResource("BTAction_ngr5d"), SubResource("BTCheckVar_elnjc")]
+
+[sub_resource type="BTRepeatUntilSuccess" id="BTRepeatUntilSuccess_beyjq"]
+children = [SubResource("BTSequence_xpmf0")]
+
+[sub_resource type="BTSequence" id="BTSequence_8e3t8"]
+children = [SubResource("BTCheckVar_b7f3b"), SubResource("BTCheckVar_ejr6d"), SubResource("BTRepeatUntilSuccess_beyjq")]
+
+[sub_resource type="BTSelector" id="BTSelector_tbx31"]
+children = [SubResource("BTCheckVar_7lud5"), SubResource("BTSequence_8e3t8")]
+
+[sub_resource type="BTSequence" id="BTSequence_awgom"]
+children = [SubResource("BTConsolePrint_c74vd"), SubResource("BTAction_33k7o"), SubResource("BTSetVar_xil71"), SubResource("BTSelector_tbx31")]
+
+[sub_resource type="BTRepeatUntilSuccess" id="BTRepeatUntilSuccess_c00ov"]
+custom_name = "Check Music Playback Position"
+children = [SubResource("BTSequence_awgom")]
+
+[sub_resource type="BTSequence" id="BTSequence_mg4fk"]
+custom_name = "Wait Until Next Measure"
+children = [SubResource("BTSequence_i4ssc"), SubResource("BTRepeatUntilSuccess_c00ov")]
+
+[sub_resource type="BTSelector" id="BTSelector_20vmj"]
+custom_name = "Check Phase 3 Delay"
+children = [SubResource("BTCheckVar_wqhru"), SubResource("BTCheckVar_bpi8i"), SubResource("BTSequence_mg4fk")]
 
 [sub_resource type="BTSequence" id="BTSequence_io532"]
 custom_name = "Gay Little Spin"
-children = [SubResource("BTSequence_7weh2"), SubResource("BTSequence_qqr1w"), SubResource("BTSequence_a4ig0"), SubResource("BTSequence_mypcl"), SubResource("BTSequence_kk73g"), SubResource("BTSequence_5do71"), SubResource("BTSequence_ucsdq"), SubResource("BTSequence_57nll")]
+children = [SubResource("BTRepeatUntilSuccess_o7vs3"), SubResource("BTSequence_7weh2"), SubResource("BTSequence_qqr1w"), SubResource("BTSequence_buhy5"), SubResource("BTSequence_mypcl"), SubResource("BTSequence_kk73g"), SubResource("BTSequence_7lud5"), SubResource("BTSequence_ucsdq"), SubResource("BTSequence_20vmj"), SubResource("BTSequence_k74v3"), SubResource("BTSequence_beyjq"), SubResource("BTSequence_xpnyx"), SubResource("BTSequence_7m1qr"), SubResource("BTSelector_20vmj")]
 
 [sub_resource type="BTSelector" id="BTSelector_g5k6k"]
 custom_name = "Check Should Spin"
@@ -953,6 +2300,80 @@ resource_name = "false"
 [sub_resource type="BTCheckVar" id="BTCheckVar_i3yf6"]
 variable = &"should_teleport"
 value = SubResource("BBVariant_a4ig0")
+
+[sub_resource type="BBVariant" id="BBVariant_ksxkt"]
+value_source = 1
+variable = &"music_playback_position"
+resource_name = "$music_playback_position"
+
+[sub_resource type="BTSetVar" id="BTSetVar_yjjwa"]
+variable = &"next_measure_time"
+value = SubResource("BBVariant_ksxkt")
+
+[sub_resource type="BBVariant" id="BBVariant_ms6i8"]
+value_source = 1
+variable = &"measure_length"
+resource_name = "$measure_length"
+
+[sub_resource type="BTSetVar" id="BTSetVar_1iok6"]
+variable = &"next_measure_time"
+value = SubResource("BBVariant_ms6i8")
+operation = 4
+
+[sub_resource type="BTAction" id="BTAction_lxq5a"]
+script = ExtResource("20_34w61")
+value_var = &"next_measure_time"
+
+[sub_resource type="BBVariant" id="BBVariant_8h7gk"]
+type = 2
+saved_value = 1
+resource_name = "1"
+
+[sub_resource type="BTSetVar" id="BTSetVar_h2tsv"]
+variable = &"next_measure_time"
+value = SubResource("BBVariant_8h7gk")
+operation = 1
+
+[sub_resource type="BBVariant" id="BBVariant_akwv7"]
+type = 2
+value_source = 1
+variable = &"measure_length"
+resource_name = "$measure_length"
+
+[sub_resource type="BTSetVar" id="BTSetVar_sxf4k"]
+variable = &"next_measure_time"
+value = SubResource("BBVariant_akwv7")
+operation = 3
+
+[sub_resource type="BTSequence" id="BTSequence_ds064"]
+custom_name = "Reset Next Measure Time"
+children = [SubResource("BTSetVar_yjjwa"), SubResource("BTSetVar_1iok6"), SubResource("BTAction_lxq5a"), SubResource("BTSetVar_h2tsv"), SubResource("BTSetVar_sxf4k")]
+
+[sub_resource type="BBNode" id="BBNode_i63ae"]
+value_source = 1
+variable = &"manager_path"
+resource_name = "$manager_path"
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_i0816"]
+node = SubResource("BBNode_i63ae")
+method = &"set_ready_for_special_attack"
+args = Array[BBVariant]([SubResource("BBVariant_7weh2"), SubResource("BBVariant_ueah8")])
+
+[sub_resource type="BBVariant" id="BBVariant_t5cqu"]
+type = 1
+saved_value = true
+resource_name = "true"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_5do71"]
+variable = &"other_dancer_ready_for_special_attack"
+value = SubResource("BBVariant_t5cqu")
+
+[sub_resource type="BTSequence" id="BTSequence_ojnlc"]
+children = [SubResource("BTSequence_ds064"), SubResource("BTCallMethod_i0816"), SubResource("BTCheckVar_5do71")]
+
+[sub_resource type="BTRepeatUntilSuccess" id="BTRepeatUntilSuccess_b865g"]
+custom_name = "Wait For Other Dancer"
+children = [SubResource("BTSequence_ojnlc")]
 
 [sub_resource type="BBVariant" id="BBVariant_3g83i"]
 type = 1
@@ -1095,127 +2516,441 @@ duration = 0.5
 custom_name = "Return Finish"
 children = [SubResource("BTAction_biu47"), SubResource("BTAction_eme4l"), SubResource("BTPlayAnimation_pappx"), SubResource("BTWait_sh7if")]
 
-[sub_resource type="BTAction" id="BTAction_vksgl"]
-script = ExtResource("8_ngxa6")
-audio_player_var = &"current_music_player"
-
-[sub_resource type="BBVariant" id="BBVariant_tvm2c"]
-value_source = 1
-variable = &"next_measure_time"
-resource_name = "$next_measure_time"
-
-[sub_resource type="BTCheckVar" id="BTCheckVar_ipxx0"]
-variable = &"music_playback_position"
-check_type = 4
-value = SubResource("BBVariant_tvm2c")
-
-[sub_resource type="BBVariant" id="BBVariant_lkiki"]
-value_source = 1
-variable = &"music_duration"
-resource_name = "$music_duration"
-
-[sub_resource type="BTCheckVar" id="BTCheckVar_o08b3"]
-variable = &"next_measure_time"
-check_type = 4
-value = SubResource("BBVariant_lkiki")
-
-[sub_resource type="BBVariant" id="BBVariant_fuw20"]
-value_source = 1
-variable = &"measure_length"
-resource_name = "$measure_length"
-
-[sub_resource type="BTCheckVar" id="BTCheckVar_3b8xs"]
-variable = &"music_playback_position"
-check_type = 1
-value = SubResource("BBVariant_fuw20")
-
-[sub_resource type="BTSequence" id="BTSequence_e8anh"]
-children = [SubResource("BTCheckVar_o08b3"), SubResource("BTCheckVar_3b8xs")]
-
-[sub_resource type="BTAction" id="BTAction_mdpca"]
-script = ExtResource("9_6mje8")
-value_var = &"next_measure_time"
-modulo_value_var = &"music_duration"
-
-[sub_resource type="BTSequence" id="BTSequence_drhsk"]
-children = [SubResource("BTSequence_e8anh"), SubResource("BTAction_mdpca")]
-
-[sub_resource type="BTSelector" id="BTSelector_877ps"]
-children = [SubResource("BTCheckVar_ipxx0"), SubResource("BTSequence_drhsk")]
-
-[sub_resource type="BTSequence" id="BTSequence_tfrvw"]
-children = [SubResource("BTAction_vksgl"), SubResource("BTSelector_877ps")]
-
-[sub_resource type="BTRepeatUntilSuccess" id="BTRepeatUntilSuccess_wmffp"]
-custom_name = "Check Music Playback Position"
-children = [SubResource("BTSequence_tfrvw")]
-
-[sub_resource type="BBVariant" id="BBVariant_ipxx0"]
+[sub_resource type="BBVariant" id="BBVariant_8s2vd"]
 value_source = 1
 variable = &"music_playback_position"
 resource_name = "$music_playback_position"
 
-[sub_resource type="BTSetVar" id="BTSetVar_lkiki"]
+[sub_resource type="BTSetVar" id="BTSetVar_1k733"]
 variable = &"next_measure_time"
-value = SubResource("BBVariant_ipxx0")
+value = SubResource("BBVariant_8s2vd")
 
-[sub_resource type="BBVariant" id="BBVariant_o08b3"]
+[sub_resource type="BBVariant" id="BBVariant_so0oi"]
 value_source = 1
 variable = &"measure_length"
 resource_name = "$measure_length"
 
-[sub_resource type="BTSetVar" id="BTSetVar_fuw20"]
+[sub_resource type="BTSetVar" id="BTSetVar_14n6s"]
 variable = &"next_measure_time"
-value = SubResource("BBVariant_o08b3")
+value = SubResource("BBVariant_so0oi")
 operation = 4
 
-[sub_resource type="BTAction" id="BTAction_1jkmb"]
+[sub_resource type="BTAction" id="BTAction_c57wm"]
 script = ExtResource("20_34w61")
 value_var = &"next_measure_time"
 
-[sub_resource type="BBVariant" id="BBVariant_e8anh"]
+[sub_resource type="BBVariant" id="BBVariant_ah2pd"]
 type = 2
 saved_value = 1
 resource_name = "1"
 
-[sub_resource type="BTSetVar" id="BTSetVar_mdpca"]
+[sub_resource type="BTSetVar" id="BTSetVar_q81r8"]
 variable = &"next_measure_time"
-value = SubResource("BBVariant_e8anh")
+value = SubResource("BBVariant_ah2pd")
 operation = 1
 
-[sub_resource type="BBVariant" id="BBVariant_3b8xs"]
+[sub_resource type="BBVariant" id="BBVariant_py6fg"]
 type = 2
 value_source = 1
 variable = &"measure_length"
 resource_name = "$measure_length"
 
-[sub_resource type="BTSetVar" id="BTSetVar_nxqfg"]
+[sub_resource type="BTSetVar" id="BTSetVar_buhy5"]
 variable = &"next_measure_time"
-value = SubResource("BBVariant_3b8xs")
+value = SubResource("BBVariant_py6fg")
 operation = 3
 
-[sub_resource type="BTSequence" id="BTSequence_3b8xs"]
+[sub_resource type="BTSequence" id="BTSequence_7cdio"]
 custom_name = "Reset Next Measure Time"
-children = [SubResource("BTSetVar_lkiki"), SubResource("BTSetVar_fuw20"), SubResource("BTAction_1jkmb"), SubResource("BTSetVar_mdpca"), SubResource("BTSetVar_nxqfg")]
+children = [SubResource("BTSetVar_1k733"), SubResource("BTSetVar_14n6s"), SubResource("BTAction_c57wm"), SubResource("BTSetVar_q81r8"), SubResource("BTSetVar_buhy5")]
 
-[sub_resource type="BTSequence" id="BTSequence_i63ae"]
+[sub_resource type="BTConsolePrint" id="BTConsolePrint_qaoko"]
+text = "Look				Next: %f		Play: %f"
+bb_format_parameters = PackedStringArray("next_measure_time", "music_playback_position")
+_enabled = false
+
+[sub_resource type="BTAction" id="BTAction_wqhru"]
+script = ExtResource("8_ngxa6")
+audio_player_var = &"current_music_player"
+
+[sub_resource type="BBVariant" id="BBVariant_hne5c"]
+type = 3
+value_source = 1
+variable = &"epsilon"
+resource_name = "$epsilon"
+
+[sub_resource type="BTSetVar" id="BTSetVar_u43jt"]
+variable = &"music_playback_position"
+value = SubResource("BBVariant_hne5c")
+operation = 1
+
+[sub_resource type="BBVariant" id="BBVariant_bpi8i"]
+value_source = 1
+variable = &"next_measure_time"
+resource_name = "$next_measure_time"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_rcovl"]
+variable = &"music_playback_position"
+check_type = 4
+value = SubResource("BBVariant_bpi8i")
+
+[sub_resource type="BBVariant" id="BBVariant_ukh2m"]
+value_source = 1
+variable = &"music_duration"
+resource_name = "$music_duration"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_rd271"]
+variable = &"next_measure_time"
+check_type = 4
+value = SubResource("BBVariant_ukh2m")
+
+[sub_resource type="BBVariant" id="BBVariant_d2yui"]
+value_source = 1
+variable = &"music_wrap_around_time"
+resource_name = "$music_wrap_around_time"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_4qb1o"]
+variable = &"music_playback_position"
+check_type = 1
+value = SubResource("BBVariant_d2yui")
+
+[sub_resource type="BTAction" id="BTAction_6pemf"]
+script = ExtResource("8_ngxa6")
+audio_player_var = &"current_music_player"
+
+[sub_resource type="BBVariant" id="BBVariant_a1xiv"]
+value_source = 1
+variable = &"measure_length"
+resource_name = "$measure_length"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_hov5n"]
+variable = &"music_playback_position"
+check_type = 4
+value = SubResource("BBVariant_a1xiv")
+
+[sub_resource type="BTSequence" id="BTSequence_ro6js"]
+children = [SubResource("BTAction_6pemf"), SubResource("BTCheckVar_hov5n")]
+
+[sub_resource type="BTRepeatUntilSuccess" id="BTRepeatUntilSuccess_ceurk"]
+children = [SubResource("BTSequence_ro6js")]
+
+[sub_resource type="BTSequence" id="BTSequence_ksxkt"]
+children = [SubResource("BTCheckVar_rd271"), SubResource("BTCheckVar_4qb1o"), SubResource("BTRepeatUntilSuccess_ceurk")]
+
+[sub_resource type="BTSelector" id="BTSelector_yjjwa"]
+children = [SubResource("BTCheckVar_rcovl"), SubResource("BTSequence_ksxkt")]
+
+[sub_resource type="BTSequence" id="BTSequence_k0syu"]
+children = [SubResource("BTConsolePrint_qaoko"), SubResource("BTAction_wqhru"), SubResource("BTSetVar_u43jt"), SubResource("BTSelector_yjjwa")]
+
+[sub_resource type="BTRepeatUntilSuccess" id="BTRepeatUntilSuccess_ms6i8"]
+custom_name = "Check Music Playback Position"
+children = [SubResource("BTSequence_k0syu")]
+
+[sub_resource type="BTSequence" id="BTSequence_1iok6"]
 custom_name = "Wait Until Next Measure"
-children = [SubResource("BTRepeatUntilSuccess_wmffp"), SubResource("BTSequence_3b8xs")]
+children = [SubResource("BTSequence_7cdio"), SubResource("BTRepeatUntilSuccess_ms6i8")]
+
+[sub_resource type="BBVariant" id="BBVariant_33k7o"]
+value_source = 1
+variable = &"music_playback_position"
+resource_name = "$music_playback_position"
+
+[sub_resource type="BTSetVar" id="BTSetVar_8h7gk"]
+variable = &"next_measure_time"
+value = SubResource("BBVariant_33k7o")
+
+[sub_resource type="BBVariant" id="BBVariant_h2tsv"]
+value_source = 1
+variable = &"measure_length"
+resource_name = "$measure_length"
+
+[sub_resource type="BTSetVar" id="BTSetVar_akwv7"]
+variable = &"next_measure_time"
+value = SubResource("BBVariant_h2tsv")
+operation = 4
+
+[sub_resource type="BTAction" id="BTAction_sxf4k"]
+script = ExtResource("20_34w61")
+value_var = &"next_measure_time"
+
+[sub_resource type="BBVariant" id="BBVariant_3gut0"]
+type = 2
+saved_value = 1
+resource_name = "1"
+
+[sub_resource type="BTSetVar" id="BTSetVar_0eyi3"]
+variable = &"next_measure_time"
+value = SubResource("BBVariant_3gut0")
+operation = 1
+
+[sub_resource type="BBVariant" id="BBVariant_xil71"]
+type = 2
+value_source = 1
+variable = &"measure_length"
+resource_name = "$measure_length"
+
+[sub_resource type="BTSetVar" id="BTSetVar_ds064"]
+variable = &"next_measure_time"
+value = SubResource("BBVariant_xil71")
+operation = 3
+
+[sub_resource type="BTSequence" id="BTSequence_tiu6q"]
+custom_name = "Reset Next Measure Time"
+children = [SubResource("BTSetVar_8h7gk"), SubResource("BTSetVar_akwv7"), SubResource("BTAction_sxf4k"), SubResource("BTSetVar_0eyi3"), SubResource("BTSetVar_ds064")]
+
+[sub_resource type="BTConsolePrint" id="BTConsolePrint_7lud5"]
+text = "Look				Next: %f		Play: %f"
+bb_format_parameters = PackedStringArray("next_measure_time", "music_playback_position")
+_enabled = false
+
+[sub_resource type="BTAction" id="BTAction_epy5o"]
+script = ExtResource("8_ngxa6")
+audio_player_var = &"current_music_player"
+
+[sub_resource type="BBVariant" id="BBVariant_b7f3b"]
+type = 3
+value_source = 1
+variable = &"epsilon"
+resource_name = "$epsilon"
+
+[sub_resource type="BTSetVar" id="BTSetVar_efp7u"]
+variable = &"music_playback_position"
+value = SubResource("BBVariant_b7f3b")
+operation = 1
+
+[sub_resource type="BBVariant" id="BBVariant_mvgc7"]
+value_source = 1
+variable = &"next_measure_time"
+resource_name = "$next_measure_time"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_1t7kx"]
+variable = &"music_playback_position"
+check_type = 4
+value = SubResource("BBVariant_mvgc7")
+
+[sub_resource type="BBVariant" id="BBVariant_rr1tb"]
+value_source = 1
+variable = &"music_duration"
+resource_name = "$music_duration"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_xeiqd"]
+variable = &"next_measure_time"
+check_type = 4
+value = SubResource("BBVariant_rr1tb")
+
+[sub_resource type="BBVariant" id="BBVariant_fx6v6"]
+value_source = 1
+variable = &"music_wrap_around_time"
+resource_name = "$music_wrap_around_time"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_rerkj"]
+variable = &"music_playback_position"
+check_type = 1
+value = SubResource("BBVariant_fx6v6")
+
+[sub_resource type="BTAction" id="BTAction_ejr6d"]
+script = ExtResource("8_ngxa6")
+audio_player_var = &"current_music_player"
+
+[sub_resource type="BBVariant" id="BBVariant_phhuc"]
+value_source = 1
+variable = &"measure_length"
+resource_name = "$measure_length"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_ngr5d"]
+variable = &"music_playback_position"
+check_type = 4
+value = SubResource("BBVariant_phhuc")
+
+[sub_resource type="BTSequence" id="BTSequence_ubspb"]
+children = [SubResource("BTAction_ejr6d"), SubResource("BTCheckVar_ngr5d")]
+
+[sub_resource type="BTRepeatUntilSuccess" id="BTRepeatUntilSuccess_i0pie"]
+children = [SubResource("BTSequence_ubspb")]
+
+[sub_resource type="BTSequence" id="BTSequence_lmr6b"]
+children = [SubResource("BTCheckVar_xeiqd"), SubResource("BTCheckVar_rerkj"), SubResource("BTRepeatUntilSuccess_i0pie")]
+
+[sub_resource type="BTSelector" id="BTSelector_elnjc"]
+children = [SubResource("BTCheckVar_1t7kx"), SubResource("BTSequence_lmr6b")]
+
+[sub_resource type="BTSequence" id="BTSequence_n2ywm"]
+children = [SubResource("BTConsolePrint_7lud5"), SubResource("BTAction_epy5o"), SubResource("BTSetVar_efp7u"), SubResource("BTSelector_elnjc")]
+
+[sub_resource type="BTRepeatUntilSuccess" id="BTRepeatUntilSuccess_dndkg"]
+custom_name = "Check Music Playback Position"
+children = [SubResource("BTSequence_n2ywm")]
+
+[sub_resource type="BTSequence" id="BTSequence_xtbhf"]
+custom_name = "Wait Until Next Measure"
+children = [SubResource("BTSequence_tiu6q"), SubResource("BTRepeatUntilSuccess_dndkg")]
+
+[sub_resource type="BBVariant" id="BBVariant_e8anh"]
+type = 2
+saved_value = 3
+resource_name = "3"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_mdpca"]
+variable = &"phase"
+check_type = 5
+value = SubResource("BBVariant_e8anh")
+
+[sub_resource type="BBVariant" id="BBVariant_0p5ck"]
+type = 1
+saved_value = false
+resource_name = "false"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_57pd4"]
+variable = &"top"
+value = SubResource("BBVariant_0p5ck")
+
+[sub_resource type="BBVariant" id="BBVariant_77b38"]
+value_source = 1
+variable = &"music_playback_position"
+resource_name = "$music_playback_position"
+
+[sub_resource type="BTSetVar" id="BTSetVar_xpmf0"]
+variable = &"next_measure_time"
+value = SubResource("BBVariant_77b38")
+
+[sub_resource type="BBVariant" id="BBVariant_beyjq"]
+value_source = 1
+variable = &"measure_length"
+resource_name = "$measure_length"
+
+[sub_resource type="BTSetVar" id="BTSetVar_ilgs3"]
+variable = &"next_measure_time"
+value = SubResource("BBVariant_beyjq")
+operation = 4
+
+[sub_resource type="BTAction" id="BTAction_8e3t8"]
+script = ExtResource("20_34w61")
+value_var = &"next_measure_time"
+
+[sub_resource type="BBVariant" id="BBVariant_tbx31"]
+type = 2
+saved_value = 1
+resource_name = "1"
+
+[sub_resource type="BTSetVar" id="BTSetVar_awgom"]
+variable = &"next_measure_time"
+value = SubResource("BBVariant_tbx31")
+operation = 1
+
+[sub_resource type="BBVariant" id="BBVariant_mg4fk"]
+type = 2
+value_source = 1
+variable = &"measure_length"
+resource_name = "$measure_length"
+
+[sub_resource type="BTSetVar" id="BTSetVar_20vmj"]
+variable = &"next_measure_time"
+value = SubResource("BBVariant_mg4fk")
+operation = 3
+
+[sub_resource type="BTSequence" id="BTSequence_a5k7h"]
+custom_name = "Reset Next Measure Time"
+children = [SubResource("BTSetVar_xpmf0"), SubResource("BTSetVar_ilgs3"), SubResource("BTAction_8e3t8"), SubResource("BTSetVar_awgom"), SubResource("BTSetVar_20vmj")]
+
+[sub_resource type="BTConsolePrint" id="BTConsolePrint_ana4t"]
+text = "Look				Next: %f		Play: %f"
+bb_format_parameters = PackedStringArray("next_measure_time", "music_playback_position")
+_enabled = false
+
+[sub_resource type="BTAction" id="BTAction_6y0jv"]
+script = ExtResource("8_ngxa6")
+audio_player_var = &"current_music_player"
+
+[sub_resource type="BBVariant" id="BBVariant_x52fg"]
+type = 3
+value_source = 1
+variable = &"epsilon"
+resource_name = "$epsilon"
+
+[sub_resource type="BTSetVar" id="BTSetVar_2fnkc"]
+variable = &"music_playback_position"
+value = SubResource("BBVariant_x52fg")
+operation = 1
+
+[sub_resource type="BBVariant" id="BBVariant_dj5pt"]
+value_source = 1
+variable = &"next_measure_time"
+resource_name = "$next_measure_time"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_gyehm"]
+variable = &"music_playback_position"
+check_type = 4
+value = SubResource("BBVariant_dj5pt")
+
+[sub_resource type="BBVariant" id="BBVariant_372lc"]
+value_source = 1
+variable = &"music_duration"
+resource_name = "$music_duration"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_3woqu"]
+variable = &"next_measure_time"
+check_type = 4
+value = SubResource("BBVariant_372lc")
+
+[sub_resource type="BBVariant" id="BBVariant_knh5b"]
+value_source = 1
+variable = &"music_wrap_around_time"
+resource_name = "$music_wrap_around_time"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_tj05u"]
+variable = &"music_playback_position"
+check_type = 1
+value = SubResource("BBVariant_knh5b")
+
+[sub_resource type="BTAction" id="BTAction_sscbu"]
+script = ExtResource("8_ngxa6")
+audio_player_var = &"current_music_player"
+
+[sub_resource type="BBVariant" id="BBVariant_p1a7k"]
+value_source = 1
+variable = &"measure_length"
+resource_name = "$measure_length"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_x8iu8"]
+variable = &"music_playback_position"
+check_type = 4
+value = SubResource("BBVariant_p1a7k")
+
+[sub_resource type="BTSequence" id="BTSequence_4kugs"]
+children = [SubResource("BTAction_sscbu"), SubResource("BTCheckVar_x8iu8")]
+
+[sub_resource type="BTRepeatUntilSuccess" id="BTRepeatUntilSuccess_02iu5"]
+children = [SubResource("BTSequence_4kugs")]
+
+[sub_resource type="BTSequence" id="BTSequence_3nrf2"]
+children = [SubResource("BTCheckVar_3woqu"), SubResource("BTCheckVar_tj05u"), SubResource("BTRepeatUntilSuccess_02iu5")]
+
+[sub_resource type="BTSelector" id="BTSelector_xgy0o"]
+children = [SubResource("BTCheckVar_gyehm"), SubResource("BTSequence_3nrf2")]
+
+[sub_resource type="BTSequence" id="BTSequence_5cuvf"]
+children = [SubResource("BTConsolePrint_ana4t"), SubResource("BTAction_6y0jv"), SubResource("BTSetVar_2fnkc"), SubResource("BTSelector_xgy0o")]
+
+[sub_resource type="BTRepeatUntilSuccess" id="BTRepeatUntilSuccess_pdjar"]
+custom_name = "Check Music Playback Position"
+children = [SubResource("BTSequence_5cuvf")]
+
+[sub_resource type="BTSequence" id="BTSequence_pgiae"]
+custom_name = "Wait Until Next Measure"
+children = [SubResource("BTSequence_a5k7h"), SubResource("BTRepeatUntilSuccess_pdjar")]
+
+[sub_resource type="BTSelector" id="BTSelector_d2yui"]
+custom_name = "Check Phase 3 Delay"
+children = [SubResource("BTCheckVar_mdpca"), SubResource("BTCheckVar_57pd4"), SubResource("BTSequence_pgiae")]
 
 [sub_resource type="BTSequence" id="BTSequence_1jkmb"]
 custom_name = "Teleport Out"
-children = [SubResource("BTSequence_lkiki"), SubResource("BTSequence_ueah8"), SubResource("BTCallMethod_a4ig0"), SubResource("BTRepeatUntilSuccess_lkiki"), SubResource("BTSequence_g3jwx"), SubResource("BTSequence_fuw20"), SubResource("BTSequence_i63ae")]
+children = [SubResource("BTRepeatUntilSuccess_b865g"), SubResource("BTSequence_lkiki"), SubResource("BTSequence_ueah8"), SubResource("BTCallMethod_a4ig0"), SubResource("BTRepeatUntilSuccess_lkiki"), SubResource("BTSequence_g3jwx"), SubResource("BTSequence_fuw20"), SubResource("BTSequence_1iok6"), SubResource("BTSequence_xtbhf"), SubResource("BTSelector_d2yui")]
 
 [sub_resource type="BTSelector" id="BTSelector_sh7if"]
 custom_name = "Check Should Teleport Out"
 children = [SubResource("BTCheckVar_i3yf6"), SubResource("BTSequence_1jkmb")]
-
-[sub_resource type="BTAction" id="BTAction_f75ub"]
-script = ExtResource("21_i3yf6")
-target_var = &"self"
-x = 0.0
-y = 0.0
-z = 0.0
 
 [sub_resource type="BTAction" id="BTAction_pnomj"]
 script = ExtResource("12_ttsve")
@@ -1317,11 +3052,6 @@ value = SubResource("BBVariant_pappx")
 custom_name = "Check Just Landed"
 children = [SubResource("BTInvert_id8m2"), SubResource("BTSetVar_x1e8o"), SubResource("BTSetVar_biu47")]
 
-[sub_resource type="BBVariant" id="BBVariant_7weh2"]
-value_source = 1
-variable = &"self"
-resource_name = "$self"
-
 [sub_resource type="BBNode" id="BBNode_vksgl"]
 value_source = 1
 variable = &"manager_path"
@@ -1331,7 +3061,7 @@ resource_name = "$manager_path"
 node = SubResource("BBNode_vksgl")
 method = &"request_next_waypoint"
 result_var = &"next_waypoint"
-args = Array[BBVariant]([SubResource("BBVariant_7weh2")])
+args = Array[BBVariant]([SubResource("BBVariant_wsgol")])
 
 [sub_resource type="BTAction" id="BTAction_ucsdq"]
 script = ExtResource("7_qj0wi")
@@ -1437,114 +3167,142 @@ children = [SubResource("BTCallMethod_1jkmb"), SubResource("BTAction_ucsdq"), Su
 
 [sub_resource type="BTSequence" id="BTSequence_euuuy"]
 custom_name = "Look"
-children = [SubResource("BTAction_f75ub"), SubResource("BTAction_pnomj"), SubResource("BTSelector_nxqfg"), SubResource("BTAction_esq63"), SubResource("BTSequence_x3uvo"), SubResource("BTSelector_hkw83"), SubResource("BTSequence_wsaw8")]
+children = [SubResource("BTAction_pnomj"), SubResource("BTSelector_nxqfg"), SubResource("BTAction_esq63"), SubResource("BTSequence_x3uvo"), SubResource("BTSelector_hkw83"), SubResource("BTSequence_wsaw8")]
 
-[sub_resource type="BTAction" id="BTAction_34w61"]
-script = ExtResource("8_ngxa6")
-audio_player_var = &"current_music_player"
-
-[sub_resource type="BBVariant" id="BBVariant_3guyw"]
-value_source = 1
-variable = &"next_measure_time"
-resource_name = "$next_measure_time"
-
-[sub_resource type="BTCheckVar" id="BTCheckVar_a4ig0"]
-variable = &"music_playback_position"
-check_type = 4
-value = SubResource("BBVariant_3guyw")
-
-[sub_resource type="BBVariant" id="BBVariant_biu47"]
-value_source = 1
-variable = &"music_duration"
-resource_name = "$music_duration"
-
-[sub_resource type="BTCheckVar" id="BTCheckVar_x3uvo"]
-variable = &"next_measure_time"
-check_type = 4
-value = SubResource("BBVariant_biu47")
-
-[sub_resource type="BBVariant" id="BBVariant_ueah8"]
-value_source = 1
-variable = &"measure_length"
-resource_name = "$measure_length"
-
-[sub_resource type="BTCheckVar" id="BTCheckVar_3g83i"]
-variable = &"music_playback_position"
-check_type = 1
-value = SubResource("BBVariant_ueah8")
-
-[sub_resource type="BTSequence" id="BTSequence_877ps"]
-children = [SubResource("BTCheckVar_x3uvo"), SubResource("BTCheckVar_3g83i")]
-
-[sub_resource type="BTAction" id="BTAction_tfrvw"]
-script = ExtResource("9_6mje8")
-value_var = &"next_measure_time"
-modulo_value_var = &"music_duration"
-
-[sub_resource type="BTSequence" id="BTSequence_wmffp"]
-children = [SubResource("BTSequence_877ps"), SubResource("BTAction_tfrvw")]
-
-[sub_resource type="BTSelector" id="BTSelector_mb14r"]
-children = [SubResource("BTCheckVar_a4ig0"), SubResource("BTSequence_wmffp")]
-
-[sub_resource type="BTSequence" id="BTSequence_nxqfg"]
-children = [SubResource("BTAction_34w61"), SubResource("BTSelector_mb14r")]
-
-[sub_resource type="BTRepeatUntilSuccess" id="BTRepeatUntilSuccess_i63ae"]
-custom_name = "Check Music Playback Position"
-children = [SubResource("BTSequence_nxqfg")]
-
-[sub_resource type="BBVariant" id="BBVariant_i0816"]
+[sub_resource type="BBVariant" id="BBVariant_ipxx0"]
 value_source = 1
 variable = &"music_playback_position"
 resource_name = "$music_playback_position"
 
-[sub_resource type="BTSetVar" id="BTSetVar_q8ous"]
+[sub_resource type="BTSetVar" id="BTSetVar_lkiki"]
 variable = &"next_measure_time"
-value = SubResource("BBVariant_i0816")
+value = SubResource("BBVariant_ipxx0")
 
-[sub_resource type="BBVariant" id="BBVariant_7wjj6"]
+[sub_resource type="BBVariant" id="BBVariant_o08b3"]
 value_source = 1
 variable = &"measure_length"
 resource_name = "$measure_length"
 
-[sub_resource type="BTSetVar" id="BTSetVar_t5cqu"]
+[sub_resource type="BTSetVar" id="BTSetVar_fuw20"]
 variable = &"next_measure_time"
-value = SubResource("BBVariant_7wjj6")
+value = SubResource("BBVariant_o08b3")
 operation = 4
 
-[sub_resource type="BTAction" id="BTAction_5do71"]
+[sub_resource type="BTAction" id="BTAction_mdpca"]
 script = ExtResource("20_34w61")
 value_var = &"next_measure_time"
 
-[sub_resource type="BBVariant" id="BBVariant_ojnlc"]
+[sub_resource type="BBVariant" id="BBVariant_7wjj6"]
 type = 2
 saved_value = 1
 resource_name = "1"
 
-[sub_resource type="BTSetVar" id="BTSetVar_b865g"]
+[sub_resource type="BTSetVar" id="BTSetVar_t5cqu"]
 variable = &"next_measure_time"
-value = SubResource("BBVariant_ojnlc")
+value = SubResource("BBVariant_7wjj6")
 operation = 1
 
-[sub_resource type="BBVariant" id="BBVariant_p3fr0"]
+[sub_resource type="BBVariant" id="BBVariant_6ba46"]
 type = 2
 value_source = 1
 variable = &"measure_length"
 resource_name = "$measure_length"
 
-[sub_resource type="BTSetVar" id="BTSetVar_6ba46"]
+[sub_resource type="BTSetVar" id="BTSetVar_22rkn"]
 variable = &"next_measure_time"
-value = SubResource("BBVariant_p3fr0")
+value = SubResource("BBVariant_6ba46")
 operation = 3
 
-[sub_resource type="BTSequence" id="BTSequence_22rkn"]
-custom_name = "Reset Next Measure Time"
-children = [SubResource("BTSetVar_q8ous"), SubResource("BTSetVar_t5cqu"), SubResource("BTAction_5do71"), SubResource("BTSetVar_b865g"), SubResource("BTSetVar_6ba46")]
-
 [sub_resource type="BTSequence" id="BTSequence_uyp3b"]
+custom_name = "Reset Next Measure Time"
+children = [SubResource("BTSetVar_lkiki"), SubResource("BTSetVar_fuw20"), SubResource("BTAction_mdpca"), SubResource("BTSetVar_t5cqu"), SubResource("BTSetVar_22rkn")]
+
+[sub_resource type="BTConsolePrint" id="BTConsolePrint_x3uvo"]
+text = "Look				Next: %f		Play: %f"
+bb_format_parameters = PackedStringArray("next_measure_time", "music_playback_position")
+_enabled = false
+
+[sub_resource type="BTAction" id="BTAction_o5el3"]
+script = ExtResource("8_ngxa6")
+audio_player_var = &"current_music_player"
+
+[sub_resource type="BBVariant" id="BBVariant_lalf6"]
+type = 3
+value_source = 1
+variable = &"epsilon"
+resource_name = "$epsilon"
+
+[sub_resource type="BTSetVar" id="BTSetVar_si1s8"]
+variable = &"music_playback_position"
+value = SubResource("BBVariant_lalf6")
+operation = 1
+
+[sub_resource type="BBVariant" id="BBVariant_bwuyh"]
+value_source = 1
+variable = &"next_measure_time"
+resource_name = "$next_measure_time"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_uu8my"]
+variable = &"music_playback_position"
+check_type = 4
+value = SubResource("BBVariant_bwuyh")
+
+[sub_resource type="BBVariant" id="BBVariant_14n6s"]
+value_source = 1
+variable = &"music_duration"
+resource_name = "$music_duration"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_57nll"]
+variable = &"next_measure_time"
+check_type = 4
+value = SubResource("BBVariant_14n6s")
+
+[sub_resource type="BBVariant" id="BBVariant_45lfl"]
+value_source = 1
+variable = &"music_wrap_around_time"
+resource_name = "$music_wrap_around_time"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_qkeg5"]
+variable = &"music_playback_position"
+check_type = 1
+value = SubResource("BBVariant_45lfl")
+
+[sub_resource type="BTAction" id="BTAction_6m7i6"]
+script = ExtResource("8_ngxa6")
+audio_player_var = &"current_music_player"
+
+[sub_resource type="BBVariant" id="BBVariant_q81r8"]
+value_source = 1
+variable = &"measure_length"
+resource_name = "$measure_length"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_dwi0u"]
+variable = &"music_playback_position"
+check_type = 4
+value = SubResource("BBVariant_q81r8")
+
+[sub_resource type="BTSequence" id="BTSequence_py6fg"]
+children = [SubResource("BTAction_6m7i6"), SubResource("BTCheckVar_dwi0u")]
+
+[sub_resource type="BTRepeatUntilSuccess" id="BTRepeatUntilSuccess_buhy5"]
+children = [SubResource("BTSequence_py6fg")]
+
+[sub_resource type="BTSequence" id="BTSequence_wsgol"]
+children = [SubResource("BTCheckVar_57nll"), SubResource("BTCheckVar_qkeg5"), SubResource("BTRepeatUntilSuccess_buhy5")]
+
+[sub_resource type="BTSelector" id="BTSelector_7cdio"]
+children = [SubResource("BTCheckVar_uu8my"), SubResource("BTSequence_wsgol")]
+
+[sub_resource type="BTSequence" id="BTSequence_qaoko"]
+children = [SubResource("BTConsolePrint_x3uvo"), SubResource("BTAction_o5el3"), SubResource("BTSetVar_si1s8"), SubResource("BTSelector_7cdio")]
+
+[sub_resource type="BTRepeatUntilSuccess" id="BTRepeatUntilSuccess_wqhru"]
+custom_name = "Check Music Playback Position"
+children = [SubResource("BTSequence_qaoko")]
+
+[sub_resource type="BTSequence" id="BTSequence_6deqr"]
 custom_name = "Wait Until Next Measure"
-children = [SubResource("BTRepeatUntilSuccess_i63ae"), SubResource("BTSequence_22rkn")]
+children = [SubResource("BTSequence_uyp3b"), SubResource("BTRepeatUntilSuccess_wqhru")]
 
 [sub_resource type="BTAction" id="BTAction_i3yf6"]
 script = ExtResource("9_mmu5o")
@@ -1814,112 +3572,140 @@ children = [SubResource("BTSelector_vfpbh"), SubResource("BTSelector_dio41")]
 custom_name = "Dash To Waypoint"
 children = [SubResource("BTAction_i3yf6"), SubResource("BTAction_jn4d2"), SubResource("BTAction_lgqnu"), SubResource("BTSelector_x1e8o"), SubResource("BTPlayAnimation_id8m2"), SubResource("BTPlayAnimation_6ctaq"), SubResource("BTSequence_id8m2")]
 
-[sub_resource type="BTAction" id="BTAction_o5el3"]
-script = ExtResource("8_ngxa6")
-audio_player_var = &"current_music_player"
-
-[sub_resource type="BBVariant" id="BBVariant_lalf6"]
-value_source = 1
-variable = &"next_measure_time"
-resource_name = "$next_measure_time"
-
-[sub_resource type="BTCheckVar" id="BTCheckVar_si1s8"]
-variable = &"music_playback_position"
-check_type = 4
-value = SubResource("BBVariant_lalf6")
-
-[sub_resource type="BBVariant" id="BBVariant_o7vs3"]
-value_source = 1
-variable = &"music_duration"
-resource_name = "$music_duration"
-
-[sub_resource type="BTCheckVar" id="BTCheckVar_qm002"]
-variable = &"next_measure_time"
-check_type = 4
-value = SubResource("BBVariant_o7vs3")
-
-[sub_resource type="BBVariant" id="BBVariant_bwuyh"]
-value_source = 1
-variable = &"measure_length"
-resource_name = "$measure_length"
-
-[sub_resource type="BTCheckVar" id="BTCheckVar_uu8my"]
-variable = &"music_playback_position"
-check_type = 1
-value = SubResource("BBVariant_bwuyh")
-
-[sub_resource type="BTSequence" id="BTSequence_8s2vd"]
-children = [SubResource("BTCheckVar_qm002"), SubResource("BTCheckVar_uu8my")]
-
-[sub_resource type="BTAction" id="BTAction_1k733"]
-script = ExtResource("9_6mje8")
-value_var = &"next_measure_time"
-modulo_value_var = &"music_duration"
-
-[sub_resource type="BTSequence" id="BTSequence_yk1c7"]
-children = [SubResource("BTSequence_8s2vd"), SubResource("BTAction_1k733")]
-
-[sub_resource type="BTSelector" id="BTSelector_0p5ck"]
-children = [SubResource("BTCheckVar_si1s8"), SubResource("BTSequence_yk1c7")]
-
-[sub_resource type="BTSequence" id="BTSequence_57pd4"]
-children = [SubResource("BTAction_o5el3"), SubResource("BTSelector_0p5ck")]
-
-[sub_resource type="BTRepeatUntilSuccess" id="BTRepeatUntilSuccess_m1jhj"]
-custom_name = "Check Music Playback Position"
-children = [SubResource("BTSequence_57pd4")]
-
-[sub_resource type="BBVariant" id="BBVariant_kq56s"]
+[sub_resource type="BBVariant" id="BBVariant_fuw20"]
 value_source = 1
 variable = &"music_playback_position"
 resource_name = "$music_playback_position"
 
-[sub_resource type="BTSetVar" id="BTSetVar_0dlsi"]
+[sub_resource type="BTSetVar" id="BTSetVar_3b8xs"]
 variable = &"next_measure_time"
-value = SubResource("BBVariant_kq56s")
+value = SubResource("BBVariant_fuw20")
 
-[sub_resource type="BBVariant" id="BBVariant_so0oi"]
+[sub_resource type="BBVariant" id="BBVariant_uyp3b"]
 value_source = 1
 variable = &"measure_length"
 resource_name = "$measure_length"
 
-[sub_resource type="BTSetVar" id="BTSetVar_14n6s"]
+[sub_resource type="BTSetVar" id="BTSetVar_o5el3"]
 variable = &"next_measure_time"
-value = SubResource("BBVariant_so0oi")
+value = SubResource("BBVariant_uyp3b")
 operation = 4
 
-[sub_resource type="BTAction" id="BTAction_57nll"]
+[sub_resource type="BTAction" id="BTAction_lalf6"]
 script = ExtResource("20_34w61")
 value_var = &"next_measure_time"
 
-[sub_resource type="BBVariant" id="BBVariant_c57wm"]
+[sub_resource type="BBVariant" id="BBVariant_1k733"]
 type = 2
 saved_value = 1
 resource_name = "1"
 
-[sub_resource type="BTSetVar" id="BTSetVar_45lfl"]
+[sub_resource type="BTSetVar" id="BTSetVar_yk1c7"]
 variable = &"next_measure_time"
-value = SubResource("BBVariant_c57wm")
+value = SubResource("BBVariant_1k733")
 operation = 1
 
-[sub_resource type="BBVariant" id="BBVariant_qkeg5"]
+[sub_resource type="BBVariant" id="BBVariant_m1jhj"]
 type = 2
 value_source = 1
 variable = &"measure_length"
 resource_name = "$measure_length"
 
-[sub_resource type="BTSetVar" id="BTSetVar_g3jwx"]
+[sub_resource type="BTSetVar" id="BTSetVar_kq56s"]
 variable = &"next_measure_time"
-value = SubResource("BBVariant_qkeg5")
+value = SubResource("BBVariant_m1jhj")
 operation = 3
 
-[sub_resource type="BTSequence" id="BTSequence_6m7i6"]
+[sub_resource type="BTSequence" id="BTSequence_14n6s"]
 custom_name = "Reset Next Measure Time"
-children = [SubResource("BTSetVar_0dlsi"), SubResource("BTSetVar_14n6s"), SubResource("BTAction_57nll"), SubResource("BTSetVar_45lfl"), SubResource("BTSetVar_g3jwx")]
+children = [SubResource("BTSetVar_3b8xs"), SubResource("BTSetVar_o5el3"), SubResource("BTAction_lalf6"), SubResource("BTSetVar_yk1c7"), SubResource("BTSetVar_kq56s")]
 
-[sub_resource type="BTSequence" id="BTSequence_1j8g6"]
+[sub_resource type="BTConsolePrint" id="BTConsolePrint_lgqnu"]
+text = "Look				Next: %f		Play: %f"
+bb_format_parameters = PackedStringArray("next_measure_time", "music_playback_position")
+_enabled = false
+
+[sub_resource type="BTAction" id="BTAction_57nll"]
+script = ExtResource("8_ngxa6")
+audio_player_var = &"current_music_player"
+
+[sub_resource type="BBVariant" id="BBVariant_lkiki"]
+type = 3
+value_source = 1
+variable = &"epsilon"
+resource_name = "$epsilon"
+
+[sub_resource type="BTSetVar" id="BTSetVar_o08b3"]
+variable = &"music_playback_position"
+value = SubResource("BBVariant_lkiki")
+operation = 1
+
+[sub_resource type="BBVariant" id="BBVariant_g3jwx"]
+value_source = 1
+variable = &"next_measure_time"
+resource_name = "$next_measure_time"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_6m7i6"]
+variable = &"music_playback_position"
+check_type = 4
+value = SubResource("BBVariant_g3jwx")
+
+[sub_resource type="BBVariant" id="BBVariant_dwi0u"]
+value_source = 1
+variable = &"music_duration"
+resource_name = "$music_duration"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_py6fg"]
+variable = &"next_measure_time"
+check_type = 4
+value = SubResource("BBVariant_dwi0u")
+
+[sub_resource type="BBVariant" id="BBVariant_wqhru"]
+value_source = 1
+variable = &"music_wrap_around_time"
+resource_name = "$music_wrap_around_time"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_6deqr"]
+variable = &"music_playback_position"
+check_type = 1
+value = SubResource("BBVariant_wqhru")
+
+[sub_resource type="BTAction" id="BTAction_hne5c"]
+script = ExtResource("8_ngxa6")
+audio_player_var = &"current_music_player"
+
+[sub_resource type="BBVariant" id="BBVariant_6pemf"]
+value_source = 1
+variable = &"measure_length"
+resource_name = "$measure_length"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_ft10h"]
+variable = &"music_playback_position"
+check_type = 4
+value = SubResource("BBVariant_6pemf")
+
+[sub_resource type="BTSequence" id="BTSequence_ixqjv"]
+children = [SubResource("BTAction_hne5c"), SubResource("BTCheckVar_ft10h")]
+
+[sub_resource type="BTRepeatUntilSuccess" id="BTRepeatUntilSuccess_vfk1d"]
+children = [SubResource("BTSequence_ixqjv")]
+
+[sub_resource type="BTSequence" id="BTSequence_a1xiv"]
+children = [SubResource("BTCheckVar_py6fg"), SubResource("BTCheckVar_6deqr"), SubResource("BTRepeatUntilSuccess_vfk1d")]
+
+[sub_resource type="BTSelector" id="BTSelector_ro6js"]
+children = [SubResource("BTCheckVar_6m7i6"), SubResource("BTSequence_a1xiv")]
+
+[sub_resource type="BTSequence" id="BTSequence_ceurk"]
+children = [SubResource("BTConsolePrint_lgqnu"), SubResource("BTAction_57nll"), SubResource("BTSetVar_o08b3"), SubResource("BTSelector_ro6js")]
+
+[sub_resource type="BTRepeatUntilSuccess" id="BTRepeatUntilSuccess_ksxkt"]
+custom_name = "Check Music Playback Position"
+children = [SubResource("BTSequence_ceurk")]
+
+[sub_resource type="BTSequence" id="BTSequence_yjjwa"]
 custom_name = "Wait Until Next Measure"
-children = [SubResource("BTRepeatUntilSuccess_m1jhj"), SubResource("BTSequence_6m7i6")]
+children = [SubResource("BTSequence_14n6s"), SubResource("BTRepeatUntilSuccess_ksxkt")]
 
 [sub_resource type="BBVariant" id="BBVariant_teqfu"]
 value_source = 1
@@ -1929,6 +3715,26 @@ resource_name = "$next_waypoint"
 [sub_resource type="BTSetVar" id="BTSetVar_id8m2"]
 variable = &"current_waypoint"
 value = SubResource("BBVariant_teqfu")
+
+[sub_resource type="BBVariant" id="BBVariant_dndkg"]
+value_source = 1
+variable = &"self"
+resource_name = "$self"
+
+[sub_resource type="BBVariant" id="BBVariant_8e3t8"]
+type = 1
+saved_value = false
+resource_name = "<null>"
+
+[sub_resource type="BBNode" id="BBNode_uyp3b"]
+value_source = 1
+variable = &"manager_path"
+resource_name = "$manager_path"
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_o5el3"]
+node = SubResource("BBNode_uyp3b")
+method = &"set_ready_for_special_attack"
+args = Array[BBVariant]([SubResource("BBVariant_dndkg"), SubResource("BBVariant_8e3t8")])
 
 [sub_resource type="BBVariant" id="BBVariant_1jkmb"]
 type = 1
@@ -1941,10 +3747,10 @@ value = SubResource("BBVariant_1jkmb")
 
 [sub_resource type="BTSequence" id="BTSequence_3g83i"]
 custom_name = "Reset"
-children = [SubResource("BTSetVar_id8m2"), SubResource("BTSetVar_ueah8")]
+children = [SubResource("BTSetVar_id8m2"), SubResource("BTCallMethod_o5el3"), SubResource("BTSetVar_ueah8")]
 
 [sub_resource type="BTSequence" id="BTSequence_kn74s"]
-children = [SubResource("BTSelector_g5k6k"), SubResource("BTSelector_sh7if"), SubResource("BTSequence_euuuy"), SubResource("BTSequence_uyp3b"), SubResource("BTSequence_g5k6k"), SubResource("BTSequence_1j8g6"), SubResource("BTSequence_3g83i")]
+children = [SubResource("BTSelector_g5k6k"), SubResource("BTSelector_sh7if"), SubResource("BTSequence_euuuy"), SubResource("BTSequence_6deqr"), SubResource("BTSequence_g5k6k"), SubResource("BTSequence_yjjwa"), SubResource("BTSequence_3g83i")]
 
 [sub_resource type="BTRepeat" id="BTRepeat_kn74s"]
 forever = true
@@ -1953,7 +3759,7 @@ children = [SubResource("BTSequence_kn74s")]
 
 [sub_resource type="BTSequence" id="BTSequence_s7qtj"]
 custom_name = "Main"
-children = [SubResource("BTSequence_34w61"), SubResource("BTRepeat_kn74s")]
+children = [SubResource("BTSequence_34w61"), SubResource("BTSelector_lgqnu"), SubResource("BTRepeat_kn74s")]
 
 [resource]
 blackboard_plan = SubResource("BlackboardPlan_ucsdq")

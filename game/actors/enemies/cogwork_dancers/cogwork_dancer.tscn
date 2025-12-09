@@ -370,6 +370,7 @@ _surfaces = [{
 blend_shape_mode = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vigla"]
+resource_local_to_scene = true
 resource_name = "Emitter"
 transparency = 1
 cull_mode = 2
@@ -396,6 +397,7 @@ _surfaces = [{
 blend_shape_mode = 0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_kn74s"]
+resource_local_to_scene = true
 resource_name = "direction_light_Cone"
 _surfaces = [{
 "aabb": AABB(-0.10000007, -0.099999875, -9, 0.19999999, 0.19999981, 8),

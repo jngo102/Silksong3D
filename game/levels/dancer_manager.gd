@@ -1,5 +1,14 @@
 extends Node3D
 
+@export_range(1, 4) var starting_phase: int = 1
+
+var boss_phase: int:
+	set(value):
+		boss_phase = value
+		AudioManager.play_music(music_list[value])
+
+@export var music_list: Dictionary[int, MusicTrack]
+
 @export var starting_waypoint1: Marker3D
 @export var starting_waypoint2: Marker3D
 
@@ -37,25 +46,29 @@ var _waypoint1: Node
 var _waypoint2: Node
 
 func _ready() -> void:
+	boss_phase = starting_phase
 	dancer1.other_dancer = dancer2
 	dancer2.other_dancer = dancer1
 	dancer1.global_position = starting_waypoint1.global_position
 	dancer2.global_position = starting_waypoint2.global_position
 	_set_blackboard_variables()
 	_reset_special_attack_time()
+	AudioManager.current_music_player.finished.connect(_on_music_loop)
 	_waypoints = get_tree().get_nodes_in_group("Waypoints")
 
 func _process(delta: float) -> void:
 	_special_attack_timer += delta
 	if _special_attack_timer > _special_attack_delay:
 		_reset_special_attack_time()
-		var special_attack: Callable = [_set_up_spin, _set_up_teleport, _set_up_teleport].pick_random()
+		var special_attack: Callable = [_set_up_teleport, _set_up_spin].pick_random()
 		special_attack.call()
 	var animation_index: int = randi_range(1, 6)
 	blackboard1.set_var(&"animation_index", animation_index)
 	blackboard2.set_var(&"animation_index", animation_index)
 
 func _set_blackboard_variables() -> void:
+	blackboard1.set_var(&"phase", boss_phase)
+	blackboard2.set_var(&"phase", boss_phase)
 	blackboard1.set_var(&"manager_path", get_path())
 	blackboard2.set_var(&"manager_path", get_path())
 	blackboard1.set_var(&"current_waypoint", starting_waypoint1)
@@ -80,6 +93,9 @@ func _set_blackboard_variables() -> void:
 	blackboard1.set_var(&"teleport_point", teleport_point)
 	blackboard2.set_var(&"teleport_point", teleport_point)
 
+func increment_phase() -> void:
+	boss_phase += 1
+
 func request_next_waypoint(requesting_dancer: CogworkDancer) -> Node:
 	if requesting_dancer == dancer1:
 		var current_waypoint: Node3D = blackboard1.get_var(&"current_waypoint")
@@ -95,9 +111,18 @@ func request_next_waypoint(requesting_dancer: CogworkDancer) -> Node:
 		return _waypoint2
 	return _waypoints.pick_random()
 
+func set_ready_for_special_attack(dancer: CogworkDancer, dancer_ready: bool) -> void:
+	if dancer == dancer1:
+		blackboard2.set_var(&"other_dancer_ready_for_special_attack", dancer_ready)
+	elif dancer == dancer2:
+		blackboard1.set_var(&"other_dancer_ready_for_special_attack", dancer_ready)
+
 func _reset_special_attack_time() -> void:
-	_special_attack_timer = 0
-	_special_attack_delay = randf_range(min_special_attack_delay, max_special_attack_delay)
+	var current_music: AudioStream = AudioManager.current_music_player.stream
+	if is_instance_valid(current_music):
+		if AudioManager.current_music_player.get_playback_position() < current_music.get_length() - 2:
+			_special_attack_timer = 0
+		_special_attack_delay = randf_range(min_special_attack_delay, max_special_attack_delay)
 
 func _set_up_spin() -> void:
 	blackboard1.set_var(&"should_spin", true)
@@ -119,3 +144,6 @@ func still_dashing() -> bool:
 	return dashers.any(func(dasher: CogworkDasher):
 		return not dasher.finished_dashing
 	)
+
+func _on_music_loop() -> void:
+	_reset_special_attack_time()
