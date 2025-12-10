@@ -7,7 +7,7 @@ extends BTAction
 @export var output_direction_var: StringName = &""
 
 func _generate_name() -> String:
-	return "Get Direction to Target %s%s" % [
+	return "Get Direction to %s%s" % [
 		LimboUtility.decorate_var(target_var),
 		LimboUtility.decorate_output_var(output_direction_var),
 	]

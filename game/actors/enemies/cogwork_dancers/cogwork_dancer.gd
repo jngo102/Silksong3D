@@ -2,7 +2,9 @@ class_name CogworkDancer extends Enemy
 
 @export var top: bool
 
-var other_dancer: CogworkDancer
+@onready var clasher: Area3D = $Model/Clasher
+@onready var clash_audio: AudioStreamPlayer3D = clasher.get_node_or_null("ClashAudio")
+@onready var clash_light: OmniLight3D = clasher.get_node_or_null("ClashLight")
 
 var bb: Blackboard:
 	get:
@@ -11,11 +13,9 @@ var bb: Blackboard:
 func _ready() -> void:
 	bb.set_var("top", top)
 
-func get_other_dancer_next_waypoint() -> Node3D:
-	return other_dancer.behavior_tree.blackboard.get_var(&"next_waypoint")
 
-func validate_next_waypoint() -> bool:
-	var current_waypoint: Node3D =  bb.get_var(&"current_waypoint")
-	var next_waypoint: Node3D =  bb.get_var(&"next_waypoint")
-	var other_dancer_next_waypoint: Node3D = other_dancer.bb.get_var(&"next_waypoint")
-	return next_waypoint != current_waypoint and next_waypoint != other_dancer_next_waypoint
+func _on_clasher_body_entered(body: Node3D) -> void:
+	if body == self or body is not CogworkDancer:
+		return
+	clash_audio.play()
+	create_tween().tween_property(clash_light, "light_energy", 0, 0.35).from(1024).set_trans(Tween.TRANS_LINEAR)

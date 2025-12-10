@@ -72,10 +72,10 @@ func check_downbeat() -> void:
 		downbeat.emit()
 	
 ## Play a one shot audio clip
-func play_clip(clip: AudioStream, position: Vector3, pitch_min: float = 1, pitch_max: float = 1, volume_scale: float = 1) -> void:
+func play_clip(clip: AudioStream, play_position: Vector3, pitch_min: float = 1, pitch_max: float = 1, volume_scale: float = 1) -> void:
 	var audio_player: AudioPlayer = audio_player_prefab.instantiate()
 	audio_players.add_child(audio_player)
-	audio_player.global_position = position
+	audio_player.global_position = play_position
 	audio_player.volume_db = remap(volume_scale * SaveManager.settings.master_volume * SaveManager.settings.music_volume, 0.0, 1.0, _audio_off_db, 0)
 	audio_player.pitch_scale = randf_range(pitch_min, pitch_max)
 	audio_player.finished.connect(func(): audio_player.queue_free())

@@ -12,10 +12,9 @@ var boss_phase: int:
 @export var starting_waypoint1: Marker3D
 @export var starting_waypoint2: Marker3D
 
-@export var min_special_attack_delay: float = 8
-@export var max_special_attack_delay: float = 12
+@export var measures_between_special_attacks: float = 16
 
-@export var dashers: Array[CogworkDasher] 
+@export var dashers: Array[CogworkDasher]
 
 @onready var spinner: Spinner = $Spinner
 @onready var spin_target1: Marker3D = spinner.get_node_or_null("DancerSpinTarget1")
@@ -39,16 +38,23 @@ var still_appearing: bool:
 			return dasher.still_appearing
 		)
 
+var measure_length: float:
+	get:
+		if is_instance_valid(AudioManager.current_track):
+			return 60.0 / AudioManager.current_track.bpm
+		return INF
+
+var special_attack_delay: float:
+	get:
+		return measures_between_special_attacks * measure_length
+
 var _special_attack_timer: float
-var _special_attack_delay: float
 var _waypoints: Array[Node]
-var _waypoint1: Node
-var _waypoint2: Node
+var _waypoint1: Node3D
+var _waypoint2: Node3D
 
 func _ready() -> void:
 	boss_phase = starting_phase
-	dancer1.other_dancer = dancer2
-	dancer2.other_dancer = dancer1
 	dancer1.global_position = starting_waypoint1.global_position
 	dancer2.global_position = starting_waypoint2.global_position
 	_set_blackboard_variables()
@@ -58,7 +64,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	_special_attack_timer += delta
-	if _special_attack_timer > _special_attack_delay:
+	if _special_attack_timer >= special_attack_delay:
 		_reset_special_attack_time()
 		var special_attack: Callable = [_set_up_teleport, _set_up_spin].pick_random()
 		special_attack.call()
@@ -99,14 +105,18 @@ func increment_phase() -> void:
 func request_next_waypoint(requesting_dancer: CogworkDancer) -> Node:
 	if requesting_dancer == dancer1:
 		var current_waypoint: Node3D = blackboard1.get_var(&"current_waypoint")
+		var other_current_waypoint: Node3D = blackboard2.get_var(&"current_waypoint")
 		_waypoint1 = _waypoints.pick_random()
-		while _waypoint1 == _waypoint2 or _waypoint1 == current_waypoint:
+		while _waypoint1 == _waypoint2 or _waypoint1 == current_waypoint or \
+			_waypoint1 == other_current_waypoint or _waypoint1.global_position.distance_to(current_waypoint.global_position) < 8:
 			_waypoint1 = _waypoints.pick_random()
 		return _waypoint1
 	elif requesting_dancer == dancer2:
 		var current_waypoint: Node3D = blackboard2.get_var(&"current_waypoint")
+		var other_current_waypoint: Node3D = blackboard1.get_var(&"current_waypoint")
 		_waypoint2 = _waypoints.pick_random()
-		while _waypoint2 == _waypoint1 or _waypoint2 == current_waypoint:
+		while _waypoint2 == _waypoint1 or _waypoint2 == current_waypoint or \
+			_waypoint2 == other_current_waypoint or _waypoint2.global_position.distance_to(current_waypoint.global_position) < 8:
 			_waypoint2 = _waypoints.pick_random()
 		return _waypoint2
 	return _waypoints.pick_random()
@@ -118,11 +128,7 @@ func set_ready_for_special_attack(dancer: CogworkDancer, dancer_ready: bool) -> 
 		blackboard1.set_var(&"other_dancer_ready_for_special_attack", dancer_ready)
 
 func _reset_special_attack_time() -> void:
-	var current_music: AudioStream = AudioManager.current_music_player.stream
-	if is_instance_valid(current_music):
-		if AudioManager.current_music_player.get_playback_position() < current_music.get_length() - 2:
-			_special_attack_timer = 0
-		_special_attack_delay = randf_range(min_special_attack_delay, max_special_attack_delay)
+	_special_attack_timer = 0
 
 func _set_up_spin() -> void:
 	blackboard1.set_var(&"should_spin", true)

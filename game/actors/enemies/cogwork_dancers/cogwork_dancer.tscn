@@ -1,9 +1,10 @@
-[gd_scene load_steps=57 format=4 uid="uid://c1fle5fyo6r8h"]
+[gd_scene load_steps=56 format=4 uid="uid://c1fle5fyo6r8h"]
 
 [ext_resource type="PackedScene" uid="uid://dubnsno8bya0v" path="res://game/actors/enemies/enemy.tscn" id="1_aqi66"]
 [ext_resource type="PackedScene" uid="uid://bvo4i3vqhmih2" path="res://game/actors/enemies/cogwork_dancers/cogwork_dancer.glb" id="2_vnqo0"]
 [ext_resource type="Script" uid="uid://d2b7mlnyocxgr" path="res://game/actors/enemies/cogwork_dancers/cogwork_dancer.gd" id="2_yj034"]
 [ext_resource type="BehaviorTree" uid="uid://chh6lvoe5ufr8" path="res://game/ai/trees/cogwork_dancer_behavior_tree.tres" id="3_7e4hr"]
+[ext_resource type="AudioStream" uid="uid://bhkqb17ayujpd" path="res://game/copyrighted/cogwork_dancers/clockwork_dancers_shing_to_add_onto_clash_together.wav" id="4_kn74s"]
 [ext_resource type="PackedScene" uid="uid://dqqog7us3m1g3" path="res://game/gameplay/combat/slash.tscn" id="5_esq63"]
 [ext_resource type="PackedScene" uid="uid://bpa6of12yh2pe" path="res://game/actors/enemies/cogwork_dancers/direction_light.glb" id="6_vigla"]
 
@@ -369,52 +370,9 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vigla"]
-resource_local_to_scene = true
-resource_name = "Emitter"
-transparency = 1
-cull_mode = 2
-albedo_color = Color(1, 1, 1, 0)
-metallic = 1.0
-roughness = 0.0
-emission_enabled = true
-emission = Color(1, 1, 1, 1)
-emission_energy_multiplier = 2.0
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_nplgx"]
-_surfaces = [{
-"aabb": AABB(-0.10000007, -0.099999875, -9, 0.19999999, 0.19999981, 8),
-"format": 34896613377,
-"index_count": 186,
-"index_data": PackedByteArray("EAAAAAIAEQAAABAAEQAQAAIAAAASAAIAAAABABIAEgABAAIAEQABAAAAAQATAAIAAQADABMAEwADAAIAAQAEAAMAEQAEAAEAAwAEABQAAwAUAAIAFAAEAAIABAAVAAIABAAFABUAFQAFAAIABAAGAAUABQAWAAIABQAGABYAFgAGAAIABAAHAAYAEQAHAAQABgAXAAIABgAIABcAFwAIAAIABgAHAAgACAAHABgACAAYAAIAGAAHAAIADwARAAIAGQARAA8AGQAPAAIAGgARABkADgAZAAIAGgAZAA4AGgAOAAIAGwARABoABwARABsADQAaAAIAHAAaAA0AGwAaABwAHAANAAIAGwAcAAwADAAcAAIAGwAMAAIABwAbAB0ACgAbAAIAHgAbAAoAHgAKAAIAHQAbAB4ACwAeAAIAHQAeAAsAHQALAAIABwAfAAIACQAdAAIABwAgAB8ABwAdACAAIAAdAAkAHwAgAAIAIAAJAAIA"),
-"lods": [0.093549706, PackedByteArray("AAABAAIAAQADAAIAAQAEAAMAAAAEAAEAAwAEAAIABAAFAAIABAAGAAUABQAGAAIABAAHAAYAAAAHAAQABgAHAAgABgAIAAIACAAHAAIABwAJAAIABwAKAAkABwAAAAoACQALAAIACQAKAAsACwAKAAIACgAMAAIACgANAAwADAANAAIACgAAAA0ADQAOAAIADQAAAA4ADwAAAAIADgAAAA8ADgAPAAIA")],
-"name": "Emitter",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 33,
-"vertex_data": PackedByteArray("BmeJ/f//AADiOGzq//8AAP9//38AAAAAkhUcx///AAB1AviY//8AAHUCBmf//wAAkhXiOP//AAAGZ3UC//8AAOI4khX//wAA+7C+Cf//AABA9gNP//8AAIHafSX//wAA////f///AABA9vuw//8AAIHagdr//wAA+7BA9v//AAD/f/////8AAPiYif3//wAAA09A9v//AAB9JYHa//8AAL4J+7D//wAAAAD/f///AAC+CQNP//8AAH0lfSX//wAAA0++Cf//AAAcx2zq//8AAGzqHMf//wAAif0GZ///AACJ/fiY//8AABzHkhX//wAAbOriOP//AAD/fwAA//8AAPiYdQL//wAA")
-}]
-blend_shape_mode = 0
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_kn74s"]
-resource_local_to_scene = true
-resource_name = "direction_light_Cone"
-_surfaces = [{
-"aabb": AABB(-0.10000007, -0.099999875, -9, 0.19999999, 0.19999981, 8),
-"attribute_data": PackedByteArray("/Eu9gyFi6Yz/P/+/FXPdnf8//798KDyH/z//v0F8ArT/P/+/jhSNlP8//79BfPvL/z//vzwHfKj/P/+/FXMh4v8//7+PAv+//z//vyFiFPP/P/+/PAeC1/8//7/8S0H8/z//v44UcOv/P/+/fCjC+P8//7//P/+/fKjC+DyHgteNlHDr+8tB/DyHfKiOgv+/+8u9g42UjZR8qDyHQfwCtCHi6YwU892dFPMh4iHiFPNB/PvL/z+Ogv8//7/8S72Dglc8h4JXPIf/P/+/IWLpjHFrjZRxa42U/z//vxVz3Z3CeHyownh8qP8//79BfAK0cH3/v3B9/79BfPvL/z//v8J4gtf/P/+/wniC1xVzIeJxa3Dr/z//v3FrcOshYhTzglfC+P8//7+CV8L4/EtB/P8/b/3/P/+//z9v/QM0QfwDNEH8/z//v3wowvjdHRTz3R0U8/8//7+OFHDr6gwh4uoMIeL/P/+/PAeC170D+8u9A/vLjwL/v/8//7+9AwK0/z//v70DArQ8B3yo6gzdnf8//7/qDN2djhSNlN0d6Yz/P/+/3R3pjHwoPIcCtL2D/7+OgoLXPIdw642Uwvh8qG/9/7/C+ILXcOtw64LXwvgCtEH8/79v/d2dFPO9g/vL6Ywh4t2d6YzpjN2dvYMCtAM0vYP/P/+/AzS9g/8/joI="),
-"format": 34896613399,
-"index_count": 186,
-"index_data": PackedByteArray("LQAAAC4ALwAwAAIAMQABADIAMwA0AAQANQADADYANwA4AAgAOQAHADoAOwA8AAwAPQA+AD8ACwBAAEEAQgBDABAADwBEAEUARgBHABQAEwBIAEkASgBLABgAFwBMAE0ATgBPABwAUAAbAFEAUgBTAB0AVAAZAFUAVgBXABoAWAAVAFkAWgBbABYAXABdAF4AEQBfAGAAYQBiABIADQBjAGQAZQBmAA4ACQBnAGgAaQBqAAoAawAkAGwAJAAoAG0AawAoACQAKAApAG4AKAAnACkAKQAnAG8AawAnACgAJwAsAHAAJwAqACwALAAqAHEAJwAhACoAawAhACcAKgArAHIAKgAhACsAKwAhAHMAIQB0AHUAIQB2AHQAdAB2AB4AIQBrAHcAIQB3AHYAdgB4ACAAdgB3AHgAeAB3AB8AeQBrACYAegBrAHkAdwBrAHoAegB5ACUAdwB6AHsAewB6ACIAdwB7ACMABQB8AH0AfgB/AAYA"),
-"lods": [0.093549706, PackedByteArray("AAABAAIAAQADAAQABQAAAAYAAwAHAAgACQAFAAoABwALAAwADQAJAA4ACwAPABAAEQANABIADwATABQAFQARABYAEwAXABgAGQAVABoAFwAbABwAGwAZAB0AHgAfACAAIQAfAB4AHwAiACMAHwAkACIAIQAkAB8AIgAkACUAJQAkACYAJAAhACcAJAAnACgAKAAnACkAJwAhACoAKgAhACsAJwAqACwA")],
-"material": SubResource("StandardMaterial3D_vigla"),
-"name": "Emitter",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 128,
-"vertex_data": PackedByteArray("BmeJ/f//RNbiOGzq//+2y/9//38AAPvPkhUcx///NsX/f/9/AAAmyPuwQPb///vP/3//fwAARNZ1AviY//9kwf9//38AAPHCgdqB2v//Jsj/f/9/AAC2y3UCBmf//2TB/3//fwAAmsBA9vuw///xwv9//38AADbFkhXiOP//NsX/f/9/AADxwv///3///5rA/3//fwAAZMHiOJIV//+2y/9//38AACbIQPYDT///8cL/f/9/AABkwQZndQL//0TW/3//fwAA+8+B2n0l//8myP9//38AADbF+7C+Cf//+8//f/9/AABE1v9//38AALbL+7C+Cf//AABA9gNP//8AAIHafSX//wAABmd1Av//AABA9vuw//8AAP///3///wAABmeJ/f//AACB2oHa//8AAPuwQPb//wAAdQL4mP//AADiOGzq//8AAJIVHMf//wAAkhXiOP//AADiOJIV//8AAHUCBmf//wAA/3//////RNb/f/9/AABE1gZnif3///vPA09A9v//+88DT0D2//+2y/9//38AALbL4jhs6v//Jsh9JYHa//8myH0lgdr//zbF/3//fwAANsWSFRzH///xwr4J+7D///HCvgn7sP//ZMH/f/9/AABkwXUC+Jj//5rAAAD/f///msAAAP9///+awHUCBmf//5rA/3//fwAAmsC+CQNP//9kwf9//38AAGTBvgkDT///8cKSFeI4///xwn0lfSX//zbF/3//fwAANsV9JX0l//8myOI4khX//ybIA0++Cf//tsv/f/9/AAC2ywNPvgn///vPBmd1Av//+8//fwAA//9E1v9//38AAETW/38AAP//RNb4mHUC//9E1viYdQL///vP/3//fwAA+8/7sL4J//+2yxzHkhX//7bLHMeSFf//Jsj/f/9/AAAmyIHafSX//zbFbOriOP//NsVs6uI4///xwv9//38AAPHCQPYDT///ZMGJ/QZn//9kwYn9Bmf//5rA////f///msD/f/9/AACawIn9+Jj//5rA/3//fwAAmsCJ/fiY//9kwUD2+7D//2TBbOocx///8cL/f/9/AADxwmzqHMf//zbFgdqB2v//NsUcx2zq//8myP9//38AACbIHMds6v//tsv7sED2//+2y/iYif3//wAA/3//////AAADT0D2//8AAH0lgdr//wAAvgn7sP//AAAAAP9///8AAL4JA0///wAAfSV9Jf//AAADT74J//8AAPiYdQL//wAA/38AAP//AAAcx5IV//8AAIn9Bmf//wAAbOriOP//AAAcx2zq//8AAGzqHMf//wAAif34mP//AAD4mIn9///7z/9//38AAPvP+JiJ/f//RNb/f/////9E1salV684oqK6FKU0tFma3MqlnhfCyssVJafQxyV5jtviG5V51ee9ph5cxTki22KF8aeFnPSEqhwVIrVaGtxKpOV6VeLqYouoBSOdeQ6iOsXdF0JY4eNqhSqFcSMdVy832jQ06dpZYec9pWUiNepayks4WqdQxl1cRf9//3//f/9//3//f/9//3///////3//f/9//3////////////9//3//f/9//3//f/9//3//f/9//3//f8alV6/GpVevFKU0tBSlNLQ4oqK6OKKiuqWeF8KlnhfCWZrcylma3MoblXnVG5V51XmO2+J5jtvip4Wc9KeFnPScdFb6nHRW+px0VvrbYoXx22KF8XpV4up6VeLq3Eqk5dxKpOUXQljhF0JY4aI6xd2iOsXdNDTp2jQ06dpXLzfaVy832jhap1A4WqdQ6lrKS+paykvGXVxFxl1cRVlh5z1ZYec9pWUiNaVlIjXjaoUq42qFKoVxIx2FcSMdV3piC1d6YgtXemILYouoBWKLqAUjnXkOI515DoSqHBWEqhwVIrVaGiK1WhrnvaYe572mHlzFOSJcxTki/3//f/9//3//f/9//3//f/9//3//f/9//////////////////3//f/9//3//f/9//3//f/9//3//f/9//3//f/9//3/KyxUlyssVJafQxyWn0Mcl")
-}]
-blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_nplgx")
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vigla"]
+radius = 4.0
+height = 16.0
 
 [sub_resource type="Animation" id="Animation_s7qtj"]
 length = 0.001
@@ -433,14 +391,14 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Direction/Direction:mesh:surface_0/material:albedo_color")
+tracks/1/path = NodePath("Direction/Direction:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
+"times": PackedFloat32Array(0.0009999999),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_kn74s"]
@@ -461,14 +419,14 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Direction/Direction:mesh:surface_0/material:albedo_color")
+tracks/1/path = NodePath("Direction/Direction:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.0833),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_s7qtj"]
@@ -840,21 +798,74 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.54951835, 0)
 [node name="Model" parent="." index="3" instance=ExtResource("2_vnqo0")]
 transform = Transform3D(-2.5, 0, -2.1855695e-07, 0, 2.5, 0, 2.1855695e-07, 0, -2.5, 0, 0, 0)
 
+[node name="Skeleton3D" parent="Model/Armature" index="0"]
+bones/0/position = Vector3(-8.881784e-16, 0.7779901, 0.019449696)
+bones/0/rotation = Quaternion(-0.021461679, 1.1918177e-07, -2.5584252e-09, 0.9997697)
+bones/1/rotation = Quaternion(0.108867966, 0.09133054, -0.006093365, 0.989833)
+bones/2/rotation = Quaternion(0.1420219, 0.12710126, -0.048023835, 0.98049414)
+bones/3/rotation = Quaternion(0.006188229, 0.07655146, -0.00017421132, 0.9970464)
+bones/4/rotation = Quaternion(-0.0035441634, 0.056842066, -0.0003989061, 0.9983769)
+bones/5/rotation = Quaternion(-0.24184752, -0.48913178, -0.5337928, 0.6460072)
+bones/6/rotation = Quaternion(0.7430284, 0.00015552156, -0.5619634, 0.3634639)
+bones/7/rotation = Quaternion(0.4198125, -0.2980308, 0.6077865, 0.6045915)
+bones/8/rotation = Quaternion(0.54453677, -0.00031253882, 0.4118411, 0.73066175)
+bones/9/position = Vector3(-9.0159934e-17, -6.439172e-08, -1.4456167e-09)
+bones/9/rotation = Quaternion(0.981733, 2.2681402e-08, 1.1703355e-07, -0.19026373)
+bones/9/scale = Vector3(1, 1.0000025, 1.0000333)
+bones/10/rotation = Quaternion(-0.2476482, 0.07263805, -0.04402374, 0.9651198)
+bones/10/scale = Vector3(0.9999965, 1.0000056, 0.99999505)
+bones/11/rotation = Quaternion(0.09008504, 2.7784847e-06, 0.065553695, 0.9937744)
+bones/11/scale = Vector3(0.9999998, 0.99999917, 0.9999992)
+bones/12/rotation = Quaternion(-0.0052100793, 1.1920785e-07, -6.211014e-10, 0.99998647)
+bones/13/rotation = Quaternion(0.0046532894, 1.4191424e-12, 1.1095517e-09, 0.99998915)
+bones/14/position = Vector3(-0.31037593, 0.52211916, -0.04243393)
+bones/14/rotation = Quaternion(-0.52062285, -0.04341916, 0.23257488, 0.82035094)
+bones/14/scale = Vector3(0.99999404, 1.0000126, 0.99999964)
+bones/15/rotation = Quaternion(0.58985424, -7.124617e-06, -0.429231, 0.683983)
+bones/15/scale = Vector3(1.0000067, 1.000022, 0.9999946)
+bones/16/position = Vector3(0.07751036, 0.9310187, 0.86049557)
+bones/16/rotation = Quaternion(-0.49899483, 0.50003874, 0.5219781, -0.47802123)
+bones/17/position = Vector3(1.3525577, 0.086434245, -0.17940399)
+bones/18/position = Vector3(0.31037596, -2.4370558, -0.10451462)
+bones/19/position = Vector3(0.27444023, -1.5304343, 0.12078708)
+bones/20/position = Vector3(-1.3358971, -0.8215348, 0.040329948)
+bones/21/position = Vector3(-1.3525577, 0.084194064, -0.17950092)
+bones/22/position = Vector3(-0.37136745, -1.8304238, -0.078457996)
+bones/23/position = Vector3(-0.32085356, -1.522817, 0.121114135)
+bones/24/position = Vector3(0.25279707, 1.9353031, 0.58397675)
+bones/24/rotation = Quaternion(-0.086661726, -5.5267974e-10, 5.0869167e-09, 0.9962379)
+bones/25/position = Vector3(0, -0.8387298, -0.546751)
+
 [node name="Dancer" parent="Model/Armature/Skeleton3D" index="0"]
 mesh = SubResource("ArrayMesh_s7qtj")
 
 [node name="AnimationPlayer" parent="Model" index="1"]
 autoplay = "Idle 1"
 
+[node name="Clasher" type="Area3D" parent="Model" index="2"]
+transform = Transform3D(-0.4, 0, 3.4969112e-08, 0, 0.4, 0, -3.4969112e-08, 0, -0.4, 0, 0, 0)
+collision_layer = 16
+collision_mask = 2
+
+[node name="ClashAudio" type="AudioStreamPlayer3D" parent="Model/Clasher" index="0"]
+stream = ExtResource("4_kn74s")
+
+[node name="ClashLight" type="OmniLight3D" parent="Model/Clasher" index="1"]
+light_energy = 0.0
+omni_range = 16.0
+
+[node name="Collision" type="CollisionShape3D" parent="Model/Clasher" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("CapsuleShape3D_vigla")
+
 [node name="Direction" parent="." index="4" instance=ExtResource("6_vigla")]
-transform = Transform3D(2, 7.993606e-15, -1.1368684e-13, 2.6645353e-15, 2, -3.7252903e-09, 0, 0, 3, 0, 2, 0)
+transform = Transform3D(1, -1.3322676e-15, -2.646978e-23, 1.3322676e-15, 1, 0, 1.6543612e-24, -2.204052e-39, 16, 0, 6, -2)
 
 [node name="Direction" parent="Direction" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-mesh = SubResource("ArrayMesh_kn74s")
+visible = false
 
 [node name="Light" type="OmniLight3D" parent="Direction" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, -1.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
 light_energy = 4.0
 omni_range = 8.0
 
@@ -893,6 +904,8 @@ script = null
 [node name="BehaviorTree" parent="." index="8"]
 behavior_tree = ExtResource("3_7e4hr")
 update_mode = 0
+
+[connection signal="body_entered" from="Model/Clasher" to="." method="_on_clasher_body_entered"]
 
 [editable path="Health"]
 [editable path="Model"]
