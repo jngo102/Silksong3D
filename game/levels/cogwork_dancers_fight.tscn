@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://ob43xcsgefpw" path="res://game/levels/cogwork_dancers_fight.gd" id="1_0qq8w"]
 [ext_resource type="Resource" uid="uid://cbxskjf0ajc00" path="res://game/resources/music/cogdancers2.tres" id="2_0qq8w"]
 [ext_resource type="Resource" uid="uid://s05a04ohrxuf" path="res://game/resources/music/cogdancers1.tres" id="2_sd8jx"]
-[ext_resource type="Script" uid="uid://b2erw6j0ld612" path="res://game/gameplay/camera_controller.gd" id="3_y2jbv"]
 [ext_resource type="Texture2D" uid="uid://cddh7us3g7l8c" path="res://game/levels/cogwork_dancers/GroundDiffuse.png" id="5_1nr1l"]
+[ext_resource type="PackedScene" uid="uid://b37skkjsvgidd" path="res://game/gameplay/scene/camera_controller.tscn" id="5_42bj1"]
 [ext_resource type="PackedScene" uid="uid://bs1v5xrhsia2d" path="res://game/levels/cogwork_dancers/waypoint.tscn" id="5_sd8jx"]
 [ext_resource type="PackedScene" uid="uid://c1fle5fyo6r8h" path="res://game/actors/enemies/cogwork_dancers/cogwork_dancer.tscn" id="5_xmi2e"]
 [ext_resource type="PackedScene" uid="uid://bk5l50c7ma8dr" path="res://game/actors/player/player.tscn" id="6_42bj1"]
@@ -768,24 +768,12 @@ surface_material_override/0 = SubResource("StandardMaterial3D_awspu")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
 shape = SubResource("BoxShape3D_34lg8")
 
-[node name="CameraYaw" type="Node3D" parent="." node_paths=PackedStringArray("target")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 2, 0)
-script = ExtResource("3_y2jbv")
-target = NodePath("../Player")
-min_yaw_degrees = -80.0
-max_yaw_degrees = 35.0
+[node name="CameraController" parent="." instance=ExtResource("5_42bj1")]
+transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 2, 0)
 
-[node name="CameraPitch" type="Node3D" parent="CameraYaw"]
-
-[node name="Camera" type="Camera3D" parent="CameraYaw/CameraPitch"]
-transform = Transform3D(-1, -3.7424492e-08, 7.9007265e-08, 0, 0.9037378, 0.4280863, -8.742278e-08, 0.4280863, -0.9037378, 0, 10, -20)
-current = true
-fov = 60.0
-size = 70.0
-
-[node name="Player" parent="." node_paths=PackedStringArray("_cam_pivot") instance=ExtResource("6_42bj1")]
+[node name="Player" parent="." node_paths=PackedStringArray("_camera_controller") instance=ExtResource("6_42bj1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-_cam_pivot = NodePath("../CameraYaw")
+_camera_controller = NodePath("../CameraController")
 
 [node name="Light" type="OmniLight3D" parent="."]
 transform = Transform3D(0.7254783, -0.20325898, 0.6575463, -0.058854267, 0.9335742, 0.35351858, -0.6857241, -0.29516938, 0.66532516, 0, 20, -2.234)
@@ -911,7 +899,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 35, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
 
 [node name="TopLayer" type="Node3D" parent="Waypoints"]
-transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 24, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24, 0.1)
 
 [node name="Waypoint1" parent="Waypoints/TopLayer" instance=ExtResource("5_sd8jx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, -25)
@@ -940,7 +928,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 25)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, 25)
 
 [node name="BottomLayer" type="Node3D" parent="Waypoints"]
-transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0.1)
 
 [node name="Waypoint1" parent="Waypoints/BottomLayer" instance=ExtResource("5_sd8jx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, -25)

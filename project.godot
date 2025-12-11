@@ -11,15 +11,17 @@ config_version=5
 [application]
 
 config/name="Silksong 3D"
-config/version="0.3.2"
+config/version="0.3.3"
 run/main_scene="uid://dugp1elqcy03h"
 config/features=PackedStringArray("4.5", "Forward Plus")
 
 [autoload]
 
-SaveManager="*res://game/autoload/save/save_manager.gd"
-AudioManager="*res://game/autoload/audio/audio_manager.tscn"
 BBUtil="*res://game/autoload/bb_util.gd"
+SaveManager="*res://game/autoload/save/save_manager.gd"
+InputManager="*res://game/autoload/input/input_manager.tscn"
+AudioManager="*res://game/autoload/audio/audio_manager.tscn"
+InputHelper="*res://addons/input_helper/input_helper.gd"
 
 [display]
 
@@ -36,9 +38,17 @@ movie_writer/ogv/encoding_speed=1
 movie_writer/movie_file="D:/GameDev/Godot/silksong3d/movies/dancers.avi"
 movie_writer/disable_vsync=true
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/input_helper/plugin.cfg")
+
 [global_group]
 
 Players=""
+
+[gui]
+
+theme/custom="uid://c2jwhmnxf4nti"
 
 [input]
 

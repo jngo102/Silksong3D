@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://bx1fy5obuyvl"]
 
 [ext_resource type="Script" uid="uid://hssorlhiwg5v" path="res://game/levels/base_level.gd" id="1_80l8l"]
-[ext_resource type="Script" uid="uid://b2erw6j0ld612" path="res://game/gameplay/camera_controller.gd" id="1_giiqr"]
+[ext_resource type="Script" uid="uid://b2erw6j0ld612" path="res://game/gameplay/scene/camera_controller.gd" id="1_giiqr"]
 [ext_resource type="Resource" uid="uid://s05a04ohrxuf" path="res://game/resources/music/cogdancers1.tres" id="2_3m0nd"]
 [ext_resource type="PackedScene" uid="uid://bk5l50c7ma8dr" path="res://game/actors/player/player.tscn" id="2_80l8l"]
 [ext_resource type="PackedScene" uid="uid://c1fle5fyo6r8h" path="res://game/actors/enemies/cogwork_dancers/cogwork_dancer.tscn" id="3_3m0nd"]

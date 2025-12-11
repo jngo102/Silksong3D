@@ -4,16 +4,20 @@ const PARAMS: String = "parameters"
 const CONDS: String = "%s/conditions" % PARAMS
 const WALK_BLEND: String = "%s/Walk/blend_position" % PARAMS
 
-@export var jump_height: float = 4
-@export var walk_speed: float = 10
-@export var sprint_speed: float = 25
-@export var down_spike_speed: float = 60
-@export var _cam_pivot: CameraController
+@export var jump_height: float = 8
+@export var walk_speed: float = 16
+@export var sprint_speed: float = 32
+@export var down_spike_speed: float = 90
+@export var down_spike_bounce_spin_speed: float = 30
 
-@onready var _armature = $Armature
+@export var _camera_controller: CameraController
+
+@onready var _model: Node3D = $Model
+@onready var _armature: Node3D = _model.get_node_or_null("Armature")
 @onready var _skeleton = _armature.get_node_or_null("Skeleton3D")
 @onready var _needle: Needle = _skeleton.get_node_or_null("NeedleAttach/Needle")
 @onready var _cloak_anim: AnimationPlayer = _skeleton.get_node_or_null("CloakAttach/CloakAnimator")
+@onready var _model_tree: AnimationTree = _model.get_node_or_null("AnimationPlayer/AnimationTree")
 
 var moving_forward: bool:
 	get:
@@ -49,11 +53,12 @@ var down_spiking: bool:
 		down_spiking = value
 		if value:
 			should_down_spike = false
-			velocity = (-_cam_pivot.camera.global_basis.z).normalized() * down_spike_speed
-			_armature.look_at(global_position + velocity)
+			velocity = -_camera_controller.camera.global_basis.z.normalized() * down_spike_speed
+			_armature.look_at(global_position - velocity)
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	_camera_controller.target = self
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
@@ -64,7 +69,7 @@ func _input(event: InputEvent) -> void:
 func _process(delta: float) -> void:
 	if not should_down_spike and not down_spiking:
 		var move_vector: Vector2 = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down").normalized() * current_move_speed
-		velocity = Vector3(-move_vector.x, velocity.y, -move_vector.y).rotated(Vector3.UP, _cam_pivot.global_rotation.y)
+		velocity = Vector3(move_vector.x, velocity.y, move_vector.y).rotated(Vector3.UP, _camera_controller.global_rotation.y)
 	_apply_gravity(delta)
 	_check_walk(delta)
 	_check_sprint(delta)
@@ -79,9 +84,9 @@ func _process(delta: float) -> void:
 func _check_walk(delta: float) -> void:
 	if sprinting:
 		return
-	var current_move_blend: Vector2 = _anim_tree.get(WALK_BLEND)
-	_anim_tree.set(WALK_BLEND, current_move_blend.move_toward(Vector2(velocity.x, velocity.z).rotated(global_rotation.y).normalized(), delta * 5))
-	global_rotation.y = lerp_angle(global_rotation.y, _cam_pivot.global_rotation.y + PI, delta * 4)
+	var current_move_blend: Vector2 = _model_tree.get(WALK_BLEND)
+	_model_tree.set(WALK_BLEND, current_move_blend.move_toward(Vector2(-velocity.x, velocity.z).rotated(global_rotation.y).normalized(), delta * 5))
+	global_rotation.y = lerp_angle(global_rotation.y, _camera_controller.global_rotation.y + PI, delta * 4)
 
 func _check_sprint(delta: float) -> void:
 	if is_on_floor():
@@ -91,16 +96,16 @@ func _check_sprint(delta: float) -> void:
 			current_move_speed = walk_speed
 
 	if sprinting and velocity.length() > 0:
-		global_rotation.y = lerp_angle(global_rotation.y, atan2(-velocity.z, velocity.x) - PI / 2, delta * 16)
+		global_rotation.y = lerp_angle(global_rotation.y, atan2(velocity.z, -velocity.x) - PI / 2, delta * 16)
 
 func _look_mouse(event: InputEventMouseMotion) -> void:
-	_cam_pivot.rotation.y -= event.relative.x * 0.01
-	_cam_pivot.add_pitch(event.relative.y * 0.01)
+	_camera_controller.rotation.y -= event.relative.x * 0.01
+	_camera_controller.add_pitch(-event.relative.y * 0.01)
 
 func _look_joystick(delta: float) -> void:
 	var look_vector: Vector2 = Input.get_vector("Look Left", "Look Right", "Look Down", "Look Up")
-	_cam_pivot.rotation.y -= look_vector.x * 0.015
-	_cam_pivot.add_pitch(-look_vector.y * 0.01)
+	_camera_controller.rotation.y -= look_vector.x * 0.015
+	_camera_controller.add_pitch(-look_vector.y * 0.01)
 
 func _check_jump() -> void:
 	if Input.is_action_just_pressed("Jump"):
@@ -153,7 +158,7 @@ func _land() -> void:
 	_down_spike_reset()
 
 func _check_attack() -> void:
-	if not is_on_floor() and _cam_pivot.camera.global_rotation_degrees.x < -45:
+	if not is_on_floor() and _camera_controller.camera.global_rotation_degrees.x < -45:
 		_start_down_spike()
 	else:
 		_slash()
@@ -172,13 +177,13 @@ func _down_spike() -> void:
 
 func _down_spike_bounce() -> void:
 	down_spiking = false
-	var direction: Vector3 = -_cam_pivot.camera.global_basis.z
+	var direction: Vector3 = -_camera_controller.camera.global_basis.z
 	_armature.rotation = Vector3.ZERO
 	velocity.y = down_spike_speed
 
 func _check_down_spike_bounce(delta: float) -> void:
 	if _needle.down_spike_hit:
-		_armature.rotate_x(-10 * delta)
+		_armature.rotate_x(down_spike_bounce_spin_speed * delta)
 
 func _down_spike_reset() -> void:
 	should_down_spike = false

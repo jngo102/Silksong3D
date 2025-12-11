@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="InputIcons" load_steps=18 format=3 uid="uid://8dnvpbxsvj8"]
+
+[ext_resource type="Texture2D" uid="uid://ddasag1wlnou1" path="res://game/autoload/input/input_prompts/Xbox Series/Double/xbox_button_x_outline.png" id="1_8v88m"]
+[ext_resource type="Script" uid="uid://ddqk8sr3ma6hh" path="res://game/autoload/input/input_icons.gd" id="1_oe10l"]
+[ext_resource type="Texture2D" uid="uid://dfnckjdmh6fnf" path="res://game/autoload/input/input_prompts/PlayStation Series/Double/playstation_button_circle_outline.png" id="2_afspa"]
+[ext_resource type="Texture2D" uid="uid://b0vq8k7v85bto" path="res://game/autoload/input/input_prompts/PlayStation Series/Double/playstation_button_square_outline.png" id="3_uvknt"]
+[ext_resource type="Texture2D" uid="uid://bl3ylngg1mg7o" path="res://game/autoload/input/input_prompts/PlayStation Series/Double/playstation_button_triangle_outline.png" id="4_c2qve"]
+[ext_resource type="Texture2D" uid="uid://ds3nn5owowhca" path="res://game/autoload/input/input_prompts/PlayStation Series/Double/playstation5_button_create_outline.png" id="5_t3njl"]
+[ext_resource type="Texture2D" uid="uid://c4dd0pvai12ia" path="res://game/autoload/input/input_prompts/PlayStation Series/Double/playstation_button_analog_outline.png" id="6_rc8ka"]
+[ext_resource type="Texture2D" uid="uid://b0xsmb05n03bi" path="res://game/autoload/input/input_prompts/PlayStation Series/Double/playstation5_button_options_outline.png" id="7_s0acl"]
+[ext_resource type="Texture2D" uid="uid://c6ptwqiltkws7" path="res://game/autoload/input/input_prompts/PlayStation Series/Double/playstation_button_l3_outline.png" id="8_1mb73"]
+[ext_resource type="Texture2D" uid="uid://doq3o2jxfr2hy" path="res://game/autoload/input/input_prompts/PlayStation Series/Double/playstation_button_r3_outline.png" id="9_vmvm3"]
+[ext_resource type="Texture2D" uid="uid://bi8eqnk8n3b84" path="res://game/autoload/input/input_prompts/PlayStation Series/Double/playstation_trigger_l1_outline.png" id="10_u8ksp"]
+[ext_resource type="Texture2D" uid="uid://1ejjpffvlask" path="res://game/autoload/input/input_prompts/PlayStation Series/Double/playstation_trigger_r1_outline.png" id="11_csjae"]
+[ext_resource type="Texture2D" uid="uid://1wa6nhy76wt0" path="res://game/autoload/input/input_prompts/Xbox Series/Double/xbox_dpad_up_outline.png" id="12_37oo4"]
+[ext_resource type="Texture2D" uid="uid://dqtf2kw58yrup" path="res://game/autoload/input/input_prompts/Xbox Series/Double/xbox_dpad_down_outline.png" id="13_g7s0h"]
+[ext_resource type="Texture2D" uid="uid://cxn4yfefox6w" path="res://game/autoload/input/input_prompts/Xbox Series/Double/xbox_dpad_left_outline.png" id="14_kdd85"]
+[ext_resource type="Texture2D" uid="uid://c0r1tlkfkj2y1" path="res://game/autoload/input/input_prompts/Xbox Series/Double/xbox_dpad_right_outline.png" id="15_w4q6d"]
+[ext_resource type="Texture2D" uid="uid://mrjpsiolh5fr" path="res://game/autoload/input/input_prompts/PlayStation Series/Double/playstation5_touchpad_outline.png" id="16_kbx80"]
+
+[resource]
+script = ExtResource("1_oe10l")
+device_name = "playstation"
+button_icons = Array[Texture2D]([ExtResource("1_8v88m"), ExtResource("2_afspa"), ExtResource("3_uvknt"), ExtResource("4_c2qve"), ExtResource("5_t3njl"), ExtResource("6_rc8ka"), ExtResource("7_s0acl"), ExtResource("8_1mb73"), ExtResource("9_vmvm3"), ExtResource("10_u8ksp"), ExtResource("11_csjae"), ExtResource("12_37oo4"), ExtResource("13_g7s0h"), ExtResource("14_kdd85"), ExtResource("15_w4q6d"), null, null, null, null, null, ExtResource("16_kbx80")])

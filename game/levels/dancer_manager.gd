@@ -6,6 +6,8 @@ var boss_phase: int:
 	set(value):
 		boss_phase = value
 		AudioManager.play_music(music_list[value])
+		blackboard1.set_var(&"phase", value)
+		blackboard2.set_var(&"phase", value)
 
 @export var music_list: Dictionary[int, MusicTrack]
 
@@ -108,7 +110,7 @@ func request_next_waypoint(requesting_dancer: CogworkDancer) -> Node:
 		var other_current_waypoint: Node3D = blackboard2.get_var(&"current_waypoint")
 		_waypoint1 = _waypoints.pick_random()
 		while _waypoint1 == _waypoint2 or _waypoint1 == current_waypoint or \
-			_waypoint1 == other_current_waypoint or _waypoint1.global_position.distance_to(current_waypoint.global_position) < 8:
+			_waypoint1 == other_current_waypoint or dancer1.global_position.distance_to(_waypoint1.global_position) < 8:
 			_waypoint1 = _waypoints.pick_random()
 		return _waypoint1
 	elif requesting_dancer == dancer2:
@@ -116,7 +118,7 @@ func request_next_waypoint(requesting_dancer: CogworkDancer) -> Node:
 		var other_current_waypoint: Node3D = blackboard1.get_var(&"current_waypoint")
 		_waypoint2 = _waypoints.pick_random()
 		while _waypoint2 == _waypoint1 or _waypoint2 == current_waypoint or \
-			_waypoint2 == other_current_waypoint or _waypoint2.global_position.distance_to(current_waypoint.global_position) < 8:
+			_waypoint2 == other_current_waypoint or dancer2.global_position.distance_to(_waypoint2.global_position) < 8:
 			_waypoint2 = _waypoints.pick_random()
 		return _waypoint2
 	return _waypoints.pick_random()

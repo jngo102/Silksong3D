@@ -1,0 +1,17 @@
+[gd_scene load_steps=8 format=3 uid="uid://dttrlfktlp4vc"]
+
+[ext_resource type="Script" uid="uid://frnp0rpboi0i" path="res://game/autoload/input/input_manager.gd" id="1_cujxe"]
+[ext_resource type="Script" uid="uid://ddqk8sr3ma6hh" path="res://game/autoload/input/input_icons.gd" id="2_2c4ls"]
+[ext_resource type="Resource" uid="uid://chv1cycx3jym0" path="res://game/resources/input_icons/xbox.tres" id="3_p5ms6"]
+[ext_resource type="Resource" uid="uid://dub68lb0c34d2" path="res://game/resources/input_icons/switch.tres" id="4_pr2jl"]
+[ext_resource type="Resource" uid="uid://d3g571v67ii5n" path="res://game/resources/input_icons/steamdeck.tres" id="5_hbenx"]
+[ext_resource type="Resource" uid="uid://8dnvpbxsvj8" path="res://game/resources/input_icons/playstation.tres" id="6_eigyn"]
+[ext_resource type="PackedScene" uid="uid://dgb1dhkamy3l3" path="res://game/autoload/input/jump_action.tscn" id="7_2c4ls"]
+
+[node name="InputManager" type="Node"]
+script = ExtResource("1_cujxe")
+input_icons = Array[ExtResource("2_2c4ls")]([ExtResource("3_p5ms6"), ExtResource("4_pr2jl"), ExtResource("5_hbenx"), ExtResource("6_eigyn")])
+
+[node name="InputActions" type="Node" parent="."]
+
+[node name="JumpAction" parent="InputActions" instance=ExtResource("7_2c4ls")]

@@ -1,4 +1,4 @@
-[gd_resource type="BehaviorTree" load_steps=849 format=3 uid="uid://chh6lvoe5ufr8"]
+[gd_resource type="BehaviorTree" load_steps=831 format=3 uid="uid://chh6lvoe5ufr8"]
 
 [ext_resource type="Script" uid="uid://co46fdui830i2" path="res://game/ai/tasks/scene/get_all_in_group.gd" id="2_f75ub"]
 [ext_resource type="Script" uid="uid://oufr1n61rgt6" path="res://game/ai/tasks/audio/get_current_music_player.gd" id="3_ngxa6"]
@@ -51,6 +51,8 @@
 [ext_resource type="Script" uid="uid://c6x14fd7s2d0i" path="res://game/ai/tasks/transform/get_distance_to.gd" id="48_lgqnu"]
 [ext_resource type="Script" uid="uid://h8x5cgoail1j" path="res://game/ai/tasks/math/set_vector_at_length_from.gd" id="49_eme4l"]
 [ext_resource type="Script" uid="uid://bhbfx0nq52wad" path="res://game/ai/tasks/math/clamp_value.gd" id="50_7weh2"]
+[ext_resource type="AudioStream" uid="uid://clc21pubibkmb" path="res://game/copyrighted/cogwork_dancers/clockwork_dancers_leave_screen_for_multi_slash.wav" id="51_vksgl"]
+[ext_resource type="AudioStream" uid="uid://dejelb8naxvfc" path="res://game/copyrighted/cogwork_dancers/clockwork_dancers_return_after_multi_dash.wav" id="52_1jkmb"]
 
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_ucsdq"]
 prefetch_nodepath_vars = false
@@ -97,6 +99,11 @@ var/dash_z/type = 3
 var/dash_z/value = 0.0
 var/dash_z/hint = 0
 var/dash_z/hint_string = ""
+var/dashing/name = &"dashing"
+var/dashing/type = 1
+var/dashing/value = false
+var/dashing/hint = 0
+var/dashing/hint_string = ""
 var/direction_light/name = &"direction_light"
 var/direction_light/type = 24
 var/direction_light/value = Object(Node3D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(1, -1.3322676e-15, -2.646978e-23, 1.3322676e-15, 1, 0, 1.6543612e-24, -2.204052e-39, 16, 0, 3, -2),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":null)
@@ -1231,8 +1238,8 @@ animation_name = &"Catch Lifted"
 
 [sub_resource type="BBVariant" id="BBVariant_2jhbf"]
 type = 3
-saved_value = 12.0
-resource_name = "12.0"
+saved_value = 10.0
+resource_name = "10.0"
 
 [sub_resource type="BTSetVar" id="BTSetVar_sh7if"]
 variable = &"waypoint_y"
@@ -1401,131 +1408,6 @@ children = [SubResource("BTRepeatUntilSuccess_0dlsi"), SubResource("BTSequence_k
 [sub_resource type="BTSequence" id="BTSequence_ucsdq"]
 custom_name = "Gaze"
 children = [SubResource("BTCallMethod_kk73g"), SubResource("BTCallMethod_qj0wi"), SubResource("BTAction_qj0wi"), SubResource("BTAction_albun"), SubResource("BTSelector_3guyw"), SubResource("BTSelector_ucsdq"), SubResource("BTAction_nf1r4"), SubResource("BTAction_mmu5o"), SubResource("BTSequence_bxjok")]
-
-[sub_resource type="BTAction" id="BTAction_uyp3b"]
-script = ExtResource("8_ngxa6")
-audio_player_var = &"current_music_player"
-
-[sub_resource type="BBVariant" id="BBVariant_8s2vd"]
-value_source = 1
-variable = &"music_duration"
-resource_name = "$music_duration"
-
-[sub_resource type="BBVariant" id="BBVariant_q81r8"]
-type = 3
-saved_value = 0.0
-resource_name = "<null>"
-
-[sub_resource type="BTAction" id="BTAction_dwi0u"]
-script = ExtResource("50_7weh2")
-value_var = &"music_playback_position"
-min_var = SubResource("BBVariant_q81r8")
-max_var = SubResource("BBVariant_8s2vd")
-
-[sub_resource type="BBVariant" id="BBVariant_hne5c"]
-value_source = 1
-variable = &"next_measure_time"
-resource_name = "$next_measure_time"
-
-[sub_resource type="BTCheckVar" id="BTCheckVar_u43jt"]
-variable = &"music_playback_position"
-check_type = 3
-value = SubResource("BBVariant_hne5c")
-
-[sub_resource type="BBVariant" id="BBVariant_ceurk"]
-value_source = 1
-variable = &"music_duration"
-resource_name = "$music_duration"
-
-[sub_resource type="BTCheckVar" id="BTCheckVar_ksxkt"]
-variable = &"next_measure_time"
-check_type = 3
-value = SubResource("BBVariant_ceurk")
-
-[sub_resource type="BBVariant" id="BBVariant_odpkm"]
-value_source = 1
-variable = &"measure_length"
-resource_name = "$measure_length"
-
-[sub_resource type="BTCheckVar" id="BTCheckVar_3xmps"]
-variable = &"music_playback_position"
-check_type = 1
-value = SubResource("BBVariant_odpkm")
-
-[sub_resource type="BTSequence" id="BTSequence_fx6v6"]
-children = [SubResource("BTCheckVar_ksxkt"), SubResource("BTCheckVar_3xmps")]
-
-[sub_resource type="BTSelector" id="BTSelector_rerkj"]
-children = [SubResource("BTCheckVar_u43jt"), SubResource("BTSequence_fx6v6")]
-
-[sub_resource type="BTSequence" id="BTSequence_djijo"]
-children = [SubResource("BTAction_uyp3b"), SubResource("BTAction_dwi0u"), SubResource("BTSelector_rerkj")]
-
-[sub_resource type="BTRepeatUntilSuccess" id="BTRepeatUntilSuccess_ejr6d"]
-custom_name = "Check Music Playback Position"
-children = [SubResource("BTSequence_djijo")]
-
-[sub_resource type="BBVariant" id="BBVariant_8hf8u"]
-value_source = 1
-variable = &"music_playback_position"
-resource_name = "$music_playback_position"
-
-[sub_resource type="BTSetVar" id="BTSetVar_24rja"]
-variable = &"next_measure_time"
-value = SubResource("BBVariant_8hf8u")
-
-[sub_resource type="BBVariant" id="BBVariant_4mpcf"]
-value_source = 1
-variable = &"measure_length"
-resource_name = "$measure_length"
-
-[sub_resource type="BTSetVar" id="BTSetVar_oibc6"]
-variable = &"next_measure_time"
-value = SubResource("BBVariant_4mpcf")
-operation = 4
-
-[sub_resource type="BTAction" id="BTAction_spim5"]
-script = ExtResource("20_34w61")
-value_var = &"next_measure_time"
-
-[sub_resource type="BBVariant" id="BBVariant_3arx4"]
-type = 2
-saved_value = 1
-resource_name = "1"
-
-[sub_resource type="BTSetVar" id="BTSetVar_l0scc"]
-variable = &"next_measure_time"
-value = SubResource("BBVariant_3arx4")
-operation = 1
-
-[sub_resource type="BBVariant" id="BBVariant_54t1i"]
-type = 2
-value_source = 1
-variable = &"measure_length"
-resource_name = "$measure_length"
-
-[sub_resource type="BTSetVar" id="BTSetVar_r7yip"]
-variable = &"next_measure_time"
-value = SubResource("BBVariant_54t1i")
-operation = 3
-
-[sub_resource type="BBVariant" id="BBVariant_50xhl"]
-value_source = 1
-variable = &"epsilon"
-resource_name = "$epsilon"
-
-[sub_resource type="BTSetVar" id="BTSetVar_ba4ej"]
-variable = &"next_measure_time"
-value = SubResource("BBVariant_50xhl")
-operation = 1
-
-[sub_resource type="BTSequence" id="BTSequence_nniyr"]
-custom_name = "Reset Next Measure Time"
-children = [SubResource("BTSetVar_24rja"), SubResource("BTSetVar_oibc6"), SubResource("BTAction_spim5"), SubResource("BTSetVar_l0scc"), SubResource("BTSetVar_r7yip"), SubResource("BTSetVar_ba4ej")]
-
-[sub_resource type="BTSequence" id="BTSequence_1pp1c"]
-custom_name = "Wait Until Next Measure"
-children = [SubResource("BTRepeatUntilSuccess_ejr6d"), SubResource("BTSequence_nniyr")]
 
 [sub_resource type="BTAction" id="BTAction_1jkmb"]
 script = ExtResource("12_ttsve")
@@ -2499,7 +2381,7 @@ children = [SubResource("BTCheckVar_wqhru"), SubResource("BTCheckVar_bpi8i"), Su
 
 [sub_resource type="BTSequence" id="BTSequence_io532"]
 custom_name = "Gay Little Spin"
-children = [SubResource("BTRepeatUntilSuccess_o7vs3"), SubResource("BTSequence_7weh2"), SubResource("BTSequence_qqr1w"), SubResource("BTSequence_8e3t8"), SubResource("BTSequence_mypcl"), SubResource("BTSequence_kk73g"), SubResource("BTSequence_i41ga"), SubResource("BTSequence_ucsdq"), SubResource("BTSequence_1pp1c"), SubResource("BTSequence_k74v3"), SubResource("BTSequence_0howl"), SubResource("BTSequence_xpnyx"), SubResource("BTSequence_5lvyq"), SubResource("BTSelector_20vmj")]
+children = [SubResource("BTRepeatUntilSuccess_o7vs3"), SubResource("BTSequence_7weh2"), SubResource("BTSequence_qqr1w"), SubResource("BTSequence_8e3t8"), SubResource("BTSequence_mypcl"), SubResource("BTSequence_kk73g"), SubResource("BTSequence_i41ga"), SubResource("BTSequence_ucsdq"), SubResource("BTSequence_k74v3"), SubResource("BTSequence_0howl"), SubResource("BTSequence_xpnyx"), SubResource("BTSequence_5lvyq"), SubResource("BTSelector_20vmj")]
 
 [sub_resource type="BTSelector" id="BTSelector_g5k6k"]
 custom_name = "Check Should Spin"
@@ -2633,6 +2515,11 @@ output_position_var = &"self_position"
 
 [sub_resource type="BTAction" id="BTAction_3g83i"]
 script = ExtResource("20_ucsdq")
+clips_array = Array[AudioStream]([ExtResource("51_vksgl")])
+play_position_var = &"self_position"
+
+[sub_resource type="BTAction" id="BTAction_uyp3b"]
+script = ExtResource("20_ucsdq")
 clips_array = Array[AudioStream]([ExtResource("8_34w61"), ExtResource("9_3guyw"), ExtResource("10_a4ig0"), ExtResource("11_i3yf6")])
 play_position_var = &"self_position"
 
@@ -2645,7 +2532,7 @@ move_to_tween_var = &""
 
 [sub_resource type="BTSequence" id="BTSequence_ueah8"]
 custom_name = "Do Teleport"
-children = [SubResource("BTPlayAnimation_3guyw"), SubResource("BTAction_pappx"), SubResource("BTAction_iegny"), SubResource("BTAction_3g83i"), SubResource("BTAction_tidaw")]
+children = [SubResource("BTPlayAnimation_3guyw"), SubResource("BTAction_pappx"), SubResource("BTAction_iegny"), SubResource("BTAction_3g83i"), SubResource("BTAction_uyp3b"), SubResource("BTAction_tidaw")]
 
 [sub_resource type="BBNode" id="BBNode_3guyw"]
 value_source = 1
@@ -2746,9 +2633,19 @@ animation_player = SubResource("BBNode_tidaw")
 animation_name = &"Roar"
 blend = 0.125
 
+[sub_resource type="BTAction" id="BTAction_lalf6"]
+script = ExtResource("9_mmu5o")
+target_var = &"self"
+output_position_var = &"self_position"
+
+[sub_resource type="BTAction" id="BTAction_bwuyh"]
+script = ExtResource("20_ucsdq")
+clips_array = Array[AudioStream]([ExtResource("52_1jkmb")])
+play_position_var = &"self_position"
+
 [sub_resource type="BTSequence" id="BTSequence_fuw20"]
 custom_name = "Return Finish"
-children = [SubResource("BTAction_biu47"), SubResource("BTAction_eme4l"), SubResource("BTPlayAnimation_pappx")]
+children = [SubResource("BTAction_biu47"), SubResource("BTAction_eme4l"), SubResource("BTPlayAnimation_pappx"), SubResource("BTAction_lalf6"), SubResource("BTAction_bwuyh")]
 
 [sub_resource type="BTAction" id="BTAction_o7vs3"]
 script = ExtResource("8_ngxa6")
@@ -3488,6 +3385,15 @@ children = [SubResource("BTSetVar_q81r8"), SubResource("BTSetVar_6deqr"), SubRes
 custom_name = "Wait Until Next Measure"
 children = [SubResource("BTRepeatUntilSuccess_yk1c7"), SubResource("BTSequence_ceurk")]
 
+[sub_resource type="BBVariant" id="BBVariant_ipxx0"]
+type = 1
+saved_value = true
+resource_name = "true"
+
+[sub_resource type="BTSetVar" id="BTSetVar_lkiki"]
+variable = &"dashing"
+value = SubResource("BBVariant_ipxx0")
+
 [sub_resource type="BTAction" id="BTAction_jn4d2"]
 script = ExtResource("9_mmu5o")
 target_var = &"self"
@@ -3815,7 +3721,7 @@ children = [SubResource("BTSelector_gyehm"), SubResource("BTSelector_l67pb")]
 
 [sub_resource type="BTSequence" id="BTSequence_mvymf"]
 custom_name = "Dash To Waypoint"
-children = [SubResource("BTAction_jn4d2"), SubResource("BTAction_tvm2c"), SubResource("BTAction_lkiki"), SubResource("BTSelector_wmffp"), SubResource("BTPlayAnimation_i63ae"), SubResource("BTPlayAnimation_q8ous"), SubResource("BTSequence_ud0sg")]
+children = [SubResource("BTSetVar_lkiki"), SubResource("BTAction_jn4d2"), SubResource("BTAction_tvm2c"), SubResource("BTAction_lkiki"), SubResource("BTSelector_wmffp"), SubResource("BTPlayAnimation_i63ae"), SubResource("BTPlayAnimation_q8ous"), SubResource("BTSequence_ud0sg")]
 
 [sub_resource type="BTAction" id="BTAction_k0syu"]
 script = ExtResource("8_ngxa6")
@@ -3951,6 +3857,15 @@ resource_name = "$next_waypoint"
 variable = &"current_waypoint"
 value = SubResource("BBVariant_teqfu")
 
+[sub_resource type="BBVariant" id="BBVariant_fuw20"]
+type = 1
+saved_value = false
+resource_name = "false"
+
+[sub_resource type="BTSetVar" id="BTSetVar_3b8xs"]
+variable = &"dashing"
+value = SubResource("BBVariant_fuw20")
+
 [sub_resource type="BBVariant" id="BBVariant_dndkg"]
 value_source = 1
 variable = &"self"
@@ -3982,7 +3897,7 @@ value = SubResource("BBVariant_1jkmb")
 
 [sub_resource type="BTSequence" id="BTSequence_3g83i"]
 custom_name = "Reset"
-children = [SubResource("BTSetVar_id8m2"), SubResource("BTCallMethod_o5el3"), SubResource("BTSetVar_ueah8")]
+children = [SubResource("BTSetVar_id8m2"), SubResource("BTSetVar_3b8xs"), SubResource("BTCallMethod_o5el3"), SubResource("BTSetVar_ueah8")]
 
 [sub_resource type="BTSequence" id="BTSequence_kn74s"]
 children = [SubResource("BTSelector_g5k6k"), SubResource("BTSelector_sh7if"), SubResource("BTSequence_euuuy"), SubResource("BTSequence_yjjwa"), SubResource("BTSequence_mvymf"), SubResource("BTSequence_ana4t"), SubResource("BTSequence_3g83i")]

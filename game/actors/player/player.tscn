@@ -1,66 +1,19 @@
-[gd_scene load_steps=19 format=3 uid="uid://bk5l50c7ma8dr"]
+[gd_scene load_steps=15 format=3 uid="uid://bk5l50c7ma8dr"]
 
 [ext_resource type="PackedScene" uid="uid://36gmo74w6e2q" path="res://game/actors/actor.tscn" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://cyskkgbbkdq4d" path="res://game/actors/player/player.gd" id="2_dw050"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://dxbdw4keges5f" path="res://game/resources/animations/player_state_machine.tres" id="2_onrkg"]
-[ext_resource type="Material" uid="uid://wyn7241wbnbe" path="res://game/resources/materials/black.tres" id="3_1jxqw"]
-[ext_resource type="AnimationLibrary" uid="uid://cnpxpagyaa7k3" path="res://game/resources/animations/hornet_anim.tres" id="3_b26j0"]
-[ext_resource type="ArrayMesh" uid="uid://ba3fi78rsee2c" path="res://game/resources/meshes/head_mesh.tres" id="4_dw050"]
 [ext_resource type="ArrayMesh" uid="uid://bgirt3tfr1hod" path="res://game/resources/meshes/cloak_mesh.tres" id="5_b26j0"]
-[ext_resource type="ArrayMesh" uid="uid://tyvxfut2nh3i" path="res://game/resources/meshes/body_mesh.tres" id="5_n7ghd"]
+[ext_resource type="PackedScene" uid="uid://pj02xii8jggq" path="res://game/actors/player/hornet.glb" id="5_qdo3w"]
 [ext_resource type="Material" uid="uid://breyp8thk738j" path="res://game/resources/meshes/cloak.tres" id="6_n7ghd"]
-[ext_resource type="Skin" uid="uid://c4vr675l6m8ke" path="res://game/resources/skins/head_skin.tres" id="6_nvl01"]
 [ext_resource type="PackedScene" uid="uid://dpkqjvyr32cys" path="res://game/actors/player/needle.tscn" id="7_nvl01"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_n7ghd"]
 radius = 0.25
-height = 3.5134277
+height = 5.0
 
-[sub_resource type="Skin" id="Skin_n7ghd"]
-resource_name = "Skin"
-bind_count = 14
-bind/0/name = &"Spine0"
-bind/0/bone = -1
-bind/0/pose = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.01802659, 0)
-bind/1/name = &"Spine1"
-bind/1/bone = -1
-bind/1/pose = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5541363, 0)
-bind/2/name = &"Spine2"
-bind/2/bone = -1
-bind/2/pose = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.93763924, 0)
-bind/3/name = &"Head_2"
-bind/3/bone = -1
-bind/3/pose = Transform3D(1, 0, -2.3841858e-07, 0, 1, 0, 2.3841858e-07, 0, 1, 0, -1.2839727, 0)
-bind/4/name = &"Hip_L"
-bind/4/bone = -1
-bind/4/pose = Transform3D(0, 4.371139e-08, 1, 1.0000001, 0, 0, 0, 1, -4.371139e-08, -7.879673e-10, 0, -0.01802659)
-bind/5/name = &"Thigh_L"
-bind/5/bone = -1
-bind/5/pose = Transform3D(7.54979e-08, 0, 1, -1.9106855e-15, -1, 1.4425271e-22, 1.0000001, 0, -7.5497894e-08, -2.7157645e-08, 0.01802659, -0.35971394)
-bind/6/name = &"Shin_L"
-bind/6/bone = -1
-bind/6/pose = Transform3D(7.54979e-08, 0, 1, -1.9106855e-15, -1, 1.4425271e-22, 1.0000001, 0, -7.5497894e-08, -2.7157645e-08, -1.0636129, -0.35971394)
-bind/7/name = &"Hip_R"
-bind/7/bone = -1
-bind/7/pose = Transform3D(0, -4.371139e-08, -1, -1.0000001, 0, 0, 0, 1, -4.371139e-08, 7.879673e-10, 0, -0.01802659)
-bind/8/name = &"Thigh_R"
-bind/8/bone = -1
-bind/8/pose = Transform3D(7.54979e-08, 0, -1, 1.9106855e-15, -1, 1.4425271e-22, -1.0000001, 0, -7.5497894e-08, 2.7157645e-08, 0.01802659, -0.35971394)
-bind/9/name = &"Shin_R"
-bind/9/bone = -1
-bind/9/pose = Transform3D(7.54979e-08, 0, -1, 1.9106855e-15, -1, 1.4425271e-22, -1.0000001, 0, -7.5497894e-08, 2.7157645e-08, -1.0636129, -0.35971394)
-bind/10/name = &"Foot_IK_L"
-bind/10/bone = -1
-bind/10/pose = Transform3D(7.54979e-08, -1, 0, 0, 0, -1, 1, 7.54979e-08, 0, -2.1102803, -0.16947612, -0.3597138)
-bind/11/name = &"Knee_IK_L"
-bind/11/bone = -1
-bind/11/pose = Transform3D(4.0133926e-07, 1, 0, 0, 0, 1.0000001, 1, -4.0133926e-07, 0, 1.0636128, -0.16036025, -0.35971436)
-bind/12/name = &"Foot_IK_R"
-bind/12/bone = -1
-bind/12/pose = Transform3D(7.54979e-08, 1, 0, 0, 0, -1, -1, 7.54979e-08, 0, 2.1102803, -0.16947612, -0.3597138)
-bind/13/name = &"Knee_IK_R"
-bind/13/bone = -1
-bind/13/pose = Transform3D(4.0133926e-07, -1, 0, 0, 0, 1.0000001, -1, -4.0133926e-07, 0, -1.0636128, -0.16036025, -0.35971436)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j5vpa"]
+albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Animation" id="Animation_n7ghd"]
 resource_name = "Puff Out"
@@ -90,7 +43,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.5]
+"values": [0.001]
 }
 
 [sub_resource type="Animation" id="Animation_ivps1"]
@@ -117,163 +70,55 @@ _data = {
 }
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_urp6f"]
+radius = 0.001
 
 [node name="Player" groups=["Players"] instance=ExtResource("1_4flbx")]
 collision_layer = 1
 script = ExtResource("2_dw050")
-jump_height = 7.0
-walk_speed = 10.0
-sprint_speed = 25.0
-down_spike_speed = 60.0
+jump_height = 6.0
+walk_speed = 16.0
+sprint_speed = 32.0
+down_spike_speed = 90.0
+down_spike_bounce_spin_speed = 10.0
 
 [node name="Animator" parent="." index="0"]
-libraries = {
-&"": ExtResource("3_b26j0")
-}
+active = false
 autoplay = "Idle"
 
 [node name="AnimationTree" parent="Animator" index="0"]
-tree_root = ExtResource("2_onrkg")
-parameters/Walk/blend_position = Vector2(-0.06331307, 0.77489173)
+active = false
 
 [node name="Collision" parent="." index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.29516602, 0.122528076)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.33, 0.123)
 shape = SubResource("CapsuleShape3D_n7ghd")
 
 [node name="Health" parent="." index="2"]
 collision_mask = 16
 
-[node name="Armature" type="Node3D" parent="." index="3"]
+[node name="Model" parent="." index="3" instance=ExtResource("5_qdo3w")]
 
-[node name="Skeleton3D" type="Skeleton3D" parent="Armature" index="0"]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
-bones/0/name = "Spine0"
-bones/0/parent = -1
-bones/0/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-bones/0/enabled = true
-bones/0/position = Vector3(0, 0, 0)
-bones/0/rotation = Quaternion(0, 0, 0, 1)
-bones/0/scale = Vector3(1, 1, 1)
-bones/1/name = "Spine1"
-bones/1/parent = 0
-bones/1/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5361097, 0)
-bones/1/enabled = true
-bones/1/position = Vector3(0, 0.5361097, 0)
-bones/1/rotation = Quaternion(0, 0, 0, 1)
-bones/1/scale = Vector3(1, 1, 1)
-bones/2/name = "Spine2"
-bones/2/parent = 1
-bones/2/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.38350296, 0)
-bones/2/enabled = true
-bones/2/position = Vector3(0, 0.38350296, 0)
-bones/2/rotation = Quaternion(0, 0, 0, 1)
-bones/2/scale = Vector3(1, 1, 1)
-bones/3/name = "Head_2"
-bones/3/parent = 2
-bones/3/rest = Transform3D(1, 0, 2.3841858e-07, 0, 1, 0, -2.3841858e-07, 0, 1, 0, 0.3463335, 0)
-bones/3/enabled = true
-bones/3/position = Vector3(0, 0.3463335, 0)
-bones/3/rotation = Quaternion(0, 1.1920929e-07, 0, 1)
-bones/3/scale = Vector3(1, 1, 1)
-bones/4/name = "Hip_L"
-bones/4/parent = 0
-bones/4/rest = Transform3D(0, 0.99999994, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0)
-bones/4/enabled = true
-bones/4/position = Vector3(0, 0, 0)
-bones/4/rotation = Quaternion(0.5, 0.5, 0.5, -0.5)
-bones/4/scale = Vector3(1, 0.99999994, 1)
-bones/5/name = "Thigh_L"
-bones/5/parent = 4
-bones/5/rest = Transform3D(1, -4.371139e-08, -7.5497894e-08, 7.5497894e-08, 0, 1, -4.371139e-08, -1, 0, 7.1054274e-15, 0.35971394, 0)
-bones/5/enabled = true
-bones/5/position = Vector3(7.1054274e-15, 0.35971394, 0)
+[node name="Skeleton3D" parent="Model/Armature" index="0"]
 bones/5/rotation = Quaternion(-0.7070091, -0.0117546, -0.011754517, 0.7070091)
-bones/5/scale = Vector3(1, 1, 1)
-bones/6/name = "Shin_L"
-bones/6/parent = 5
-bones/6/rest = Transform3D(1, 6.3108872e-30, 0, -6.3108872e-30, 1, -5.5220263e-30, 0, 5.5220263e-30, 1, 0, 1.0816395, 0)
-bones/6/enabled = true
-bones/6/position = Vector3(0, 1.0816395, 0)
 bones/6/rotation = Quaternion(-4.440892e-16, -1.8873794e-15, -1.8626451e-09, 1)
-bones/6/scale = Vector3(1, 1, 1)
-bones/7/name = "Hip_R"
-bones/7/parent = 0
-bones/7/rest = Transform3D(0, -0.99999994, 0, 0, 0, 1, -1, 0, 0, 0, 0, 0)
-bones/7/enabled = true
-bones/7/position = Vector3(0, 0, 0)
-bones/7/rotation = Quaternion(0.5, -0.5, -0.5, -0.5)
-bones/7/scale = Vector3(1, 0.99999994, 1)
-bones/8/name = "Thigh_R"
-bones/8/parent = 7
-bones/8/rest = Transform3D(1, 4.371139e-08, 7.5497894e-08, -7.5497894e-08, 0, 1, 4.371139e-08, -1, 0, -7.1054274e-15, 0.35971394, 0)
-bones/8/enabled = true
-bones/8/position = Vector3(-7.1054274e-15, 0.35971394, 0)
 bones/8/rotation = Quaternion(-0.7070091, 0.011754569, 0.011754549, 0.7070091)
-bones/8/scale = Vector3(1, 1, 1)
-bones/9/name = "Shin_R"
-bones/9/parent = 8
-bones/9/rest = Transform3D(1, -6.3108872e-30, 0, 6.3108872e-30, 1, -5.5220263e-30, 0, 5.5220263e-30, 1, 0, 1.0816395, 0)
-bones/9/enabled = true
-bones/9/position = Vector3(0, 1.0816395, 0)
 bones/9/rotation = Quaternion(2.6469783e-23, 1.0408346e-16, 1.8626451e-09, 1)
-bones/9/scale = Vector3(1, 1, 1)
-bones/10/name = "Foot_IK_L"
-bones/10/parent = -1
-bones/10/rest = Transform3D(0, -5.9604645e-08, 1, -1, -1.1920929e-07, 5.9604645e-08, 5.9604645e-08, -1, -1.1920929e-07, 0.35971394, -2.1283069, -0.16947612)
-bones/10/enabled = true
 bones/10/position = Vector3(0.35971394, -2.1283069, 0.07078907)
-bones/10/rotation = Quaternion(0.5, -0.5, 0.5, -0.5)
-bones/10/scale = Vector3(1, 1, 1)
-bones/11/name = "Knee_IK_L"
-bones/11/parent = -1
-bones/11/rest = Transform3D(2.3841858e-07, 5.960465e-08, 1, 1, -5.960465e-08, -2.3841858e-07, 5.9604645e-08, 0.99999994, -5.960467e-08, 0.35971394, -1.0816395, 0.16036023)
-bones/11/enabled = true
-bones/11/position = Vector3(0.35971394, -1.0816395, 0.16036023)
 bones/11/rotation = Quaternion(0.5000001, 0.49999997, 0.4999999, 0.5)
-bones/11/scale = Vector3(1, 0.99999994, 1)
-bones/12/name = "Foot_IK_R"
-bones/12/parent = -1
-bones/12/rest = Transform3D(0, 5.9604645e-08, -1, 1, -1.1920929e-07, 5.9604645e-08, -5.9604645e-08, -1, -1.1920929e-07, -0.35971394, -2.1283069, -0.16947612)
-bones/12/enabled = true
 bones/12/position = Vector3(-0.35971394, -2.1283069, 0.07078907)
-bones/12/rotation = Quaternion(0.5, 0.5, -0.5, -0.5)
-bones/12/scale = Vector3(1, 1, 1)
-bones/13/name = "Knee_IK_R"
-bones/13/parent = -1
-bones/13/rest = Transform3D(2.3841858e-07, -5.960465e-08, -1, -1, -5.960465e-08, -2.3841858e-07, -5.9604645e-08, 0.99999994, -5.960467e-08, -0.35971394, -1.0816395, 0.16036023)
-bones/13/enabled = true
-bones/13/position = Vector3(-0.35971394, -1.0816395, 0.16036023)
 bones/13/rotation = Quaternion(0.5000001, -0.49999997, -0.4999999, 0.5)
-bones/13/scale = Vector3(1, 0.99999994, 1)
-bones/14/name = "neutral_bone"
-bones/14/parent = -1
-bones/14/rest = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
-bones/14/enabled = true
-bones/14/position = Vector3(0, 0, 0)
-bones/14/rotation = Quaternion(-0.70710677, 0, 0, 0.70710677)
-bones/14/scale = Vector3(1, 1, 1)
 
-[node name="Body" type="MeshInstance3D" parent="Armature/Skeleton3D" index="0"]
-transform = Transform3D(1, 2.4436088e-06, -1.6023201e-05, -2.4436088e-06, 1, -6.473269e-06, 1.6023201e-05, 6.473269e-06, 1, 0, 0, 0)
-mesh = ExtResource("5_n7ghd")
-skin = ExtResource("6_nvl01")
-surface_material_override/0 = ExtResource("3_1jxqw")
+[node name="Body" parent="Model/Armature/Skeleton3D" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_j5vpa")
 
-[node name="Head" type="MeshInstance3D" parent="Armature/Skeleton3D" index="1"]
-mesh = ExtResource("4_dw050")
-skin = SubResource("Skin_n7ghd")
-
-[node name="CloakAttach" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="2"]
+[node name="CloakAttach" type="BoneAttachment3D" parent="Model/Armature/Skeleton3D" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.91961265, 0)
 bone_name = "Spine2"
 bone_idx = 2
 
-[node name="Cloak" type="SoftBody3D" parent="Armature/Skeleton3D/CloakAttach" index="0"]
+[node name="Cloak" type="SoftBody3D" parent="Model/Armature/Skeleton3D/CloakAttach" index="0"]
 transform = Transform3D(1, 2.4436088e-06, -1.6023201e-05, -2.4436088e-06, 1, -6.473269e-06, 1.6023201e-05, 6.473269e-06, 1, 0, -3.12, 0)
 mesh = ExtResource("5_b26j0")
-skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("6_n7ghd")
-collision_mask = 7
 simulation_precision = 100
 linear_stiffness = 0.85
 damping_coefficient = 1.0
@@ -652,32 +497,42 @@ attachments/123/point_index = 287
 attachments/123/spatial_attachment_path = NodePath("..")
 attachments/123/offset = Vector3(-0.004442897, 0.13219714, 0.44696695)
 
-[node name="CloakAnimator" type="AnimationPlayer" parent="Armature/Skeleton3D/CloakAttach" index="1"]
+[node name="CloakAnimator" type="AnimationPlayer" parent="Model/Armature/Skeleton3D/CloakAttach" index="1"]
 libraries = {
 &"": SubResource("AnimationLibrary_ivps1")
 }
 
-[node name="PuffBody" type="StaticBody3D" parent="Armature/Skeleton3D/CloakAttach" index="2"]
+[node name="PuffBody" type="StaticBody3D" parent="Model/Armature/Skeleton3D/CloakAttach" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 collision_mask = 0
 
-[node name="Collision" type="CollisionShape3D" parent="Armature/Skeleton3D/CloakAttach/PuffBody" index="0"]
+[node name="Collision" type="CollisionShape3D" parent="Model/Armature/Skeleton3D/CloakAttach/PuffBody" index="0"]
 shape = SubResource("SphereShape3D_urp6f")
 
-[node name="NeedleAttach" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="3"]
+[node name="NeedleAttach" type="BoneAttachment3D" parent="Model/Armature/Skeleton3D" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.91961265, 0)
 bone_name = "Spine2"
 bone_idx = 2
 
-[node name="Needle" parent="Armature/Skeleton3D/NeedleAttach" index="0" instance=ExtResource("7_nvl01")]
+[node name="Needle" parent="Model/Armature/Skeleton3D/NeedleAttach" index="0" instance=ExtResource("7_nvl01")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.277, 1.5)
 
-[node name="Mesh" parent="Armature/Skeleton3D/NeedleAttach/Needle" index="1"]
+[node name="Mesh" parent="Model/Armature/Skeleton3D/NeedleAttach/Needle" index="1"]
 transform = Transform3D(0.05756263, -0.68949735, -0.28944767, 0.66983676, 0.17659517, -0.28745866, 0.33242267, -0.23644792, 0.6293546, -0.43267757, 3.7365413, -3.5042882)
+
+[node name="AnimationTree" type="AnimationTree" parent="Model/AnimationPlayer" index="0"]
+root_node = NodePath("../..")
+tree_root = ExtResource("2_onrkg")
+advance_expression_base_node = NodePath("../../..")
+anim_player = NodePath("..")
+parameters/Walk/blend_position = Vector2(-0.0026361942, 0.008163214)
 
 [connection signal="animation_finished" from="Animator/AnimationTree" to="." method="_on_animation_tree_animation_finished"]
 [connection signal="animation_started" from="Animator/AnimationTree" to="." method="_on_animation_tree_animation_started"]
-[connection signal="down_spiked" from="Armature/Skeleton3D/NeedleAttach/Needle" to="." method="_on_needle_down_spiked"]
+[connection signal="down_spiked" from="Model/Armature/Skeleton3D/NeedleAttach/Needle" to="." method="_on_needle_down_spiked"]
+[connection signal="animation_finished" from="Model/AnimationPlayer/AnimationTree" to="." method="_on_animation_tree_animation_finished"]
+[connection signal="animation_started" from="Model/AnimationPlayer/AnimationTree" to="." method="_on_animation_tree_animation_started"]
 
-[editable path="Armature/Skeleton3D/NeedleAttach/Needle"]
-[editable path="Armature/Skeleton3D/NeedleAttach/Needle/Mesh/DownSpikeDamager"]
+[editable path="Model"]
+[editable path="Model/Armature/Skeleton3D/NeedleAttach/Needle"]
+[editable path="Model/Armature/Skeleton3D/NeedleAttach/Needle/Mesh/DownSpikeDamager"]

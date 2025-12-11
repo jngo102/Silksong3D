@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://b37skkjsvgidd"]
+
+[ext_resource type="Script" uid="uid://c26ykjiw2tbxg" path="res://game/gameplay/scene/camera_controller.gd" id="1_ewp70"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ewp70"]
+radius = 1.0
+
+[node name="CameraController" type="Node3D"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+script = ExtResource("1_ewp70")
+min_yaw_degrees = -80.0
+max_yaw_degrees = 35.0
+
+[node name="CameraPitch" type="Node3D" parent="."]
+
+[node name="Gimbal" type="SpringArm3D" parent="CameraPitch"]
+collision_mask = 4
+shape = SubResource("SphereShape3D_ewp70")
+spring_length = 20.0
+
+[node name="Camera" type="Camera3D" parent="CameraPitch/Gimbal"]
+transform = Transform3D(1, 0, 0, 0, 0.90408254, 0.42735788, 0, -0.42735788, 0.90408254, 0, 10, -20)
+current = true
+fov = 60.0
+size = 70.0

@@ -295,8 +295,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_a5vur")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_fynfr"]
-size = Vector3(1, 1, 4.25)
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g78k6"]
+radius = 1.5
+height = 8.0
 
 [node name="Needle" type="Node3D"]
 script = ExtResource("1_bb050")
@@ -312,13 +313,13 @@ mesh = SubResource("ArrayMesh_sev4e")
 skeleton = NodePath("")
 
 [node name="DownSpikeDamager" parent="Mesh" instance=ExtResource("2_s1w8d")]
-transform = Transform3D(1.3333349, 0, 0, 0, 1.3333344, 0, 0, 0, 1.3333347, 0, 0, 0)
+transform = Transform3D(1.3333349, 0, 0, 0, -5.82819e-08, -1.3333347, 0, 1.3333344, -5.828191e-08, 0, 0, 0)
 collision_layer = 8
 collision_mask = 2
 
 [node name="Collision" parent="Mesh/DownSpikeDamager" index="0"]
-transform = Transform3D(0.9999995, -1.5795231e-06, -7.56979e-06, 4.4703484e-07, 0.99999905, -1.2218952e-06, -4.4703484e-07, 1.0728836e-06, 0.99999774, -1.013279e-05, -1.9073486e-06, 3.908008)
-shape = SubResource("BoxShape3D_fynfr")
+transform = Transform3D(0.9999995, -1.5795231e-06, -7.56979e-06, 4.4703484e-07, 0.99999905, -1.2218952e-06, -4.4703484e-07, 1.0728836e-06, 0.99999774, 0, 2, 0)
+shape = SubResource("CapsuleShape3D_g78k6")
 disabled = true
 
 [node name="SlashEffect" parent="." instance=ExtResource("3_g78k6")]
