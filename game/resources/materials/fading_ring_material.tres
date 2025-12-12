@@ -5,8 +5,8 @@
 [sub_resource type="Gradient" id="Gradient_x4adb"]
 resource_local_to_scene = true
 interpolation_mode = 2
-offsets = PackedFloat32Array(0, 0.5, 1)
-colors = PackedColorArray(1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0)
+offsets = PackedFloat32Array(0, 0.45, 0.55, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.7529412, 1, 1, 1, 0.7529412, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_x30sm"]
 gradient = SubResource("Gradient_x4adb")
@@ -91,4 +91,4 @@ nodes/fragment/connections = PackedInt32Array(12, 0, 13, 0, 8, 0, 12, 0, 13, 0, 
 resource_local_to_scene = true
 render_priority = 0
 shader = SubResource("VisualShader_glf46")
-shader_parameter/Alpha = 1.0
+shader_parameter/Alpha = 0.5

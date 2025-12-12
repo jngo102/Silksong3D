@@ -130,24 +130,25 @@ func _reset_default_blackboard_variables(dancer: CogworkDancer) -> void:
 	dancer.bb.set_var(&"spinner_path", spinner.get_path())
 	dancer.bb.set_var(&"teleport_point", teleport_point)
 	dancer.bb.set_var(&"teleport_point", teleport_point)
+	dancer.bb.set_var(&"direction_light", dancer.get_node("Direction"))
+	dancer.bb.set_var(&"roar_point", dancer.get_node("Model/RoarPoint"))
 	if dancer == dancer1:
 		bb1.set_var(&"next_waypoint", starting_waypoint1)
 		bb1.set_var(&"other_dancer", dancer2)
 		bb1.set_var(&"other_dancer_next_waypoint", dancer2.behavior_tree.blackboard.get_var(&"next_waypoint"))
 		bb1.set_var(&"spin_target", spin_target1)
 		bb1.set_var(&"self", dancer1)
-		bb1.set_var(&"direction_light", dancer1.get_node("Direction"))
 	elif dancer == dancer2:
 		bb2.set_var(&"next_waypoint", starting_waypoint2)
 		bb2.set_var(&"other_dancer", dancer1)
 		bb2.set_var(&"other_dancer_next_waypoint", dancer1.behavior_tree.blackboard.get_var(&"next_waypoint"))
 		bb2.set_var(&"spin_target", spin_target2)
 		bb2.set_var(&"self", dancer2)
-		bb2.set_var(&"direction_light", dancer2.get_node("Direction"))
 
 func _set_dancer_death_active(died_dancer: CogworkDancer) -> void:
 	if is_instance_valid(dancer1):
 		_reset_death_blackboard_variables(dancer1)
+		dancer1.behavior_tree.restart()
 		dancer1.behavior_tree.set_active(false)
 		dancer1.death_behavior_tree.set_active(true)
 		dancer1.death_behavior_tree.restart()
@@ -155,6 +156,7 @@ func _set_dancer_death_active(died_dancer: CogworkDancer) -> void:
 		bb1.set_var(&"should_teleport", false)
 	if is_instance_valid(dancer2):
 		_reset_death_blackboard_variables(dancer2)
+		dancer2.behavior_tree.restart()
 		dancer2.behavior_tree.set_active(false)
 		dancer2.death_behavior_tree.set_active(true)
 		dancer2.death_behavior_tree.restart()

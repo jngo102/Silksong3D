@@ -1,4 +1,4 @@
-[gd_resource type="BehaviorTree" load_steps=991 format=3 uid="uid://chh6lvoe5ufr8"]
+[gd_resource type="BehaviorTree" load_steps=1008 format=3 uid="uid://chh6lvoe5ufr8"]
 
 [ext_resource type="Script" uid="uid://dfxh5qmwucb7e" path="res://game/ai/tasks/scene/get_first_in_group.gd" id="1_lkiki"]
 [ext_resource type="Script" uid="uid://oufr1n61rgt6" path="res://game/ai/tasks/audio/get_current_music_player.gd" id="3_ngxa6"]
@@ -25,6 +25,7 @@
 [ext_resource type="Script" uid="uid://bjsiqgp7kiids" path="res://game/ai/tasks/math/get_vector_x_y_z.gd" id="18_34w61"]
 [ext_resource type="Script" uid="uid://cawha32gubgkl" path="res://game/ai/tasks/scene/set_collider.gd" id="18_fuw20"]
 [ext_resource type="Script" uid="uid://b0mh6vbdv44ds" path="res://game/ai/tasks/math/set_vector_x_y_z.gd" id="19_3guyw"]
+[ext_resource type="Script" uid="uid://bx83tewgfqs5x" path="res://game/ai/tasks/actors/create_roar_effect.gd" id="19_e8anh"]
 [ext_resource type="AudioStream" uid="uid://6y6ehraiacsn" path="res://game/copyrighted/cogwork_dancers/sfx/CogD_attack_large_01.wav" id="19_o08b3"]
 [ext_resource type="Script" uid="uid://c0p66kb4ewpj5" path="res://game/ai/tasks/math/floor.gd" id="20_34w61"]
 [ext_resource type="Script" uid="uid://cnvl4kjqa7qju" path="res://game/ai/tasks/transform/set_position_x_y_z.gd" id="20_a4ig0"]
@@ -32,9 +33,11 @@
 [ext_resource type="Script" uid="uid://5qpw7k5phkni" path="res://game/ai/tasks/audio/play_random_audio.gd" id="20_ucsdq"]
 [ext_resource type="AudioStream" uid="uid://do0weqwbma1co" path="res://game/copyrighted/cogwork_dancers/sfx/CogD_attack_large_03.wav" id="21_3b8xs"]
 [ext_resource type="Script" uid="uid://dt2awuygt37mg" path="res://game/ai/tasks/transform/set_rotation_x_y_z.gd" id="21_i3yf6"]
+[ext_resource type="Script" uid="uid://dvdqux1hfw046" path="res://game/ai/tasks/scene/queue_free.gd" id="21_mdpca"]
 [ext_resource type="Script" uid="uid://d03jex37smyoc" path="res://game/ai/tasks/logic/kill_tween.gd" id="22_dphll"]
 [ext_resource type="AudioStream" uid="uid://dvdperp7jn1qi" path="res://game/copyrighted/cogwork_dancers/sfx/CogD_attack_large_04.wav" id="22_e8anh"]
 [ext_resource type="AudioStream" uid="uid://dkqjngri23cmb" path="res://game/copyrighted/cogwork_dancers/sfx/clockwork_dancer_look_up_after_bow.wav" id="26_mdpca"]
+[ext_resource type="Script" uid="uid://br84132pv8riw" path="res://game/ai/tasks/actors/shake_camera.gd" id="30_3b8xs"]
 [ext_resource type="AudioStream" uid="uid://huqy8mpc427n" path="res://game/copyrighted/cogwork_dancers/sfx/clockwork_dancers_halo.wav" id="30_drhsk"]
 [ext_resource type="AudioStream" uid="uid://ci01hprg2606n" path="res://game/copyrighted/cogwork_dancers/sfx/clockwork_dancers_halov2_1.wav" id="31_877ps"]
 [ext_resource type="AudioStream" uid="uid://dhqe1gm1b00fp" path="res://game/copyrighted/cogwork_dancers/sfx/clockwork_dancers_halov2_2.wav" id="32_tfrvw"]
@@ -218,6 +221,21 @@ var/player/name = &"player"
 var/player/type = 24
 var/player/hint = 34
 var/player/hint_string = ""
+var/roar_effect/name = &"roar_effect"
+var/roar_effect/type = 24
+var/roar_effect/hint = 34
+var/roar_effect/hint_string = ""
+var/roar_point/name = &"roar_point"
+var/roar_point/type = 24
+var/roar_point/value = Object(Node3D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.7010176, 0),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":null)
+
+var/roar_point/hint = 34
+var/roar_point/hint_string = ""
+var/roar_position/name = &"roar_position"
+var/roar_position/type = 9
+var/roar_position/value = Vector3(0, 0, 0)
+var/roar_position/hint = 0
+var/roar_position/hint_string = ""
 var/self/name = &"self"
 var/self/type = 24
 var/self/value = Object(CharacterBody3D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"disable_mode":0,"collision_layer":2,"collision_mask":4,"collision_priority":1.0,"input_ray_pickable":true,"input_capture_on_drag":false,"axis_lock_linear_x":false,"axis_lock_linear_y":false,"axis_lock_linear_z":false,"axis_lock_angular_x":false,"axis_lock_angular_y":false,"axis_lock_angular_z":false,"motion_mode":0,"up_direction":Vector3(0, 1, 0),"slide_on_ceiling":true,"velocity":Vector3(0, 0, 0),"max_slides":6,"wall_min_slide_angle":0.2617994,"floor_stop_on_slope":true,"floor_constant_speed":false,"floor_block_on_wall":true,"floor_max_angle":0.7853982,"floor_snap_length":0.1,"platform_on_leave":0,"platform_floor_layers":4294967295,"platform_wall_layers":0,"safe_margin":0.001,"script":Resource("res://game/actors/enemies/cogwork_dancers/cogwork_dancer.gd"),"top":false,"to_waypoint_spin_speed":30.0)
@@ -312,6 +330,10 @@ var/waypoint_y/value = 0.0
 var/waypoint_y/hint = 0
 var/waypoint_y/hint_string = ""
 
+[sub_resource type="BTAction" id="BTAction_py6fg"]
+script = ExtResource("22_dphll")
+tween_var = &"move_to_tween"
+
 [sub_resource type="BTAction" id="BTAction_57nll"]
 script = ExtResource("1_lkiki")
 group = &"Players"
@@ -334,7 +356,7 @@ output_z_var = &""
 
 [sub_resource type="BTSequence" id="BTSequence_vfpbh"]
 custom_name = "Get Nodes"
-children = [SubResource("BTAction_57nll"), SubResource("BTAction_4gcbf"), SubResource("BTAction_drhsk"), SubResource("BTAction_877ps")]
+children = [SubResource("BTAction_py6fg"), SubResource("BTAction_57nll"), SubResource("BTAction_4gcbf"), SubResource("BTAction_drhsk"), SubResource("BTAction_877ps")]
 
 [sub_resource type="BTAction" id="BTAction_5382o"]
 script = ExtResource("4_6mje8")
@@ -624,7 +646,7 @@ resource_name = "true"
 [sub_resource type="BBVariant" id="BBVariant_8s2vd"]
 type = 1
 saved_value = false
-resource_name = "<null>"
+resource_name = "false"
 
 [sub_resource type="BBNode" id="BBNode_yk1c7"]
 value_source = 1
@@ -801,11 +823,35 @@ script = ExtResource("20_ucsdq")
 clips_array = Array[AudioStream]([ExtResource("13_ipxx0"), ExtResource("14_lkiki")])
 play_position_var = &"self_position"
 
+[sub_resource type="BTAction" id="BTAction_buhy5"]
+script = ExtResource("9_mmu5o")
+target_var = &"roar_point"
+output_position_var = &"roar_position"
+
+[sub_resource type="BBVariant" id="BBVariant_50xhl"]
+value_source = 1
+variable = &"roar_position"
+resource_name = "$roar_position"
+
+[sub_resource type="BTAction" id="BTAction_kdjaf"]
+script = ExtResource("19_e8anh")
+roar_position_var = SubResource("BBVariant_50xhl")
+
 [sub_resource type="BTWait" id="BTWait_vksgl"]
 duration = 2.0
 
+[sub_resource type="BBVariant" id="BBVariant_74xcn"]
+value_source = 1
+variable = &"roar_effect"
+resource_name = "$roar_effect"
+
+[sub_resource type="BTAction" id="BTAction_aqujm"]
+script = ExtResource("21_mdpca")
+object_to_free_var = SubResource("BBVariant_74xcn")
+
 [sub_resource type="BTSequence" id="BTSequence_o08b3"]
-children = [SubResource("BTAction_so0oi"), SubResource("BTAction_0dlsi"), SubResource("BTWait_vksgl")]
+custom_name = "Roar"
+children = [SubResource("BTAction_so0oi"), SubResource("BTAction_0dlsi"), SubResource("BTAction_buhy5"), SubResource("BTAction_kdjaf"), SubResource("BTWait_vksgl"), SubResource("BTAction_aqujm")]
 
 [sub_resource type="BTSelector" id="BTSelector_c57wm"]
 custom_name = "Check Phase 1 Roar"
@@ -824,6 +870,16 @@ resource_name = "$manager_path"
 node = SubResource("BBNode_ueah8")
 method = &"play_music"
 
+[sub_resource type="BBVariant" id="BBVariant_i0pie"]
+type = 22
+saved_value = NodePath("Collision")
+resource_name = "Collision"
+
+[sub_resource type="BTAction" id="BTAction_lmr6b"]
+script = ExtResource("18_fuw20")
+collider_var = SubResource("BBVariant_i0pie")
+enabled = true
+
 [sub_resource type="BBVariant" id="BBVariant_phhuc"]
 type = 22
 saved_value = NodePath("Health/Collision")
@@ -836,7 +892,7 @@ enabled = true
 
 [sub_resource type="BTSequence" id="BTSequence_e8anh"]
 custom_name = "Restart Fight"
-children = [SubResource("BTCallMethod_3g83i"), SubResource("BTAction_ngr5d")]
+children = [SubResource("BTCallMethod_3g83i"), SubResource("BTAction_lmr6b"), SubResource("BTAction_ngr5d")]
 
 [sub_resource type="BBVariant" id="BBVariant_tfrvw"]
 type = 2
@@ -1378,7 +1434,6 @@ output_position_var = &"waypoint_position"
 script = ExtResource("10_nf1r4")
 target_position_var = &"waypoint_position"
 time = 0.25
-move_to_tween_var = &""
 
 [sub_resource type="BTSequence" id="BTSequence_mypcl"]
 custom_name = "Dash To Center"
@@ -1416,6 +1471,31 @@ resource_name = "Model/AnimationPlayer"
 animation_player = SubResource("BBNode_kk73g")
 animation_name = &"Catch"
 blend = 0.05
+
+[sub_resource type="BBVariant" id="BBVariant_8hf8u"]
+type = 3
+saved_value = 2.0
+resource_name = "2.0"
+
+[sub_resource type="BBVariant" id="BBVariant_4mpcf"]
+type = 3
+saved_value = 1.0
+resource_name = "1.0"
+
+[sub_resource type="BBVariant" id="BBVariant_3arx4"]
+saved_value = null
+
+[sub_resource type="BBVariant" id="BBVariant_54t1i"]
+type = 1
+saved_value = true
+resource_name = "true"
+
+[sub_resource type="BTAction" id="BTAction_nniyr"]
+script = ExtResource("30_3b8xs")
+shake_amount_var = SubResource("BBVariant_8hf8u")
+shake_duration_var = SubResource("BBVariant_4mpcf")
+shake_in_place_var = SubResource("BBVariant_3arx4")
+shake_taper_off_var = SubResource("BBVariant_54t1i")
 
 [sub_resource type="BTAction" id="BTAction_x3uvo"]
 script = ExtResource("9_mmu5o")
@@ -1594,7 +1674,7 @@ children = [SubResource("BTSequence_877ps"), SubResource("BTSequence_1iok6")]
 
 [sub_resource type="BTSequence" id="BTSequence_kk73g"]
 custom_name = "Spin At Center"
-children = [SubResource("BTAction_efeba"), SubResource("BTAction_42gir"), SubResource("BTPlayAnimation_maqif"), SubResource("BTAction_x3uvo"), SubResource("BTCallMethod_g5k6k"), SubResource("BTSelector_ms6i8")]
+children = [SubResource("BTAction_efeba"), SubResource("BTAction_42gir"), SubResource("BTPlayAnimation_maqif"), SubResource("BTAction_nniyr"), SubResource("BTAction_x3uvo"), SubResource("BTCallMethod_g5k6k"), SubResource("BTSelector_ms6i8")]
 
 [sub_resource type="BBVariant" id="BBVariant_odpkm"]
 type = 2
@@ -1622,10 +1702,15 @@ resource_name = "Model/AnimationPlayer"
 animation_player = SubResource("BBNode_rr1tb")
 animation_name = &"Catch Lift"
 
+[sub_resource type="BTAction" id="BTAction_q81r8"]
+script = ExtResource("9_mmu5o")
+target_var = &"self"
+output_position_var = &"waypoint_position"
+
 [sub_resource type="BBVariant" id="BBVariant_rerkj"]
 type = 3
-saved_value = 4.0
-resource_name = "4.0"
+saved_value = 8.0
+resource_name = "8.0"
 
 [sub_resource type="BTSetVar" id="BTSetVar_djijo"]
 variable = &"waypoint_y"
@@ -1657,7 +1742,6 @@ script = ExtResource("10_nf1r4")
 target_position_var = &"waypoint_position"
 transition_type = 4
 ease_type = 1
-move_to_tween_var = &""
 
 [sub_resource type="BBVariant" id="BBVariant_ej0t2"]
 type = 3
@@ -1691,10 +1775,9 @@ z_var = SubResource("BBVariant_6urcs")
 [sub_resource type="BTAction" id="BTAction_ah2pd"]
 script = ExtResource("10_nf1r4")
 target_position_var = &"waypoint_position"
-time = 3.0
+time = 2.0
 transition_type = 5
 ease_type = 0
-move_to_tween_var = &""
 
 [sub_resource type="BBNode" id="BBNode_fuw20"]
 saved_value = NodePath("Model/AnimationPlayer")
@@ -1833,7 +1916,7 @@ custom_name = "Wait Until Next Measure"
 children = [SubResource("BTRepeatUntilSuccess_eo4a1"), SubResource("BTSequence_xep2r")]
 
 [sub_resource type="BTSequence" id="BTSequence_ejr6d"]
-children = [SubResource("BTCallMethod_e8anh"), SubResource("BTPlayAnimation_xeiqd"), SubResource("BTSetVar_djijo"), SubResource("BTAction_nxnq5"), SubResource("BTAction_qkeg5"), SubResource("BTSetVar_yc1ce"), SubResource("BTAction_872e1"), SubResource("BTAction_ah2pd"), SubResource("BTPlayAnimation_3b8xs"), SubResource("BTWait_e8anh"), SubResource("BTSequence_gp8mc")]
+children = [SubResource("BTCallMethod_e8anh"), SubResource("BTPlayAnimation_xeiqd"), SubResource("BTAction_q81r8"), SubResource("BTSetVar_djijo"), SubResource("BTAction_nxnq5"), SubResource("BTAction_qkeg5"), SubResource("BTSetVar_yc1ce"), SubResource("BTAction_872e1"), SubResource("BTAction_ah2pd"), SubResource("BTPlayAnimation_3b8xs"), SubResource("BTWait_e8anh"), SubResource("BTSequence_gp8mc")]
 
 [sub_resource type="BTSequence" id="BTSequence_phhuc"]
 custom_name = "Last Phase Spin"
@@ -1976,7 +2059,6 @@ script = ExtResource("10_nf1r4")
 target_position_var = &"waypoint_position"
 transition_type = 4
 ease_type = 1
-move_to_tween_var = &""
 
 [sub_resource type="BTAction" id="BTAction_i0816"]
 script = ExtResource("8_ngxa6")
@@ -2710,7 +2792,6 @@ target_position_var = &"waypoint_position"
 time = 0.5
 transition_type = 4
 ease_type = 1
-move_to_tween_var = &""
 
 [sub_resource type="BBVariant" id="BBVariant_ud0sg"]
 type = 3
@@ -3234,7 +3315,6 @@ script = ExtResource("10_nf1r4")
 target_position_var = &"teleport_point_position"
 time = 0.25
 ease_type = 3
-move_to_tween_var = &""
 
 [sub_resource type="BTSequence" id="BTSequence_ueah8"]
 custom_name = "Do Teleport"
@@ -3300,7 +3380,6 @@ target_position_var = &"waypoint_position"
 time = 0.5
 transition_type = 4
 ease_type = 1
-move_to_tween_var = &""
 
 [sub_resource type="BTSequence" id="BTSequence_g3jwx"]
 custom_name = "Dash Back To Waypoint"

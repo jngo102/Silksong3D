@@ -75,7 +75,7 @@ func check_downbeat() -> void:
 		downbeat.emit()
 	
 ## Play a one shot audio clip
-func play_clip(clip: AudioStream, play_position: Vector3, pitch_min: float = 1, pitch_max: float = 1, volume_scale: float = 1, range: float = 32) -> void:
+func play_clip(clip: AudioStream, play_position: Vector3, pitch_min: float = 1, pitch_max: float = 1, volume_scale: float = 1, range: float = 24) -> void:
 	var audio_player: AudioPlayer = audio_player_prefab.instantiate()
 	audio_players.add_child(audio_player)
 	audio_player.global_position = play_position

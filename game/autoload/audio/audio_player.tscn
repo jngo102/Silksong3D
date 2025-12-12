@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://pqpalrd3fcd" path="res://game/autoload/audio/audio_player.gd" id="1_hdnp0"]
 
 [node name="AudioPlayer" type="AudioStreamPlayer3D"]
-unit_size = 32.0
+unit_size = 24.0
 script = ExtResource("1_hdnp0")
 
 [connection signal="finished" from="." to="." method="_on_finished"]

@@ -1,5 +1,10 @@
 @tool
-class_name ShakeCamera extends ShakeObject
+class_name ShakeCamera extends BTAction
+
+@export var shake_amount_var: BBVariant
+@export var shake_duration_var: BBVariant
+@export var shake_in_place_var: BBVariant
+@export var shake_taper_off_var: BBVariant
 
 func _generate_name() -> String:
 	return "Shake Camera by %s for %ss" % [
@@ -8,7 +13,8 @@ func _generate_name() -> String:
 	]
 
 func _tick(_delta: float) -> Status:
-	var camera_shaker: Shaker = scene_root.get_tree().get_first_node_in_group("Cameras").get_node("../../Shaker")
+	if not is_instance_valid(CameraManager.current_camera):
+		return FAILURE
 	var shake_amount = BBUtil.bb_value(shake_amount_var, blackboard)
 	if shake_amount == null:
 		shake_amount = 0
@@ -21,5 +27,5 @@ func _tick(_delta: float) -> Status:
 	var shake_taper_off = BBUtil.bb_value(shake_taper_off_var, blackboard)
 	if shake_taper_off == null:
 		shake_taper_off = false
-	_do_shake(camera_shaker, shake_amount, shake_duration, shake_in_place, shake_taper_off)
+	CameraManager.shake_camera(shake_amount, shake_duration, shake_in_place, shake_taper_off)
 	return SUCCESS

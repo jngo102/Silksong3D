@@ -22,6 +22,7 @@ SaveManager="*res://game/autoload/save/save_manager.gd"
 InputManager="*res://game/autoload/input/input_manager.tscn"
 AudioManager="*res://game/autoload/audio/audio_manager.tscn"
 InputHelper="*res://addons/input_helper/input_helper.gd"
+CameraManager="*res://game/gameplay/scene/camera_manager.gd"
 
 [display]
 

@@ -10,5 +10,4 @@ func _tick(_delta: float) -> Status:
 	var tween: Tween = blackboard.get_var(tween_var)
 	if is_instance_valid(tween):
 		tween.kill()
-		return SUCCESS
-	return FAILURE
+	return SUCCESS

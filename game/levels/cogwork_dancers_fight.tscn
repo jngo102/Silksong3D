@@ -649,29 +649,79 @@ spot_attenuation = 2.0
 spot_angle = 30.0
 spot_angle_attenuation = 1.2745608
 
-[node name="Ground" type="StaticBody3D" parent="."]
+[node name="Physical" type="Node3D" parent="."]
+
+[node name="Ground" type="StaticBody3D" parent="Physical"]
 collision_layer = 4
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="Ground"]
+[node name="Mesh" type="MeshInstance3D" parent="Physical/Ground"]
 transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
 mesh = SubResource("PlaneMesh_giiqr")
 
-[node name="Collision" type="CollisionShape3D" parent="Ground"]
+[node name="Collision" type="CollisionShape3D" parent="Physical/Ground"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
 shape = SubResource("BoxShape3D_34lg8")
 
-[node name="Ceiling" type="StaticBody3D" parent="."]
+[node name="WallLeft" type="StaticBody3D" parent="Physical"]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 30, 18, 0)
+collision_layer = 4
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="Physical/WallLeft"]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
+mesh = SubResource("PlaneMesh_giiqr")
+
+[node name="Collision" type="CollisionShape3D" parent="Physical/WallLeft"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
+shape = SubResource("BoxShape3D_34lg8")
+
+[node name="WallRight" type="StaticBody3D" parent="Physical"]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -30, 18, 0)
+collision_layer = 4
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="Physical/WallRight"]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
+mesh = SubResource("PlaneMesh_giiqr")
+
+[node name="Collision" type="CollisionShape3D" parent="Physical/WallRight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
+shape = SubResource("BoxShape3D_34lg8")
+
+[node name="WallBack" type="StaticBody3D" parent="Physical"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 18, 30)
+collision_layer = 4
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="Physical/WallBack"]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
+mesh = SubResource("PlaneMesh_giiqr")
+
+[node name="Collision" type="CollisionShape3D" parent="Physical/WallBack"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
+shape = SubResource("BoxShape3D_34lg8")
+
+[node name="WallFront" type="StaticBody3D" parent="Physical"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 18, -30)
+collision_layer = 4
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="Physical/WallFront"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
+shape = SubResource("BoxShape3D_34lg8")
+
+[node name="Ceiling" type="StaticBody3D" parent="Physical"]
 transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 40, 0)
 collision_layer = 4
 collision_mask = 0
 
-[node name="Mesh" type="MeshInstance3D" parent="Ceiling"]
-transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 16.19)
+[node name="Mesh" type="MeshInstance3D" parent="Physical/Ceiling"]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
 mesh = SubResource("PlaneMesh_giiqr")
 surface_material_override/0 = SubResource("StandardMaterial3D_awspu")
 
-[node name="Collision" type="CollisionShape3D" parent="Ceiling"]
+[node name="Collision" type="CollisionShape3D" parent="Physical/Ceiling"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
 shape = SubResource("BoxShape3D_34lg8")
 
@@ -732,6 +782,7 @@ libraries = {
 }
 
 [node name="SlashAudio" type="AudioStreamPlayer3D" parent="DancerManager/SpinSlashes"]
+unit_size = 32.0
 
 [node name="Antic" type="Node3D" parent="DancerManager/SpinSlashes"]
 visible = false

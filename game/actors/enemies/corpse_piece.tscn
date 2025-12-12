@@ -5,9 +5,6 @@
 [node name="CorpsePiece" type="RigidBody3D"]
 collision_layer = 2
 collision_mask = 4
-can_sleep = false
-continuous_cd = true
-constant_force = Vector3(0, -1, 0)
 script = ExtResource("1_jp34k")
 explode_speed = 16.0
 

@@ -1,11 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://bqde6vrd6age4"]
+[gd_scene load_steps=8 format=3 uid="uid://bqde6vrd6age4"]
 
 [ext_resource type="Script" uid="uid://c74yvh41r5yqg" path="res://game/actors/enemies/corpse.gd" id="1_r3oq0"]
 [ext_resource type="Material" uid="uid://cgnxxrytvhv4q" path="res://game/resources/materials/fading_ring_material.tres" id="2_cavwe"]
+[ext_resource type="AudioStream" uid="uid://bj2vqdish0n1a" path="res://game/copyrighted/sfx/boss_explode_clean.wav" id="3_jiiaq"]
 
 [sub_resource type="Animation" id="Animation_jiiaq"]
 resource_name = "Explode"
-length = 0.25
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -13,10 +14,10 @@ tracks/0/path = NodePath("ExplodeRing:mesh:radius")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25),
+"times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0.001, 5.0]
+"values": [0.001, 12.0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -25,10 +26,10 @@ tracks/1/path = NodePath("ExplodeRing:mesh:height")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.25),
+"times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0.001, 10.0]
+"values": [0.001, 24.0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -37,7 +38,7 @@ tracks/2/path = NodePath("ExplodeRing:mesh:material:shader_parameter/Alpha")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.25),
+"times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [1.0, 0.0]
@@ -90,6 +91,7 @@ _data = {
 }
 
 [sub_resource type="SphereMesh" id="SphereMesh_6rxqg"]
+resource_local_to_scene = true
 material = ExtResource("2_cavwe")
 radius = 0.001
 height = 0.001
@@ -101,6 +103,12 @@ script = ExtResource("1_r3oq0")
 libraries = {
 &"": SubResource("AnimationLibrary_cavwe")
 }
+autoplay = "Explode"
 
 [node name="ExplodeRing" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_6rxqg")
+
+[node name="ExplosionAudio" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_jiiaq")
+unit_size = 32.0
+autoplay = true

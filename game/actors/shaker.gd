@@ -1,8 +1,7 @@
 ## Controls shaking of an object
 class_name Shaker extends Node
 
-## The duration between each shake
-@export var shake_interval: float = 0.025
+@export var shaked_object: Node3D
 
 ## The position of the object before it began shaking
 var original_position: Vector3
@@ -25,46 +24,53 @@ var _shake_duration: float
 
 var _shaking: bool
 
-func _process(delta: float) -> void:
-	if _shake_timer < _shake_duration:
-		_shake_timer += delta
-		current_shake_time += delta
-		if current_shake_time >= shake_interval:
-			update_shake()
-	elif _shaking:
-		_shaking = false
-		if shake_in_place:
-			owner.global_position = original_position
+func _ready() -> void:
+	if not is_instance_valid(shaked_object):
+		shaked_object = owner
 
 ## Set shake values
-func _shake_internal(amount: float, duration: float, in_place: bool = false, taper_off: bool = true) -> void:
-	original_position = owner.global_position
+func _shake_internal(amount: float, duration: float, in_place: bool, taper_off: bool) -> void:
+	original_position = shaked_object.global_position
 	current_shake_magnitude = amount
 	if shake_horizontally:
 		current_shake_vector.x = 1
 	if shake_vertically:
 		current_shake_vector.y = 1
-	unshake_amount = amount / duration if taper_off else 0
+	unshake_amount = (amount / duration) if taper_off else 0
 	shake_in_place = in_place
 	_shake_duration = duration
 	_shake_timer = 0
 	_shaking = true
+	while _shake_timer < _shake_duration:
+		update_shake()
+		await get_tree().process_frame
+		var delta: float = get_process_delta_time()
+		_shake_timer += delta
+		current_shake_magnitude -= delta * unshake_amount
+		await get_tree().process_frame
+		delta = get_process_delta_time()
+		_shake_timer += delta
+		current_shake_magnitude -= delta * unshake_amount
+		shaked_object.global_position = original_position
+	_shaking = false
+	if shake_in_place:
+		shaked_object.global_position = original_position
 
 ## Begin object shake in all directions
-func shake(amount: float, duration: float, in_place: bool = false, taper_off: bool = true) -> void:
+func shake(amount: float, duration: float, in_place: bool = true, taper_off: bool = true) -> void:
 	_shake_internal(amount, duration, in_place, taper_off)
 	shake_horizontally = true
 	shake_vertically = true
 
 ## Shake object only along the x-axis	
-func shake_x(amount: float, duration, in_place: bool = false) -> void:
-	_shake_internal(amount, duration, in_place)
+func shake_x(amount: float, duration, in_place: bool = true, taper_off: bool = true) -> void:
+	_shake_internal(amount, duration, in_place, taper_off)
 	shake_horizontally = true
 	shake_vertically = false
 
 ## Shake object only along the y-axis	
-func shake_y(amount: float, duration, in_place: bool = false) -> void:
-	_shake_internal(amount, duration, in_place)
+func shake_y(amount: float, duration, in_place: bool = true, taper_off: bool = true) -> void:
+	_shake_internal(amount, duration, in_place, taper_off)
 	shake_horizontally = false
 	shake_vertically = true
 
@@ -77,8 +83,8 @@ func update_shake() -> void:
 	elif not shake_horizontally and shake_vertically:
 		current_shake_vector.y = current_shake_magnitude * -sign(current_shake_vector.y)
 	if shake_in_place:
-		owner.global_position = original_position + current_shake_vector
+		shaked_object.global_position = original_position + current_shake_vector
 	else:
-		owner.global_position += current_shake_vector
+		shaked_object.global_position += current_shake_vector
 	current_shake_magnitude -= unshake_amount * current_shake_time
 	current_shake_time = 0
