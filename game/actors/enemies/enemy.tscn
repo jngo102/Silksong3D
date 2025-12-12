@@ -12,6 +12,7 @@ radius = 2.1767578
 height = 12.215332
 
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_nyryn"]
+prefetch_nodepath_vars = false
 
 [node name="Enemy" instance=ExtResource("1_7k104")]
 collision_layer = 2
@@ -25,7 +26,6 @@ shape = SubResource("CapsuleShape3D_qi2p4")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 collision_layer = 2
 collision_mask = 8
-max_health = 100.0
 
 [node name="Collision" parent="Health" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.8212891, 0)

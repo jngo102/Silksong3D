@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://fns4oqupk3bk"]
+
+[ext_resource type="PackedScene" uid="uid://xiyu6i6sefua" path="res://game/actors/enemies/corpse_piece.tscn" id="1_je2ll"]
+[ext_resource type="PackedScene" uid="uid://bne6np0la6jn3" path="res://game/actors/enemies/cogwork_dancers/corpse/cogwork_dancer_corpse_torso.glb" id="2_dx7hc"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dx7hc"]
+radius = 1.4306641
+height = 5.4418945
+
+[node name="CorpseTorso" instance=ExtResource("1_je2ll")]
+mass = 100.0
+gravity_scale = 4.0
+explode_speed = 25.0
+
+[node name="Collision" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.86206055, 0)
+shape = SubResource("CapsuleShape3D_dx7hc")
+
+[node name="Mesh" parent="." index="1" instance=ExtResource("2_dx7hc")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
+
+[node name="ExplodePoint" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.74516386, 0)

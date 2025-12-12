@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Silksong 3D"
-config/version="0.3.3"
+config/version="0.4.0"
 run/main_scene="uid://dugp1elqcy03h"
 config/features=PackedStringArray("4.5", "Forward Plus")
 
@@ -45,6 +45,7 @@ enabled=PackedStringArray("res://addons/input_helper/plugin.cfg")
 [global_group]
 
 Players=""
+Cameras=""
 
 [gui]
 

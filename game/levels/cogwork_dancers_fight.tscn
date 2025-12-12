@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://dugp1elqcy03h"]
+[gd_scene load_steps=34 format=3 uid="uid://dugp1elqcy03h"]
 
 [ext_resource type="Script" uid="uid://ob43xcsgefpw" path="res://game/levels/cogwork_dancers_fight.gd" id="1_0qq8w"]
 [ext_resource type="Resource" uid="uid://cbxskjf0ajc00" path="res://game/resources/music/cogdancers2.tres" id="2_0qq8w"]
@@ -15,13 +15,14 @@
 [ext_resource type="Script" uid="uid://b5oj3iqy1cnm" path="res://game/levels/cogwork_dancers/spin_slashes.gd" id="9_vv8co"]
 [ext_resource type="PackedScene" uid="uid://xal232da7bpf" path="res://game/gameplay/combat/damager.tscn" id="9_xmi2e"]
 [ext_resource type="Resource" uid="uid://b8l05qok73wph" path="res://game/resources/music/cogdancers3.tres" id="11_42bj1"]
-[ext_resource type="AudioStream" uid="uid://b1pa7q3ccdpaw" path="res://game/copyrighted/cogwork_dancers/clockwork_dancers_middle_white_circle.wav" id="11_uj4lg"]
+[ext_resource type="AudioStream" uid="uid://b1pa7q3ccdpaw" path="res://game/copyrighted/cogwork_dancers/sfx/clockwork_dancers_middle_white_circle.wav" id="11_uj4lg"]
 [ext_resource type="PackedScene" uid="uid://chkk3uavdu205" path="res://game/levels/cogwork_dancers/spin_slash_effect.tscn" id="11_x4adb"]
 [ext_resource type="Resource" uid="uid://fkmii6aywjmi" path="res://game/resources/music/cogdancers4.tres" id="12_42bj1"]
-[ext_resource type="AudioStream" uid="uid://dpp1bvp5t1cfq" path="res://game/copyrighted/cogwork_dancers/clockwork_dancers_centre_meet_and_slashes.wav" id="12_a4ncn"]
+[ext_resource type="AudioStream" uid="uid://dpp1bvp5t1cfq" path="res://game/copyrighted/cogwork_dancers/sfx/clockwork_dancers_centre_meet_and_slashes.wav" id="12_a4ncn"]
 [ext_resource type="PackedScene" uid="uid://bcaddbgdttgyu" path="res://game/levels/cogwork_dancers/dasher.tscn" id="12_awspu"]
 [ext_resource type="Environment" uid="uid://dpsb82o3h1rey" path="res://game/resources/world_environments/cogwork_dancers_environment.tres" id="13_tpwk1"]
 [ext_resource type="PackedScene" uid="uid://bqltw4st6n5jx" path="res://game/levels/cogwork_dancers/cogwork_dancers_environment.glb" id="17_glf46"]
+[ext_resource type="Material" uid="uid://cgnxxrytvhv4q" path="res://game/resources/materials/fading_ring_material.tres" id="18_ox3hg"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4y2hd"]
 albedo_texture = ExtResource("5_1nr1l")
@@ -622,102 +623,9 @@ _data = {
 &"Spin Antic": SubResource("Animation_xmi2e")
 }
 
-[sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_x4adb"]
-
-[sub_resource type="Gradient" id="Gradient_x4adb"]
-resource_local_to_scene = true
-interpolation_mode = 2
-offsets = PackedFloat32Array(0, 0.5, 1)
-colors = PackedColorArray(1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_x30sm"]
-gradient = SubResource("Gradient_x4adb")
-fill_from = Vector2(0.48504272, 1)
-fill_to = Vector2(0.48290598, 0.034188036)
-
-[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_awspu"]
-texture = SubResource("GradientTexture2D_x30sm")
-
-[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_4nkp7"]
-parameter_name = "Alpha"
-
-[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_x4adb"]
-operator = 2
-
-[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_awspu"]
-operator = 6
-
-[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_a4ncn"]
-input_name = "uv"
-
-[sub_resource type="VisualShader" id="VisualShader_glf46"]
-resource_local_to_scene = true
-code = "shader_type spatial;
-render_mode blend_mix, depth_draw_opaque, depth_test_default, cull_back, diffuse_lambert, specular_schlick_ggx;
-
-uniform sampler2D tex_frg_13;
-uniform float Alpha;
-
-
-
-void fragment() {
-// Input:8
-	vec2 n_out8p0 = UV;
-
-
-// UVFunc:12
-	vec2 n_in12p1 = vec2(1.00000, 1.00000);
-	vec2 n_in12p2 = vec2(0.00000, 0.00000);
-	vec2 n_out12p0 = n_in12p2 * n_in12p1 + n_out8p0;
-
-
-// Texture2D:13
-	vec4 n_out13p0 = texture(tex_frg_13, n_out12p0);
-
-
-// FloatParameter:15
-	float n_out15p0 = Alpha;
-
-
-// FloatOp:16
-	float n_out16p0 = n_out13p0.x * n_out15p0;
-
-
-// FloatOp:17
-	float n_in17p1 = 0.00000;
-	float n_out17p0 = max(n_out16p0, n_in17p1);
-
-
-// Output:0
-	ALPHA = n_out17p0;
-
-
-}
-"
-nodes/fragment/0/position = Vector2(680, 580)
-nodes/fragment/8/node = SubResource("VisualShaderNodeInput_a4ncn")
-nodes/fragment/8/position = Vector2(-2580, 740)
-nodes/fragment/12/node = SubResource("VisualShaderNodeUVFunc_x4adb")
-nodes/fragment/12/position = Vector2(-1680, 680)
-nodes/fragment/13/node = SubResource("VisualShaderNodeTexture_awspu")
-nodes/fragment/13/position = Vector2(-920, 500)
-nodes/fragment/15/node = SubResource("VisualShaderNodeFloatParameter_4nkp7")
-nodes/fragment/15/position = Vector2(-980, 1240)
-nodes/fragment/16/node = SubResource("VisualShaderNodeFloatOp_x4adb")
-nodes/fragment/16/position = Vector2(-160, 600)
-nodes/fragment/17/node = SubResource("VisualShaderNodeFloatOp_awspu")
-nodes/fragment/17/position = Vector2(660, 580)
-nodes/fragment/connections = PackedInt32Array(12, 0, 13, 0, 8, 0, 12, 0, 13, 0, 16, 0, 15, 0, 16, 1, 16, 0, 0, 1, 16, 0, 17, 0, 17, 0, 0, 1)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1nr1l"]
-resource_local_to_scene = true
-render_priority = 0
-shader = SubResource("VisualShader_glf46")
-shader_parameter/Alpha = 0.5
-
 [sub_resource type="SphereMesh" id="SphereMesh_t6wio"]
 resource_local_to_scene = true
-material = SubResource("ShaderMaterial_1nr1l")
+material = ExtResource("18_ox3hg")
 radius = 12.0
 height = 24.0
 
@@ -755,7 +663,6 @@ shape = SubResource("BoxShape3D_34lg8")
 
 [node name="Ceiling" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 40, 0)
-visible = false
 collision_layer = 4
 collision_mask = 0
 
@@ -782,7 +689,7 @@ light_energy = 16.0
 light_volumetric_fog_energy = 0.25
 omni_range = 50.0
 
-[node name="DancerManager" type="Node3D" parent="." node_paths=PackedStringArray("starting_waypoint1", "starting_waypoint2", "dashers")]
+[node name="DancerManager" type="Node3D" parent="." node_paths=PackedStringArray("starting_waypoint1", "starting_waypoint2", "alcove1", "alcove2", "dashers")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14, 0)
 script = ExtResource("6_jgp2n")
 music_list = Dictionary[int, ExtResource("9_4y2hd")]({
@@ -791,8 +698,10 @@ music_list = Dictionary[int, ExtResource("9_4y2hd")]({
 3: ExtResource("11_42bj1"),
 4: ExtResource("12_42bj1")
 })
-starting_waypoint1 = NodePath("../Waypoints/BottomLayer/Waypoint1")
-starting_waypoint2 = NodePath("../Waypoints/BottomLayer/Waypoint3")
+starting_waypoint1 = NodePath("../Waypoints/BottomLayer/Waypoint4")
+starting_waypoint2 = NodePath("../Waypoints/BottomLayer/Waypoint6")
+alcove1 = NodePath("../Scene/Alcove1")
+alcove2 = NodePath("../Scene/Alcove2")
 dashers = [NodePath("../DasherAttack/Dasher1"), NodePath("../DasherAttack/Dasher2"), NodePath("../DasherAttack/Dasher3"), NodePath("../DasherAttack/Dasher4"), NodePath("../DasherAttack/Dasher5"), NodePath("../DasherAttack/Dasher6"), NodePath("../DasherAttack/Dasher7"), NodePath("../DasherAttack/Dasher8"), NodePath("../DasherAttack/Dasher9"), NodePath("../DasherAttack/Dasher10"), NodePath("../DasherAttack/Dasher11"), NodePath("../DasherAttack/Dasher12")]
 
 [node name="Spinner" type="Node3D" parent="DancerManager"]
@@ -803,14 +712,14 @@ deg_per_sec = 1080.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
 
 [node name="Dancer1" parent="DancerManager/Spinner/DancerSpinTarget1" instance=ExtResource("5_xmi2e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, -8, -25)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -15.5, 3, -37.264168)
 top = true
 
 [node name="DancerSpinTarget2" type="Marker3D" parent="DancerManager/Spinner"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
 
 [node name="Dancer2" parent="DancerManager/Spinner/DancerSpinTarget2" instance=ExtResource("5_xmi2e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, -8, -25)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 15.5, 3, -37.264168)
 
 [node name="SpinSlashes" type="Node3D" parent="DancerManager"]
 script = ExtResource("9_vv8co")
@@ -892,7 +801,7 @@ transform = Transform3D(6.012087, 3.4284577, -4.012544, -1.3540106, 6.8805695, 3
 [node name="SlashEffect16" parent="DancerManager/SpinSlashes/Slashes" instance=ExtResource("11_x4adb")]
 transform = Transform3D(0.07049059, -0.7724493, 7.962308, 5.8465347, 5.4398055, 0.4759727, -5.460132, 5.8147955, 0.6124514, 0, 0, 0)
 
-[node name="TeleportPoiht" type="Marker3D" parent="DancerManager"]
+[node name="TeleportPoint" type="Marker3D" parent="DancerManager"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 35, 0)
 
 [node name="Waypoints" type="Node3D" parent="."]
@@ -983,5 +892,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, 25)
 
 [node name="Scene" parent="." instance=ExtResource("17_glf46")]
 transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0.08052063, 3.7522936, -37.72847)
+
+[node name="Alcove1" type="Marker3D" parent="Scene"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 5.597, 0)
+
+[node name="Alcove2" type="Marker3D" parent="Scene"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 5.597, 0)
 
 [editable path="DancerManager/SpinSlashes/Damager"]

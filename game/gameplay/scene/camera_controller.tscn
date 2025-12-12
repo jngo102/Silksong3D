@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://b37skkjsvgidd"]
+[gd_scene load_steps=4 format=3 uid="uid://b37skkjsvgidd"]
 
 [ext_resource type="Script" uid="uid://c26ykjiw2tbxg" path="res://game/gameplay/scene/camera_controller.gd" id="1_ewp70"]
+[ext_resource type="Script" uid="uid://br0v4k6f8iwlh" path="res://game/actors/shaker.gd" id="2_bv4xb"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ewp70"]
 radius = 1.0
@@ -13,12 +14,16 @@ max_yaw_degrees = 35.0
 
 [node name="CameraPitch" type="Node3D" parent="."]
 
+[node name="Shaker" type="Node" parent="CameraPitch"]
+script = ExtResource("2_bv4xb")
+metadata/_custom_type_script = "uid://br0v4k6f8iwlh"
+
 [node name="Gimbal" type="SpringArm3D" parent="CameraPitch"]
 collision_mask = 4
 shape = SubResource("SphereShape3D_ewp70")
 spring_length = 20.0
 
-[node name="Camera" type="Camera3D" parent="CameraPitch/Gimbal"]
+[node name="Camera" type="Camera3D" parent="CameraPitch/Gimbal" groups=["Cameras"]]
 transform = Transform3D(1, 0, 0, 0, 0.90408254, 0.42735788, 0, -0.42735788, 0.90408254, 0, 10, -20)
 current = true
 fov = 60.0

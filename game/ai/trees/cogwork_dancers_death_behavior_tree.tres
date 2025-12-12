@@ -1,0 +1,470 @@
+[gd_resource type="BehaviorTree" load_steps=105 format=3 uid="uid://ciko0edbnitaw"]
+
+[ext_resource type="Script" uid="uid://dfxh5qmwucb7e" path="res://game/ai/tasks/scene/get_first_in_group.gd" id="1_7k3xq"]
+[ext_resource type="Script" uid="uid://cvw5s3jjrdnkq" path="res://game/ai/tasks/transform/face_target.gd" id="2_tqd6i"]
+[ext_resource type="Script" uid="uid://ycnpkfx0h776" path="res://game/ai/tasks/transform/get_position.gd" id="3_2elll"]
+[ext_resource type="AudioStream" uid="uid://o25apn70srja" path="res://game/copyrighted/cogwork_dancers/sfx/CogD_stun_hit_duo_01.wav" id="3_cuinw"]
+[ext_resource type="Script" uid="uid://5qpw7k5phkni" path="res://game/ai/tasks/audio/play_random_audio.gd" id="3_tqd6i"]
+[ext_resource type="AudioStream" uid="uid://d87l3oah06mb" path="res://game/copyrighted/cogwork_dancers/sfx/CogD_stun_hit_duo_02.wav" id="4_2elll"]
+[ext_resource type="AudioStream" uid="uid://cybmx234ig5t" path="res://game/copyrighted/cogwork_dancers/sfx/CogD_stun_hit_single.wav" id="5_wekhm"]
+[ext_resource type="AudioStream" uid="uid://dfwap7w5wumgk" path="res://game/copyrighted/cogwork_dancers/sfx/CogD_pre_death_glitch_02.wav" id="8_f8rwa"]
+[ext_resource type="AudioStream" uid="uid://dsvkliieonbtw" path="res://game/copyrighted/cogwork_dancers/sfx/clockwork_dancers_weakened_fall_to_ground.wav" id="8_wekhm"]
+[ext_resource type="Script" uid="uid://cawha32gubgkl" path="res://game/ai/tasks/scene/set_collider.gd" id="8_ywbep"]
+[ext_resource type="Script" uid="uid://bjsiqgp7kiids" path="res://game/ai/tasks/math/get_vector_x_y_z.gd" id="9_o62c5"]
+[ext_resource type="Script" uid="uid://b0mh6vbdv44ds" path="res://game/ai/tasks/math/set_vector_x_y_z.gd" id="10_6r4af"]
+[ext_resource type="Script" uid="uid://bia8f8kue467p" path="res://game/ai/tasks/logic/tween_to_position.gd" id="10_ftj12"]
+[ext_resource type="AudioStream" uid="uid://c2bua7tquprrs" path="res://game/copyrighted/cogwork_dancers/sfx/clockwork_dancers_land.wav" id="12_3shy2"]
+[ext_resource type="Script" uid="uid://dt2awuygt37mg" path="res://game/ai/tasks/transform/set_rotation_x_y_z.gd" id="12_6r4af"]
+[ext_resource type="Script" uid="uid://br84132pv8riw" path="res://game/ai/tasks/actors/shake_camera.gd" id="14_sw5t1"]
+[ext_resource type="AudioStream" uid="uid://dejelb8naxvfc" path="res://game/copyrighted/cogwork_dancers/sfx/clockwork_dancers_return_after_multi_dash.wav" id="15_solc0"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_ahwra"]
+prefetch_nodepath_vars = false
+var/alcove/name = &"alcove"
+var/alcove/type = 24
+var/alcove/hint = 34
+var/alcove/hint_string = ""
+var/alcove_position/name = &"alcove_position"
+var/alcove_position/type = 9
+var/alcove_position/value = Vector3(0, 0, 0)
+var/alcove_position/hint = 0
+var/alcove_position/hint_string = ""
+var/alcove_position_z/name = &"alcove_position_z"
+var/alcove_position_z/type = 3
+var/alcove_position_z/value = 0.0
+var/alcove_position_z/hint = 0
+var/alcove_position_z/hint_string = ""
+var/fall/name = &"fall"
+var/fall/type = 1
+var/fall/value = false
+var/fall/hint = 0
+var/fall/hint_string = ""
+var/final_death/name = &"final_death"
+var/final_death/type = 1
+var/final_death/value = false
+var/final_death/hint = 0
+var/final_death/hint_string = ""
+var/manager_path/name = &"manager_path"
+var/manager_path/type = 22
+var/manager_path/value = NodePath("")
+var/manager_path/hint = 0
+var/manager_path/hint_string = ""
+var/phase/name = &"phase"
+var/phase/type = 2
+var/phase/value = 0
+var/phase/hint = 0
+var/phase/hint_string = ""
+var/player/name = &"player"
+var/player/type = 24
+var/player/hint = 34
+var/player/hint_string = ""
+var/self/name = &"self"
+var/self/type = 24
+var/self/hint = 34
+var/self/hint_string = ""
+var/self_position/name = &"self_position"
+var/self_position/type = 9
+var/self_position/value = Vector3(0, 0, 0)
+var/self_position/hint = 0
+var/self_position/hint_string = ""
+var/spin_to_waypoint/name = &"spin_to_waypoint"
+var/spin_to_waypoint/type = 1
+var/spin_to_waypoint/value = false
+var/spin_to_waypoint/hint = 0
+var/spin_to_waypoint/hint_string = ""
+
+[sub_resource type="BTAction" id="BTAction_pbk4n"]
+script = ExtResource("1_7k3xq")
+group = &"Players"
+output_var = &"player"
+
+[sub_resource type="BTAction" id="BTAction_wekhm"]
+script = ExtResource("3_2elll")
+target_var = &"self"
+output_position_var = &"self_position"
+
+[sub_resource type="BTSequence" id="BTSequence_l2mi2"]
+custom_name = "Initialization"
+children = [SubResource("BTAction_pbk4n"), SubResource("BTAction_wekhm")]
+
+[sub_resource type="BBVariant" id="BBVariant_twb4b"]
+type = 22
+saved_value = NodePath("Health/Collision")
+resource_name = "Health/Collision"
+
+[sub_resource type="BTAction" id="BTAction_solc0"]
+script = ExtResource("8_ywbep")
+collider_var = SubResource("BBVariant_twb4b")
+
+[sub_resource type="BBNode" id="BBNode_ywbep"]
+saved_value = NodePath("Model/AnimationPlayer")
+resource_name = "Model/AnimationPlayer"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_sw5t1"]
+animation_player = SubResource("BBNode_ywbep")
+animation_name = &"Stunned"
+
+[sub_resource type="BBNode" id="BBNode_nr5y5"]
+saved_value = NodePath("Direction/Animator")
+resource_name = "Direction/Animator"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_lyoeb"]
+animation_player = SubResource("BBNode_nr5y5")
+animation_name = &"RESET"
+
+[sub_resource type="BTAction" id="BTAction_cuinw"]
+script = ExtResource("2_tqd6i")
+target_var = &"player"
+
+[sub_resource type="BTAction" id="BTAction_l2mi2"]
+script = ExtResource("3_tqd6i")
+clips_array = Array[AudioStream]([ExtResource("3_cuinw"), ExtResource("4_2elll"), ExtResource("5_wekhm")])
+play_position_var = &"self_position"
+
+[sub_resource type="BTWait" id="BTWait_2elll"]
+duration = 0.5
+
+[sub_resource type="BTSequence" id="BTSequence_nr5y5"]
+custom_name = "Stun"
+children = [SubResource("BTAction_solc0"), SubResource("BTPlayAnimation_sw5t1"), SubResource("BTPlayAnimation_lyoeb"), SubResource("BTAction_cuinw"), SubResource("BTAction_l2mi2"), SubResource("BTWait_2elll")]
+
+[sub_resource type="BBVariant" id="BBVariant_3ps0h"]
+type = 2
+saved_value = 4
+resource_name = "4"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_twb4b"]
+variable = &"phase"
+check_type = 1
+value = SubResource("BBVariant_3ps0h")
+
+[sub_resource type="BTWait" id="BTWait_sw5t1"]
+
+[sub_resource type="BTSequence" id="BTSequence_expln"]
+custom_name = "Stun Wait"
+children = [SubResource("BTCheckVar_twb4b"), SubResource("BTWait_sw5t1")]
+
+[sub_resource type="BBVariant" id="BBVariant_q5c76"]
+type = 1
+saved_value = false
+resource_name = "<null>"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_3ps0h"]
+variable = &"final_death"
+value = SubResource("BBVariant_q5c76")
+
+[sub_resource type="BBVariant" id="BBVariant_4a848"]
+type = 3
+saved_value = 1.0
+resource_name = "1.0"
+
+[sub_resource type="BBVariant" id="BBVariant_n133n"]
+type = 3
+saved_value = 5.0
+resource_name = "5.0"
+
+[sub_resource type="BBVariant" id="BBVariant_5s2y7"]
+type = 1
+saved_value = true
+resource_name = "true"
+
+[sub_resource type="BBVariant" id="BBVariant_0hmuk"]
+type = 1
+saved_value = true
+resource_name = "true"
+
+[sub_resource type="BBVariant" id="BBVariant_73ljc"]
+saved_value = null
+
+[sub_resource type="BTAction" id="BTAction_h8iei"]
+_enabled = false
+script = ExtResource("14_sw5t1")
+shaker_component_var = SubResource("BBVariant_73ljc")
+shake_amount_var = SubResource("BBVariant_4a848")
+shake_duration_var = SubResource("BBVariant_n133n")
+shake_in_place_var = SubResource("BBVariant_5s2y7")
+shake_taper_off_var = SubResource("BBVariant_0hmuk")
+
+[sub_resource type="BTWait" id="BTWait_ywbep"]
+duration = 2.0
+
+[sub_resource type="BTAction" id="BTAction_twb4b"]
+script = ExtResource("3_tqd6i")
+clips_array = Array[AudioStream]([ExtResource("8_f8rwa")])
+play_position_var = &"self_position"
+
+[sub_resource type="BTWait" id="BTWait_f8rwa"]
+duration = 2.4699999999999998
+
+[sub_resource type="BBNode" id="BBNode_solc0"]
+saved_value = NodePath("Death")
+resource_name = "Death"
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_3shy2"]
+node = SubResource("BBNode_solc0")
+method = &"die"
+
+[sub_resource type="BTSequence" id="BTSequence_sw5t1"]
+custom_name = "Final Death Sequence"
+children = [SubResource("BTAction_h8iei"), SubResource("BTWait_ywbep"), SubResource("BTAction_twb4b"), SubResource("BTWait_f8rwa"), SubResource("BTCallMethod_3shy2")]
+
+[sub_resource type="BTSelector" id="BTSelector_solc0"]
+custom_name = "Check Final Death"
+children = [SubResource("BTCheckVar_3ps0h"), SubResource("BTSequence_sw5t1")]
+
+[sub_resource type="BTSelector" id="BTSelector_f8rwa"]
+custom_name = "Check Last Phase"
+children = [SubResource("BTSequence_expln"), SubResource("BTSelector_solc0")]
+
+[sub_resource type="BBVariant" id="BBVariant_2elll"]
+type = 1
+saved_value = false
+resource_name = "<null>"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_wekhm"]
+variable = &"fall"
+value = SubResource("BBVariant_2elll")
+
+[sub_resource type="BBVariant" id="BBVariant_h8iei"]
+type = 1
+saved_value = false
+resource_name = "<null>"
+
+[sub_resource type="BTSetVar" id="BTSetVar_oi7s7"]
+variable = &"fall"
+value = SubResource("BBVariant_h8iei")
+
+[sub_resource type="BBNode" id="BBNode_yx2rc"]
+saved_value = NodePath("Model/AnimationPlayer")
+resource_name = "Model/AnimationPlayer"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_o62c5"]
+animation_player = SubResource("BBNode_yx2rc")
+animation_name = &"Stun Fall"
+blend = 0.125
+
+[sub_resource type="BTAction" id="BTAction_yx2rc"]
+script = ExtResource("3_tqd6i")
+clips_array = Array[AudioStream]([ExtResource("8_wekhm")])
+play_position_var = &"self_position"
+
+[sub_resource type="BTSequence" id="BTSequence_ftj12"]
+custom_name = "Fall"
+children = [SubResource("BTSetVar_oi7s7"), SubResource("BTPlayAnimation_o62c5"), SubResource("BTAction_yx2rc")]
+
+[sub_resource type="BTSelector" id="BTSelector_6r4af"]
+custom_name = "Check Fall"
+children = [SubResource("BTCheckVar_wekhm"), SubResource("BTSequence_ftj12")]
+
+[sub_resource type="BTWait" id="BTWait_wekhm"]
+duration = 1.5
+
+[sub_resource type="BTSequence" id="BTSequence_f8rwa"]
+custom_name = "Fall Wait"
+children = [SubResource("BTSelector_6r4af"), SubResource("BTWait_wekhm")]
+
+[sub_resource type="BBVariant" id="BBVariant_wekhm"]
+type = 1
+saved_value = true
+resource_name = "true"
+
+[sub_resource type="BTSetVar" id="BTSetVar_yx2rc"]
+variable = &"spin_to_waypoint"
+value = SubResource("BBVariant_wekhm")
+
+[sub_resource type="BBNode" id="BBNode_sw5t1"]
+saved_value = NodePath("Animator")
+resource_name = "Animator"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_solc0"]
+animation_player = SubResource("BBNode_sw5t1")
+animation_name = &"Asleep"
+
+[sub_resource type="BBNode" id="BBNode_f8rwa"]
+saved_value = NodePath("Model/AnimationPlayer")
+resource_name = "Model/AnimationPlayer"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_ywbep"]
+animation_player = SubResource("BBNode_f8rwa")
+animation_name = &"Asleep"
+blend = 0.125
+
+[sub_resource type="BTAction" id="BTAction_6r4af"]
+script = ExtResource("3_2elll")
+target_var = &"alcove"
+output_position_var = &"alcove_position"
+
+[sub_resource type="BTAction" id="BTAction_f8rwa"]
+script = ExtResource("9_o62c5")
+vector_var = &"alcove_position"
+output_x_var = &""
+output_y_var = &""
+output_z_var = &"alcove_position_z"
+
+[sub_resource type="BBVariant" id="BBVariant_o62c5"]
+type = 3
+saved_value = 2.0
+resource_name = "2.0"
+
+[sub_resource type="BTSetVar" id="BTSetVar_ftj12"]
+variable = &"alcove_position_z"
+value = SubResource("BBVariant_o62c5")
+operation = 1
+
+[sub_resource type="BBVariant" id="BBVariant_f8rwa"]
+saved_value = null
+
+[sub_resource type="BBVariant" id="BBVariant_ywbep"]
+saved_value = null
+
+[sub_resource type="BBVariant" id="BBVariant_solc0"]
+value_source = 1
+variable = &"alcove_position_z"
+resource_name = "$alcove_position_z"
+
+[sub_resource type="BTAction" id="BTAction_3shy2"]
+script = ExtResource("10_6r4af")
+vector_var = &"alcove_position"
+x_var = SubResource("BBVariant_f8rwa")
+y_var = SubResource("BBVariant_ywbep")
+z_var = SubResource("BBVariant_solc0")
+
+[sub_resource type="BTAction" id="BTAction_ywbep"]
+script = ExtResource("10_ftj12")
+target_position_var = &"alcove_position"
+time = 0.4
+
+[sub_resource type="BTAction" id="BTAction_ftj12"]
+script = ExtResource("3_2elll")
+target_var = &"alcove"
+output_position_var = &"alcove_position"
+
+[sub_resource type="BTAction" id="BTAction_3ps0h"]
+script = ExtResource("3_tqd6i")
+clips_array = Array[AudioStream]([ExtResource("12_3shy2")])
+play_position_var = &"alcove_position"
+
+[sub_resource type="BTAction" id="BTAction_expln"]
+script = ExtResource("3_tqd6i")
+clips_array = Array[AudioStream]([ExtResource("15_solc0")])
+play_position_var = &"alcove_position"
+
+[sub_resource type="BTAction" id="BTAction_7i34u"]
+script = ExtResource("3_tqd6i")
+clips_array = Array[AudioStream]([ExtResource("8_wekhm")])
+play_position_var = &"alcove_position"
+
+[sub_resource type="BTSequence" id="BTSequence_7i34u"]
+custom_name = "Enter Alcove Audio"
+children = [SubResource("BTAction_3ps0h"), SubResource("BTAction_expln"), SubResource("BTAction_7i34u")]
+
+[sub_resource type="BTAction" id="BTAction_sw5t1"]
+script = ExtResource("10_ftj12")
+target_position_var = &"alcove_position"
+time = 0.15
+
+[sub_resource type="BBVariant" id="BBVariant_6q4rm"]
+type = 3
+saved_value = 0.5
+resource_name = "0.5"
+
+[sub_resource type="BBVariant" id="BBVariant_8qro1"]
+type = 3
+saved_value = 0.25
+resource_name = "0.25"
+
+[sub_resource type="BBVariant" id="BBVariant_78bet"]
+type = 1
+saved_value = true
+resource_name = "true"
+
+[sub_resource type="BBVariant" id="BBVariant_0ria8"]
+type = 1
+saved_value = true
+resource_name = "true"
+
+[sub_resource type="BBVariant" id="BBVariant_opc4v"]
+saved_value = null
+
+[sub_resource type="BTAction" id="BTAction_4a848"]
+_enabled = false
+script = ExtResource("14_sw5t1")
+shaker_component_var = SubResource("BBVariant_opc4v")
+shake_amount_var = SubResource("BBVariant_6q4rm")
+shake_duration_var = SubResource("BBVariant_8qro1")
+shake_in_place_var = SubResource("BBVariant_78bet")
+shake_taper_off_var = SubResource("BBVariant_0ria8")
+
+[sub_resource type="BTSequence" id="BTSequence_solc0"]
+custom_name = "Return"
+children = [SubResource("BTAction_6r4af"), SubResource("BTAction_f8rwa"), SubResource("BTSetVar_ftj12"), SubResource("BTAction_3shy2"), SubResource("BTAction_ywbep"), SubResource("BTAction_ftj12"), SubResource("BTSequence_7i34u"), SubResource("BTAction_sw5t1"), SubResource("BTAction_4a848")]
+
+[sub_resource type="BBVariant" id="BBVariant_sw5t1"]
+type = 1
+saved_value = false
+resource_name = "false"
+
+[sub_resource type="BTSetVar" id="BTSetVar_solc0"]
+variable = &"spin_to_waypoint"
+value = SubResource("BBVariant_sw5t1")
+
+[sub_resource type="BBVariant" id="BBVariant_3shy2"]
+type = 3
+saved_value = 0.0
+resource_name = "<null>"
+
+[sub_resource type="BBVariant" id="BBVariant_expln"]
+type = 3
+saved_value = 180.0
+resource_name = "180.0"
+
+[sub_resource type="BBVariant" id="BBVariant_7i34u"]
+type = 3
+saved_value = 0.0
+resource_name = "<null>"
+
+[sub_resource type="BTAction" id="BTAction_q5c76"]
+script = ExtResource("12_6r4af")
+target_var = &"self"
+x_var = SubResource("BBVariant_3shy2")
+y_var = SubResource("BBVariant_expln")
+z_var = SubResource("BBVariant_7i34u")
+
+[sub_resource type="BTSequence" id="BTSequence_wekhm"]
+custom_name = "Return To Alcove"
+children = [SubResource("BTSetVar_yx2rc"), SubResource("BTPlayAnimation_solc0"), SubResource("BTPlayAnimation_ywbep"), SubResource("BTSequence_solc0"), SubResource("BTSetVar_solc0"), SubResource("BTAction_q5c76")]
+
+[sub_resource type="BTSequence" id="BTSequence_6q4rm"]
+custom_name = "Stun Death"
+children = [SubResource("BTSequence_f8rwa"), SubResource("BTSequence_wekhm")]
+
+[sub_resource type="BTSequence" id="BTSequence_3shy2"]
+custom_name = "Death Sequence"
+children = [SubResource("BTSelector_f8rwa"), SubResource("BTSequence_6q4rm")]
+
+[sub_resource type="BBVariant" id="BBVariant_6r4af"]
+value_source = 1
+variable = &"self"
+resource_name = "$self"
+
+[sub_resource type="BBNode" id="BBNode_6r4af"]
+value_source = 1
+variable = &"manager_path"
+resource_name = "$manager_path"
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_f8rwa"]
+node = SubResource("BBNode_6r4af")
+method = &"set_dancer_default_active"
+args = Array[BBVariant]([SubResource("BBVariant_6r4af")])
+
+[sub_resource type="BTSequence" id="BTSequence_ywbep"]
+custom_name = "Reset"
+children = [SubResource("BTCallMethod_f8rwa")]
+
+[sub_resource type="BTSequence" id="BTSequence_lyoeb"]
+custom_name = "Main"
+children = [SubResource("BTSequence_l2mi2"), SubResource("BTSequence_nr5y5"), SubResource("BTSequence_3shy2"), SubResource("BTSequence_ywbep")]
+
+[resource]
+blackboard_plan = SubResource("BlackboardPlan_ahwra")
+root_task = SubResource("BTSequence_lyoeb")

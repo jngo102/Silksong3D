@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://e6iyl6averfc"]
+
+[ext_resource type="PackedScene" uid="uid://xiyu6i6sefua" path="res://game/actors/enemies/corpse_piece.tscn" id="1_bd0px"]
+[ext_resource type="PackedScene" uid="uid://yus6l78blrht" path="res://game/actors/enemies/cogwork_dancers/corpse/cogwork_dancer_corpse_arm.glb" id="2_aiyjf"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bd0px"]
+size = Vector3(4.4642334, 0.19067383, 3.083252)
+
+[node name="CorpseArm" instance=ExtResource("1_bd0px")]
+mass = 32.0
+gravity_scale = 4.0
+explode_speed = 8.0
+
+[node name="Collision" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.220398, -0.004760742, 0.72888184)
+shape = SubResource("BoxShape3D_bd0px")
+
+[node name="Mesh" parent="." index="1" instance=ExtResource("2_aiyjf")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)

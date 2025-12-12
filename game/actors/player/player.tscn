@@ -76,10 +76,10 @@ radius = 0.001
 collision_layer = 1
 script = ExtResource("2_dw050")
 jump_height = 6.0
-walk_speed = 16.0
-sprint_speed = 32.0
+walk_speed = 24.0
+sprint_speed = 48.0
 down_spike_speed = 90.0
-down_spike_bounce_spin_speed = 10.0
+down_spike_bounce_spin_speed = 30.0
 
 [node name="Animator" parent="." index="0"]
 active = false
@@ -520,12 +520,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.277, 1.5)
 [node name="Mesh" parent="Model/Armature/Skeleton3D/NeedleAttach/Needle" index="1"]
 transform = Transform3D(0.05756263, -0.68949735, -0.28944767, 0.66983676, 0.17659517, -0.28745866, 0.33242267, -0.23644792, 0.6293546, -0.43267757, 3.7365413, -3.5042882)
 
+[node name="Collision" parent="Model/Armature/Skeleton3D/NeedleAttach/Needle/Mesh/DownSpikeDamager" index="0"]
+transform = Transform3D(0.9999996, -1.5795231e-06, -7.584691e-06, 4.172325e-07, 0.99999905, -1.1920929e-06, -4.4703484e-07, 1.0728836e-06, 0.9999977, -0.0094542205, 2.0044737, 0.0029330254)
+
 [node name="AnimationTree" type="AnimationTree" parent="Model/AnimationPlayer" index="0"]
 root_node = NodePath("../..")
 tree_root = ExtResource("2_onrkg")
 advance_expression_base_node = NodePath("../../..")
 anim_player = NodePath("..")
 parameters/Walk/blend_position = Vector2(-0.0026361942, 0.008163214)
+
+[node name="FSM" type="LimboHSM" parent="." index="5"]
+update_mode = 0
+
+[node name="Idle" type="LimboState" parent="FSM" index="0"]
 
 [connection signal="animation_finished" from="Animator/AnimationTree" to="." method="_on_animation_tree_animation_finished"]
 [connection signal="animation_started" from="Animator/AnimationTree" to="." method="_on_animation_tree_animation_started"]

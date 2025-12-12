@@ -4,9 +4,9 @@ const PARAMS: String = "parameters"
 const CONDS: String = "%s/conditions" % PARAMS
 const WALK_BLEND: String = "%s/Walk/blend_position" % PARAMS
 
-@export var jump_height: float = 8
-@export var walk_speed: float = 16
-@export var sprint_speed: float = 32
+@export var jump_height: float = 7
+@export var walk_speed: float = 24
+@export var sprint_speed: float = 48
 @export var down_spike_speed: float = 90
 @export var down_spike_bounce_spin_speed: float = 30
 
@@ -29,7 +29,7 @@ var walking: bool:
 
 var should_sprint: bool:
 	get:
-		return moving_forward and Input.is_action_pressed("Sprint")
+		return Input.is_action_pressed("Sprint")
 
 var sprinting: bool:
 	get:
@@ -56,6 +56,13 @@ var down_spiking: bool:
 			velocity = -_camera_controller.camera.global_basis.z.normalized() * down_spike_speed
 			_armature.look_at(global_position - velocity)
 
+var down_spike_bouncing: bool:
+	set(value):
+		down_spike_bouncing = value
+		if value:
+			await get_tree().create_timer(0.35, false).timeout
+			down_spike_bouncing = false
+
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	_camera_controller.target = self
@@ -67,7 +74,7 @@ func _input(event: InputEvent) -> void:
 		_check_attack()
 
 func _process(delta: float) -> void:
-	if not should_down_spike and not down_spiking:
+	if not should_down_spike and not down_spiking and not down_spike_bouncing:
 		var move_vector: Vector2 = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down").normalized() * current_move_speed
 		velocity = Vector3(move_vector.x, velocity.y, move_vector.y).rotated(Vector3.UP, _camera_controller.global_rotation.y)
 	_apply_gravity(delta)
@@ -85,7 +92,7 @@ func _check_walk(delta: float) -> void:
 	if sprinting:
 		return
 	var current_move_blend: Vector2 = _model_tree.get(WALK_BLEND)
-	_model_tree.set(WALK_BLEND, current_move_blend.move_toward(Vector2(-velocity.x, velocity.z).rotated(global_rotation.y).normalized(), delta * 5))
+	_model_tree.set(WALK_BLEND, current_move_blend.move_toward(Vector2(-velocity.x, -velocity.z).rotated(global_rotation.y).normalized(), delta * 8))
 	global_rotation.y = lerp_angle(global_rotation.y, _camera_controller.global_rotation.y + PI, delta * 4)
 
 func _check_sprint(delta: float) -> void:
@@ -164,6 +171,7 @@ func _check_attack() -> void:
 		_slash()
 
 func _slash() -> void:
+	floating = false
 	_down_spike_reset()
 	_needle.slash()
 
@@ -174,15 +182,19 @@ func _start_down_spike() -> void:
 
 func _down_spike() -> void:
 	down_spiking = true
+	await get_tree().create_timer(0.125, false).timeout
+	if down_spiking:
+		_down_spike_reset()
 
 func _down_spike_bounce() -> void:
 	down_spiking = false
 	var direction: Vector3 = -_camera_controller.camera.global_basis.z
 	_armature.rotation = Vector3.ZERO
 	velocity.y = down_spike_speed
+	down_spike_bouncing = true
 
 func _check_down_spike_bounce(delta: float) -> void:
-	if _needle.down_spike_hit:
+	if down_spike_bouncing:
 		_armature.rotate_x(down_spike_bounce_spin_speed * delta)
 
 func _down_spike_reset() -> void:

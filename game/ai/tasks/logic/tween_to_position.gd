@@ -25,7 +25,7 @@ func _enter() -> void:
 		.set_trans(transition_type) \
 		.set_ease(ease_type) \
 		.set_delay(delay)
-	_move_to_tween.tween_callback(func(): 
+	_move_to_tween.tween_callback(func():
 		_tween_finished = true)
 	blackboard.set_var(move_to_tween_var, _move_to_tween)
 

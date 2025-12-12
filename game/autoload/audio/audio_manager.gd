@@ -17,7 +17,10 @@ extends Node3D
 signal downbeat
 
 ## The currently playing music track
-var current_track: MusicTrack
+var current_track: MusicTrack:
+	set(value):
+		current_track = value
+		current_music_player.stream = value.music_clip if (value != null) else null
 
 ## The number of beats into the current track in the previous frame
 var previous_beats_played: int
@@ -72,12 +75,13 @@ func check_downbeat() -> void:
 		downbeat.emit()
 	
 ## Play a one shot audio clip
-func play_clip(clip: AudioStream, play_position: Vector3, pitch_min: float = 1, pitch_max: float = 1, volume_scale: float = 1) -> void:
+func play_clip(clip: AudioStream, play_position: Vector3, pitch_min: float = 1, pitch_max: float = 1, volume_scale: float = 1, range: float = 32) -> void:
 	var audio_player: AudioPlayer = audio_player_prefab.instantiate()
 	audio_players.add_child(audio_player)
 	audio_player.global_position = play_position
 	audio_player.volume_db = remap(volume_scale * SaveManager.settings.master_volume * SaveManager.settings.music_volume, 0.0, 1.0, _audio_off_db, 0)
 	audio_player.pitch_scale = randf_range(pitch_min, pitch_max)
+	audio_player.unit_size = range
 	audio_player.finished.connect(func(): audio_player.queue_free())
 	audio_player.stream = clip
 	audio_player.play()
@@ -119,12 +123,6 @@ func stop_music() -> void:
 ## Update the current music volume
 func _update_music_volume() -> void:
 	current_music_player.volume_db = music_volume
-
-func _on_current_music_player_finished() -> void:
-	current_music_player.play()
-
-func _on_next_music_player_finished() -> void:
-	next_music_player.play()
 
 ## Callback for when the volume tween finishes
 func _on_volume_tween_finished() -> void:

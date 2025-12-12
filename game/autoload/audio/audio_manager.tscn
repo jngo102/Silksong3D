@@ -14,6 +14,3 @@ audio_player_prefab = ExtResource("2_1og56")
 [node name="CurrentMusicPlayer" type="AudioStreamPlayer" parent="MusicPlayers"]
 
 [node name="NextMusicPlayer" type="AudioStreamPlayer" parent="MusicPlayers"]
-
-[connection signal="finished" from="MusicPlayers/CurrentMusicPlayer" to="." method="_on_current_music_player_finished"]
-[connection signal="finished" from="MusicPlayers/NextMusicPlayer" to="." method="_on_next_music_player_finished"]

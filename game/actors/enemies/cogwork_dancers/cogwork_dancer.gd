@@ -1,20 +1,27 @@
 class_name CogworkDancer extends Enemy
 
 @export var top: bool
+@export var to_waypoint_spin_speed: float = 30
 
 @onready var model: Node3D = $Model
 @onready var clasher: Area3D = model.get_node_or_null("Clasher")
 @onready var clash_audio: AudioStreamPlayer3D = clasher.get_node_or_null("ClashAudio")
 @onready var clash_light: OmniLight3D = clasher.get_node_or_null("ClashLight")
+@onready var death_behavior_tree: BTPlayer = $DeathBehaviorTree
 
-var bb: Blackboard:
+var death_bb: Blackboard:
 	get:
-		return behavior_tree.blackboard
+		return death_behavior_tree.blackboard
 
 func _ready() -> void:
-	bb.set_var("top", top)
+	bb.set_var(&"top", top)
 	if not top:
 		model.scale.x *= -1
+
+func _process(delta: float) -> void:
+	super._process(delta)
+	if bb.get_var(&"spin_to_waypoint", false) or death_bb.get_var(&"spin_to_waypoint", false):
+		global_rotation.y += 30 * delta 
 
 func _on_clasher_body_entered(body: Node3D) -> void:
 	if body == self or body is not CogworkDancer or not bb.get_var(&"dashing", false):

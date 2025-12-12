@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="MusicTrack" load_steps=3 format=3 uid="uid://cbxskjf0ajc00"]
 
-[ext_resource type="AudioStream" uid="uid://dovsg6ysom5up" path="res://game/copyrighted/cogwork_dancers/H181ClockworkDancers2ndPhase.wav" id="1_sr6ro"]
+[ext_resource type="AudioStream" uid="uid://dovsg6ysom5up" path="res://game/copyrighted/cogwork_dancers/music/H181ClockworkDancers2ndPhase.wav" id="1_sr6ro"]
 [ext_resource type="Script" uid="uid://q4qqnvxnwemw" path="res://game/autoload/audio/music_track.gd" id="2_iebke"]
 
 [resource]

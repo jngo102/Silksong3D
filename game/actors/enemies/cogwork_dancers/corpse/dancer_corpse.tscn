@@ -1,0 +1,136 @@
+[gd_scene load_steps=9 format=3 uid="uid://dqfhh1nwvvxj3"]
+
+[ext_resource type="PackedScene" uid="uid://bqde6vrd6age4" path="res://game/actors/enemies/corpse.tscn" id="1_4wcru"]
+[ext_resource type="PackedScene" uid="uid://fns4oqupk3bk" path="res://game/actors/enemies/cogwork_dancers/corpse/corpse_torso.tscn" id="1_r3gs7"]
+[ext_resource type="PackedScene" uid="uid://e6iyl6averfc" path="res://game/actors/enemies/cogwork_dancers/corpse/corpse_arm.tscn" id="2_erfq2"]
+[ext_resource type="PackedScene" uid="uid://xkiu4ajvvwoo" path="res://game/actors/enemies/cogwork_dancers/corpse/corpse_abdomen.tscn" id="3_erfq2"]
+[ext_resource type="PackedScene" uid="uid://c68xbbyop3ixg" path="res://game/actors/enemies/cogwork_dancers/corpse/corpse_leg.tscn" id="4_uhu7v"]
+
+[sub_resource type="Animation" id="Animation_jiiaq"]
+resource_name = "Explode"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ExplodeRing:mesh:radius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.001, 5.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ExplodeRing:mesh:height")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.001, 10.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ExplodeRing:mesh:material:shader_parameter/Alpha")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_nqbq1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ExplodeRing:mesh:radius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.001]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ExplodeRing:mesh:height")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.001]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ExplodeRing:mesh:material:shader_parameter/Alpha")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4wcru"]
+resource_local_to_scene = true
+_data = {
+&"Explode": SubResource("Animation_jiiaq"),
+&"RESET": SubResource("Animation_nqbq1")
+}
+
+[node name="DancerCorpse" instance=ExtResource("1_4wcru")]
+
+[node name="CorpseTorso" parent="." index="0" instance=ExtResource("1_r3gs7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1265945, 0)
+collision_layer = 1
+collision_mask = 1
+explode_speed = 50.0
+
+[node name="CorpseArmR" parent="." index="1" instance=ExtResource("2_erfq2")]
+transform = Transform3D(-1, 8.7422784e-08, 8.742278e-08, -8.742278e-08, -1, 8.742278e-08, 8.7422784e-08, 8.742277e-08, 1, -1.153, 0.922, 0)
+collision_layer = 1
+collision_mask = 1
+explode_speed = 50.0
+
+[node name="CorpseArmL" parent="." index="2" instance=ExtResource("2_erfq2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1527896, 0.9215212, 0)
+collision_layer = 1
+collision_mask = 1
+explode_speed = 50.0
+
+[node name="CorpseAbdomen" parent="." index="3" instance=ExtResource("3_erfq2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.7663298, 0)
+collision_layer = 1
+collision_mask = 1
+explode_speed = 50.0
+
+[node name="CorpseLegL" parent="." index="4" instance=ExtResource("4_uhu7v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.354629, -1.8574009, 0)
+collision_layer = 1
+collision_mask = 1
+explode_speed = 50.0
+
+[node name="CorpseLegR" parent="." index="5" instance=ExtResource("4_uhu7v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.355, -1.857, 0)
+collision_layer = 1
+collision_mask = 1
+explode_speed = 50.0
+
+[node name="Animator" parent="." index="6"]
+libraries = {
+&"": SubResource("AnimationLibrary_4wcru")
+}

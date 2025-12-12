@@ -1,0 +1,106 @@
+[gd_scene load_steps=7 format=3 uid="uid://bqde6vrd6age4"]
+
+[ext_resource type="Script" uid="uid://c74yvh41r5yqg" path="res://game/actors/enemies/corpse.gd" id="1_r3oq0"]
+[ext_resource type="Material" uid="uid://cgnxxrytvhv4q" path="res://game/resources/materials/fading_ring_material.tres" id="2_cavwe"]
+
+[sub_resource type="Animation" id="Animation_jiiaq"]
+resource_name = "Explode"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ExplodeRing:mesh:radius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.001, 5.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ExplodeRing:mesh:height")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.001, 10.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ExplodeRing:mesh:material:shader_parameter/Alpha")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_nqbq1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ExplodeRing:mesh:radius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.001]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ExplodeRing:mesh:height")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.001]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ExplodeRing:mesh:material:shader_parameter/Alpha")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cavwe"]
+resource_local_to_scene = true
+_data = {
+&"Explode": SubResource("Animation_jiiaq"),
+&"RESET": SubResource("Animation_nqbq1")
+}
+
+[sub_resource type="SphereMesh" id="SphereMesh_6rxqg"]
+material = ExtResource("2_cavwe")
+radius = 0.001
+height = 0.001
+
+[node name="Corpse" type="Node3D"]
+script = ExtResource("1_r3oq0")
+
+[node name="Animator" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_cavwe")
+}
+
+[node name="ExplodeRing" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_6rxqg")

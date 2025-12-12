@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://djok8768tq4tr"]
 
-[ext_resource type="Script" uid="uid://beoutqoga4xnq" path="res://game/gameplay/combat/health.gd" id="1_f3r4x"]
+[ext_resource type="Script" uid="uid://beoutqoga4xnq" path="res://game/actors/health.gd" id="1_f3r4x"]
 [ext_resource type="Texture2D" uid="uid://d3un2ri6w3rq" path="res://game/resources/curves/blood_particles_curve_texture.tres" id="2_mpbec"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ledv5"]
