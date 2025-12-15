@@ -58,18 +58,11 @@ jobs:
           mv /root/.local/share/godot/export_templates/${{ needs.setup.outputs.GODOT_VERSION }}.stable ~/.local/share/godot/export_templates/${{ needs.setup.outputs.GODOT_VERSION }}.stable
       - name: Export for ${{ matrix.target.channel }}
         run: godot --headless --verbose --export-release "${{ matrix.target.channel }}" ./build/${{ matrix.target.channel }}/${{ matrix.target.file }}
-      - name: Zip web build
+      - name: Zip build
         run: |
-          cd build/html5
+          cd build/${{ matrix.target.channel }}
           zip -r silksong3d_${{ matrix.target.channel }}.zip *
-      - name: Upload Desktop artifact
-        if: matrix.target.channel != 'html5'
-        uses: actions/upload-artifact@v4
-        with:
-          name: ${{ matrix.target.channel }}  
-          path: ./build/${{ matrix.target.channel }}/silksong3d_${{ matrix.target.channel }}.zip
-      - name: Upload web artifact
-        if: matrix.target.channel == 'html5'
+      - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.target.channel }}  
