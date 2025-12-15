@@ -14,12 +14,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          lfs: true
-      # - name: Install dependencies
-      #   run: |
-      #     sudo apt-get update
-      #     sudo apt-get install -y p7zip-full wine64
       - name: Get Godot version
         id: get_godot_version
         run: |
@@ -55,6 +49,7 @@ jobs:
         with:
           lfs: true
           submodules: true
+          token: ${{ secrets.PAT }}
       - name: Setup export templates
         run: |
           mkdir -v -p build/${{ matrix.target.channel }} ~/.local/share/godot/export_templates
