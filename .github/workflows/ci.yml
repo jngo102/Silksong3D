@@ -5,18 +5,21 @@ on:
   pull_request:
     branches: [main]
 jobs:
-  export_game:
+  setup:
+    name: Setup for Export
     runs-on: ubuntu-latest
-    name: Export game
+    outputs:
+      GODOT_VERSION: ${{ steps.get_godot_version.outputs.version }}
+      GAME_VERSION: ${{ steps.get_game_version.outputs.version }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           lfs: true
-      - name: Install dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y p7zip-full wine64
+      # - name: Install dependencies
+      #   run: |
+      #     sudo apt-get update
+      #     sudo apt-get install -y p7zip-full wine64
       - name: Get Godot version
         id: get_godot_version
         run: |
@@ -25,65 +28,126 @@ jobs:
           grep_query="^$query_start[0-9]\.[0-9](\.[0-9])?$query_end$"
           version=$(grep --perl-regexp "$query_start" project.godot | sed --regexp-extended "s#$query_start|$query_end##g")
           echo "version=$version" >> $GITHUB_OUTPUT
-      - name: Export
-        id: export
-        uses: firebelley/godot-export@v7.0.0
-        with:
-          godot_executable_download_url: https://github.com/godotengine/godot-builds/releases/download/${{ steps.get_godot_version.outputs.version }}-stable/Godot_v${{ steps.get_godot_version.outputs.version }}-stable_linux.x86_64.zip
-          godot_export_templates_download_url: https://github.com/godotengine/godot/releases/download/${{ steps.get_godot_version.outputs.version }}-stable/Godot_v${{ steps.get_godot_version.outputs.version }}-stable_export_templates.tpz
-          relative_project_path: ./
-          archive_output: true
-          verbose: true
-          wine_path: ${{ steps.get_wine_path.outputs.WINE_PATH }}
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: artifacts
-          path: ${{ steps.export.outputs.archive_directory }}/*
-  create-release:
-    needs: export_game
-    if: success() && github.ref == 'refs/heads/main'
-    permissions: write-all
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Download artifacts
-        id: download
-        uses: actions/download-artifact@v4
-        with:
-          name: artifacts
-      - name: Get version
-        id: get_version
+      - name: Get game version
+        id: get_game_version
         run: |
           query="config\/version="
           version=$(grep "$query" project.godot | sed --expression "s/$query//" --expression 's/\"//g')
           echo "version=$version" >> $GITHUB_OUTPUT
-      - name: Create release
-        uses: ncipollo/release-action@v1
+  export:
+    name: Export Game
+    runs-on: ubuntu-latest
+    container:
+      image: barichello/godot-ci:${{ needs.setup.outputs.GODOT_VERSION }}
+    needs: setup
+    strategy:
+      matrix:
+        target: [
+          { channel: html5, file: index.html },
+          { channel: linux, file: silksong3d.x86_64 },
+          { channel: osx, file: silksong3d.zip },
+          { channel: windows, file: silksong3d.exe },
+        ]
+    permissions: write-all
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          generateReleaseNotes: true
-          tag: ${{ steps.get_version.outputs.version }}
-          artifacts: ${{ steps.download.outputs.download-path }}/*.zip
-  deploy:
-    needs: export_game
-    if: success() && github.ref == 'refs/heads/main'
+          lfs: true
+          submodules: true
+      - name: Setup export templates
+        run: |
+          mkdir -v -p build/${{ matrix.target.channel }} ~/.local/share/godot/export_templates
+          mkdir -v -p ~/.config
+          mv /root/.config/godot ~/.config/godot
+          mv /root/.local/share/godot/export_templates/${{ needs.setup.outputs.GODOT_VERSION }}.stable ~/.local/share/godot/export_templates/${{ needs.setup.outputs.GODOT_VERSION }}.stable
+      - name: Export for ${{ matrix.target.channel }}
+        run: godot --headless --verbose --export-release "${{ matrix.target.channel }}" ./build/${{ matrix.target.channel }}/${{ matrix.target.file }}
+      - name: Zip web build
+        if: matrix.target.channel == 'html5'
+        run: |
+          cd build/html5
+          zip -r ${{ matrix.target.channel }}.zip *
+      - name: Upload Desktop artifact
+        if: matrix.target.channel != 'html5'
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.target.channel }}  
+          path: ./build/${{ matrix.target.channel }}/${{ matrix.target.file }}
+      - name: Upload web artifact
+        if: matrix.target.channel == 'html5'
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.target.channel }}  
+          path: ./build/${{ matrix.target.channel }}/${{ matrix.target.channel }}.zip
+      - name: Upload Pages artifact
+        if: matrix.target.channel == 'html5'
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: ./build/${{ matrix.target.channel }}/${{ matrix.target.channel }}.zip
+  release-github:
+    name: Create GitHub Release
+    needs: [setup, export]
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        channel: [html5, linux, osx, windows]
+        target: [
+          { channel: html5, file: index.zip },
+          { channel: linux, file: silksong3d.x86_64 },
+          { channel: osx, file: silksong3d.zip },
+          { channel: windows, file: silksong3d.exe },
+        ]
     steps:
       - name: Download artifacts
         uses: actions/download-artifact@v4
         with:
-          name: artifacts
+          name: ${{ matrix.target.channel }}
+          path: ${{ matrix.target.channel }}
+      - name: Create release
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: ./${{ matrix.target.channel }}/${{ matrix.target.file }}
+          name: Release v${{ needs.setup.outputs.GAME_VERSION }}
+          tag: ${{ needs.setup.outputs.GAME_VERSION }}
+  deploy-itch:
+    name: Deploy to Itch.io
+    needs: export
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        target: [
+          { channel: html5, file: index.html },
+          { channel: linux, file: silksong3d.x86_64 },
+          { channel: osx, file: silksong3d.zip },
+          { channel: windows, file: silksong3d.exe },
+        ]
+    steps:
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ matrix.target.channel }}
           path: ./
-      - name: Deploy ${{ matrix.channel }} build
+      - name: Deploy ${{ matrix.target.channel }} build
         uses: josephbmanley/butler-publish-itchio-action@master
         env:
           BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
-          CHANNEL: ${{ matrix.channel }}
+          CHANNEL: ${{ matrix.target.channel }}
           ITCH_GAME: ${{ secrets.ITCH_GAME }}
           ITCH_USER: ${{ secrets.ITCH_USER }}
-          PACKAGE: ${{ matrix.channel }}.zip
+          PACKAGE: ${{ matrix.target.file }}
+  deploy-pages:
+    name: Deploy to GitHub Pages
+    needs: export
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - name: Deploy
+        id: deploy
+        uses: actions/deploy-pages@v4
+        with:
+          artifact_name: html5
