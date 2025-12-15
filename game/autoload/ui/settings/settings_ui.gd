@@ -1,15 +1,12 @@
-class_name SettingsUI extends Control
+class_name SettingsUI extends MenuPage
 ## UI for modifying game settings
 
-@onready var _margin_container: MarginContainer = $MarginContainer
-@onready var _contents: VBoxContainer = _margin_container.get_node_or_null("Contents")
 @onready var _top_bar: Control = _contents.get_node_or_null("TopBar")
 @onready var _settings_tabs: Control = _top_bar.get_node_or_null("SettingsTabs")
 @onready var _left_navigation_icon: TextureRect = _top_bar.get_node_or_null("LeftNav")
 @onready var _right_navigation_icon: TextureRect = _top_bar.get_node_or_null("RightNav")
 @onready var _pages: Control = _contents.get_node_or_null("Pages")
 @onready var _input_settings_page: InputSettingsPage = _pages.get_node_or_null("InputSettingsPage")
-@onready var _back_button: Button = _contents.get_node_or_null("BackButton")
 @onready var _cursor: Cursor = _settings_tabs.get_node_or_null("GameSettings/Cursor")
 
 var _settings_tab_buttons: Array[Node]:
@@ -36,8 +33,9 @@ func _ready() -> void:
 	_set_up_settings_tabs()
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed(&"ui_back") and not _input_settings_page.rebinding:
-		hide()
+	if _input_settings_page.rebinding:
+		return
+	super._unhandled_input(event)
 
 func _input(event: InputEvent) -> void:
 	if not visible:
@@ -79,6 +77,3 @@ func _check_show_navigation_icons(device: String = InputHelper.device, _device_i
 	else:
 		_left_navigation_icon.texture = InputManager.current_input_icons[InputHelper.get_joypad_input_for_action(&"ui_prev_tab").button_index]
 		_right_navigation_icon.texture = InputManager.current_input_icons[InputHelper.get_joypad_input_for_action(&"ui_next_tab").button_index]
-
-func _on_back_button_pressed() -> void:
-	hide()

@@ -24,11 +24,13 @@ func hide_profile() -> void:
 	await _animator.animation_finished
 
 func _on_thumbnail_focus_entered() -> void:
+	_animator.play(&"RESET")
 	_animator.play(&"Highlight")
 	await _animator.animation_finished
 	_animator.play(&"Highlighted")
 
 func _on_thumbnail_focus_exited() -> void:
+	_animator.play(&"RESET")
 	_animator.play(&"Highlight", 0, -1, true)
 
 func _on_thumbnail_mouse_entered() -> void:

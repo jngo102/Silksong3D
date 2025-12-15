@@ -1,50 +1,33 @@
-[gd_scene load_steps=7 format=3 uid="uid://dymla6ms0yb56"]
+[gd_scene load_steps=6 format=3 uid="uid://dymla6ms0yb56"]
 
 [ext_resource type="Script" uid="uid://ut0yqy381ga6" path="res://game/autoload/ui/settings/settings_ui.gd" id="1_5bhgl"]
 [ext_resource type="PackedScene" uid="uid://cb2q8wcqo5p7f" path="res://game/autoload/ui/settings/input/input_settings_page.tscn" id="1_27rnl"]
+[ext_resource type="PackedScene" uid="uid://dvsqiexj1kwm8" path="res://game/autoload/ui/menu_page.tscn" id="1_54iid"]
 [ext_resource type="PackedScene" uid="uid://s3r8q4i5fd4i" path="res://game/autoload/ui/settings/cursor.tscn" id="2_54iid"]
-[ext_resource type="Script" uid="uid://dkbckojlnpcyg" path="res://game/autoload/ui/wrapping_ui_list.gd" id="2_hkyo2"]
-[ext_resource type="PackedScene" uid="uid://hqhyvp4gjw8i" path="res://game/autoload/ui/ui_button.tscn" id="3_ptrqt"]
 [ext_resource type="PackedScene" uid="uid://bkj1s30wrgg4q" path="res://game/autoload/ui/settings/audio/audio_settings_page.tscn" id="4_mgrx7"]
 
-[node name="SettingsUI" type="VBoxContainer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
+[node name="SettingsUI" instance=ExtResource("1_54iid")]
 script = ExtResource("1_5bhgl")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Contents" type="VBoxContainer" parent="MarginContainer"]
+[node name="TopBar" type="HBoxContainer" parent="MarginContainer/Page/Contents" index="0"]
 layout_mode = 2
 alignment = 1
-script = ExtResource("2_hkyo2")
 
-[node name="TopBar" type="HBoxContainer" parent="MarginContainer/Contents"]
-layout_mode = 2
-size_flags_vertical = 0
-
-[node name="LeftNav" type="TextureRect" parent="MarginContainer/Contents/TopBar"]
+[node name="LeftNav" type="TextureRect" parent="MarginContainer/Page/Contents/TopBar" index="0"]
 layout_mode = 2
 
-[node name="SettingsTabs" type="HBoxContainer" parent="MarginContainer/Contents/TopBar"]
+[node name="SettingsTabs" type="HBoxContainer" parent="MarginContainer/Page/Contents/TopBar" index="1"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 64
 alignment = 1
 
-[node name="GameSettings" type="Button" parent="MarginContainer/Contents/TopBar/SettingsTabs"]
+[node name="GameSettings" type="Button" parent="MarginContainer/Page/Contents/TopBar/SettingsTabs" index="0"]
 layout_mode = 2
 text = "Game"
 flat = true
 
-[node name="Cursor" parent="MarginContainer/Contents/TopBar/SettingsTabs/GameSettings" instance=ExtResource("2_54iid")]
+[node name="Cursor" parent="MarginContainer/Page/Contents/TopBar/SettingsTabs/GameSettings" index="0" instance=ExtResource("2_54iid")]
 layout_mode = 0
 anchors_preset = 0
 anchor_left = 0.0
@@ -58,69 +41,106 @@ offset_bottom = -404.0
 grow_horizontal = 1
 grow_vertical = 1
 
-[node name="AccessibilitySettings" type="Button" parent="MarginContainer/Contents/TopBar/SettingsTabs"]
+[node name="AccessibilitySettings" type="Button" parent="MarginContainer/Page/Contents/TopBar/SettingsTabs" index="1"]
 layout_mode = 2
 text = "Accessibility"
 flat = true
 
-[node name="AudioSettings" type="Button" parent="MarginContainer/Contents/TopBar/SettingsTabs"]
+[node name="AudioSettings" type="Button" parent="MarginContainer/Page/Contents/TopBar/SettingsTabs" index="2"]
 layout_mode = 2
 text = "Audio"
 flat = true
 
-[node name="GraphicsSettings" type="Button" parent="MarginContainer/Contents/TopBar/SettingsTabs"]
+[node name="GraphicsSettings" type="Button" parent="MarginContainer/Page/Contents/TopBar/SettingsTabs" index="3"]
 layout_mode = 2
 text = "Graphics"
 flat = true
 
-[node name="InputSettings" type="Button" parent="MarginContainer/Contents/TopBar/SettingsTabs"]
+[node name="InputSettings" type="Button" parent="MarginContainer/Page/Contents/TopBar/SettingsTabs" index="4"]
 layout_mode = 2
 text = "Input"
 flat = true
 
-[node name="RightNav" type="TextureRect" parent="MarginContainer/Contents/TopBar"]
+[node name="RightNav" type="TextureRect" parent="MarginContainer/Page/Contents/TopBar" index="2"]
 layout_mode = 2
 
-[node name="Pages" type="Control" parent="MarginContainer/Contents"]
+[node name="MarginContainer_Page_Contents#Pages" type="Control" parent="MarginContainer/Page/Contents/TopBar" index="3"]
 layout_mode = 2
 size_flags_vertical = 3
 focus_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/Contents/Pages"]
+[node name="Label" type="Label" parent="MarginContainer/Page/Contents/TopBar/MarginContainer_Page_Contents#Pages" index="0"]
 visible = false
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 74.0
 text = "Game"
 
-[node name="Label2" type="Label" parent="MarginContainer/Contents/Pages"]
+[node name="Label2" type="Label" parent="MarginContainer/Page/Contents/TopBar/MarginContainer_Page_Contents#Pages" index="1"]
 visible = false
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 74.0
 text = "Accessibility"
 
-[node name="AudioSettingsPage" parent="MarginContainer/Contents/Pages" instance=ExtResource("4_mgrx7")]
+[node name="AudioSettingsPage" parent="MarginContainer/Page/Contents/TopBar/MarginContainer_Page_Contents#Pages" index="2" instance=ExtResource("4_mgrx7")]
 visible = false
 layout_mode = 1
+offset_top = -5.0
+offset_bottom = 159.0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 
-[node name="Label4" type="Label" parent="MarginContainer/Contents/Pages"]
+[node name="Label4" type="Label" parent="MarginContainer/Page/Contents/TopBar/MarginContainer_Page_Contents#Pages" index="3"]
 visible = false
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 74.0
 text = "Graphics"
 
-[node name="InputSettingsPage" parent="MarginContainer/Contents/Pages" instance=ExtResource("1_27rnl")]
+[node name="InputSettingsPage" parent="MarginContainer/Page/Contents/TopBar/MarginContainer_Page_Contents#Pages" index="4" instance=ExtResource("1_27rnl")]
 visible = false
 layout_mode = 1
 
-[node name="BackButton" parent="MarginContainer/Contents" instance=ExtResource("3_ptrqt")]
+[node name="Pages" type="Control" parent="MarginContainer/Page/Contents" index="1"]
 layout_mode = 2
-size_flags_vertical = 8
-text = "Back"
+size_flags_vertical = 3
 
-[connection signal="hidden" from="MarginContainer/Contents/BackButton" to="." method="_on_back_button_hidden"]
-[connection signal="pressed" from="MarginContainer/Contents/BackButton" to="." method="_on_back_button_pressed"]
+[node name="Label" type="Label" parent="MarginContainer/Page/Contents/Pages" index="0"]
+visible = false
+layout_mode = 0
+offset_right = 137.0
+offset_bottom = 74.0
+text = "Game"
+
+[node name="Label2" type="Label" parent="MarginContainer/Page/Contents/Pages" index="1"]
+visible = false
+layout_mode = 0
+offset_right = 137.0
+offset_bottom = 74.0
+text = "Accessibility"
+
+[node name="AudioSettingsPage" parent="MarginContainer/Page/Contents/Pages" index="2" instance=ExtResource("4_mgrx7")]
+visible = false
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Label3" type="Label" parent="MarginContainer/Page/Contents/Pages" index="3"]
+visible = false
+layout_mode = 0
+offset_right = 287.0
+offset_bottom = 74.0
+text = "Graphics"
+
+[node name="InputSettingsPage" parent="MarginContainer/Page/Contents/Pages" index="4" instance=ExtResource("1_27rnl")]
+visible = false
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1

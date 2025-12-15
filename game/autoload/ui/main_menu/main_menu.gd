@@ -1,5 +1,5 @@
 ## The game's main menu
-class_name MainMenu extends Control
+class_name MainMenu extends StackableUI
 
 ## Parent container of menu buttons list
 @onready var _margin_container: MarginContainer = $MarginContainer
@@ -11,41 +11,25 @@ class_name MainMenu extends Control
 #@onready var _quit_warning: Panel = $quit_warning
 @onready var _settings_ui: SettingsUI = _margin_container.get_node_or_null("SettingsUI")
 @onready var _profiles_page: BossFightProfilesPage = _margin_container.get_node_or_null("BossFightProfilesPage")
+@onready var _quit_warning: QuitWarningPage = _margin_container.get_node_or_null("QuitWarningPage")
 
 var _title_music: MusicTrack = preload("uid://cq5xyomalenfy")
 
 func _ready() -> void:
-	AudioManager.play_music(_title_music, 0, 1)
+	super._ready()
+	AudioManager.play_music(_title_music, 0, 2)
 	_menu_buttons.grab_focus()
 	if OS.get_name() == "Web":
 		_quit_button.hide()
 
 func _on_select_fight_button_pressed() -> void:
-	_menu_buttons.hide()
-	_profiles_page.show()
+	_stack(_profiles_page)
 
 func _on_options_button_pressed() -> void:
-	_menu_buttons.hide()
-	_settings_ui.show()
+	_stack(_settings_ui)
 
 func _on_credits_button_pressed() -> void:
 	pass # Replace with function body.
 
-func _on_quit_button_pressed() -> void:
-	_menu_buttons.hide()
-	#_quit_warning.show()
-#
-func _on_quit_warning_quit_canceled() -> void:
-	#_quit_warning.hide()
-	_menu_buttons.show()
-
-func _on_quit_warning_quit_confirmed() -> void:
-	get_tree().quit()
-
-func _on_settings_ui_hidden() -> void:
-	_menu_buttons.show()
-	_menu_buttons.grab_focus()
-
-func _on_boss_fight_profiles_page_hidden() -> void:
-	_menu_buttons.show()
-	_menu_buttons.grab_focus()
+func _on_quit_game_button_pressed() -> void:
+	_stack(_quit_warning)

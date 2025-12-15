@@ -31,8 +31,8 @@
 
 [sub_resource type="Animation" id="Animation_wryr2"]
 resource_name = "Highlight"
-length = 0.2333
-step = 0.0333
+length = 0.14
+step = 0.02
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -40,7 +40,7 @@ tracks/0/path = NodePath("ArrowLeft:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.03333333, 0.033433333, 0.03353333, 0.033633333, 0.06666666, 0.1, 0.13333333, 0.16666667, 0.2, 0.23333333),
+"times": PackedFloat32Array(0, 0.02, 0.020100001, 0.0202, 0.0203, 0.04, 0.06, 0.08, 0.1, 0.12, 0.14),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [null, ExtResource("1_urdcy"), null, null, ExtResource("1_urdcy"), ExtResource("3_qijew"), ExtResource("2_micny"), ExtResource("4_yfsub"), ExtResource("5_yqh4h"), ExtResource("6_k17fq"), ExtResource("7_hwgwa")]
@@ -52,7 +52,7 @@ tracks/1/path = NodePath("ArrowRight:texture")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.03333333, 0.033433333, 0.03353333, 0.033633333, 0.06666666, 0.1, 0.13333333, 0.16666667, 0.2, 0.23333333),
+"times": PackedFloat32Array(0, 0.02, 0.020100001, 0.0202, 0.0203, 0.04, 0.06, 0.08, 0.1, 0.12, 0.14),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [null, ExtResource("1_urdcy"), null, null, ExtResource("1_urdcy"), ExtResource("3_qijew"), ExtResource("2_micny"), ExtResource("4_yfsub"), ExtResource("5_yqh4h"), ExtResource("6_k17fq"), ExtResource("7_hwgwa")]
@@ -64,7 +64,7 @@ tracks/2/path = NodePath("Thumbnail/HighlightOverlay:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.2333),
+"times": PackedFloat32Array(0, 0.14),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -160,7 +160,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -201,7 +201,8 @@ tracks/7/keys = {
 
 [sub_resource type="Animation" id="Animation_rkjkb"]
 resource_name = "Show"
-length = 0.3
+length = 0.18
+step = 0.02
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -209,7 +210,7 @@ tracks/0/path = NodePath("TopLeftFleur:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.033300012, 0.06663334, 0.099966675, 0.13330004, 0.16663334, 0.1999667, 0.2333, 0.26663336, 0.3),
+"times": PackedFloat32Array(0, 0.02, 0.04, 0.06, 0.08, 0.1, 0.12, 0.14, 0.16, 0.18),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [null, ExtResource("1_knipl"), ExtResource("2_u0a4p"), ExtResource("3_540rf"), ExtResource("4_w4n5a"), ExtResource("5_bpyno"), ExtResource("6_nxh6e"), ExtResource("7_gob8p"), ExtResource("8_urdcy"), ExtResource("9_micny")]
@@ -221,7 +222,7 @@ tracks/1/path = NodePath("BottomRightFleur:texture")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.033300012, 0.06663334, 0.099966675, 0.13330004, 0.16663334, 0.1999667, 0.2333, 0.26663336, 0.3),
+"times": PackedFloat32Array(0, 0.02, 0.04, 0.06, 0.08, 0.1, 0.12, 0.14, 0.16, 0.18),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [null, ExtResource("1_tqfid"), ExtResource("2_glpxx"), ExtResource("3_a27kh"), ExtResource("4_xmo5q"), ExtResource("5_xw6q5"), ExtResource("6_1mcoe"), ExtResource("7_11ugv"), ExtResource("8_1y1ik"), ExtResource("9_hrr1x")]
@@ -233,7 +234,7 @@ tracks/2/path = NodePath("Thumbnail:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.2999667),
+"times": PackedFloat32Array(0, 0.18),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -261,16 +262,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -960.0
-offset_top = -540.0
-offset_right = -448.0
-offset_bottom = 228.0
+offset_left = -958.0
+offset_top = -542.0
+offset_right = -446.0
+offset_bottom = 226.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(256, 384)
 size_flags_horizontal = 3
 size_flags_vertical = 3
-focus_mode = 2
+mouse_filter = 2
 script = ExtResource("1_micny")
 
 [node name="Animator" type="AnimationPlayer" parent="."]
@@ -303,7 +304,6 @@ texture = ExtResource("9_micny")
 stretch_mode = 2
 
 [node name="Thumbnail" type="Button" parent="."]
-modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_right = 512.0
 offset_bottom = 768.0
