@@ -79,7 +79,7 @@ jobs:
         if: matrix.target.channel == 'html5'
         uses: actions/upload-pages-artifact@v4
         with:
-          path: ./build/${{ matrix.target.channel }}/${{ matrix.target.channel }}.zip
+          path: ./build/${{ matrix.target.channel }}
   release-github:
     name: Create GitHub Release
     needs: [setup, export]
