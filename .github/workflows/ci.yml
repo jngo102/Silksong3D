@@ -76,19 +76,33 @@ jobs:
     name: Create GitHub Release
     needs: [setup, export]
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        channel: [html5, linux, osx, windows]
     steps:
-      - name: Download artifacts
+      - name: Create build folder
+        run: mkdir -p ./build
+      - name: Download HTML5 artifacts
         uses: actions/download-artifact@v4
         with:
-          name: ${{ matrix.channel }}
-          path: ${{ matrix.channel }}
+          name: html5
+          path: ./build
+      - name: Download Linux artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: linux
+          path: ./build
+      - name: Download macOS artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: osx
+          path: ./build
+      - name: Download Windows artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: windows
+          path: ./build
       - name: Create release
         uses: ncipollo/release-action@v1
         with:
-          artifacts: ./${{ matrix.channel }}/*.zip
+          artifacts: ./build/*.zip
           name: Release v${{ needs.setup.outputs.GAME_VERSION }}
           tag: ${{ needs.setup.outputs.GAME_VERSION }}
   deploy-itch:
