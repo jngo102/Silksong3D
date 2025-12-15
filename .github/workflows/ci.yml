@@ -78,22 +78,17 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        target: [
-          { channel: html5 },
-          { channel: linux },
-          { channel: osx },
-          { channel: windows },
-        ]
+        channel: [html5, linux, osx, windows]
     steps:
       - name: Download artifacts
         uses: actions/download-artifact@v4
         with:
-          name: ${{ matrix.target.channel }}
-          path: ${{ matrix.target.channel }}
+          name: ${{ matrix.channel }}
+          path: ${{ matrix.channel }}
       - name: Create release
         uses: ncipollo/release-action@v1
         with:
-          artifacts: ./${{ matrix.target.channel }}/*.zip
+          artifacts: ./${{ matrix.channel }}/*.zip
           name: Release v${{ needs.setup.outputs.GAME_VERSION }}
           tag: ${{ needs.setup.outputs.GAME_VERSION }}
   deploy-itch:
@@ -102,26 +97,21 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        target: [
-          { channel: html5, file: index.html },
-          { channel: linux, file: silksong3d.x86_64 },
-          { channel: osx, file: silksong3d.zip },
-          { channel: windows, file: silksong3d.exe },
-        ]
+        channel: [html5, linux, osx, windows]
     steps:
       - name: Download artifacts
         uses: actions/download-artifact@v4
         with:
-          name: ${{ matrix.target.channel }}
+          name: ${{ matrix.channel }}
           path: ./
-      - name: Deploy ${{ matrix.target.channel }} build
+      - name: Deploy ${{ matrix.channel }} build
         uses: josephbmanley/butler-publish-itchio-action@master
         env:
           BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
-          CHANNEL: ${{ matrix.target.channel }}
+          CHANNEL: ${{ matrix.channel }}
           ITCH_GAME: ${{ secrets.ITCH_GAME }}
           ITCH_USER: ${{ secrets.ITCH_USER }}
-          PACKAGE: ./*.zip
+          PACKAGE: ./silksong3d_${{ matrix.channel }}.zip
   deploy-pages:
     name: Deploy to GitHub Pages
     needs: export
