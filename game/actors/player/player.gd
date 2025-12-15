@@ -15,6 +15,7 @@ const WALK_BLEND: String = "%s/Walk/blend_position" % PARAMS
 @onready var _model: Node3D = $Model
 @onready var _armature: Node3D = _model.get_node_or_null("Armature")
 @onready var _skeleton = _armature.get_node_or_null("Skeleton3D")
+@onready var _head: MeshInstance3D = _skeleton.get_node_or_null("Head")
 @onready var _needle: Needle = _skeleton.get_node_or_null("NeedleAttach/Needle")
 @onready var _cloak_anim: AnimationPlayer = _skeleton.get_node_or_null("CloakAttach/CloakAnimator")
 @onready var _model_tree: AnimationTree = _model.get_node_or_null("AnimationPlayer/AnimationTree")
@@ -65,7 +66,7 @@ var down_spike_bouncing: bool:
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	_camera_controller.target = self
+	_camera_controller.target = _head
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
@@ -75,7 +76,7 @@ func _input(event: InputEvent) -> void:
 
 func _process(delta: float) -> void:
 	if not should_down_spike and not down_spiking and not down_spike_bouncing:
-		var move_vector: Vector2 = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down").normalized() * current_move_speed
+		var move_vector: Vector2 = Input.get_vector(&"ui_left", &"ui_right", &"ui_up", &"ui_down").normalized() * current_move_speed
 		velocity = Vector3(move_vector.x, velocity.y, move_vector.y).rotated(Vector3.UP, _camera_controller.global_rotation.y)
 	_apply_gravity(delta)
 	_check_walk(delta)
@@ -110,7 +111,7 @@ func _look_mouse(event: InputEventMouseMotion) -> void:
 	_camera_controller.add_pitch(-event.relative.y * 0.01)
 
 func _look_joystick(delta: float) -> void:
-	var look_vector: Vector2 = Input.get_vector("Look Left", "Look Right", "Look Down", "Look Up")
+	var look_vector: Vector2 = Input.get_vector(&"ui_look_left", &"ui_look_right", &"ui_look_down", &"ui_look_up")
 	_camera_controller.rotation.y -= look_vector.x * 0.015
 	_camera_controller.add_pitch(-look_vector.y * 0.01)
 

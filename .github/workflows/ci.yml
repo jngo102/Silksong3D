@@ -27,7 +27,7 @@ jobs:
           echo "version=$version" >> $GITHUB_OUTPUT
       - name: Export
         id: export
-        uses: firebelley/godot-export@v6.0.0
+        uses: firebelley/godot-export@v7.0.0
         with:
           godot_executable_download_url: https://github.com/godotengine/godot-builds/releases/download/${{ steps.get_godot_version.outputs.version }}-stable/Godot_v${{ steps.get_godot_version.outputs.version }}-stable_linux.x86_64.zip
           godot_export_templates_download_url: https://github.com/godotengine/godot/releases/download/${{ steps.get_godot_version.outputs.version }}-stable/Godot_v${{ steps.get_godot_version.outputs.version }}-stable_export_templates.tpz

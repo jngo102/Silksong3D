@@ -1,7 +1,48 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://c2jwhmnxf4nti"]
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://c2jwhmnxf4nti"]
 
 [ext_resource type="FontFile" uid="uid://05of6p43x4sb" path="res://game/copyrighted/fonts/PERPETUA.TTF" id="1_4exs3"]
+[ext_resource type="Texture2D" uid="uid://cauubn4ti6apm" path="res://game/copyrighted/textures/ui/MenuSliderHandle.png" id="1_xvi61"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4exs3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k0ol6"]
+bg_color = Color(1, 1, 1, 1)
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xvi61"]
+bg_color = Color(0.7529412, 0.7529412, 0.7529412, 0.49803922)
+border_color = Color(0.7529412, 0.7529412, 0.7529412, 0.49803922)
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
 
 [resource]
 default_font = ExtResource("1_4exs3")
-default_font_size = 12
+default_font_size = 64
+Button/constants/outline_size = 4
+Button/styles/focus = SubResource("StyleBoxEmpty_4exs3")
+HBoxContainer/constants/separation = 16
+HSlider/constants/center_grabber = 1
+HSlider/constants/grabber_offset = -48
+HSlider/icons/grabber = ExtResource("1_xvi61")
+HSlider/icons/grabber_highlight = ExtResource("1_xvi61")
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_k0ol6")
+HSlider/styles/slider = SubResource("StyleBoxFlat_xvi61")
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/constants/outline_size = 4
+MarginContainer/constants/margin_bottom = 128
+MarginContainer/constants/margin_left = 128
+MarginContainer/constants/margin_right = 128
+MarginContainer/constants/margin_top = 128
+TabBar/constants/tab_separation = 64
+VBoxContainer/constants/separation = 8

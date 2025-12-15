@@ -1,0 +1,223 @@
+[gd_scene load_steps=26 format=3 uid="uid://hqhyvp4gjw8i"]
+
+[ext_resource type="Script" uid="uid://1whwtverovr8" path="res://game/autoload/ui/ui_button.gd" id="1_dvxb5"]
+[ext_resource type="Texture2D" uid="uid://doae76pq54ce8" path="res://game/copyrighted/textures/ui/cursor/main_menu_cursor_small0006.png" id="2_7mnag"]
+[ext_resource type="Texture2D" uid="uid://1qk6diuy221g" path="res://game/copyrighted/textures/ui/cursor/main_menu_cursor_small0007.png" id="3_woh5q"]
+[ext_resource type="Texture2D" uid="uid://bdehk65tbfwt4" path="res://game/copyrighted/textures/ui/cursor/main_menu_cursor_small0008.png" id="4_krehr"]
+[ext_resource type="Texture2D" uid="uid://cefhdmryoaw1o" path="res://game/copyrighted/textures/ui/cursor/main_menu_cursor_small0009.png" id="5_0mfs2"]
+[ext_resource type="Texture2D" uid="uid://jwcwo1mx6npv" path="res://game/copyrighted/textures/ui/cursor/main_menu_cursor_small0010.png" id="6_dd2l8"]
+[ext_resource type="Texture2D" uid="uid://cospq06ksqm0i" path="res://game/copyrighted/textures/ui/button_flash/Button_flash0000.png" id="7_al5rp"]
+[ext_resource type="Texture2D" uid="uid://crsw7kgd08lsf" path="res://game/copyrighted/textures/ui/button_flash/Button_flash0001.png" id="8_j6q0v"]
+[ext_resource type="Texture2D" uid="uid://dc182imgvjm4n" path="res://game/copyrighted/textures/ui/button_flash/Button_flash0002.png" id="9_g73on"]
+[ext_resource type="Texture2D" uid="uid://dv8c00negfvlq" path="res://game/copyrighted/textures/ui/button_flash/Button_flash0003.png" id="10_miwws"]
+[ext_resource type="Texture2D" uid="uid://5tpq4swswmik" path="res://game/copyrighted/textures/ui/button_flash/Button_flash0004.png" id="11_p33va"]
+[ext_resource type="Texture2D" uid="uid://c4app8kpyxfab" path="res://game/copyrighted/textures/ui/button_flash/Button_flash0005.png" id="12_en8ee"]
+[ext_resource type="Texture2D" uid="uid://cxxf6hlypev2k" path="res://game/copyrighted/textures/ui/button_flash/Button_flash0006.png" id="13_sbdy3"]
+[ext_resource type="Texture2D" uid="uid://bpqf0g1b74qsf" path="res://game/copyrighted/textures/ui/button_flash/Button_flash0007.png" id="14_brshw"]
+[ext_resource type="Texture2D" uid="uid://idvomqpu5tma" path="res://game/copyrighted/textures/ui/button_flash/Button_flash0008.png" id="15_0ygbs"]
+[ext_resource type="Texture2D" uid="uid://5r1brqqb04m0" path="res://game/copyrighted/textures/ui/button_flash/Button_flash0009.png" id="16_3rghf"]
+[ext_resource type="Texture2D" uid="uid://obn8wo3c1dgn" path="res://game/copyrighted/textures/ui/button_flash/Button_flash0010.png" id="17_uq1jl"]
+[ext_resource type="Texture2D" uid="uid://c41yjb0e7l1lt" path="res://game/copyrighted/textures/ui/button_flash/Button_flash0011.png" id="18_jk3nd"]
+
+[sub_resource type="Animation" id="Animation_7mnag"]
+resource_name = "Hide"
+length = 0.125
+step = 0.025
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Elements/FleurLeft:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.025, 0.05, 0.075, 0.1, 0.125),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("6_dd2l8"), ExtResource("5_0mfs2"), ExtResource("4_krehr"), ExtResource("3_woh5q"), ExtResource("2_7mnag"), null]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Elements/FleurRight:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.025, 0.05, 0.075, 0.1, 0.125),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("6_dd2l8"), ExtResource("5_0mfs2"), ExtResource("4_krehr"), ExtResource("3_woh5q"), ExtResource("2_7mnag"), null]
+}
+
+[sub_resource type="Animation" id="Animation_anmcw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Elements/FleurLeft:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Elements/FleurRight:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+
+[sub_resource type="Animation" id="Animation_e56cm"]
+resource_name = "Show"
+length = 0.125
+step = 0.025
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Elements/FleurLeft:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.025, 0.05, 0.075, 0.1, 0.125),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [null, ExtResource("2_7mnag"), ExtResource("3_woh5q"), ExtResource("4_krehr"), ExtResource("5_0mfs2"), ExtResource("6_dd2l8")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Elements/FleurRight:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.025, 0.02596197, 0.050961975, 0.07596199, 0.100961976, 0.12596196),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [null, ExtResource("2_7mnag"), ExtResource("2_7mnag"), ExtResource("3_woh5q"), ExtResource("4_krehr"), ExtResource("5_0mfs2"), ExtResource("6_dd2l8")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e674i"]
+_data = {
+&"Hide": SubResource("Animation_7mnag"),
+&"RESET": SubResource("Animation_anmcw"),
+&"Show": SubResource("Animation_e56cm")
+}
+
+[sub_resource type="Animation" id="Animation_eh71g"]
+resource_name = "Flash"
+length = 0.275
+step = 0.025
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.025, 0.05, 0.075, 0.1, 0.125, 0.15, 0.175, 0.2, 0.225, 0.25, 0.275),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("7_al5rp"), ExtResource("8_j6q0v"), ExtResource("9_g73on"), ExtResource("10_miwws"), ExtResource("11_p33va"), ExtResource("12_en8ee"), ExtResource("13_sbdy3"), ExtResource("14_brshw"), ExtResource("15_0ygbs"), ExtResource("16_3rghf"), ExtResource("17_uq1jl"), ExtResource("18_jk3nd")]
+}
+
+[sub_resource type="Animation" id="Animation_mk55h"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_plqby"]
+_data = {
+&"Flash": SubResource("Animation_eh71g"),
+&"RESET": SubResource("Animation_mk55h")
+}
+
+[node name="UIButton" type="Button"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Button"
+flat = true
+icon_alignment = 1
+script = ExtResource("1_dvxb5")
+
+[node name="ButtonAudio" type="AudioStreamPlayer" parent="."]
+
+[node name="Elements" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -137.0
+offset_top = -37.0
+offset_right = 137.0
+offset_bottom = 37.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FleurLeft" type="TextureRect" parent="Elements"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+stretch_mode = 2
+
+[node name="ButtonText" type="Label" parent="Elements"]
+layout_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FleurRight" type="TextureRect" parent="Elements"]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 4
+stretch_mode = 2
+flip_h = true
+
+[node name="FleursAnimator" type="AnimationPlayer" parent="Elements"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_e674i")
+}
+
+[node name="Flash" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch_mode = 3
+
+[node name="FlashAnimator" type="AnimationPlayer" parent="Flash"]
+libraries = {
+&"": SubResource("AnimationLibrary_plqby")
+}
+
+[connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
+[connection signal="focus_exited" from="." to="." method="_on_focus_exited"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]

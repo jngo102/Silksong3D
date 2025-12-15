@@ -1,8 +1,23 @@
 [gd_scene load_steps=10 format=3 uid="uid://2s4q3xkx51ig"]
 
 [ext_resource type="Script" uid="uid://b7xg2324eklsk" path="res://game/actors/enemies/roar_effect.gd" id="1_gc7lu"]
-[ext_resource type="Texture2D" uid="uid://gr3ricvl2nse" path="res://game/copyrighted/cogwork_dancers/textures/Roar_wave_white.png" id="1_iekhd"]
-[ext_resource type="Texture2D" uid="uid://bef71rcb415hd" path="res://game/copyrighted/cogwork_dancers/textures/Roar_lines_white.png" id="2_gc7lu"]
+[ext_resource type="Texture2D" uid="uid://gr3ricvl2nse" path="res://game/copyrighted/textures/fx/Roar_wave_white.png" id="1_iekhd"]
+[ext_resource type="Texture2D" uid="uid://bef71rcb415hd" path="res://game/copyrighted/textures/fx/Roar_lines_white.png" id="2_gc7lu"]
+
+[sub_resource type="Animation" id="Animation_gc7lu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Wave:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_iekhd"]
 resource_name = "Start"
@@ -35,12 +50,18 @@ tracks/1/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_gc7lu"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_01vt1"]
+_data = {
+&"RESET": SubResource("Animation_gc7lu"),
+&"Start": SubResource("Animation_iekhd")
+}
+
+[sub_resource type="Animation" id="Animation_0pbxb"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Wave:scale")
+tracks/0/path = NodePath("Lines:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -49,11 +70,17 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector3(1, 1, 1)]
 }
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_01vt1"]
-_data = {
-&"RESET": SubResource("Animation_gc7lu"),
-&"Start": SubResource("Animation_iekhd")
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Lines:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_01vt1"]
@@ -82,33 +109,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
-}
-
-[sub_resource type="Animation" id="Animation_0pbxb"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Lines:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Lines:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2mx63"]

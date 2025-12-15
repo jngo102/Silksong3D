@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="InputIcons" load_steps=5 format=3 uid="uid://dtgacloymxtw8"]
+
+[ext_resource type="Texture2D" uid="uid://danccuyvmym6r" path="res://game/copyrighted/textures/ui/input/mouse/button_mouse_left_click.png" id="1_3wevw"]
+[ext_resource type="Texture2D" uid="uid://xfrm0krasfwt" path="res://game/copyrighted/textures/ui/input/mouse/button_mouse_right_click.png" id="2_dilgp"]
+[ext_resource type="Texture2D" uid="uid://drerp2hfoiqrc" path="res://game/copyrighted/textures/ui/input/mouse/button_mouse_middle_click.png" id="3_tg42a"]
+[ext_resource type="Script" uid="uid://ddqk8sr3ma6hh" path="res://game/autoload/input/input_icons.gd" id="4_t8cyy"]
+
+[resource]
+script = ExtResource("4_t8cyy")
+device_name = "keyboard"
+button_icons = Array[Texture2D]([null, ExtResource("1_3wevw"), ExtResource("2_dilgp"), ExtResource("3_tg42a")])
+metadata/_custom_type_script = "uid://ddqk8sr3ma6hh"

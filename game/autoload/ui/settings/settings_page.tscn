@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://o76gduhspdg"]
+
+[ext_resource type="Script" uid="uid://dwx8mov1v8fku" path="res://game/autoload/ui/settings/settings_page.gd" id="1_u7bh6"]
+
+[node name="SettingsPage" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+script = ExtResource("1_u7bh6")

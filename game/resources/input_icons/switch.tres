@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="InputIcons" load_steps=16 format=3 uid="uid://dub68lb0c34d2"]
 
-[ext_resource type="Texture2D" uid="uid://dul8omk57hgv2" path="res://game/autoload/input/input_prompts/Xbox Series/Double/xbox_button_b_outline.png" id="1_sauqk"]
-[ext_resource type="Texture2D" uid="uid://d2ucgx8v3ewyy" path="res://game/autoload/input/input_prompts/Xbox Series/Double/xbox_button_a_outline.png" id="2_1ddri"]
-[ext_resource type="Texture2D" uid="uid://bkyqxe61bxc35" path="res://game/autoload/input/input_prompts/Xbox Series/Double/xbox_button_y_outline.png" id="3_tx1ic"]
-[ext_resource type="Texture2D" uid="uid://ddasag1wlnou1" path="res://game/autoload/input/input_prompts/Xbox Series/Double/xbox_button_x_outline.png" id="4_dgxf6"]
+[ext_resource type="Texture2D" uid="uid://b2nh861836qa6" path="res://game/copyrighted/textures/ui/input/controller_button_skins_0020_B.png" id="1_sauqk"]
+[ext_resource type="Texture2D" uid="uid://dbvl276brot2y" path="res://game/copyrighted/textures/ui/input/controller_button_skins_0021_A.png" id="2_1ddri"]
+[ext_resource type="Texture2D" uid="uid://boqsx2sv01tpc" path="res://game/copyrighted/textures/ui/input/controller_button_skins_0022_Y.png" id="3_tx1ic"]
+[ext_resource type="Texture2D" uid="uid://dncbngi2g6sw4" path="res://game/copyrighted/textures/ui/input/controller_button_skins_0023_X.png" id="4_dgxf6"]
 [ext_resource type="Texture2D" uid="uid://c57dki6chmswv" path="res://game/autoload/input/input_prompts/Nintendo Switch/Double/switch_button_minus_outline.png" id="5_2fbsp"]
 [ext_resource type="Texture2D" uid="uid://cvc2e7vktgdms" path="res://game/autoload/input/input_prompts/Nintendo Switch/Double/switch_button_plus_outline.png" id="6_0o1bg"]
 [ext_resource type="Texture2D" uid="uid://cytdsxmafcdn1" path="res://game/autoload/input/input_prompts/Xbox Series/Double/xbox_stick_l.png" id="7_afjb8"]

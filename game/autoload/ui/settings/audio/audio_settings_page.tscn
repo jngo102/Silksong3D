@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://bkj1s30wrgg4q"]
+
+[ext_resource type="PackedScene" uid="uid://o76gduhspdg" path="res://game/autoload/ui/settings/settings_page.tscn" id="1_kpnhb"]
+[ext_resource type="Script" uid="uid://gvrnmvlnm6bl" path="res://game/autoload/ui/settings/audio/audio_settings_page.gd" id="2_3kpoi"]
+[ext_resource type="PackedScene" uid="uid://biisedaow62y2" path="res://game/autoload/ui/settings/setting_value_slider.tscn" id="3_hv8pd"]
+
+[node name="AudioSettingsPage" instance=ExtResource("1_kpnhb")]
+script = ExtResource("2_3kpoi")
+
+[node name="MasterVolumeSlider" parent="." index="0" instance=ExtResource("3_hv8pd")]
+layout_mode = 2
+setting_name = "Master Volume"
+
+[node name="MusicVolumeSlider" parent="." index="1" instance=ExtResource("3_hv8pd")]
+layout_mode = 2
+setting_name = "Music Volume"
+
+[node name="SFXVolumeSlider" parent="." index="2" instance=ExtResource("3_hv8pd")]
+layout_mode = 2
+setting_name = "SFX Volume"
+
+[connection signal="value_changed" from="MasterVolumeSlider" to="." method="_on_master_volume_slider_value_changed"]
+[connection signal="value_changed" from="MusicVolumeSlider" to="." method="_on_music_volume_slider_value_changed"]
+[connection signal="value_changed" from="SFXVolumeSlider" to="." method="_on_sfx_volume_slider_value_changed"]

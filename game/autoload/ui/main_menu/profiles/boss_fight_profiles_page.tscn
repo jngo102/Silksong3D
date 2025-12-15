@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://c50y1s5he41oo"]
+
+[ext_resource type="Script" uid="uid://y801eoanpic5" path="res://game/autoload/ui/main_menu/profiles/boss_fight_profiles_page.gd" id="1_sa8tw"]
+[ext_resource type="Script" uid="uid://mh6v8w8mh15m" path="res://game/autoload/ui/main_menu/profiles/boss_fight_profile_data.gd" id="2_vd6hw"]
+[ext_resource type="PackedScene" uid="uid://hqhyvp4gjw8i" path="res://game/autoload/ui/ui_button.tscn" id="2_ye6so"]
+[ext_resource type="PackedScene" uid="uid://dugp1elqcy03h" path="res://game/levels/cogwork_dancers_fight.tscn" id="3_wrfrw"]
+[ext_resource type="Texture2D" uid="uid://dfed24vi280po" path="res://game/copyrighted/icon.png" id="4_gwsny"]
+
+[sub_resource type="Resource" id="Resource_nlhmm"]
+script = ExtResource("2_vd6hw")
+scene = ExtResource("3_wrfrw")
+thumbnail = ExtResource("4_gwsny")
+boss_name = "Cogwork Dancers"
+metadata/_custom_type_script = "uid://mh6v8w8mh15m"
+
+[node name="BossFightProfilesPage" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sa8tw")
+profiles = Array[ExtResource("2_vd6hw")]([SubResource("Resource_nlhmm")])
+
+[node name="Contents" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Elements" type="HBoxContainer" parent="Contents"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 2
+alignment = 1
+
+[node name="BackButton" parent="Contents" instance=ExtResource("2_ye6so")]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Back"
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="pressed" from="Contents/BackButton" to="." method="_on_back_button_pressed"]

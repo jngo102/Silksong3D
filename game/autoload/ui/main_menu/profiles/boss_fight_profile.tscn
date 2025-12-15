@@ -1,0 +1,377 @@
+[gd_scene load_steps=36 format=3 uid="uid://b65v8iryfc811"]
+
+[ext_resource type="Texture2D" uid="uid://bvtvqu367ufox" path="res://game/copyrighted/textures/ui/save/h_profile_fleur_top0000.png" id="1_knipl"]
+[ext_resource type="Script" uid="uid://by2ojfv15yaep" path="res://game/autoload/ui/main_menu/profiles/boss_fight_profile.gd" id="1_micny"]
+[ext_resource type="Texture2D" uid="uid://dfed24vi280po" path="res://game/copyrighted/icon.png" id="1_rkjkb"]
+[ext_resource type="Texture2D" uid="uid://cir4r5jbtai3c" path="res://game/copyrighted/textures/ui/save/h_profile_fleur_bottom0000.png" id="1_tqfid"]
+[ext_resource type="Texture2D" uid="uid://djg7vv7dyhs2v" path="res://game/copyrighted/textures/ui/save/h_profile_fleur_arrow_selector0000.png" id="1_urdcy"]
+[ext_resource type="Texture2D" uid="uid://bs54cuhklx5b6" path="res://game/copyrighted/textures/ui/save/h_profile_fleur_bottom0001.png" id="2_glpxx"]
+[ext_resource type="Texture2D" uid="uid://c1soea0njpm2n" path="res://game/copyrighted/textures/ui/save/h_profile_fleur_arrow_selector0002.png" id="2_micny"]
+[ext_resource type="Texture2D" uid="uid://d2gk8ctincvuq" path="res://game/copyrighted/textures/ui/save/h_profile_fleur_top0001.png" id="2_u0a4p"]
+[ext_resource type="Texture2D" uid="uid://bmtrnyvu6q10h" path="res://game/copyrighted/textures/ui/save/h_profile_fleur_top0002.png" id="3_540rf"]
+[ext_resource type="Texture2D" uid="uid://3jeh078sewh0" path="res://game/copyrighted/textures/ui/save/h_profile_fleur_bottom0002.png" id="3_a27kh"]
+[ext_resource type="Texture2D" uid="uid://dwpn5xjusc1xs" path="res://game/copyrighted/textures/ui/save/h_profile_fleur_arrow_selector0001.png" id="3_qijew"]
+[ext_resource type="Texture2D" uid="uid://dtud72nhrjv43" path="res://game/copyrighted/textures/ui/save/h_profile_fleur_top0003.png" id="4_w4n5a"]
+[ext_resource type="Texture2D" uid="uid://b7criqkukd1ig" path="res://game/copyrighted/textures/ui/save/h_profile_fleur_bottom0003.png" id="4_xmo5q"]
+[ext_resource type="Texture2D" uid="uid://bff4w0eqnhhb4" path="res://game/copyrighted/textures/ui/save/h_profile_fleur_arrow_selector0003.png" id="4_yfsub"]
+[ext_resource type="Texture2D" uid="uid://cusyuses3sdmj" path="res://game/copyrighted/textures/ui/save/h_profile_fleur_top0004.png" id="5_bpyno"]
+[ext_resource type="Texture2D" uid="uid://cl38sb7xnhsrv" path="res://game/copyrighted/textures/ui/save/h_profile_fleur_bottom0004.png" id="5_xw6q5"]
+[ext_resource type="Texture2D" uid="uid://bb6v3fbrdresp" path="res://game/copyrighted/textures/ui/save/h_profile_fleur_arrow_selector0004.png" id="5_yqh4h"]
+[ext_resource type="Texture2D" uid="uid://diexp0j5efpp0" path="res://game/copyrighted/textures/ui/save/h_profile_fleur_bottom0005.png" id="6_1mcoe"]
+[ext_resource type="Texture2D" uid="uid://cesvjs2y7d3lp" path="res://game/copyrighted/textures/ui/save/h_profile_fleur_arrow_selector0005.png" id="6_k17fq"]
+[ext_resource type="Texture2D" uid="uid://b0b1jm0qhm3hi" path="res://game/copyrighted/textures/ui/save/h_profile_fleur_top0005.png" id="6_nxh6e"]
+[ext_resource type="Texture2D" uid="uid://cfmy8s5tlf2ua" path="res://game/copyrighted/textures/ui/save/h_profile_fleur_bottom0006.png" id="7_11ugv"]
+[ext_resource type="Texture2D" uid="uid://cqo7vwb38awsb" path="res://game/copyrighted/textures/ui/save/h_profile_fleur_top0006.png" id="7_gob8p"]
+[ext_resource type="Texture2D" uid="uid://d1gv8iwao2f21" path="res://game/copyrighted/textures/ui/save/h_profile_fleur_arrow_selector0006.png" id="7_hwgwa"]
+[ext_resource type="Texture2D" uid="uid://b8a4cyvxg0qq3" path="res://game/copyrighted/textures/ui/save/h_profile_fleur_bottom0007.png" id="8_1y1ik"]
+[ext_resource type="Texture2D" uid="uid://d2m7a2toxfapi" path="res://game/copyrighted/textures/ui/save/h_profile_fleur_top0007.png" id="8_urdcy"]
+[ext_resource type="Texture2D" uid="uid://cf6nxnpa43x3h" path="res://game/copyrighted/textures/ui/save/h_profile_fleur_bottom0008.png" id="9_hrr1x"]
+[ext_resource type="Texture2D" uid="uid://nbn6rrkj4qm2" path="res://game/copyrighted/textures/ui/save/h_profile_fleur_top0008.png" id="9_micny"]
+[ext_resource type="AudioStream" uid="uid://dych7ifmqv8j0" path="res://game/copyrighted/sfx/ui/spa_heal.wav" id="27_lxojh"]
+
+[sub_resource type="Animation" id="Animation_wryr2"]
+resource_name = "Highlight"
+length = 0.2333
+step = 0.0333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ArrowLeft:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.03333333, 0.033433333, 0.03353333, 0.033633333, 0.06666666, 0.1, 0.13333333, 0.16666667, 0.2, 0.23333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [null, ExtResource("1_urdcy"), null, null, ExtResource("1_urdcy"), ExtResource("3_qijew"), ExtResource("2_micny"), ExtResource("4_yfsub"), ExtResource("5_yqh4h"), ExtResource("6_k17fq"), ExtResource("7_hwgwa")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ArrowRight:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.03333333, 0.033433333, 0.03353333, 0.033633333, 0.06666666, 0.1, 0.13333333, 0.16666667, 0.2, 0.23333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [null, ExtResource("1_urdcy"), null, null, ExtResource("1_urdcy"), ExtResource("3_qijew"), ExtResource("2_micny"), ExtResource("4_yfsub"), ExtResource("5_yqh4h"), ExtResource("6_k17fq"), ExtResource("7_hwgwa")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Thumbnail/HighlightOverlay:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_micny"]
+resource_name = "Highlighted"
+length = 0.25
+loop_mode = 2
+step = 0.0333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ArrowLeft:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-65, 319), Vector2(-81, 319)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ArrowRight:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(512, 319), Vector2(528, 319)]
+}
+
+[sub_resource type="Animation" id="Animation_pdyf0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TopLeftFleur:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("9_micny")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BottomRightFleur:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("9_hrr1x")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ArrowLeft:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ArrowRight:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Thumbnail:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Thumbnail/HighlightOverlay:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("ArrowLeft:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-65, 319)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("ArrowRight:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(512, 319)]
+}
+
+[sub_resource type="Animation" id="Animation_rkjkb"]
+resource_name = "Show"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TopLeftFleur:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033300012, 0.06663334, 0.099966675, 0.13330004, 0.16663334, 0.1999667, 0.2333, 0.26663336, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [null, ExtResource("1_knipl"), ExtResource("2_u0a4p"), ExtResource("3_540rf"), ExtResource("4_w4n5a"), ExtResource("5_bpyno"), ExtResource("6_nxh6e"), ExtResource("7_gob8p"), ExtResource("8_urdcy"), ExtResource("9_micny")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BottomRightFleur:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.033300012, 0.06663334, 0.099966675, 0.13330004, 0.16663334, 0.1999667, 0.2333, 0.26663336, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [null, ExtResource("1_tqfid"), ExtResource("2_glpxx"), ExtResource("3_a27kh"), ExtResource("4_xmo5q"), ExtResource("5_xw6q5"), ExtResource("6_1mcoe"), ExtResource("7_11ugv"), ExtResource("8_1y1ik"), ExtResource("9_hrr1x")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Thumbnail:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2999667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i6pf3"]
+_data = {
+&"Highlight": SubResource("Animation_wryr2"),
+&"Highlighted": SubResource("Animation_micny"),
+&"RESET": SubResource("Animation_pdyf0"),
+&"Show": SubResource("Animation_rkjkb")
+}
+
+[sub_resource type="Gradient" id="Gradient_micny"]
+offsets = PackedFloat32Array(0, 0.4, 0.6, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.49803922, 1, 1, 1, 0.49803922, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_qijew"]
+gradient = SubResource("Gradient_micny")
+
+[node name="BossFightProfile" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -540.0
+offset_right = -448.0
+offset_bottom = 228.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(256, 384)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+focus_mode = 2
+script = ExtResource("1_micny")
+
+[node name="Animator" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_i6pf3")
+}
+
+[node name="SelectProfileAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("27_lxojh")
+
+[node name="ArrowLeft" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -65.0
+offset_top = 319.0
+offset_right = -15.999573
+offset_bottom = 448.0
+scale = Vector2(1.5, 1.5)
+size_flags_vertical = 4
+stretch_mode = 3
+
+[node name="TopLeftFleur" type="TextureRect" parent="."]
+z_index = 1
+layout_mode = 1
+offset_left = -1.0
+offset_top = 1.0
+offset_right = 383.0
+offset_bottom = 500.0
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("9_micny")
+stretch_mode = 2
+
+[node name="Thumbnail" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_right = 512.0
+offset_bottom = 768.0
+icon = ExtResource("1_rkjkb")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Name" type="Label" parent="Thumbnail"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -352.0
+offset_top = -161.0
+offset_right = -45.0
+offset_bottom = -64.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Boss Fight"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="HighlightOverlay" type="TextureRect" parent="Thumbnail"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -192.0
+offset_top = -360.0
+offset_right = 192.0
+offset_bottom = 356.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(0, 384)
+texture = SubResource("GradientTexture1D_qijew")
+
+[node name="BottomRightFleur" type="TextureRect" parent="."]
+z_index = 1
+layout_mode = 0
+offset_left = 511.0
+offset_top = 769.0
+offset_right = 895.0
+offset_bottom = 978.0
+scale = Vector2(-1.5, -1.5)
+texture = ExtResource("9_hrr1x")
+stretch_mode = 2
+flip_h = true
+flip_v = true
+
+[node name="ArrowRight" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 512.0
+offset_top = 319.0
+offset_right = 561.0
+offset_bottom = 448.0
+scale = Vector2(1.5, 1.5)
+size_flags_vertical = 4
+stretch_mode = 3
+flip_h = true
+
+[connection signal="focus_entered" from="Thumbnail" to="." method="_on_thumbnail_focus_entered"]
+[connection signal="focus_exited" from="Thumbnail" to="." method="_on_thumbnail_focus_exited"]
+[connection signal="mouse_entered" from="Thumbnail" to="." method="_on_thumbnail_mouse_entered"]
+[connection signal="mouse_exited" from="Thumbnail" to="." method="_on_thumbnail_mouse_exited"]
+[connection signal="pressed" from="Thumbnail" to="." method="_on_thumbnail_pressed"]

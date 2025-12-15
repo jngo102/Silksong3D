@@ -58,7 +58,7 @@ var sfx_volume: float:
 		return remap(SaveManager.settings.master_volume * SaveManager.settings.sfx_volume, 0.0, 1.0, _audio_off_db, 0)
 
 func _ready() -> void:
-	_update_music_volume()
+	update_music_volume()
 
 func _process(_delta: float) -> void:
 	check_downbeat()
@@ -75,7 +75,7 @@ func check_downbeat() -> void:
 		downbeat.emit()
 	
 ## Play a one shot audio clip
-func play_clip(clip: AudioStream, play_position: Vector3, pitch_min: float = 1, pitch_max: float = 1, volume_scale: float = 1, range: float = 24) -> void:
+func play_clip(clip: AudioStream, play_position := Vector3.ZERO, pitch_min: float = 1, pitch_max: float = 1, volume_scale: float = 1, range: float = 24) -> void:
 	var audio_player: AudioPlayer = audio_player_prefab.instantiate()
 	audio_players.add_child(audio_player)
 	audio_player.global_position = play_position
@@ -121,7 +121,7 @@ func stop_music() -> void:
 	current_track = null
 
 ## Update the current music volume
-func _update_music_volume() -> void:
+func update_music_volume() -> void:
 	current_music_player.volume_db = music_volume
 
 ## Callback for when the volume tween finishes

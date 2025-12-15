@@ -117,6 +117,7 @@ saved_value = true
 resource_name = "true"
 
 [sub_resource type="BTAction" id="BTAction_h8iei"]
+_enabled = false
 script = ExtResource("14_sw5t1")
 shake_amount_var = SubResource("BBVariant_4a848")
 shake_duration_var = SubResource("BBVariant_n133n")
@@ -194,6 +195,7 @@ saved_value = true
 resource_name = "true"
 
 [sub_resource type="BTAction" id="BTAction_you0p"]
+_enabled = false
 script = ExtResource("14_sw5t1")
 shake_amount_var = SubResource("BBVariant_7gmt6")
 shake_duration_var = SubResource("BBVariant_55m7c")
@@ -209,7 +211,7 @@ clips_array = Array[AudioStream]([ExtResource("8_f8rwa")])
 play_position_var = &"self_position"
 
 [sub_resource type="BTWait" id="BTWait_f8rwa"]
-duration = 2.4699999999999998
+duration = 2.47
 
 [sub_resource type="BBNode" id="BBNode_solc0"]
 saved_value = NodePath("Death")
@@ -339,9 +341,11 @@ operation = 1
 
 [sub_resource type="BBVariant" id="BBVariant_f8rwa"]
 saved_value = null
+resource_name = "<null>"
 
 [sub_resource type="BBVariant" id="BBVariant_ywbep"]
 saved_value = null
+resource_name = "<null>"
 
 [sub_resource type="BBVariant" id="BBVariant_solc0"]
 value_source = 1
@@ -410,6 +414,7 @@ saved_value = true
 resource_name = "true"
 
 [sub_resource type="BTAction" id="BTAction_4a848"]
+_enabled = false
 script = ExtResource("14_sw5t1")
 shake_amount_var = SubResource("BBVariant_6q4rm")
 shake_duration_var = SubResource("BBVariant_8qro1")
