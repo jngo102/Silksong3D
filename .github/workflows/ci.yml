@@ -59,22 +59,21 @@ jobs:
       - name: Export for ${{ matrix.target.channel }}
         run: godot --headless --verbose --export-release "${{ matrix.target.channel }}" ./build/${{ matrix.target.channel }}/${{ matrix.target.file }}
       - name: Zip web build
-        if: matrix.target.channel == 'html5'
         run: |
           cd build/html5
-          zip -r ${{ matrix.target.channel }}.zip *
+          zip -r silksong3d_${{ matrix.target.channel }}.zip *
       - name: Upload Desktop artifact
         if: matrix.target.channel != 'html5'
         uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.target.channel }}  
-          path: ./build/${{ matrix.target.channel }}/${{ matrix.target.file }}
+          path: ./build/${{ matrix.target.channel }}/silksong3d_${{ matrix.target.channel }}.zip
       - name: Upload web artifact
         if: matrix.target.channel == 'html5'
         uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.target.channel }}  
-          path: ./build/${{ matrix.target.channel }}/${{ matrix.target.channel }}.zip
+          path: ./build/${{ matrix.target.channel }}/silksong3d_${{ matrix.target.channel }}.zip
       - name: Upload Pages artifact
         if: matrix.target.channel == 'html5'
         uses: actions/upload-pages-artifact@v4
@@ -87,10 +86,10 @@ jobs:
     strategy:
       matrix:
         target: [
-          { channel: html5, file: index.zip },
-          { channel: linux, file: silksong3d.x86_64 },
-          { channel: osx, file: silksong3d.zip },
-          { channel: windows, file: silksong3d.exe },
+          { channel: html5 },
+          { channel: linux },
+          { channel: osx },
+          { channel: windows },
         ]
     steps:
       - name: Download artifacts
@@ -101,7 +100,7 @@ jobs:
       - name: Create release
         uses: ncipollo/release-action@v1
         with:
-          artifacts: ./${{ matrix.target.channel }}/${{ matrix.target.file }}
+          artifacts: ./${{ matrix.target.channel }}/*.zip
           name: Release v${{ needs.setup.outputs.GAME_VERSION }}
           tag: ${{ needs.setup.outputs.GAME_VERSION }}
   deploy-itch:
@@ -129,7 +128,7 @@ jobs:
           CHANNEL: ${{ matrix.target.channel }}
           ITCH_GAME: ${{ secrets.ITCH_GAME }}
           ITCH_USER: ${{ secrets.ITCH_USER }}
-          PACKAGE: ${{ matrix.target.file }}
+          PACKAGE: ./*.zip
   deploy-pages:
     name: Deploy to GitHub Pages
     needs: export
