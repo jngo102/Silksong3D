@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dep413qawbj1j"]
+
+[ext_resource type="Script" uid="uid://bq0nkxacwfeex" path="res://game/autoload/audio/audio_manager.gd" id="1_wb5gv"]
+[ext_resource type="PackedScene" uid="uid://c6jlyd6uewvp7" path="res://game/autoload/audio/audio_player.tscn" id="2_1og56"]
+
+[node name="AudioManager" type="Node3D"]
+script = ExtResource("1_wb5gv")
+audio_player_prefab = ExtResource("2_1og56")
+
+[node name="AudioPlayers" type="Node3D" parent="."]
+
+[node name="MusicPlayers" type="Node" parent="."]
+
+[node name="CurrentMusicPlayer" type="AudioStreamPlayer" parent="MusicPlayers"]
+
+[node name="NextMusicPlayer" type="AudioStreamPlayer" parent="MusicPlayers"]

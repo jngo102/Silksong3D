@@ -1,0 +1,110 @@
+[gd_scene load_steps=15 format=3 uid="uid://dvsqiexj1kwm8"]
+
+[ext_resource type="Script" uid="uid://c2a3j51si4hmi" path="res://game/autoload/ui/menu_page.gd" id="1_u8e8q"]
+[ext_resource type="Texture2D" uid="uid://drvnjibmovxw1" path="res://game/copyrighted/textures/ui/warning/Warning_Fleur0008.png" id="2_dlexu"]
+[ext_resource type="Texture2D" uid="uid://dn0bxucgjvrfa" path="res://game/copyrighted/textures/ui/warning/Warning_Fleur0000.png" id="2_ridjg"]
+[ext_resource type="Texture2D" uid="uid://b6s0xjudue0hc" path="res://game/copyrighted/textures/ui/warning/Warning_Fleur0001.png" id="3_kn2u4"]
+[ext_resource type="Texture2D" uid="uid://33m7af23u3lb" path="res://game/copyrighted/textures/ui/warning/Warning_Fleur0002.png" id="4_wipob"]
+[ext_resource type="Texture2D" uid="uid://blh4ndukowntk" path="res://game/copyrighted/textures/ui/warning/Warning_Fleur0003.png" id="5_35tn5"]
+[ext_resource type="Texture2D" uid="uid://cvlvyuocjyear" path="res://game/copyrighted/textures/ui/warning/Warning_Fleur0004.png" id="6_faps0"]
+[ext_resource type="Texture2D" uid="uid://b6an335n6kfwr" path="res://game/copyrighted/textures/ui/warning/Warning_Fleur0005.png" id="7_smbut"]
+[ext_resource type="Texture2D" uid="uid://ctkmvpjqq0fbr" path="res://game/copyrighted/textures/ui/warning/Warning_Fleur0006.png" id="8_ub7q1"]
+[ext_resource type="Texture2D" uid="uid://cd2xvefyo7pas" path="res://game/copyrighted/textures/ui/warning/Warning_Fleur0007.png" id="9_4xctk"]
+[ext_resource type="PackedScene" uid="uid://hqhyvp4gjw8i" path="res://game/autoload/ui/ui_button.tscn" id="11_kn2u4"]
+
+[sub_resource type="Animation" id="Animation_jy4ry"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/Page/Header/Fleur:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_dlexu")]
+}
+
+[sub_resource type="Animation" id="Animation_8i8kv"]
+resource_name = "Show"
+length = 0.18
+step = 0.02
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/Page/Header/Fleur:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0001, 0.02, 0.04, 0.06, 0.08, 0.1, 0.12, 0.14, 0.16, 0.18),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [null, null, ExtResource("2_ridjg"), ExtResource("3_kn2u4"), ExtResource("4_wipob"), ExtResource("5_35tn5"), ExtResource("6_faps0"), ExtResource("7_smbut"), ExtResource("8_ub7q1"), ExtResource("9_4xctk"), ExtResource("2_dlexu")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_d8fb4"]
+_data = {
+&"RESET": SubResource("Animation_jy4ry"),
+&"Show": SubResource("Animation_8i8kv")
+}
+
+[node name="MenuPage" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_u8e8q")
+
+[node name="Animator" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_d8fb4")
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="Page" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Header" type="VBoxContainer" parent="MarginContainer/Page"]
+layout_mode = 2
+size_flags_vertical = 0
+alignment = 1
+
+[node name="Title" type="Label" parent="MarginContainer/Page/Header"]
+layout_mode = 2
+text = "Menu Page"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Fleur" type="TextureRect" parent="MarginContainer/Page/Header"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("2_dlexu")
+stretch_mode = 2
+
+[node name="Contents" type="VBoxContainer" parent="MarginContainer/Page"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="BackButton" parent="MarginContainer/Page" instance=ExtResource("11_kn2u4")]
+layout_mode = 2
+size_flags_vertical = 8
+text = "Back"
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="pressed" from="MarginContainer/Page/BackButton" to="." method="_on_back_button_pressed"]

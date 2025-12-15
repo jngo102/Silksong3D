@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="InputIcons" load_steps=17 format=3 uid="uid://d3g571v67ii5n"]
+
+[ext_resource type="Texture2D" uid="uid://b2nh861836qa6" path="res://game/copyrighted/textures/ui/input/controller_button_skins_0020_B.png" id="1_jn2ku"]
+[ext_resource type="Texture2D" uid="uid://dbvl276brot2y" path="res://game/copyrighted/textures/ui/input/controller_button_skins_0021_A.png" id="2_kbc73"]
+[ext_resource type="Texture2D" uid="uid://boqsx2sv01tpc" path="res://game/copyrighted/textures/ui/input/controller_button_skins_0022_Y.png" id="3_f7vdx"]
+[ext_resource type="Texture2D" uid="uid://dncbngi2g6sw4" path="res://game/copyrighted/textures/ui/input/controller_button_skins_0023_X.png" id="4_nupgj"]
+[ext_resource type="Texture2D" uid="uid://bmitvvvdatmxk" path="res://game/autoload/input/input_prompts/Steam Deck/Double/steamdeck_button_view_outline.png" id="5_fqk1n"]
+[ext_resource type="Texture2D" uid="uid://s0tb8kpegj5w" path="res://game/autoload/input/input_prompts/Keyboard & Mouse/Double/keyboard_question_outline.png" id="6_57u0h"]
+[ext_resource type="Texture2D" uid="uid://co7a0hg83mkn5" path="res://game/autoload/input/input_prompts/Steam Deck/Double/steamdeck_button_options_outline.png" id="7_qe620"]
+[ext_resource type="Texture2D" uid="uid://cytdsxmafcdn1" path="res://game/autoload/input/input_prompts/Xbox Series/Double/xbox_stick_l.png" id="8_u72yo"]
+[ext_resource type="Texture2D" uid="uid://bnreqaqxcmhek" path="res://game/autoload/input/input_prompts/Xbox Series/Double/xbox_stick_r.png" id="9_0tbwk"]
+[ext_resource type="Texture2D" uid="uid://yiuwpbpdtjmo" path="res://game/autoload/input/input_prompts/Steam Deck/Double/steamdeck_button_l1_outline.png" id="10_u86dq"]
+[ext_resource type="Texture2D" uid="uid://ctulnbqeu1ush" path="res://game/autoload/input/input_prompts/Steam Deck/Double/steamdeck_button_r1_outline.png" id="11_41llr"]
+[ext_resource type="Texture2D" uid="uid://cobfhm1tgp3f7" path="res://game/copyrighted/textures/ui/input/controller_button_skins_0027_Arrow_Up.png" id="12_fqk1n"]
+[ext_resource type="Texture2D" uid="uid://db05umyhf4yay" path="res://game/copyrighted/textures/ui/input/controller_button_skins_0028_Arrow_Down.png" id="13_57u0h"]
+[ext_resource type="Texture2D" uid="uid://c7r43ktmt5p1v" path="res://game/copyrighted/textures/ui/input/controller_button_skins_0026_Arrow_Back.png" id="14_qe620"]
+[ext_resource type="Script" uid="uid://ddqk8sr3ma6hh" path="res://game/autoload/input/input_icons.gd" id="15_p2gy1"]
+[ext_resource type="Texture2D" uid="uid://ds3rs3ui0sgep" path="res://game/copyrighted/textures/ui/input/controller_button_skins_0025_Arrow_Forward.png" id="15_u72yo"]
+
+[resource]
+script = ExtResource("15_p2gy1")
+device_name = "steamdeck"
+button_icons = Array[Texture2D]([ExtResource("1_jn2ku"), ExtResource("2_kbc73"), ExtResource("3_f7vdx"), ExtResource("4_nupgj"), ExtResource("5_fqk1n"), ExtResource("6_57u0h"), ExtResource("7_qe620"), ExtResource("8_u72yo"), ExtResource("9_0tbwk"), ExtResource("10_u86dq"), ExtResource("11_41llr"), ExtResource("12_fqk1n"), ExtResource("13_57u0h"), ExtResource("14_qe620"), ExtResource("15_u72yo"), null, null, null, null, null])

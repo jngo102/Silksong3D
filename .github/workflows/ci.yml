@@ -1,0 +1,134 @@
+name: Export and Publish
+on:
+  push:
+    branches: [dev, main]
+  pull_request:
+    branches: [main]
+jobs:
+  setup:
+    name: Setup for Export
+    runs-on: ubuntu-latest
+    outputs:
+      GODOT_VERSION: ${{ steps.get_godot_version.outputs.version }}
+      GAME_VERSION: ${{ steps.get_game_version.outputs.version }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Get Godot version
+        id: get_godot_version
+        run: |
+          query_start="config\/features=PackedStringArray\(\""
+          query_end="\", \".*\"\)"
+          grep_query="^$query_start[0-9]\.[0-9](\.[0-9])?$query_end$"
+          version=$(grep --perl-regexp "$query_start" project.godot | sed --regexp-extended "s#$query_start|$query_end##g")
+          echo "version=$version" >> $GITHUB_OUTPUT
+      - name: Get game version
+        id: get_game_version
+        run: |
+          query="config\/version="
+          version=$(grep "$query" project.godot | sed --expression "s/$query//" --expression 's/\"//g')
+          echo "version=$version" >> $GITHUB_OUTPUT
+  export:
+    name: Export Game
+    runs-on: ubuntu-latest
+    container:
+      image: barichello/godot-ci:${{ needs.setup.outputs.GODOT_VERSION }}
+    needs: setup
+    strategy:
+      matrix:
+        target: [
+          { channel: html5, file: index.html },
+          { channel: linux, file: silksong3d.x86_64 },
+          { channel: osx, file: silksong3d.zip },
+          { channel: windows, file: silksong3d.exe },
+        ]
+    permissions: write-all
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+          submodules: true
+          token: ${{ secrets.PAT }}
+      - name: Setup export templates
+        run: |
+          mkdir -v -p build/${{ matrix.target.channel }} ~/.local/share/godot/export_templates
+          mkdir -v -p ~/.config
+          mv /root/.config/godot ~/.config/godot
+          mv /root/.local/share/godot/export_templates/${{ needs.setup.outputs.GODOT_VERSION }}.stable ~/.local/share/godot/export_templates/${{ needs.setup.outputs.GODOT_VERSION }}.stable
+      - name: Export for ${{ matrix.target.channel }}
+        run: godot --headless --verbose --export-release "${{ matrix.target.channel }}" ./build/${{ matrix.target.channel }}/${{ matrix.target.file }}
+      - name: Upload Pages artifact
+        if: matrix.target.channel == 'html5'
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: ./build/${{ matrix.target.channel }}
+      - name: Zip build
+        run: |
+          cd build/${{ matrix.target.channel }}
+          zip -r silksong3d_${{ matrix.target.channel }}.zip *
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.target.channel }}  
+          path: ./build/${{ matrix.target.channel }}/silksong3d_${{ matrix.target.channel }}.zip
+  release-github:
+    name: Create GitHub Release
+    needs: [setup, export]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download Linux artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: linux
+          path: ./build
+      - name: Download macOS artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: osx
+          path: ./build
+      - name: Download Windows artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: windows
+          path: ./build
+      - name: Create release
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: ./build/*.zip
+          name: Release v${{ needs.setup.outputs.GAME_VERSION }}
+          tag: ${{ needs.setup.outputs.GAME_VERSION }}
+  deploy-itch:
+    name: Deploy to Itch.io
+    needs: export
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        channel: [html5, linux, osx, windows]
+    steps:
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ matrix.channel }}
+          path: ./
+      - name: Deploy ${{ matrix.channel }} build
+        uses: josephbmanley/butler-publish-itchio-action@master
+        env:
+          BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
+          CHANNEL: ${{ matrix.channel }}
+          ITCH_GAME: ${{ secrets.ITCH_GAME }}
+          ITCH_USER: ${{ secrets.ITCH_USER }}
+          PACKAGE: ./silksong3d_${{ matrix.channel }}.zip
+  deploy-pages:
+    name: Deploy to GitHub Pages
+    needs: export
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    steps:
+      - name: Deploy
+        id: deploy
+        uses: actions/deploy-pages@v4
+        with:
+          artifact_name: github-pages

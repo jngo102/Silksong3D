@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://xiyu6i6sefua"]
+
+[ext_resource type="Script" uid="uid://dawiq7p5ltf2r" path="res://game/actors/enemies/corpse_piece.gd" id="1_jp34k"]
+
+[node name="CorpsePiece" type="RigidBody3D"]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("1_jp34k")
+explode_speed = 16.0
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+
+[node name="ExplodePoint" type="Marker3D" parent="."]

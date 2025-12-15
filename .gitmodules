@@ -1,0 +1,3 @@
+[submodule "game/copyrighted"]
+	path = game/copyrighted
+	url = https://github.com/jngo102/Silksong3D_Copyrighted.git

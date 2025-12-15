@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://c68xbbyop3ixg"]
+
+[ext_resource type="PackedScene" uid="uid://xiyu6i6sefua" path="res://game/actors/enemies/corpse_piece.tscn" id="1_8qy81"]
+[ext_resource type="PackedScene" uid="uid://dc6yolitlvh3v" path="res://game/actors/enemies/cogwork_dancers/corpse/cogwork_dancer_corpse_leg.glb" id="2_qf82s"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8qy81"]
+radius = 0.28076172
+height = 4.564209
+
+[node name="CorpseLeg" instance=ExtResource("1_8qy81")]
+mass = 32.0
+gravity_scale = 4.0
+explode_speed = 8.0
+
+[node name="Collision" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.2054443, 0)
+shape = SubResource("CapsuleShape3D_8qy81")
+
+[node name="Mesh" parent="." index="1" instance=ExtResource("2_qf82s")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)

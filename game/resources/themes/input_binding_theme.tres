@@ -1,0 +1,9 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://c5uqshww53rlj"]
+
+[ext_resource type="StyleBox" uid="uid://tyj5n3lmu606" path="res://game/resources/themes/styles/input_binding_style.tres" id="1_65vya"]
+
+[resource]
+Button/styles/focus = ExtResource("1_65vya")
+Button/styles/hover = ExtResource("1_65vya")
+Button/styles/normal = ExtResource("1_65vya")
+Button/styles/pressed = ExtResource("1_65vya")

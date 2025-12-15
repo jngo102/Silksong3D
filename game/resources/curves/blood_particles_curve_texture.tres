@@ -1,0 +1,6 @@
+[gd_resource type="CurveTexture" load_steps=2 format=3 uid="uid://d3un2ri6w3rq"]
+
+[ext_resource type="Curve" uid="uid://c2gis7phupc2g" path="res://game/resources/curves/blood_particles_curve.tres" id="1_h3gp0"]
+
+[resource]
+curve = ExtResource("1_h3gp0")

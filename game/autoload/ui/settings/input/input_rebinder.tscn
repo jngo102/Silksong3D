@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://2at86fvhvt8v"]
+
+[ext_resource type="Script" uid="uid://cowtkg07jc7le" path="res://game/autoload/ui/settings/input/input_rebinder.gd" id="1_3le10"]
+[ext_resource type="Theme" uid="uid://c5uqshww53rlj" path="res://game/resources/themes/input_binding_theme.tres" id="2_dhcxq"]
+
+[node name="InputRebinder" type="HBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+alignment = 1
+script = ExtResource("1_3le10")
+
+[node name="ActionLabel" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 6
+
+[node name="RebindButton" type="Button" parent="."]
+layout_mode = 2
+size_flags_horizontal = 0
+focus_behavior_recursive = 2
+theme = ExtResource("2_dhcxq")
+
+[connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
+[connection signal="pressed" from="RebindButton" to="." method="_on_rebind_button_pressed"]

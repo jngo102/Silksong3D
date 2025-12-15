@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dgb1dhkamy3l3"]
+
+[ext_resource type="Script" uid="uid://bg4x62qn317fa" path="res://game/autoload/input/input_action.gd" id="1_ssu1v"]
+
+[node name="JumpAction" type="Node"]
+script = ExtResource("1_ssu1v")
+action_name = &"Jump"
+metadata/_custom_type_script = "uid://bg4x62qn317fa"
+
+[node name="BufferTimer" type="Timer" parent="."]

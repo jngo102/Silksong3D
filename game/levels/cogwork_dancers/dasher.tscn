@@ -1,0 +1,183 @@
+[gd_scene load_steps=26 format=3 uid="uid://bcaddbgdttgyu"]
+
+[ext_resource type="Script" uid="uid://doc0qnw6gm77s" path="res://game/levels/cogwork_dancers/dasher.gd" id="1_tokfy"]
+[ext_resource type="PackedScene" uid="uid://umatx83d7j8u" path="res://game/actors/enemies/cogwork_dancers/dasher.glb" id="1_w25tf"]
+[ext_resource type="Script" uid="uid://dj5upywmu1hm2" path="res://game/actors/random_audio_player.gd" id="2_j4xgd"]
+[ext_resource type="PackedScene" uid="uid://xal232da7bpf" path="res://game/gameplay/combat/damager.tscn" id="3_euvfy"]
+[ext_resource type="AudioStream" uid="uid://c37ttq771h03h" path="res://game/copyrighted/cogwork_dancers/sfx/CogD_move_01.wav" id="4_ubbo5"]
+[ext_resource type="AudioStream" uid="uid://3t0smv5pkx46" path="res://game/copyrighted/cogwork_dancers/sfx/CogD_move_02.wav" id="5_euvfy"]
+[ext_resource type="AudioStream" uid="uid://bxmrtmxllech2" path="res://game/copyrighted/cogwork_dancers/sfx/CogD_move_03.wav" id="6_b5eob"]
+[ext_resource type="AudioStream" uid="uid://c1qb6xifxmopq" path="res://game/copyrighted/cogwork_dancers/sfx/CogD_move_04.wav" id="7_wfi1t"]
+[ext_resource type="AudioStream" uid="uid://h7b6at64xa5u" path="res://game/copyrighted/cogwork_dancers/sfx/CogD_move_05.wav" id="8_h3yvp"]
+[ext_resource type="AudioStream" uid="uid://bs5wfj47moh8d" path="res://game/copyrighted/cogwork_dancers/sfx/CogD_move_06.wav" id="9_7ctyh"]
+[ext_resource type="AudioStream" uid="uid://b04dh80m6h6cq" path="res://game/copyrighted/cogwork_dancers/sfx/CogD_move_07.wav" id="10_olnr5"]
+[ext_resource type="AudioStream" uid="uid://dbmrccyfw0ho8" path="res://game/copyrighted/cogwork_dancers/sfx/CogD_move_08.wav" id="11_j3imq"]
+[ext_resource type="AudioStream" uid="uid://dipy0qxmy4a5n" path="res://game/copyrighted/cogwork_dancers/sfx/CogD_move_09.wav" id="12_jsx82"]
+[ext_resource type="AudioStream" uid="uid://bjqyvn53fu65x" path="res://game/copyrighted/cogwork_dancers/sfx/CogD_move_10.wav" id="13_ua1uo"]
+[ext_resource type="AudioStream" uid="uid://7rd800ejnq32" path="res://game/copyrighted/cogwork_dancers/sfx/CogD_move_11.wav" id="14_8vs1r"]
+[ext_resource type="AudioStream" uid="uid://d0j27uuo2rmp1" path="res://game/copyrighted/cogwork_dancers/sfx/CogD_move_12.wav" id="15_ud4kh"]
+[ext_resource type="AudioStream" uid="uid://dauv2fkm2tquj" path="res://game/copyrighted/cogwork_dancers/sfx/CogD_move_13.wav" id="16_23v7j"]
+[ext_resource type="AudioStream" uid="uid://dqbg5ldq8c2mb" path="res://game/copyrighted/cogwork_dancers/sfx/clockwork_dancers_multi_dash.wav" id="18_b5eob"]
+
+[sub_resource type="Animation" id="Animation_tokfy"]
+resource_name = "Appear"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Line:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -200, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_w25tf"]
+resource_name = "Dash"
+length = 0.35
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Dancer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.35),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -125, 0), Vector3(0, 125, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Line:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.35),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 250, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.35),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_lqcf2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Dancer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -125, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Line:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hvp4h"]
+_data = {
+&"Appear": SubResource("Animation_tokfy"),
+&"Dash": SubResource("Animation_w25tf"),
+&"RESET": SubResource("Animation_lqcf2")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tokfy"]
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 4.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_hvp4h"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_tokfy")
+top_radius = 0.125
+bottom_radius = 0.125
+height = 200.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b5eob"]
+height = 4.0
+
+[node name="Dasher" type="Node3D"]
+visible = false
+script = ExtResource("1_tokfy")
+min_wait_time = 0.5
+max_wait_time = 1.0
+max_dash_offset = 30.0
+
+[node name="Animator" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_hvp4h")
+}
+
+[node name="Line" type="MeshInstance3D" parent="."]
+mesh = SubResource("CylinderMesh_hvp4h")
+
+[node name="Dancer" parent="." instance=ExtResource("1_w25tf")]
+transform = Transform3D(-2.5, 2.1855695e-07, 3.821371e-14, 0, -1.09278474e-07, 10, 2.1855695e-07, 2.5, 4.371139e-07, 0, -125, 0)
+
+[node name="Damager" parent="Dancer" instance=ExtResource("3_euvfy")]
+transform = Transform3D(-1, 8.742278e-08, 3.821371e-15, 0, -4.371139e-08, 1, 8.742278e-08, 1, 4.371139e-08, 0, 0, 0)
+
+[node name="Collision" parent="Dancer/Damager" index="0"]
+shape = SubResource("CapsuleShape3D_b5eob")
+
+[node name="VoicePlayer" type="AudioStreamPlayer3D" parent="."]
+script = ExtResource("2_j4xgd")
+audio_clips = Array[AudioStream]([ExtResource("4_ubbo5"), ExtResource("5_euvfy"), ExtResource("6_b5eob"), ExtResource("7_wfi1t"), ExtResource("8_h3yvp"), ExtResource("9_7ctyh"), ExtResource("10_olnr5"), ExtResource("11_j3imq"), ExtResource("12_jsx82"), ExtResource("13_ua1uo"), ExtResource("14_8vs1r"), ExtResource("15_ud4kh"), ExtResource("16_23v7j")])
+metadata/_custom_type_script = "uid://dj5upywmu1hm2"
+
+[node name="DashAudio" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("18_b5eob")
+
+[editable path="Dancer/Damager"]
