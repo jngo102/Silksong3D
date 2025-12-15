@@ -11,9 +11,9 @@ config_version=5
 [application]
 
 config/name="Silksong 3D"
-config/version="0.4.1"
+config/version="0.4.2"
 run/main_scene="uid://bg0sil3820f5u"
-config/features=PackedStringArray("4.5.1", "Forward Plus")
+config/features=PackedStringArray("4.5", "4.5.1", "Forward Plus")
 config/icon="uid://dfed24vi280po"
 
 [autoload]

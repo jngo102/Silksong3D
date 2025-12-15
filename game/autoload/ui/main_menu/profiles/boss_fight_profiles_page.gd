@@ -4,7 +4,7 @@ class_name BossFightProfilesPage extends MenuPage
 
 @onready var _elements: HBoxContainer = _contents.get_node_or_null("Elements")
 
-var profile_scene: PackedScene = preload("uid://ckjwakw16sbpx")
+var profile_scene: PackedScene = preload("uid://b65v8iryfc811")
 
 func _ready() -> void:
 	_create_profile_elements()
