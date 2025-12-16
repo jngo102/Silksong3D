@@ -30,7 +30,7 @@ var walking: bool:
 
 var should_sprint: bool:
 	get:
-		return Input.is_action_pressed("Sprint")
+		return Input.is_action_pressed(&"Sprint")
 
 var sprinting: bool:
 	get:
@@ -71,8 +71,10 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		_look_mouse(event)
-	elif event.is_action_pressed("Attack"):
+	elif event.is_action_pressed(&"Attack"):
 		_check_attack()
+	elif event.is_action_pressed(&"Target"):
+		_try_target()
 
 func _process(delta: float) -> void:
 	if not should_down_spike and not down_spiking and not down_spike_bouncing:
@@ -100,7 +102,7 @@ func _check_sprint(delta: float) -> void:
 	if is_on_floor():
 		if should_sprint and is_equal_approx(current_move_speed, walk_speed):
 			current_move_speed = sprint_speed
-		elif sprinting and not Input.is_action_pressed("Sprint"):
+		elif sprinting and not Input.is_action_pressed(&"Sprint"):
 			current_move_speed = walk_speed
 
 	if sprinting and velocity.length() > 0:
@@ -112,16 +114,16 @@ func _look_mouse(event: InputEventMouseMotion) -> void:
 
 func _look_joystick(delta: float) -> void:
 	var look_vector: Vector2 = Input.get_vector(&"ui_look_left", &"ui_look_right", &"ui_look_down", &"ui_look_up")
-	_camera_controller.rotation.y -= look_vector.x * 0.015
-	_camera_controller.add_pitch(-look_vector.y * 0.01)
+	_camera_controller.rotation.y -= look_vector.x * delta
+	_camera_controller.add_pitch(-look_vector.y * delta)
 
 func _check_jump() -> void:
-	if Input.is_action_just_pressed("Jump"):
+	if Input.is_action_just_pressed(&"Jump"):
 		if not already_jumped:
 			_jump()
 		else:
 			_float()
-	elif Input.is_action_just_released("Jump") and velocity.y > 0:
+	elif Input.is_action_just_released(&"Jump") and velocity.y > 0:
 		_stop_jump()
 
 func _jump() -> void:
@@ -135,9 +137,9 @@ func _stop_jump() -> void:
 func _check_float() -> void:
 	if should_down_spike or down_spiking:
 		return
-	if not is_on_floor() and already_jumped and Input.is_action_just_pressed("Jump"):
+	if not is_on_floor() and already_jumped and Input.is_action_just_pressed(&"Jump"):
 		_float()
-	elif floating and Input.is_action_just_released("Jump"):
+	elif floating and Input.is_action_just_released(&"Jump"):
 		_stop_float()
 
 func _float() -> void:
@@ -203,6 +205,9 @@ func _down_spike_reset() -> void:
 	down_spiking = false
 	_armature.rotation = Vector3.ZERO
 	_needle.down_spike_reset()
+
+func _try_target() -> void:
+	pass
 
 func _on_animation_tree_animation_started(anim_name: StringName) -> void:
 	print(anim_name)

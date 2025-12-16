@@ -12,23 +12,23 @@ default_input_values = [1, Vector2(0, 1), 2, Vector2(0, 0)]
 offsets = PackedFloat32Array(0, 0.667, 1)
 colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_a4ncn"]
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2r0fa"]
 gradient = SubResource("Gradient_uj4lg")
 fill_from = Vector2(0.48504272, 0.3525641)
 fill_to = Vector2(0.48290598, 0.034188036)
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_5a3tl"]
-texture = SubResource("GradientTexture2D_a4ncn")
+texture = SubResource("GradientTexture2D_2r0fa")
 
 [sub_resource type="Gradient" id="Gradient_0qq8w"]
 offsets = PackedFloat32Array(0, 0.167, 0.333, 0.5)
 colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_1nr1l"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_fhxxj"]
 gradient = SubResource("Gradient_0qq8w")
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_sk4ol"]
-texture = SubResource("GradientTexture1D_1nr1l")
+texture = SubResource("GradientTexture1D_fhxxj")
 
 [sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_5na6l"]
 input_name = "uv"

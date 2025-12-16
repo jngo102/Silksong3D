@@ -1,7 +1,6 @@
 class_name Enemy extends Actor
 
 @onready var behavior_tree: BTPlayer = $BehaviorTree
-@onready var health: Health = $Health
 
 var bb: Blackboard:
 	get:

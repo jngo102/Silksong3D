@@ -1,24 +1,24 @@
-[gd_resource type="BehaviorTree" load_steps=1008 format=3 uid="uid://chh6lvoe5ufr8"]
+[gd_resource type="BehaviorTree" load_steps=1016 format=3 uid="uid://chh6lvoe5ufr8"]
 
 [ext_resource type="Script" uid="uid://dfxh5qmwucb7e" path="res://game/ai/tasks/scene/get_first_in_group.gd" id="1_lkiki"]
 [ext_resource type="Script" uid="uid://oufr1n61rgt6" path="res://game/ai/tasks/audio/get_current_music_player.gd" id="3_ngxa6"]
 [ext_resource type="Script" uid="uid://ckw2npyc6dwj1" path="res://game/ai/tasks/audio/get_audio_player_duration.gd" id="4_6mje8"]
 [ext_resource type="Script" uid="uid://mlatxrl7ycqj" path="res://game/ai/tasks/audio/get_current_music_bpm.gd" id="5_bljor"]
 [ext_resource type="Script" uid="uid://dk83bvpdnmmni" path="res://game/ai/tasks/math/get_reciprocal.gd" id="6_oa2qd"]
-[ext_resource type="AudioStream" path="res://game/copyrighted/cogwork_dancers/sfx/clockwork_dancers_windup_1.wav" id="7_jn4d2"]
+[ext_resource type="AudioStream" uid="uid://dr5e1h1slykua" path="res://game/copyrighted/cogwork_dancers/sfx/clockwork_dancers_windup_1.wav" id="7_jn4d2"]
 [ext_resource type="Script" uid="uid://cvw5s3jjrdnkq" path="res://game/ai/tasks/transform/face_target.gd" id="7_qj0wi"]
 [ext_resource type="Script" uid="uid://bug3tp3tel5tp" path="res://game/ai/tasks/audio/get_music_playback_position.gd" id="8_ngxa6"]
 [ext_resource type="Script" uid="uid://1ykj0kuyib8k" path="res://game/ai/tasks/actors/set_health.gd" id="8_o08b3"]
 [ext_resource type="Script" uid="uid://ycnpkfx0h776" path="res://game/ai/tasks/transform/get_position.gd" id="9_mmu5o"]
-[ext_resource type="AudioStream" path="res://game/copyrighted/cogwork_dancers/sfx/clockwork_dancers_windup_2.wav" id="9_tvm2c"]
-[ext_resource type="AudioStream" path="res://game/copyrighted/cogwork_dancers/sfx/clockwork_dancers_windup_3.wav" id="10_ipxx0"]
+[ext_resource type="AudioStream" uid="uid://dplbkc0wwo8gj" path="res://game/copyrighted/cogwork_dancers/sfx/clockwork_dancers_windup_2.wav" id="9_tvm2c"]
+[ext_resource type="AudioStream" uid="uid://bios4ctnh2ir3" path="res://game/copyrighted/cogwork_dancers/sfx/clockwork_dancers_windup_3.wav" id="10_ipxx0"]
 [ext_resource type="Script" uid="uid://bia8f8kue467p" path="res://game/ai/tasks/logic/tween_to_position.gd" id="10_nf1r4"]
-[ext_resource type="AudioStream" path="res://game/copyrighted/cogwork_dancers/sfx/clockwork_dancers_break_free_after_wind.wav" id="11_lkiki"]
+[ext_resource type="AudioStream" uid="uid://cw2p17bh33h4j" path="res://game/copyrighted/cogwork_dancers/sfx/clockwork_dancers_break_free_after_wind.wav" id="11_lkiki"]
 [ext_resource type="Script" uid="uid://bdadd6mfnehvq" path="res://game/ai/tasks/transform/set_scale_x_y_z.gd" id="12_iegny"]
 [ext_resource type="Script" uid="uid://c1x0iqb5iong2" path="res://game/ai/tasks/physics/set_velocity_in_direction.gd" id="12_ttsve"]
-[ext_resource type="AudioStream" path="res://game/copyrighted/cogwork_dancers/sfx/CogD_roar_duo_01.wav" id="13_ipxx0"]
+[ext_resource type="AudioStream" uid="uid://keu0iub22q8u" path="res://game/copyrighted/cogwork_dancers/sfx/CogD_roar_duo_01.wav" id="13_ipxx0"]
 [ext_resource type="Script" uid="uid://cgf5y1ojrwk1x" path="res://game/ai/tasks/utility/concatenate_to_string.gd" id="13_t3oje"]
-[ext_resource type="AudioStream" path="res://game/copyrighted/cogwork_dancers/sfx/CogD_roar_duo_02.wav" id="14_lkiki"]
+[ext_resource type="AudioStream" uid="uid://3y073fpgj3y0" path="res://game/copyrighted/cogwork_dancers/sfx/CogD_roar_duo_02.wav" id="14_lkiki"]
 [ext_resource type="Script" uid="uid://bc4fs5sdsr0yj" path="res://game/ai/tasks/physics/check_on_ground.gd" id="14_u83xx"]
 [ext_resource type="Script" uid="uid://b8a5782uv22dp" path="res://game/ai/tasks/animation/play_animation_with_variable.gd" id="15_ydubj"]
 [ext_resource type="Script" uid="uid://c3f8aqpqj61xf" path="res://game/ai/tasks/physics/get_direction_to_target.gd" id="17_sh7if"]
@@ -26,44 +26,44 @@
 [ext_resource type="Script" uid="uid://cawha32gubgkl" path="res://game/ai/tasks/scene/set_collider.gd" id="18_fuw20"]
 [ext_resource type="Script" uid="uid://b0mh6vbdv44ds" path="res://game/ai/tasks/math/set_vector_x_y_z.gd" id="19_3guyw"]
 [ext_resource type="Script" uid="uid://bx83tewgfqs5x" path="res://game/ai/tasks/actors/create_roar_effect.gd" id="19_e8anh"]
-[ext_resource type="AudioStream" path="res://game/copyrighted/cogwork_dancers/sfx/CogD_attack_large_01.wav" id="19_o08b3"]
+[ext_resource type="AudioStream" uid="uid://6y6ehraiacsn" path="res://game/copyrighted/cogwork_dancers/sfx/CogD_attack_large_01.wav" id="19_o08b3"]
 [ext_resource type="Script" uid="uid://c0p66kb4ewpj5" path="res://game/ai/tasks/math/floor.gd" id="20_34w61"]
 [ext_resource type="Script" uid="uid://cnvl4kjqa7qju" path="res://game/ai/tasks/transform/set_position_x_y_z.gd" id="20_a4ig0"]
-[ext_resource type="AudioStream" path="res://game/copyrighted/cogwork_dancers/sfx/CogD_attack_large_02.wav" id="20_fuw20"]
+[ext_resource type="AudioStream" uid="uid://djwjsycd18yof" path="res://game/copyrighted/cogwork_dancers/sfx/CogD_attack_large_02.wav" id="20_fuw20"]
 [ext_resource type="Script" uid="uid://5qpw7k5phkni" path="res://game/ai/tasks/audio/play_random_audio.gd" id="20_ucsdq"]
-[ext_resource type="AudioStream" path="res://game/copyrighted/cogwork_dancers/sfx/CogD_attack_large_03.wav" id="21_3b8xs"]
+[ext_resource type="AudioStream" uid="uid://do0weqwbma1co" path="res://game/copyrighted/cogwork_dancers/sfx/CogD_attack_large_03.wav" id="21_3b8xs"]
 [ext_resource type="Script" uid="uid://dt2awuygt37mg" path="res://game/ai/tasks/transform/set_rotation_x_y_z.gd" id="21_i3yf6"]
 [ext_resource type="Script" uid="uid://dvdqux1hfw046" path="res://game/ai/tasks/scene/queue_free.gd" id="21_mdpca"]
 [ext_resource type="Script" uid="uid://d03jex37smyoc" path="res://game/ai/tasks/logic/kill_tween.gd" id="22_dphll"]
-[ext_resource type="AudioStream" path="res://game/copyrighted/cogwork_dancers/sfx/CogD_attack_large_04.wav" id="22_e8anh"]
-[ext_resource type="AudioStream" path="res://game/copyrighted/cogwork_dancers/sfx/clockwork_dancer_look_up_after_bow.wav" id="26_mdpca"]
+[ext_resource type="AudioStream" uid="uid://dvdperp7jn1qi" path="res://game/copyrighted/cogwork_dancers/sfx/CogD_attack_large_04.wav" id="22_e8anh"]
+[ext_resource type="AudioStream" uid="uid://dkqjngri23cmb" path="res://game/copyrighted/cogwork_dancers/sfx/clockwork_dancer_look_up_after_bow.wav" id="26_mdpca"]
 [ext_resource type="Script" uid="uid://br84132pv8riw" path="res://game/ai/tasks/actors/shake_camera.gd" id="30_3b8xs"]
-[ext_resource type="AudioStream" path="res://game/copyrighted/cogwork_dancers/sfx/clockwork_dancers_halo.wav" id="30_drhsk"]
-[ext_resource type="AudioStream" path="res://game/copyrighted/cogwork_dancers/sfx/clockwork_dancers_halov2_1.wav" id="31_877ps"]
-[ext_resource type="AudioStream" path="res://game/copyrighted/cogwork_dancers/sfx/clockwork_dancers_halov2_2.wav" id="32_tfrvw"]
-[ext_resource type="AudioStream" path="res://game/copyrighted/cogwork_dancers/sfx/clockwork_dancers_halov2_3.wav" id="33_wmffp"]
-[ext_resource type="AudioStream" path="res://game/copyrighted/cogwork_dancers/sfx/clockwork_dancers_halov2_4.wav" id="34_mb14r"]
-[ext_resource type="AudioStream" path="res://game/copyrighted/cogwork_dancers/sfx/CogD_move_01.wav" id="35_nxqfg"]
-[ext_resource type="AudioStream" path="res://game/copyrighted/cogwork_dancers/sfx/CogD_move_02.wav" id="36_i63ae"]
-[ext_resource type="AudioStream" path="res://game/copyrighted/cogwork_dancers/sfx/CogD_move_03.wav" id="37_i0816"]
-[ext_resource type="AudioStream" path="res://game/copyrighted/cogwork_dancers/sfx/CogD_move_04.wav" id="38_q8ous"]
-[ext_resource type="AudioStream" path="res://game/copyrighted/cogwork_dancers/sfx/CogD_move_05.wav" id="39_7wjj6"]
-[ext_resource type="AudioStream" path="res://game/copyrighted/cogwork_dancers/sfx/CogD_move_06.wav" id="40_t5cqu"]
-[ext_resource type="AudioStream" path="res://game/copyrighted/cogwork_dancers/sfx/CogD_move_07.wav" id="41_5do71"]
-[ext_resource type="AudioStream" path="res://game/copyrighted/cogwork_dancers/sfx/CogD_move_08.wav" id="42_ojnlc"]
-[ext_resource type="AudioStream" path="res://game/copyrighted/cogwork_dancers/sfx/CogD_move_09.wav" id="43_b865g"]
-[ext_resource type="AudioStream" path="res://game/copyrighted/cogwork_dancers/sfx/CogD_move_10.wav" id="44_p3fr0"]
-[ext_resource type="AudioStream" path="res://game/copyrighted/cogwork_dancers/sfx/CogD_move_11.wav" id="45_6ba46"]
-[ext_resource type="AudioStream" path="res://game/copyrighted/cogwork_dancers/sfx/CogD_move_12.wav" id="46_22rkn"]
-[ext_resource type="AudioStream" path="res://game/copyrighted/cogwork_dancers/sfx/CogD_move_13.wav" id="47_uyp3b"]
+[ext_resource type="AudioStream" uid="uid://huqy8mpc427n" path="res://game/copyrighted/cogwork_dancers/sfx/clockwork_dancers_halo.wav" id="30_drhsk"]
+[ext_resource type="AudioStream" uid="uid://ci01hprg2606n" path="res://game/copyrighted/cogwork_dancers/sfx/clockwork_dancers_halov2_1.wav" id="31_877ps"]
+[ext_resource type="AudioStream" uid="uid://dhqe1gm1b00fp" path="res://game/copyrighted/cogwork_dancers/sfx/clockwork_dancers_halov2_2.wav" id="32_tfrvw"]
+[ext_resource type="AudioStream" uid="uid://w0nx0pa6do37" path="res://game/copyrighted/cogwork_dancers/sfx/clockwork_dancers_halov2_3.wav" id="33_wmffp"]
+[ext_resource type="AudioStream" uid="uid://b6su1yu645ctj" path="res://game/copyrighted/cogwork_dancers/sfx/clockwork_dancers_halov2_4.wav" id="34_mb14r"]
+[ext_resource type="AudioStream" uid="uid://c37ttq771h03h" path="res://game/copyrighted/cogwork_dancers/sfx/CogD_move_01.wav" id="35_nxqfg"]
+[ext_resource type="AudioStream" uid="uid://3t0smv5pkx46" path="res://game/copyrighted/cogwork_dancers/sfx/CogD_move_02.wav" id="36_i63ae"]
+[ext_resource type="AudioStream" uid="uid://bxmrtmxllech2" path="res://game/copyrighted/cogwork_dancers/sfx/CogD_move_03.wav" id="37_i0816"]
+[ext_resource type="AudioStream" uid="uid://c1qb6xifxmopq" path="res://game/copyrighted/cogwork_dancers/sfx/CogD_move_04.wav" id="38_q8ous"]
+[ext_resource type="AudioStream" uid="uid://h7b6at64xa5u" path="res://game/copyrighted/cogwork_dancers/sfx/CogD_move_05.wav" id="39_7wjj6"]
+[ext_resource type="AudioStream" uid="uid://bs5wfj47moh8d" path="res://game/copyrighted/cogwork_dancers/sfx/CogD_move_06.wav" id="40_t5cqu"]
+[ext_resource type="AudioStream" uid="uid://b04dh80m6h6cq" path="res://game/copyrighted/cogwork_dancers/sfx/CogD_move_07.wav" id="41_5do71"]
+[ext_resource type="AudioStream" uid="uid://dbmrccyfw0ho8" path="res://game/copyrighted/cogwork_dancers/sfx/CogD_move_08.wav" id="42_ojnlc"]
+[ext_resource type="AudioStream" uid="uid://dipy0qxmy4a5n" path="res://game/copyrighted/cogwork_dancers/sfx/CogD_move_09.wav" id="43_b865g"]
+[ext_resource type="AudioStream" uid="uid://bjqyvn53fu65x" path="res://game/copyrighted/cogwork_dancers/sfx/CogD_move_10.wav" id="44_p3fr0"]
+[ext_resource type="AudioStream" uid="uid://7rd800ejnq32" path="res://game/copyrighted/cogwork_dancers/sfx/CogD_move_11.wav" id="45_6ba46"]
+[ext_resource type="AudioStream" uid="uid://d0j27uuo2rmp1" path="res://game/copyrighted/cogwork_dancers/sfx/CogD_move_12.wav" id="46_22rkn"]
+[ext_resource type="AudioStream" uid="uid://dauv2fkm2tquj" path="res://game/copyrighted/cogwork_dancers/sfx/CogD_move_13.wav" id="47_uyp3b"]
 [ext_resource type="Script" uid="uid://c6x14fd7s2d0i" path="res://game/ai/tasks/transform/get_distance_to.gd" id="48_lgqnu"]
-[ext_resource type="AudioStream" path="res://game/copyrighted/cogwork_dancers/sfx/clockwork_dancers_dash.wav" id="48_o5el3"]
+[ext_resource type="AudioStream" uid="uid://bgvisrxe34cex" path="res://game/copyrighted/cogwork_dancers/sfx/clockwork_dancers_dash.wav" id="48_o5el3"]
 [ext_resource type="Script" uid="uid://h8x5cgoail1j" path="res://game/ai/tasks/math/set_vector_at_length_from.gd" id="49_eme4l"]
 [ext_resource type="Script" uid="uid://bhbfx0nq52wad" path="res://game/ai/tasks/math/clamp_value.gd" id="50_7weh2"]
-[ext_resource type="AudioStream" path="res://game/copyrighted/cogwork_dancers/sfx/clockwork_dancers_land_and_sword.wav" id="52_lalf6"]
-[ext_resource type="AudioStream" path="res://game/copyrighted/cogwork_dancers/sfx/clockwork_dancers_spin_and_bow.wav" id="53_si1s8"]
-[ext_resource type="AudioStream" path="res://game/copyrighted/cogwork_dancers/sfx/clockwork_dancers_leave_screen_for_multi_slash.wav" id="54_o7vs3"]
-[ext_resource type="AudioStream" path="res://game/copyrighted/cogwork_dancers/sfx/clockwork_dancers_return_after_multi_dash.wav" id="55_qm002"]
+[ext_resource type="AudioStream" uid="uid://crxrpq1kv5o0c" path="res://game/copyrighted/cogwork_dancers/sfx/clockwork_dancers_land_and_sword.wav" id="52_lalf6"]
+[ext_resource type="AudioStream" uid="uid://dnxylfo58548u" path="res://game/copyrighted/cogwork_dancers/sfx/clockwork_dancers_spin_and_bow.wav" id="53_si1s8"]
+[ext_resource type="AudioStream" uid="uid://clc21pubibkmb" path="res://game/copyrighted/cogwork_dancers/sfx/clockwork_dancers_leave_screen_for_multi_slash.wav" id="54_o7vs3"]
+[ext_resource type="AudioStream" uid="uid://dejelb8naxvfc" path="res://game/copyrighted/cogwork_dancers/sfx/clockwork_dancers_return_after_multi_dash.wav" id="55_qm002"]
 
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_ucsdq"]
 prefetch_nodepath_vars = false
@@ -628,22 +628,22 @@ children = [SubResource("BTWait_7m1qr")]
 custom_name = "Check Last Phase"
 children = [SubResource("BTSequence_n1563"), SubResource("BTSequence_nxnq5")]
 
-[sub_resource type="BBVariant" id="BBVariant_3b8xs"]
-type = 3
-saved_value = 0.5
-resource_name = "0.5"
-
 [sub_resource type="BBVariant" id="BBVariant_ojnlc"]
 type = 3
 saved_value = 0.5
 resource_name = "0.5"
 
 [sub_resource type="BBVariant" id="BBVariant_p3fr0"]
+type = 3
+saved_value = 0.5
+resource_name = "0.5"
+
+[sub_resource type="BBVariant" id="BBVariant_8s2vd"]
 type = 1
 saved_value = true
 resource_name = "true"
 
-[sub_resource type="BBVariant" id="BBVariant_8s2vd"]
+[sub_resource type="BBVariant" id="BBVariant_wsgol"]
 type = 1
 saved_value = false
 resource_name = "false"
@@ -656,7 +656,7 @@ resource_name = "$shaker_path"
 [sub_resource type="BTCallMethod" id="BTCallMethod_0p5ck"]
 node = SubResource("BBNode_yk1c7")
 method = &"shake"
-args = Array[BBVariant]([SubResource("BBVariant_3b8xs"), SubResource("BBVariant_ojnlc"), SubResource("BBVariant_p3fr0"), SubResource("BBVariant_8s2vd")])
+args = Array[BBVariant]([SubResource("BBVariant_ojnlc"), SubResource("BBVariant_p3fr0"), SubResource("BBVariant_8s2vd"), SubResource("BBVariant_wsgol")])
 
 [sub_resource type="BTAction" id="BTAction_1k733"]
 script = ExtResource("9_mmu5o")
@@ -674,6 +674,26 @@ play_position_var = &"self_position"
 custom_name = "Shake 1"
 children = [SubResource("BTCallMethod_0p5ck"), SubResource("BTAction_1k733"), SubResource("BTAction_8s2vd"), SubResource("BTWait_57pd4")]
 
+[sub_resource type="BBVariant" id="BBVariant_ro6js"]
+type = 3
+saved_value = 0.5
+resource_name = "0.5"
+
+[sub_resource type="BBVariant" id="BBVariant_ceurk"]
+type = 3
+saved_value = 0.5
+resource_name = "0.5"
+
+[sub_resource type="BBVariant" id="BBVariant_dndkg"]
+type = 1
+saved_value = true
+resource_name = "true"
+
+[sub_resource type="BBVariant" id="BBVariant_8e3t8"]
+type = 1
+saved_value = false
+resource_name = "false"
+
 [sub_resource type="BBNode" id="BBNode_1k733"]
 value_source = 1
 variable = &"shaker_path"
@@ -682,7 +702,7 @@ resource_name = "$shaker_path"
 [sub_resource type="BTCallMethod" id="BTCallMethod_yk1c7"]
 node = SubResource("BBNode_1k733")
 method = &"shake"
-args = Array[BBVariant]([SubResource("BBVariant_3b8xs"), SubResource("BBVariant_ojnlc"), SubResource("BBVariant_p3fr0"), SubResource("BBVariant_8s2vd")])
+args = Array[BBVariant]([SubResource("BBVariant_ro6js"), SubResource("BBVariant_ceurk"), SubResource("BBVariant_dndkg"), SubResource("BBVariant_8e3t8")])
 
 [sub_resource type="BTAction" id="BTAction_57pd4"]
 script = ExtResource("9_mmu5o")
@@ -700,6 +720,26 @@ play_position_var = &"self_position"
 custom_name = "Shake 2"
 children = [SubResource("BTCallMethod_yk1c7"), SubResource("BTAction_57pd4"), SubResource("BTAction_m1jhj"), SubResource("BTWait_kq56s")]
 
+[sub_resource type="BBVariant" id="BBVariant_hk0ud"]
+type = 3
+saved_value = 0.5
+resource_name = "0.5"
+
+[sub_resource type="BBVariant" id="BBVariant_y1lia"]
+type = 3
+saved_value = 0.5
+resource_name = "0.5"
+
+[sub_resource type="BBVariant" id="BBVariant_7cafn"]
+type = 1
+saved_value = true
+resource_name = "true"
+
+[sub_resource type="BBVariant" id="BBVariant_3mr6k"]
+type = 1
+saved_value = false
+resource_name = "false"
+
 [sub_resource type="BBNode" id="BBNode_57pd4"]
 value_source = 1
 variable = &"shaker_path"
@@ -708,7 +748,7 @@ resource_name = "$shaker_path"
 [sub_resource type="BTCallMethod" id="BTCallMethod_m1jhj"]
 node = SubResource("BBNode_57pd4")
 method = &"shake"
-args = Array[BBVariant]([SubResource("BBVariant_3b8xs"), SubResource("BBVariant_ojnlc"), SubResource("BBVariant_p3fr0"), SubResource("BBVariant_8s2vd")])
+args = Array[BBVariant]([SubResource("BBVariant_hk0ud"), SubResource("BBVariant_y1lia"), SubResource("BBVariant_7cafn"), SubResource("BBVariant_3mr6k")])
 
 [sub_resource type="BTAction" id="BTAction_c57wm"]
 script = ExtResource("9_mmu5o")
@@ -1116,12 +1156,12 @@ operation = 3
 custom_name = "Reset Next Measure Time"
 children = [SubResource("BTAction_vksgl"), SubResource("BTSetVar_45lfl"), SubResource("BTSetVar_wsgol"), SubResource("BTAction_7cdio"), SubResource("BTSetVar_egiim"), SubResource("BTSetVar_6pemf")]
 
-[sub_resource type="BBVariant" id="BBVariant_ro6js"]
+[sub_resource type="BBVariant" id="BBVariant_rdld2"]
 value_source = 1
 variable = &"self"
 resource_name = "$self"
 
-[sub_resource type="BBVariant" id="BBVariant_ceurk"]
+[sub_resource type="BBVariant" id="BBVariant_7ep4n"]
 type = 1
 saved_value = true
 resource_name = "true"
@@ -1134,7 +1174,7 @@ resource_name = "$manager_path"
 [sub_resource type="BTCallMethod" id="BTCallMethod_jn4d2"]
 node = SubResource("BBNode_3g83i")
 method = &"set_ready_for_special_attack"
-args = Array[BBVariant]([SubResource("BBVariant_ro6js"), SubResource("BBVariant_ceurk")])
+args = Array[BBVariant]([SubResource("BBVariant_rdld2"), SubResource("BBVariant_7ep4n")])
 
 [sub_resource type="BBVariant" id="BBVariant_o5el3"]
 type = 1
@@ -2306,7 +2346,7 @@ value = SubResource("BBVariant_6m7i6")
 custom_name = "Check Just Landed"
 children = [SubResource("BTInvert_kq56s"), SubResource("BTSetVar_c57wm"), SubResource("BTSetVar_1j8g6")]
 
-[sub_resource type="BBVariant" id="BBVariant_5pbv1"]
+[sub_resource type="BBVariant" id="BBVariant_8sbe4"]
 value_source = 1
 variable = &"self"
 resource_name = "$self"
@@ -2320,7 +2360,7 @@ resource_name = "$manager_path"
 node = SubResource("BBNode_7cdio")
 method = &"request_next_waypoint"
 result_var = &"next_waypoint"
-args = Array[BBVariant]([SubResource("BBVariant_5pbv1")])
+args = Array[BBVariant]([SubResource("BBVariant_8sbe4")])
 
 [sub_resource type="BTAction" id="BTAction_6deqr"]
 script = ExtResource("7_qj0wi")
@@ -3232,12 +3272,12 @@ operation = 3
 custom_name = "Reset Next Measure Time"
 children = [SubResource("BTSetVar_yjjwa"), SubResource("BTSetVar_1iok6"), SubResource("BTAction_lxq5a"), SubResource("BTSetVar_h2tsv"), SubResource("BTSetVar_sxf4k")]
 
-[sub_resource type="BBVariant" id="BBVariant_7weh2"]
+[sub_resource type="BBVariant" id="BBVariant_bpwgy"]
 value_source = 1
 variable = &"self"
 resource_name = "$self"
 
-[sub_resource type="BBVariant" id="BBVariant_ueah8"]
+[sub_resource type="BBVariant" id="BBVariant_stsw8"]
 type = 1
 saved_value = true
 resource_name = "true"
@@ -3250,7 +3290,7 @@ resource_name = "$manager_path"
 [sub_resource type="BTCallMethod" id="BTCallMethod_i0816"]
 node = SubResource("BBNode_i63ae")
 method = &"set_ready_for_special_attack"
-args = Array[BBVariant]([SubResource("BBVariant_7weh2"), SubResource("BBVariant_ueah8")])
+args = Array[BBVariant]([SubResource("BBVariant_bpwgy"), SubResource("BBVariant_stsw8")])
 
 [sub_resource type="BBVariant" id="BBVariant_t5cqu"]
 type = 1
@@ -3876,7 +3916,7 @@ value = SubResource("BBVariant_pappx")
 custom_name = "Check Just Landed"
 children = [SubResource("BTInvert_id8m2"), SubResource("BTSetVar_x1e8o"), SubResource("BTSetVar_biu47")]
 
-[sub_resource type="BBVariant" id="BBVariant_wsgol"]
+[sub_resource type="BBVariant" id="BBVariant_t74qt"]
 value_source = 1
 variable = &"self"
 resource_name = "$self"
@@ -3890,7 +3930,7 @@ resource_name = "$manager_path"
 node = SubResource("BBNode_vksgl")
 method = &"request_next_waypoint"
 result_var = &"next_waypoint"
-args = Array[BBVariant]([SubResource("BBVariant_wsgol")])
+args = Array[BBVariant]([SubResource("BBVariant_t74qt")])
 
 [sub_resource type="BTAction" id="BTAction_ucsdq"]
 script = ExtResource("7_qj0wi")
@@ -4652,12 +4692,12 @@ resource_name = "false"
 variable = &"dashing"
 value = SubResource("BBVariant_fuw20")
 
-[sub_resource type="BBVariant" id="BBVariant_dndkg"]
+[sub_resource type="BBVariant" id="BBVariant_qdd00"]
 value_source = 1
 variable = &"self"
 resource_name = "$self"
 
-[sub_resource type="BBVariant" id="BBVariant_8e3t8"]
+[sub_resource type="BBVariant" id="BBVariant_wupbf"]
 type = 1
 saved_value = false
 resource_name = "<null>"
@@ -4670,7 +4710,7 @@ resource_name = "$manager_path"
 [sub_resource type="BTCallMethod" id="BTCallMethod_o5el3"]
 node = SubResource("BBNode_uyp3b")
 method = &"set_ready_for_special_attack"
-args = Array[BBVariant]([SubResource("BBVariant_dndkg"), SubResource("BBVariant_8e3t8")])
+args = Array[BBVariant]([SubResource("BBVariant_qdd00"), SubResource("BBVariant_wupbf")])
 
 [sub_resource type="BBVariant" id="BBVariant_1jkmb"]
 type = 1

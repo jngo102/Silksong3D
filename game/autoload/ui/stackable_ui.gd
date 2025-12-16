@@ -48,7 +48,6 @@ func _stack(ui: Control) -> void:
 	await get_tree().process_frame
 	ui.show()
 	await fade_tween.finished
-	ui.grab_focus()
 	ui_stack.push_back(ui)
 	ui_stacked.emit(ui)
 

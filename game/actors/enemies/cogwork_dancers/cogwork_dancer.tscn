@@ -1,10 +1,11 @@
-[gd_scene load_steps=63 format=4 uid="uid://c1fle5fyo6r8h"]
+[gd_scene load_steps=65 format=4 uid="uid://c1fle5fyo6r8h"]
 
 [ext_resource type="PackedScene" uid="uid://dubnsno8bya0v" path="res://game/actors/enemies/enemy.tscn" id="1_aqi66"]
 [ext_resource type="PackedScene" uid="uid://bvo4i3vqhmih2" path="res://game/actors/enemies/cogwork_dancers/cogwork_dancer.glb" id="2_vnqo0"]
 [ext_resource type="Script" uid="uid://d2b7mlnyocxgr" path="res://game/actors/enemies/cogwork_dancers/cogwork_dancer.gd" id="2_yj034"]
 [ext_resource type="BehaviorTree" uid="uid://chh6lvoe5ufr8" path="res://game/ai/trees/cogwork_dancer_behavior_tree.tres" id="3_7e4hr"]
 [ext_resource type="Script" uid="uid://ci132uxvr133w" path="res://game/actors/death.gd" id="3_ahwra"]
+[ext_resource type="PackedScene" uid="uid://xal232da7bpf" path="res://game/gameplay/combat/damager.tscn" id="3_pnomj"]
 [ext_resource type="Script" uid="uid://br0v4k6f8iwlh" path="res://game/actors/shaker.gd" id="3_s7qtj"]
 [ext_resource type="AudioStream" uid="uid://bhkqb17ayujpd" path="res://game/copyrighted/cogwork_dancers/sfx/clockwork_dancers_shing_to_add_onto_clash_together.wav" id="4_kn74s"]
 [ext_resource type="PackedScene" uid="uid://dqfhh1nwvvxj3" path="res://game/actors/enemies/cogwork_dancers/corpse/dancer_corpse.tscn" id="4_tlpfg"]
@@ -287,6 +288,10 @@ _data = {
 [sub_resource type="SphereShape3D" id="SphereShape3D_yj034"]
 radius = 5.0
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pnomj"]
+radius = 1.578125
+height = 11.059814
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ssog7"]
 resource_name = "Dark Bronze"
 cull_mode = 2
@@ -524,12 +529,12 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_84tk7")
 
-[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_tlpfg"]
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_thuvx"]
 default_input_values = [0, Vector2(0, 0), 1, Vector2(1, 1)]
 op_type = 0
 operator = 2
 
-[sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_pnomj"]
+[sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_fslw2"]
 default_input_values = [1, Vector2(0, 1), 2, Vector2(0, 0)]
 
 [sub_resource type="Gradient" id="Gradient_jkg7i"]
@@ -541,7 +546,7 @@ gradient = SubResource("Gradient_jkg7i")
 fill_from = Vector2(0.48504272, 0.3525641)
 fill_to = Vector2(0.48290598, 0.034188036)
 
-[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_thuvx"]
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_etufu"]
 texture = SubResource("GradientTexture2D_16jqo")
 
 [sub_resource type="Gradient" id="Gradient_33lnv"]
@@ -551,35 +556,35 @@ colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1)
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_7bbtc"]
 gradient = SubResource("Gradient_33lnv")
 
-[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_fslw2"]
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_tmqvu"]
 texture = SubResource("GradientTexture1D_7bbtc")
 
-[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_etufu"]
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_373gr"]
 input_name = "uv"
 
-[sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_tmqvu"]
+[sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_f30ob"]
 default_input_values = [1, Vector2(1, 0), 2, Vector2(0, 0)]
 
-[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_373gr"]
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_ctjt0"]
 parameter_name = "SlashGradientSliderX"
 
-[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_f30ob"]
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_bbu47"]
 default_input_values = [0, Vector2(0, 0), 1, Vector2(0.5, 0)]
 op_type = 0
 operator = 2
 
-[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_ctjt0"]
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_kvp53"]
 default_input_values = [0, Quaternion(0, 0, 0, 0), 1, Quaternion(0, 0, 0, 0)]
 op_type = 2
 operator = 2
 
-[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_bbu47"]
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_o31x4"]
 input_name = "uv"
 
-[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_kvp53"]
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_vi5ue"]
 parameter_name = "SlashGradientSliderY"
 
-[sub_resource type="VisualShader" id="VisualShader_o31x4"]
+[sub_resource type="VisualShader" id="VisualShader_qq58s"]
 resource_local_to_scene = true
 code = "shader_type spatial;
 render_mode blend_mix, depth_draw_opaque, depth_test_default, cull_back, diffuse_lambert, specular_schlick_ggx;
@@ -647,34 +652,34 @@ void fragment() {
 }
 "
 nodes/fragment/0/position = Vector2(640, 500)
-nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_fslw2")
+nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_tmqvu")
 nodes/fragment/2/position = Vector2(-620, 160)
-nodes/fragment/3/node = SubResource("VisualShaderNodeInput_etufu")
+nodes/fragment/3/node = SubResource("VisualShaderNodeInput_373gr")
 nodes/fragment/3/position = Vector2(-2540, 220)
-nodes/fragment/4/node = SubResource("VisualShaderNodeUVFunc_tmqvu")
+nodes/fragment/4/node = SubResource("VisualShaderNodeUVFunc_f30ob")
 nodes/fragment/4/position = Vector2(-1260, 160)
-nodes/fragment/5/node = SubResource("VisualShaderNodeFloatParameter_373gr")
+nodes/fragment/5/node = SubResource("VisualShaderNodeFloatParameter_ctjt0")
 nodes/fragment/5/position = Vector2(-1980, 520)
-nodes/fragment/6/node = SubResource("VisualShaderNodeVectorOp_f30ob")
+nodes/fragment/6/node = SubResource("VisualShaderNodeVectorOp_bbu47")
 nodes/fragment/6/position = Vector2(-1800, 100)
-nodes/fragment/7/node = SubResource("VisualShaderNodeVectorOp_ctjt0")
+nodes/fragment/7/node = SubResource("VisualShaderNodeVectorOp_kvp53")
 nodes/fragment/7/position = Vector2(20, 760)
-nodes/fragment/8/node = SubResource("VisualShaderNodeInput_bbu47")
+nodes/fragment/8/node = SubResource("VisualShaderNodeInput_o31x4")
 nodes/fragment/8/position = Vector2(-2580, 1140)
-nodes/fragment/9/node = SubResource("VisualShaderNodeFloatParameter_kvp53")
+nodes/fragment/9/node = SubResource("VisualShaderNodeFloatParameter_vi5ue")
 nodes/fragment/9/position = Vector2(-2020, 1440)
-nodes/fragment/10/node = SubResource("VisualShaderNodeVectorOp_tlpfg")
+nodes/fragment/10/node = SubResource("VisualShaderNodeVectorOp_thuvx")
 nodes/fragment/10/position = Vector2(-1840, 1020)
-nodes/fragment/12/node = SubResource("VisualShaderNodeUVFunc_pnomj")
+nodes/fragment/12/node = SubResource("VisualShaderNodeUVFunc_fslw2")
 nodes/fragment/12/position = Vector2(-1300, 1080)
-nodes/fragment/13/node = SubResource("VisualShaderNodeTexture_thuvx")
+nodes/fragment/13/node = SubResource("VisualShaderNodeTexture_etufu")
 nodes/fragment/13/position = Vector2(-620, 900)
 nodes/fragment/connections = PackedInt32Array(5, 0, 4, 2, 3, 0, 6, 0, 6, 0, 4, 0, 9, 0, 12, 2, 8, 0, 10, 0, 10, 0, 12, 0, 12, 0, 13, 0, 13, 0, 7, 1, 4, 0, 2, 0, 2, 0, 7, 0, 7, 0, 0, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vi5ue"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5mxiv"]
 resource_local_to_scene = true
 render_priority = 0
-shader = SubResource("VisualShader_o31x4")
+shader = SubResource("VisualShader_qq58s")
 shader_parameter/SlashGradientSliderX = 0.5
 shader_parameter/SlashGradientSliderY = 0.75
 
@@ -695,46 +700,46 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_84tk7")
 
-[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_qq58s"]
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_ovogk"]
 default_input_values = [0, Vector2(0, 0), 1, Vector2(1, 1)]
 op_type = 0
 operator = 2
 
-[sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_5mxiv"]
+[sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_yesa1"]
 default_input_values = [1, Vector2(0, 1), 2, Vector2(0, 0)]
 
-[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_ovogk"]
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_y6jk2"]
 texture = SubResource("GradientTexture2D_16jqo")
 
-[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_yesa1"]
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_fs4go"]
 texture = SubResource("GradientTexture1D_7bbtc")
 
-[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_y6jk2"]
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_pgnk0"]
 input_name = "uv"
 
-[sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_fs4go"]
+[sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_mecwy"]
 default_input_values = [1, Vector2(1, 0), 2, Vector2(0, 0)]
 
-[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_pgnk0"]
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_ueqp8"]
 parameter_name = "SlashGradientSliderX"
 
-[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_mecwy"]
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_yd64e"]
 default_input_values = [0, Vector2(0, 0), 1, Vector2(0.5, 0)]
 op_type = 0
 operator = 2
 
-[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_ueqp8"]
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_irtrb"]
 default_input_values = [0, Quaternion(0, 0, 0, 0), 1, Quaternion(0, 0, 0, 0)]
 op_type = 2
 operator = 2
 
-[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_yd64e"]
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_ygy1x"]
 input_name = "uv"
 
-[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_irtrb"]
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_lpgof"]
 parameter_name = "SlashGradientSliderY"
 
-[sub_resource type="VisualShader" id="VisualShader_ygy1x"]
+[sub_resource type="VisualShader" id="VisualShader_c5qqj"]
 resource_local_to_scene = true
 code = "shader_type spatial;
 render_mode blend_mix, depth_draw_opaque, depth_test_default, cull_back, diffuse_lambert, specular_schlick_ggx;
@@ -802,34 +807,34 @@ void fragment() {
 }
 "
 nodes/fragment/0/position = Vector2(640, 500)
-nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_yesa1")
+nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_fs4go")
 nodes/fragment/2/position = Vector2(-620, 160)
-nodes/fragment/3/node = SubResource("VisualShaderNodeInput_y6jk2")
+nodes/fragment/3/node = SubResource("VisualShaderNodeInput_pgnk0")
 nodes/fragment/3/position = Vector2(-2540, 220)
-nodes/fragment/4/node = SubResource("VisualShaderNodeUVFunc_fs4go")
+nodes/fragment/4/node = SubResource("VisualShaderNodeUVFunc_mecwy")
 nodes/fragment/4/position = Vector2(-1260, 160)
-nodes/fragment/5/node = SubResource("VisualShaderNodeFloatParameter_pgnk0")
+nodes/fragment/5/node = SubResource("VisualShaderNodeFloatParameter_ueqp8")
 nodes/fragment/5/position = Vector2(-1980, 520)
-nodes/fragment/6/node = SubResource("VisualShaderNodeVectorOp_mecwy")
+nodes/fragment/6/node = SubResource("VisualShaderNodeVectorOp_yd64e")
 nodes/fragment/6/position = Vector2(-1800, 100)
-nodes/fragment/7/node = SubResource("VisualShaderNodeVectorOp_ueqp8")
+nodes/fragment/7/node = SubResource("VisualShaderNodeVectorOp_irtrb")
 nodes/fragment/7/position = Vector2(20, 760)
-nodes/fragment/8/node = SubResource("VisualShaderNodeInput_yd64e")
+nodes/fragment/8/node = SubResource("VisualShaderNodeInput_ygy1x")
 nodes/fragment/8/position = Vector2(-2580, 1140)
-nodes/fragment/9/node = SubResource("VisualShaderNodeFloatParameter_irtrb")
+nodes/fragment/9/node = SubResource("VisualShaderNodeFloatParameter_lpgof")
 nodes/fragment/9/position = Vector2(-2020, 1440)
-nodes/fragment/10/node = SubResource("VisualShaderNodeVectorOp_qq58s")
+nodes/fragment/10/node = SubResource("VisualShaderNodeVectorOp_ovogk")
 nodes/fragment/10/position = Vector2(-1840, 1020)
-nodes/fragment/12/node = SubResource("VisualShaderNodeUVFunc_5mxiv")
+nodes/fragment/12/node = SubResource("VisualShaderNodeUVFunc_yesa1")
 nodes/fragment/12/position = Vector2(-1300, 1080)
-nodes/fragment/13/node = SubResource("VisualShaderNodeTexture_ovogk")
+nodes/fragment/13/node = SubResource("VisualShaderNodeTexture_y6jk2")
 nodes/fragment/13/position = Vector2(-620, 900)
 nodes/fragment/connections = PackedInt32Array(5, 0, 4, 2, 3, 0, 6, 0, 6, 0, 4, 0, 9, 0, 12, 2, 8, 0, 10, 0, 10, 0, 12, 0, 12, 0, 13, 0, 13, 0, 7, 1, 4, 0, 2, 0, 2, 0, 7, 0, 7, 0, 0, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_lpgof"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dywfi"]
 resource_local_to_scene = true
 render_priority = 0
-shader = SubResource("VisualShader_ygy1x")
+shader = SubResource("VisualShader_c5qqj")
 shader_parameter/SlashGradientSliderX = 0.5
 shader_parameter/SlashGradientSliderY = 0.75
 
@@ -865,16 +870,24 @@ max_health = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.54951835, 0)
 disabled = true
 
-[node name="Death" type="Node" parent="." index="3"]
+[node name="Damager" parent="." index="3" instance=ExtResource("3_pnomj")]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Collision" parent="Damager" index="0"]
+transform = Transform3D(0.9922041, 0, 0.12462326, 0, 1, 0, -0.12462326, 0, 0.9922041, 0, 1.508667, 0)
+shape = SubResource("CapsuleShape3D_pnomj")
+
+[node name="Death" type="Node" parent="." index="4"]
 script = ExtResource("3_ahwra")
 corpse_prefab = ExtResource("4_tlpfg")
 metadata/_custom_type_script = "uid://ci132uxvr133w"
 
-[node name="Shaker" type="Node" parent="." index="4"]
+[node name="Shaker" type="Node" parent="." index="5"]
 script = ExtResource("3_s7qtj")
 metadata/_custom_type_script = "uid://br0v4k6f8iwlh"
 
-[node name="Model" parent="." index="5" instance=ExtResource("2_vnqo0")]
+[node name="Model" parent="." index="6" instance=ExtResource("2_vnqo0")]
 transform = Transform3D(-2.5, 0, -3.774895e-07, 0, 2.5, 0, 3.774895e-07, 0, -2.5, 0, 0, 0)
 
 [node name="Skeleton3D" parent="Model/Armature" index="0"]
@@ -942,7 +955,7 @@ shape = SubResource("SphereShape3D_kn74s")
 [node name="RoarPoint" type="Node3D" parent="Model" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.7010176, 0)
 
-[node name="Direction" parent="." index="6" instance=ExtResource("6_vigla")]
+[node name="Direction" parent="." index="7" instance=ExtResource("6_vigla")]
 transform = Transform3D(1, -1.3322676e-15, -2.646978e-23, 1.3322676e-15, 1, 0, 1.6543612e-24, -2.204052e-39, 16, 0, 6, -2)
 
 [node name="Direction" parent="Direction" index="0"]
@@ -959,10 +972,10 @@ libraries = {
 &"": SubResource("AnimationLibrary_s7qtj")
 }
 
-[node name="SlashEffectLeft" parent="." index="7" instance=ExtResource("5_esq63")]
+[node name="SlashEffectLeft" parent="." index="8" instance=ExtResource("5_esq63")]
 transform = Transform3D(0.34526417, 0.21329966, 1.0772142, 0.23132813, -0.7566405, 0.18476167, 0.6835788, 0.14831868, -0.60660756, 2.95, 1.34, -0.28)
 mesh = SubResource("ArrayMesh_esq63")
-surface_material_override/0 = SubResource("ShaderMaterial_vi5ue")
+surface_material_override/0 = SubResource("ShaderMaterial_5mxiv")
 
 [node name="SlashEffectDamager" parent="SlashEffectLeft" index="0"]
 collision_layer = 16
@@ -970,10 +983,10 @@ collision_layer = 16
 [node name="Collision" parent="SlashEffectLeft/SlashEffectDamager" index="0"]
 transform = Transform3D(-0.18644491, -0.21110286, -0.9595175, -0.71991134, 0.69394547, -0.012787557, 0.6685517, 0.6883839, -0.28135905, -3.9338806, 0.7550101, -0.04474935)
 
-[node name="SlashEffectRight" parent="." index="8" instance=ExtResource("5_esq63")]
+[node name="SlashEffectRight" parent="." index="9" instance=ExtResource("5_esq63")]
 transform = Transform3D(-0.34526417, -0.21329966, -1.0772142, 0.19545364, -0.76333183, 0.21606863, 0.6946873, 0.10875566, -0.59617454, -2.95, 1.34, -0.28)
 mesh = SubResource("ArrayMesh_vigla")
-surface_material_override/0 = SubResource("ShaderMaterial_lpgof")
+surface_material_override/0 = SubResource("ShaderMaterial_dywfi")
 
 [node name="SlashEffectDamager" parent="SlashEffectRight" index="0"]
 collision_layer = 16
@@ -981,16 +994,16 @@ collision_layer = 16
 [node name="Collision" parent="SlashEffectRight/SlashEffectDamager" index="0"]
 transform = Transform3D(0.92579067, -0.3080265, 0.2191499, 0.3686109, 0.6069526, -0.7040822, 0.08386243, 0.73261344, 0.6754564, -0.10546088, -1.1433492, 2.2193463)
 
-[node name="VoicePlayer" parent="." index="9"]
+[node name="VoicePlayer" parent="." index="10"]
 volume_db = 2.0
 script = null
 
-[node name="BehaviorTree" parent="." index="10"]
+[node name="BehaviorTree" parent="." index="11"]
 behavior_tree = ExtResource("3_7e4hr")
 update_mode = 0
 blackboard_plan = SubResource("BlackboardPlan_s7qtj")
 
-[node name="DeathBehaviorTree" type="BTPlayer" parent="." index="11"]
+[node name="DeathBehaviorTree" type="BTPlayer" parent="." index="12"]
 behavior_tree = ExtResource("8_s7qtj")
 update_mode = 0
 active = false
@@ -999,6 +1012,7 @@ blackboard_plan = SubResource("BlackboardPlan_tlpfg")
 [connection signal="body_entered" from="Model/Clasher" to="." method="_on_clasher_body_entered"]
 
 [editable path="Health"]
+[editable path="Damager"]
 [editable path="Model"]
 [editable path="Direction"]
 [editable path="SlashEffectLeft"]

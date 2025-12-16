@@ -1,0 +1,101 @@
+[gd_scene load_steps=15 format=3 uid="uid://boyxvnlcjkhpy"]
+
+[ext_resource type="Texture2D" uid="uid://cd4a0v7nsj70t" path="res://game/copyrighted/textures/ui/hud/silk/crest/appear/005_0592.png" id="1_mp78n"]
+[ext_resource type="Script" uid="uid://0vrfc2bunc4w" path="res://game/autoload/ui/hud/hud.gd" id="1_sfe4u"]
+[ext_resource type="Texture2D" uid="uid://bf880ntmstbqv" path="res://game/copyrighted/textures/ui/hud/silk/crest/appear/000_0587.png" id="2_xt5g7"]
+[ext_resource type="Texture2D" uid="uid://bap1royhilpad" path="res://game/copyrighted/textures/ui/hud/silk/crest/appear/001_0588.png" id="3_sgnu5"]
+[ext_resource type="Texture2D" uid="uid://c5hlddyp0lr0m" path="res://game/copyrighted/textures/ui/hud/silk/crest/appear/002_0589.png" id="4_q6fvh"]
+[ext_resource type="Texture2D" uid="uid://blvdfcksg75e5" path="res://game/copyrighted/textures/ui/hud/silk/crest/appear/003_0590.png" id="5_owppg"]
+[ext_resource type="Texture2D" uid="uid://bw8vu4e06eitq" path="res://game/copyrighted/textures/ui/hud/silk/crest/appear/004_0591.png" id="6_c0soc"]
+[ext_resource type="Texture2D" uid="uid://cubat6lkmho5d" path="res://game/copyrighted/textures/ui/hud/silk/spool/appear/000_0008.png" id="8_wm8x1"]
+[ext_resource type="Texture2D" uid="uid://q4ddjadfcl7g" path="res://game/copyrighted/textures/ui/hud/silk/spool/appear/001_0151.png" id="9_jqafx"]
+[ext_resource type="Texture2D" uid="uid://daf1qe7ul6xbk" path="res://game/copyrighted/textures/ui/hud/silk/spool/appear/002_0152.png" id="10_r5a8t"]
+[ext_resource type="Texture2D" uid="uid://bo3vnaacqcx35" path="res://game/copyrighted/textures/ui/hud/silk/spool/appear/003_0150.png" id="11_irp7l"]
+[ext_resource type="Texture2D" uid="uid://cjj3shsyl5spj" path="res://game/copyrighted/textures/ui/hud/silk/spool/spool.png" id="12_v3g5g"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_wm8x1"]
+frames = 6
+one_shot = true
+speed_scale = 15.0
+frame_0/texture = ExtResource("2_xt5g7")
+frame_1/texture = ExtResource("3_sgnu5")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("4_q6fvh")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("5_owppg")
+frame_3/duration = 1.0
+frame_4/texture = ExtResource("6_c0soc")
+frame_4/duration = 1.0
+frame_5/texture = ExtResource("1_mp78n")
+frame_5/duration = 1.0
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_av2r8"]
+frames = 5
+one_shot = true
+speed_scale = 20.0
+frame_0/texture = ExtResource("8_wm8x1")
+frame_1/texture = ExtResource("9_jqafx")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("10_r5a8t")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("11_irp7l")
+frame_3/duration = 1.0
+frame_4/texture = ExtResource("12_v3g5g")
+frame_4/duration = 1.0
+
+[node name="HUD" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_sfe4u")
+
+[node name="Animator" type="AnimationPlayer" parent="."]
+
+[node name="Crest" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 32.0
+offset_right = 399.0
+offset_bottom = 174.0
+scale = Vector2(1.25, 1.25)
+texture = SubResource("AnimatedTexture_wm8x1")
+
+[node name="HealthPieces" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 281.0
+offset_top = 112.0
+offset_right = 281.0
+offset_bottom = 112.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Spool" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 93.0
+offset_top = 196.0
+offset_right = 133.0
+offset_bottom = 236.0
+grow_vertical = 2
+texture = SubResource("AnimatedTexture_av2r8")
+stretch_mode = 2
+
+[node name="Chunks" type="Control" parent="Spool"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -53.5
+offset_top = -19.0
+offset_right = -13.5
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2

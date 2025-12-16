@@ -6,6 +6,7 @@ class_name Health extends Area3D
 @onready var _blood: GPUParticles3D = $BloodParticles
 
 signal took_damage(damage_amount: float)
+signal healed(amount: int)
 signal died(actor: Actor)
 
 @onready var current_health: int = max_health
@@ -21,6 +22,10 @@ func take_damage(damager: Damager) -> void:
 	took_damage.emit(damager.damage_amount)
 	if current_health <= 0:
 		_die()
+
+func heal(amount: int) -> void:
+	current_health += amount
+	healed.emit(amount)
 
 func _die() -> void:
 	died.emit(owner)
