@@ -15,5 +15,5 @@ func _tick(_delta: float) -> Status:
 		return FAILURE
 	var play_position: Vector3 = blackboard.get_var(play_position_var, Vector3.ZERO)
 	var clip: AudioStream = clips_array.pick_random()
-	AudioManager.play_clip(clip, play_position, pitch_min, pitch_max, volume_scale)
+	AudioManager.play_clip(clip, false, play_position, pitch_min, pitch_max, volume_scale)
 	return SUCCESS

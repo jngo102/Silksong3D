@@ -1,19 +1,46 @@
-[gd_scene load_steps=15 format=3 uid="uid://bk5l50c7ma8dr"]
+[gd_scene load_steps=36 format=3 uid="uid://bk5l50c7ma8dr"]
 
 [ext_resource type="PackedScene" uid="uid://36gmo74w6e2q" path="res://game/actors/actor.tscn" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://cyskkgbbkdq4d" path="res://game/actors/player/player.gd" id="2_dw050"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://dxbdw4keges5f" path="res://game/resources/animations/player_state_machine.tres" id="2_onrkg"]
+[ext_resource type="Script" uid="uid://4fhac2e1rdou" path="res://game/actors/player/spool_manager.gd" id="3_hlqpx"]
+[ext_resource type="Script" uid="uid://cepghhx6k4k22" path="res://game/actors/player/recoil_manager.gd" id="3_oawdx"]
+[ext_resource type="AudioStream" uid="uid://2gpvvnvm7acy" path="res://game/copyrighted/sfx/hornet/hurt/normal/w2.wav" id="4_b3c30"]
+[ext_resource type="AudioStream" uid="uid://3jsxtwgw1twk" path="res://game/copyrighted/sfx/hornet/hurt/big/w_big_01.wav" id="4_fxn5h"]
+[ext_resource type="AudioStream" uid="uid://dy7a6nolobf7m" path="res://game/copyrighted/sfx/hornet/hurt/normal/w3.wav" id="5_2vult"]
 [ext_resource type="ArrayMesh" uid="uid://bgirt3tfr1hod" path="res://game/resources/meshes/cloak_mesh.tres" id="5_b26j0"]
+[ext_resource type="AudioStream" uid="uid://vf42youslsnd" path="res://game/copyrighted/sfx/hornet/hurt/big/w_big_02.wav" id="5_cxuv5"]
 [ext_resource type="PackedScene" uid="uid://pj02xii8jggq" path="res://game/actors/player/hornet.glb" id="5_qdo3w"]
+[ext_resource type="AudioStream" uid="uid://ggqairrbmc7p" path="res://game/copyrighted/sfx/hornet/hurt/normal/w4.wav" id="6_41lfd"]
 [ext_resource type="Material" uid="uid://breyp8thk738j" path="res://game/resources/meshes/cloak.tres" id="6_n7ghd"]
+[ext_resource type="AudioStream" uid="uid://baesvr66s2s8r" path="res://game/copyrighted/sfx/hornet/hurt/big/w_big_03.wav" id="6_qq66o"]
+[ext_resource type="AudioStream" uid="uid://bs2vwqdwfqbf0" path="res://game/copyrighted/sfx/hornet/hurt/normal/w5.wav" id="7_4s16b"]
 [ext_resource type="PackedScene" uid="uid://dpkqjvyr32cys" path="res://game/actors/player/needle.tscn" id="7_nvl01"]
+[ext_resource type="AudioStream" uid="uid://sdosd5pgs43o" path="res://game/copyrighted/sfx/hornet/hurt/big/w_big_04.wav" id="7_x4qyq"]
+[ext_resource type="AudioStream" uid="uid://c2jcr8h0d2fbo" path="res://game/copyrighted/sfx/hornet/hurt/big/w_big_05.wav" id="8_i15os"]
+[ext_resource type="AudioStream" uid="uid://dmwfc0eeacvhl" path="res://game/copyrighted/sfx/hornet/hurt/normal/w6.wav" id="8_m4n5g"]
+[ext_resource type="AudioStream" uid="uid://bxtfhmkcfit05" path="res://game/copyrighted/sfx/hornet/hurt/big/w_big_06.wav" id="9_1svlo"]
+[ext_resource type="AudioStream" uid="uid://d264e8o4xp383" path="res://game/copyrighted/sfx/hornet/hurt/normal/w7.wav" id="9_6o7jk"]
+[ext_resource type="AudioStream" uid="uid://cwsuddb6nmww2" path="res://game/copyrighted/sfx/hornet/hurt/big/w_big_07.wav" id="10_a20ea"]
+[ext_resource type="AudioStream" uid="uid://dl40sgxvlqprh" path="res://game/copyrighted/sfx/hornet/hurt/big/w_big_08.wav" id="11_b3c30"]
+[ext_resource type="AudioStream" uid="uid://d008win7xhh1q" path="res://game/copyrighted/sfx/hornet/hurt/big/w_big_09.wav" id="12_2vult"]
+[ext_resource type="Script" uid="uid://d2a87b3tfbpuf" path="res://game/autoload/audio/random_audio_play.gd" id="13_41lfd"]
+[ext_resource type="PackedScene" uid="uid://kbm2v33787ln" path="res://game/actors/player/effects/combat/double_damage_hit_effect.tscn" id="14_cxuv5"]
+[ext_resource type="PackedScene" uid="uid://b0wa350b6fbky" path="res://game/actors/player/player_corpse.tscn" id="21_2vult"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_n7ghd"]
 radius = 0.25
 height = 5.0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j5vpa"]
-albedo_color = Color(0, 0, 0, 1)
+[sub_resource type="Resource" id="Resource_cxuv5"]
+script = ExtResource("13_41lfd")
+clips = Array[AudioStream]([ExtResource("4_b3c30"), ExtResource("5_2vult"), ExtResource("6_41lfd"), ExtResource("7_4s16b"), ExtResource("8_m4n5g"), ExtResource("9_6o7jk")])
+metadata/_custom_type_script = "uid://d2a87b3tfbpuf"
+
+[sub_resource type="Resource" id="Resource_qq66o"]
+script = ExtResource("13_41lfd")
+clips = Array[AudioStream]([ExtResource("4_fxn5h"), ExtResource("5_cxuv5"), ExtResource("6_qq66o"), ExtResource("7_x4qyq"), ExtResource("8_i15os"), ExtResource("9_1svlo"), ExtResource("10_a20ea"), ExtResource("11_b3c30"), ExtResource("12_2vult")])
+metadata/_custom_type_script = "uid://d2a87b3tfbpuf"
 
 [sub_resource type="Animation" id="Animation_n7ghd"]
 resource_name = "Puff Out"
@@ -80,6 +107,7 @@ walk_speed = 24.0
 sprint_speed = 48.0
 down_spike_speed = 90.0
 down_spike_bounce_spin_speed = 30.0
+metadata/_edit_group_ = true
 
 [node name="Animator" parent="." index="0"]
 active = false
@@ -92,10 +120,26 @@ active = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.33, 0.123)
 shape = SubResource("CapsuleShape3D_n7ghd")
 
-[node name="Health" parent="." index="2"]
+[node name="Health" parent="." index="2" node_paths=PackedStringArray("damage_particles")]
 collision_mask = 16
+damage_particles = []
 
-[node name="Model" parent="." index="3" instance=ExtResource("5_qdo3w")]
+[node name="RecoilManager" type="Node3D" parent="." index="3" node_paths=PackedStringArray("_anim_tree", "_health")]
+script = ExtResource("3_oawdx")
+_anim_tree = NodePath("../Model/AnimationPlayer/AnimationTree")
+_health = NodePath("../Health")
+_hit_pause_duration = 0.25
+_normal_hurt_voice_clips = SubResource("Resource_cxuv5")
+_big_hurt_voice_clips = SubResource("Resource_qq66o")
+_big_damage_effect_prefab = ExtResource("14_cxuv5")
+
+[node name="Death" parent="." index="4"]
+corpse_prefab = ExtResource("21_2vult")
+
+[node name="SpoolManager" type="Node" parent="." index="5"]
+script = ExtResource("3_hlqpx")
+
+[node name="Model" parent="." index="6" instance=ExtResource("5_qdo3w")]
 
 [node name="Skeleton3D" parent="Model/Armature" index="0"]
 bones/5/rotation = Quaternion(-0.7070091, -0.0117546, -0.011754517, 0.7070091)
@@ -107,10 +151,7 @@ bones/11/rotation = Quaternion(0.5000001, 0.49999997, 0.4999999, 0.5)
 bones/12/position = Vector3(-0.35971394, -2.1283069, 0.07078907)
 bones/13/rotation = Quaternion(0.5000001, -0.49999997, -0.4999999, 0.5)
 
-[node name="Body" parent="Model/Armature/Skeleton3D" index="0"]
-surface_material_override/0 = SubResource("StandardMaterial3D_j5vpa")
-
-[node name="CloakAttach" type="BoneAttachment3D" parent="Model/Armature/Skeleton3D" index="2"]
+[node name="CloakAttach" type="BoneAttachment3D" parent="Model/Armature/Skeleton3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.91961265, 0)
 bone_name = "Spine2"
 bone_idx = 2
@@ -509,7 +550,7 @@ collision_mask = 0
 [node name="Collision" type="CollisionShape3D" parent="Model/Armature/Skeleton3D/CloakAttach/PuffBody" index="0"]
 shape = SubResource("SphereShape3D_urp6f")
 
-[node name="NeedleAttach" type="BoneAttachment3D" parent="Model/Armature/Skeleton3D" index="3"]
+[node name="NeedleAttach" type="BoneAttachment3D" parent="Model/Armature/Skeleton3D" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.91961265, 0)
 bone_name = "Spine2"
 bone_idx = 2
@@ -530,11 +571,6 @@ advance_expression_base_node = NodePath("../../..")
 anim_player = NodePath("..")
 parameters/Walk/blend_position = Vector2(-0.0026361942, 0.008163214)
 
-[node name="FSM" type="LimboHSM" parent="." index="5"]
-update_mode = 0
-
-[node name="Idle" type="LimboState" parent="FSM" index="0"]
-
 [connection signal="animation_finished" from="Animator/AnimationTree" to="." method="_on_animation_tree_animation_finished"]
 [connection signal="animation_started" from="Animator/AnimationTree" to="." method="_on_animation_tree_animation_started"]
 [connection signal="down_spiked" from="Model/Armature/Skeleton3D/NeedleAttach/Needle" to="." method="_on_needle_down_spiked"]
@@ -544,3 +580,5 @@ update_mode = 0
 [editable path="Model"]
 [editable path="Model/Armature/Skeleton3D/NeedleAttach/Needle"]
 [editable path="Model/Armature/Skeleton3D/NeedleAttach/Needle/Mesh/DownSpikeDamager"]
+[editable path="Model/Armature/Skeleton3D/NeedleAttach/Needle/SlashEffect"]
+[editable path="Model/Armature/Skeleton3D/NeedleAttach/Needle/SlashEffect/SlashEffectDamager"]

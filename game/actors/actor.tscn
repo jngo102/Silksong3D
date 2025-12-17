@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://36gmo74w6e2q"]
+[gd_scene load_steps=6 format=3 uid="uid://36gmo74w6e2q"]
 
 [ext_resource type="PackedScene" uid="uid://djok8768tq4tr" path="res://game/actors/health.tscn" id="1_hr3hk"]
 [ext_resource type="Script" uid="uid://nfgwo51p2xih" path="res://game/actors/actor.gd" id="1_oka2p"]
+[ext_resource type="Script" uid="uid://ci132uxvr133w" path="res://game/actors/death.gd" id="3_lvhic"]
 [ext_resource type="Script" uid="uid://dj5upywmu1hm2" path="res://game/actors/random_audio_player.gd" id="3_rktbm"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hr3hk"]
@@ -22,6 +23,12 @@ anim_player = NodePath("..")
 shape = SubResource("CapsuleShape3D_hr3hk")
 
 [node name="Health" parent="." instance=ExtResource("1_hr3hk")]
+give_silk = false
+
+[node name="Death" type="Node" parent="." node_paths=PackedStringArray("health")]
+script = ExtResource("3_lvhic")
+health = NodePath("../Health")
+metadata/_custom_type_script = "uid://ci132uxvr133w"
 
 [node name="VoicePlayer" type="AudioStreamPlayer3D" parent="."]
 script = ExtResource("3_rktbm")

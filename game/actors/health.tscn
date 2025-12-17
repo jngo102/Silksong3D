@@ -31,8 +31,9 @@ material = SubResource("StandardMaterial3D_bydfv")
 radial_segments = 16
 rings = 8
 
-[node name="Health" type="Area3D"]
+[node name="Health" type="Area3D" node_paths=PackedStringArray("damage_particles")]
 script = ExtResource("1_f3r4x")
+damage_particles = [NodePath("BloodParticles")]
 
 [node name="Collision" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_ledv5")
@@ -44,6 +45,7 @@ lifetime = 0.25
 one_shot = true
 explosiveness = 1.0
 randomness = 1.0
+local_coords = true
 process_material = SubResource("ParticleProcessMaterial_7e838")
 draw_pass_1 = SubResource("SphereMesh_7e838")
 

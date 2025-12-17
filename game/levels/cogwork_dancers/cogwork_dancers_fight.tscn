@@ -640,6 +640,9 @@ spot_attenuation = 2.0
 spot_angle = 30.0
 spot_angle_attenuation = 1.2745608
 
+[node name="Player" parent="." index="3"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1.6255398, 0)
+
 [node name="Physical" type="Node3D" parent="." index="4"]
 
 [node name="Ground" type="StaticBody3D" parent="Physical" index="0"]
@@ -780,6 +783,7 @@ light_energy = 0.0
 omni_range = 30.0
 
 [node name="Damager" parent="DancerManager/SpinSlashes" index="3" instance=ExtResource("9_xmi2e")]
+collision_layer = 16
 
 [node name="Collision" parent="DancerManager/SpinSlashes/Damager" index="0"]
 shape = SubResource("SphereShape3D_twn58")

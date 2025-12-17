@@ -245,6 +245,6 @@ func _on_dancer_death(dancer: Actor) -> void:
 		measures_between_special_attacks = 8
 	_reset_special_attack_time()
 	AudioManager.stop_music()
-	AudioManager.play_clip(_death_sting, Vector3.ZERO, 1, 1, 1, 1000)
+	AudioManager.play_clip(_death_sting, true)
 	_set_dancer_death_active(dancer)
 	boss_phase += 1

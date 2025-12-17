@@ -6,4 +6,4 @@ class_name RandomAudioPlay extends Resource
 
 ## Play a random clip
 func play_random(play_position: Vector3, pitch_min: float = 1, pitch_max: float = 1) -> void:
-	AudioManager.play_clip(clips.pick_random(), play_position, pitch_min, pitch_max)
+	AudioManager.play_clip(clips.pick_random(), false, play_position, pitch_min, pitch_max)

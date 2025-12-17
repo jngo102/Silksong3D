@@ -31,84 +31,6 @@
 [ext_resource type="Texture2D" uid="uid://cp8aqwxdg8sn4" path="res://game/copyrighted/textures/ui/hud/silk/spool/chunk/glow2/000_0144.png" id="29_8uthk"]
 [ext_resource type="Texture2D" uid="uid://bhgotvhrb8ibg" path="res://game/copyrighted/textures/ui/hud/silk/spool/chunk/glow3/000_0139.png" id="30_4oqi5"]
 
-[sub_resource type="Animation" id="Animation_1xydv"]
-resource_name = "Idle 1"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0001, 0.0002),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [ExtResource("21_n2blw"), ExtResource("21_n2blw"), ExtResource("1_486hx")]
-}
-
-[sub_resource type="Animation" id="Animation_486hx"]
-resource_name = "Up 1"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.1, 0.13333334, 0.16666667),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [ExtResource("3_767nt"), ExtResource("4_3agob"), ExtResource("5_0ssyu"), ExtResource("6_vh55f"), ExtResource("7_yujhu"), ExtResource("8_oth4i")]
-}
-
-[sub_resource type="Animation" id="Animation_l8k4n"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("1_486hx")]
-}
-
-[sub_resource type="Animation" id="Animation_4oqi5"]
-resource_name = "Up 2"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.1, 0.13333334, 0.16666667),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [ExtResource("9_avi7a"), ExtResource("10_34lr7"), ExtResource("11_g3jxv"), ExtResource("12_lrkar"), ExtResource("13_n2blw"), ExtResource("14_1fgj2")]
-}
-
-[sub_resource type="Animation" id="Animation_g3kqu"]
-resource_name = "Up 3"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.1, 0.13333334, 0.16666667),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [ExtResource("15_rp0hu"), ExtResource("16_dcucb"), ExtResource("17_75pnc"), ExtResource("18_cn44q"), ExtResource("19_vadt3"), ExtResource("20_8uthk")]
-}
-
 [sub_resource type="Animation" id="Animation_rp0hu"]
 resource_name = "Down"
 length = 0.1334
@@ -123,36 +45,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [ExtResource("25_1fgj2"), ExtResource("22_1fgj2"), ExtResource("23_rp0hu"), ExtResource("24_dcucb")]
-}
-
-[sub_resource type="Animation" id="Animation_cn44q"]
-resource_name = "Idle 2"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0001, 0.0002),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [ExtResource("21_n2blw"), ExtResource("21_n2blw"), ExtResource("26_dcucb")]
-}
-
-[sub_resource type="Animation" id="Animation_vadt3"]
-resource_name = "Idle 3"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0001, 0.0002),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [ExtResource("21_n2blw"), ExtResource("21_n2blw"), ExtResource("27_75pnc")]
 }
 
 [sub_resource type="Animation" id="Animation_dcucb"]
@@ -215,6 +107,114 @@ tracks/0/keys = {
 "values": [ExtResource("28_vadt3"), ExtResource("21_n2blw"), ExtResource("30_4oqi5")]
 }
 
+[sub_resource type="Animation" id="Animation_1xydv"]
+resource_name = "Idle 1"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0001, 0.0002),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("21_n2blw"), ExtResource("21_n2blw"), ExtResource("1_486hx")]
+}
+
+[sub_resource type="Animation" id="Animation_cn44q"]
+resource_name = "Idle 2"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0001, 0.0002),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("21_n2blw"), ExtResource("21_n2blw"), ExtResource("26_dcucb")]
+}
+
+[sub_resource type="Animation" id="Animation_vadt3"]
+resource_name = "Idle 3"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0001, 0.0002),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("21_n2blw"), ExtResource("21_n2blw"), ExtResource("27_75pnc")]
+}
+
+[sub_resource type="Animation" id="Animation_l8k4n"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+
+[sub_resource type="Animation" id="Animation_486hx"]
+resource_name = "Up 1"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.1, 0.13333334, 0.16666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("3_767nt"), ExtResource("4_3agob"), ExtResource("5_0ssyu"), ExtResource("6_vh55f"), ExtResource("7_yujhu"), ExtResource("8_oth4i")]
+}
+
+[sub_resource type="Animation" id="Animation_4oqi5"]
+resource_name = "Up 2"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.1, 0.13333334, 0.16666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("9_avi7a"), ExtResource("10_34lr7"), ExtResource("11_g3jxv"), ExtResource("12_lrkar"), ExtResource("13_n2blw"), ExtResource("14_1fgj2")]
+}
+
+[sub_resource type="Animation" id="Animation_g3kqu"]
+resource_name = "Up 3"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.1, 0.13333334, 0.16666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("15_rp0hu"), ExtResource("16_dcucb"), ExtResource("17_75pnc"), ExtResource("18_cn44q"), ExtResource("19_vadt3"), ExtResource("20_8uthk")]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1xydv"]
 _data = {
 &"Down": SubResource("Animation_rp0hu"),
@@ -259,10 +259,10 @@ animation = &"Idle 3"
 animation = &"Up 1"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vadt3"]
-animation = &"Idle 2"
+animation = &"Up 2"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8uthk"]
-animation = &"Idle 3"
+animation = &"Up 3"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mwo77"]
 switch_mode = 2
@@ -369,7 +369,7 @@ states/Start/position = Vector2(25, 100.515625)
 "states/Up 3/node" = SubResource("AnimationNodeAnimation_8uthk")
 "states/Up 3/position" = Vector2(354.75, 208)
 transitions = ["Up 1", "Idle 1", SubResource("AnimationNodeStateMachineTransition_mwo77"), "Up 2", "Idle 2", SubResource("AnimationNodeStateMachineTransition_l5uue"), "Up 3", "Idle 3", SubResource("AnimationNodeStateMachineTransition_oak7l"), "Idle 1", "Down", SubResource("AnimationNodeStateMachineTransition_f8blb"), "Idle 2", "Down", SubResource("AnimationNodeStateMachineTransition_bus3q"), "Idle 3", "Down", SubResource("AnimationNodeStateMachineTransition_jqaos"), "Down", "Empty", SubResource("AnimationNodeStateMachineTransition_yjg4h"), "Empty", "Up 1", SubResource("AnimationNodeStateMachineTransition_lsysk"), "Empty", "Up 2", SubResource("AnimationNodeStateMachineTransition_abwgl"), "Empty", "Up 3", SubResource("AnimationNodeStateMachineTransition_w4me3"), "Start", "Empty", SubResource("AnimationNodeStateMachineTransition_dcucb"), "Idle 1", "Glow 1", SubResource("AnimationNodeStateMachineTransition_1uvjq"), "Idle 2", "Glow 2", SubResource("AnimationNodeStateMachineTransition_eicd4"), "Idle 3", "Glow 3", SubResource("AnimationNodeStateMachineTransition_k4h4q"), "Glow 1", "Idle 1", SubResource("AnimationNodeStateMachineTransition_vadt3"), "Glow 2", "Idle 2", SubResource("AnimationNodeStateMachineTransition_8uthk"), "Glow 3", "Idle 3", SubResource("AnimationNodeStateMachineTransition_4oqi5"), "Glow 3", "Down", SubResource("AnimationNodeStateMachineTransition_g3kqu"), "Glow 2", "Down", SubResource("AnimationNodeStateMachineTransition_j071y"), "Glow 1", "Down", SubResource("AnimationNodeStateMachineTransition_7fe7y")]
-graph_offset = Vector2(-160, -48)
+graph_offset = Vector2(89, -61)
 
 [node name="SpoolChunk" type="TextureRect"]
 anchors_preset = 8
@@ -385,7 +385,6 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
-texture = ExtResource("1_486hx")
 stretch_mode = 2
 script = ExtResource("2_1xydv")
 

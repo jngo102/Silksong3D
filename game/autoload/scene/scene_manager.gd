@@ -13,16 +13,20 @@ var loaded_scenes: Array[BaseLevel]
 ## The currently-loaded level
 var current_level: BaseLevel:
 	get:
-		return screen.get_child(0);
+		return screen.get_child(0)
 
 ## Generic scene change function
 func change_scene(scene: PackedScene) -> void:
 	var fader: Fader = UIManager.open_ui(Fader)
 	await fader.faded_in
 	current_level.queue_free()
+	await get_tree().process_frame
 	var level = scene.instantiate()
 	screen.add_child(level)
-	await get_tree().process_frame
 	scene_changed.emit(level.name)
 	fader.close()
 	await fader.faded_out
+
+## Reload the current scene
+func reload() -> void:
+	change_scene(load(current_level.scene_file_path))

@@ -1,5 +1,5 @@
 ## Base class for all levels in the game
-class_name BaseLevel extends Node
+class_name BaseLevel extends Node3D
 
 ## The music track played in this scene
 @export var music_track: MusicTrack

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfhiqg04f4mvm"]
+
+[ext_resource type="Script" uid="uid://crpawrr7ai7e1" path="res://game/autoload/audio/global_audio_player.gd" id="1_nfffd"]
+
+[node name="GlobalAudioPlayer" type="AudioStreamPlayer"]
+script = ExtResource("1_nfffd")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

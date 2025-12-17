@@ -7,18 +7,20 @@ var health_piece_scene: PackedScene = preload("uid://bnf2ejvq7yjwy")
 var spool_chunk_scene: PackedScene = preload("uid://sl4ip8f7wcqj")
 
 var _linked_health: Health
+var _linked_spool_manager: SpoolManager
 
 func _ready() -> void:
 	_set_up_hud.call_deferred()
 
 func _set_up_hud() -> void:
-	_link_player_health()
+	_link_player_components()
 	_create_health_pieces()
 	_create_spool_chunks()
 
-func _link_player_health() -> void:
+func _link_player_components() -> void:
 	var player: Player = get_tree().get_first_node_in_group("Players")
 	_linked_health = player.health
+	_linked_spool_manager = player.spool_manager
 
 func _create_health_pieces() -> void:
 	var health_index: int = 0
@@ -33,9 +35,9 @@ func _create_health_pieces() -> void:
 
 func _create_spool_chunks() -> void:
 	var chunk_index: int = 0
-	for chunk in range(0, 8):
+	for chunk in _linked_spool_manager.max_silk:
 		var spool_chunk: SpoolChunk = spool_chunk_scene.instantiate()
-		#spool_chunk.spool = _linked_spool
+		spool_chunk.spool_manager = _linked_spool_manager
 		spool_chunk.chunk_index = chunk_index
 		_spool_chunks.add_child(spool_chunk)
 		spool_chunk.position += Vector2.RIGHT * 12 * chunk_index

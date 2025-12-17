@@ -2,7 +2,8 @@
 extends Node3D
 
 ## The prefab to instantiate when playing a one shot clip
-@export var audio_player_prefab: PackedScene
+@export var positional_audio_player_prefab: PackedScene
+@export var global_audio_player_prefab: PackedScene
 
 ## Parent of all spawned generic audio players
 @onready var audio_players: Node3D = $AudioPlayers
@@ -75,14 +76,18 @@ func check_downbeat() -> void:
 		downbeat.emit()
 	
 ## Play a one shot audio clip
-func play_clip(clip: AudioStream, play_position := Vector3.ZERO, pitch_min: float = 1, pitch_max: float = 1, volume_scale: float = 1, range: float = 24) -> void:
-	var audio_player: AudioPlayer = audio_player_prefab.instantiate()
+func play_clip(clip: AudioStream, global: bool = false, play_position := Vector3.ZERO, pitch_min: float = 1, pitch_max: float = 1, volume_scale: float = 1, range: float = 24) -> void:
+	var audio_player: Variant = null
+	if global:
+		audio_player = global_audio_player_prefab.instantiate()
+	else:
+		audio_player = positional_audio_player_prefab.instantiate()
 	audio_players.add_child(audio_player)
-	audio_player.global_position = play_position
+	if not global:
+		audio_player.global_position = play_position
+		audio_player.unit_size = range
 	audio_player.volume_db = remap(volume_scale * SaveManager.settings.master_volume * SaveManager.settings.music_volume, 0.0, 1.0, _audio_off_db, 0)
 	audio_player.pitch_scale = randf_range(pitch_min, pitch_max)
-	audio_player.unit_size = range
-	audio_player.finished.connect(func(): audio_player.queue_free())
 	audio_player.stream = clip
 	audio_player.play()
 

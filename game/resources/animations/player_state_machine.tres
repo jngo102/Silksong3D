@@ -1,10 +1,13 @@
-[gd_resource type="AnimationNodeStateMachine" load_steps=64 format=3 uid="uid://dxbdw4keges5f"]
+[gd_resource type="AnimationNodeStateMachine" load_steps=69 format=3 uid="uid://dxbdw4keges5f"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_cvw34"]
 animation = &"Air Spin"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4c6xa"]
 animation = &"Dash"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_cb4vs"]
+animation = &"Death"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kld7r"]
 animation = &"Down Spike Antic"
@@ -32,6 +35,9 @@ animation = &"Jump"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kd5l7"]
 animation = &"Land"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ma5ge"]
+animation = &"Recoil"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ct2yg"]
 animation = &"Slash"
@@ -267,18 +273,34 @@ xfade_time = 0.13
 advance_mode = 2
 advance_expression = "floating"
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ma5ge"]
+switch_mode = 2
+advance_mode = 2
+advance_expression = "velocity.y < 0"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_cb4vs"]
+switch_mode = 2
+advance_mode = 2
+advance_expression = "is_on_floor()"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5xpsq"]
+switch_mode = 2
+advance_mode = 2
+
 [resource]
 "states/Air Spin/node" = SubResource("AnimationNodeAnimation_cvw34")
 "states/Air Spin/position" = Vector2(689.56104, -15.247437)
 states/Dash/node = SubResource("AnimationNodeAnimation_4c6xa")
 states/Dash/position = Vector2(354.63867, -15.25)
+states/Death/node = SubResource("AnimationNodeAnimation_cb4vs")
+states/Death/position = Vector2(903, 99.82617)
 "states/Down Spike/node" = SubResource("AnimationNodeAnimation_xb65m")
 "states/Down Spike/position" = Vector2(514.5, 523.2637)
 "states/Down Spike Antic/node" = SubResource("AnimationNodeAnimation_kld7r")
 "states/Down Spike Antic/position" = Vector2(303.5, 523.0449)
 "states/Down Spike Bounce/node" = SubResource("AnimationNodeAnimation_uchrd")
 "states/Down Spike Bounce/position" = Vector2(689.6915, 630.291)
-states/End/position = Vector2(899.5, 99.859375)
+states/End/position = Vector2(1052, 99.74609)
 states/Fall/node = SubResource("AnimationNodeAnimation_1yqu0")
 states/Fall/position = Vector2(515.16675, 311.5547)
 states/Float/node = SubResource("AnimationNodeAnimation_asw55")
@@ -291,6 +313,8 @@ states/Jump/node = SubResource("AnimationNodeAnimation_62cqh")
 states/Jump/position = Vector2(354.958, 311.38672)
 states/Land/node = SubResource("AnimationNodeAnimation_kd5l7")
 states/Land/position = Vector2(689.53906, 309.64063)
+states/Recoil/node = SubResource("AnimationNodeAnimation_ma5ge")
+states/Recoil/position = Vector2(849.021, 307.4839)
 states/Slash/node = SubResource("AnimationNodeAnimation_ct2yg")
 states/Slash/position = Vector2(850.2383, 185)
 states/Sprint/node = SubResource("AnimationNodeAnimation_0kmop")
@@ -298,5 +322,5 @@ states/Sprint/position = Vector2(515.5952, -15.244873)
 states/Start/position = Vector2(191.875, 99.90625)
 states/Walk/node = SubResource("AnimationNodeBlendSpace2D_ct2yg")
 states/Walk/position = Vector2(689.822, 99.791016)
-transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_1yqu0"), "Idle", "Jump", SubResource("AnimationNodeStateMachineTransition_taxbh"), "Idle", "Fall", SubResource("AnimationNodeStateMachineTransition_yylhw"), "Jump", "Fall", SubResource("AnimationNodeStateMachineTransition_lrdfn"), "Fall", "Land", SubResource("AnimationNodeStateMachineTransition_ct2yg"), "Land", "Idle", SubResource("AnimationNodeStateMachineTransition_65mnk"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_62cqh"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_kd5l7"), "Walk", "Fall", SubResource("AnimationNodeStateMachineTransition_a8o31"), "Land", "Walk", SubResource("AnimationNodeStateMachineTransition_3ge0b"), "Walk", "Jump", SubResource("AnimationNodeStateMachineTransition_ds0pk"), "Jump", "Slash", SubResource("AnimationNodeStateMachineTransition_2i4w4"), "Fall", "Slash", SubResource("AnimationNodeStateMachineTransition_c3ev0"), "Walk", "Slash", SubResource("AnimationNodeStateMachineTransition_00xqm"), "Idle", "Slash", SubResource("AnimationNodeStateMachineTransition_jvyfe"), "Slash", "Fall", SubResource("AnimationNodeStateMachineTransition_if3km"), "Slash", "Walk", SubResource("AnimationNodeStateMachineTransition_a51vh"), "Slash", "Idle", SubResource("AnimationNodeStateMachineTransition_irsdp"), "Slash", "Jump", SubResource("AnimationNodeStateMachineTransition_qvjmb"), "Idle", "Dash", SubResource("AnimationNodeStateMachineTransition_72qlt"), "Dash", "Sprint", SubResource("AnimationNodeStateMachineTransition_asw55"), "Walk", "Dash", SubResource("AnimationNodeStateMachineTransition_kld7r"), "Air Spin", "Land", SubResource("AnimationNodeStateMachineTransition_xb65m"), "Land", "Sprint", SubResource("AnimationNodeStateMachineTransition_cvw34"), "Sprint", "Fall", SubResource("AnimationNodeStateMachineTransition_4c6xa"), "Sprint", "Jump", SubResource("AnimationNodeStateMachineTransition_0kmop"), "Sprint", "Walk", SubResource("AnimationNodeStateMachineTransition_uchrd"), "Sprint", "Idle", SubResource("AnimationNodeStateMachineTransition_s6lru"), "Jump", "Float Start", SubResource("AnimationNodeStateMachineTransition_dco6m"), "Fall", "Float Start", SubResource("AnimationNodeStateMachineTransition_k8w3q"), "Float Start", "Land", SubResource("AnimationNodeStateMachineTransition_2l6dt"), "Float Start", "Float", SubResource("AnimationNodeStateMachineTransition_8qr2e"), "Float", "Fall", SubResource("AnimationNodeStateMachineTransition_rkj4t"), "Float", "Land", SubResource("AnimationNodeStateMachineTransition_hopus"), "Down Spike Antic", "Down Spike", SubResource("AnimationNodeStateMachineTransition_8lsts"), "Jump", "Down Spike Antic", SubResource("AnimationNodeStateMachineTransition_ft2j6"), "Fall", "Down Spike Antic", SubResource("AnimationNodeStateMachineTransition_sl4of"), "Down Spike", "Land", SubResource("AnimationNodeStateMachineTransition_hmvba"), "Down Spike", "Down Spike Bounce", SubResource("AnimationNodeStateMachineTransition_14vsj"), "Down Spike Bounce", "Land", SubResource("AnimationNodeStateMachineTransition_t3hqd"), "Float", "Down Spike Antic", SubResource("AnimationNodeStateMachineTransition_es8rl"), "Float Start", "Down Spike Antic", SubResource("AnimationNodeStateMachineTransition_hct1f"), "Down Spike Bounce", "Down Spike Antic", SubResource("AnimationNodeStateMachineTransition_knpj8"), "Down Spike Bounce", "Float", SubResource("AnimationNodeStateMachineTransition_hae7a")]
-graph_offset = Vector2(-1, 231)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_1yqu0"), "Idle", "Jump", SubResource("AnimationNodeStateMachineTransition_taxbh"), "Idle", "Fall", SubResource("AnimationNodeStateMachineTransition_yylhw"), "Jump", "Fall", SubResource("AnimationNodeStateMachineTransition_lrdfn"), "Fall", "Land", SubResource("AnimationNodeStateMachineTransition_ct2yg"), "Land", "Idle", SubResource("AnimationNodeStateMachineTransition_65mnk"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_62cqh"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_kd5l7"), "Walk", "Fall", SubResource("AnimationNodeStateMachineTransition_a8o31"), "Land", "Walk", SubResource("AnimationNodeStateMachineTransition_3ge0b"), "Walk", "Jump", SubResource("AnimationNodeStateMachineTransition_ds0pk"), "Jump", "Slash", SubResource("AnimationNodeStateMachineTransition_2i4w4"), "Fall", "Slash", SubResource("AnimationNodeStateMachineTransition_c3ev0"), "Walk", "Slash", SubResource("AnimationNodeStateMachineTransition_00xqm"), "Idle", "Slash", SubResource("AnimationNodeStateMachineTransition_jvyfe"), "Slash", "Fall", SubResource("AnimationNodeStateMachineTransition_if3km"), "Slash", "Walk", SubResource("AnimationNodeStateMachineTransition_a51vh"), "Slash", "Idle", SubResource("AnimationNodeStateMachineTransition_irsdp"), "Slash", "Jump", SubResource("AnimationNodeStateMachineTransition_qvjmb"), "Idle", "Dash", SubResource("AnimationNodeStateMachineTransition_72qlt"), "Dash", "Sprint", SubResource("AnimationNodeStateMachineTransition_asw55"), "Walk", "Dash", SubResource("AnimationNodeStateMachineTransition_kld7r"), "Air Spin", "Land", SubResource("AnimationNodeStateMachineTransition_xb65m"), "Land", "Sprint", SubResource("AnimationNodeStateMachineTransition_cvw34"), "Sprint", "Fall", SubResource("AnimationNodeStateMachineTransition_4c6xa"), "Sprint", "Jump", SubResource("AnimationNodeStateMachineTransition_0kmop"), "Sprint", "Walk", SubResource("AnimationNodeStateMachineTransition_uchrd"), "Sprint", "Idle", SubResource("AnimationNodeStateMachineTransition_s6lru"), "Jump", "Float Start", SubResource("AnimationNodeStateMachineTransition_dco6m"), "Fall", "Float Start", SubResource("AnimationNodeStateMachineTransition_k8w3q"), "Float Start", "Land", SubResource("AnimationNodeStateMachineTransition_2l6dt"), "Float Start", "Float", SubResource("AnimationNodeStateMachineTransition_8qr2e"), "Float", "Fall", SubResource("AnimationNodeStateMachineTransition_rkj4t"), "Float", "Land", SubResource("AnimationNodeStateMachineTransition_hopus"), "Down Spike Antic", "Down Spike", SubResource("AnimationNodeStateMachineTransition_8lsts"), "Jump", "Down Spike Antic", SubResource("AnimationNodeStateMachineTransition_ft2j6"), "Fall", "Down Spike Antic", SubResource("AnimationNodeStateMachineTransition_sl4of"), "Down Spike", "Land", SubResource("AnimationNodeStateMachineTransition_hmvba"), "Down Spike", "Down Spike Bounce", SubResource("AnimationNodeStateMachineTransition_14vsj"), "Down Spike Bounce", "Land", SubResource("AnimationNodeStateMachineTransition_t3hqd"), "Float", "Down Spike Antic", SubResource("AnimationNodeStateMachineTransition_es8rl"), "Float Start", "Down Spike Antic", SubResource("AnimationNodeStateMachineTransition_hct1f"), "Down Spike Bounce", "Down Spike Antic", SubResource("AnimationNodeStateMachineTransition_knpj8"), "Down Spike Bounce", "Float", SubResource("AnimationNodeStateMachineTransition_hae7a"), "Recoil", "Fall", SubResource("AnimationNodeStateMachineTransition_ma5ge"), "Recoil", "Idle", SubResource("AnimationNodeStateMachineTransition_cb4vs"), "Death", "End", SubResource("AnimationNodeStateMachineTransition_5xpsq")]
+graph_offset = Vector2(292, 47)

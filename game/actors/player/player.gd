@@ -12,6 +12,7 @@ const WALK_BLEND: String = "%s/Walk/blend_position" % PARAMS
 
 @export var _camera_controller: CameraController
 
+@onready var spool_manager: SpoolManager = $SpoolManager
 @onready var _model: Node3D = $Model
 @onready var _armature: Node3D = _model.get_node_or_null("Armature")
 @onready var _skeleton = _armature.get_node_or_null("Skeleton3D")
@@ -190,6 +191,7 @@ func _down_spike() -> void:
 		_down_spike_reset()
 
 func _down_spike_bounce() -> void:
+	health.set_invincible(true, 0.35)
 	down_spiking = false
 	var direction: Vector3 = -_camera_controller.camera.global_basis.z
 	_armature.rotation = Vector3.ZERO

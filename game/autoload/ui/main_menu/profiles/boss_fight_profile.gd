@@ -4,6 +4,9 @@ class_name BossFightProfile extends Control
 @onready var _thumbnail_button: Button = $Thumbnail
 @onready var _name_label: Label = _thumbnail_button.get_node_or_null("Name")
 
+var _select_audio: AudioStream = preload("uid://cksekixgpfns6")
+var _enter_audio: AudioStream = preload("uid://dych7ifmqv8j0")
+
 var data: BossFightProfileData
 
 var still_showing: bool:
@@ -41,5 +44,6 @@ func _on_thumbnail_mouse_exited() -> void:
 
 func _on_thumbnail_pressed() -> void:
 	if is_instance_valid(data):
-		$SelectProfileAudio.play()
+		AudioManager.play_clip(_select_audio, true)
+		AudioManager.play_clip(_enter_audio, true)
 		SceneManager.change_scene(data.scene)

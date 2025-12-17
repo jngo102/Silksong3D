@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://b65v8iryfc811"]
+[gd_scene load_steps=35 format=3 uid="uid://b65v8iryfc811"]
 
 [ext_resource type="Texture2D" uid="uid://bvtvqu367ufox" path="res://game/copyrighted/textures/ui/save/h_profile_fleur_top0000.png" id="1_knipl"]
 [ext_resource type="Script" uid="uid://by2ojfv15yaep" path="res://game/autoload/ui/main_menu/profiles/boss_fight_profile.gd" id="1_micny"]
@@ -27,7 +27,6 @@
 [ext_resource type="Texture2D" uid="uid://d2m7a2toxfapi" path="res://game/copyrighted/textures/ui/save/h_profile_fleur_top0007.png" id="8_urdcy"]
 [ext_resource type="Texture2D" uid="uid://cf6nxnpa43x3h" path="res://game/copyrighted/textures/ui/save/h_profile_fleur_bottom0008.png" id="9_hrr1x"]
 [ext_resource type="Texture2D" uid="uid://nbn6rrkj4qm2" path="res://game/copyrighted/textures/ui/save/h_profile_fleur_top0008.png" id="9_micny"]
-[ext_resource type="AudioStream" uid="uid://dych7ifmqv8j0" path="res://game/copyrighted/sfx/ui/spa_heal.wav" id="27_lxojh"]
 
 [sub_resource type="Animation" id="Animation_wryr2"]
 resource_name = "Highlight"
@@ -278,9 +277,6 @@ script = ExtResource("1_micny")
 libraries = {
 &"": SubResource("AnimationLibrary_i6pf3")
 }
-
-[node name="SelectProfileAudio" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("27_lxojh")
 
 [node name="ArrowLeft" type="TextureRect" parent="."]
 layout_mode = 0

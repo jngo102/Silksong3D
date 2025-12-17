@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://dep413qawbj1j"]
+[gd_scene load_steps=4 format=3 uid="uid://dep413qawbj1j"]
 
 [ext_resource type="Script" uid="uid://bq0nkxacwfeex" path="res://game/autoload/audio/audio_manager.gd" id="1_wb5gv"]
-[ext_resource type="PackedScene" uid="uid://c6jlyd6uewvp7" path="res://game/autoload/audio/audio_player.tscn" id="2_1og56"]
+[ext_resource type="PackedScene" uid="uid://c6jlyd6uewvp7" path="res://game/autoload/audio/positional_audio_player.tscn" id="2_2ljm0"]
+[ext_resource type="PackedScene" uid="uid://bfhiqg04f4mvm" path="res://game/autoload/audio/global_audio_player.tscn" id="3_c6ins"]
 
 [node name="AudioManager" type="Node3D"]
 script = ExtResource("1_wb5gv")
-audio_player_prefab = ExtResource("2_1og56")
+positional_audio_player_prefab = ExtResource("2_2ljm0")
+global_audio_player_prefab = ExtResource("3_c6ins")
 
 [node name="AudioPlayers" type="Node3D" parent="."]
 

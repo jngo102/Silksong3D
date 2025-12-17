@@ -325,6 +325,11 @@ disabled = true
 [node name="SlashEffect" parent="." instance=ExtResource("3_g78k6")]
 transform = Transform3D(1.1804705, -0.41108325, 0, 0.35600856, 1.0223173, 0.625, -0.20554164, -0.5902352, 1.0825317, 0, 2.2247343, 0)
 
+[node name="SlashEffectDamager" parent="SlashEffect" index="0"]
+collision_mask = 2
+
 [connection signal="area_entered" from="Mesh/DownSpikeDamager" to="." method="_on_down_spike_damager_area_entered"]
 
 [editable path="Mesh/DownSpikeDamager"]
+[editable path="SlashEffect"]
+[editable path="SlashEffect/SlashEffectDamager"]

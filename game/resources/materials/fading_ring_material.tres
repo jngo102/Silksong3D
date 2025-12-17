@@ -5,8 +5,8 @@
 [sub_resource type="Gradient" id="Gradient_x4adb"]
 resource_local_to_scene = true
 interpolation_mode = 2
-offsets = PackedFloat32Array(0, 0.45, 0.55, 1)
-colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.7529412, 1, 1, 1, 0.7529412, 1, 1, 1, 0)
+offsets = PackedFloat32Array(0, 0.8005865, 0.9985337, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_x30sm"]
 gradient = SubResource("Gradient_x4adb")

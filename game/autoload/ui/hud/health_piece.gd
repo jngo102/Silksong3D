@@ -9,10 +9,10 @@ var health_index: int
 var broken: bool
 
 func _ready() -> void:
-	health.took_damage.connect(func(_amount):
+	health.took_damage.connect(func(_damager):
 		if health.current_health <= health_index:
 			break_piece())
-	health.healed.connect(func(_amount):
+	health.healed.connect(func(_damager):
 		if health.current_health > health_index:
 			refill())
 
