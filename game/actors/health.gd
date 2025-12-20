@@ -1,7 +1,7 @@
 class_name Health extends Area3D
 
 @export var max_health: int = 5
-@export var invincible: bool:
+@export var _invincible: bool:
 	get:
 		return _collision.disabled
 	set(value):
@@ -9,7 +9,8 @@ class_name Health extends Area3D
 @export var damage_invincibility_time: float = 0.5
 @export var give_silk: bool = true
 @export var silk_amount: int = 1
-@export var damage_particles: Array[GPUParticles3D]
+@export var damage_particles: Array[CPUParticles3D]
+@export var damage_effect_prefab: PackedScene
 
 @onready var _collision: CollisionShape3D = $Collision
 
@@ -19,44 +20,48 @@ signal died(actor: Actor)
 
 @onready var current_health: int = max_health
 
-var _invincibility_timer: float
+var _invincibility_timer: float = -INF
 
 func _process(delta: float) -> void:
 	_update_invincibility_timer(delta)
 
 func _update_invincibility_timer(delta: float) -> void:
-	if not invincible:
+	if not _invincible:
 		return
 	_invincibility_timer += delta
 	if _invincibility_timer > damage_invincibility_time:
-		invincible = false
+		set_invincible(false, 0)
 
 func take_damage(damager: Damager) -> void:
 	current_health = max(0, current_health - damager.damage_amount)
 	var direction: Vector3 = damager.global_position - global_position
 	var angle: float = atan2(direction.z, -direction.x)
-	set_invincible()
 	for particles in damage_particles:
-		particles.rotation.y = angle
+		particles.global_rotation.y = angle
 		particles.restart()
+	if is_instance_valid(damage_effect_prefab):
+		var damage_effect: Node3D = damage_effect_prefab.instantiate()
+		add_child(damage_effect)
+		damage_effect.global_position = global_position
 	took_damage.emit(damager)
 	if current_health <= 0:
 		_die()
 	else:
+		set_invincible()
 		_invincibility_timer = 0
 
 func set_invincible(be_invincible: bool = true, duration: float = damage_invincibility_time) -> void:
-	invincible = true
-	if duration > 0:
+	_invincible = be_invincible
+	if be_invincible and duration > 0:
 		await get_tree().create_timer(duration, false).timeout
-		invincible = false
+		_invincible = false
 
 func heal(amount: int) -> void:
 	current_health += amount
 	healed.emit(amount)
 
 func _die() -> void:
-	invincible = true
+	set_invincible(true, 0)
 	_invincibility_timer = -INF
 	died.emit(owner)
 

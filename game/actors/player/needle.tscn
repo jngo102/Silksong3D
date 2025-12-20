@@ -13,10 +13,10 @@ tracks/0/path = NodePath("Mesh:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.16663332),
+"times": PackedFloat32Array(0, 0.0833),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(-1.1651437, 3.617487, -3.024036), Vector3(-0.54331386, 4.075496, -1.037677)]
+"values": [Vector3(-0.6567824, 3.2784796, -3.1101298), Vector3(-0.5818429, 2.528932, -1.759332)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -25,10 +25,10 @@ tracks/1/path = NodePath("Mesh:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.16663332, 0.1667),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.0833),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(-0.1862362, -0.15824024, 1.3711001), Vector3(-0.19230826, -0.21307026, 1.4315106), Vector3(-0.18602398, -0.1567426, 1.3694489)]
+"values": [Vector3(-0.1862362, -0.15824024, 1.3711001), Vector3(-1.1254412, 0.10170506, 1.1692091)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -37,7 +37,7 @@ tracks/2/path = NodePath("Mesh/DownSpikeDamager/Collision:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.008366674, 0.175),
+"times": PackedFloat32Array(0.008366674, 0.0833),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -261,7 +261,7 @@ albedo_color = Color(0.8005629, 0.8005629, 0.8005629, 1)
 metallic = 0.7673716
 roughness = 0.1555891
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_a5vur"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_g78k6"]
 _surfaces = [{
 "aabb": AABB(-0.46693188, -0.092570946, -0.7682272, 0.93386376, 0.18514198, 8.958236),
 "format": 34359742465,
@@ -293,7 +293,7 @@ _surfaces = [{
 "vertex_data": PackedByteArray("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zkamPUb+IrIQVeG+Rmp5Pkb+IrIQVbG+eqXLPeBGpj2oa8a+oMOHPUb+IrIgZNe+NxQVPeBGpj0gybO+itICtOBGpj0QVbG+U58GtEb+IrIQVcm+9HH2s+BGpj0QVYG+DgCQveBGpj14+rq+HwBAvUb+IrJYw8++y8OHvUb+IrIkZNe+7hcLvuBGpj2Esua+QnW5vUb+IrK06Oy+6ReLvkb+IrL4D9S+XWp5vkb+IrIQVbG+QnW5vUb+IrK06Oy+qKXLveFGpr2sa8a+y8OHvUb+IrIkZNe+HwBAvUb+IrJYw8++nBQVveFGpr0gybO+itICtOFGpr0QVbG+U58GtEb+IrIQVcm+9HH2s+FGpr0QVYG+AAD4s+FGpr1OEhFA7/+PPeFGpr14+rq+oMOHPUb+IrIgZNe+PGr5PeFGpr0QVdW+zkamPUb+IrIQVeG+9v8PPuFGpr0QVfm+7/+/PUb+IrIQVfm+dNJnPuFGpr3+MQy/Rmp5Pkb+IrKKqiC/PGr5PeFGpr2Iqg6/mrQpPuFGpr2wFye/o8OHPUb+IrIAow2/7P/vPeBGpj2woDC/SRQVPeBGpj2CcB+/U58GtEb+IrKIqhS/WhSVPUb+IrJ8NkK/9HH2s+BGpj2Kqji/ihQVveBGpj2CcB+/7/+PPeFGpr3S1xu/2/8/PUb+IrJkcxG/PXd4PeFGpr0knza/itICtOFGpr2IqiC/U58GtEb+IrKIqhS/eRSVvUb+IrJ8NkK/y8OHvUb+IrIAow2/qKXLveBGpj06Hxa/BwAQvkb+IrIcBTu/QnW5vUb+IrK44AK/7hcLvuBGpj3Q+wW/6ReLvkb+IrIUTQ+/DgCQveFGpr3U1xu/y8OHvUb+IrIAow2/ZGr5veFGpr2Kqg6/QnW5vUb+IrK44AK/AAD4s+BGpj1OEhFA////f/9//7////9//3//v////3//f/+/////f/9//7///9GU////v/9//3////8/VbZK1P///79VtrQr////v/9//3////8//3//f////z8mgP//////vyaAAAD///+//3//f////z//f/9/////PyaA//////+/JoD//////7//f/9/////P6lJStT///+//3//f////z8AANGU////v/9//3////8/qUm0K////7//f/9/////PyaAAAD///+//3//f////z8mgAAA////v/9//3////8//3//f////z/zZP9/AACFzX63OtQAAIWNfrdE9AAAhs0NRZQV2i7/v8ZOxc5+dbe882T/fwAAhc3/fwAA//+Fzf9//////4XN0dz/f///aO7ZYWHQv8Ebx/9/AADy5P+/xk7FzoCKR8NAgf//////v///bJn///+/QIEAAP///78AAGyZ////v////3//////////vwAA/98AAP+//z//v/9/uNMAAP+/8bqUFQAAkajzQ/jh/z//vwmiT8omUf+/xk45MX51R8NGrEYsnnT9vPVdT8oBAGuXXXVRMgAAeLIAAAub//948lBYUTIAAHjyAAALm///ePJQSvXd/f+S6AWe8sP+//+f///y5PLk/7//f///8uT/vyWeYdDG8d+gJZ6dL8bxH9/3tGPV////v///8uTy5P+/QIH//////78HS2PV////vy0j/38to/+/xk45MYCKt7wHS5sq////v9lhnS+/weK4rrUJItiu/79GrEYsYIsBw0CBAAD///+/97SbKv///78LvPjhAAD/nzixOTEAAACA8uT/f///ePLDq383/v+Fja5Nryf+/4WNXaXyOv7/bJfDq3/I/v948v+//3/////fuFO40//////ZLv9/AACS6Awb/38AAHjyWmxPygEAbNcLm/9/DBv/v65NT9j+/3jy2a7/f9ku/79dpQzF/v+S6AAAJdH//2zXpJNPytou/r9QSlns/f+SqCXR/38lUf+/AADy5P//hc1Qsl318uT/v8S2nOT/v/+////Zrtmu/79GrLjTYIv9vK619d3Yrv6/O1R/yAyb/r8AAP9//3//v6FaDMXZrv6/+WHyw/+//7//P/9//7//vztUfzcMm/+/ULKvJwub/7+hWvI62a7/v///2a7Zrv+/+WEMPP+//7+utaUTJdH+v65Nogr+/4XNAADy5P//hc06SWIb/v//3wAAJdH//2zXBZ4MPP7//98MG/9/AAB48vG6XiUAAJLonGTFNgAA/5/ZLv9/AACS6P//JdEAAGzXgEhE9A0b/r//////AAD/v6GKUTIMG/+/OLEAAAAA/78Lm/9/DBv/vw1FauraLv6/gEi6Cw0b/79GrLjTnnQBw2KbxTb/P/+/2a7/f9ku/7+ASDrU8mT/vw1FoNolUf+/AADZriVR/78AAP9//3//v/NDBh7/P/+/gEjEK/Jk/r8NRV4lJVH+v66nUTLzZP+/JdH/fyVR/7///wubAAB48vG6oNoAAGyXOLHFzv//AIBQWK3NAACFjf8//38AAP/fnGQ5yQAA/58lUf9/AABs1wAA/3//////AADZrv//kugl0f9///+S6DpJnOT+//+fAAD/v////9+uTV31/v94skas///+//+//////////7//f///////v661Wewl0f+///8l0SXR/7////+//7//v1CyT9gLm/+///8Lmwub/78MG/9/C5v/v9ku/3/Zrv+///8Lmwub/7/EtmIb/7//v////7//v/+///8l0SXR/79QsqIK8uT/v0asAAD///+//////////7//fwAA/v//v0CBAAD///+/UEqlE/3/bNcAAP+/////31BKCSL9/2uXAADZrv//kui4U0Ys/v8AgAAA/3//////frfEKwAAePL//9muAACS6PVdrzUBAJLoC7wGHgAA/9//P/9/AAD/3/G6auoAAGzXXXWtzQAAhc3/f/9/AAD/v///8uQAAIXNOLH//wAA/7+hiq3NDBv/v1psrzUBAJKoJVH/fwAAbNd+t7oLAAB4sv9/RiwAAP+//3//fwAA/78AAPLkDBv/v/+//3//P/+/Yps5yf8//78AACXR2S7/v/Lk/3/zZP+/rqetzfNk/78AAAub82T/v6STrzXaLv+//7//f/8//78Joq81JlH+v/Lk/3/zZP+/QIH//////78=")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_a5vur")
+shadow_mesh = SubResource("ArrayMesh_g78k6")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g78k6"]
 radius = 1.5
@@ -316,6 +316,7 @@ skeleton = NodePath("")
 transform = Transform3D(1.3333349, 0, 0, 0, -5.82819e-08, -1.3333347, 0, 1.3333344, -5.828191e-08, 0, 0, 0)
 collision_layer = 8
 collision_mask = 2
+damage_amount = 5
 
 [node name="Collision" parent="Mesh/DownSpikeDamager" index="0"]
 transform = Transform3D(0.9999995, -1.5795231e-06, -7.56979e-06, 4.4703484e-07, 0.99999905, -1.2218952e-06, -4.4703484e-07, 1.0728836e-06, 0.99999774, 0, 2, 0)
@@ -327,6 +328,7 @@ transform = Transform3D(1.1804705, -0.41108325, 0, 0.35600856, 1.0223173, 0.625,
 
 [node name="SlashEffectDamager" parent="SlashEffect" index="0"]
 collision_mask = 2
+damage_amount = 5
 
 [connection signal="area_entered" from="Mesh/DownSpikeDamager" to="." method="_on_down_spike_damager_area_entered"]
 

@@ -2,6 +2,7 @@ class_name Needle extends Node3D
 
 @onready var _animator: AnimationPlayer = $Animator
 
+signal slashed
 signal down_spiked
 
 var slashing: bool:
@@ -13,6 +14,7 @@ var down_spike_hit: bool
 func slash() -> void:
 	if not slashing:
 		_animator.play("Slash")
+		slashed.emit()
 
 func down_spike() -> void:
 	_animator.play("Down Spike")

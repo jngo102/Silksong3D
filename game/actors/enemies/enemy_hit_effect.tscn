@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://ccjntjndehkwt"]
+
+[ext_resource type="Script" uid="uid://dj5upywmu1hm2" path="res://game/actors/random_audio_player.gd" id="1_wtwsi"]
+
+[sub_resource type="Animation" id="Animation_xroym"]
+resource_name = "Hit"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HitAudio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0, 0.85, 1.15],
+"method": &"play_random"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pi76t"]
+_data = {
+&"Hit": SubResource("Animation_xroym")
+}
+
+[node name="EnemyHitEffect" type="Node3D"]
+
+[node name="Animator" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_pi76t")
+}
+autoplay = "Hit"
+
+[node name="HitAudio" type="AudioStreamPlayer3D" parent="."]
+unit_size = 32.0
+script = ExtResource("1_wtwsi")
+metadata/_custom_type_script = "uid://dj5upywmu1hm2"

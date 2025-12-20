@@ -3,11 +3,13 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8wybt"]
 resource_name = "Head"
 cull_mode = 2
+albedo_color = Color(0.9063318, 0.9063318, 0.9063318, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u347d"]
 resource_name = "Black"
 cull_mode = 2
 vertex_color_use_as_albedo = true
+albedo_color = Color(0, 0, 0, 1)
 
 [resource]
 resource_name = "hornet_Circle"

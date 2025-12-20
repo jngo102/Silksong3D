@@ -1,10 +1,8 @@
-[gd_scene load_steps=36 format=3 uid="uid://bk5l50c7ma8dr"]
+[gd_scene load_steps=72 format=3 uid="uid://bk5l50c7ma8dr"]
 
 [ext_resource type="PackedScene" uid="uid://36gmo74w6e2q" path="res://game/actors/actor.tscn" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://cyskkgbbkdq4d" path="res://game/actors/player/player.gd" id="2_dw050"]
-[ext_resource type="AnimationNodeStateMachine" uid="uid://dxbdw4keges5f" path="res://game/resources/animations/player_state_machine.tres" id="2_onrkg"]
 [ext_resource type="Script" uid="uid://4fhac2e1rdou" path="res://game/actors/player/spool_manager.gd" id="3_hlqpx"]
-[ext_resource type="Script" uid="uid://cepghhx6k4k22" path="res://game/actors/player/recoil_manager.gd" id="3_oawdx"]
 [ext_resource type="AudioStream" uid="uid://2gpvvnvm7acy" path="res://game/copyrighted/sfx/hornet/hurt/normal/w2.wav" id="4_b3c30"]
 [ext_resource type="AudioStream" uid="uid://3jsxtwgw1twk" path="res://game/copyrighted/sfx/hornet/hurt/big/w_big_01.wav" id="4_fxn5h"]
 [ext_resource type="AudioStream" uid="uid://dy7a6nolobf7m" path="res://game/copyrighted/sfx/hornet/hurt/normal/w3.wav" id="5_2vult"]
@@ -27,20 +25,27 @@
 [ext_resource type="Script" uid="uid://d2a87b3tfbpuf" path="res://game/autoload/audio/random_audio_play.gd" id="13_41lfd"]
 [ext_resource type="PackedScene" uid="uid://kbm2v33787ln" path="res://game/actors/player/effects/combat/double_damage_hit_effect.tscn" id="14_cxuv5"]
 [ext_resource type="PackedScene" uid="uid://b0wa350b6fbky" path="res://game/actors/player/player_corpse.tscn" id="21_2vult"]
+[ext_resource type="Script" uid="uid://bb0is11tgytjf" path="res://game/actors/player/hsm/player_hsm.gd" id="28_4s16b"]
+[ext_resource type="Script" uid="uid://cw88wf5nha71c" path="res://game/actors/player/hsm/player_idle_state.gd" id="28_41lfd"]
+[ext_resource type="AudioStream" uid="uid://ddbqt2eobg7lk" path="res://game/copyrighted/sfx/hornet/hornet_umbrella_open.wav" id="29_0g54q"]
+[ext_resource type="Script" uid="uid://cb1gvirhlrd0s" path="res://game/actors/player/hsm/player_air_dash_state.gd" id="29_0nwbe"]
+[ext_resource type="Script" uid="uid://b81s5wnls83xg" path="res://game/actors/player/hsm/player_down_spike_state.gd" id="29_3do8f"]
+[ext_resource type="Script" uid="uid://cmwcth7t73nqf" path="res://game/actors/player/hsm/player_fall_state.gd" id="29_6o7jk"]
+[ext_resource type="Script" uid="uid://bi770lhrtsav7" path="res://game/actors/player/hsm/player_attack_choice_state.gd" id="29_qsypv"]
+[ext_resource type="Script" uid="uid://b8ev8xjwihh7o" path="res://game/actors/player/hsm/player_down_spike_bounce_state.gd" id="30_0fe1s"]
+[ext_resource type="Script" uid="uid://bcr3l3d0e4ull" path="res://game/actors/player/hsm/player_walk_state.gd" id="30_m4n5g"]
+[ext_resource type="Script" uid="uid://bu14sq8r2akpw" path="res://game/actors/player/hsm/player_land_state.gd" id="31_5qatl"]
+[ext_resource type="Script" uid="uid://cenn07tpfvg3y" path="res://game/actors/player/hsm/player_jump_state.gd" id="31_747sf"]
+[ext_resource type="Script" uid="uid://bc7x2sxl1h4on" path="res://game/actors/player/hsm/player_float_state.gd" id="31_lje7i"]
+[ext_resource type="Script" uid="uid://oygm1ss7hq70" path="res://game/actors/player/hsm/player_recoil_state.gd" id="34_7c4js"]
+[ext_resource type="Script" uid="uid://b7qalgo6bnnuf" path="res://game/actors/player/hsm/player_sprint_jump_state.gd" id="36_6xo6p"]
+[ext_resource type="Script" uid="uid://cm1b6ilbs3rx" path="res://game/actors/player/hsm/player_sprint_state.gd" id="37_6xo6p"]
+[ext_resource type="Resource" uid="uid://7dldya6ii04d" path="res://game/resources/random_audio_plays/hornet_normal_attack.tres" id="38_0g54q"]
+[ext_resource type="Script" uid="uid://bccpsuvklwdjh" path="res://game/actors/player/hsm/player_slash_state.gd" id="38_d4m7k"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_n7ghd"]
 radius = 0.25
 height = 5.0
-
-[sub_resource type="Resource" id="Resource_cxuv5"]
-script = ExtResource("13_41lfd")
-clips = Array[AudioStream]([ExtResource("4_b3c30"), ExtResource("5_2vult"), ExtResource("6_41lfd"), ExtResource("7_4s16b"), ExtResource("8_m4n5g"), ExtResource("9_6o7jk")])
-metadata/_custom_type_script = "uid://d2a87b3tfbpuf"
-
-[sub_resource type="Resource" id="Resource_qq66o"]
-script = ExtResource("13_41lfd")
-clips = Array[AudioStream]([ExtResource("4_fxn5h"), ExtResource("5_cxuv5"), ExtResource("6_qq66o"), ExtResource("7_x4qyq"), ExtResource("8_i15os"), ExtResource("9_1svlo"), ExtResource("10_a20ea"), ExtResource("11_b3c30"), ExtResource("12_2vult")])
-metadata/_custom_type_script = "uid://d2a87b3tfbpuf"
 
 [sub_resource type="Animation" id="Animation_n7ghd"]
 resource_name = "Puff Out"
@@ -99,6 +104,107 @@ _data = {
 [sub_resource type="SphereShape3D" id="SphereShape3D_urp6f"]
 radius = 0.001
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ihiqv"]
+animation = &"Down Spike Antic"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3luqa"]
+animation = &"Down Spike"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hkbyu"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_il4ec"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_0fe1s"]
+"states/Down Spike/node" = SubResource("AnimationNodeAnimation_3luqa")
+"states/Down Spike/position" = Vector2(634.5, 97.5)
+"states/Down Spike Antic/node" = SubResource("AnimationNodeAnimation_ihiqv")
+"states/Down Spike Antic/position" = Vector2(408, 98)
+states/End/position = Vector2(898, 96.75)
+states/Start/position = Vector2(201, 99)
+transitions = ["Start", "Down Spike Antic", SubResource("AnimationNodeStateMachineTransition_hkbyu"), "Down Spike Antic", "Down Spike", SubResource("AnimationNodeStateMachineTransition_il4ec")]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_d4m7k"]
+animation = &"Float Start"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0g54q"]
+animation = &"Float"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bu7in"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rsjix"]
+xfade_time = 0.13
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_7c4js"]
+resource_local_to_scene = true
+states/Float/node = SubResource("AnimationNodeAnimation_0g54q")
+states/Float/position = Vector2(539.5, 97.5)
+"states/Float Start/node" = SubResource("AnimationNodeAnimation_d4m7k")
+"states/Float Start/position" = Vector2(363.5, 99.796875)
+transitions = ["Start", "Float Start", SubResource("AnimationNodeStateMachineTransition_bu7in"), "Float Start", "Float", SubResource("AnimationNodeStateMachineTransition_rsjix")]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bu7in"]
+animation = &"Sprint Jump Antic"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_rsjix"]
+animation = &"Sprint Jump"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ihiqv"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3luqa"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_hkbyu"]
+"states/Sprint Jump/node" = SubResource("AnimationNodeAnimation_rsjix")
+"states/Sprint Jump/position" = Vector2(641, 99)
+"states/Sprint Jump Antic/node" = SubResource("AnimationNodeAnimation_bu7in")
+"states/Sprint Jump Antic/position" = Vector2(420.5, 98)
+transitions = ["Start", "Sprint Jump Antic", SubResource("AnimationNodeStateMachineTransition_ihiqv"), "Sprint Jump Antic", "Sprint Jump", SubResource("AnimationNodeStateMachineTransition_3luqa")]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7c4js"]
+animation = &"Walk Backward"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6xo6p"]
+animation = &"Walk Forward"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0nwbe"]
+animation = &"Strafe Right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3do8f"]
+animation = &"Strafe Left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0fe1s"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_0fe1s"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_7c4js")
+blend_point_0/pos = Vector2(0, 1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_6xo6p")
+blend_point_1/pos = Vector2(0, -1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_0nwbe")
+blend_point_2/pos = Vector2(1, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_3do8f")
+blend_point_3/pos = Vector2(-1, 0)
+blend_point_4/node = SubResource("AnimationNodeAnimation_0fe1s")
+blend_point_4/pos = Vector2(0, 0)
+
+[sub_resource type="Resource" id="Resource_qsypv"]
+script = ExtResource("13_41lfd")
+clips = Array[AudioStream]([ExtResource("4_fxn5h"), ExtResource("5_cxuv5"), ExtResource("6_qq66o"), ExtResource("7_x4qyq"), ExtResource("8_i15os"), ExtResource("9_1svlo"), ExtResource("10_a20ea"), ExtResource("11_b3c30"), ExtResource("12_2vult")])
+metadata/_custom_type_script = "uid://d2a87b3tfbpuf"
+
+[sub_resource type="Resource" id="Resource_0fe1s"]
+script = ExtResource("13_41lfd")
+clips = Array[AudioStream]([ExtResource("4_b3c30"), ExtResource("5_2vult"), ExtResource("6_41lfd"), ExtResource("7_4s16b"), ExtResource("8_m4n5g"), ExtResource("9_6o7jk")])
+metadata/_custom_type_script = "uid://d2a87b3tfbpuf"
+
 [node name="Player" groups=["Players"] instance=ExtResource("1_4flbx")]
 collision_layer = 1
 script = ExtResource("2_dw050")
@@ -107,6 +213,8 @@ walk_speed = 24.0
 sprint_speed = 48.0
 down_spike_speed = 90.0
 down_spike_bounce_spin_speed = 30.0
+gravity_scale = 10.0
+terminal_speed = 60.0
 metadata/_edit_group_ = true
 
 [node name="Animator" parent="." index="0"]
@@ -124,22 +232,14 @@ shape = SubResource("CapsuleShape3D_n7ghd")
 collision_mask = 16
 damage_particles = []
 
-[node name="RecoilManager" type="Node3D" parent="." index="3" node_paths=PackedStringArray("_anim_tree", "_health")]
-script = ExtResource("3_oawdx")
-_anim_tree = NodePath("../Model/AnimationPlayer/AnimationTree")
-_health = NodePath("../Health")
-_hit_pause_duration = 0.25
-_normal_hurt_voice_clips = SubResource("Resource_cxuv5")
-_big_hurt_voice_clips = SubResource("Resource_qq66o")
-_big_damage_effect_prefab = ExtResource("14_cxuv5")
-
-[node name="Death" parent="." index="4"]
+[node name="Death" parent="." index="3"]
 corpse_prefab = ExtResource("21_2vult")
 
-[node name="SpoolManager" type="Node" parent="." index="5"]
+[node name="SpoolManager" type="Node" parent="." index="4"]
 script = ExtResource("3_hlqpx")
 
-[node name="Model" parent="." index="6" instance=ExtResource("5_qdo3w")]
+[node name="Model" parent="." index="5" instance=ExtResource("5_qdo3w")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 
 [node name="Skeleton3D" parent="Model/Armature" index="0"]
 bones/5/rotation = Quaternion(-0.7070091, -0.0117546, -0.011754517, 0.7070091)
@@ -559,24 +659,127 @@ bone_idx = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.277, 1.5)
 
 [node name="Mesh" parent="Model/Armature/Skeleton3D/NeedleAttach/Needle" index="1"]
-transform = Transform3D(0.05756263, -0.68949735, -0.28944767, 0.66983676, 0.17659517, -0.28745866, 0.33242267, -0.23644792, 0.6293546, -0.43267757, 3.7365413, -3.5042882)
+transform = Transform3D(0.05756265, -0.6894976, -0.28944778, 0.66983694, 0.17659523, -0.28745878, 0.33242276, -0.23644799, 0.62935483, -0.43267757, 3.7365413, -3.5042882)
 
 [node name="Collision" parent="Model/Armature/Skeleton3D/NeedleAttach/Needle/Mesh/DownSpikeDamager" index="0"]
 transform = Transform3D(0.9999996, -1.5795231e-06, -7.584691e-06, 4.172325e-07, 0.99999905, -1.1920929e-06, -4.4703484e-07, 1.0728836e-06, 0.9999977, -0.0094542205, 2.0044737, 0.0029330254)
 
-[node name="AnimationTree" type="AnimationTree" parent="Model/AnimationPlayer" index="0"]
+[node name="SlashEffectDamager" parent="Model/Armature/Skeleton3D/NeedleAttach/Needle/SlashEffect" index="0"]
+transform = Transform3D(0.45452914, -0.32446226, 0.57282436, -0.19439709, 0.5989014, 0.4934845, -0.62897813, -0.41957295, 0.2614294, -0.5068957, -1.4556062, -0.8898939)
+
+[node name="AnimationPlayer" parent="Model" index="1"]
+autoplay = "Idle"
+
+[node name="DownSpikeTransition" type="AnimationTree" parent="Model/AnimationPlayer" index="0"]
+active = false
 root_node = NodePath("../..")
-tree_root = ExtResource("2_onrkg")
-advance_expression_base_node = NodePath("../../..")
+tree_root = SubResource("AnimationNodeStateMachine_0fe1s")
 anim_player = NodePath("..")
-parameters/Walk/blend_position = Vector2(-0.0026361942, 0.008163214)
+
+[node name="FloatTransition" type="AnimationTree" parent="Model/AnimationPlayer" index="1"]
+active = false
+root_node = NodePath("../..")
+tree_root = SubResource("AnimationNodeStateMachine_7c4js")
+anim_player = NodePath("..")
+
+[node name="SprintJumpTransition" type="AnimationTree" parent="Model/AnimationPlayer" index="2"]
+active = false
+root_node = NodePath("../..")
+tree_root = SubResource("AnimationNodeStateMachine_hkbyu")
+anim_player = NodePath("..")
+
+[node name="WalkBlend" type="AnimationTree" parent="Model/AnimationPlayer" index="3"]
+active = false
+root_node = NodePath("../..")
+tree_root = SubResource("AnimationNodeBlendSpace2D_0fe1s")
+anim_player = NodePath("..")
+parameters/blend_position = Vector2(0, 0)
+
+[node name="PlayerHSM" type="LimboHSM" parent="." index="7"]
+update_mode = 0
+script = ExtResource("28_4s16b")
+
+[node name="AirDashState" type="LimboState" parent="PlayerHSM" index="0"]
+script = ExtResource("29_0nwbe")
+_spin_speed = 1080.0
+
+[node name="BigRecoilState" type="LimboState" parent="PlayerHSM" index="1"]
+script = ExtResource("34_7c4js")
+_hurt_voice_clips = SubResource("Resource_qsypv")
+_damage_effect_prefab = ExtResource("14_cxuv5")
+
+[node name="DownSpikeState" type="LimboState" parent="PlayerHSM" index="2" node_paths=PackedStringArray("_down_spike_transition_tree", "_needle", "_needle_animator")]
+script = ExtResource("29_3do8f")
+_down_spike_transition_tree = NodePath("../../Model/AnimationPlayer/DownSpikeTransition")
+_needle = NodePath("../../Model/Armature/Skeleton3D/NeedleAttach/Needle")
+_needle_animator = NodePath("../../Model/Armature/Skeleton3D/NeedleAttach/Needle/Animator")
+_attack_voice_clips = ExtResource("38_0g54q")
+
+[node name="DownSpikeBounceState" type="LimboState" parent="PlayerHSM" index="3" node_paths=PackedStringArray("_needle_animator")]
+script = ExtResource("30_0fe1s")
+_spin_speeds = Dictionary[int, float]({
+1: 1080.0,
+2: 720.0
+})
+_down_spike_bounce_speed = 60.0
+_needle_animator = NodePath("../../Model/Armature/Skeleton3D/NeedleAttach/Needle/Animator")
+
+[node name="AttackChoiceState" type="LimboState" parent="PlayerHSM" index="4"]
+script = ExtResource("29_qsypv")
+
+[node name="FallState" type="LimboState" parent="PlayerHSM" index="5"]
+script = ExtResource("29_6o7jk")
+_fall_animation_name = &"Fall"
+
+[node name="FloatState" type="LimboState" parent="PlayerHSM" index="6" node_paths=PackedStringArray("_cloak_animator", "_float_transition_tree")]
+script = ExtResource("31_lje7i")
+_cloak_animator = NodePath("../../Model/Armature/Skeleton3D/CloakAttach/CloakAnimator")
+_float_transition_tree = NodePath("../../Model/AnimationPlayer/FloatTransition")
+_float_start_clip = ExtResource("29_0g54q")
+
+[node name="IdleState" type="LimboState" parent="PlayerHSM" index="7"]
+script = ExtResource("28_41lfd")
+_idle_animation_name = &"Idle"
+
+[node name="LandState" type="LimboState" parent="PlayerHSM" index="8"]
+script = ExtResource("31_5qatl")
+_land_animation_name = &"Land"
+
+[node name="JumpState" type="LimboState" parent="PlayerHSM" index="9"]
+script = ExtResource("31_747sf")
+_jump_height = 32.0
+
+[node name="NormalRecoilState" type="LimboState" parent="PlayerHSM" index="10"]
+script = ExtResource("34_7c4js")
+_hurt_voice_clips = SubResource("Resource_0fe1s")
+_damage_effect_prefab = ExtResource("14_cxuv5")
+
+[node name="SlashState" type="LimboState" parent="PlayerHSM" index="11" node_paths=PackedStringArray("_needle_animator")]
+script = ExtResource("38_d4m7k")
+_needle_animator = NodePath("../../Model/Armature/Skeleton3D/NeedleAttach/Needle/Animator")
+_attack_voice_clips = ExtResource("38_0g54q")
+
+[node name="SprintState" type="LimboState" parent="PlayerHSM" index="12"]
+script = ExtResource("37_6xo6p")
+
+[node name="SprintJumpState" type="LimboState" parent="PlayerHSM" index="13" node_paths=PackedStringArray("_sprint_jump_transition_tree")]
+script = ExtResource("36_6xo6p")
+_sprint_jump_transition_tree = NodePath("../../Model/AnimationPlayer/SprintJumpTransition")
+_sprint_jump_height = 28.0
+_spin_speed = 1440.0
+
+[node name="WalkState" type="LimboState" parent="PlayerHSM" index="14" node_paths=PackedStringArray("_walk_blend_tree")]
+script = ExtResource("30_m4n5g")
+_walk_blend_tree = NodePath("../../Model/AnimationPlayer/WalkBlend")
 
 [connection signal="animation_finished" from="Animator/AnimationTree" to="." method="_on_animation_tree_animation_finished"]
 [connection signal="animation_started" from="Animator/AnimationTree" to="." method="_on_animation_tree_animation_started"]
 [connection signal="down_spiked" from="Model/Armature/Skeleton3D/NeedleAttach/Needle" to="." method="_on_needle_down_spiked"]
-[connection signal="animation_finished" from="Model/AnimationPlayer/AnimationTree" to="." method="_on_animation_tree_animation_finished"]
-[connection signal="animation_started" from="Model/AnimationPlayer/AnimationTree" to="." method="_on_animation_tree_animation_started"]
+[connection signal="animation_finished" from="Model/AnimationPlayer/WalkBlend" to="." method="_on_animation_tree_animation_finished"]
+[connection signal="animation_started" from="Model/AnimationPlayer/WalkBlend" to="." method="_on_animation_tree_animation_started"]
+[connection signal="active_state_changed" from="PlayerHSM" to="PlayerHSM" method="_on_active_state_changed"]
 
+[editable path="Health"]
 [editable path="Model"]
 [editable path="Model/Armature/Skeleton3D/NeedleAttach/Needle"]
 [editable path="Model/Armature/Skeleton3D/NeedleAttach/Needle/Mesh/DownSpikeDamager"]

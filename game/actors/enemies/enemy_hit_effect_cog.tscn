@@ -1,0 +1,11 @@
+[gd_scene load_steps=5 format=3 uid="uid://bhpj6mo15pw7w"]
+
+[ext_resource type="PackedScene" uid="uid://ccjntjndehkwt" path="res://game/actors/enemies/enemy_hit_effect.tscn" id="1_05d2w"]
+[ext_resource type="AudioStream" uid="uid://byp5dqy6qohx1" path="res://game/copyrighted/sfx/enemy/damage/cog/automaton_generic_damage_1.wav" id="2_wf5au"]
+[ext_resource type="AudioStream" uid="uid://dmdnka5ampot2" path="res://game/copyrighted/sfx/enemy/damage/cog/automaton_generic_damage_2.wav" id="3_225ca"]
+[ext_resource type="AudioStream" uid="uid://6rcyt4lj0mmb" path="res://game/copyrighted/sfx/enemy/damage/cog/automaton_generic_damage_3.wav" id="4_jvjns"]
+
+[node name="EnemyHitEffectCog" instance=ExtResource("1_05d2w")]
+
+[node name="HitAudio" parent="." index="1"]
+audio_clips = Array[AudioStream]([ExtResource("2_wf5au"), ExtResource("3_225ca"), ExtResource("4_jvjns")])

@@ -1,17 +1,18 @@
-[gd_scene load_steps=67 format=4 uid="uid://c1fle5fyo6r8h"]
+[gd_scene load_steps=68 format=4 uid="uid://c1fle5fyo6r8h"]
 
 [ext_resource type="PackedScene" uid="uid://dubnsno8bya0v" path="res://game/actors/enemies/enemy.tscn" id="1_aqi66"]
 [ext_resource type="PackedScene" uid="uid://bvo4i3vqhmih2" path="res://game/actors/enemies/cogwork_dancers/cogwork_dancer.glb" id="2_vnqo0"]
 [ext_resource type="Script" uid="uid://d2b7mlnyocxgr" path="res://game/actors/enemies/cogwork_dancers/cogwork_dancer.gd" id="2_yj034"]
 [ext_resource type="BehaviorTree" uid="uid://chh6lvoe5ufr8" path="res://game/ai/trees/cogwork_dancer_behavior_tree.tres" id="3_7e4hr"]
+[ext_resource type="PackedScene" uid="uid://bhpj6mo15pw7w" path="res://game/actors/enemies/enemy_hit_effect_cog.tscn" id="3_etufu"]
 [ext_resource type="PackedScene" uid="uid://xal232da7bpf" path="res://game/gameplay/combat/damager.tscn" id="3_pnomj"]
 [ext_resource type="Script" uid="uid://br0v4k6f8iwlh" path="res://game/actors/shaker.gd" id="3_s7qtj"]
-[ext_resource type="Material" uid="uid://cosl32ju5hm4r" path="res://game/resources/materials/cog_particles.tres" id="3_thuvx"]
 [ext_resource type="ArrayMesh" uid="uid://qhv8s4b1pm2k" path="res://game/resources/meshes/cog_particle1_mesh.res" id="4_fslw2"]
 [ext_resource type="AudioStream" uid="uid://bhkqb17ayujpd" path="res://game/copyrighted/cogwork_dancers/sfx/clockwork_dancers_shing_to_add_onto_clash_together.wav" id="4_kn74s"]
 [ext_resource type="PackedScene" uid="uid://dqfhh1nwvvxj3" path="res://game/actors/enemies/cogwork_dancers/corpse/dancer_corpse.tscn" id="4_tlpfg"]
 [ext_resource type="PackedScene" uid="uid://dqqog7us3m1g3" path="res://game/gameplay/combat/slash.tscn" id="5_esq63"]
 [ext_resource type="ArrayMesh" path="res://game/resources/meshes/cog_particle2_mesh.res" id="6_etufu"]
+[ext_resource type="Curve" uid="uid://c2gis7phupc2g" path="res://game/resources/curves/blood_particles_curve.tres" id="6_tmqvu"]
 [ext_resource type="PackedScene" uid="uid://bpa6of12yh2pe" path="res://game/actors/enemies/cogwork_dancers/direction_light.glb" id="6_vigla"]
 [ext_resource type="BehaviorTree" uid="uid://ciko0edbnitaw" path="res://game/ai/trees/cogwork_dancers_death_behavior_tree.tres" id="8_s7qtj"]
 
@@ -531,12 +532,12 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_84tk7")
 
-[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_fslw2"]
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_etufu"]
 default_input_values = [0, Vector2(0, 0), 1, Vector2(1, 1)]
 op_type = 0
 operator = 2
 
-[sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_etufu"]
+[sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_tmqvu"]
 default_input_values = [1, Vector2(0, 1), 2, Vector2(0, 0)]
 
 [sub_resource type="Gradient" id="Gradient_jkg7i"]
@@ -548,7 +549,7 @@ gradient = SubResource("Gradient_jkg7i")
 fill_from = Vector2(0.48504272, 0.3525641)
 fill_to = Vector2(0.48290598, 0.034188036)
 
-[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_tmqvu"]
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_373gr"]
 texture = SubResource("GradientTexture2D_16jqo")
 
 [sub_resource type="Gradient" id="Gradient_33lnv"]
@@ -558,35 +559,35 @@ colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1)
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_7bbtc"]
 gradient = SubResource("Gradient_33lnv")
 
-[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_373gr"]
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_f30ob"]
 texture = SubResource("GradientTexture1D_7bbtc")
 
-[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_f30ob"]
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_ctjt0"]
 input_name = "uv"
 
-[sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_ctjt0"]
+[sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_bbu47"]
 default_input_values = [1, Vector2(1, 0), 2, Vector2(0, 0)]
 
-[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_bbu47"]
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_kvp53"]
 parameter_name = "SlashGradientSliderX"
 
-[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_kvp53"]
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_o31x4"]
 default_input_values = [0, Vector2(0, 0), 1, Vector2(0.5, 0)]
 op_type = 0
 operator = 2
 
-[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_o31x4"]
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_vi5ue"]
 default_input_values = [0, Quaternion(0, 0, 0, 0), 1, Quaternion(0, 0, 0, 0)]
 op_type = 2
 operator = 2
 
-[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_vi5ue"]
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_qq58s"]
 input_name = "uv"
 
-[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_qq58s"]
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_5mxiv"]
 parameter_name = "SlashGradientSliderY"
 
-[sub_resource type="VisualShader" id="VisualShader_5mxiv"]
+[sub_resource type="VisualShader" id="VisualShader_ovogk"]
 resource_local_to_scene = true
 code = "shader_type spatial;
 render_mode blend_mix, depth_draw_opaque, depth_test_default, cull_back, diffuse_lambert, specular_schlick_ggx;
@@ -654,34 +655,34 @@ void fragment() {
 }
 "
 nodes/fragment/0/position = Vector2(640, 500)
-nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_373gr")
+nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_f30ob")
 nodes/fragment/2/position = Vector2(-620, 160)
-nodes/fragment/3/node = SubResource("VisualShaderNodeInput_f30ob")
+nodes/fragment/3/node = SubResource("VisualShaderNodeInput_ctjt0")
 nodes/fragment/3/position = Vector2(-2540, 220)
-nodes/fragment/4/node = SubResource("VisualShaderNodeUVFunc_ctjt0")
+nodes/fragment/4/node = SubResource("VisualShaderNodeUVFunc_bbu47")
 nodes/fragment/4/position = Vector2(-1260, 160)
-nodes/fragment/5/node = SubResource("VisualShaderNodeFloatParameter_bbu47")
+nodes/fragment/5/node = SubResource("VisualShaderNodeFloatParameter_kvp53")
 nodes/fragment/5/position = Vector2(-1980, 520)
-nodes/fragment/6/node = SubResource("VisualShaderNodeVectorOp_kvp53")
+nodes/fragment/6/node = SubResource("VisualShaderNodeVectorOp_o31x4")
 nodes/fragment/6/position = Vector2(-1800, 100)
-nodes/fragment/7/node = SubResource("VisualShaderNodeVectorOp_o31x4")
+nodes/fragment/7/node = SubResource("VisualShaderNodeVectorOp_vi5ue")
 nodes/fragment/7/position = Vector2(20, 760)
-nodes/fragment/8/node = SubResource("VisualShaderNodeInput_vi5ue")
+nodes/fragment/8/node = SubResource("VisualShaderNodeInput_qq58s")
 nodes/fragment/8/position = Vector2(-2580, 1140)
-nodes/fragment/9/node = SubResource("VisualShaderNodeFloatParameter_qq58s")
+nodes/fragment/9/node = SubResource("VisualShaderNodeFloatParameter_5mxiv")
 nodes/fragment/9/position = Vector2(-2020, 1440)
-nodes/fragment/10/node = SubResource("VisualShaderNodeVectorOp_fslw2")
+nodes/fragment/10/node = SubResource("VisualShaderNodeVectorOp_etufu")
 nodes/fragment/10/position = Vector2(-1840, 1020)
-nodes/fragment/12/node = SubResource("VisualShaderNodeUVFunc_etufu")
+nodes/fragment/12/node = SubResource("VisualShaderNodeUVFunc_tmqvu")
 nodes/fragment/12/position = Vector2(-1300, 1080)
-nodes/fragment/13/node = SubResource("VisualShaderNodeTexture_tmqvu")
+nodes/fragment/13/node = SubResource("VisualShaderNodeTexture_373gr")
 nodes/fragment/13/position = Vector2(-620, 900)
 nodes/fragment/connections = PackedInt32Array(5, 0, 4, 2, 3, 0, 6, 0, 6, 0, 4, 0, 9, 0, 12, 2, 8, 0, 10, 0, 10, 0, 12, 0, 12, 0, 13, 0, 13, 0, 7, 1, 4, 0, 2, 0, 2, 0, 7, 0, 7, 0, 0, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ovogk"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yesa1"]
 resource_local_to_scene = true
 render_priority = 0
-shader = SubResource("VisualShader_5mxiv")
+shader = SubResource("VisualShader_ovogk")
 shader_parameter/SlashGradientSliderX = 0.5
 shader_parameter/SlashGradientSliderY = 0.75
 
@@ -702,46 +703,46 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_84tk7")
 
-[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_yesa1"]
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_y6jk2"]
 default_input_values = [0, Vector2(0, 0), 1, Vector2(1, 1)]
 op_type = 0
 operator = 2
 
-[sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_y6jk2"]
+[sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_fs4go"]
 default_input_values = [1, Vector2(0, 1), 2, Vector2(0, 0)]
 
-[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_fs4go"]
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_pgnk0"]
 texture = SubResource("GradientTexture2D_16jqo")
 
-[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_pgnk0"]
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_mecwy"]
 texture = SubResource("GradientTexture1D_7bbtc")
 
-[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_mecwy"]
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_ueqp8"]
 input_name = "uv"
 
-[sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_ueqp8"]
+[sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_yd64e"]
 default_input_values = [1, Vector2(1, 0), 2, Vector2(0, 0)]
 
-[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_yd64e"]
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_irtrb"]
 parameter_name = "SlashGradientSliderX"
 
-[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_irtrb"]
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_ygy1x"]
 default_input_values = [0, Vector2(0, 0), 1, Vector2(0.5, 0)]
 op_type = 0
 operator = 2
 
-[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_ygy1x"]
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_lpgof"]
 default_input_values = [0, Quaternion(0, 0, 0, 0), 1, Quaternion(0, 0, 0, 0)]
 op_type = 2
 operator = 2
 
-[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_lpgof"]
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_c5qqj"]
 input_name = "uv"
 
-[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_c5qqj"]
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_dywfi"]
 parameter_name = "SlashGradientSliderY"
 
-[sub_resource type="VisualShader" id="VisualShader_dywfi"]
+[sub_resource type="VisualShader" id="VisualShader_gl52m"]
 resource_local_to_scene = true
 code = "shader_type spatial;
 render_mode blend_mix, depth_draw_opaque, depth_test_default, cull_back, diffuse_lambert, specular_schlick_ggx;
@@ -809,34 +810,34 @@ void fragment() {
 }
 "
 nodes/fragment/0/position = Vector2(640, 500)
-nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_pgnk0")
+nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_mecwy")
 nodes/fragment/2/position = Vector2(-620, 160)
-nodes/fragment/3/node = SubResource("VisualShaderNodeInput_mecwy")
+nodes/fragment/3/node = SubResource("VisualShaderNodeInput_ueqp8")
 nodes/fragment/3/position = Vector2(-2540, 220)
-nodes/fragment/4/node = SubResource("VisualShaderNodeUVFunc_ueqp8")
+nodes/fragment/4/node = SubResource("VisualShaderNodeUVFunc_yd64e")
 nodes/fragment/4/position = Vector2(-1260, 160)
-nodes/fragment/5/node = SubResource("VisualShaderNodeFloatParameter_yd64e")
+nodes/fragment/5/node = SubResource("VisualShaderNodeFloatParameter_irtrb")
 nodes/fragment/5/position = Vector2(-1980, 520)
-nodes/fragment/6/node = SubResource("VisualShaderNodeVectorOp_irtrb")
+nodes/fragment/6/node = SubResource("VisualShaderNodeVectorOp_ygy1x")
 nodes/fragment/6/position = Vector2(-1800, 100)
-nodes/fragment/7/node = SubResource("VisualShaderNodeVectorOp_ygy1x")
+nodes/fragment/7/node = SubResource("VisualShaderNodeVectorOp_lpgof")
 nodes/fragment/7/position = Vector2(20, 760)
-nodes/fragment/8/node = SubResource("VisualShaderNodeInput_lpgof")
+nodes/fragment/8/node = SubResource("VisualShaderNodeInput_c5qqj")
 nodes/fragment/8/position = Vector2(-2580, 1140)
-nodes/fragment/9/node = SubResource("VisualShaderNodeFloatParameter_c5qqj")
+nodes/fragment/9/node = SubResource("VisualShaderNodeFloatParameter_dywfi")
 nodes/fragment/9/position = Vector2(-2020, 1440)
-nodes/fragment/10/node = SubResource("VisualShaderNodeVectorOp_yesa1")
+nodes/fragment/10/node = SubResource("VisualShaderNodeVectorOp_y6jk2")
 nodes/fragment/10/position = Vector2(-1840, 1020)
-nodes/fragment/12/node = SubResource("VisualShaderNodeUVFunc_y6jk2")
+nodes/fragment/12/node = SubResource("VisualShaderNodeUVFunc_fs4go")
 nodes/fragment/12/position = Vector2(-1300, 1080)
-nodes/fragment/13/node = SubResource("VisualShaderNodeTexture_fs4go")
+nodes/fragment/13/node = SubResource("VisualShaderNodeTexture_pgnk0")
 nodes/fragment/13/position = Vector2(-620, 900)
 nodes/fragment/connections = PackedInt32Array(5, 0, 4, 2, 3, 0, 6, 0, 6, 0, 4, 0, 9, 0, 12, 2, 8, 0, 10, 0, 10, 0, 12, 0, 12, 0, 13, 0, 13, 0, 7, 1, 4, 0, 2, 0, 2, 0, 7, 0, 7, 0, 0, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_gl52m"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6wd38"]
 resource_local_to_scene = true
 render_priority = 0
-shader = SubResource("VisualShader_dywfi")
+shader = SubResource("VisualShader_gl52m")
 shader_parameter/SlashGradientSliderX = 0.5
 shader_parameter/SlashGradientSliderY = 0.75
 
@@ -848,7 +849,7 @@ prefetch_nodepath_vars = false
 
 [node name="CogworkDancer" instance=ExtResource("1_aqi66")]
 script = ExtResource("2_yj034")
-top = false
+top = null
 to_waypoint_spin_speed = 60.0
 
 [node name="Animator" parent="." index="0"]
@@ -866,8 +867,9 @@ shape = SubResource("SphereShape3D_yj034")
 disabled = true
 
 [node name="Health" parent="." index="2" node_paths=PackedStringArray("damage_particles")]
-max_health = 2
+max_health = 190
 damage_particles = [NodePath("BloodParticles"), NodePath("CogParticles")]
+damage_effect_prefab = ExtResource("3_etufu")
 
 [node name="Collision" parent="Health" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.54951835, 0)
@@ -875,18 +877,24 @@ disabled = true
 
 [node name="BloodParticles" parent="Health" index="1"]
 amount = 10
-lifetime = 1.0
-process_material = ExtResource("3_thuvx")
-draw_pass_1 = ExtResource("4_fslw2")
+mesh = ExtResource("4_fslw2")
 
-[node name="CogParticles" type="GPUParticles3D" parent="Health" index="2"]
+[node name="CogParticles" type="CPUParticles3D" parent="Health" index="2"]
 emitting = false
 amount = 10
 one_shot = true
 explosiveness = 1.0
-randomness = 1.0
-process_material = ExtResource("3_thuvx")
-draw_pass_1 = ExtResource("6_etufu")
+lifetime_randomness = 1.0
+mesh = ExtResource("6_etufu")
+emission_shape = 1
+emission_sphere_radius = 1.0
+particle_flag_align_y = true
+gravity = Vector3(0, -50, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 30.0
+scale_amount_min = 0.35
+scale_amount_max = 0.65
+scale_amount_curve = ExtResource("6_tmqvu")
 
 [node name="Damager" parent="." index="3" instance=ExtResource("3_pnomj")]
 collision_layer = 16
@@ -896,6 +904,7 @@ damage_amount = 2
 [node name="Collision" parent="Damager" index="0"]
 transform = Transform3D(0.9922041, 0, 0.12462326, 0, 1, 0, -0.12462326, 0, 0.9922041, 0, 1.508667, 0)
 shape = SubResource("CapsuleShape3D_pnomj")
+disabled = true
 
 [node name="Death" parent="." index="4"]
 corpse_prefab = ExtResource("4_tlpfg")
@@ -907,46 +916,6 @@ metadata/_custom_type_script = "uid://br0v4k6f8iwlh"
 
 [node name="Model" parent="." index="6" instance=ExtResource("2_vnqo0")]
 transform = Transform3D(-2.5, 0, -3.774895e-07, 0, 2.5, 0, 3.774895e-07, 0, -2.5, 0, 0, 0)
-
-[node name="Skeleton3D" parent="Model/Armature" index="0"]
-bones/0/position = Vector3(8.881784e-16, 0.8279316, 0.019449696)
-bones/0/rotation = Quaternion(-0.021461679, 1.1918177e-07, -2.5584252e-09, 0.9997697)
-bones/1/rotation = Quaternion(-0.0064863116, -3.017644e-09, 2.5890289e-08, 0.999979)
-bones/2/rotation = Quaternion(-0.20373134, 1.9958517e-14, -8.164669e-08, 0.97902685)
-bones/3/rotation = Quaternion(-0.0057435404, 6.11717e-15, -2.3017606e-09, 0.9999835)
-bones/4/rotation = Quaternion(0.003857649, -8.8517094e-15, 1.5459743e-09, 0.99999255)
-bones/5/rotation = Quaternion(-0.35965848, -0.7478203, -0.519454, 0.2039071)
-bones/6/rotation = Quaternion(0.46656582, 0.00034691487, -0.3528707, 0.8110478)
-bones/7/rotation = Quaternion(-0.43848, -0.07471064, 0.5572463, 0.7011634)
-bones/8/rotation = Quaternion(0.7228509, -0.00018081255, 0.5467028, 0.422614)
-bones/9/position = Vector3(2.4823808e-15, -6.3818945e-08, -8.8824414e-09)
-bones/9/rotation = Quaternion(0.97899747, 2.4303695e-08, 1.16707525e-07, -0.20387256)
-bones/9/scale = Vector3(1, 1.0000027, 1.000033)
-bones/10/rotation = Quaternion(-0.19016963, -0.25063422, 0.13364567, 0.93976426)
-bones/10/scale = Vector3(0.9999898, 1.0000032, 1.0000035)
-bones/11/rotation = Quaternion(0.0028987438, 2.7201604e-06, 0.0021095334, 0.99999356)
-bones/11/scale = Vector3(1.0000007, 0.9999982, 1.0000019)
-bones/12/rotation = Quaternion(-0.005021885, 1.19207975e-07, -5.986758e-10, 0.9999874)
-bones/12/scale = Vector3(1, 0.9999984, 1.0000029)
-bones/13/rotation = Quaternion(0.0045294985, 1.4229729e-12, 1.0800307e-09, 0.9999898)
-bones/13/scale = Vector3(1, 0.99999976, 0.99999964)
-bones/14/position = Vector3(-0.31037593, 0.522119, -0.04243394)
-bones/14/rotation = Quaternion(-0.17356901, 0.12843703, -0.0736211, 0.9736312)
-bones/14/scale = Vector3(0.9999928, 1.000004, 1.0000002)
-bones/15/rotation = Quaternion(0.0028974267, -2.721761e-06, -0.0021085748, 0.99999356)
-bones/15/scale = Vector3(1.0000006, 0.9999983, 1.0000017)
-bones/16/position = Vector3(0.9973285, 2.0450833, 1.0921348)
-bones/16/rotation = Quaternion(-0.49899483, 0.50003874, 0.5219781, -0.47802123)
-bones/17/position = Vector3(1.3525568, 0.4935268, 2.2585433)
-bones/18/position = Vector3(-0.008016616, -2.470597, -0.10595537)
-bones/19/position = Vector3(0.31037602, -1.5304343, 0.12078709)
-bones/20/position = Vector3(-1.1796551, 0.4968867, 0.7551791)
-bones/21/position = Vector3(-1.3525577, -0.08766687, -0.18688288)
-bones/22/position = Vector3(-0.10928656, -2.4639776, -0.2600565)
-bones/23/position = Vector3(-0.3103761, -1.5304343, 0.12078697)
-bones/24/position = Vector3(1.06790964e-07, 1.9066186, -0.44791397)
-bones/24/rotation = Quaternion(-0.086661726, -5.5267974e-10, 5.0869167e-09, 0.9962379)
-bones/25/position = Vector3(0, -0.8161379, -0.60835207)
 
 [node name="Dancer" parent="Model/Armature/Skeleton3D" index="0"]
 mesh = SubResource("ArrayMesh_s7qtj")
@@ -993,7 +962,7 @@ libraries = {
 [node name="SlashEffectLeft" parent="." index="8" instance=ExtResource("5_esq63")]
 transform = Transform3D(0.69052833, 0.42659932, 2.1544285, 0.46265626, -1.513281, 0.36952335, 1.3671576, 0.29663736, -1.2132151, 2.95, 1.34, -0.28)
 mesh = SubResource("ArrayMesh_esq63")
-surface_material_override/0 = SubResource("ShaderMaterial_ovogk")
+surface_material_override/0 = SubResource("ShaderMaterial_yesa1")
 
 [node name="SlashEffectDamager" parent="SlashEffectLeft" index="0"]
 collision_layer = 16
@@ -1005,14 +974,14 @@ transform = Transform3D(-0.18644491, -0.21110286, -0.9595175, -0.71991134, 0.693
 [node name="SlashEffectRight" parent="." index="9" instance=ExtResource("5_esq63")]
 transform = Transform3D(-0.69052833, -0.4265994, -2.1544285, 0.39090732, -1.5266637, 0.43213725, 1.3893749, 0.21751152, -1.192349, -2.95, 1.34, -0.28)
 mesh = SubResource("ArrayMesh_vigla")
-surface_material_override/0 = SubResource("ShaderMaterial_gl52m")
+surface_material_override/0 = SubResource("ShaderMaterial_6wd38")
 
 [node name="SlashEffectDamager" parent="SlashEffectRight" index="0"]
 collision_layer = 16
 damage_amount = 2
 
 [node name="Collision" parent="SlashEffectRight/SlashEffectDamager" index="0"]
-transform = Transform3D(0.92579067, -0.30802646, 0.2191499, 0.3686109, 0.60695255, -0.7040822, 0.08386243, 0.7326133, 0.6754564, -0.10546088, -1.1433492, 2.2193463)
+transform = Transform3D(0.92579067, -0.3080264, 0.2191499, 0.3686109, 0.60695237, -0.7040822, 0.08386243, 0.73261315, 0.6754564, -0.10546088, -1.1433492, 2.2193463)
 
 [node name="BehaviorTree" parent="." index="10"]
 behavior_tree = ExtResource("3_7e4hr")

@@ -8,3 +8,4 @@ action_name = &"Jump"
 metadata/_custom_type_script = "uid://bg4x62qn317fa"
 
 [node name="BufferTimer" type="Timer" parent="."]
+one_shot = true

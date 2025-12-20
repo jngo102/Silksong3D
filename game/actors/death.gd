@@ -21,7 +21,7 @@ func die() -> void:
 	owner.queue_free()
 	for damager in NodeUtil.find_all_children_of_type(owner, Damager):
 		if damager is Damager:
-			damager.collision.disabled = true
+			damager.collision.set_disabled.call_deferred(true)
 
 func revive(new_health: int) -> void:
 	health.current_health = new_health

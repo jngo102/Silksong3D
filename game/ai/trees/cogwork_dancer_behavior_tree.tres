@@ -1,4 +1,4 @@
-[gd_resource type="BehaviorTree" load_steps=1015 format=3 uid="uid://chh6lvoe5ufr8"]
+[gd_resource type="BehaviorTree" load_steps=1019 format=3 uid="uid://chh6lvoe5ufr8"]
 
 [ext_resource type="Script" uid="uid://dfxh5qmwucb7e" path="res://game/ai/tasks/scene/get_first_in_group.gd" id="1_lkiki"]
 [ext_resource type="Script" uid="uid://oufr1n61rgt6" path="res://game/ai/tasks/audio/get_current_music_player.gd" id="3_ngxa6"]
@@ -475,125 +475,9 @@ output_position_var = &"teleport_point_position"
 custom_name = "Set Teleport Parameters"
 children = [SubResource("BTAction_sh7if")]
 
-[sub_resource type="BBVariant" id="BBVariant_g3jwx"]
-type = 2
-saved_value = 1
-resource_name = "1"
-
-[sub_resource type="BTCheckVar" id="BTCheckVar_6m7i6"]
-variable = &"phase"
-check_type = 5
-value = SubResource("BBVariant_g3jwx")
-
-[sub_resource type="BBVariant" id="BBVariant_aesx4"]
-type = 2
-saved_value = 100
-resource_name = "100"
-
-[sub_resource type="BBNode" id="BBNode_xvdyq"]
-saved_value = NodePath("Death")
-resource_name = "Death"
-
-[sub_resource type="BTCallMethod" id="BTCallMethod_sbia3"]
-node = SubResource("BBNode_xvdyq")
-method = &"revive"
-args = Array[BBVariant]([SubResource("BBVariant_aesx4")])
-
-[sub_resource type="BTSelector" id="BTSelector_q81r8"]
-custom_name = "Set Health Phase 1"
-children = [SubResource("BTCheckVar_6m7i6"), SubResource("BTCallMethod_sbia3")]
-
-[sub_resource type="BBVariant" id="BBVariant_hne5c"]
-type = 2
-saved_value = 2
-resource_name = "2"
-
-[sub_resource type="BTCheckVar" id="BTCheckVar_u43jt"]
-variable = &"phase"
-check_type = 5
-value = SubResource("BBVariant_hne5c")
-
-[sub_resource type="BBVariant" id="BBVariant_5v1wo"]
-type = 2
-saved_value = 2
-resource_name = "2"
-
-[sub_resource type="BBNode" id="BBNode_536ec"]
-saved_value = NodePath("Death")
-resource_name = "Death"
-
-[sub_resource type="BTCallMethod" id="BTCallMethod_5lvyq"]
-node = SubResource("BBNode_536ec")
-method = &"revive"
-args = Array[BBVariant]([SubResource("BBVariant_5v1wo")])
-
-[sub_resource type="BTSelector" id="BTSelector_bxjok"]
-custom_name = "Set Health Phase 2"
-children = [SubResource("BTCheckVar_u43jt"), SubResource("BTCallMethod_5lvyq")]
-
-[sub_resource type="BBVariant" id="BBVariant_d2yui"]
-type = 2
-saved_value = 3
-resource_name = "3"
-
-[sub_resource type="BTCheckVar" id="BTCheckVar_4qb1o"]
-variable = &"phase"
-check_type = 5
-value = SubResource("BBVariant_d2yui")
-
-[sub_resource type="BBVariant" id="BBVariant_k86ki"]
-type = 2
-saved_value = 3
-resource_name = "3"
-
-[sub_resource type="BBNode" id="BBNode_7io1o"]
-saved_value = NodePath("Death")
-resource_name = "Death"
-
-[sub_resource type="BTCallMethod" id="BTCallMethod_87gn4"]
-node = SubResource("BBNode_7io1o")
-method = &"revive"
-args = Array[BBVariant]([SubResource("BBVariant_k86ki")])
-
-[sub_resource type="BTSelector" id="BTSelector_ft10h"]
-custom_name = "Set Health Phase 3"
-children = [SubResource("BTCheckVar_4qb1o"), SubResource("BTCallMethod_87gn4")]
-
-[sub_resource type="BBVariant" id="BBVariant_q81r8"]
-type = 2
-saved_value = 4
-resource_name = "4"
-
-[sub_resource type="BTCheckVar" id="BTCheckVar_dwi0u"]
-variable = &"phase"
-check_type = 5
-value = SubResource("BBVariant_q81r8")
-
-[sub_resource type="BBVariant" id="BBVariant_l4h0h"]
-type = 2
-saved_value = 4
-resource_name = "4"
-
-[sub_resource type="BBNode" id="BBNode_6g5vm"]
-saved_value = NodePath("Death")
-resource_name = "Death"
-
-[sub_resource type="BTCallMethod" id="BTCallMethod_8sbe4"]
-node = SubResource("BBNode_6g5vm")
-method = &"revive"
-args = Array[BBVariant]([SubResource("BBVariant_l4h0h")])
-
-[sub_resource type="BTSelector" id="BTSelector_buhy5"]
-custom_name = "Set Health Phase 4"
-children = [SubResource("BTCheckVar_dwi0u"), SubResource("BTCallMethod_8sbe4")]
-
-[sub_resource type="BTSequence" id="BTSequence_tfrvw"]
-custom_name = "Set Health"
-children = [SubResource("BTSelector_q81r8"), SubResource("BTSelector_bxjok"), SubResource("BTSelector_ft10h"), SubResource("BTSelector_buhy5")]
-
 [sub_resource type="BTSequence" id="BTSequence_34w61"]
 custom_name = "Initialization"
-children = [SubResource("BTSequence_vfpbh"), SubResource("BTSequence_nx7ud"), SubResource("BTSequence_maqif"), SubResource("BTSequence_tvm2c"), SubResource("BTSequence_tfrvw")]
+children = [SubResource("BTSequence_vfpbh"), SubResource("BTSequence_nx7ud"), SubResource("BTSequence_maqif"), SubResource("BTSequence_tvm2c")]
 
 [sub_resource type="BBVariant" id="BBVariant_qh8w2"]
 type = 2
@@ -915,19 +799,154 @@ script = ExtResource("18_fuw20")
 collider_var = SubResource("BBVariant_i0pie")
 enabled = true
 
-[sub_resource type="BBVariant" id="BBVariant_phhuc"]
-type = 22
-saved_value = NodePath("Health/Collision")
-resource_name = "Health/Collision"
+[sub_resource type="BBVariant" id="BBVariant_5lvyq"]
+type = 1
+saved_value = false
+resource_name = "<null>"
 
-[sub_resource type="BTAction" id="BTAction_ngr5d"]
+[sub_resource type="BBVariant" id="BBVariant_6agt7"]
+type = 3
+saved_value = 0.0
+resource_name = "<null>"
+
+[sub_resource type="BBNode" id="BBNode_bpwgy"]
+saved_value = NodePath("Health")
+resource_name = "Health"
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_nhuc2"]
+node = SubResource("BBNode_bpwgy")
+method = &"set_invincible"
+args = Array[BBVariant]([SubResource("BBVariant_5lvyq"), SubResource("BBVariant_6agt7")])
+
+[sub_resource type="BBVariant" id="BBVariant_536ec"]
+type = 22
+saved_value = NodePath("Damager/Collision")
+resource_name = "Damager/Collision"
+
+[sub_resource type="BTAction" id="BTAction_5lvyq"]
 script = ExtResource("18_fuw20")
-collider_var = SubResource("BBVariant_phhuc")
+collider_var = SubResource("BBVariant_536ec")
 enabled = true
+
+[sub_resource type="BBVariant" id="BBVariant_g3jwx"]
+type = 2
+saved_value = 1
+resource_name = "1"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_6m7i6"]
+variable = &"phase"
+check_type = 5
+value = SubResource("BBVariant_g3jwx")
+
+[sub_resource type="BBVariant" id="BBVariant_aesx4"]
+type = 2
+saved_value = 190
+resource_name = "190"
+
+[sub_resource type="BBNode" id="BBNode_xvdyq"]
+saved_value = NodePath("Death")
+resource_name = "Death"
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_sbia3"]
+node = SubResource("BBNode_xvdyq")
+method = &"revive"
+args = Array[BBVariant]([SubResource("BBVariant_aesx4")])
+
+[sub_resource type="BTSelector" id="BTSelector_q81r8"]
+custom_name = "Set Health Phase 1"
+children = [SubResource("BTCheckVar_6m7i6"), SubResource("BTCallMethod_sbia3")]
+
+[sub_resource type="BBVariant" id="BBVariant_hne5c"]
+type = 2
+saved_value = 2
+resource_name = "2"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_u43jt"]
+variable = &"phase"
+check_type = 5
+value = SubResource("BBVariant_hne5c")
+
+[sub_resource type="BBVariant" id="BBVariant_5v1wo"]
+type = 2
+saved_value = 220
+resource_name = "220"
+
+[sub_resource type="BBNode" id="BBNode_536ec"]
+saved_value = NodePath("Death")
+resource_name = "Death"
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_5lvyq"]
+node = SubResource("BBNode_536ec")
+method = &"revive"
+args = Array[BBVariant]([SubResource("BBVariant_5v1wo")])
+
+[sub_resource type="BTSelector" id="BTSelector_bxjok"]
+custom_name = "Set Health Phase 2"
+children = [SubResource("BTCheckVar_u43jt"), SubResource("BTCallMethod_5lvyq")]
+
+[sub_resource type="BBVariant" id="BBVariant_d2yui"]
+type = 2
+saved_value = 3
+resource_name = "3"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_4qb1o"]
+variable = &"phase"
+check_type = 5
+value = SubResource("BBVariant_d2yui")
+
+[sub_resource type="BBVariant" id="BBVariant_k86ki"]
+type = 2
+saved_value = 220
+resource_name = "220"
+
+[sub_resource type="BBNode" id="BBNode_7io1o"]
+saved_value = NodePath("Death")
+resource_name = "Death"
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_87gn4"]
+node = SubResource("BBNode_7io1o")
+method = &"revive"
+args = Array[BBVariant]([SubResource("BBVariant_k86ki")])
+
+[sub_resource type="BTSelector" id="BTSelector_ft10h"]
+custom_name = "Set Health Phase 3"
+children = [SubResource("BTCheckVar_4qb1o"), SubResource("BTCallMethod_87gn4")]
+
+[sub_resource type="BBVariant" id="BBVariant_q81r8"]
+type = 2
+saved_value = 4
+resource_name = "4"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_dwi0u"]
+variable = &"phase"
+check_type = 5
+value = SubResource("BBVariant_q81r8")
+
+[sub_resource type="BBVariant" id="BBVariant_l4h0h"]
+type = 2
+saved_value = 180
+resource_name = "180"
+
+[sub_resource type="BBNode" id="BBNode_6g5vm"]
+saved_value = NodePath("Death")
+resource_name = "Death"
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_8sbe4"]
+node = SubResource("BBNode_6g5vm")
+method = &"revive"
+args = Array[BBVariant]([SubResource("BBVariant_l4h0h")])
+
+[sub_resource type="BTSelector" id="BTSelector_buhy5"]
+custom_name = "Set Health Phase 4"
+children = [SubResource("BTCheckVar_dwi0u"), SubResource("BTCallMethod_8sbe4")]
+
+[sub_resource type="BTSequence" id="BTSequence_tfrvw"]
+custom_name = "Set Health"
+children = [SubResource("BTSelector_q81r8"), SubResource("BTSelector_bxjok"), SubResource("BTSelector_ft10h"), SubResource("BTSelector_buhy5")]
 
 [sub_resource type="BTSequence" id="BTSequence_e8anh"]
 custom_name = "Restart Fight"
-children = [SubResource("BTCallMethod_3g83i"), SubResource("BTAction_lmr6b"), SubResource("BTAction_ngr5d")]
+children = [SubResource("BTCallMethod_3g83i"), SubResource("BTAction_lmr6b"), SubResource("BTCallMethod_nhuc2"), SubResource("BTAction_5lvyq"), SubResource("BTSequence_tfrvw")]
 
 [sub_resource type="BBVariant" id="BBVariant_tfrvw"]
 type = 2

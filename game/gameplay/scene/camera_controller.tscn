@@ -1,10 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://b37skkjsvgidd"]
+[gd_scene load_steps=5 format=3 uid="uid://b37skkjsvgidd"]
 
 [ext_resource type="Script" uid="uid://c26ykjiw2tbxg" path="res://game/gameplay/scene/camera_controller.gd" id="1_ewp70"]
 [ext_resource type="Script" uid="uid://br0v4k6f8iwlh" path="res://game/actors/shaker.gd" id="2_bv4xb"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ewp70"]
 radius = 1.0
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_bv4xb"]
+dof_blur_far_enabled = true
+dof_blur_far_distance = 80.0
 
 [node name="CameraController" type="Node3D"]
 script = ExtResource("1_ewp70")
@@ -20,8 +24,8 @@ spring_length = 20.0
 
 [node name="Camera" type="Camera3D" parent="CameraPitch/Gimbal" groups=["Cameras"]]
 transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 10, 20)
+attributes = SubResource("CameraAttributesPractical_bv4xb")
 current = true
-fov = 60.0
 size = 70.0
 
 [node name="Shaker" type="Node" parent="CameraPitch/Gimbal/Camera" node_paths=PackedStringArray("shaked_object")]
