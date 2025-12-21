@@ -10,6 +10,7 @@ class_name PlayerSprintJumpState extends PlayerAirState
 var _queue_stop_jump: bool
 
 func _ready() -> void:
+	await super._ready()
 	_sprint_jump_transition_tree.animation_finished.connect(_on_animation_finish)
 
 func _enter() -> void:

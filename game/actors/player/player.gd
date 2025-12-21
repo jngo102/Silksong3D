@@ -42,10 +42,24 @@ func turn_to_camera(delta: float, immediate: bool = false) -> void:
 	global_rotation.y = lerp_angle(global_rotation.y, camera_controller.global_rotation.y,  1 if immediate else delta * 4)
 
 func _look_mouse(event: InputEventMouseMotion) -> void:
-	camera_controller.rotation.y -= event.relative.x * get_process_delta_time()
-	camera_controller.add_pitch(-event.relative.y * get_process_delta_time())
+	var look_x: float = -event.relative.x * get_process_delta_time() * SaveManager.settings.look_sensitivity_mouse
+	if SaveManager.settings.invert_mouse_x:
+		look_x = -look_x
+	camera_controller.rotation.y += look_x
+	
+	var look_y: float = -event.relative.y * get_process_delta_time() * SaveManager.settings.look_sensitivity_mouse
+	if SaveManager.settings.invert_mouse_x:
+		look_y = -look_y
+	camera_controller.add_pitch(look_y)
 
 func _look_joystick(delta: float) -> void:
 	var look_vector: Vector2 = Input.get_vector(&"ui_look_left", &"ui_look_right", &"ui_look_down", &"ui_look_up")
-	camera_controller.rotation.y -= look_vector.x * delta
-	camera_controller.add_pitch(-look_vector.y * delta)
+	var look_x: float = -look_vector.x * get_process_delta_time() * SaveManager.settings.look_sensitivity_joystick
+	if SaveManager.settings.invert_joystick_x:
+		look_x = -look_x
+	camera_controller.rotation.y += look_x
+	
+	var look_y: float = -look_vector.y * get_process_delta_time() * SaveManager.settings.look_sensitivity_joystick
+	if SaveManager.settings.invert_joystick_y:
+		look_y = -look_y
+	camera_controller.add_pitch(look_y)

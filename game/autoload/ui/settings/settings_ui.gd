@@ -32,10 +32,10 @@ func _ready() -> void:
 	_check_show_navigation_icons()
 	_set_up_settings_tabs()
 
-func _unhandled_input(event: InputEvent) -> void:
-	if _input_settings_page.rebinding:
-		return
-	super._unhandled_input(event)
+#func _unhandled_input(event: InputEvent) -> void:
+	#if _input_settings_page.rebinding:
+		#return
+	#super._unhandled_input(event)
 
 func _input(event: InputEvent) -> void:
 	if not visible:

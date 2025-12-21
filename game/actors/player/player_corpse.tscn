@@ -1,9 +1,14 @@
-[gd_scene load_steps=12 format=4 uid="uid://b0wa350b6fbky"]
+[gd_scene load_steps=17 format=4 uid="uid://b0wa350b6fbky"]
 
 [ext_resource type="PackedScene" uid="uid://pj02xii8jggq" path="res://game/actors/player/hornet.glb" id="1_7wyyb"]
 [ext_resource type="Script" uid="uid://bpmjh1hxxc7gu" path="res://game/actors/player/player_corpse.gd" id="1_t4cps"]
+[ext_resource type="Script" uid="uid://dj5upywmu1hm2" path="res://game/actors/random_audio_player.gd" id="2_rl31j"]
 [ext_resource type="ArrayMesh" uid="uid://bgirt3tfr1hod" path="res://game/resources/meshes/cloak_mesh.tres" id="2_t4cps"]
 [ext_resource type="Material" uid="uid://breyp8thk738j" path="res://game/resources/meshes/cloak.tres" id="3_1s8gr"]
+[ext_resource type="AudioStream" uid="uid://dn1dfuqawm5lx" path="res://game/copyrighted/sfx/hornet/death/d1.wav" id="3_5uikp"]
+[ext_resource type="AudioStream" uid="uid://bcgvsyd7umne7" path="res://game/copyrighted/sfx/hornet/death/d2.wav" id="4_pw4o8"]
+[ext_resource type="AudioStream" uid="uid://n4t0ajai1b4y" path="res://game/copyrighted/sfx/hornet/death/d3.wav" id="5_smdo3"]
+[ext_resource type="AudioStream" uid="uid://ck6dir00pa0nm" path="res://game/copyrighted/sfx/hornet/death/d4.wav" id="6_guylx"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1isk3"]
 resource_name = "Needle"
@@ -102,6 +107,20 @@ tracks/3/keys = {
 "method": &"queue_free"
 }]
 }
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../DeathVoice")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0, 1.0, 1.0],
+"method": &"play_random"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_41lfd"]
 _data = {
@@ -120,6 +139,13 @@ fill_from = Vector2(0.5, 0.52991456)
 
 [node name="PlayerCorpse" type="Node3D"]
 script = ExtResource("1_t4cps")
+
+[node name="DeathVoice" type="AudioStreamPlayer3D" parent="."]
+unit_size = 32.0
+autoplay = true
+script = ExtResource("2_rl31j")
+audio_clips = Array[AudioStream]([ExtResource("3_5uikp"), ExtResource("4_pw4o8"), ExtResource("5_smdo3"), ExtResource("6_guylx")])
+metadata/_custom_type_script = "uid://dj5upywmu1hm2"
 
 [node name="Model" parent="." instance=ExtResource("1_7wyyb")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)

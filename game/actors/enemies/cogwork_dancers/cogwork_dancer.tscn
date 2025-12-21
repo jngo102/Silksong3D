@@ -977,7 +977,7 @@ collision_mask = 1
 damage_amount = 2
 
 [node name="Collision" parent="SlashEffectLeft/SlashEffectDamager" index="0"]
-transform = Transform3D(-0.18644491, -0.21110286, -0.9595175, -0.71991134, 0.69394547, -0.012787557, 0.6685517, 0.6883839, -0.28135905, -3.9338806, 0.7550101, -0.04474935)
+transform = Transform3D(-0.1864449, -0.21110283, -0.95951736, -0.7199113, 0.69394535, -0.012787555, 0.6685516, 0.68838376, -0.28135902, -3.9338806, 0.7550101, -0.04474935)
 shape = SubResource("BoxShape3D_etufu")
 
 [node name="SlashEffectRight" parent="." index="9" instance=ExtResource("5_esq63")]

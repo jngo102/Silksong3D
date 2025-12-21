@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bibpel52dklny"]
+
+[ext_resource type="PackedScene" uid="uid://7ulrbre662p2" path="res://game/autoload/ui/settings/select/setting_select_option.tscn" id="1_870l0"]
+
+[node name="BoolSelectOption" instance=ExtResource("1_870l0")]
+_options = Dictionary[StringName, Variant]({
+&"Off": false,
+&"On": true
+})

@@ -19,3 +19,6 @@ func _enter() -> void:
 func _update(_delta: float) -> void:
 	if _model_animator.current_animation != _recoil_animation_name:
 		send_event(_hsm.EVENT_FINISHED)
+
+func can_enter() -> bool:
+	return not _player.health.is_dead

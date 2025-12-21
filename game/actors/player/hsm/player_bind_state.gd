@@ -50,3 +50,6 @@ func _bind_heal() -> void:
 	_player.health.heal(3)
 	_bind_animator.play(&"Bind")
 	send_event(_hsm.EVENT_FINISHED)
+
+func can_enter() -> bool:
+	return _player.spool_manager.current_silk >= _player.spool_manager.bind_silk

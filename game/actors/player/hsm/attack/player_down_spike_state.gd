@@ -11,6 +11,7 @@ var _original_gravity_scale: float
 var _down_spike_timer: float
 
 func _ready() -> void:
+	await super._ready()
 	_down_spike_transition_tree.animation_finished.connect(_on_animation_finish)
 	_needle.down_spiked.connect(_on_needle_down_spiked)
 

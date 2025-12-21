@@ -98,9 +98,10 @@ offset_right = 40.0
 offset_bottom = 74.0
 text = "Graphics"
 
-[node name="InputSettingsPage" parent="MarginContainer/Page/Contents/TopBar/MarginContainer_Page_Contents#Pages" index="4" instance=ExtResource("1_27rnl")]
+[node name="InputSettingsPage" parent="MarginContainer/Page/Contents/TopBar/MarginContainer_Page_Contents#Pages" index="4" node_paths=PackedStringArray("child_uis") instance=ExtResource("1_27rnl")]
 visible = false
 layout_mode = 1
+child_uis = []
 
 [node name="Pages" type="Control" parent="MarginContainer/Page/Contents" index="1"]
 layout_mode = 2
@@ -136,11 +137,7 @@ offset_right = 287.0
 offset_bottom = 74.0
 text = "Graphics"
 
-[node name="InputSettingsPage" parent="MarginContainer/Page/Contents/Pages" index="4" instance=ExtResource("1_27rnl")]
+[node name="InputSettingsPage" parent="MarginContainer/Page/Contents/Pages" index="4" node_paths=PackedStringArray("child_uis") instance=ExtResource("1_27rnl")]
 visible = false
-layout_mode = 0
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-grow_horizontal = 1
-grow_vertical = 1
+layout_mode = 1
+child_uis = []

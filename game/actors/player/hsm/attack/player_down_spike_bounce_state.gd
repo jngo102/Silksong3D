@@ -18,7 +18,6 @@ func _enter() -> void:
 	var down_spike_bounce_animation_name: StringName = _down_spike_bounce_animation_prefix + str(_animation_index)
 	play_anim(down_spike_bounce_animation_name)
 	_needle_animator.play(&"Down Spike Bounce")
-	_player.armature.rotation.x = 0
 	_player.health.set_invincible(true, 0.35)
 	_player.velocity.y = _down_spike_bounce_speed
 	_down_spike_bounce_timer = 0

@@ -12,8 +12,8 @@ func _enter() -> void:
 	_player.velocity.y = sqrt(2 * _jump_height * _player.gravity_scale * _gravity)
 
 func _update(delta: float) -> void:
-	super._update(delta)
 	_player.turn_to_camera(delta)
+	super._update(delta)
 	var move_vector: Vector2 = Input.get_vector(&"ui_left", &"ui_right", &"ui_up", &"ui_down")
 	_player.move(move_vector.normalized() * _mid_air_move_speed)
 	if Input.is_action_just_pressed(&"Jump"):

@@ -6,7 +6,7 @@ class_name RoarEffect extends Node3D
 
 func shake_camera() -> void:
 	var anim_length: float = _wave_animator.get_animation(&"Start").length
-	CameraManager.shake_camera(2, anim_length)
+	#CameraManager.shake_camera(2, anim_length)
 
 func _process(delta: float) -> void:
 	var camera_position: Vector3 = get_viewport().get_camera_3d().global_position

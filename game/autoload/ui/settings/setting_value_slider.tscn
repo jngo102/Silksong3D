@@ -13,6 +13,7 @@ script = ExtResource("1_km1ox")
 [node name="SettingTitle" type="Label" parent="."]
 layout_mode = 2
 size_flags_horizontal = 2
+text = "Setting"
 
 [node name="ValueSlider" type="HSlider" parent="."]
 layout_mode = 2

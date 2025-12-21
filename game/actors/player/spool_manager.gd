@@ -8,12 +8,16 @@ signal bind_state_changed(can_bind: bool)
 
 var current_silk: int:
 	set(value):
-		silk_changed.emit(value)
-		if value >= bind_silk and current_silk < bind_silk:
+		var clamped_value: int = min(value, max_silk)
+		silk_changed.emit(clamped_value)
+		if clamped_value >= bind_silk and current_silk < bind_silk:
+			AudioManager.play_clip(_bind_ready_sfx, true)
 			bind_state_changed.emit(true)
-		elif value < bind_silk and current_silk >= bind_silk:
+		elif clamped_value < bind_silk and current_silk >= bind_silk:
 			bind_state_changed.emit(false)
-		current_silk = value
+		current_silk = clamped_value
+
+var _bind_ready_sfx: AudioStream = preload("uid://dhoeg5e6hhja4")
 
 func _ready() -> void:
 	var damagers = NodeUtil.find_all_children_of_type(owner, Damager)

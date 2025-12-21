@@ -7,6 +7,10 @@ class_name PlayerAirDashState extends PlayerAirState
 
 var _air_dash_timer: float
 
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed(&"Attack"):
+		send_event(_hsm.ATTACK_EVENT)
+
 func _enter() -> void:
 	play_anim(_air_dash_animation_name)
 	var input_vector: Vector2 = Input.get_vector(&"ui_left", &"ui_right", &"ui_up", &"ui_down")

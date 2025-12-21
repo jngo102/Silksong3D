@@ -1,32 +1,61 @@
-[gd_scene load_steps=4 format=3 uid="uid://cb2q8wcqo5p7f"]
+[gd_scene load_steps=7 format=3 uid="uid://cb2q8wcqo5p7f"]
 
 [ext_resource type="PackedScene" uid="uid://o76gduhspdg" path="res://game/autoload/ui/settings/settings_page.tscn" id="1_lf3js"]
 [ext_resource type="Script" uid="uid://cec3vuyve6lls" path="res://game/autoload/ui/settings/input/input_settings_page.gd" id="2_r742v"]
-[ext_resource type="PackedScene" uid="uid://2at86fvhvt8v" path="res://game/autoload/ui/settings/input/input_rebinder.tscn" id="3_k6s21"]
+[ext_resource type="PackedScene" uid="uid://biisedaow62y2" path="res://game/autoload/ui/settings/setting_value_slider.tscn" id="4_efwig"]
+[ext_resource type="PackedScene" uid="uid://c2d6gh3lllnsu" path="res://game/autoload/ui/settings/input/input_bindings_page.tscn" id="5_d6nyq"]
+[ext_resource type="PackedScene" uid="uid://bibpel52dklny" path="res://game/autoload/ui/settings/select/bool_select_option.tscn" id="5_hpgmy"]
+[ext_resource type="PackedScene" uid="uid://hqhyvp4gjw8i" path="res://game/autoload/ui/ui_button.tscn" id="5_qr6my"]
 
-[node name="InputSettingsPage" instance=ExtResource("1_lf3js")]
-size_flags_horizontal = 3
-size_flags_vertical = 3
-alignment = 1
+[node name="InputSettingsPage" node_paths=PackedStringArray("child_uis", "default_ui") instance=ExtResource("1_lf3js")]
 script = ExtResource("2_r742v")
-_input_rebinder_prefab = ExtResource("3_k6s21")
+child_uis = [NodePath("SettingsContainer"), NodePath("InputBindingsPage")]
+default_ui = NodePath("SettingsContainer")
 
-[node name="Labels" type="HBoxContainer" parent="." index="0"]
+[node name="SettingsContainer" type="VBoxContainer" parent="." index="0"]
 layout_mode = 2
 size_flags_vertical = 3
 alignment = 1
 
-[node name="ActionLabel" type="Label" parent="Labels" index="0"]
+[node name="LookSensitivityMouse" parent="SettingsContainer" index="0" instance=ExtResource("4_efwig")]
 layout_mode = 2
-size_flags_horizontal = 4
-text = "Action"
-vertical_alignment = 1
+setting_name = "Mouse Sensitivity X"
+max_slider_value = 2.0
 
-[node name="RebindLabel" type="Label" parent="Labels" index="1"]
+[node name="LookSensitivityJoystick" parent="SettingsContainer" index="1" instance=ExtResource("4_efwig")]
 layout_mode = 2
-size_flags_horizontal = 4
-text = "Rebind"
-vertical_alignment = 1
+setting_name = "Mouse Sensitivity X"
+max_slider_value = 2.0
 
-[node name="RebindersContainer" type="VBoxContainer" parent="." index="1"]
+[node name="InvertMouseX" parent="SettingsContainer" index="2" instance=ExtResource("5_hpgmy")]
 layout_mode = 2
+_setting_name = "Invert Mouse X"
+
+[node name="InvertMouseY" parent="SettingsContainer" index="3" instance=ExtResource("5_hpgmy")]
+layout_mode = 2
+_setting_name = "Invert Mouse Y"
+
+[node name="InvertJoystickX" parent="SettingsContainer" index="4" instance=ExtResource("5_hpgmy")]
+layout_mode = 2
+_setting_name = "Invert Joystick X"
+
+[node name="InvertJoystickY" parent="SettingsContainer" index="5" instance=ExtResource("5_hpgmy")]
+layout_mode = 2
+_setting_name = "Invert Joystick Y"
+
+[node name="BindingsButton" parent="SettingsContainer" index="6" instance=ExtResource("5_qr6my")]
+layout_mode = 2
+text = "Change Bindings"
+
+[node name="InputBindingsPage" parent="." index="1" instance=ExtResource("5_d6nyq")]
+visible = false
+layout_mode = 2
+
+[connection signal="value_changed" from="SettingsContainer/LookSensitivityMouse" to="." method="_on_look_sensitivity_mouse_value_changed"]
+[connection signal="value_changed" from="SettingsContainer/LookSensitivityJoystick" to="." method="_on_look_sensitivity_joystick_value_changed"]
+[connection signal="value_changed" from="SettingsContainer/InvertMouseX" to="." method="_on_invert_mouse_x_value_changed"]
+[connection signal="value_changed" from="SettingsContainer/InvertMouseY" to="." method="_on_invert_mouse_y_value_changed"]
+[connection signal="value_changed" from="SettingsContainer/InvertJoystickX" to="." method="_on_invert_joystick_x_value_changed"]
+[connection signal="value_changed" from="SettingsContainer/InvertJoystickY" to="." method="_on_invert_joystick_y_value_changed"]
+[connection signal="pressed" from="SettingsContainer/BindingsButton" to="." method="_on_bindings_button_pressed"]
+[connection signal="hidden" from="InputBindingsPage" to="." method="_on_input_bindings_page_hidden"]

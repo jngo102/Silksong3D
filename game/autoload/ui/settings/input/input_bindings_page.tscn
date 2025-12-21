@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://c2d6gh3lllnsu"]
+
+[ext_resource type="PackedScene" uid="uid://o76gduhspdg" path="res://game/autoload/ui/settings/settings_page.tscn" id="1_4xy22"]
+[ext_resource type="Script" uid="uid://dow2v2v1q57do" path="res://game/autoload/ui/settings/input/input_bindings_page.gd" id="2_aibso"]
+[ext_resource type="PackedScene" uid="uid://2at86fvhvt8v" path="res://game/autoload/ui/settings/input/input_rebinder.tscn" id="3_crgbu"]
+
+[node name="InputBindingsPage" instance=ExtResource("1_4xy22")]
+script = ExtResource("2_aibso")
+_input_rebinder_prefab = ExtResource("3_crgbu")
+
+[node name="Labels" type="HBoxContainer" parent="." index="0"]
+layout_mode = 2
+alignment = 1
+
+[node name="ActionLabel" type="Label" parent="Labels" index="0"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Action"
+vertical_alignment = 1
+
+[node name="RebindLabel" type="Label" parent="Labels" index="1"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Rebind"
+vertical_alignment = 1
+
+[node name="RebindersContainer" type="VBoxContainer" parent="." index="1"]
+layout_mode = 2
+size_flags_vertical = 3

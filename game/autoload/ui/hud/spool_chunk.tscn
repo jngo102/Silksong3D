@@ -74,7 +74,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.0001, 0.0002),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [ExtResource("28_vadt3"), ExtResource("21_n2blw"), ExtResource("1_486hx")]
+"values": [ExtResource("28_vadt3"), ExtResource("21_n2blw"), ExtResource("28_vadt3")]
 }
 
 [sub_resource type="Animation" id="Animation_mwo77"]
@@ -369,7 +369,7 @@ states/Start/position = Vector2(25, 100.515625)
 "states/Up 3/node" = SubResource("AnimationNodeAnimation_8uthk")
 "states/Up 3/position" = Vector2(354.75, 208)
 transitions = ["Up 1", "Idle 1", SubResource("AnimationNodeStateMachineTransition_mwo77"), "Up 2", "Idle 2", SubResource("AnimationNodeStateMachineTransition_l5uue"), "Up 3", "Idle 3", SubResource("AnimationNodeStateMachineTransition_oak7l"), "Idle 1", "Down", SubResource("AnimationNodeStateMachineTransition_f8blb"), "Idle 2", "Down", SubResource("AnimationNodeStateMachineTransition_bus3q"), "Idle 3", "Down", SubResource("AnimationNodeStateMachineTransition_jqaos"), "Down", "Empty", SubResource("AnimationNodeStateMachineTransition_yjg4h"), "Empty", "Up 1", SubResource("AnimationNodeStateMachineTransition_lsysk"), "Empty", "Up 2", SubResource("AnimationNodeStateMachineTransition_abwgl"), "Empty", "Up 3", SubResource("AnimationNodeStateMachineTransition_w4me3"), "Start", "Empty", SubResource("AnimationNodeStateMachineTransition_dcucb"), "Idle 1", "Glow 1", SubResource("AnimationNodeStateMachineTransition_1uvjq"), "Idle 2", "Glow 2", SubResource("AnimationNodeStateMachineTransition_eicd4"), "Idle 3", "Glow 3", SubResource("AnimationNodeStateMachineTransition_k4h4q"), "Glow 1", "Idle 1", SubResource("AnimationNodeStateMachineTransition_vadt3"), "Glow 2", "Idle 2", SubResource("AnimationNodeStateMachineTransition_8uthk"), "Glow 3", "Idle 3", SubResource("AnimationNodeStateMachineTransition_4oqi5"), "Glow 3", "Down", SubResource("AnimationNodeStateMachineTransition_g3kqu"), "Glow 2", "Down", SubResource("AnimationNodeStateMachineTransition_j071y"), "Glow 1", "Down", SubResource("AnimationNodeStateMachineTransition_7fe7y")]
-graph_offset = Vector2(89, -61)
+graph_offset = Vector2(139, -5)
 
 [node name="SpoolChunk" type="TextureRect"]
 anchors_preset = 8

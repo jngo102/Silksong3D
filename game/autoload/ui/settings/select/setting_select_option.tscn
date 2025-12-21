@@ -1,0 +1,129 @@
+[gd_scene load_steps=10 format=3 uid="uid://c5gl82w6sfw7u"]
+
+[ext_resource type="Script" uid="uid://crj34uf8gwfdm" path="res://game/autoload/ui/settings/select/setting_select_option.gd" id="1_mm8hr"]
+[ext_resource type="Texture2D" uid="uid://jwcwo1mx6npv" path="res://game/copyrighted/textures/ui/cursor/main_menu_cursor_small0010.png" id="1_yymqk"]
+[ext_resource type="Texture2D" uid="uid://doae76pq54ce8" path="res://game/copyrighted/textures/ui/cursor/main_menu_cursor_small0006.png" id="2_85s6n"]
+[ext_resource type="Texture2D" uid="uid://1qk6diuy221g" path="res://game/copyrighted/textures/ui/cursor/main_menu_cursor_small0007.png" id="3_kkux7"]
+[ext_resource type="Texture2D" uid="uid://bdehk65tbfwt4" path="res://game/copyrighted/textures/ui/cursor/main_menu_cursor_small0008.png" id="4_04g3p"]
+[ext_resource type="Texture2D" uid="uid://cefhdmryoaw1o" path="res://game/copyrighted/textures/ui/cursor/main_menu_cursor_small0009.png" id="5_p4cfh"]
+
+[sub_resource type="Animation" id="Animation_o6r1b"]
+resource_name = "Focus"
+length = 0.125
+step = 0.025
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Select/LeftArrow:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.025, 0.05, 0.075, 0.1, 0.125),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [null, ExtResource("2_85s6n"), ExtResource("3_kkux7"), ExtResource("4_04g3p"), ExtResource("5_p4cfh"), ExtResource("1_yymqk")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Select/RightArrow:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.025, 0.05, 0.075, 0.1, 0.125),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [null, ExtResource("2_85s6n"), ExtResource("3_kkux7"), ExtResource("4_04g3p"), ExtResource("5_p4cfh"), ExtResource("1_yymqk")]
+}
+
+[sub_resource type="Animation" id="Animation_l3baq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Select/LeftArrow:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_yymqk")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Select/RightArrow:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_yymqk")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0wg0m"]
+_data = {
+&"Focus": SubResource("Animation_o6r1b"),
+&"RESET": SubResource("Animation_l3baq")
+}
+
+[node name="SettingSelectOption" type="Button"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+flat = true
+script = ExtResource("1_mm8hr")
+
+[node name="Animator" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_0wg0m")
+}
+
+[node name="Select" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="LeftArrow" type="TextureRect" parent="Select"]
+layout_mode = 2
+size_flags_horizontal = 8
+texture = ExtResource("1_yymqk")
+stretch_mode = 5
+
+[node name="Contents" type="HBoxContainer" parent="Select"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SettingLabel" type="Label" parent="Select/Contents"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Setting"
+vertical_alignment = 1
+
+[node name="ValueLabel" type="Label" parent="Select/Contents"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Value"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="RightArrow" type="TextureRect" parent="Select"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("1_yymqk")
+stretch_mode = 5
+flip_h = true
+
+[connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
+[connection signal="focus_exited" from="." to="." method="_on_focus_exited"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]

@@ -1,6 +1,7 @@
 class_name PlayerHSM extends LimboHSM
 
 const ATTACK_EVENT: StringName = "attack"
+const BIG_DAMAGE_EVENT: StringName = "big damage"
 const BIND_EVENT: StringName = "bind"
 const DAMAGE_EVENT: StringName = "damage"
 const DASH_EVENT: StringName = "dash"
@@ -31,26 +32,15 @@ const STOP_EVENT: StringName = "stop"
 
 func _ready() -> void:
 	await _player.ready
-	_assign_events()
 	_add_transitions()
 	_reset()
-
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed(&"Bind") and \
-	_player.spool_manager.current_silk >= _player.spool_manager.bind_silk and \
-	get_active_state() != bind_state:
-		change_active_state(bind_state)
-
-func _assign_events() -> void:
-	_player.health.took_damage.connect(func(damager: Damager):
-		if damager.damage_amount == 1:
-			change_active_state(normal_recoil_state)
-		elif damager.damage_amount > 1:
-			change_active_state(big_recoil_state))
 
 func _add_transitions() -> void:
 	add_transition(ANYSTATE, air_dash_state, DASH_EVENT)
 	add_transition(ANYSTATE, attack_choice_state, ATTACK_EVENT)
+	add_transition(ANYSTATE, big_recoil_state, BIG_DAMAGE_EVENT)
+	add_transition(ANYSTATE, bind_state, BIND_EVENT)
+	add_transition(ANYSTATE, normal_recoil_state, DAMAGE_EVENT)
 
 	add_transition(attack_choice_state, down_spike_state, DASH_EVENT)
 	add_transition(attack_choice_state, slash_state, ATTACK_EVENT)
@@ -59,8 +49,10 @@ func _add_transitions() -> void:
 	add_transition(air_dash_state, fall_state, EVENT_FINISHED)
 	
 	add_transition(big_recoil_state, idle_state, EVENT_FINISHED)
+	big_recoil_state.set_guard(big_recoil_state.can_enter)
 	
 	add_transition(bind_state, idle_state, EVENT_FINISHED)
+	bind_state.set_guard(bind_state.can_enter)
 	
 	add_transition(down_spike_state, down_spike_bounce_state, HIT_EVENT)
 	add_transition(down_spike_state, fall_state, EVENT_FINISHED)
@@ -88,6 +80,7 @@ func _add_transitions() -> void:
 	add_transition(land_state, walk_state, MOVE_EVENT)
 	
 	add_transition(normal_recoil_state, idle_state, EVENT_FINISHED)
+	normal_recoil_state.set_guard(normal_recoil_state.can_enter)
 
 	add_transition(slash_state, idle_state, EVENT_FINISHED)
 

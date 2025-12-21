@@ -1,4 +1,4 @@
-[gd_resource type="BehaviorTree" load_steps=1019 format=3 uid="uid://chh6lvoe5ufr8"]
+[gd_resource type="BehaviorTree" load_steps=1013 format=3 uid="uid://chh6lvoe5ufr8"]
 
 [ext_resource type="Script" uid="uid://dfxh5qmwucb7e" path="res://game/ai/tasks/scene/get_first_in_group.gd" id="1_lkiki"]
 [ext_resource type="Script" uid="uid://oufr1n61rgt6" path="res://game/ai/tasks/audio/get_current_music_player.gd" id="3_ngxa6"]
@@ -36,7 +36,6 @@
 [ext_resource type="Script" uid="uid://d03jex37smyoc" path="res://game/ai/tasks/logic/kill_tween.gd" id="22_dphll"]
 [ext_resource type="AudioStream" uid="uid://dvdperp7jn1qi" path="res://game/copyrighted/cogwork_dancers/sfx/CogD_attack_large_04.wav" id="22_e8anh"]
 [ext_resource type="AudioStream" uid="uid://dkqjngri23cmb" path="res://game/copyrighted/cogwork_dancers/sfx/clockwork_dancer_look_up_after_bow.wav" id="26_mdpca"]
-[ext_resource type="Script" uid="uid://br84132pv8riw" path="res://game/ai/tasks/actors/shake_camera.gd" id="30_3b8xs"]
 [ext_resource type="AudioStream" uid="uid://huqy8mpc427n" path="res://game/copyrighted/cogwork_dancers/sfx/clockwork_dancers_halo.wav" id="30_drhsk"]
 [ext_resource type="AudioStream" uid="uid://ci01hprg2606n" path="res://game/copyrighted/cogwork_dancers/sfx/clockwork_dancers_halov2_1.wav" id="31_877ps"]
 [ext_resource type="AudioStream" uid="uid://dhqe1gm1b00fp" path="res://game/copyrighted/cogwork_dancers/sfx/clockwork_dancers_halov2_2.wav" id="32_tfrvw"]
@@ -1526,32 +1525,6 @@ animation_player = SubResource("BBNode_kk73g")
 animation_name = &"Catch"
 blend = 0.05
 
-[sub_resource type="BBVariant" id="BBVariant_8hf8u"]
-type = 3
-saved_value = 2.0
-resource_name = "2.0"
-
-[sub_resource type="BBVariant" id="BBVariant_4mpcf"]
-type = 3
-saved_value = 1.0
-resource_name = "1.0"
-
-[sub_resource type="BBVariant" id="BBVariant_3arx4"]
-saved_value = null
-resource_name = "<null>"
-
-[sub_resource type="BBVariant" id="BBVariant_54t1i"]
-type = 1
-saved_value = true
-resource_name = "true"
-
-[sub_resource type="BTAction" id="BTAction_nniyr"]
-script = ExtResource("30_3b8xs")
-shake_amount_var = SubResource("BBVariant_8hf8u")
-shake_duration_var = SubResource("BBVariant_4mpcf")
-shake_in_place_var = SubResource("BBVariant_3arx4")
-shake_taper_off_var = SubResource("BBVariant_54t1i")
-
 [sub_resource type="BTAction" id="BTAction_x3uvo"]
 script = ExtResource("9_mmu5o")
 target_var = &"self"
@@ -1729,7 +1702,7 @@ children = [SubResource("BTSequence_877ps"), SubResource("BTSequence_1iok6")]
 
 [sub_resource type="BTSequence" id="BTSequence_kk73g"]
 custom_name = "Spin At Center"
-children = [SubResource("BTAction_efeba"), SubResource("BTAction_42gir"), SubResource("BTPlayAnimation_maqif"), SubResource("BTAction_nniyr"), SubResource("BTAction_x3uvo"), SubResource("BTCallMethod_g5k6k"), SubResource("BTSelector_ms6i8")]
+children = [SubResource("BTAction_efeba"), SubResource("BTAction_42gir"), SubResource("BTPlayAnimation_maqif"), SubResource("BTAction_x3uvo"), SubResource("BTCallMethod_g5k6k"), SubResource("BTSelector_ms6i8")]
 
 [sub_resource type="BBVariant" id="BBVariant_odpkm"]
 type = 2

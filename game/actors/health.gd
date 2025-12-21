@@ -20,6 +20,10 @@ signal died(actor: Actor)
 
 @onready var current_health: int = max_health
 
+var is_dead: bool:
+	get:
+		return current_health <= 0
+
 var _invincibility_timer: float = -INF
 
 func _process(delta: float) -> void:
@@ -58,8 +62,8 @@ func set_invincible(be_invincible: bool = true, duration: float = damage_invinci
 		_invincible = false
 
 func heal(amount: int) -> void:
-	current_health += amount
-	healed.emit(amount)
+	current_health = min(current_health + amount, max_health)
+	healed.emit(current_health)
 
 func _die() -> void:
 	set_invincible(true, 0)

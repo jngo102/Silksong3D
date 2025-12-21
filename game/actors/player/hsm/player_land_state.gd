@@ -5,7 +5,8 @@ class_name PlayerLandState extends PlayerState
 func _enter() -> void:
 	play_anim(_land_animation_name)
 
-func _update(_delta: float) -> void:
+func _update(delta: float) -> void:
+	super._update(delta)
 	var move_vector: Vector2 = Input.get_vector(&"ui_left", &"ui_right", &"ui_up", &"ui_down")
 	if move_vector.length() > 0:
 		if Input.is_action_pressed(&"Dash"):
