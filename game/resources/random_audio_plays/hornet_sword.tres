@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="RandomAudioPlay" load_steps=7 format=3 uid="uid://b7ygtsgt5ridg"]
+
+[ext_resource type="AudioStream" uid="uid://bwqc1jwbhriag" path="res://game/copyrighted/sfx/hornet/attacks/sword/hornet_sword_1.wav" id="1_cddss"]
+[ext_resource type="Script" uid="uid://d2a87b3tfbpuf" path="res://game/autoload/audio/random_audio_play.gd" id="1_tveun"]
+[ext_resource type="AudioStream" uid="uid://1cdg7xxi3uap" path="res://game/copyrighted/sfx/hornet/attacks/sword/hornet_sword_2.wav" id="2_x2ea4"]
+[ext_resource type="AudioStream" uid="uid://yeulv1c44i83" path="res://game/copyrighted/sfx/hornet/attacks/sword/hornet_sword_3.wav" id="3_ph7uj"]
+[ext_resource type="AudioStream" uid="uid://bxw10x3gt4xjo" path="res://game/copyrighted/sfx/hornet/attacks/sword/hornet_sword_4.wav" id="4_46h1u"]
+[ext_resource type="AudioStream" uid="uid://bulkaeyygmwsi" path="res://game/copyrighted/sfx/hornet/attacks/sword/hornet_sword_5.wav" id="5_8ku6n"]
+
+[resource]
+script = ExtResource("1_tveun")
+clips = Array[AudioStream]([ExtResource("1_cddss"), ExtResource("2_x2ea4"), ExtResource("3_ph7uj"), ExtResource("4_46h1u"), ExtResource("5_8ku6n")])
+metadata/_custom_type_script = "uid://d2a87b3tfbpuf"

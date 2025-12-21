@@ -1,11 +1,10 @@
-class_name PlayerDownSpikeState extends PlayerAirState
+class_name PlayerDownSpikeState extends PlayerAttackState
 
 @export var _down_spike_transition_tree: AnimationTree
 @export var _down_spike_antic_animation_name: StringName = &"Down Spike Antic"
 @export var _down_spike_speed: float = 120
 @export var _needle: Needle
 @export var _needle_animator: AnimationPlayer
-@export var _attack_voice_clips: RandomAudioPlay
 @export var _down_spike_time: float = 0.25
 
 var _original_gravity_scale: float
@@ -36,15 +35,16 @@ func _update(delta: float) -> void:
 	elif _player.is_on_floor():
 		send_event(_hsm.LAND_EVENT)
 
-func _down_spike() -> void:
+func _attack() -> void:
 	var down_spike_direction: Vector3 = -_player.camera_controller.camera.global_basis.z.normalized()
+	_attack_effect_clips.play_random(_player.global_position)
 	_player.look_at(_player.global_position + down_spike_direction)
 	_player.velocity = down_spike_direction * _down_spike_speed
 
 func _on_animation_finish(anim_name: StringName) -> void:
 	match anim_name:
 		_down_spike_antic_animation_name:
-			_down_spike()
+			_attack()
 
 func _on_needle_down_spiked() -> void:
 	send_event(_hsm.HIT_EVENT)

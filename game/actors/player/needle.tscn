@@ -316,7 +316,7 @@ skeleton = NodePath("")
 transform = Transform3D(1.3333349, 0, 0, 0, -5.82819e-08, -1.3333347, 0, 1.3333344, -5.828191e-08, 0, 0, 0)
 collision_layer = 8
 collision_mask = 2
-damage_amount = 5
+damage_amount = 9
 
 [node name="Collision" parent="Mesh/DownSpikeDamager" index="0"]
 transform = Transform3D(0.9999995, -1.5795231e-06, -7.56979e-06, 4.4703484e-07, 0.99999905, -1.2218952e-06, -4.4703484e-07, 1.0728836e-06, 0.99999774, 0, 2, 0)
@@ -327,8 +327,9 @@ disabled = true
 transform = Transform3D(1.1804705, -0.41108325, 0, 0.35600856, 1.0223173, 0.625, -0.20554164, -0.5902352, 1.0825317, 0, 2.2247343, 0)
 
 [node name="SlashEffectDamager" parent="SlashEffect" index="0"]
+transform = Transform3D(0.45452914, -0.32446226, 0.57282436, -0.19439709, 0.5989014, 0.4934845, -0.62897813, -0.41957295, 0.2614294, -0.5068957, -1.4556062, -0.8898939)
 collision_mask = 2
-damage_amount = 5
+damage_amount = 9
 
 [connection signal="area_entered" from="Mesh/DownSpikeDamager" to="." method="_on_down_spike_damager_area_entered"]
 

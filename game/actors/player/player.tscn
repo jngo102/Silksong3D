@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://bk5l50c7ma8dr"]
+[gd_scene load_steps=88 format=3 uid="uid://bk5l50c7ma8dr"]
 
 [ext_resource type="PackedScene" uid="uid://36gmo74w6e2q" path="res://game/actors/actor.tscn" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://cyskkgbbkdq4d" path="res://game/actors/player/player.gd" id="2_dw050"]
@@ -18,30 +18,39 @@
 [ext_resource type="AudioStream" uid="uid://c2jcr8h0d2fbo" path="res://game/copyrighted/sfx/hornet/hurt/big/w_big_05.wav" id="8_i15os"]
 [ext_resource type="AudioStream" uid="uid://dmwfc0eeacvhl" path="res://game/copyrighted/sfx/hornet/hurt/normal/w6.wav" id="8_m4n5g"]
 [ext_resource type="AudioStream" uid="uid://bxtfhmkcfit05" path="res://game/copyrighted/sfx/hornet/hurt/big/w_big_06.wav" id="9_1svlo"]
+[ext_resource type="PackedScene" uid="uid://i1sx7x4dnk6g" path="res://game/actors/player/bind_silk.glb" id="9_3luqa"]
 [ext_resource type="AudioStream" uid="uid://d264e8o4xp383" path="res://game/copyrighted/sfx/hornet/hurt/normal/w7.wav" id="9_6o7jk"]
 [ext_resource type="AudioStream" uid="uid://cwsuddb6nmww2" path="res://game/copyrighted/sfx/hornet/hurt/big/w_big_07.wav" id="10_a20ea"]
 [ext_resource type="AudioStream" uid="uid://dl40sgxvlqprh" path="res://game/copyrighted/sfx/hornet/hurt/big/w_big_08.wav" id="11_b3c30"]
+[ext_resource type="Script" uid="uid://ct0yv2545p47f" path="res://game/actors/player/hsm/player_bind_state.gd" id="11_ihiqv"]
 [ext_resource type="AudioStream" uid="uid://d008win7xhh1q" path="res://game/copyrighted/sfx/hornet/hurt/big/w_big_09.wav" id="12_2vult"]
+[ext_resource type="AudioStream" uid="uid://libnk3xrvcwv" path="res://game/copyrighted/sfx/hornet/bind/bind1.wav" id="13_4y8h1"]
 [ext_resource type="Script" uid="uid://d2a87b3tfbpuf" path="res://game/autoload/audio/random_audio_play.gd" id="13_41lfd"]
+[ext_resource type="PackedScene" uid="uid://chmkw4fhny3w0" path="res://game/actors/player/effects/bind_break_effect.tscn" id="13_s8joe"]
 [ext_resource type="PackedScene" uid="uid://kbm2v33787ln" path="res://game/actors/player/effects/combat/double_damage_hit_effect.tscn" id="14_cxuv5"]
+[ext_resource type="AudioStream" uid="uid://l8y0oep47g7o" path="res://game/copyrighted/sfx/hornet/bind/bind2.wav" id="14_s8joe"]
+[ext_resource type="AudioStream" uid="uid://clwvnapdvvi8i" path="res://game/copyrighted/sfx/hornet/bind/bind3.wav" id="15_xrjoj"]
+[ext_resource type="AudioStream" uid="uid://gwuf8liy31vq" path="res://game/copyrighted/sfx/hornet/bind/bind4.wav" id="16_cm075"]
 [ext_resource type="PackedScene" uid="uid://b0wa350b6fbky" path="res://game/actors/player/player_corpse.tscn" id="21_2vult"]
+[ext_resource type="Resource" uid="uid://b7ygtsgt5ridg" path="res://game/resources/random_audio_plays/hornet_sword.tres" id="25_bu7in"]
 [ext_resource type="Script" uid="uid://bb0is11tgytjf" path="res://game/actors/player/hsm/player_hsm.gd" id="28_4s16b"]
-[ext_resource type="Script" uid="uid://cw88wf5nha71c" path="res://game/actors/player/hsm/player_idle_state.gd" id="28_41lfd"]
+[ext_resource type="Script" uid="uid://cw88wf5nha71c" path="res://game/actors/player/hsm/ground/player_idle_state.gd" id="28_41lfd"]
 [ext_resource type="AudioStream" uid="uid://ddbqt2eobg7lk" path="res://game/copyrighted/sfx/hornet/hornet_umbrella_open.wav" id="29_0g54q"]
-[ext_resource type="Script" uid="uid://cb1gvirhlrd0s" path="res://game/actors/player/hsm/player_air_dash_state.gd" id="29_0nwbe"]
-[ext_resource type="Script" uid="uid://b81s5wnls83xg" path="res://game/actors/player/hsm/player_down_spike_state.gd" id="29_3do8f"]
-[ext_resource type="Script" uid="uid://cmwcth7t73nqf" path="res://game/actors/player/hsm/player_fall_state.gd" id="29_6o7jk"]
-[ext_resource type="Script" uid="uid://bi770lhrtsav7" path="res://game/actors/player/hsm/player_attack_choice_state.gd" id="29_qsypv"]
-[ext_resource type="Script" uid="uid://b8ev8xjwihh7o" path="res://game/actors/player/hsm/player_down_spike_bounce_state.gd" id="30_0fe1s"]
-[ext_resource type="Script" uid="uid://bcr3l3d0e4ull" path="res://game/actors/player/hsm/player_walk_state.gd" id="30_m4n5g"]
+[ext_resource type="Script" uid="uid://cb1gvirhlrd0s" path="res://game/actors/player/hsm/air/player_air_dash_state.gd" id="29_0nwbe"]
+[ext_resource type="Script" uid="uid://b81s5wnls83xg" path="res://game/actors/player/hsm/attack/player_down_spike_state.gd" id="29_3do8f"]
+[ext_resource type="Script" uid="uid://cmwcth7t73nqf" path="res://game/actors/player/hsm/air/player_fall_state.gd" id="29_6o7jk"]
+[ext_resource type="Script" path="res://game/actors/player/hsm/attack/player_attack_choice_state.gd" id="29_qsypv"]
+[ext_resource type="Script" uid="uid://b8ev8xjwihh7o" path="res://game/actors/player/hsm/attack/player_down_spike_bounce_state.gd" id="30_0fe1s"]
+[ext_resource type="Script" uid="uid://bcr3l3d0e4ull" path="res://game/actors/player/hsm/ground/player_walk_state.gd" id="30_m4n5g"]
 [ext_resource type="Script" uid="uid://bu14sq8r2akpw" path="res://game/actors/player/hsm/player_land_state.gd" id="31_5qatl"]
-[ext_resource type="Script" uid="uid://cenn07tpfvg3y" path="res://game/actors/player/hsm/player_jump_state.gd" id="31_747sf"]
-[ext_resource type="Script" uid="uid://bc7x2sxl1h4on" path="res://game/actors/player/hsm/player_float_state.gd" id="31_lje7i"]
+[ext_resource type="Script" uid="uid://cenn07tpfvg3y" path="res://game/actors/player/hsm/air/player_jump_state.gd" id="31_747sf"]
+[ext_resource type="Script" uid="uid://bc7x2sxl1h4on" path="res://game/actors/player/hsm/air/player_float_state.gd" id="31_lje7i"]
 [ext_resource type="Script" uid="uid://oygm1ss7hq70" path="res://game/actors/player/hsm/player_recoil_state.gd" id="34_7c4js"]
-[ext_resource type="Script" uid="uid://b7qalgo6bnnuf" path="res://game/actors/player/hsm/player_sprint_jump_state.gd" id="36_6xo6p"]
-[ext_resource type="Script" uid="uid://cm1b6ilbs3rx" path="res://game/actors/player/hsm/player_sprint_state.gd" id="37_6xo6p"]
+[ext_resource type="Script" uid="uid://b7qalgo6bnnuf" path="res://game/actors/player/hsm/air/player_sprint_jump_state.gd" id="36_6xo6p"]
+[ext_resource type="Script" uid="uid://cm1b6ilbs3rx" path="res://game/actors/player/hsm/ground/player_sprint_state.gd" id="37_6xo6p"]
 [ext_resource type="Resource" uid="uid://7dldya6ii04d" path="res://game/resources/random_audio_plays/hornet_normal_attack.tres" id="38_0g54q"]
-[ext_resource type="Script" uid="uid://bccpsuvklwdjh" path="res://game/actors/player/hsm/player_slash_state.gd" id="38_d4m7k"]
+[ext_resource type="Script" uid="uid://bccpsuvklwdjh" path="res://game/actors/player/hsm/attack/player_slash_state.gd" id="38_d4m7k"]
+[ext_resource type="PackedScene" uid="uid://cwc5xgupucvyt" path="res://game/actors/player/effects/combat/player_hit_effect.tscn" id="40_rsjix"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_n7ghd"]
 radius = 0.25
@@ -195,6 +204,75 @@ blend_point_3/pos = Vector2(-1, 0)
 blend_point_4/node = SubResource("AnimationNodeAnimation_0fe1s")
 blend_point_4/pos = Vector2(0, 0)
 
+[sub_resource type="Animation" id="Animation_s8joe"]
+resource_name = "Bind"
+length = 0.25
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BindParticles")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [false],
+"method": &"restart"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BindLight:light_energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [192.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_xrjoj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BindLight:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xrjoj"]
+_data = {
+&"Bind": SubResource("Animation_s8joe"),
+&"RESET": SubResource("Animation_xrjoj")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4y8h1"]
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_s8joe"]
+material = SubResource("StandardMaterial3D_4y8h1")
+radial_segments = 8
+rings = 16
+
+[sub_resource type="Curve" id="Curve_xrjoj"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.7945561, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_k1elb"]
+script = ExtResource("13_41lfd")
+clips = Array[AudioStream]([ExtResource("13_4y8h1"), ExtResource("14_s8joe"), ExtResource("15_xrjoj"), ExtResource("16_cm075")])
+metadata/_custom_type_script = "uid://d2a87b3tfbpuf"
+
 [sub_resource type="Resource" id="Resource_qsypv"]
 script = ExtResource("13_41lfd")
 clips = Array[AudioStream]([ExtResource("4_fxn5h"), ExtResource("5_cxuv5"), ExtResource("6_qq66o"), ExtResource("7_x4qyq"), ExtResource("8_i15os"), ExtResource("9_1svlo"), ExtResource("10_a20ea"), ExtResource("11_b3c30"), ExtResource("12_2vult")])
@@ -230,6 +308,7 @@ shape = SubResource("CapsuleShape3D_n7ghd")
 
 [node name="Health" parent="." index="2" node_paths=PackedStringArray("damage_particles")]
 collision_mask = 16
+damage_invincibility_time = 1.0
 damage_particles = []
 
 [node name="Death" parent="." index="3"]
@@ -664,9 +743,6 @@ transform = Transform3D(0.05756265, -0.6894976, -0.28944778, 0.66983694, 0.17659
 [node name="Collision" parent="Model/Armature/Skeleton3D/NeedleAttach/Needle/Mesh/DownSpikeDamager" index="0"]
 transform = Transform3D(0.9999996, -1.5795231e-06, -7.584691e-06, 4.172325e-07, 0.99999905, -1.1920929e-06, -4.4703484e-07, 1.0728836e-06, 0.9999977, -0.0094542205, 2.0044737, 0.0029330254)
 
-[node name="SlashEffectDamager" parent="Model/Armature/Skeleton3D/NeedleAttach/Needle/SlashEffect" index="0"]
-transform = Transform3D(0.45452914, -0.32446226, 0.57282436, -0.19439709, 0.5989014, 0.4934845, -0.62897813, -0.41957295, 0.2614294, -0.5068957, -1.4556062, -0.8898939)
-
 [node name="AnimationPlayer" parent="Model" index="1"]
 autoplay = "Idle"
 
@@ -695,7 +771,39 @@ tree_root = SubResource("AnimationNodeBlendSpace2D_0fe1s")
 anim_player = NodePath("..")
 parameters/blend_position = Vector2(0, 0)
 
-[node name="PlayerHSM" type="LimboHSM" parent="." index="7"]
+[node name="Bind" type="Node3D" parent="." index="7"]
+
+[node name="BindAnimator" type="AnimationPlayer" parent="Bind" index="0"]
+libraries = {
+&"": SubResource("AnimationLibrary_xrjoj")
+}
+
+[node name="BindLight" type="OmniLight3D" parent="Bind" index="1"]
+light_energy = 0.0
+omni_range = 16.0
+
+[node name="BindParticles" type="CPUParticles3D" parent="Bind" index="2"]
+emitting = false
+amount = 256
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+mesh = SubResource("SphereMesh_s8joe")
+direction = Vector3(0, 0, 0)
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 24.0
+initial_velocity_max = 48.0
+damping_min = 64.0
+damping_max = 64.0
+scale_amount_min = 0.5
+scale_amount_curve = SubResource("Curve_xrjoj")
+
+[node name="BindSilk" parent="Bind" index="3" instance=ExtResource("9_3luqa")]
+visible = false
+
+[node name="PlayerHSM" type="LimboHSM" parent="." index="8"]
 update_mode = 0
 script = ExtResource("28_4s16b")
 
@@ -703,19 +811,29 @@ script = ExtResource("28_4s16b")
 script = ExtResource("29_0nwbe")
 _spin_speed = 1080.0
 
-[node name="BigRecoilState" type="LimboState" parent="PlayerHSM" index="1"]
+[node name="BindState" type="LimboState" parent="PlayerHSM" index="1" node_paths=PackedStringArray("_bind_effect", "_bind_animator")]
+script = ExtResource("11_ihiqv")
+_bind_effect = NodePath("../../Bind/BindSilk")
+_bind_animator = NodePath("../../Bind/BindAnimator")
+_bind_spin_speed = 720.0
+_bind_time = 1.0
+_bind_voice_clips = SubResource("Resource_k1elb")
+
+[node name="BigRecoilState" type="LimboState" parent="PlayerHSM" index="2"]
 script = ExtResource("34_7c4js")
 _hurt_voice_clips = SubResource("Resource_qsypv")
 _damage_effect_prefab = ExtResource("14_cxuv5")
+_bind_break_effect_prefab = ExtResource("13_s8joe")
 
-[node name="DownSpikeState" type="LimboState" parent="PlayerHSM" index="2" node_paths=PackedStringArray("_down_spike_transition_tree", "_needle", "_needle_animator")]
+[node name="DownSpikeState" type="LimboState" parent="PlayerHSM" index="3" node_paths=PackedStringArray("_down_spike_transition_tree", "_needle", "_needle_animator")]
 script = ExtResource("29_3do8f")
 _down_spike_transition_tree = NodePath("../../Model/AnimationPlayer/DownSpikeTransition")
 _needle = NodePath("../../Model/Armature/Skeleton3D/NeedleAttach/Needle")
 _needle_animator = NodePath("../../Model/Armature/Skeleton3D/NeedleAttach/Needle/Animator")
 _attack_voice_clips = ExtResource("38_0g54q")
+_attack_effect_clips = ExtResource("25_bu7in")
 
-[node name="DownSpikeBounceState" type="LimboState" parent="PlayerHSM" index="3" node_paths=PackedStringArray("_needle_animator")]
+[node name="DownSpikeBounceState" type="LimboState" parent="PlayerHSM" index="4" node_paths=PackedStringArray("_needle_animator")]
 script = ExtResource("30_0fe1s")
 _spin_speeds = Dictionary[int, float]({
 1: 1080.0,
@@ -724,51 +842,53 @@ _spin_speeds = Dictionary[int, float]({
 _down_spike_bounce_speed = 60.0
 _needle_animator = NodePath("../../Model/Armature/Skeleton3D/NeedleAttach/Needle/Animator")
 
-[node name="AttackChoiceState" type="LimboState" parent="PlayerHSM" index="4"]
+[node name="AttackChoiceState" type="LimboState" parent="PlayerHSM" index="5"]
 script = ExtResource("29_qsypv")
 
-[node name="FallState" type="LimboState" parent="PlayerHSM" index="5"]
+[node name="FallState" type="LimboState" parent="PlayerHSM" index="6"]
 script = ExtResource("29_6o7jk")
 _fall_animation_name = &"Fall"
 
-[node name="FloatState" type="LimboState" parent="PlayerHSM" index="6" node_paths=PackedStringArray("_cloak_animator", "_float_transition_tree")]
+[node name="FloatState" type="LimboState" parent="PlayerHSM" index="7" node_paths=PackedStringArray("_cloak_animator", "_float_transition_tree")]
 script = ExtResource("31_lje7i")
 _cloak_animator = NodePath("../../Model/Armature/Skeleton3D/CloakAttach/CloakAnimator")
 _float_transition_tree = NodePath("../../Model/AnimationPlayer/FloatTransition")
 _float_start_clip = ExtResource("29_0g54q")
 
-[node name="IdleState" type="LimboState" parent="PlayerHSM" index="7"]
+[node name="IdleState" type="LimboState" parent="PlayerHSM" index="8"]
 script = ExtResource("28_41lfd")
 _idle_animation_name = &"Idle"
 
-[node name="LandState" type="LimboState" parent="PlayerHSM" index="8"]
+[node name="LandState" type="LimboState" parent="PlayerHSM" index="9"]
 script = ExtResource("31_5qatl")
 _land_animation_name = &"Land"
 
-[node name="JumpState" type="LimboState" parent="PlayerHSM" index="9"]
+[node name="JumpState" type="LimboState" parent="PlayerHSM" index="10"]
 script = ExtResource("31_747sf")
-_jump_height = 32.0
+_jump_height = 28.0
 
-[node name="NormalRecoilState" type="LimboState" parent="PlayerHSM" index="10"]
+[node name="NormalRecoilState" type="LimboState" parent="PlayerHSM" index="11"]
 script = ExtResource("34_7c4js")
 _hurt_voice_clips = SubResource("Resource_0fe1s")
-_damage_effect_prefab = ExtResource("14_cxuv5")
+_damage_effect_prefab = ExtResource("40_rsjix")
+_bind_break_effect_prefab = ExtResource("13_s8joe")
 
-[node name="SlashState" type="LimboState" parent="PlayerHSM" index="11" node_paths=PackedStringArray("_needle_animator")]
+[node name="SlashState" type="LimboState" parent="PlayerHSM" index="12" node_paths=PackedStringArray("_needle_animator")]
 script = ExtResource("38_d4m7k")
 _needle_animator = NodePath("../../Model/Armature/Skeleton3D/NeedleAttach/Needle/Animator")
 _attack_voice_clips = ExtResource("38_0g54q")
+_attack_effect_clips = ExtResource("25_bu7in")
 
-[node name="SprintState" type="LimboState" parent="PlayerHSM" index="12"]
+[node name="SprintState" type="LimboState" parent="PlayerHSM" index="13"]
 script = ExtResource("37_6xo6p")
 
-[node name="SprintJumpState" type="LimboState" parent="PlayerHSM" index="13" node_paths=PackedStringArray("_sprint_jump_transition_tree")]
+[node name="SprintJumpState" type="LimboState" parent="PlayerHSM" index="14" node_paths=PackedStringArray("_sprint_jump_transition_tree")]
 script = ExtResource("36_6xo6p")
 _sprint_jump_transition_tree = NodePath("../../Model/AnimationPlayer/SprintJumpTransition")
-_sprint_jump_height = 28.0
+_sprint_jump_height = 24.0
 _spin_speed = 1440.0
 
-[node name="WalkState" type="LimboState" parent="PlayerHSM" index="14" node_paths=PackedStringArray("_walk_blend_tree")]
+[node name="WalkState" type="LimboState" parent="PlayerHSM" index="15" node_paths=PackedStringArray("_walk_blend_tree")]
 script = ExtResource("30_m4n5g")
 _walk_blend_tree = NodePath("../../Model/AnimationPlayer/WalkBlend")
 

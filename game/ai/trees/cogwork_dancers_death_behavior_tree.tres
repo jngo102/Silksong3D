@@ -1,4 +1,4 @@
-[gd_resource type="BehaviorTree" load_steps=110 format=3 uid="uid://ciko0edbnitaw"]
+[gd_resource type="BehaviorTree" load_steps=114 format=3 uid="uid://ciko0edbnitaw"]
 
 [ext_resource type="Script" uid="uid://dfxh5qmwucb7e" path="res://game/ai/tasks/scene/get_first_in_group.gd" id="1_7k3xq"]
 [ext_resource type="Script" uid="uid://cvw5s3jjrdnkq" path="res://game/ai/tasks/transform/face_target.gd" id="2_tqd6i"]
@@ -125,13 +125,32 @@ shake_in_place_var = SubResource("BBVariant_5s2y7")
 shake_taper_off_var = SubResource("BBVariant_0hmuk")
 
 [sub_resource type="BBVariant" id="BBVariant_twb4b"]
-type = 22
-saved_value = NodePath("Health/Collision")
-resource_name = "Health/Collision"
+type = 1
+saved_value = true
+resource_name = "true"
 
-[sub_resource type="BTAction" id="BTAction_solc0"]
+[sub_resource type="BBVariant" id="BBVariant_73ljc"]
+type = 3
+saved_value = 0.0
+resource_name = "<null>"
+
+[sub_resource type="BBNode" id="BBNode_h8iei"]
+saved_value = NodePath("Health")
+resource_name = "Health"
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_oi7s7"]
+node = SubResource("BBNode_h8iei")
+method = &"set_invincible"
+args = Array[BBVariant]([SubResource("BBVariant_twb4b"), SubResource("BBVariant_73ljc")])
+
+[sub_resource type="BBVariant" id="BBVariant_opc4v"]
+type = 22
+saved_value = NodePath("Damager/Collision")
+resource_name = "Damager/Collision"
+
+[sub_resource type="BTAction" id="BTAction_n133n"]
 script = ExtResource("8_ywbep")
-collider_var = SubResource("BBVariant_twb4b")
+collider_var = SubResource("BBVariant_opc4v")
 
 [sub_resource type="BBNode" id="BBNode_ywbep"]
 saved_value = NodePath("Model/AnimationPlayer")
@@ -163,7 +182,7 @@ duration = 0.5
 
 [sub_resource type="BTSequence" id="BTSequence_nr5y5"]
 custom_name = "Stun"
-children = [SubResource("BTAction_h8iei"), SubResource("BTAction_solc0"), SubResource("BTPlayAnimation_sw5t1"), SubResource("BTPlayAnimation_lyoeb"), SubResource("BTAction_cuinw"), SubResource("BTAction_l2mi2"), SubResource("BTWait_2elll")]
+children = [SubResource("BTAction_h8iei"), SubResource("BTCallMethod_oi7s7"), SubResource("BTAction_n133n"), SubResource("BTPlayAnimation_sw5t1"), SubResource("BTPlayAnimation_lyoeb"), SubResource("BTAction_cuinw"), SubResource("BTAction_l2mi2"), SubResource("BTWait_2elll")]
 
 [sub_resource type="BBVariant" id="BBVariant_q5c76"]
 type = 1

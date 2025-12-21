@@ -1,0 +1,152 @@
+[gd_scene load_steps=7 format=3 uid="uid://chmkw4fhny3w0"]
+
+[ext_resource type="AudioStream" uid="uid://bm0sh4vn23enw" path="res://game/copyrighted/sfx/hornet/bind/hornet_bind_break_v2_smeared.wav" id="1_7bkty"]
+
+[sub_resource type="Animation" id="Animation_23gjg"]
+resource_name = "Bind Break"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh:surface_material_override/0:albedo_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mesh:surface_material_override/0:emission")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Mesh:surface_material_override/0:emission_energy_multiplier")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [100.0, 1.0, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Mesh:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(2, 2, 2), Vector3(8, 8, 8)]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_7bkty"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh:surface_material_override/0:albedo_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mesh:surface_material_override/0:emission")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Mesh:surface_material_override/0:emission_energy_multiplier")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [100.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Mesh:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(2, 2, 2)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ei3fp"]
+_data = {
+&"Bind Break": SubResource("Animation_23gjg"),
+&"RESET": SubResource("Animation_7bkty")
+}
+
+[sub_resource type="SphereMesh" id="SphereMesh_5vd40"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_or4wq"]
+transparency = 1
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 100.0
+
+[node name="BindBreakEffect" type="Node3D"]
+
+[node name="Animator" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ei3fp")
+}
+autoplay = "Bind Break"
+
+[node name="BreakAudio" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("1_7bkty")
+unit_size = 64.0
+autoplay = true
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+mesh = SubResource("SphereMesh_5vd40")
+surface_material_override/0 = SubResource("StandardMaterial3D_or4wq")

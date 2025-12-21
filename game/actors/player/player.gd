@@ -38,8 +38,8 @@ func face_direction(direction: Vector3) -> void:
 	direction = direction.rotated(Vector3.UP, camera_controller.global_rotation.y - PI / 2)
 	super.face_direction(direction)
 
-func turn_to_camera(delta: float) -> void:
-	global_rotation.y = lerp_angle(global_rotation.y, camera_controller.global_rotation.y,  delta * 4)
+func turn_to_camera(delta: float, immediate: bool = false) -> void:
+	global_rotation.y = lerp_angle(global_rotation.y, camera_controller.global_rotation.y,  1 if immediate else delta * 4)
 
 func _look_mouse(event: InputEventMouseMotion) -> void:
 	camera_controller.rotation.y -= event.relative.x * get_process_delta_time()

@@ -15,6 +15,7 @@ const STOP_EVENT: StringName = "stop"
 @onready var air_dash_state: PlayerAirDashState = $AirDashState
 @onready var attack_choice_state: PlayerAttackChoiceState = $AttackChoiceState
 @onready var big_recoil_state: PlayerRecoilState = $BigRecoilState
+@onready var bind_state: PlayerBindState = $BindState
 @onready var down_spike_state: PlayerDownSpikeState = $DownSpikeState
 @onready var down_spike_bounce_state: PlayerDownSpikeBounceState = $DownSpikeBounceState
 @onready var fall_state: PlayerFallState = $FallState
@@ -34,6 +35,12 @@ func _ready() -> void:
 	_add_transitions()
 	_reset()
 
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed(&"Bind") and \
+	_player.spool_manager.current_silk >= _player.spool_manager.bind_silk and \
+	get_active_state() != bind_state:
+		change_active_state(bind_state)
+
 func _assign_events() -> void:
 	_player.health.took_damage.connect(func(damager: Damager):
 		if damager.damage_amount == 1:
@@ -52,6 +59,8 @@ func _add_transitions() -> void:
 	add_transition(air_dash_state, fall_state, EVENT_FINISHED)
 	
 	add_transition(big_recoil_state, idle_state, EVENT_FINISHED)
+	
+	add_transition(bind_state, idle_state, EVENT_FINISHED)
 	
 	add_transition(down_spike_state, down_spike_bounce_state, HIT_EVENT)
 	add_transition(down_spike_state, fall_state, EVENT_FINISHED)

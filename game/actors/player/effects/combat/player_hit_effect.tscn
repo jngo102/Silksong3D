@@ -1,8 +1,7 @@
-[gd_scene load_steps=21 format=3 uid="uid://kbm2v33787ln"]
+[gd_scene load_steps=17 format=3 uid="uid://cwc5xgupucvyt"]
 
-[ext_resource type="Script" uid="uid://dj5upywmu1hm2" path="res://game/actors/random_audio_player.gd" id="1_avddw"]
-[ext_resource type="AudioStream" uid="uid://ctmkvdqifldlv" path="res://game/copyrighted/sfx/hornet/hurt/big/hero_double_damage_1.wav" id="2_ssa7n"]
-[ext_resource type="AudioStream" uid="uid://copyiqb4snuu5" path="res://game/copyrighted/sfx/hornet/hurt/big/hero_double_damage_2.wav" id="3_bctpt"]
+[ext_resource type="Script" uid="uid://dj5upywmu1hm2" path="res://game/actors/random_audio_player.gd" id="1_hr7f7"]
+[ext_resource type="AudioStream" uid="uid://bqqnmgh6gml0o" path="res://game/copyrighted/sfx/hornet/hurt/normal/hero_damage_less_harsh.wav" id="2_w2dfj"]
 
 [sub_resource type="Animation" id="Animation_fh0ll"]
 resource_name = "Hit"
@@ -121,7 +120,7 @@ _data = {
 &"RESET": SubResource("Animation_o0856")
 }
 
-[sub_resource type="SphereMesh" id="SphereMesh_nt6bl"]
+[sub_resource type="SphereMesh" id="SphereMesh_3hqh3"]
 
 [sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_avddw"]
 
@@ -131,13 +130,13 @@ interpolation_mode = 2
 offsets = PackedFloat32Array(0, 0.8005865, 0.9985337, 1)
 colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_x30sm"]
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mcsty"]
 gradient = SubResource("Gradient_x4adb")
 fill_from = Vector2(0.48504272, 1)
 fill_to = Vector2(0.48290598, 0.034188036)
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_ssa7n"]
-texture = SubResource("GradientTexture2D_x30sm")
+texture = SubResource("GradientTexture2D_mcsty")
 
 [sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_bctpt"]
 parameter_name = "Alpha"
@@ -210,25 +209,13 @@ nodes/fragment/17/node = SubResource("VisualShaderNodeFloatOp_14efb")
 nodes/fragment/17/position = Vector2(660, 580)
 nodes/fragment/connections = PackedInt32Array(12, 0, 13, 0, 8, 0, 12, 0, 13, 0, 16, 0, 15, 0, 16, 1, 16, 0, 0, 1, 16, 0, 17, 0, 17, 0, 0, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_k6q6b"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jrce2"]
 resource_local_to_scene = true
 render_priority = 0
 shader = SubResource("VisualShader_3onww")
 shader_parameter/Alpha = 0.5
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_avddw"]
-shading_mode = 0
-
-[sub_resource type="SphereMesh" id="SphereMesh_ssa7n"]
-material = SubResource("StandardMaterial3D_avddw")
-radius = 0.25
-height = 0.5
-
-[sub_resource type="Curve" id="Curve_avddw"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.9405919, 0.0, 0, 0]
-point_count = 2
-
-[node name="DoubleDamageHitEffect" type="Node3D"]
+[node name="PlayerHitEffect" type="Node3D"]
 
 [node name="Animator" type="AnimationPlayer" parent="."]
 libraries = {
@@ -238,44 +225,11 @@ autoplay = "Hit"
 
 [node name="HitAudio" type="AudioStreamPlayer3D" parent="."]
 unit_size = 32.0
-script = ExtResource("1_avddw")
-audio_clips = Array[AudioStream]([ExtResource("2_ssa7n"), ExtResource("3_bctpt")])
+script = ExtResource("1_hr7f7")
+audio_clips = Array[AudioStream]([ExtResource("2_w2dfj")])
 metadata/_custom_type_script = "uid://dj5upywmu1hm2"
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-mesh = SubResource("SphereMesh_nt6bl")
-surface_material_override/0 = SubResource("ShaderMaterial_k6q6b")
-
-[node name="LeftCrackEffect" type="CPUParticles3D" parent="."]
-emitting = false
-amount = 256
-lifetime = 0.25
-one_shot = true
-explosiveness = 1.0
-randomness = 1.0
-local_coords = true
-mesh = SubResource("SphereMesh_ssa7n")
-direction = Vector3(-1, 0, 0)
-spread = 15.0
-gravity = Vector3(0, 0, 0)
-initial_velocity_min = 30.0
-initial_velocity_max = 50.0
-scale_amount_min = 0.5
-scale_amount_curve = SubResource("Curve_avddw")
-
-[node name="RightCrackEffect" type="CPUParticles3D" parent="."]
-emitting = false
-amount = 256
-lifetime = 0.25
-one_shot = true
-explosiveness = 1.0
-randomness = 1.0
-local_coords = true
-mesh = SubResource("SphereMesh_ssa7n")
-spread = 15.0
-gravity = Vector3(0, 0, 0)
-initial_velocity_min = 30.0
-initial_velocity_max = 50.0
-scale_amount_min = 0.5
-scale_amount_curve = SubResource("Curve_avddw")
+mesh = SubResource("SphereMesh_3hqh3")
+surface_material_override/0 = SubResource("ShaderMaterial_jrce2")

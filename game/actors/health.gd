@@ -43,6 +43,7 @@ func take_damage(damager: Damager) -> void:
 		var damage_effect: Node3D = damage_effect_prefab.instantiate()
 		add_child(damage_effect)
 		damage_effect.global_position = global_position
+		damage_effect.global_rotation = owner.global_rotation
 	took_damage.emit(damager)
 	if current_health <= 0:
 		_die()
