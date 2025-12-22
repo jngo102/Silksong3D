@@ -19,12 +19,12 @@ alignment = 1
 
 [node name="LookSensitivityMouse" parent="SettingsContainer" index="0" instance=ExtResource("4_efwig")]
 layout_mode = 2
-setting_name = "Mouse Sensitivity X"
+setting_name = "Mouse Sensitivity"
 max_slider_value = 2.0
 
 [node name="LookSensitivityJoystick" parent="SettingsContainer" index="1" instance=ExtResource("4_efwig")]
 layout_mode = 2
-setting_name = "Mouse Sensitivity X"
+setting_name = "Joystick Sensitivity"
 max_slider_value = 2.0
 
 [node name="InvertMouseX" parent="SettingsContainer" index="2" instance=ExtResource("5_hpgmy")]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://dpkqjvyr32cys"]
+[gd_scene load_steps=14 format=4 uid="uid://dpkqjvyr32cys"]
 
 [ext_resource type="Script" uid="uid://iji6ec63s7tt" path="res://game/actors/player/needle.gd" id="1_bb050"]
 [ext_resource type="PackedScene" uid="uid://xal232da7bpf" path="res://game/gameplay/combat/damager.tscn" id="2_s1w8d"]
@@ -246,8 +246,36 @@ tracks/5/keys = {
 "values": [true, false, true]
 }
 
+[sub_resource type="Animation" id="Animation_g78k6"]
+resource_name = "Bind"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.2637849, 1.3734114, -1.064395)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mesh:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.4960791, 0.29252458, 2.9921567)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_a8o31"]
 _data = {
+&"Bind": SubResource("Animation_g78k6"),
 &"Down Spike": SubResource("Animation_7s2iq"),
 &"Down Spike Bounce": SubResource("Animation_fynfr"),
 &"RESET": SubResource("Animation_jkg7i"),

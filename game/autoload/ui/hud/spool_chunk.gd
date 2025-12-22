@@ -19,11 +19,11 @@ func _down() -> void:
 	up = false
 
 func _on_silk_change(new_value: int) -> void:
-	if new_value >= chunk_index:
+	if new_value > chunk_index:
 		_up()
 	else:
 		_down()
 
 func _on_bind_state_change(can_bind: bool) -> void:
-	if spool_manager.bind_silk >= chunk_index:
+	if spool_manager.bind_silk > chunk_index:
 		glow = can_bind

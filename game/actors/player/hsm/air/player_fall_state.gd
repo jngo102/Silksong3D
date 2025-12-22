@@ -5,6 +5,8 @@ class_name PlayerFallState extends PlayerAirState
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed(&"Attack"):
 		send_event(_hsm.ATTACK_EVENT)
+	elif event.is_action_pressed(&"Skill"):
+		send_event(_hsm.SKILL_EVENT)
 
 func _enter() -> void:
 	play_anim(_fall_animation_name, 0.5)

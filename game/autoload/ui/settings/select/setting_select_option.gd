@@ -31,3 +31,9 @@ func _on_pressed() -> void:
 	var option_index: int = _options.values().find(current_option)
 	option_index = (option_index + 1) % len(_options)
 	current_option = _options.values()[option_index]
+
+func _on_mouse_entered() -> void:
+	_animator.play(&"Focus")
+
+func _on_mouse_exited() -> void:
+	_animator.play(&"Focus", 0, -1)

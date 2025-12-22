@@ -2,6 +2,7 @@ class_name SpoolManager extends Node
 
 @export var max_silk: int = 8
 @export var bind_silk: int = 8
+@export var skill_silk: int = 4
 
 signal silk_changed(new_value: int)
 signal bind_state_changed(can_bind: bool)

@@ -10,6 +10,7 @@ const HIT_EVENT: StringName = "hit"
 const JUMP_EVENT: StringName = "jump"
 const LAND_EVENT: StringName = "land"
 const MOVE_EVENT: StringName = "move"
+const SKILL_EVENT: StringName = "skill"
 const STOP_EVENT: StringName = "stop"
 
 @onready var _player: Player = get_owner()
@@ -28,46 +29,48 @@ const STOP_EVENT: StringName = "stop"
 @onready var slash_state: PlayerSlashState = $SlashState
 @onready var sprint_state: PlayerSprintState = $SprintState
 @onready var sprint_jump_state: PlayerSprintJumpState = $SprintJumpState
+@onready var thread_storm_state: PlayerThreadStormState = $ThreadStormState
 @onready var walk_state: PlayerWalkState = $WalkState
 
 func _ready() -> void:
 	await _player.ready
 	_add_transitions()
 	_reset()
+	_set_up_events()
 
 func _add_transitions() -> void:
-	add_transition(ANYSTATE, air_dash_state, DASH_EVENT)
 	add_transition(ANYSTATE, attack_choice_state, ATTACK_EVENT)
+	add_transition(ANYSTATE, thread_storm_state, SKILL_EVENT)
 	add_transition(ANYSTATE, big_recoil_state, BIG_DAMAGE_EVENT)
 	add_transition(ANYSTATE, bind_state, BIND_EVENT)
+	add_transition(ANYSTATE, idle_state, EVENT_FINISHED)
+	
 	add_transition(ANYSTATE, normal_recoil_state, DAMAGE_EVENT)
 
 	add_transition(attack_choice_state, down_spike_state, DASH_EVENT)
 	add_transition(attack_choice_state, slash_state, ATTACK_EVENT)
 	
-	add_transition(air_dash_state, sprint_state, MOVE_EVENT)
-	add_transition(air_dash_state, fall_state, EVENT_FINISHED)
+	air_dash_state.set_guard(air_dash_state.can_enter)
 	
-	add_transition(big_recoil_state, idle_state, EVENT_FINISHED)
 	big_recoil_state.set_guard(big_recoil_state.can_enter)
-	
-	add_transition(bind_state, idle_state, EVENT_FINISHED)
 	bind_state.set_guard(bind_state.can_enter)
 	
 	add_transition(down_spike_state, down_spike_bounce_state, HIT_EVENT)
-	add_transition(down_spike_state, fall_state, EVENT_FINISHED)
 	add_transition(down_spike_state, land_state, LAND_EVENT)
 	
-	add_transition(down_spike_bounce_state, fall_state, EVENT_FINISHED)
+	add_transition(down_spike_bounce_state, air_dash_state, DASH_EVENT)
 	add_transition(down_spike_bounce_state, float_state, JUMP_EVENT)
 	add_transition(down_spike_bounce_state, land_state, LAND_EVENT)
 	
+	add_transition(jump_state, air_dash_state, DASH_EVENT)
 	add_transition(jump_state, fall_state, FALL_EVENT)
 	add_transition(jump_state, float_state, JUMP_EVENT)
 	
+	add_transition(fall_state, air_dash_state, DASH_EVENT)
 	add_transition(fall_state, float_state, JUMP_EVENT)
 	add_transition(fall_state, land_state, LAND_EVENT)
 	
+	add_transition(float_state, air_dash_state, DASH_EVENT)
 	add_transition(float_state, fall_state, FALL_EVENT)
 	add_transition(float_state, land_state, LAND_EVENT)
 	
@@ -79,10 +82,7 @@ func _add_transitions() -> void:
 	add_transition(land_state, sprint_state, DASH_EVENT)
 	add_transition(land_state, walk_state, MOVE_EVENT)
 	
-	add_transition(normal_recoil_state, idle_state, EVENT_FINISHED)
 	normal_recoil_state.set_guard(normal_recoil_state.can_enter)
-
-	add_transition(slash_state, idle_state, EVENT_FINISHED)
 
 	add_transition(sprint_state, idle_state, STOP_EVENT)
 	add_transition(sprint_state, sprint_jump_state, JUMP_EVENT)
@@ -90,6 +90,9 @@ func _add_transitions() -> void:
 	add_transition(sprint_jump_state, fall_state, FALL_EVENT)
 	add_transition(sprint_jump_state, float_state, JUMP_EVENT)
 	
+	thread_storm_state.set_guard(thread_storm_state.can_enter)
+	
+	add_transition(walk_state, sprint_state, DASH_EVENT)
 	add_transition(walk_state, fall_state, FALL_EVENT)
 	add_transition(walk_state, idle_state, STOP_EVENT)
 	add_transition(walk_state, jump_state, JUMP_EVENT)
@@ -98,6 +101,12 @@ func _reset() -> void:
 	initial_state = idle_state
 	initialize(_player)
 	set_active(true)
+
+func _set_up_events() -> void:
+	_player.landed.connect(_on_player_land)
+
+func _on_player_land() -> void:
+	air_dash_state.reset_state()
 
 func _on_active_state_changed(current: LimboState, previous: LimboState) -> void:
 	print(previous, " to ", current)

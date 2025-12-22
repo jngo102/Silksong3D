@@ -1,0 +1,221 @@
+[gd_scene load_steps=15 format=3 uid="uid://d4l5fnn4yjd3p"]
+
+[ext_resource type="PackedScene" uid="uid://xal232da7bpf" path="res://game/gameplay/combat/damager.tscn" id="1_8r3ft"]
+[ext_resource type="AudioStream" uid="uid://bi7j4isvh5v2t" path="res://game/copyrighted/sfx/hornet/attacks/thread_storm/hornet_needle_spin_loop.wav" id="1_pd2l4"]
+[ext_resource type="AudioStream" uid="uid://jag8n0f3w5hg" path="res://game/copyrighted/sfx/hornet/attacks/thread_storm/hornet_thread_sphere_burst.wav" id="2_p170i"]
+[ext_resource type="PackedScene" uid="uid://d3mwd6ojsi7cg" path="res://game/actors/player/thread_storm.glb" id="2_xnjl8"]
+
+[sub_resource type="Animation" id="Animation_xnjl8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Damager/Collision:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_8r3ft"]
+resource_name = "Thread Storm Loop"
+length = 0.1667
+loop_mode = 1
+step = 0.0833
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Damager/Collision:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.083333336, 0.1667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="Animation" id="Animation_pd2l4"]
+resource_name = "Thread Storm Start"
+length = 0.001
+step = 0.0833
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh/AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"Thread Storm Silk", -1, 1.0, false],
+"method": &"play"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ThreadBurstAudio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ThreadStormLoopAudio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pd2l4"]
+_data = {
+&"RESET": SubResource("Animation_xnjl8"),
+&"Thread Storm Loop": SubResource("Animation_8r3ft"),
+&"Thread Storm Start": SubResource("Animation_pd2l4")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pd2l4"]
+animation = &"Thread Storm Loop"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_p170i"]
+animation = &"Thread Storm Start"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ustr3"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_nxtv7"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_pd2l4"]
+states/Start/position = Vector2(190, 98.3125)
+"states/Thread Storm Loop/node" = SubResource("AnimationNodeAnimation_pd2l4")
+"states/Thread Storm Loop/position" = Vector2(699, 98.875)
+"states/Thread Storm Start/node" = SubResource("AnimationNodeAnimation_p170i")
+"states/Thread Storm Start/position" = Vector2(425.5, 99.15625)
+transitions = ["Start", "Thread Storm Start", SubResource("AnimationNodeStateMachineTransition_ustr3"), "Thread Storm Start", "Thread Storm Loop", SubResource("AnimationNodeStateMachineTransition_nxtv7")]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_pd2l4"]
+radius = 10.0
+
+[node name="ThreadStorm" type="Node3D"]
+
+[node name="ThreadBurstAudio" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_p170i")
+unit_size = 32.0
+
+[node name="ThreadStormLoopAudio" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("1_pd2l4")
+unit_size = 32.0
+
+[node name="Animator" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_pd2l4")
+}
+autoplay = "Thread Storm Loop"
+
+[node name="AnimationTree" type="AnimationTree" parent="Animator"]
+root_node = NodePath("../..")
+tree_root = SubResource("AnimationNodeStateMachine_pd2l4")
+anim_player = NodePath("..")
+
+[node name="Damager" parent="." instance=ExtResource("1_8r3ft")]
+collision_layer = 8
+collision_mask = 2
+damage_amount = 5
+
+[node name="Collision" parent="Damager" index="0"]
+shape = SubResource("SphereShape3D_pd2l4")
+disabled = true
+
+[node name="Mesh" parent="." instance=ExtResource("2_xnjl8")]
+
+[node name="Skeleton3D" parent="Mesh/Thread Storm Silk" index="0"]
+bones/0/position = Vector3(5.9835715, -1.3288343, -7.6672373)
+bones/1/position = Vector3(-6.6594486, -6.95525, 1.5255003)
+bones/2/position = Vector3(-4.4595056, -1.96293, -8.456574)
+bones/3/position = Vector3(-0.46804142, 3.7568488, -9.527215)
+bones/4/position = Vector3(-2.0517552, -5.2208433, -7.6345854)
+bones/5/position = Vector3(-6.5489793, -5.095238, -4.5968323)
+bones/6/position = Vector3(-7.5677485, -5.5592327, 1.0041733)
+bones/7/position = Vector3(-7.260973, -2.4818978, -5.9589286)
+bones/8/position = Vector3(-5.662441, 0.3687721, -8.188002)
+bones/9/position = Vector3(-5.788, 0.84571433, -8.114447)
+bones/10/position = Vector3(-5.536964, 5.347558, -6.971734)
+bones/11/position = Vector3(-3.9976711, -4.1260705, -7.6542115)
+bones/12/position = Vector3(-8.386862, 4.222152, -4.212042)
+bones/13/position = Vector3(-8.24318, 3.7568493, 4.7982492)
+bones/14/position = Vector3(-0.13316631, -7.993142, 4.6067657)
+bones/15/position = Vector3(-9.707856, -1.3288343, -0.57732844)
+bones/16/position = Vector3(-6.493434, 3.2845623, 7.1643977)
+bones/17/position = Vector3(-0.7997198, -8.248072, -4.005418)
+bones/18/position = Vector3(-7.999832, -4.8100977, 1.8198931)
+bones/19/position = Vector3(-2.2207713, -6.1689205, 6.7223682)
+bones/20/position = Vector3(-8.418896, 0.61364293, 5.331206)
+bones/21/position = Vector3(-6.8090334, -5.824762, 2.9081442)
+bones/22/position = Vector3(-8.091806, -2.7345133, 4.5839505)
+bones/23/position = Vector3(-5.237513, 7.0991077, 5.752535)
+bones/24/position = Vector3(-2.281107, 7.0011015, 7.5198054)
+bones/25/position = Vector3(1.3768573, 7.9089813, 6.9219317)
+bones/26/position = Vector3(-3.8205352, -7.8909626, 2.9041843)
+bones/27/position = Vector3(-5.618646, -3.9342856, 6.6981997)
+bones/28/position = Vector3(-0.4159863, -4.446027, 8.433739)
+bones/29/position = Vector3(-2.9522812, 0.8586612, 9.520094)
+bones/30/position = Vector3(-0.022142649, -4.473212, 8.427017)
+bones/31/position = Vector3(3.8488894, -2.8168488, 8.429282)
+bones/32/position = Vector3(-2.9287648, 1.1590602, 9.522258)
+bones/33/position = Vector3(3.2058024, 2.5655358, 9.282445)
+bones/34/position = Vector3(8.549828, 5.9831495, -0.26937103)
+bones/35/position = Vector3(7.947155, 1.3963857, 5.9909554)
+bones/36/position = Vector3(9.398275, -2.0395265, 1.6307554)
+bones/37/position = Vector3(-5.5115175, 6.9046664, 5.702868)
+bones/38/position = Vector3(4.502276, -7.8282433, 1.9662738)
+bones/39/position = Vector3(9.724067, 2.507655, 1.4424295)
+bones/40/position = Vector3(1.5842819, -4.450474, 8.290722)
+bones/41/position = Vector3(6.8158565, 3.1205623, 6.9122562)
+bones/42/position = Vector3(6.8104076, -3.0034313, 6.172594)
+bones/43/position = Vector3(5.732694, 0.36877206, 8.139804)
+bones/44/position = Vector3(1.1504698, 9.187799, 5.373051)
+bones/45/position = Vector3(0.30954838, -5.9423914, 7.2894754)
+bones/46/position = Vector3(8.879248, -0.40356997, 4.348273)
+bones/47/position = Vector3(1.2338858, 10.524873, 2.1652336)
+bones/48/position = Vector3(8.771018, -2.4590812, 3.3833547)
+bones/49/position = Vector3(9.136482, 3.0461566, 3.3322186)
+bones/50/position = Vector3(5.5243883, 5.347558, -6.9818025)
+bones/51/position = Vector3(1.1750698, -6.372184, -6.7720957)
+bones/52/position = Vector3(0.11913204, 7.2288637, -7.6732216)
+bones/53/position = Vector3(8.504381, 1.1102726, -5.1920114)
+bones/54/position = Vector3(1.9074001, 7.812518, -6.892457)
+bones/55/position = Vector3(1.755177, 6.482695, -8.04542)
+bones/56/position = Vector3(9.300575, 2.3236105, 3.2725558)
+bones/57/position = Vector3(-0.85934067, 1.492969, 9.909117)
+bones/58/position = Vector3(9.364126, -0.9618615, -2.888782)
+bones/59/position = Vector3(-9.577234, 2.915337, -1.8422594)
+bones/60/position = Vector3(-0.2769127, 9.913019, -4.1892605)
+bones/61/position = Vector3(-4.0432463, -4.8122473, -7.1373253)
+bones/62/position = Vector3(-3.4608002, -3.338698, -8.355113)
+bones/63/position = Vector3(-5.302707, -2.9620314, -7.5292683)
+
+[node name="AnimationPlayer" parent="Mesh" index="1"]
+autoplay = "Thread Storm Silk"
+
+[editable path="Damager"]
+[editable path="Mesh"]

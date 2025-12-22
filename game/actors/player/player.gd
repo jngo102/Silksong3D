@@ -21,7 +21,7 @@ class_name Player extends GroundedActor
 var moving_forward: bool:
 	get:
 		return velocity.rotated(Vector3.UP, global_rotation.y).z < 0
- 
+
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	camera_controller.target = _head
