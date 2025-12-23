@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cwc5xgupucvyt"]
+[gd_scene load_steps=20 format=3 uid="uid://cwc5xgupucvyt"]
 
 [ext_resource type="Script" uid="uid://dj5upywmu1hm2" path="res://game/actors/random_audio_player.gd" id="1_hr7f7"]
 [ext_resource type="AudioStream" uid="uid://bqqnmgh6gml0o" path="res://game/copyrighted/sfx/hornet/hurt/normal/hero_damage_less_harsh.wav" id="2_w2dfj"]
@@ -215,6 +215,18 @@ render_priority = 0
 shader = SubResource("VisualShader_3onww")
 shader_parameter/Alpha = 0.5
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_avddw"]
+shading_mode = 0
+
+[sub_resource type="SphereMesh" id="SphereMesh_hr7f7"]
+material = SubResource("StandardMaterial3D_avddw")
+radius = 0.25
+height = 0.5
+
+[sub_resource type="Curve" id="Curve_w2dfj"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.9405919, 0.0, 0, 0]
+point_count = 2
+
 [node name="PlayerHitEffect" type="Node3D"]
 
 [node name="Animator" type="AnimationPlayer" parent="."]
@@ -233,3 +245,36 @@ metadata/_custom_type_script = "uid://dj5upywmu1hm2"
 transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 mesh = SubResource("SphereMesh_3hqh3")
 surface_material_override/0 = SubResource("ShaderMaterial_jrce2")
+
+[node name="LeftCrackEffect" type="CPUParticles3D" parent="."]
+emitting = false
+amount = 256
+lifetime = 0.25
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+local_coords = true
+mesh = SubResource("SphereMesh_hr7f7")
+direction = Vector3(-1, 0, 0)
+spread = 15.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 30.0
+initial_velocity_max = 50.0
+scale_amount_min = 0.5
+scale_amount_curve = SubResource("Curve_w2dfj")
+
+[node name="RightCrackEffect" type="CPUParticles3D" parent="."]
+emitting = false
+amount = 256
+lifetime = 0.25
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+local_coords = true
+mesh = SubResource("SphereMesh_hr7f7")
+spread = 15.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 30.0
+initial_velocity_max = 50.0
+scale_amount_min = 0.5
+scale_amount_curve = SubResource("Curve_w2dfj")

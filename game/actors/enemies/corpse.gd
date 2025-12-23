@@ -7,5 +7,4 @@ var pieces: Array[CorpsePiece]:
 		return get_children().filter(func(child: Node): child is CorpsePiece)
 
 func _ready() -> void:
-	var cam_shaker: Shaker = get_tree().get_first_node_in_group(&"Cameras").get_node("Shaker")
-	cam_shaker.shake(1, 0.5)
+	CameraManager.shake_camera(1, 0.5)

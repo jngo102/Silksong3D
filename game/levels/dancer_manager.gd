@@ -248,3 +248,10 @@ func _on_dancer_death(dancer: Actor) -> void:
 	AudioManager.play_clip(_death_sting, true)
 	_set_dancer_death_active(dancer)
 	boss_phase += 1
+	if boss_phase > 4:
+		await get_tree().create_timer(8, false).timeout
+		SceneManager.go_to_main_menu()
+
+func _on_door_close_trigger_body_entered(body: Node3D) -> void:
+	dancer1.behavior_tree.set_active(true)
+	dancer2.behavior_tree.set_active(true)

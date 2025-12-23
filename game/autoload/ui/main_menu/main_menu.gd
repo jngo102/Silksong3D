@@ -18,6 +18,7 @@ var _title_music: MusicTrack = preload("uid://cq5xyomalenfy")
 func _ready() -> void:
 	super._ready()
 	AudioManager.play_music(_title_music, 0, 2)
+	Input.mouse_mode = Input.MouseMode.MOUSE_MODE_VISIBLE
 	_menu_buttons.grab_focus()
 	if OS.get_name() == "Web":
 		_quit_button.hide()

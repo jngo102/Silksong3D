@@ -27,5 +27,6 @@ func _tick(_delta: float) -> Status:
 	var shake_taper_off = BBUtil.bb_value(shake_taper_off_var, blackboard)
 	if shake_taper_off == null:
 		shake_taper_off = false
-	CameraManager.shake_camera(shake_amount, shake_duration, shake_in_place, shake_taper_off)
+	var camera: GameCamera = scene_root.get_viewport().get_camera_3d()
+	camera.shake(shake_amount, shake_duration, shake_in_place, shake_taper_off)
 	return SUCCESS

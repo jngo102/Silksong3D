@@ -35,7 +35,7 @@ func dash() -> void:
 	_voice_player.play_random()
 	_dash_audio.play()
 	_animator.play(&"Dash")
-	#CameraManager.shake_camera(1, 0.25)
+	CameraManager.shake_camera(1, 0.25)
 	await _animator.animation_finished
 	_animator.play(&"RESET")
 	finished_dashing = true

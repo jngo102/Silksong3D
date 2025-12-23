@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c74yvh41r5yqg" path="res://game/actors/enemies/corpse.gd" id="1_r3oq0"]
 [ext_resource type="Material" uid="uid://cgnxxrytvhv4q" path="res://game/resources/materials/fading_ring_material.tres" id="2_cavwe"]
-[ext_resource type="AudioStream" uid="uid://bj2vqdish0n1a" path="res://game/copyrighted/sfx/boss_explode_clean.wav" id="3_jiiaq"]
+[ext_resource type="AudioStream" uid="uid://bj2vqdish0n1a" path="res://game/copyrighted/sfx/enemy/boss_explode_clean.wav" id="3_jiiaq"]
 
 [sub_resource type="Animation" id="Animation_jiiaq"]
 resource_name = "Explode"

@@ -1,4 +1,4 @@
-[gd_resource type="BehaviorTree" load_steps=1013 format=3 uid="uid://chh6lvoe5ufr8"]
+[gd_resource type="BehaviorTree" load_steps=1014 format=3 uid="uid://chh6lvoe5ufr8"]
 
 [ext_resource type="Script" uid="uid://dfxh5qmwucb7e" path="res://game/ai/tasks/scene/get_first_in_group.gd" id="1_lkiki"]
 [ext_resource type="Script" uid="uid://oufr1n61rgt6" path="res://game/ai/tasks/audio/get_current_music_player.gd" id="3_ngxa6"]
@@ -38,6 +38,7 @@
 [ext_resource type="AudioStream" uid="uid://dkqjngri23cmb" path="res://game/copyrighted/cogwork_dancers/sfx/clockwork_dancer_look_up_after_bow.wav" id="26_mdpca"]
 [ext_resource type="AudioStream" uid="uid://huqy8mpc427n" path="res://game/copyrighted/cogwork_dancers/sfx/clockwork_dancers_halo.wav" id="30_drhsk"]
 [ext_resource type="AudioStream" uid="uid://ci01hprg2606n" path="res://game/copyrighted/cogwork_dancers/sfx/clockwork_dancers_halov2_1.wav" id="31_877ps"]
+[ext_resource type="Script" uid="uid://br84132pv8riw" path="res://game/ai/tasks/actors/shake_camera.gd" id="31_e8anh"]
 [ext_resource type="AudioStream" uid="uid://dhqe1gm1b00fp" path="res://game/copyrighted/cogwork_dancers/sfx/clockwork_dancers_halov2_2.wav" id="32_tfrvw"]
 [ext_resource type="AudioStream" uid="uid://w0nx0pa6do37" path="res://game/copyrighted/cogwork_dancers/sfx/clockwork_dancers_halov2_3.wav" id="33_wmffp"]
 [ext_resource type="AudioStream" uid="uid://b6su1yu645ctj" path="res://game/copyrighted/cogwork_dancers/sfx/clockwork_dancers_halov2_4.wav" id="34_mb14r"]
@@ -183,11 +184,6 @@ var/music_playback_position/type = 3
 var/music_playback_position/value = 0.0
 var/music_playback_position/hint = 0
 var/music_playback_position/hint_string = ""
-var/music_wrap_around_time/name = &"music_wrap_around_time"
-var/music_wrap_around_time/type = 3
-var/music_wrap_around_time/value = 0.0
-var/music_wrap_around_time/hint = 0
-var/music_wrap_around_time/hint_string = ""
 var/next_measure_time/name = &"next_measure_time"
 var/next_measure_time/type = 3
 var/next_measure_time/value = 0.0
@@ -397,28 +393,6 @@ resource_name = "$measure_length"
 variable = &"next_measure_time"
 value = SubResource("BBVariant_kk73g")
 
-[sub_resource type="BTComment" id="BTComment_x3uvo"]
-custom_name = "Penultimate measure in the current track"
-
-[sub_resource type="BBVariant" id="BBVariant_1j8g6"]
-value_source = 1
-variable = &"music_duration"
-resource_name = "$music_duration"
-
-[sub_resource type="BTSetVar" id="BTSetVar_ah2pd"]
-variable = &"music_wrap_around_time"
-value = SubResource("BBVariant_1j8g6")
-
-[sub_resource type="BBVariant" id="BBVariant_kq56s"]
-value_source = 1
-variable = &"measure_length"
-resource_name = "$measure_length"
-
-[sub_resource type="BTSetVar" id="BTSetVar_0dlsi"]
-variable = &"music_wrap_around_time"
-value = SubResource("BBVariant_kq56s")
-operation = 2
-
 [sub_resource type="BBVariant" id="BBVariant_mexuy"]
 value_source = 1
 variable = &"measure_length"
@@ -440,7 +414,7 @@ operation = 4
 
 [sub_resource type="BTSequence" id="BTSequence_nx7ud"]
 custom_name = "Set Music Parameters"
-children = [SubResource("BTAction_5382o"), SubResource("BTAction_nx7ud"), SubResource("BTSetVar_vxhi2"), SubResource("BTAction_io532"), SubResource("BTSetVar_ev603"), SubResource("BTSetVar_maqif"), SubResource("BTComment_x3uvo"), SubResource("BTSetVar_ah2pd"), SubResource("BTSetVar_0dlsi"), SubResource("BTSetVar_u7re6"), SubResource("BTSetVar_mexuy")]
+children = [SubResource("BTAction_5382o"), SubResource("BTAction_nx7ud"), SubResource("BTSetVar_vxhi2"), SubResource("BTAction_io532"), SubResource("BTSetVar_ev603"), SubResource("BTSetVar_maqif"), SubResource("BTSetVar_u7re6"), SubResource("BTSetVar_mexuy")]
 
 [sub_resource type="BBVariant" id="BBVariant_ykvq3"]
 value_source = 1
@@ -1554,6 +1528,33 @@ duration = 0.125
 [sub_resource type="BTSequence" id="BTSequence_877ps"]
 children = [SubResource("BTCheckVar_k0syu"), SubResource("BTWait_3b8xs")]
 
+[sub_resource type="BBVariant" id="BBVariant_8hf8u"]
+type = 3
+saved_value = 1.0
+resource_name = "1.0"
+
+[sub_resource type="BBVariant" id="BBVariant_4mpcf"]
+type = 3
+saved_value = 1.0
+resource_name = "1.0"
+
+[sub_resource type="BBVariant" id="BBVariant_3arx4"]
+type = 1
+saved_value = true
+resource_name = "true"
+
+[sub_resource type="BBVariant" id="BBVariant_54t1i"]
+type = 1
+saved_value = false
+resource_name = "false"
+
+[sub_resource type="BTAction" id="BTAction_r34r7"]
+script = ExtResource("31_e8anh")
+shake_amount_var = SubResource("BBVariant_8hf8u")
+shake_duration_var = SubResource("BBVariant_4mpcf")
+shake_in_place_var = SubResource("BBVariant_3arx4")
+shake_taper_off_var = SubResource("BBVariant_54t1i")
+
 [sub_resource type="BTAction" id="BTAction_u83xx"]
 script = ExtResource("20_ucsdq")
 clips_array = Array[AudioStream]([ExtResource("19_o08b3"), ExtResource("20_fuw20"), ExtResource("21_3b8xs"), ExtResource("22_e8anh")])
@@ -1694,7 +1695,7 @@ custom_name = "Wait Until Next Measure"
 children = [SubResource("BTRepeatUntilSuccess_yjjwa"), SubResource("BTSequence_epy5o")]
 
 [sub_resource type="BTSequence" id="BTSequence_1iok6"]
-children = [SubResource("BTAction_u83xx"), SubResource("BTCallMethod_6mje8"), SubResource("BTSequence_i41ga")]
+children = [SubResource("BTAction_r34r7"), SubResource("BTAction_u83xx"), SubResource("BTCallMethod_6mje8"), SubResource("BTSequence_i41ga")]
 
 [sub_resource type="BTSelector" id="BTSelector_ms6i8"]
 custom_name = "Check Lone"
@@ -2807,8 +2808,8 @@ children = [SubResource("BTCheckVar_6fxvw"), SubResource("BTSequence_k0swp")]
 
 [sub_resource type="BBVariant" id="BBVariant_ckv0l"]
 type = 3
-saved_value = -0.01
-resource_name = "-0.01"
+saved_value = 0.01
+resource_name = "0.01"
 
 [sub_resource type="BTCheckVar" id="BTCheckVar_253gg"]
 variable = &"dash_y"
@@ -4262,8 +4263,8 @@ animation_name = &"RESET"
 
 [sub_resource type="BBVariant" id="BBVariant_lxq5a"]
 type = 3
-saved_value = -0.01
-resource_name = "-0.01"
+saved_value = -0.1
+resource_name = "-0.1"
 
 [sub_resource type="BTCheckVar" id="BTCheckVar_k74v3"]
 variable = &"dash_y"
@@ -4432,8 +4433,8 @@ children = [SubResource("BTCheckVar_k74v3"), SubResource("BTSequence_dj5pt")]
 
 [sub_resource type="BBVariant" id="BBVariant_3woqu"]
 type = 3
-saved_value = -0.01
-resource_name = "-0.01"
+saved_value = -0.1
+resource_name = "-0.1"
 
 [sub_resource type="BTCheckVar" id="BTCheckVar_knh5b"]
 variable = &"dash_y"

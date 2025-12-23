@@ -29,7 +29,8 @@ func _enter() -> void:
 
 func _exit() -> void:
 	_player.gravity_scale = _original_gravity_scale
-	_thread_storm.queue_free()
+	if is_instance_valid(_thread_storm):
+		_thread_storm.queue_free()
 	_thread_storm_transition_tree.set_active(false)
 
 func _update(delta: float) -> void:

@@ -1,4 +1,4 @@
-[gd_resource type="BehaviorTree" load_steps=114 format=3 uid="uid://ciko0edbnitaw"]
+[gd_resource type="BehaviorTree" load_steps=109 format=3 uid="uid://ciko0edbnitaw"]
 
 [ext_resource type="Script" uid="uid://dfxh5qmwucb7e" path="res://game/ai/tasks/scene/get_first_in_group.gd" id="1_7k3xq"]
 [ext_resource type="Script" uid="uid://cvw5s3jjrdnkq" path="res://game/ai/tasks/transform/face_target.gd" id="2_tqd6i"]
@@ -117,7 +117,6 @@ saved_value = true
 resource_name = "true"
 
 [sub_resource type="BTAction" id="BTAction_h8iei"]
-_enabled = false
 script = ExtResource("14_sw5t1")
 shake_amount_var = SubResource("BBVariant_4a848")
 shake_duration_var = SubResource("BBVariant_n133n")
@@ -193,34 +192,6 @@ resource_name = "<null>"
 variable = &"final_death"
 value = SubResource("BBVariant_q5c76")
 
-[sub_resource type="BBVariant" id="BBVariant_7gmt6"]
-type = 3
-saved_value = 1.0
-resource_name = "1.0"
-
-[sub_resource type="BBVariant" id="BBVariant_55m7c"]
-type = 3
-saved_value = 4.0
-resource_name = "4.0"
-
-[sub_resource type="BBVariant" id="BBVariant_tyjx1"]
-type = 1
-saved_value = true
-resource_name = "true"
-
-[sub_resource type="BBVariant" id="BBVariant_skuen"]
-type = 1
-saved_value = true
-resource_name = "true"
-
-[sub_resource type="BTAction" id="BTAction_you0p"]
-_enabled = false
-script = ExtResource("14_sw5t1")
-shake_amount_var = SubResource("BBVariant_7gmt6")
-shake_duration_var = SubResource("BBVariant_55m7c")
-shake_in_place_var = SubResource("BBVariant_tyjx1")
-shake_taper_off_var = SubResource("BBVariant_skuen")
-
 [sub_resource type="BTWait" id="BTWait_ywbep"]
 duration = 2.0
 
@@ -242,7 +213,7 @@ method = &"die"
 
 [sub_resource type="BTSequence" id="BTSequence_sw5t1"]
 custom_name = "Final Death Sequence"
-children = [SubResource("BTAction_you0p"), SubResource("BTWait_ywbep"), SubResource("BTAction_twb4b"), SubResource("BTWait_f8rwa"), SubResource("BTCallMethod_3shy2")]
+children = [SubResource("BTWait_ywbep"), SubResource("BTAction_twb4b"), SubResource("BTWait_f8rwa"), SubResource("BTCallMethod_3shy2")]
 
 [sub_resource type="BTSelector" id="BTSelector_solc0"]
 custom_name = "Check Final Death"
@@ -433,7 +404,6 @@ saved_value = true
 resource_name = "true"
 
 [sub_resource type="BTAction" id="BTAction_4a848"]
-_enabled = false
 script = ExtResource("14_sw5t1")
 shake_amount_var = SubResource("BBVariant_6q4rm")
 shake_duration_var = SubResource("BBVariant_8qro1")

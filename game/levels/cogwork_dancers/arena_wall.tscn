@@ -1,0 +1,447 @@
+[gd_scene load_steps=16 format=3 uid="uid://wme5tm2qkeg2"]
+
+[ext_resource type="AudioStream" uid="uid://cnjm0wfdsvldl" path="res://game/copyrighted/sfx/environment/gate_slam.wav" id="1_2kn6d"]
+[ext_resource type="PackedScene" uid="uid://170vlsm248ds" path="res://game/levels/cogwork_dancers/door.glb" id="3_3jh15"]
+[ext_resource type="PackedScene" uid="uid://ddjyjf6vhi42t" path="res://game/levels/cogwork_dancers/spoked_gear.glb" id="6_8aboh"]
+
+[sub_resource type="Animation" id="Animation_2kn6d"]
+resource_name = "Close"
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DoorBottom:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -0.5, 0), Vector3(0, 3, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DoorTop:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 10, 26.014), Vector3(0, 7, 26.014)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GateCloseAudio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.15),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_8aboh"]
+resource_name = "Idle Spin Gears"
+length = 0.5
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpokedGear1:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 6.2831855)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpokedGear4:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 6.2831855)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpokedGear2:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 6.2831855)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SpokedGear3:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 6.2831855)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SpokedGear5:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 6.2831855)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SpokedGear6:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 6.2831855)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("SpokedGear7:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 6.2831855)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("SpokedGear8:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 6.2831855)]
+}
+
+[sub_resource type="Animation" id="Animation_pa1nr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DoorBottom:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.5, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DoorTop:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 10, 26.014)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpokedGear1:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SpokedGear4:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SpokedGear2:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SpokedGear3:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("SpokedGear5:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, -3.0967126)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("SpokedGear6:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, -3.0967126)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("SpokedGear7:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, -3.0967126)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("SpokedGear8:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, -3.0967126)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gf8wq"]
+_data = {
+&"Close": SubResource("Animation_2kn6d"),
+&"Idle Spin Gears": SubResource("Animation_8aboh"),
+&"RESET": SubResource("Animation_pa1nr")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_seyxp"]
+size = Vector3(7.510254, 5, 25.34)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8aboh"]
+size = Vector3(1, 11.022705, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e4ccn"]
+size = Vector3(9.575317, 4.356903, 4.0562525)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3jh15"]
+size = Vector3(23.710358, 4.3569336, 4.0684814)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gf8wq"]
+size = Vector3(16.32805, 7.641, 24)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_36kcp"]
+size = Vector3(23.426617, 7.641, 24)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4f248"]
+size = Vector3(15.047363, 13.713989, 23.36081)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2kn6d"]
+size = Vector3(5.0457764, 7.640869, 8.999268)
+
+[node name="ArenaWall" type="Node3D"]
+transform = Transform3D(-2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
+
+[node name="Animator" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_gf8wq")
+}
+autoplay = "Idle Spin Gears"
+
+[node name="GateCloseAudio" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 11.720975, 5.4598975, 12.979434)
+stream = ExtResource("1_2kn6d")
+unit_size = 32.0
+
+[node name="WallBody" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1195664, -0.20175628, 0)
+collision_layer = 4
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="WallBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5090275, 0, 12.832662)
+shape = SubResource("BoxShape3D_seyxp")
+
+[node name="DoorTop" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1, 8.7422784e-08, 0, -8.7422784e-08, -1, 0, 10, 26.014)
+collision_layer = 4
+collision_mask = 0
+
+[node name="Mesh" parent="DoorTop" instance=ExtResource("3_3jh15")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.0923011, 0)
+
+[node name="Collision" type="CollisionShape3D" parent="DoorTop"]
+transform = Transform3D(1, 0, 0, 0, 1, 7.1054274e-15, 0, -7.1054274e-15, 1, 11.783679, -3.3268452, 13.04195)
+shape = SubResource("BoxShape3D_8aboh")
+
+[node name="DoorBottom" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+collision_layer = 4
+collision_mask = 0
+
+[node name="Mesh" parent="DoorBottom" instance=ExtResource("3_3jh15")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.0923011, 0)
+
+[node name="Collision" type="CollisionShape3D" parent="DoorBottom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.051813, 0.6158905, 13.031954)
+shape = SubResource("BoxShape3D_e4ccn")
+
+[node name="Floor" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.106131, -0.35342407, 0)
+collision_layer = 4
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.609076, 0.61157227, 13.050427)
+shape = SubResource("BoxShape3D_3jh15")
+
+[node name="WallHallwayL" type="StaticBody3D" parent="."]
+transform = Transform3D(-0.00019197067, 0, 1, 0, 1, 0, -1, 0, -0.00019197067, -4.3809724, 0.026018906, 21.669813)
+collision_layer = 4
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="WallHallwayL"]
+transform = Transform3D(1, 0, -8.731149e-11, 0, 0.99999976, 0, 8.731149e-11, 0, 1, 18.899761, 6.3122687, 27.740982)
+shape = SubResource("BoxShape3D_gf8wq")
+
+[node name="WallArenaTop" type="StaticBody3D" parent="."]
+transform = Transform3D(-0.00019197067, 0, 1, 0, 1, 0, -1, 0, -0.00019197067, -4.7342315, 0.026018906, 21.669813)
+collision_layer = 4
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="WallArenaTop"]
+transform = Transform3D(1, 0, -8.731149e-11, 0, 0.99999976, 0, 8.731149e-11, 0, 1, 8.682732, 12.012709, 27.739056)
+shape = SubResource("BoxShape3D_36kcp")
+
+[node name="WallHallwayR" type="StaticBody3D" parent="."]
+transform = Transform3D(-4.3711392e-08, 0, -1, 0, 1, 0, 1, 0, -4.3711392e-08, 35.96863, 0.026018906, 4.425316)
+collision_layer = 4
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="WallHallwayR"]
+transform = Transform3D(1, 0, 3.5527137e-15, 0, 1, 0, -3.5527137e-15, 0, 1, 18.690344, 6.3122716, 12.663191)
+shape = SubResource("BoxShape3D_gf8wq")
+
+[node name="WallHallwayTop" type="StaticBody3D" parent="."]
+transform = Transform3D(1.9106855e-15, 4.3711392e-08, -1, 1, -4.3711392e-08, 0, -4.3711392e-08, -1, -4.3711392e-08, 35.96863, -1.5173649, 18.827473)
+collision_layer = 4
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="WallHallwayTop"]
+transform = Transform3D(1, 3.5527137e-15, 3.5527137e-15, -3.5527137e-15, 1, -3.5527137e-15, -3.5527137e-15, 3.5527137e-15, 1, 19.70465, 6.31227, 12.663193)
+shape = SubResource("BoxShape3D_gf8wq")
+
+[node name="BackWall" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.120422, 0, 0)
+collision_layer = 4
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="BackWall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.074923, 6.3569946, 12.983924)
+shape = SubResource("BoxShape3D_4f248")
+
+[node name="WallArenaL" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3532593, 0, 0)
+collision_layer = 4
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="WallArenaL"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.764028, 6.312272, 20.201588)
+shape = SubResource("BoxShape3D_2kn6d")
+
+[node name="WallArenaR" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3532593, 0, -14.098613)
+collision_layer = 4
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="WallArenaR"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.764028, 6.299942, 20.599447)
+shape = SubResource("BoxShape3D_2kn6d")
+
+[node name="SpokedGear1" parent="." instance=ExtResource("6_8aboh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.973801, 2.586666, 10.673167)
+
+[node name="SpokedGear4" parent="." instance=ExtResource("6_8aboh")]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 17.966673, 2.2215295, 10.673167)
+
+[node name="SpokedGear7" parent="." instance=ExtResource("6_8aboh")]
+transform = Transform3D(-1.2986909, 0.0583245, 0, -0.0583245, -1.2986909, 0, 0, 0, 1.3000001, 23.862255, 2.5609825, 10.673167)
+
+[node name="SpokedGear8" parent="." instance=ExtResource("6_8aboh")]
+transform = Transform3D(-0.79919446, 0.035892002, 0, -0.035892002, -0.79919446, 0, 0, 0, 0.8, 27.666636, 2.6001794, 10.673167)
+
+[node name="SpokedGear2" parent="." instance=ExtResource("6_8aboh")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 13.858133, 2.586666, 15.348979)
+
+[node name="SpokedGear3" parent="." instance=ExtResource("6_8aboh")]
+transform = Transform3D(1.3000001, 0, 0, 0, 1.3000001, 0, 0, 0, 1.3000001, 17.099857, 2.0028284, 15.567657)
+
+[node name="SpokedGear5" parent="." instance=ExtResource("6_8aboh")]
+transform = Transform3D(-1.0988922, 0.0493515, 0, -0.0493515, -1.0988922, 0, 0, 0, 1.1, 22.540115, 0.95342654, 15.567657)
+
+[node name="SpokedGear6" parent="." instance=ExtResource("6_8aboh")]
+transform = Transform3D(-1.4984896, 0.0672975, 0, -0.0672975, -1.4984896, 0, 0, 0, 1.5, 27.193253, 2.3312404, 15.567657)

@@ -4,6 +4,33 @@
 [ext_resource type="PackedScene" uid="uid://xal232da7bpf" path="res://game/gameplay/combat/damager.tscn" id="2_s1w8d"]
 [ext_resource type="PackedScene" uid="uid://dqqog7us3m1g3" path="res://game/gameplay/combat/slash.tscn" id="3_g78k6"]
 
+[sub_resource type="Animation" id="Animation_g78k6"]
+resource_name = "Bind"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.2637849, 1.3734114, -1.064395)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mesh:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.4960791, 0.29252458, 2.9921567)]
+}
+
 [sub_resource type="Animation" id="Animation_7s2iq"]
 resource_name = "Down Spike"
 tracks/0/type = "value"
@@ -246,33 +273,6 @@ tracks/5/keys = {
 "values": [true, false, true]
 }
 
-[sub_resource type="Animation" id="Animation_g78k6"]
-resource_name = "Bind"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Mesh:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-1.2637849, 1.3734114, -1.064395)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Mesh:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-1.4960791, 0.29252458, 2.9921567)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_a8o31"]
 _data = {
 &"Bind": SubResource("Animation_g78k6"),
@@ -357,7 +357,7 @@ transform = Transform3D(1.1804705, -0.41108325, 0, 0.35600856, 1.0223173, 0.625,
 [node name="SlashEffectDamager" parent="SlashEffect" index="0"]
 transform = Transform3D(0.45452914, -0.32446226, 0.57282436, -0.19439709, 0.5989014, 0.4934845, -0.62897813, -0.41957295, 0.2614294, -0.5068957, -1.4556062, -0.8898939)
 collision_mask = 2
-damage_amount = 9
+damage_amount = 200
 
 [connection signal="area_entered" from="Mesh/DownSpikeDamager" to="." method="_on_down_spike_damager_area_entered"]
 

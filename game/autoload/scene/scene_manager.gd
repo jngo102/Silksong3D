@@ -15,6 +15,8 @@ var current_level: BaseLevel:
 	get:
 		return screen.get_child(0)
 
+var _main_menu_scene: PackedScene = preload("uid://d0nkpdyoqawun")
+
 ## Generic scene change function
 func change_scene(scene: PackedScene) -> void:
 	var fader: Fader = UIManager.open_ui(Fader)
@@ -30,3 +32,6 @@ func change_scene(scene: PackedScene) -> void:
 ## Reload the current scene
 func reload() -> void:
 	change_scene(load(current_level.scene_file_path))
+
+func go_to_main_menu() -> void:
+	change_scene(_main_menu_scene)

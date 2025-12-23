@@ -28,7 +28,7 @@ func _enter() -> void:
 
 func _exit() -> void:
 	_bind_effect.hide()
-	_needle_animator.play(&"Bind", 0.25, -1)
+	_needle_animator.play(&"RESET", 0.25)
 	_player.gravity_scale = _original_gravity_scale
 	_player.spool_manager.current_silk -= _player.spool_manager.bind_silk
 	if is_instance_valid(_bind_tween) and _bind_tween.is_running():

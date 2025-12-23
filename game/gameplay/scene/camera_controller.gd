@@ -8,7 +8,7 @@ class_name CameraController extends Node3D
 @export var max_yaw_degrees: float = 15
 
 @onready var _pitch: Node3D = $CameraPitch
-@onready var camera: Camera3D = _pitch.get_node_or_null("Gimbal/Camera")
+@onready var camera: GameCamera = _pitch.get_node_or_null("Gimbal/Camera")
 
 func _process(delta: float) -> void:
 	if is_instance_valid(target):

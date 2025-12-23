@@ -11,6 +11,7 @@ class_name Health extends Area3D
 @export var silk_amount: int = 1
 @export var damage_particles: Array[CPUParticles3D]
 @export var damage_effect_prefab: PackedScene
+@export var _flasher: Flasher
 
 @onready var _collision: CollisionShape3D = $Collision
 
@@ -48,6 +49,8 @@ func take_damage(damager: Damager) -> void:
 		add_child(damage_effect)
 		damage_effect.global_position = global_position
 		damage_effect.global_rotation = owner.global_rotation
+	if is_instance_valid(_flasher):
+		_flasher.flash()
 	took_damage.emit(damager)
 	if current_health <= 0:
 		_die()
