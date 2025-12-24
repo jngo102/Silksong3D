@@ -5,6 +5,8 @@ class_name PlayerAirDashState extends PlayerAirState
 @export var _spin_speed: float = 720
 @export var _air_dash_time: float = 1.0 / 3
 
+var _dash_audio: AudioStream = preload("uid://dypt7aefw1r23")
+
 var _air_dash_timer: float
 
 func _input(event: InputEvent) -> void:
@@ -17,6 +19,7 @@ var _can_air_dash: bool
 
 func _enter() -> void:
 	_can_air_dash = false
+	AudioManager.play_clip(_dash_audio, false, _player.global_position, 0.85, 1.15)
 	play_anim(_air_dash_animation_name)
 	var input_vector: Vector2 = Input.get_vector(&"ui_left", &"ui_right", &"ui_up", &"ui_down")
 	_player.face_direction(Vector3(input_vector.x, 0, input_vector.y))

@@ -15,7 +15,7 @@ func die() -> void:
 		TimeManager.stop_time(true, death_pause_duration)
 	if is_instance_valid(corpse_prefab):
 		var corpse: Node3D = corpse_prefab.instantiate()
-		get_tree().root.add_child(corpse)
+		SceneManager.current_level.add_child(corpse)
 		corpse.global_position = owner.global_position
 		corpse.global_rotation = owner.global_rotation
 	owner.queue_free()

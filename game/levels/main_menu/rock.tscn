@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://c6dvx06xvlsdt"]
+
+[ext_resource type="PackedScene" uid="uid://bhmqhsb367187" path="res://game/levels/main_menu/Rock.glb" id="1_4p335"]
+[ext_resource type="Texture2D" uid="uid://ba27ia5k8ca3y" path="res://game/levels/main_menu/StoneDiffuse.png" id="2_rhicl"]
+[ext_resource type="Texture2D" uid="uid://c1qr4aws03nc0" path="res://game/levels/main_menu/StoneNormal.png" id="3_a80kh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y3vpo"]
+albedo_texture = ExtResource("2_rhicl")
+metallic = 0.54
+metallic_specular = 0.82
+roughness = 0.3
+normal_enabled = true
+normal_texture = ExtResource("3_a80kh")
+
+[node name="Rock" instance=ExtResource("1_4p335")]
+
+[node name="Stone Base" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_y3vpo")

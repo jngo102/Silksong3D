@@ -18,13 +18,15 @@ max_yaw_degrees = 35.0
 [node name="CameraPitch" type="Node3D" parent="."]
 
 [node name="Gimbal" type="SpringArm3D" parent="CameraPitch"]
+transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 0, 0)
 collision_mask = 4
 shape = SubResource("SphereShape3D_ewp70")
-spring_length = 20.0
+spring_length = 16.0
 
 [node name="Camera" type="Camera3D" parent="CameraPitch/Gimbal" groups=["Cameras"]]
-transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 8, 8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
 attributes = SubResource("CameraAttributesPractical_bv4xb")
 current = true
 size = 70.0
 script = ExtResource("2_bv4xb")
+shake_interval = 0.01

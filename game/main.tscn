@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bg0sil3820f5u"]
 
 [ext_resource type="Script" uid="uid://behdm1x2xseoi" path="res://game/main.gd" id="1_oa506"]
-[ext_resource type="PackedScene" uid="uid://d0nkpdyoqawun" path="res://game/autoload/ui/main_menu/main_menu.tscn" id="2_xtpaf"]
+[ext_resource type="PackedScene" uid="uid://d0nkpdyoqawun" path="res://game/levels/main_menu/main_menu.tscn" id="2_xtpaf"]
 
 [node name="Main" type="Control"]
 layout_mode = 3

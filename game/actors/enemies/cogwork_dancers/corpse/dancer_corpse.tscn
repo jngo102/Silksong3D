@@ -223,3 +223,6 @@ libraries = {
 
 [node name="ExplodeRing" parent="." index="7"]
 mesh = SubResource("SphereMesh_mvg4a")
+
+[node name="ExplosionAudio" parent="." index="8"]
+bus = &"SFX"

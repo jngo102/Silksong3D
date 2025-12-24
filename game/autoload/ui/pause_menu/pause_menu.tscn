@@ -1,0 +1,342 @@
+[gd_scene load_steps=21 format=3 uid="uid://cispplpjiljwj"]
+
+[ext_resource type="Script" uid="uid://d37lxs0hwk4cl" path="res://game/autoload/ui/pause_menu/pause_menu.gd" id="1_vjtkf"]
+[ext_resource type="Texture2D" uid="uid://dfjbgcko6njml" path="res://game/copyrighted/textures/ui/pause/pause_top_fleur0004.png" id="2_8kap7"]
+[ext_resource type="Shader" uid="uid://buw2b8yxk47om" path="res://game/resources/shaders/blur.gdshader" id="2_42xwn"]
+[ext_resource type="PackedScene" uid="uid://hqhyvp4gjw8i" path="res://game/autoload/ui/ui_button.tscn" id="2_dqkxv"]
+[ext_resource type="Texture2D" uid="uid://chbtm3gh1ksj7" path="res://game/copyrighted/textures/ui/pause/pause_top_fleur0005.png" id="3_2vdy3"]
+[ext_resource type="PackedScene" uid="uid://dymla6ms0yb56" path="res://game/autoload/ui/settings/settings_ui.tscn" id="3_42xwn"]
+[ext_resource type="Texture2D" uid="uid://klta3ltiacqu" path="res://game/copyrighted/textures/ui/pause/pause_top_fleur0006.png" id="4_8ybpc"]
+[ext_resource type="PackedScene" uid="uid://wnb0e26iehfc" path="res://game/levels/main_menu/quit_warning.tscn" id="4_30xuc"]
+[ext_resource type="Texture2D" uid="uid://b2a5hqkklvvfd" path="res://game/copyrighted/textures/ui/pause/pause_top_fleur0007.png" id="5_d03k8"]
+[ext_resource type="Texture2D" uid="uid://dq4wfoga1gd0b" path="res://game/copyrighted/textures/ui/pause/pause_top_fleur0008.png" id="6_k6tua"]
+[ext_resource type="Texture2D" uid="uid://bjtjl3ll8amvh" path="res://game/copyrighted/textures/ui/misc/bottom_fleur0004.png" id="7_m8o3f"]
+[ext_resource type="Texture2D" uid="uid://bit5crljxg3de" path="res://game/copyrighted/textures/ui/misc/bottom_fleur0005.png" id="8_2jmv2"]
+[ext_resource type="Texture2D" uid="uid://ccagewgfbpjlq" path="res://game/copyrighted/textures/ui/misc/bottom_fleur0006.png" id="9_el8v2"]
+[ext_resource type="Texture2D" uid="uid://b7ovpmlucyd4r" path="res://game/copyrighted/textures/ui/misc/bottom_fleur0007.png" id="10_4p2qt"]
+[ext_resource type="Texture2D" uid="uid://bhugjf3plw01a" path="res://game/copyrighted/textures/ui/misc/bottom_fleur0008.png" id="11_m0g1j"]
+
+[sub_resource type="Animation" id="Animation_42xwn"]
+resource_name = "Close"
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BackgroundBlur:material:shader_parameter/blur_radius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [15.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.25),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [false],
+"method": &"_do_pause"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.25),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"hide"
+}]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MarginContainer/MenuButtons/TopFleur:texture")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("6_k6tua"), ExtResource("5_d03k8"), ExtResource("4_8ybpc"), ExtResource("3_2vdy3"), ExtResource("2_8kap7"), null]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MarginContainer/MenuButtons/BottomFleur:texture")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("11_m0g1j"), ExtResource("10_4p2qt"), ExtResource("9_el8v2"), ExtResource("8_2jmv2"), ExtResource("7_m8o3f"), null]
+}
+
+[sub_resource type="Animation" id="Animation_m8o3f"]
+resource_name = "Open"
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BackgroundBlur:material:shader_parameter/blur_radius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 15.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [true],
+"method": &"_do_pause"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"show"
+}]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MarginContainer/MenuButtons/TopFleur:texture")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [null, ExtResource("2_8kap7"), ExtResource("3_2vdy3"), ExtResource("4_8ybpc"), ExtResource("5_d03k8"), ExtResource("6_k6tua")]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MarginContainer/MenuButtons/BottomFleur:texture")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [null, ExtResource("7_m8o3f"), ExtResource("8_2jmv2"), ExtResource("9_el8v2"), ExtResource("10_4p2qt"), ExtResource("11_m0g1j")]
+}
+
+[sub_resource type="Animation" id="Animation_30xuc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BackgroundBlur:material:shader_parameter/blur_radius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [15.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MarginContainer/MenuButtons/TopFleur:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MarginContainer/MenuButtons/BottomFleur:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_30xuc"]
+_data = {
+&"Close": SubResource("Animation_42xwn"),
+&"Open": SubResource("Animation_m8o3f"),
+&"RESET": SubResource("Animation_30xuc")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_30xuc"]
+shader = ExtResource("2_42xwn")
+shader_parameter/blur_radius = 15.0
+
+[node name="PauseMenu" type="Control" node_paths=PackedStringArray("child_uis", "default_ui")]
+process_mode = 3
+z_index = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_vjtkf")
+child_uis = [NodePath("MarginContainer/MenuButtons"), NodePath("MarginContainer/QuitWarningPage"), NodePath("SettingsUI")]
+default_ui = NodePath("MarginContainer/MenuButtons")
+
+[node name="Animator" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_30xuc")
+}
+
+[node name="BackgroundBlur" type="TextureRect" parent="."]
+z_index = -1
+material = SubResource("ShaderMaterial_30xuc")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -277.0
+offset_top = -262.5
+offset_right = 277.0
+offset_bottom = 262.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MenuButtons" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 96
+alignment = 1
+
+[node name="TopFleur" type="TextureRect" parent="MarginContainer/MenuButtons"]
+layout_mode = 2
+stretch_mode = 3
+
+[node name="ResumeButton" parent="MarginContainer/MenuButtons" instance=ExtResource("2_dqkxv")]
+layout_mode = 2
+text = "Continue"
+
+[node name="RestartButton" parent="MarginContainer/MenuButtons" instance=ExtResource("2_dqkxv")]
+layout_mode = 2
+text = "Restart Fight"
+
+[node name="OptionsButton" parent="MarginContainer/MenuButtons" instance=ExtResource("2_dqkxv")]
+layout_mode = 2
+text = "Options"
+
+[node name="QuitButton" parent="MarginContainer/MenuButtons" instance=ExtResource("2_dqkxv")]
+layout_mode = 2
+text = "Quit to Menu"
+
+[node name="BottomFleur" type="TextureRect" parent="MarginContainer/MenuButtons"]
+layout_mode = 2
+stretch_mode = 3
+
+[node name="QuitWarningPage" parent="MarginContainer" instance=ExtResource("4_30xuc")]
+visible = false
+layout_mode = 2
+
+[node name="MarginContainer" parent="MarginContainer/QuitWarningPage" index="1"]
+theme_override_constants/margin_left = 0
+
+[node name="Title" parent="MarginContainer/QuitWarningPage/MarginContainer/Page/Header" index="0"]
+text = "Return to main menu?"
+
+[node name="Contents" parent="MarginContainer/QuitWarningPage/MarginContainer/Page" index="1"]
+theme_override_constants/separation = 64
+
+[node name="SettingsUI" parent="." instance=ExtResource("3_42xwn")]
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="MarginContainer/MenuButtons/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="MarginContainer/MenuButtons/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="MarginContainer/MenuButtons/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="MarginContainer/MenuButtons/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="hidden" from="MarginContainer/QuitWarningPage" to="." method="_on_quit_warning_page_hidden"]
+[connection signal="quit_confirmed" from="MarginContainer/QuitWarningPage" to="." method="_on_quit_warning_page_quit_confirmed"]
+[connection signal="hidden" from="SettingsUI" to="." method="_on_settings_ui_hidden"]
+
+[editable path="MarginContainer/QuitWarningPage"]

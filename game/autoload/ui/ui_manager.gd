@@ -35,21 +35,6 @@ var in_closeable_ui: bool:
 	get:
 		return len(opened_uis) > 0 and opened_uis.any(func(ui): return non_closeable_uis.has(ui.get_script()))
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_cancel"):
-		if in_closeable_ui:
-			top_ui.close()
-		elif SceneManager.current_level.name != "MainMenu":
-			pass
-			#var pause_menu: PauseMenu = get_ui(PauseMenu)
-			#if pause_menu:
-				#if pause_menu.visible:
-					#pause_menu.close()
-				#else:
-					#pause_menu.open()
-			#else:
-				#open_ui(PauseMenu)
-
 ## Close a UI
 func close_ui(ui: GDScript) -> void:
 	var found_uis = opened_uis.filter(func(opened_ui):

@@ -8,7 +8,7 @@ const SAVE_FILE_NAME: String = "data"
 const SETTINGS_PATH: String = "user://settings.tres"
 
 ## The default save configuration if a new game is started
-@export var default_save: SaveData
+var default_save: SaveData = preload("uid://3c7fmch5niji")
 
 ## The current settings instance
 var settings := Settings.new()
@@ -25,7 +25,11 @@ var save_path: String:
 		return "user://%s%d.tres" % [SAVE_FILE_NAME, selected_profile_id]
 
 func _init() -> void:
+	_load_game()
 	settings = _load_settings()
+
+func _ready() -> void:
+	tree_exiting.connect(_on_tree_exiting)
 
 ## Load game data and settings from disk
 func _load_game(profile_id: int = 0) -> void:

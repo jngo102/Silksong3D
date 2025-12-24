@@ -11,6 +11,7 @@ func _enter() -> void:
 	_hurt_voice_clips.play_random(_player.global_position)
 	var damage_effect: Node3D = _damage_effect_prefab.instantiate()
 	_player.add_child(damage_effect)
+	_player.velocity = Vector3.ZERO
 	if _hsm.get_previous_active_state() == _hsm.bind_state:
 		var bind_break_effect: Node3D = _bind_break_effect_prefab.instantiate()
 		_player.add_child(bind_break_effect)
@@ -21,4 +22,4 @@ func _update(_delta: float) -> void:
 		send_event(_hsm.EVENT_FINISHED)
 
 func can_enter() -> bool:
-	return not _player.health.is_dead
+	return not _player.health.is_dead and not _hsm.get_active_state() == _hsm.multi_hit_state

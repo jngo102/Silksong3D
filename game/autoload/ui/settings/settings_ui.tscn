@@ -1,13 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://dymla6ms0yb56"]
+[gd_scene load_steps=8 format=3 uid="uid://dymla6ms0yb56"]
 
 [ext_resource type="Script" uid="uid://ut0yqy381ga6" path="res://game/autoload/ui/settings/settings_ui.gd" id="1_5bhgl"]
 [ext_resource type="PackedScene" uid="uid://cb2q8wcqo5p7f" path="res://game/autoload/ui/settings/input/input_settings_page.tscn" id="1_27rnl"]
 [ext_resource type="PackedScene" uid="uid://dvsqiexj1kwm8" path="res://game/autoload/ui/menu_page.tscn" id="1_54iid"]
 [ext_resource type="PackedScene" uid="uid://s3r8q4i5fd4i" path="res://game/autoload/ui/settings/cursor.tscn" id="2_54iid"]
 [ext_resource type="PackedScene" uid="uid://bkj1s30wrgg4q" path="res://game/autoload/ui/settings/audio/audio_settings_page.tscn" id="4_mgrx7"]
+[ext_resource type="PackedScene" uid="uid://c8jlv2oiu45hg" path="res://game/autoload/ui/settings/graphics/graphics_settings_page.tscn" id="6_5e0nd"]
+[ext_resource type="PackedScene" uid="uid://dtetst652jshg" path="res://game/autoload/ui/settings/accessibility_settings_page.tscn" id="6_mgrx7"]
 
 [node name="SettingsUI" instance=ExtResource("1_54iid")]
 script = ExtResource("1_5bhgl")
+
+[node name="Title" parent="MarginContainer/Page/Header" index="0"]
+text = "Settings"
 
 [node name="TopBar" type="HBoxContainer" parent="MarginContainer/Page/Contents" index="0"]
 layout_mode = 2
@@ -22,41 +27,36 @@ size_flags_horizontal = 3
 theme_override_constants/separation = 64
 alignment = 1
 
-[node name="GameSettings" type="Button" parent="MarginContainer/Page/Contents/TopBar/SettingsTabs" index="0"]
+[node name="AccessibilitySettings" type="Button" parent="MarginContainer/Page/Contents/TopBar/SettingsTabs" index="0"]
 layout_mode = 2
-text = "Game"
+text = "Accessibility"
 flat = true
 
-[node name="Cursor" parent="MarginContainer/Page/Contents/TopBar/SettingsTabs/GameSettings" index="0" instance=ExtResource("2_54iid")]
+[node name="Cursor" parent="MarginContainer/Page/Contents/TopBar/SettingsTabs/AccessibilitySettings" index="0" instance=ExtResource("2_54iid")]
 layout_mode = 0
 anchors_preset = 0
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = 593.0
+offset_left = 384.0
 offset_top = -404.0
-offset_right = 593.0
+offset_right = 384.0
 offset_bottom = -404.0
 grow_horizontal = 1
 grow_vertical = 1
 
-[node name="AccessibilitySettings" type="Button" parent="MarginContainer/Page/Contents/TopBar/SettingsTabs" index="1"]
-layout_mode = 2
-text = "Accessibility"
-flat = true
-
-[node name="AudioSettings" type="Button" parent="MarginContainer/Page/Contents/TopBar/SettingsTabs" index="2"]
+[node name="AudioSettings" type="Button" parent="MarginContainer/Page/Contents/TopBar/SettingsTabs" index="1"]
 layout_mode = 2
 text = "Audio"
 flat = true
 
-[node name="GraphicsSettings" type="Button" parent="MarginContainer/Page/Contents/TopBar/SettingsTabs" index="3"]
+[node name="GraphicsSettings" type="Button" parent="MarginContainer/Page/Contents/TopBar/SettingsTabs" index="2"]
 layout_mode = 2
 text = "Graphics"
 flat = true
 
-[node name="InputSettings" type="Button" parent="MarginContainer/Page/Contents/TopBar/SettingsTabs" index="4"]
+[node name="InputSettings" type="Button" parent="MarginContainer/Page/Contents/TopBar/SettingsTabs" index="3"]
 layout_mode = 2
 text = "Input"
 flat = true
@@ -64,74 +64,22 @@ flat = true
 [node name="RightNav" type="TextureRect" parent="MarginContainer/Page/Contents/TopBar" index="2"]
 layout_mode = 2
 
-[node name="MarginContainer_Page_Contents#Pages" type="Control" parent="MarginContainer/Page/Contents/TopBar" index="3"]
-layout_mode = 2
-size_flags_vertical = 3
-focus_mode = 2
-
-[node name="Label" type="Label" parent="MarginContainer/Page/Contents/TopBar/MarginContainer_Page_Contents#Pages" index="0"]
-visible = false
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 74.0
-text = "Game"
-
-[node name="Label2" type="Label" parent="MarginContainer/Page/Contents/TopBar/MarginContainer_Page_Contents#Pages" index="1"]
-visible = false
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 74.0
-text = "Accessibility"
-
-[node name="AudioSettingsPage" parent="MarginContainer/Page/Contents/TopBar/MarginContainer_Page_Contents#Pages" index="2" instance=ExtResource("4_mgrx7")]
-visible = false
-layout_mode = 1
-offset_top = -5.0
-offset_bottom = 159.0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-
-[node name="Label4" type="Label" parent="MarginContainer/Page/Contents/TopBar/MarginContainer_Page_Contents#Pages" index="3"]
-visible = false
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 74.0
-text = "Graphics"
-
-[node name="InputSettingsPage" parent="MarginContainer/Page/Contents/TopBar/MarginContainer_Page_Contents#Pages" index="4" node_paths=PackedStringArray("child_uis") instance=ExtResource("1_27rnl")]
-visible = false
-layout_mode = 1
-child_uis = []
-
 [node name="Pages" type="Control" parent="MarginContainer/Page/Contents" index="1"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="MarginContainer/Page/Contents/Pages" index="0"]
-layout_mode = 0
-offset_right = 137.0
-offset_bottom = 74.0
-text = "Game"
+[node name="AccessibilitySettingsPage" parent="MarginContainer/Page/Contents/Pages" index="0" instance=ExtResource("6_mgrx7")]
+layout_mode = 1
 
-[node name="Label2" type="Label" parent="MarginContainer/Page/Contents/Pages" index="1"]
-visible = false
-layout_mode = 0
-offset_right = 137.0
-offset_bottom = 74.0
-text = "Accessibility"
-
-[node name="AudioSettingsPage" parent="MarginContainer/Page/Contents/Pages" index="2" instance=ExtResource("4_mgrx7")]
+[node name="AudioSettingsPage" parent="MarginContainer/Page/Contents/Pages" index="1" instance=ExtResource("4_mgrx7")]
 visible = false
 layout_mode = 1
 
-[node name="Label3" type="Label" parent="MarginContainer/Page/Contents/Pages" index="3"]
+[node name="GraphicsSettingsPage" parent="MarginContainer/Page/Contents/Pages" index="2" instance=ExtResource("6_5e0nd")]
 visible = false
-layout_mode = 0
-offset_right = 287.0
-offset_bottom = 74.0
-text = "Graphics"
+layout_mode = 1
 
-[node name="InputSettingsPage" parent="MarginContainer/Page/Contents/Pages" index="4" node_paths=PackedStringArray("child_uis") instance=ExtResource("1_27rnl")]
+[node name="InputSettingsPage" parent="MarginContainer/Page/Contents/Pages" index="3" node_paths=PackedStringArray("child_uis") instance=ExtResource("1_27rnl")]
 visible = false
 layout_mode = 1
 child_uis = []

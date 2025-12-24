@@ -13,6 +13,7 @@ func _input(event: InputEvent) -> void:
 		send_event(_hsm.SKILL_EVENT)
 
 func _enter() -> void:
+	super._enter()
 	_walk_blend_tree.set_active(true)
 
 func _exit() -> void:

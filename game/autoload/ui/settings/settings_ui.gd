@@ -7,7 +7,7 @@ class_name SettingsUI extends MenuPage
 @onready var _right_navigation_icon: TextureRect = _top_bar.get_node_or_null("RightNav")
 @onready var _pages: Control = _contents.get_node_or_null("Pages")
 @onready var _input_settings_page: InputSettingsPage = _pages.get_node_or_null("InputSettingsPage")
-@onready var _cursor: Cursor = _settings_tabs.get_node_or_null("GameSettings/Cursor")
+@onready var _cursor: Cursor = _settings_tabs.get_child(0).get_node_or_null("Cursor")
 
 var _settings_tab_buttons: Array[Node]:
 	get:

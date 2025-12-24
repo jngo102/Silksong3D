@@ -163,6 +163,7 @@ icon_alignment = 1
 script = ExtResource("1_dvxb5")
 
 [node name="ButtonAudio" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"
 
 [node name="Elements" type="HBoxContainer" parent="."]
 layout_mode = 1

@@ -1,0 +1,241 @@
+[gd_scene load_steps=16 format=3 uid="uid://dcvpcta71mmie"]
+
+[ext_resource type="Script" uid="uid://54p23p1ad1bj" path="res://game/levels/score_screen.gd" id="1_1e7ll"]
+[ext_resource type="Texture2D" uid="uid://dfjbgcko6njml" path="res://game/copyrighted/textures/ui/pause/pause_top_fleur0004.png" id="1_mwusd"]
+[ext_resource type="Texture2D" uid="uid://chbtm3gh1ksj7" path="res://game/copyrighted/textures/ui/pause/pause_top_fleur0005.png" id="2_1e7ll"]
+[ext_resource type="Texture2D" uid="uid://klta3ltiacqu" path="res://game/copyrighted/textures/ui/pause/pause_top_fleur0006.png" id="3_ihg5f"]
+[ext_resource type="Texture2D" uid="uid://b2a5hqkklvvfd" path="res://game/copyrighted/textures/ui/pause/pause_top_fleur0007.png" id="4_tj6b7"]
+[ext_resource type="Texture2D" uid="uid://dq4wfoga1gd0b" path="res://game/copyrighted/textures/ui/pause/pause_top_fleur0008.png" id="5_u34wx"]
+[ext_resource type="FontFile" uid="uid://05of6p43x4sb" path="res://game/copyrighted/fonts/PERPETUA.TTF" id="7_ihg5f"]
+
+[sub_resource type="Animation" id="Animation_1avoc"]
+resource_name = "Show"
+length = 3.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Contents/Header/Fleur:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [null, ExtResource("1_mwusd"), ExtResource("2_1e7ll"), ExtResource("3_ihg5f"), ExtResource("4_tj6b7"), ExtResource("5_u34wx")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Contents:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Contents/Score:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_d73hh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Contents/Header/Fleur:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Contents:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Contents/Score:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Contents/NewHighScoreLabel:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Contents/ContinuePrompt:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ihg5f"]
+resource_name = "New High Score"
+length = 2.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Contents/NewHighScoreLabel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_tj6b7"]
+resource_name = "Show Prompt"
+length = 2.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Contents/ContinuePrompt:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ma30v"]
+_data = {
+&"New High Score": SubResource("Animation_ihg5f"),
+&"RESET": SubResource("Animation_d73hh"),
+&"Show": SubResource("Animation_1avoc"),
+&"Show Prompt": SubResource("Animation_tj6b7")
+}
+
+[sub_resource type="Gradient" id="Gradient_ihg5f"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.42990655, 1)
+colors = PackedColorArray(0.51470995, 0.5863511, 0.66177326, 1, 0.2489464, 0.28796306, 0.33014953, 1, 0.016315429, 0.02196349, 0.03174293, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_tj6b7"]
+gradient = SubResource("Gradient_ihg5f")
+fill = 1
+fill_from = Vector2(0.5, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_tj6b7"]
+font = ExtResource("7_ihg5f")
+font_size = 96
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[node name="ScoreScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1e7ll")
+
+[node name="Animator" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ma30v")
+}
+autoplay = "Show"
+
+[node name="BackgroundGlow" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_tj6b7")
+
+[node name="Contents" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 64
+alignment = 1
+
+[node name="Header" type="VBoxContainer" parent="Contents"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Title" type="Label" parent="Contents/Header"]
+layout_mode = 2
+text = "Your Score"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Fleur" type="TextureRect" parent="Contents/Header"]
+layout_mode = 2
+stretch_mode = 3
+
+[node name="Score" type="Label" parent="Contents"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+text = "100000"
+label_settings = SubResource("LabelSettings_tj6b7")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="NewHighScoreLabel" type="Label" parent="Contents"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+text = "New high score!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ContinuePrompt" type="Label" parent="Contents"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+text = "Press Space to continue..."
+horizontal_alignment = 1
+vertical_alignment = 2

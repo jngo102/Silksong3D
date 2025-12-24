@@ -1,0 +1,29 @@
+[gd_scene load_steps=7 format=3 uid="uid://c50y1s5he41oo"]
+
+[ext_resource type="PackedScene" uid="uid://dvsqiexj1kwm8" path="res://game/autoload/ui/menu_page.tscn" id="1_gd287"]
+[ext_resource type="Script" uid="uid://y801eoanpic5" path="res://game/levels/main_menu/profiles/boss_fight_profiles_page.gd" id="1_sa8tw"]
+[ext_resource type="Script" uid="uid://mh6v8w8mh15m" path="res://game/levels/main_menu/profiles/boss_fight_profile_data.gd" id="2_vd6hw"]
+[ext_resource type="PackedScene" uid="uid://dugp1elqcy03h" path="res://game/levels/cogwork_dancers/cogwork_dancers_fight.tscn" id="3_wrfrw"]
+[ext_resource type="Texture2D" uid="uid://1nnhio1kqrsg" path="res://game/levels/main_menu/profiles/cogwork_dancers.png" id="5_vd6hw"]
+
+[sub_resource type="Resource" id="Resource_vd6hw"]
+script = ExtResource("2_vd6hw")
+scene = ExtResource("3_wrfrw")
+thumbnail = ExtResource("5_vd6hw")
+boss_name = "Cogwork Dancers"
+root_node_name = "CogworkDancersFight"
+metadata/_custom_type_script = "uid://mh6v8w8mh15m"
+
+[node name="BossFightProfilesPage" instance=ExtResource("1_gd287")]
+script = ExtResource("1_sa8tw")
+profiles = Array[ExtResource("2_vd6hw")]([SubResource("Resource_vd6hw")])
+
+[node name="Title" parent="MarginContainer/Page/Header" index="0"]
+text = "Select Boss Fight"
+
+[node name="Elements" type="HBoxContainer" parent="MarginContainer/Page/Contents" index="0"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_neighbor_top = NodePath("../BackButton")
+focus_neighbor_bottom = NodePath("../BackButton")
+alignment = 1

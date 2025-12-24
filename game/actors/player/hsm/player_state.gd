@@ -9,6 +9,7 @@ func _ready() -> void:
 	await _player.ready
 	_model_animator = _player.model_animator
 	_player.health.took_damage.connect(_on_take_damage)
+	_player.health.multi_hit_started.connect(_on_multi_hit_start)
 
 func _update(delta: float) -> void:
 	if Input.is_action_just_pressed(&"Bind"):
@@ -26,3 +27,6 @@ func _on_take_damage(damager: Damager) -> void:
 		send_event(_hsm.BIG_DAMAGE_EVENT)
 	elif damager.damage_amount == 1:
 		send_event(_hsm.DAMAGE_EVENT)
+
+func _on_multi_hit_start() -> void:
+	send_event(_hsm.MULTI_HIT_EVENT)

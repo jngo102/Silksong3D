@@ -31,4 +31,5 @@ health = NodePath("../Health")
 metadata/_custom_type_script = "uid://ci132uxvr133w"
 
 [node name="VoicePlayer" type="AudioStreamPlayer3D" parent="."]
+bus = &"SFX"
 script = ExtResource("3_rktbm")

@@ -1,7 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://wme5tm2qkeg2"]
+[gd_scene load_steps=19 format=3 uid="uid://wme5tm2qkeg2"]
 
 [ext_resource type="AudioStream" uid="uid://cnjm0wfdsvldl" path="res://game/copyrighted/sfx/environment/gate_slam.wav" id="1_2kn6d"]
 [ext_resource type="PackedScene" uid="uid://170vlsm248ds" path="res://game/levels/cogwork_dancers/door.glb" id="3_3jh15"]
+[ext_resource type="Script" uid="uid://bq4j0l51gfuco" path="res://game/levels/material_floor.gd" id="3_gf8wq"]
+[ext_resource type="Resource" uid="uid://cdhpw43qtfwce" path="res://game/resources/random_audio_plays/footsteps_metal.tres" id="4_8aboh"]
+[ext_resource type="AudioStream" uid="uid://dkuoifc3ivndh" path="res://game/copyrighted/sfx/hornet/movement/metal/hornet_land_metal.wav" id="5_8aboh"]
 [ext_resource type="PackedScene" uid="uid://ddjyjf6vhi42t" path="res://game/levels/cogwork_dancers/spoked_gear.glb" id="6_8aboh"]
 
 [sub_resource type="Animation" id="Animation_2kn6d"]
@@ -316,6 +319,7 @@ autoplay = "Idle Spin Gears"
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 11.720975, 5.4598975, 12.979434)
 stream = ExtResource("1_2kn6d")
 unit_size = 32.0
+bus = &"SFX"
 
 [node name="WallBody" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1195664, -0.20175628, 0)
@@ -354,6 +358,9 @@ shape = SubResource("BoxShape3D_e4ccn")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.106131, -0.35342407, 0)
 collision_layer = 4
 collision_mask = 0
+script = ExtResource("3_gf8wq")
+footsteps_audio = ExtResource("4_8aboh")
+land_audio = ExtResource("5_8aboh")
 
 [node name="Collision" type="CollisionShape3D" parent="Floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.609076, 0.61157227, 13.050427)

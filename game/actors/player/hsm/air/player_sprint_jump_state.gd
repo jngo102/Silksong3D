@@ -7,6 +7,8 @@ class_name PlayerSprintJumpState extends PlayerAirState
 @export var _sprint_jump_speed: float = 48
 @export var _spin_speed: float = 720
 
+var _sprint_jump_spin_audio: AudioStream = preload("uid://drbp2tq0bbbh6")
+
 var _queue_stop_jump: bool
 
 func _ready() -> void:
@@ -14,6 +16,7 @@ func _ready() -> void:
 	_sprint_jump_transition_tree.animation_finished.connect(_on_animation_finish)
 
 func _enter() -> void:
+	AudioManager.play_clip(_sprint_jump_spin_audio, false, _player.global_position, 0.85, 1.15)
 	_player.move(Vector2.UP * _sprint_jump_speed)
 	_sprint_jump_transition_tree.set_active(true)
 	_queue_stop_jump = false

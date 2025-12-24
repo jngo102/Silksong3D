@@ -4,6 +4,7 @@
 
 [node name="PositionalAudioPlayer" type="AudioStreamPlayer3D"]
 unit_size = 24.0
+bus = &"SFX"
 script = ExtResource("1_h7gyy")
 
 [connection signal="finished" from="." to="." method="_on_finished"]

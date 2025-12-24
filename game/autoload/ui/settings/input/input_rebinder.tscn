@@ -18,10 +18,12 @@ layout_mode = 2
 size_flags_horizontal = 6
 
 [node name="RebindButton" type="Button" parent="."]
+custom_minimum_size = Vector2(256, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 focus_behavior_recursive = 2
 theme = ExtResource("2_dhcxq")
+icon_alignment = 1
 
 [connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
 [connection signal="pressed" from="RebindButton" to="." method="_on_rebind_button_pressed"]

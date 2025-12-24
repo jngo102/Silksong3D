@@ -60,7 +60,7 @@ func _update_device_icons(device: String = InputHelper.device, _device_index: in
 		var key_mouse_input: InputEvent = InputHelper.get_keyboard_input_for_action(action_name)
 		if key_mouse_input is InputEventKey:
 			_rebind_button.icon = null
-			_rebind_button.text = OS.get_keycode_string(key_mouse_input.physical_keycode)
+			_rebind_button.text = OS.get_keycode_string(key_mouse_input.keycode)
 		elif key_mouse_input is InputEventMouseButton:
 			_rebind_button.icon = InputManager.current_input_icons[key_mouse_input.button_index]
 			_rebind_button.text = ""

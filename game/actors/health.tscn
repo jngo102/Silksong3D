@@ -4,8 +4,8 @@
 [ext_resource type="Curve" uid="uid://c2gis7phupc2g" path="res://game/resources/curves/blood_particles_curve.tres" id="3_vn45b"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ledv5"]
-radius = 0.75
-height = 2.5
+radius = 0.5566406
+height = 3.9101563
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bn7r2"]
 shading_mode = 0

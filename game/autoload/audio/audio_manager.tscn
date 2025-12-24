@@ -14,5 +14,7 @@ global_audio_player_prefab = ExtResource("3_c6ins")
 [node name="MusicPlayers" type="Node" parent="."]
 
 [node name="CurrentMusicPlayer" type="AudioStreamPlayer" parent="MusicPlayers"]
+bus = &"Music"
 
 [node name="NextMusicPlayer" type="AudioStreamPlayer" parent="MusicPlayers"]
+bus = &"Music"

@@ -11,10 +11,14 @@ config_version=5
 [application]
 
 config/name="Silksong 3D"
-config/version="0.4.8"
-run/main_scene="uid://bg0sil3820f5u"
+config/version="0.5.0"
+run/main_scene="uid://d0nkpdyoqawun"
 config/features=PackedStringArray("4.5", "4.5.1", "Forward Plus")
 config/icon="uid://dfed24vi280po"
+
+[audio]
+
+buses/default_bus_layout="uid://cj7ojo4d0ecmg"
 
 [autoload]
 
@@ -22,12 +26,13 @@ BBUtil="*res://game/autoload/utility/bb_util.gd"
 NodeUtil="*res://game/autoload/utility/node_util.gd"
 SaveManager="*res://game/autoload/save/save_manager.gd"
 InputManager="*res://game/autoload/input/input_manager.tscn"
-UIManager="*res://game/autoload/ui/ui_manager.tscn"
 SceneManager="*res://game/autoload/scene/scene_manager.gd"
+UIManager="*res://game/autoload/ui/ui_manager.tscn"
 AudioManager="*res://game/autoload/audio/audio_manager.tscn"
 InputHelper="*res://addons/input_helper/input_helper.gd"
 CameraManager="*res://game/gameplay/scene/camera_manager.gd"
 TimeManager="*res://game/autoload/time_manager.gd"
+ScoreManager="*res://game/autoload/score/score_manager.gd"
 
 [display]
 
@@ -35,6 +40,7 @@ window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/size/initial_position_type=3
 window/stretch/mode="viewport"
+window/stretch/aspect="keep_height"
 
 [editor]
 

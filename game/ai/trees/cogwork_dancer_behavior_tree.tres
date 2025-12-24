@@ -1,4 +1,4 @@
-[gd_resource type="BehaviorTree" load_steps=1014 format=3 uid="uid://chh6lvoe5ufr8"]
+[gd_resource type="BehaviorTree" load_steps=1025 format=3 uid="uid://chh6lvoe5ufr8"]
 
 [ext_resource type="Script" uid="uid://dfxh5qmwucb7e" path="res://game/ai/tasks/scene/get_first_in_group.gd" id="1_lkiki"]
 [ext_resource type="Script" uid="uid://oufr1n61rgt6" path="res://game/ai/tasks/audio/get_current_music_player.gd" id="3_ngxa6"]
@@ -520,11 +520,31 @@ script = ExtResource("20_ucsdq")
 clips_array = Array[AudioStream]([ExtResource("7_jn4d2")])
 play_position_var = &"self_position"
 
+[sub_resource type="BBVariant" id="BBVariant_6agt7"]
+value_source = 1
+variable = &"self"
+resource_name = "$self"
+
+[sub_resource type="BBVariant" id="BBVariant_nhuc2"]
+type = 3
+saved_value = 0.5
+resource_name = "0.5"
+
+[sub_resource type="BBNode" id="BBNode_bpwgy"]
+value_source = 1
+variable = &"manager_path"
+resource_name = "$manager_path"
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_nhuc2"]
+node = SubResource("BBNode_bpwgy")
+method = &"spin_gears"
+args = Array[BBVariant]([SubResource("BBVariant_6agt7"), SubResource("BBVariant_nhuc2")])
+
 [sub_resource type="BTWait" id="BTWait_57pd4"]
 
 [sub_resource type="BTSequence" id="BTSequence_0dlsi"]
 custom_name = "Shake 1"
-children = [SubResource("BTCallMethod_0p5ck"), SubResource("BTAction_1k733"), SubResource("BTAction_8s2vd"), SubResource("BTWait_57pd4")]
+children = [SubResource("BTCallMethod_0p5ck"), SubResource("BTAction_1k733"), SubResource("BTAction_8s2vd"), SubResource("BTCallMethod_nhuc2"), SubResource("BTWait_57pd4")]
 
 [sub_resource type="BBVariant" id="BBVariant_ro6js"]
 type = 3
@@ -566,11 +586,21 @@ script = ExtResource("20_ucsdq")
 clips_array = Array[AudioStream]([ExtResource("9_tvm2c")])
 play_position_var = &"self_position"
 
+[sub_resource type="BBNode" id="BBNode_stsw8"]
+value_source = 1
+variable = &"manager_path"
+resource_name = "$manager_path"
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_v86fp"]
+node = SubResource("BBNode_stsw8")
+method = &"spin_gears"
+args = Array[BBVariant]([SubResource("BBVariant_6agt7"), SubResource("BBVariant_nhuc2")])
+
 [sub_resource type="BTWait" id="BTWait_kq56s"]
 
 [sub_resource type="BTSequence" id="BTSequence_so0oi"]
 custom_name = "Shake 2"
-children = [SubResource("BTCallMethod_yk1c7"), SubResource("BTAction_57pd4"), SubResource("BTAction_m1jhj"), SubResource("BTWait_kq56s")]
+children = [SubResource("BTCallMethod_yk1c7"), SubResource("BTAction_57pd4"), SubResource("BTAction_m1jhj"), SubResource("BTCallMethod_v86fp"), SubResource("BTWait_kq56s")]
 
 [sub_resource type="BBVariant" id="BBVariant_hk0ud"]
 type = 3
@@ -612,11 +642,21 @@ script = ExtResource("20_ucsdq")
 clips_array = Array[AudioStream]([ExtResource("10_ipxx0")])
 play_position_var = &"self_position"
 
+[sub_resource type="BBNode" id="BBNode_ci1rf"]
+value_source = 1
+variable = &"manager_path"
+resource_name = "$manager_path"
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_q4hpc"]
+node = SubResource("BBNode_ci1rf")
+method = &"spin_gears"
+args = Array[BBVariant]([SubResource("BBVariant_6agt7"), SubResource("BBVariant_nhuc2")])
+
 [sub_resource type="BTWait" id="BTWait_qkeg5"]
 
 [sub_resource type="BTSequence" id="BTSequence_6m7i6"]
 custom_name = "Shake 3"
-children = [SubResource("BTCallMethod_m1jhj"), SubResource("BTAction_c57wm"), SubResource("BTAction_45lfl"), SubResource("BTWait_qkeg5")]
+children = [SubResource("BTCallMethod_m1jhj"), SubResource("BTAction_c57wm"), SubResource("BTAction_45lfl"), SubResource("BTCallMethod_q4hpc"), SubResource("BTWait_qkeg5")]
 
 [sub_resource type="BTSequence" id="BTSequence_vksgl"]
 custom_name = "Shake"
@@ -729,6 +769,27 @@ resource_name = "$roar_position"
 script = ExtResource("19_e8anh")
 roar_position_var = SubResource("BBVariant_50xhl")
 
+[sub_resource type="BBVariant" id="BBVariant_kq56s"]
+type = 3
+saved_value = 0.5
+resource_name = "0.5"
+
+[sub_resource type="BBVariant" id="BBVariant_1j8g6"]
+type = 3
+saved_value = 2.0
+resource_name = "2.0"
+
+[sub_resource type="BBVariant" id="BBVariant_3arx4"]
+type = 1
+saved_value = false
+resource_name = "<null>"
+
+[sub_resource type="BTAction" id="BTAction_l0scc"]
+script = ExtResource("31_e8anh")
+shake_amount_var = SubResource("BBVariant_kq56s")
+shake_duration_var = SubResource("BBVariant_1j8g6")
+shake_taper_off_var = SubResource("BBVariant_3arx4")
+
 [sub_resource type="BTWait" id="BTWait_vksgl"]
 duration = 2.0
 
@@ -743,7 +804,7 @@ object_to_free_var = SubResource("BBVariant_74xcn")
 
 [sub_resource type="BTSequence" id="BTSequence_o08b3"]
 custom_name = "Roar"
-children = [SubResource("BTAction_so0oi"), SubResource("BTAction_0dlsi"), SubResource("BTAction_buhy5"), SubResource("BTAction_kdjaf"), SubResource("BTWait_vksgl"), SubResource("BTAction_aqujm")]
+children = [SubResource("BTAction_so0oi"), SubResource("BTAction_0dlsi"), SubResource("BTAction_buhy5"), SubResource("BTAction_kdjaf"), SubResource("BTAction_l0scc"), SubResource("BTWait_vksgl"), SubResource("BTAction_aqujm")]
 
 [sub_resource type="BTSelector" id="BTSelector_c57wm"]
 custom_name = "Check Phase 1 Roar"
@@ -1538,11 +1599,6 @@ type = 3
 saved_value = 1.0
 resource_name = "1.0"
 
-[sub_resource type="BBVariant" id="BBVariant_3arx4"]
-type = 1
-saved_value = true
-resource_name = "true"
-
 [sub_resource type="BBVariant" id="BBVariant_54t1i"]
 type = 1
 saved_value = false
@@ -1552,7 +1608,6 @@ resource_name = "false"
 script = ExtResource("31_e8anh")
 shake_amount_var = SubResource("BBVariant_8hf8u")
 shake_duration_var = SubResource("BBVariant_4mpcf")
-shake_in_place_var = SubResource("BBVariant_3arx4")
 shake_taper_off_var = SubResource("BBVariant_54t1i")
 
 [sub_resource type="BTAction" id="BTAction_u83xx"]

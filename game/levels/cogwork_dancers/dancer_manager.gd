@@ -32,6 +32,10 @@ var boss_phase: int:
 @onready var dancer2: CogworkDancer = spin_target2.get_node_or_null("Dancer2")
 @onready var spin_slashes: SpinSlashes = $SpinSlashes
 @onready var teleport_point: Marker3D = $TeleportPoint
+@onready var _gear_top_left: Node3D = alcove1.get_node_or_null("GearTopL")
+@onready var _gear_bottom_left: Node3D = alcove1.get_node_or_null("GearBottomL")
+@onready var _gear_top_right: Node3D = alcove2.get_node_or_null("GearTopR")
+@onready var _gear_bottom_right: Node3D = alcove2.get_node_or_null("GearBottomR")
 
 var _death_sting: AudioStream = preload("uid://dgm0v55whcadv")
 
@@ -175,6 +179,16 @@ func _reset_death_blackboard_variables(dancer: CogworkDancer) -> void:
 		death_bb2.set_var(&"self", dancer2)
 		death_bb2.set_var(&"alcove", alcove2)
 
+func spin_gears(requester: CogworkDancer, duration: float) -> void:
+	if requester == dancer1:
+		var spin_tween: Tween = create_tween()
+		spin_tween.tween_property(_gear_top_left, "rotation_degrees:z", -45, duration).as_relative()
+		spin_tween.parallel().tween_property(_gear_bottom_left, "rotation_degrees:z", 45, duration).as_relative()
+	elif requester == dancer2:
+		var spin_tween: Tween = create_tween()
+		spin_tween.tween_property(_gear_top_right, "rotation_degrees:z", 45, duration).as_relative()
+		spin_tween.parallel().tween_property(_gear_bottom_right, "rotation_degrees:z", -45, duration).as_relative()
+
 func increment_phase() -> void:
 	boss_phase += 1
 
@@ -249,8 +263,7 @@ func _on_dancer_death(dancer: Actor) -> void:
 	_set_dancer_death_active(dancer)
 	boss_phase += 1
 	if boss_phase > 4:
-		await get_tree().create_timer(8, false).timeout
-		SceneManager.go_to_main_menu()
+		SceneManager.current_level.finish()
 
 func _on_door_close_trigger_body_entered(body: Node3D) -> void:
 	dancer1.behavior_tree.set_active(true)

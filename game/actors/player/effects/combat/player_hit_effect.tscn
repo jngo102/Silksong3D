@@ -237,6 +237,7 @@ autoplay = "Hit"
 
 [node name="HitAudio" type="AudioStreamPlayer3D" parent="."]
 unit_size = 32.0
+bus = &"SFX"
 script = ExtResource("1_hr7f7")
 audio_clips = Array[AudioStream]([ExtResource("2_w2dfj")])
 metadata/_custom_type_script = "uid://dj5upywmu1hm2"

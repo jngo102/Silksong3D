@@ -18,6 +18,8 @@ class_name Health extends Area3D
 signal took_damage(damager: Damager)
 signal healed(amount: int)
 signal died(actor: Actor)
+signal multi_hit_started
+signal multi_hit_ended
 
 @onready var current_health: int = max_health
 
@@ -35,7 +37,7 @@ func _update_invincibility_timer(delta: float) -> void:
 		return
 	_invincibility_timer += delta
 	if _invincibility_timer > damage_invincibility_time:
-		set_invincible(false, 0)
+		set_invincible(false)
 
 func take_damage(damager: Damager) -> void:
 	current_health = max(0, current_health - damager.damage_amount)
@@ -55,24 +57,46 @@ func take_damage(damager: Damager) -> void:
 	if current_health <= 0:
 		_die()
 	else:
-		set_invincible()
+		set_invincible(true, damage_invincibility_time)
 		_invincibility_timer = 0
 
-func set_invincible(be_invincible: bool = true, duration: float = damage_invincibility_time) -> void:
+func take_multi_hit_damage(damager: Damager) -> void:
+	multi_hit_started.emit()
+	set_invincible(true)
+	var damage_left: int = damager.damage_amount
+	for i in damager.damage_amount:
+		damage_left -= 1
+		current_health = max(0, current_health - 1)
+		took_damage.emit(damager)
+		if current_health <= 0:
+			_die()
+			return
+		if damage_left > 0:
+			await get_tree().create_timer(0.4, false).timeout
+		else:
+			multi_hit_ended.emit()
+			_invincibility_timer = 0
+
+func set_invincible(be_invincible: bool = true, duration: float = 0) -> void:
 	_invincible = be_invincible
 	if be_invincible and duration > 0:
 		await get_tree().create_timer(duration, false).timeout
 		_invincible = false
+	elif duration <= 0:
+		_invincibility_timer = -INF
 
 func heal(amount: int) -> void:
 	current_health = min(current_health + amount, max_health)
 	healed.emit(current_health)
 
 func _die() -> void:
-	set_invincible(true, 0)
+	set_invincible(true)
 	_invincibility_timer = -INF
 	died.emit(owner)
 
 func _on_area_entered(area: Area3D) -> void:
-	if area is Damager:
-		take_damage(area)
+	if not _invincible and area is Damager:
+		if area.multi_hit:
+			take_multi_hit_damage(area)
+		else:
+			take_damage(area)

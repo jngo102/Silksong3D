@@ -1,0 +1,106 @@
+[gd_scene load_steps=12 format=3 uid="uid://2otukgmbowln"]
+
+[ext_resource type="PackedScene" uid="uid://bhmqhsb367187" path="res://game/levels/main_menu/Rock.glb" id="1_ruu7r"]
+[ext_resource type="Texture2D" uid="uid://ba27ia5k8ca3y" path="res://game/levels/main_menu/StoneDiffuse.png" id="2_6rx4f"]
+[ext_resource type="Texture2D" uid="uid://c1qr4aws03nc0" path="res://game/levels/main_menu/StoneNormal.png" id="3_3t6ns"]
+[ext_resource type="PackedScene" uid="uid://dpkqjvyr32cys" path="res://game/actors/player/needle.tscn" id="4_6rx4f"]
+
+[sub_resource type="Environment" id="Environment_6rx4f"]
+background_mode = 1
+ssr_enabled = true
+ssao_enabled = true
+ssil_enabled = true
+sdfgi_enabled = true
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.25
+volumetric_fog_albedo = Color(0.06900951, 0.032182578, 0.03148856, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y3vpo"]
+albedo_texture = ExtResource("2_6rx4f")
+metallic = 0.54
+metallic_specular = 0.82
+roughness = 0.3
+normal_enabled = true
+normal_texture = ExtResource("3_3t6ns")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6rx4f"]
+albedo_color = Color(0.7218025, 0.30969396, 9.62615e-08, 1)
+emission_enabled = true
+emission = Color(0.7790571, 0.29688886, 2.8878452e-07, 1)
+emission_energy_multiplier = 4.0
+subsurf_scatter_strength = 1.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_3t6ns"]
+material = SubResource("StandardMaterial3D_6rx4f")
+radius = 0.25
+height = 2.0
+
+[sub_resource type="Curve" id="Curve_64qjj"]
+_data = [Vector2(0, 0.50171435), 0.0, 0.0, 0, 0, Vector2(1, 0), -0.9869478, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_sksrx"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.50012237), -1.2918588, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_k0ew8"]
+_data = [Vector2(0, 0.50171435), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.1963733, 0.0, 0, 0]
+point_count = 2
+
+[node name="Scene" instance=ExtResource("1_ruu7r")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="0"]
+environment = SubResource("Environment_6rx4f")
+
+[node name="Stone Base" parent="." index="1"]
+transform = Transform3D(0.3492099, 0, -0.9370445, 0, 1, 0, 0.9370445, 0, 0.3492099, 2.765934, 0, -0.7130127)
+surface_material_override/0 = SubResource("StandardMaterial3D_y3vpo")
+
+[node name="Needle" parent="." index="2" instance=ExtResource("4_6rx4f")]
+transform = Transform3D(0.1788655, -0.8474972, -0.49975568, 0.08925117, 0.51982945, -0.849595, 0.97981715, 0.10735938, 0.1686197, 5.3335953, 0.100440264, 1.3505775)
+
+[node name="Light" type="OmniLight3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.0856934, 5.024933, -8.414612)
+light_color = Color(0.82820404, 0, 0.14664829, 1)
+light_energy = 32.0
+light_volumetric_fog_energy = 8.0
+light_size = 5.0
+omni_range = 16.0
+
+[node name="Sun" type="DirectionalLight3D" parent="." index="4"]
+transform = Transform3D(0.7555679, -0.35398906, 0.55118847, -0.108333796, 0.76230997, 0.638081, -0.64605016, -0.54182595, 0.53762794, 0, 0, 0)
+light_color = Color(0.79507667, 0.8550697, 0.86268383, 1)
+light_energy = 4.0
+
+[node name="BackgroundParticles" type="CPUParticles3D" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.749298, -8.621155, -8.649052)
+amount = 128
+lifetime = 8.0
+randomness = 1.0
+local_coords = true
+mesh = SubResource("SphereMesh_3t6ns")
+emission_shape = 3
+emission_box_extents = Vector3(8, 4, 8)
+direction = Vector3(1, 1, 1)
+spread = 90.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 15.0
+initial_velocity_max = 30.0
+angular_velocity_min = -111.96
+angular_velocity_max = 100.38
+linear_accel_min = 4.83
+linear_accel_max = 19.84
+angle_max = 45.0
+scale_amount_min = 0.25
+scale_amount_max = 0.5
+split_scale = true
+scale_curve_x = SubResource("Curve_64qjj")
+scale_curve_y = SubResource("Curve_sksrx")
+scale_curve_z = SubResource("Curve_k0ew8")
+hue_variation_min = -1.0
+hue_variation_max = 1.0
+
+[node name="Camera" type="Camera3D" parent="." index="6"]
+transform = Transform3D(1, 0, 0, 0, 0.98689234, -0.1613799, 0, 0.1613799, 0.98689234, 0, 2.38, 8.469)
+current = true
+fov = 51.0

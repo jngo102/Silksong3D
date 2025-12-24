@@ -11,7 +11,7 @@ func _generate_name() -> String:
 	return "Create Roar Effect at " + BBUtil.bb_var(roar_position_var)
 
 func _tick(_delta: float) -> Status:
-	var roar_effect: RoarEffect = roar_scene.instantiate()
+	var roar_effect: Node3D = roar_scene.instantiate()
 	agent.add_child(roar_effect)
 	if not is_instance_valid(roar_effect):	
 		return FAILURE

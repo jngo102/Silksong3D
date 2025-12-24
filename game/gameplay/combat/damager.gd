@@ -1,6 +1,7 @@
 class_name Damager extends Area3D
 
 @export var damage_amount: int = 1
+@export var multi_hit: bool = false
 
 @onready var collision: CollisionShape3D = $Collision
 

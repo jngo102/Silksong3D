@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="RandomAudioPlay" load_steps=10 format=3 uid="uid://cdhpw43qtfwce"]
+
+[ext_resource type="Script" uid="uid://d2a87b3tfbpuf" path="res://game/autoload/audio/random_audio_play.gd" id="1_ax6bm"]
+[ext_resource type="AudioStream" uid="uid://du6n12tmux4so" path="res://game/copyrighted/sfx/hornet/movement/metal/hornet_footstep_metal_01.wav" id="1_r5tf0"]
+[ext_resource type="AudioStream" uid="uid://boehnvxcwk03m" path="res://game/copyrighted/sfx/hornet/movement/metal/hornet_footstep_metal_02.wav" id="2_dtbe2"]
+[ext_resource type="AudioStream" uid="uid://bc6qaffow5lg6" path="res://game/copyrighted/sfx/hornet/movement/metal/hornet_footstep_metal_03.wav" id="3_ww7j2"]
+[ext_resource type="AudioStream" uid="uid://dqlld365dgan2" path="res://game/copyrighted/sfx/hornet/movement/metal/hornet_footstep_metal_04.wav" id="4_gyv14"]
+[ext_resource type="AudioStream" uid="uid://2pg7uu3oh4se" path="res://game/copyrighted/sfx/hornet/movement/metal/hornet_footstep_metal_05.wav" id="5_afd4p"]
+[ext_resource type="AudioStream" uid="uid://ckhw0k41xyect" path="res://game/copyrighted/sfx/hornet/movement/metal/hornet_footstep_metal_06.wav" id="6_cwal2"]
+[ext_resource type="AudioStream" uid="uid://bw8675elvvh3e" path="res://game/copyrighted/sfx/hornet/movement/metal/hornet_footstep_metal_07.wav" id="7_epevg"]
+[ext_resource type="AudioStream" uid="uid://c5thap5lwvv3a" path="res://game/copyrighted/sfx/hornet/movement/metal/hornet_footstep_metal_08.wav" id="8_jkxoq"]
+
+[resource]
+script = ExtResource("1_ax6bm")
+clips = Array[AudioStream]([ExtResource("1_r5tf0"), ExtResource("2_dtbe2"), ExtResource("3_ww7j2"), ExtResource("4_gyv14"), ExtResource("5_afd4p"), ExtResource("6_cwal2"), ExtResource("7_epevg"), ExtResource("8_jkxoq")])
+metadata/_custom_type_script = "uid://d2a87b3tfbpuf"

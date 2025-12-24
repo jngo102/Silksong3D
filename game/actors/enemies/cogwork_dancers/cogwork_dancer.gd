@@ -21,7 +21,15 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	super._process(delta)
 	if bb.get_var(&"spin_to_waypoint", false) or death_bb.get_var(&"spin_to_waypoint", false):
-		global_rotation.y += 30 * delta 
+		global_rotation.y += 30 * delta
+	if death_behavior_tree.active:
+		_apply_gravity(delta)
+	else:
+		velocity.y = 0
+
+func _apply_gravity(delta: float) -> void:
+	if not is_on_floor():
+		velocity.y -= 64 * delta
 
 func _on_clasher_body_entered(body: Node3D) -> void:
 	if body == self or body is not CogworkDancer or not bb.get_var(&"dashing", false):

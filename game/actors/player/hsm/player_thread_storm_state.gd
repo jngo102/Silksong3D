@@ -38,7 +38,11 @@ func _update(delta: float) -> void:
 	_spam_timer += delta
 	if _attack_timer > _max_attack_time or (_attack_timer > _min_attack_time and _spam_timer > _extend_spam_time):
 		send_event(_hsm.EVENT_FINISHED)
-	elif Input.is_action_pressed(&"Skill"):
+	elif _attack_timer > _min_attack_time:
+		var damager: Damager = _thread_storm.get_node_or_null("Damager")
+		if is_instance_valid(damager):
+			damager.damage_amount = 2
+	if Input.is_action_pressed(&"Skill"):
 		_spam_timer = 0
 
 func _attack() -> void:

@@ -1,90 +1,50 @@
 class_name GameCamera extends Camera3D
 
+@export var shake_interval: float = 0.025
+
 ## The position of the object before it began shaking
 var original_position: Vector3
 ## The amount of shake to remove every frame
 var unshake_amount: float
-## Whether to shake along the x-axis
-var shake_horizontally: bool
-## Whether to shake along the y-axis
-var shake_vertically: bool
 ## The current shake vector applied to the object
 var current_shake_vector: Vector3
 ## The current amount of shake applied to the object
 var current_shake_magnitude: float
 ## The current time that the object has been offset for during a shake
-var current_shake_time: float
-## Whether to shake the object in place
-var shake_in_place: bool
-var _shake_timer: float
+var current_shake_time: float = INF
+
+var _shake_timer: float = INF
 var _shake_duration: float
 
-var _shaking: bool
+var target: Node3D
 
-var camera_controller: CameraController:
+var shaking: bool:
 	get:
-		return owner
+		return _shake_timer < _shake_duration
 
-var target: Node3D:
-	get:
-		return camera_controller.target
-
-## Set shake values
-func _shake_internal(amount: float, duration: float, in_place: bool, taper_off: bool) -> void:
-	original_position = global_position
-	current_shake_magnitude = amount
-	if shake_horizontally:
-		current_shake_vector.x = 1
-	if shake_vertically:
-		current_shake_vector.y = 1
-	unshake_amount = (amount / duration) if taper_off else 0
-	shake_in_place = in_place
-	_shake_duration = duration
-	_shake_timer = 0
-	_shaking = true
-	while _shake_timer < _shake_duration:
+func _process(delta: float) -> void:
+	_shake_timer += delta
+	current_shake_time += delta
+	if current_shake_time >= shake_interval and shaking:
 		update_shake()
-		await get_tree().process_frame
-		var delta: float = get_process_delta_time()
-		_shake_timer += delta
-		current_shake_magnitude -= delta * unshake_amount
-		await get_tree().process_frame
-		delta = get_process_delta_time()
-		_shake_timer += delta
-		current_shake_magnitude -= delta * unshake_amount
-		global_position = original_position
-	_shaking = false
-	if shake_in_place:
-		global_position = original_position
-		look_at(target.global_position, Vector3.UP)
 
 ## Begin object shake in all directions
-func shake(amount: float, duration: float, in_place: bool = true, taper_off: bool = true) -> void:
-	_shake_internal(amount, duration, in_place, taper_off)
-	shake_horizontally = true
-	shake_vertically = true
-
-## Shake object only along the x-axis	
-func shake_x(amount: float, duration, in_place: bool = true, taper_off: bool = true) -> void:
-	_shake_internal(amount, duration, in_place, taper_off)
-	shake_horizontally = true
-	shake_vertically = false
-
-## Shake object only along the y-axis	
-func shake_y(amount: float, duration, in_place: bool = true, taper_off: bool = true) -> void:
-	_shake_internal(amount, duration, in_place, taper_off)
-	shake_horizontally = false
-	shake_vertically = true
+func shake(amount: float = 1, duration: float = 0.25, taper_off: bool = true) -> void:
+	if shaking:
+		return
+	original_position = position
+	current_shake_magnitude = amount * SaveManager.settings.screen_shake_intensity
+	_shake_timer = 0
+	current_shake_time = 0
+	unshake_amount = (current_shake_magnitude / duration) if taper_off else 0
+	_shake_duration = duration
 
 ## Update the current object shake
 func update_shake() -> void:
-	if shake_horizontally and shake_vertically:
-		current_shake_vector = Vector3(randf_range(-1, 1), randf_range(-1, 1), randf_range(-1, 1)).normalized() * current_shake_magnitude
-	if shake_horizontally and not shake_vertically:
-		current_shake_vector.x = current_shake_magnitude * -sign(current_shake_vector.x)
-	elif not shake_horizontally and shake_vertically:
-		current_shake_vector.y = current_shake_magnitude * -sign(current_shake_vector.y)
-	if shake_in_place:
-		global_position = original_position + current_shake_vector
-	else:
-		global_position += current_shake_vector
+	current_shake_vector = Vector3(randf_range(-1, 1), randf_range(-1, 1), randf_range(-1, 1)).normalized() * current_shake_magnitude
+	position = original_position + current_shake_vector
+	if is_instance_valid(target):
+		var direction: Vector3 = global_position.direction_to(target.global_position)
+		look_at(target.global_position - current_shake_vector)
+	current_shake_magnitude -= unshake_amount * current_shake_time
+	current_shake_time = 0

@@ -1,6 +1,8 @@
 ## The game's main menu
 class_name MainMenu extends StackableUI
 
+@export var _logo: Node3D
+
 ## Parent container of menu buttons list
 @onready var _margin_container: MarginContainer = $MarginContainer
 ## List of all main menu buttons
@@ -34,3 +36,6 @@ func _on_credits_button_pressed() -> void:
 
 func _on_quit_game_button_pressed() -> void:
 	_stack(_quit_warning)
+
+func _on_quit_warning_page_quit_confirmed() -> void:
+	get_tree().quit()

@@ -1,0 +1,105 @@
+[gd_scene load_steps=13 format=3 uid="uid://8h3avd0nw4el"]
+
+[ext_resource type="PackedScene" uid="uid://kbm2v33787ln" path="res://game/actors/player/effects/combat/double_damage_hit_effect.tscn" id="1_k8h2r"]
+[ext_resource type="AudioStream" uid="uid://ckdd7p6k5283v" path="res://game/copyrighted/sfx/hornet/hurt/multi_hit/lace_multi_stab_hornet_damaging_final_hit.wav" id="2_12mu4"]
+
+[sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_12mu4"]
+
+[sub_resource type="Gradient" id="Gradient_x4adb"]
+resource_local_to_scene = true
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.8005865, 0.9985337, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_x30sm"]
+gradient = SubResource("Gradient_x4adb")
+fill_from = Vector2(0.48504272, 1)
+fill_to = Vector2(0.48290598, 0.034188036)
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_n4bn6"]
+texture = SubResource("GradientTexture2D_x30sm")
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_6ck84"]
+parameter_name = "Alpha"
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_o2hmi"]
+operator = 2
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_qp0g2"]
+operator = 6
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_cj6ls"]
+input_name = "uv"
+
+[sub_resource type="VisualShader" id="VisualShader_fvnl2"]
+resource_local_to_scene = true
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, depth_test_default, cull_back, diffuse_lambert, specular_schlick_ggx;
+
+uniform sampler2D tex_frg_13;
+uniform float Alpha;
+
+
+
+void fragment() {
+// Input:8
+	vec2 n_out8p0 = UV;
+
+
+// UVFunc:12
+	vec2 n_in12p1 = vec2(1.00000, 1.00000);
+	vec2 n_in12p2 = vec2(0.00000, 0.00000);
+	vec2 n_out12p0 = n_in12p2 * n_in12p1 + n_out8p0;
+
+
+// Texture2D:13
+	vec4 n_out13p0 = texture(tex_frg_13, n_out12p0);
+
+
+// FloatParameter:15
+	float n_out15p0 = Alpha;
+
+
+// FloatOp:16
+	float n_out16p0 = n_out13p0.x * n_out15p0;
+
+
+// FloatOp:17
+	float n_in17p1 = 0.00000;
+	float n_out17p0 = max(n_out16p0, n_in17p1);
+
+
+// Output:0
+	ALPHA = n_out17p0;
+
+
+}
+"
+nodes/fragment/0/position = Vector2(680, 580)
+nodes/fragment/8/node = SubResource("VisualShaderNodeInput_cj6ls")
+nodes/fragment/8/position = Vector2(-2580, 740)
+nodes/fragment/12/node = SubResource("VisualShaderNodeUVFunc_12mu4")
+nodes/fragment/12/position = Vector2(-1680, 680)
+nodes/fragment/13/node = SubResource("VisualShaderNodeTexture_n4bn6")
+nodes/fragment/13/position = Vector2(-920, 500)
+nodes/fragment/15/node = SubResource("VisualShaderNodeFloatParameter_6ck84")
+nodes/fragment/15/position = Vector2(-980, 1240)
+nodes/fragment/16/node = SubResource("VisualShaderNodeFloatOp_o2hmi")
+nodes/fragment/16/position = Vector2(-160, 600)
+nodes/fragment/17/node = SubResource("VisualShaderNodeFloatOp_qp0g2")
+nodes/fragment/17/position = Vector2(660, 580)
+nodes/fragment/connections = PackedInt32Array(12, 0, 13, 0, 8, 0, 12, 0, 13, 0, 16, 0, 15, 0, 16, 1, 16, 0, 0, 1, 16, 0, 17, 0, 17, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_aqugh"]
+resource_local_to_scene = true
+render_priority = 0
+shader = SubResource("VisualShader_fvnl2")
+shader_parameter/Alpha = 0.5
+
+[node name="MultiHitFinalEffect" instance=ExtResource("1_k8h2r")]
+
+[node name="HitAudio" parent="." index="1"]
+audio_clips = Array[AudioStream]([ExtResource("2_12mu4")])
+
+[node name="Mesh" parent="." index="2"]
+surface_material_override/0 = SubResource("ShaderMaterial_aqugh")

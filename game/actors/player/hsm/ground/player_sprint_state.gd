@@ -10,6 +10,7 @@ func _input(event: InputEvent) -> void:
 		send_event(_hsm.SKILL_EVENT)
 
 func _enter() -> void:
+	super._enter()
 	play_anim(_sprint_animation_name, 0.125)
 
 func _update(delta: float) -> void:

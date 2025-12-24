@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="SaveData" load_steps=2 format=3 uid="uid://3c7fmch5niji"]
+
+[ext_resource type="Script" uid="uid://cicw3xldtdges" path="res://game/autoload/save/save_data.gd" id="1_f7tcb"]
+
+[resource]
+script = ExtResource("1_f7tcb")
+metadata/_custom_type_script = "uid://cicw3xldtdges"

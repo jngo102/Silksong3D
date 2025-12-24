@@ -1,15 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://c7e6xi1cekoax"]
+[gd_scene load_steps=7 format=3 uid="uid://c7e6xi1cekoax"]
 
 [ext_resource type="Script" uid="uid://hssorlhiwg5v" path="res://game/levels/base_level.gd" id="1_weh0f"]
 [ext_resource type="PackedScene" uid="uid://boyxvnlcjkhpy" path="res://game/autoload/ui/hud/hud.tscn" id="2_vfi3j"]
-[ext_resource type="PackedScene" uid="uid://bk5l50c7ma8dr" path="res://game/actors/player/player.tscn" id="3_826sl"]
+[ext_resource type="PackedScene" uid="uid://cispplpjiljwj" path="res://game/autoload/ui/pause_menu/pause_menu.tscn" id="3_nscfr"]
 [ext_resource type="Environment" uid="uid://dpsb82o3h1rey" path="res://game/resources/world_environments/cogwork_dancers_environment.tres" id="3_obg7k"]
 [ext_resource type="PackedScene" uid="uid://b37skkjsvgidd" path="res://game/gameplay/scene/camera_controller.tscn" id="3_vfi3j"]
+[ext_resource type="PackedScene" uid="uid://tx8iq0rvq40q" path="res://game/actors/player/player.tscn" id="6_obg7k"]
 
 [node name="BaseLevel" type="Node3D"]
 script = ExtResource("1_weh0f")
 
 [node name="HUD" parent="." instance=ExtResource("2_vfi3j")]
+
+[node name="PauseMenu" parent="." instance=ExtResource("3_nscfr")]
+visible = false
 
 [node name="Environment" type="Node3D" parent="."]
 
@@ -18,6 +22,4 @@ environment = ExtResource("3_obg7k")
 
 [node name="CameraController" parent="." instance=ExtResource("3_vfi3j")]
 
-[node name="Player" parent="." node_paths=PackedStringArray("camera_controller") instance=ExtResource("3_826sl")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
-camera_controller = NodePath("../CameraController")
+[node name="Player" parent="." instance=ExtResource("6_obg7k")]

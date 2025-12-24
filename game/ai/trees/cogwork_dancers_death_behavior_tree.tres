@@ -1,4 +1,4 @@
-[gd_resource type="BehaviorTree" load_steps=109 format=3 uid="uid://ciko0edbnitaw"]
+[gd_resource type="BehaviorTree" load_steps=112 format=3 uid="uid://ciko0edbnitaw"]
 
 [ext_resource type="Script" uid="uid://dfxh5qmwucb7e" path="res://game/ai/tasks/scene/get_first_in_group.gd" id="1_7k3xq"]
 [ext_resource type="Script" uid="uid://cvw5s3jjrdnkq" path="res://game/ai/tasks/transform/face_target.gd" id="2_tqd6i"]
@@ -83,18 +83,9 @@ script = ExtResource("3_2elll")
 target_var = &"self"
 output_position_var = &"self_position"
 
-[sub_resource type="BBVariant" id="BBVariant_oi7s7"]
-type = 22
-saved_value = NodePath("Collision")
-resource_name = "Collision"
-
-[sub_resource type="BTAction" id="BTAction_7gmt6"]
-script = ExtResource("8_ywbep")
-collider_var = SubResource("BBVariant_oi7s7")
-
 [sub_resource type="BTSequence" id="BTSequence_l2mi2"]
 custom_name = "Initialization"
-children = [SubResource("BTAction_pbk4n"), SubResource("BTAction_wekhm"), SubResource("BTAction_7gmt6")]
+children = [SubResource("BTAction_pbk4n"), SubResource("BTAction_wekhm")]
 
 [sub_resource type="BBVariant" id="BBVariant_4a848"]
 type = 3
@@ -106,11 +97,6 @@ type = 3
 saved_value = 0.5
 resource_name = "0.5"
 
-[sub_resource type="BBVariant" id="BBVariant_5s2y7"]
-type = 1
-saved_value = true
-resource_name = "true"
-
 [sub_resource type="BBVariant" id="BBVariant_0hmuk"]
 type = 1
 saved_value = true
@@ -120,7 +106,6 @@ resource_name = "true"
 script = ExtResource("14_sw5t1")
 shake_amount_var = SubResource("BBVariant_4a848")
 shake_duration_var = SubResource("BBVariant_n133n")
-shake_in_place_var = SubResource("BBVariant_5s2y7")
 shake_taper_off_var = SubResource("BBVariant_0hmuk")
 
 [sub_resource type="BBVariant" id="BBVariant_twb4b"]
@@ -192,6 +177,27 @@ resource_name = "<null>"
 variable = &"final_death"
 value = SubResource("BBVariant_q5c76")
 
+[sub_resource type="BBVariant" id="BBVariant_78bet"]
+type = 3
+saved_value = 0.2
+resource_name = "0.2"
+
+[sub_resource type="BBVariant" id="BBVariant_5s2y7"]
+type = 3
+saved_value = 4.47
+resource_name = "4.47"
+
+[sub_resource type="BBVariant" id="BBVariant_7gmt6"]
+type = 1
+saved_value = false
+resource_name = "false"
+
+[sub_resource type="BTAction" id="BTAction_55m7c"]
+script = ExtResource("14_sw5t1")
+shake_amount_var = SubResource("BBVariant_78bet")
+shake_duration_var = SubResource("BBVariant_5s2y7")
+shake_taper_off_var = SubResource("BBVariant_7gmt6")
+
 [sub_resource type="BTWait" id="BTWait_ywbep"]
 duration = 2.0
 
@@ -213,7 +219,7 @@ method = &"die"
 
 [sub_resource type="BTSequence" id="BTSequence_sw5t1"]
 custom_name = "Final Death Sequence"
-children = [SubResource("BTWait_ywbep"), SubResource("BTAction_twb4b"), SubResource("BTWait_f8rwa"), SubResource("BTCallMethod_3shy2")]
+children = [SubResource("BTAction_55m7c"), SubResource("BTWait_ywbep"), SubResource("BTAction_twb4b"), SubResource("BTWait_f8rwa"), SubResource("BTCallMethod_3shy2")]
 
 [sub_resource type="BTSelector" id="BTSelector_solc0"]
 custom_name = "Check Final Death"
@@ -307,6 +313,15 @@ animation_player = SubResource("BBNode_f8rwa")
 animation_name = &"Asleep"
 blend = 0.125
 
+[sub_resource type="BBVariant" id="BBVariant_oi7s7"]
+type = 22
+saved_value = NodePath("Collision")
+resource_name = "Collision"
+
+[sub_resource type="BTAction" id="BTAction_7gmt6"]
+script = ExtResource("8_ywbep")
+collider_var = SubResource("BBVariant_oi7s7")
+
 [sub_resource type="BTAction" id="BTAction_6r4af"]
 script = ExtResource("3_2elll")
 target_var = &"alcove"
@@ -393,11 +408,6 @@ type = 3
 saved_value = 0.25
 resource_name = "0.25"
 
-[sub_resource type="BBVariant" id="BBVariant_78bet"]
-type = 1
-saved_value = true
-resource_name = "true"
-
 [sub_resource type="BBVariant" id="BBVariant_0ria8"]
 type = 1
 saved_value = true
@@ -407,7 +417,6 @@ resource_name = "true"
 script = ExtResource("14_sw5t1")
 shake_amount_var = SubResource("BBVariant_6q4rm")
 shake_duration_var = SubResource("BBVariant_8qro1")
-shake_in_place_var = SubResource("BBVariant_78bet")
 shake_taper_off_var = SubResource("BBVariant_0ria8")
 
 [sub_resource type="BTSequence" id="BTSequence_solc0"]
@@ -447,14 +456,17 @@ z_var = SubResource("BBVariant_7i34u")
 
 [sub_resource type="BTSequence" id="BTSequence_wekhm"]
 custom_name = "Return To Alcove"
-children = [SubResource("BTSetVar_yx2rc"), SubResource("BTPlayAnimation_solc0"), SubResource("BTPlayAnimation_ywbep"), SubResource("BTSequence_solc0"), SubResource("BTSetVar_solc0"), SubResource("BTAction_q5c76")]
+children = [SubResource("BTSetVar_yx2rc"), SubResource("BTPlayAnimation_solc0"), SubResource("BTPlayAnimation_ywbep"), SubResource("BTAction_7gmt6"), SubResource("BTSequence_solc0"), SubResource("BTSetVar_solc0"), SubResource("BTAction_q5c76")]
 
 [sub_resource type="BTSequence" id="BTSequence_6q4rm"]
 custom_name = "Stun Death"
 children = [SubResource("BTSequence_f8rwa"), SubResource("BTSequence_wekhm")]
 
+[sub_resource type="BTAction" id="BTAction_tyjx1"]
+script = ExtResource("14_sw5t1")
+
 [sub_resource type="BTSequence" id="BTSequence_q5c76"]
-children = [SubResource("BTSelector_3shy2"), SubResource("BTSequence_6q4rm")]
+children = [SubResource("BTSelector_3shy2"), SubResource("BTSequence_6q4rm"), SubResource("BTAction_tyjx1")]
 
 [sub_resource type="BTSequence" id="BTSequence_3ps0h"]
 custom_name = "Death Sequence"

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://crpawrr7ai7e1" path="res://game/autoload/audio/global_audio_player.gd" id="1_nfffd"]
 
 [node name="GlobalAudioPlayer" type="AudioStreamPlayer"]
+bus = &"SFX"
 script = ExtResource("1_nfffd")
 
 [connection signal="finished" from="." to="." method="_on_finished"]

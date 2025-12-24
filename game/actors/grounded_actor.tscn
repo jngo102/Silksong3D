@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://cuw4nfnpxgivn"]
+
+[ext_resource type="PackedScene" uid="uid://36gmo74w6e2q" path="res://game/actors/actor.tscn" id="1_dk72k"]
+[ext_resource type="Script" uid="uid://dkdbidu3a0dx" path="res://game/actors/grounded_actor.gd" id="2_qp12t"]
+
+[node name="GroundedActor" instance=ExtResource("1_dk72k")]
+script = ExtResource("2_qp12t")
+gravity_scale = 10.0
+terminal_speed = 60.0
+
+[node name="GroundDetector" type="RayCast3D" parent="." index="5"]
+collision_mask = 4

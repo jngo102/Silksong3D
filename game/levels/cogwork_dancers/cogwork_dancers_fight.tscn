@@ -1,15 +1,18 @@
-[gd_scene load_steps=39 format=3 uid="uid://dugp1elqcy03h"]
+[gd_scene load_steps=43 format=3 uid="uid://dugp1elqcy03h"]
 
 [ext_resource type="PackedScene" uid="uid://c7e6xi1cekoax" path="res://game/levels/base_level.tscn" id="1_frof6"]
 [ext_resource type="Resource" uid="uid://cbxskjf0ajc00" path="res://game/resources/music/cogdancers2.tres" id="2_0qq8w"]
 [ext_resource type="Resource" uid="uid://s05a04ohrxuf" path="res://game/resources/music/cogdancers1.tres" id="2_sd8jx"]
 [ext_resource type="Script" uid="uid://ob43xcsgefpw" path="res://game/levels/cogwork_dancers/cogwork_dancers_fight.gd" id="2_seyxp"]
+[ext_resource type="Script" uid="uid://bq4j0l51gfuco" path="res://game/levels/material_floor.gd" id="3_q2pry"]
 [ext_resource type="PackedScene" uid="uid://wme5tm2qkeg2" path="res://game/levels/cogwork_dancers/arena_wall.tscn" id="4_gi80b"]
+[ext_resource type="Resource" uid="uid://cdhpw43qtfwce" path="res://game/resources/random_audio_plays/footsteps_metal.tres" id="4_qax2k"]
 [ext_resource type="Texture2D" uid="uid://cddh7us3g7l8c" path="res://game/levels/cogwork_dancers/GroundDiffuse.png" id="5_1nr1l"]
+[ext_resource type="AudioStream" uid="uid://dkuoifc3ivndh" path="res://game/copyrighted/sfx/hornet/movement/metal/hornet_land_metal.wav" id="5_qax2k"]
 [ext_resource type="PackedScene" uid="uid://bs1v5xrhsia2d" path="res://game/levels/cogwork_dancers/waypoint.tscn" id="5_sd8jx"]
 [ext_resource type="PackedScene" uid="uid://c1fle5fyo6r8h" path="res://game/actors/enemies/cogwork_dancers/cogwork_dancer.tscn" id="5_xmi2e"]
 [ext_resource type="PackedScene" uid="uid://dfpirxhj8gky4" path="res://game/levels/cogwork_dancers/ceiling.glb" id="6_e4ccn"]
-[ext_resource type="Script" uid="uid://ecvq3yiktph3" path="res://game/levels/dancer_manager.gd" id="6_jgp2n"]
+[ext_resource type="Script" uid="uid://ecvq3yiktph3" path="res://game/levels/cogwork_dancers/dancer_manager.gd" id="6_jgp2n"]
 [ext_resource type="Texture2D" uid="uid://b02pbhqu2cqf" path="res://game/levels/cogwork_dancers/GroundNormal.png" id="6_t6wio"]
 [ext_resource type="Script" uid="uid://dxbi27aygq70q" path="res://game/levels/spinner.gd" id="6_y2jbv"]
 [ext_resource type="Script" uid="uid://q4qqnvxnwemw" path="res://game/autoload/audio/music_track.gd" id="9_4y2hd"]
@@ -24,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://bqltw4st6n5jx" path="res://game/levels/cogwork_dancers/cogwork_dancers_environment.glb" id="17_glf46"]
 [ext_resource type="Material" uid="uid://cgnxxrytvhv4q" path="res://game/resources/materials/fading_ring_material.tres" id="18_ox3hg"]
 [ext_resource type="PackedScene" uid="uid://dv0vitwdg4ybr" path="res://game/levels/cogwork_dancers/pendulum.glb" id="24_e4ccn"]
+[ext_resource type="PackedScene" uid="uid://q7887peqb1cm" path="res://game/levels/cogwork_dancers/gear.glb" id="25_twn58"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4y2hd"]
 albedo_texture = ExtResource("5_1nr1l")
@@ -632,6 +636,21 @@ height = 24.0
 [sub_resource type="SphereShape3D" id="SphereShape3D_twn58"]
 radius = 12.0
 
+[sub_resource type="Animation" id="Animation_twn58"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, -0.7853982)]
+}
+
 [sub_resource type="Animation" id="Animation_e4ccn"]
 resource_name = "Swing"
 length = 2.0
@@ -647,21 +666,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(0, 0, -0.7853982), Vector3(0, 0, 0.7853982)]
-}
-
-[sub_resource type="Animation" id="Animation_twn58"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, -0.7853982)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pftpk"]
@@ -686,18 +690,22 @@ spot_attenuation = 2.0
 spot_angle = 30.0
 spot_angle_attenuation = 1.2745608
 
-[node name="CameraController" parent="." index="2"]
+[node name="CameraController" parent="." index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.728561, 50.48007)
 
-[node name="Player" parent="." index="3"]
+[node name="Player" parent="." index="4" node_paths=PackedStringArray("camera_controller")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.387915, 50.52649)
+camera_controller = NodePath("../CameraController")
 
-[node name="Physical" type="Node3D" parent="." index="4"]
+[node name="Physical" type="Node3D" parent="." index="5"]
 
 [node name="Ground" type="StaticBody3D" parent="Physical" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.43029)
 collision_layer = 4
 collision_mask = 0
+script = ExtResource("3_q2pry")
+footsteps_audio = ExtResource("4_qax2k")
+land_audio = ExtResource("5_qax2k")
 
 [node name="Mesh" type="MeshInstance3D" parent="Physical/Ground" index="0"]
 transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
@@ -737,14 +745,14 @@ transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, -38.3868)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 37.411846, 0)
 shape = SubResource("BoxShape3D_e4ccn")
 
-[node name="Light" type="OmniLight3D" parent="." index="5"]
-transform = Transform3D(0.7254783, -0.20325898, 0.6575463, -0.058854267, 0.9335742, 0.35351858, -0.6857241, -0.29516938, 0.66532516, 0, 20, -2.234)
+[node name="Light" type="OmniLight3D" parent="." index="6"]
+transform = Transform3D(0.7254783, -0.20325895, 0.6575463, -0.058854267, 0.9335742, 0.35351855, -0.6857241, -0.2951694, 0.66532516, 0, 20, -2.234)
 light_color = Color(0.79470325, 0.84146434, 0.8682842, 1)
 light_energy = 16.0
 light_volumetric_fog_energy = 0.25
 omni_range = 50.0
 
-[node name="DancerManager" type="Node3D" parent="." index="6" node_paths=PackedStringArray("starting_waypoint1", "starting_waypoint2", "alcove1", "alcove2", "dashers")]
+[node name="DancerManager" type="Node3D" parent="." index="7" node_paths=PackedStringArray("starting_waypoint1", "starting_waypoint2", "alcove1", "alcove2", "dashers")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14, 0)
 script = ExtResource("6_jgp2n")
 music_list = Dictionary[int, ExtResource("9_4y2hd")]({
@@ -785,6 +793,7 @@ slash_audio = ExtResource("12_a4ncn")
 libraries = {
 &"": SubResource("AnimationLibrary_x4adb")
 }
+autoplay = "RESET"
 
 [node name="SlashAudio" type="AudioStreamPlayer3D" parent="DancerManager/SpinSlashes" index="1"]
 unit_size = 32.0
@@ -802,6 +811,8 @@ omni_range = 30.0
 
 [node name="Damager" parent="DancerManager/SpinSlashes" index="3" instance=ExtResource("9_xmi2e")]
 collision_layer = 16
+damage_amount = 2
+multi_hit = true
 
 [node name="Collision" parent="DancerManager/SpinSlashes/Damager" index="0"]
 shape = SubResource("SphereShape3D_twn58")
@@ -861,7 +872,7 @@ transform = Transform3D(0.07049059, -0.7724493, 7.962308, 5.8465347, 5.4398055, 
 [node name="TeleportPoint" type="Marker3D" parent="DancerManager" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 35, 0)
 
-[node name="Waypoints" type="Node3D" parent="." index="7"]
+[node name="Waypoints" type="Node3D" parent="." index="8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -1.9674954)
 
 [node name="TopLayer" type="Node3D" parent="Waypoints" index="0"]
@@ -922,7 +933,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 25)
 [node name="Waypoint9" parent="Waypoints/BottomLayer" index="8" instance=ExtResource("5_sd8jx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, 25)
 
-[node name="DasherAttack" type="Node3D" parent="." index="8"]
+[node name="DasherAttack" type="Node3D" parent="." index="9"]
 
 [node name="Dasher1" parent="DasherAttack" index="0" instance=ExtResource("12_awspu")]
 
@@ -948,11 +959,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, 25)
 
 [node name="Dasher12" parent="DasherAttack" index="11" instance=ExtResource("12_awspu")]
 
-[node name="Scene" parent="." index="9" instance=ExtResource("17_glf46")]
+[node name="Scene" parent="." index="10" instance=ExtResource("17_glf46")]
 transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0.08052063, 3.7522936, -37.72847)
 
 [node name="Pendulum" parent="Scene" index="22" instance=ExtResource("24_e4ccn")]
-transform = Transform3D(0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 0, 0, 1, 0, 14.650822, -13.350818)
+transform = Transform3D(0.7071067, 0.7071067, 0, -0.7071067, 0.7071067, 0, 0, 0, 1, 0, 14.650822, -13.350818)
 
 [node name="Animator" type="AnimationPlayer" parent="Scene/Pendulum" index="1"]
 libraries = {
@@ -963,10 +974,22 @@ autoplay = "Swing"
 [node name="Alcove1" type="Marker3D" parent="Scene" index="23"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 5.597, 0)
 
+[node name="GearTopL" parent="Scene/Alcove1" index="0" instance=ExtResource("25_twn58")]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0.5, 3.2190003, -17.136349)
+
+[node name="GearBottomL" parent="Scene/Alcove1" index="1" instance=ExtResource("25_twn58")]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0.5, -2, -17.136)
+
 [node name="Alcove2" type="Marker3D" parent="Scene" index="24"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 5.597, 0)
 
-[node name="DoorCloseTrigger" type="Area3D" parent="." index="10"]
+[node name="GearTopR" parent="Scene/Alcove2" index="0" instance=ExtResource("25_twn58")]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, -0.5, 3.2190003, -17.136349)
+
+[node name="GearBottomR" parent="Scene/Alcove2" index="1" instance=ExtResource("25_twn58")]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, -0.5, -2, -17.136)
+
+[node name="DoorCloseTrigger" type="Area3D" parent="." index="11"]
 collision_layer = 0
 
 [node name="Collision" type="CollisionShape3D" parent="DoorCloseTrigger" index="0"]

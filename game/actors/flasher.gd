@@ -2,8 +2,6 @@ class_name Flasher extends Node
 
 @export var _meshes: Array[MeshInstance3D]
 
-var _flash_material: Material = preload("uid://barj8xwm8pf1s")
-
 var _materials: Array[BaseMaterial3D]
 
 func _ready() -> void:
@@ -14,7 +12,6 @@ func _ready() -> void:
 			if surface_material.emission_energy_multiplier > 1:
 				# Don't modify materials that already have emission enabled
 				continue
-			print("Pass: ", surface_material)
 			surface_material.emission_enabled = true
 			surface_material.emission = Color.WHITE
 			surface_material.emission_energy_multiplier = 0
