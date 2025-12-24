@@ -54,12 +54,12 @@ func _look_mouse(event: InputEventMouseMotion) -> void:
 
 func _look_joystick(delta: float) -> void:
 	var look_vector: Vector2 = Input.get_vector(&"ui_look_left", &"ui_look_right", &"ui_look_down", &"ui_look_up")
-	var look_x: float = -look_vector.x * get_process_delta_time() * SaveManager.settings.look_sensitivity_joystick
+	var look_x: float = -look_vector.x * get_process_delta_time() * SaveManager.settings.look_sensitivity_joystick * 4
 	if SaveManager.settings.invert_joystick_x:
 		look_x = -look_x
 	camera_controller.rotation.y += look_x
 	
-	var look_y: float = -look_vector.y * get_process_delta_time() * SaveManager.settings.look_sensitivity_joystick
+	var look_y: float = look_vector.y * get_process_delta_time() * SaveManager.settings.look_sensitivity_joystick * 4
 	if SaveManager.settings.invert_joystick_y:
 		look_y = -look_y
 	camera_controller.add_pitch(look_y)

@@ -11,7 +11,7 @@
 
 [node name="MainMenu" type="Node3D"]
 
-[node name="UI" type="Control" parent="." node_paths=PackedStringArray("_logo", "child_uis")]
+[node name="UI" type="Control" parent="." node_paths=PackedStringArray("child_uis")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,7 +19,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_dvq8h")
-_logo = NodePath("")
 child_uis = [NodePath("MarginContainer/Contents"), NodePath("MarginContainer/SettingsUI"), NodePath("MarginContainer/BossFightProfilesPage"), NodePath("MarginContainer/QuitWarningPage")]
 
 [node name="Animator" type="AnimationPlayer" parent="UI"]
@@ -77,6 +76,7 @@ layout_mode = 2
 
 [node name="Scene" parent="." instance=ExtResource("8_hj0c5")]
 
+[connection signal="uis_emptied" from="UI" to="UI" method="_on_uis_emptied"]
 [connection signal="pressed" from="UI/MarginContainer/Contents/CenterContainer/MenuButtons/SelectFightButton" to="UI" method="_on_select_fight_button_pressed"]
 [connection signal="pressed" from="UI/MarginContainer/Contents/CenterContainer/MenuButtons/OptionsButton" to="UI" method="_on_options_button_pressed"]
 [connection signal="pressed" from="UI/MarginContainer/Contents/CenterContainer/MenuButtons/QuitGameButton" to="UI" method="_on_quit_game_button_pressed"]

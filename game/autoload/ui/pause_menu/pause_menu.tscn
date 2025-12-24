@@ -382,12 +382,14 @@ theme_override_constants/margin_left = 0
 text = "Return to main menu?"
 
 [node name="Contents" parent="MarginContainer/QuitWarningPage/MarginContainer/Page" index="1"]
+focus_mode = 0
 theme_override_constants/separation = 64
 
 [node name="SettingsUI" parent="." instance=ExtResource("3_42xwn")]
 visible = false
 layout_mode = 1
 
+[connection signal="uis_emptied" from="." to="." method="_on_uis_emptied"]
 [connection signal="pressed" from="MarginContainer/MenuButtons/ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="MarginContainer/MenuButtons/RestartButton" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="MarginContainer/MenuButtons/OptionsButton" to="." method="_on_options_button_pressed"]

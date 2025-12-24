@@ -392,6 +392,8 @@ size_flags_vertical = 4
 stretch_mode = 3
 flip_h = true
 
+[connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
+[connection signal="focus_exited" from="." to="." method="_on_focus_exited"]
 [connection signal="focus_entered" from="Thumbnail" to="." method="_on_thumbnail_focus_entered"]
 [connection signal="focus_exited" from="Thumbnail" to="." method="_on_thumbnail_focus_exited"]
 [connection signal="mouse_entered" from="Thumbnail" to="." method="_on_thumbnail_mouse_entered"]

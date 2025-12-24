@@ -31,11 +31,11 @@ func _on_select_fight_button_pressed() -> void:
 func _on_options_button_pressed() -> void:
 	_stack(_settings_ui)
 
-func _on_credits_button_pressed() -> void:
-	pass # Replace with function body.
-
 func _on_quit_game_button_pressed() -> void:
 	_stack(_quit_warning)
 
 func _on_quit_warning_page_quit_confirmed() -> void:
 	get_tree().quit()
+
+func _on_uis_emptied() -> void:
+	_menu_buttons.grab_focus()

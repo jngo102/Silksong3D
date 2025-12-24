@@ -28,7 +28,6 @@ func _ready() -> void:
 		if ui != default_ui:
 			ui.hide()
 			ui.hidden.connect(check_empty)
-	visibility_changed.connect(_on_visibility_changed)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed(&"ui_back"):
@@ -53,10 +52,7 @@ func _stack(ui: Control) -> void:
 
 ## Pop off the top-most UI in the stack
 func pop() -> void:
-	if len(ui_stack) <= 1:
-		uis_emptied.emit()
-	else:
-		check_empty()
+	check_empty()
 
 ## Show the topmost UI if one is available
 func check_empty() -> void:
@@ -71,7 +67,5 @@ func check_empty() -> void:
 		# Prevent flicker when showing for the first time
 		await get_tree().process_frame
 		next_ui.show()
-
-func _on_visibility_changed() -> void:
-	if visible:
-		grab_focus()
+		if len(ui_stack) <= 1:
+			uis_emptied.emit()

@@ -32,11 +32,6 @@ func _ready() -> void:
 	_check_show_navigation_icons()
 	_set_up_settings_tabs()
 
-#func _unhandled_input(event: InputEvent) -> void:
-	#if _input_settings_page.rebinding:
-		#return
-	#super._unhandled_input(event)
-
 func _input(event: InputEvent) -> void:
 	if not visible:
 		return
@@ -66,9 +61,6 @@ func _set_up_settings_tabs() -> void:
 			)
 			tab_button_index += 1
 		var first_tab_button: Button = _settings_tab_buttons[0]
-		# Wait until the first tab button is drawn before selecting it, otherwise the cursor will be at (0, 0)
-		#await first_tab_button.draw
-		#first_tab_button.grab_focus()
 
 func _check_show_navigation_icons(device: String = InputHelper.device, _device_index: int = InputHelper.device_index) -> void:
 	if InputManager.on_keys:

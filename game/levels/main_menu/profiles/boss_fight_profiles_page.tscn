@@ -21,9 +21,10 @@ profiles = Array[ExtResource("2_vd6hw")]([SubResource("Resource_vd6hw")])
 [node name="Title" parent="MarginContainer/Page/Header" index="0"]
 text = "Select Boss Fight"
 
+[node name="Contents" parent="MarginContainer/Page" index="1"]
+focus_mode = 0
+
 [node name="Elements" type="HBoxContainer" parent="MarginContainer/Page/Contents" index="0"]
 layout_mode = 2
 size_flags_vertical = 3
-focus_neighbor_top = NodePath("../BackButton")
-focus_neighbor_bottom = NodePath("../BackButton")
 alignment = 1

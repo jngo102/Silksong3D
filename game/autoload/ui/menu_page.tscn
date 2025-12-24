@@ -100,6 +100,7 @@ stretch_mode = 2
 [node name="Contents" type="VBoxContainer" parent="MarginContainer/Page"]
 layout_mode = 2
 size_flags_vertical = 3
+focus_mode = 2
 
 [node name="BackButton" parent="MarginContainer/Page" instance=ExtResource("11_kn2u4")]
 layout_mode = 2
@@ -107,4 +108,5 @@ size_flags_vertical = 8
 text = "Back"
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="animation_finished" from="Animator" to="." method="_on_animator_animation_finished"]
 [connection signal="pressed" from="MarginContainer/Page/BackButton" to="." method="_on_back_button_pressed"]
