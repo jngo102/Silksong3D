@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://dpkqjvyr32cys"]
+[gd_scene load_steps=16 format=4 uid="uid://dpkqjvyr32cys"]
 
 [ext_resource type="Script" uid="uid://iji6ec63s7tt" path="res://game/actors/player/needle.gd" id="1_bb050"]
 [ext_resource type="PackedScene" uid="uid://xal232da7bpf" path="res://game/gameplay/combat/damager.tscn" id="2_s1w8d"]
@@ -108,6 +108,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Mesh/StabDamager/Collision:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_jkg7i"]
 resource_name = "RESET"
@@ -196,6 +208,18 @@ tracks/6/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Mesh/StabDamager/Collision:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_a8o31"]
 resource_name = "Slash"
@@ -273,13 +297,53 @@ tracks/5/keys = {
 "values": [true, false, true]
 }
 
+[sub_resource type="Animation" id="Animation_m1lj5"]
+resource_name = "Stab"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0833),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.65678227, 3.0414107, -0.9511868), Vector3(-0.5818429, 2.528932, -1.759332)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mesh:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0833),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-1.4530145, -0.17815667, 0.075560875), Vector3(-1.1254412, 0.10170506, 1.1692091)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Mesh/StabDamager/Collision:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.008366674, 0.0833),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_a8o31"]
 _data = {
 &"Bind": SubResource("Animation_g78k6"),
 &"Down Spike": SubResource("Animation_7s2iq"),
 &"Down Spike Bounce": SubResource("Animation_fynfr"),
 &"RESET": SubResource("Animation_jkg7i"),
-&"Slash": SubResource("Animation_a8o31")
+&"Slash": SubResource("Animation_a8o31"),
+&"Stab": SubResource("Animation_m1lj5")
 }
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1isk3"]
@@ -327,6 +391,10 @@ shadow_mesh = SubResource("ArrayMesh_g78k6")
 radius = 1.5
 height = 8.0
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_m1lj5"]
+radius = 1.0
+height = 7.7419434
+
 [node name="Needle" type="Node3D"]
 script = ExtResource("1_bb050")
 
@@ -351,6 +419,17 @@ transform = Transform3D(0.9999995, -1.5795231e-06, -7.56979e-06, 4.4703484e-07, 
 shape = SubResource("CapsuleShape3D_g78k6")
 disabled = true
 
+[node name="StabDamager" parent="Mesh" instance=ExtResource("2_s1w8d")]
+transform = Transform3D(1.3333349, 0, 0, 0, -5.82819e-08, -1.3333347, 0, 1.3333344, -5.828191e-08, 0, 0, 0)
+collision_layer = 8
+collision_mask = 2
+damage_amount = 9
+
+[node name="Collision" parent="Mesh/StabDamager" index="0"]
+transform = Transform3D(0.9999942, -1.5711412e-06, -7.197261e-06, 5.187467e-07, 0.9999932, -1.1250377e-06, -1.1473894e-06, 2.682209e-07, 0.9999914, -1.847744e-06, 3.151974, 1.0728836e-06)
+shape = SubResource("CapsuleShape3D_m1lj5")
+disabled = true
+
 [node name="SlashEffect" parent="." instance=ExtResource("3_g78k6")]
 transform = Transform3D(1.1804705, -0.41108325, 0, 0.35600856, 1.0223173, 0.625, -0.20554164, -0.5902352, 1.0825317, 0, 2.2247343, 0)
 
@@ -360,7 +439,9 @@ collision_mask = 2
 damage_amount = 9
 
 [connection signal="area_entered" from="Mesh/DownSpikeDamager" to="." method="_on_down_spike_damager_area_entered"]
+[connection signal="area_entered" from="Mesh/StabDamager" to="." method="_on_stab_damager_area_entered"]
 
 [editable path="Mesh/DownSpikeDamager"]
+[editable path="Mesh/StabDamager"]
 [editable path="SlashEffect"]
 [editable path="SlashEffect/SlashEffectDamager"]

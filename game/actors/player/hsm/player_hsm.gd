@@ -31,6 +31,7 @@ const STOP_EVENT: StringName = "stop"
 @onready var slash_state: PlayerSlashState = $SlashState
 @onready var sprint_state: PlayerSprintState = $SprintState
 @onready var sprint_jump_state: PlayerSprintJumpState = $SprintJumpState
+@onready var sprint_stab_state: PlayerSprintStabState = $SprintStabState
 @onready var thread_storm_state: PlayerThreadStormState = $ThreadStormState
 @onready var walk_state: PlayerWalkState = $WalkState
 
@@ -49,8 +50,9 @@ func _add_transitions() -> void:
 	add_transition(ANYSTATE, multi_hit_state, MULTI_HIT_EVENT)
 	add_transition(ANYSTATE, normal_recoil_state, DAMAGE_EVENT)
 
-	add_transition(attack_choice_state, down_spike_state, DASH_EVENT)
+	add_transition(attack_choice_state, down_spike_state, FALL_EVENT)
 	add_transition(attack_choice_state, slash_state, ATTACK_EVENT)
+	add_transition(attack_choice_state, sprint_stab_state, DASH_EVENT)
 	
 	air_dash_state.set_guard(air_dash_state.can_enter)
 	
@@ -94,6 +96,9 @@ func _add_transitions() -> void:
 	add_transition(sprint_jump_state, fall_state, FALL_EVENT)
 	add_transition(sprint_jump_state, float_state, JUMP_EVENT)
 	
+	add_transition(sprint_stab_state, fall_state, EVENT_FINISHED)
+	add_transition(sprint_stab_state, down_spike_bounce_state, HIT_EVENT)
+	
 	thread_storm_state.set_guard(thread_storm_state.can_enter)
 	
 	add_transition(walk_state, sprint_state, DASH_EVENT)
@@ -113,4 +118,5 @@ func _on_player_land() -> void:
 	air_dash_state.reset_state()
 
 func _on_active_state_changed(current: LimboState, previous: LimboState) -> void:
-	print(previous, " to ", current)
+	if OS.is_debug_build():
+		print(previous, " to ", current)

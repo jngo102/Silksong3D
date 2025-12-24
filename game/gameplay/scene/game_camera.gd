@@ -46,5 +46,6 @@ func update_shake() -> void:
 	if is_instance_valid(target):
 		var direction: Vector3 = global_position.direction_to(target.global_position)
 		look_at(target.global_position - current_shake_vector)
+		global_rotation.z = 0
 	current_shake_magnitude -= unshake_amount * current_shake_time
 	current_shake_time = 0

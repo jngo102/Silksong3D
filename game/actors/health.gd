@@ -5,6 +5,11 @@ class_name Health extends Area3D
 	get:
 		return _collision.disabled
 	set(value):
+		if is_instance_valid(_pulser):
+			if value:
+				_pulser.start_pulse()
+			else:
+				_pulser.stop_pulse()
 		_collision.set_disabled.call_deferred(value)
 @export var damage_invincibility_time: float = 0.5
 @export var give_silk: bool = true
@@ -12,6 +17,7 @@ class_name Health extends Area3D
 @export var damage_particles: Array[CPUParticles3D]
 @export var damage_effect_prefab: PackedScene
 @export var _flasher: Flasher
+@export var _pulser: Pulser
 
 @onready var _collision: CollisionShape3D = $Collision
 
@@ -75,6 +81,8 @@ func take_multi_hit_damage(damager: Damager) -> void:
 			await get_tree().create_timer(0.4, false).timeout
 		else:
 			multi_hit_ended.emit()
+			if is_instance_valid(_flasher):
+				_flasher.flash()
 			_invincibility_timer = 0
 
 func set_invincible(be_invincible: bool = true, duration: float = 0) -> void:
@@ -90,6 +98,8 @@ func heal(amount: int) -> void:
 	healed.emit(current_health)
 
 func _die() -> void:
+	if is_instance_valid(_pulser):
+		_pulser.stop_pulse()
 	set_invincible(true)
 	_invincibility_timer = -INF
 	died.emit(owner)
