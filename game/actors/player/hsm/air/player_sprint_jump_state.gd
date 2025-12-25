@@ -32,9 +32,9 @@ func _update(delta: float) -> void:
 		super._update(delta)
 		if Input.is_action_just_pressed(&"Jump"):
 			send_event(_hsm.JUMP_EVENT)
-		elif _player.velocity.y > 0 and (Input.is_action_just_released(&"Jump") or _queue_stop_jump):
+		elif _player.velocity.y > 1 and (not Input.is_action_pressed(&"Jump") or _queue_stop_jump):
 			_queue_stop_jump = false
-			_player.velocity.y /= 5
+			_player.velocity.y /= 2
 		elif _player.velocity.y < 0:
 			send_event(_hsm.FALL_EVENT)
 	elif Input.is_action_just_released(&"Jump"):

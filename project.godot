@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Silksong 3D"
-config/version="0.5.2"
+config/version="0.5.3"
 run/main_scene="uid://d0nkpdyoqawun"
 config/features=PackedStringArray("4.5", "4.5.1", "Forward Plus")
 config/icon="uid://dfed24vi280po"
@@ -38,6 +38,7 @@ ScoreManager="*res://game/autoload/score/score_manager.gd"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+window/size/mode=3
 window/size/initial_position_type=3
 window/stretch/mode="viewport"
 window/stretch/aspect="keep_height"

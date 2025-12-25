@@ -26,8 +26,8 @@ func _update(delta: float) -> void:
 	_player.move(move_vector.normalized() * _mid_air_move_speed)
 	if Input.is_action_just_pressed(&"Jump"):
 		send_event(_hsm.JUMP_EVENT)
-	elif Input.is_action_just_released(&"Jump"):
-		_player.velocity.y /= 5
+	elif not Input.is_action_pressed(&"Jump") and _player.velocity.y > 1:
+		_player.velocity.y /= 2
 	elif _player.velocity.y <= 0:
 		send_event(_hsm.FALL_EVENT)
 	

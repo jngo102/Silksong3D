@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cpia6ir6qmuoi" path="res://game/autoload/ui/fader.tscn" id="2_bumek"]
 
 [node name="UIManager" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

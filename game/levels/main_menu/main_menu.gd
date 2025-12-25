@@ -35,6 +35,8 @@ func _on_quit_game_button_pressed() -> void:
 	_stack(_quit_warning)
 
 func _on_quit_warning_page_quit_confirmed() -> void:
+	var fader: Fader = UIManager.open_ui(Fader)
+	await fader.faded_in
 	get_tree().quit()
 
 func _on_uis_emptied() -> void:

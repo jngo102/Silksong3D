@@ -23,6 +23,7 @@ func _enter() -> void:
 	_original_terminal_speed = _player.terminal_speed
 	_player.gravity_scale = 1
 	_player.terminal_speed = _override_terminal_speed
+	_player.velocity.y /= 4
 
 func _exit() -> void:
 	_cloak_animator.play(&"Unpuff")

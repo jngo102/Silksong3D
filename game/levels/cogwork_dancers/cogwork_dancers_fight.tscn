@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://dugp1elqcy03h"]
+[gd_scene load_steps=47 format=4 uid="uid://dugp1elqcy03h"]
 
 [ext_resource type="PackedScene" uid="uid://c7e6xi1cekoax" path="res://game/levels/base_level.tscn" id="1_frof6"]
 [ext_resource type="Resource" uid="uid://cbxskjf0ajc00" path="res://game/resources/music/cogdancers2.tres" id="2_0qq8w"]
@@ -31,6 +31,8 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4y2hd"]
 albedo_texture = ExtResource("5_1nr1l")
+metallic = 0.28
+roughness = 0.67
 normal_enabled = true
 normal_texture = ExtResource("6_t6wio")
 
@@ -636,6 +638,51 @@ height = 24.0
 [sub_resource type="SphereShape3D" id="SphereShape3D_twn58"]
 radius = 12.0
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5arvd"]
+resource_name = "Black Metal"
+cull_mode = 2
+albedo_color = Color(0.027857976, 0.01607456, 0.010233845, 1)
+metallic = 1.0
+roughness = 0.5
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_gqfmo"]
+_surfaces = [{
+"aabb": AABB(-2.8529649, -1, -1, 5.7059298, 2.791944, 2),
+"format": 34359742465,
+"index_count": 84,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAwAAAAQABAAAAAIAAwAEAAUABAACAAYABQAEAAYAAwAFAAcAAwAHAAEABQAGAAcAAQAIAAIAAgAJAAYAAgAIAAkABgAKAAcABgAJAAoABwALAAEAAQALAAgABwAKAAsACAAMAAkACgANAAsACwAOAAgACAAOAAwACwANAA4ACQAMAA8ACQAPAAoADwAMAA4ACgAPAA0ADwAOAA0A"),
+"name": "Black Metal",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray("AACAvwAAgL8AAIA/AACAvwAAgD8AAIC/AACAvwAAgD8AAIA/AACAvwAAgL8AAIC/AACAPwAAgL8AAIA/AACAPwAAgL8AAIC/AACAPwAAgD8AAIA/AACAPwAAgD8AAIC/+pY2wDWgzj8AAIA/+pY2QDWgzj8AAIA/+pY2QDWgzj8AAIC/+pY2wDWgzj8AAIC/AMr4P2te5T8AAIA/AMr4v2te5T8AAIC/AMr4v2te5T8AAIA/AMr4P2te5T8AAIC/")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_qax2k"]
+resource_name = "pendulum_Cube_002"
+_surfaces = [{
+"aabb": AABB(-2.8529649, -1, -1, 5.7059298, 2.791944, 2),
+"attribute_data": PackedByteArray("AADAPgAAgD8AACA/AABAPwAAID8AAIA/AADAPgAAQD8AAMA+AABAPwAAID8AAAA/AAAgPwAAQD8AAMA+AAAAPwAAID8AAEA/AAAgPwAAAD8AACA/AABAPwAAID8AAAA/AADAPgAAAD8AACA/AACAPgAAID8AAAA/AADAPgAAgD4AAMA+AACAPgAAID8AAAAAAAAgPwAAgD4AAMA+AAAAAAAAID8AAIA+AAAgPwAAAAAAACA/AACAPgAAID8AAAAAAAAAPgAAAD8AAMA+AACAPgAAwD4AAAA/AAAAPgAAgD4AACA/AACAPgAAID8AAAA/AAAgPwAAAD8AACA/AACAPgAAID8AAEA/AAAgPwAAgD8AACA/AACAPwAAID8AAEA/AAAgPwAAAD8AAGA/AACAPgAAYD8AAAA/AAAgPwAAgD4AACA/AACAPgAAID8AAAA/AAAgPwAAAD8AACA/AACAPgAAID8AAEA/AAAgPwAAgD8AACA/AACAPwAAID8AAEA/"),
+"format": 34359742487,
+"index_count": 84,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUABQAIAAYABQAJAAgACQAKAAgACQALAAoADAANAA4ADAAPAA0AEAARABIAEAATABEAEQAUABIAEQAVABQAFQAWABQAFQAXABYAGAAZABoAGAAbABkAHAAdAB4AHAAfAB0AIAAhACIAIAAjACEAJAAlACYAJAAnACUAKAApACoAKAArACkALAAtAC4ALAAvAC0A"),
+"material": SubResource("StandardMaterial3D_5arvd"),
+"name": "Black Metal",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 48,
+"vertex_data": PackedByteArray("AACAvwAAgL8AAIA/AACAvwAAgD8AAIC/AACAvwAAgD8AAIA/AACAvwAAgL8AAIC/AACAvwAAgL8AAIC/AACAPwAAgD8AAIC/AACAvwAAgD8AAIC/AACAPwAAgL8AAIC/+pY2wDWgzj8AAIC/+pY2QDWgzj8AAIC/AMr4v2te5T8AAIC/AMr4P2te5T8AAIC/AACAPwAAgL8AAIC/AACAPwAAgD8AAIA/AACAPwAAgD8AAIC/AACAPwAAgL8AAIA/AACAPwAAgL8AAIA/AACAvwAAgD8AAIA/AACAPwAAgD8AAIA/AACAvwAAgL8AAIA/+pY2QDWgzj8AAIA/+pY2wDWgzj8AAIA/AMr4P2te5T8AAIA/AMr4v2te5T8AAIA/AACAvwAAgL8AAIC/AACAPwAAgL8AAIA/AACAPwAAgL8AAIC/AACAvwAAgL8AAIA/AACAPwAAgD8AAIA/+pY2QDWgzj8AAIC/AACAPwAAgD8AAIC/+pY2QDWgzj8AAIA/AACAvwAAgD8AAIC/+pY2wDWgzj8AAIA/AACAvwAAgD8AAIA/+pY2wDWgzj8AAIC/AMr4P2te5T8AAIC/AMr4v2te5T8AAIA/AMr4v2te5T8AAIC/AMr4P2te5T8AAIA/+pY2QDWgzj8AAIA/AMr4P2te5T8AAIC/+pY2QDWgzj8AAIC/AMr4P2te5T8AAIA/+pY2wDWgzj8AAIC/AMr4v2te5T8AAIA/+pY2wDWgzj8AAIA/AMr4v2te5T8AAIC/AAD/f/9///8AAP9//3///wAA/3//f///AAD/f/9//////////3//////////f/////////9//////////3////////////+//////////7//////////v/////////+/////f/9///////9//3///////3//f///////f/9/////f/9//3////9//3//f////3//f/9/////f/9//3////9//3////8//3//f////z//f/9/////P/9//3////8//38AAP///7//fwAA////v/9/AAD///+//38AAP///7/en94f////v96f3h////+/3p/eH////7/en94f////vyBg3h////+/IGDeH////78gYN4f////vyBg3h////+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7/slBLr////v+yUEuv///+/7JQS6////7/slBLr////vxJrEuv///+/EmsS6////78SaxLr////vxJrEuv///+/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_gqfmo")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fi3d2"]
+albedo_color = Color(0.023371782, 0.023371788, 0.023371777, 1)
+metallic = 0.84
+metallic_specular = 0.56
+roughness = 0.52
+
 [sub_resource type="Animation" id="Animation_twn58"]
 length = 0.001
 tracks/0/type = "value"
@@ -681,14 +728,14 @@ size = Vector3(40, 32, 40)
 script = ExtResource("2_seyxp")
 _doors = [NodePath("Physical/WallL"), NodePath("Physical/WallR"), NodePath("Physical/WallBack")]
 
-[node name="WindowLight" type="SpotLight3D" parent="Environment" index="1"]
-transform = Transform3D(-1, -1.6984853e-15, -8.7422784e-08, -1.526795e-08, 0.98463154, 0.17464499, 8.607922e-08, 0.17464499, -0.98463154, 0, 15.592891, -66.64813)
-light_color = Color(0.88897, 0.918843, 0.9286584, 1)
-shadow_enabled = true
-spot_range = 128.0
-spot_attenuation = 2.0
-spot_angle = 30.0
-spot_angle_attenuation = 1.2745608
+[node name="WindowLight" type="DirectionalLight3D" parent="Environment" index="1"]
+transform = Transform3D(-1, -6.238395e-15, -8.742276e-08, -2.260014e-08, 0.96600735, 0.25851557, 8.4451e-08, 0.25851557, -0.96600735, 0, 41.384796, -118.976295)
+light_color = Color(0.7647059, 0.827451, 0.8784314, 1)
+light_volumetric_fog_energy = 0.2
+
+[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="Environment" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.19979858, 25.18544, -5.1095886)
+size = Vector3(97.74127, 50.75241, 58.673035)
 
 [node name="CameraController" parent="." index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.728561, 50.48007)
@@ -747,10 +794,12 @@ shape = SubResource("BoxShape3D_e4ccn")
 
 [node name="Light" type="OmniLight3D" parent="." index="6"]
 transform = Transform3D(0.7254783, -0.20325895, 0.6575463, -0.058854267, 0.9335742, 0.35351855, -0.6857241, -0.2951694, 0.66532516, 0, 20, -2.234)
-light_color = Color(0.79470325, 0.84146434, 0.8682842, 1)
-light_energy = 16.0
-light_volumetric_fog_energy = 0.0
-omni_range = 50.0
+visible = false
+light_color = Color(0.7647059, 0.827451, 0.8784314, 1)
+light_energy = 64.0
+light_volumetric_fog_energy = 0.2
+shadow_enabled = true
+omni_range = 64.0
 
 [node name="DancerManager" type="Node3D" parent="." index="7" node_paths=PackedStringArray("starting_waypoint1", "starting_waypoint2", "alcove1", "alcove2", "dashers")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14, 0)
@@ -775,7 +824,7 @@ deg_per_sec = 1080.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
 
 [node name="Dancer1" parent="DancerManager/Spinner/DancerSpinTarget1" index="0" instance=ExtResource("5_xmi2e")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -15.5, 3, -37.264168)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -15.500874, 2.9876213, -37.263626)
 top = true
 
 [node name="DancerSpinTarget2" type="Marker3D" parent="DancerManager/Spinner" index="1"]
@@ -965,6 +1014,10 @@ transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0.08052063, 3.7522936, 
 [node name="Pendulum" parent="Scene" index="22" instance=ExtResource("24_e4ccn")]
 transform = Transform3D(0.7071067, 0.7071067, 0, -0.7071067, 0.7071067, 0, 0, 0, 1, 0, 14.650822, -13.350818)
 
+[node name="Pendulum" parent="Scene/Pendulum" index="0"]
+mesh = SubResource("ArrayMesh_qax2k")
+surface_material_override/0 = SubResource("StandardMaterial3D_fi3d2")
+
 [node name="Animator" type="AnimationPlayer" parent="Scene/Pendulum" index="1"]
 libraries = {
 &"": SubResource("AnimationLibrary_pftpk")
@@ -999,4 +1052,6 @@ shape = SubResource("BoxShape3D_seyxp")
 [connection signal="body_entered" from="DoorCloseTrigger" to="." method="_on_door_close_trigger_body_entered"]
 [connection signal="body_entered" from="DoorCloseTrigger" to="DancerManager" method="_on_door_close_trigger_body_entered"]
 
+[editable path="CameraController"]
 [editable path="DancerManager/SpinSlashes/Damager"]
+[editable path="Scene/Pendulum"]

@@ -16,6 +16,9 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed(&"ui_pause") and not _animator.is_playing():
 		_pause(not get_tree().paused)
 
+func _exit_tree() -> void:
+	_do_pause(false)
+
 func _pause(pause: bool = true) -> void:
 	if pause and not get_tree().paused:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -32,7 +35,6 @@ func _on_resume_button_pressed() -> void:
 	_pause(false)
 
 func _on_restart_button_pressed() -> void:
-	_pause(false)
 	SceneManager.reload()
 
 func _on_options_button_pressed() -> void:
@@ -48,7 +50,6 @@ func _on_quit_warning_page_hidden() -> void:
 	pop()
 
 func _on_quit_warning_page_quit_confirmed() -> void:
-	_do_pause(false)
 	SceneManager.go_to_main_menu()
 
 func _on_uis_emptied() -> void:

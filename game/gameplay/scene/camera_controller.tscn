@@ -4,15 +4,16 @@
 [ext_resource type="Script" uid="uid://b6ksgsq8ylhhd" path="res://game/gameplay/scene/game_camera.gd" id="2_bv4xb"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ewp70"]
-radius = 0.25
+radius = 0.1
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_bv4xb"]
 dof_blur_far_enabled = true
-dof_blur_far_distance = 80.0
+dof_blur_far_distance = 64.0
+dof_blur_far_transition = 8.0
 
 [node name="CameraController" type="Node3D"]
 script = ExtResource("1_ewp70")
-min_yaw_degrees = -80.0
+min_yaw_degrees = -59.0
 max_yaw_degrees = 60.0
 
 [node name="CameraPitch" type="Node3D" parent="."]
