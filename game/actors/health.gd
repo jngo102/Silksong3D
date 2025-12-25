@@ -5,11 +5,8 @@ class_name Health extends Area3D
 	get:
 		return _collision.disabled
 	set(value):
-		if is_instance_valid(_pulser):
-			if value:
-				_pulser.start_pulse()
-			else:
-				_pulser.stop_pulse()
+		if not value and is_instance_valid(_pulser):
+			_pulser.stop_pulse()
 		_collision.set_disabled.call_deferred(value)
 @export var damage_invincibility_time: float = 0.5
 @export var give_silk: bool = true
@@ -34,6 +31,7 @@ var is_dead: bool:
 		return current_health <= 0
 
 var _invincibility_timer: float = -INF
+var _invincibility_time: float = INF
 
 func _process(delta: float) -> void:
 	_update_invincibility_timer(delta)
@@ -42,7 +40,7 @@ func _update_invincibility_timer(delta: float) -> void:
 	if not _invincible:
 		return
 	_invincibility_timer += delta
-	if _invincibility_timer > damage_invincibility_time:
+	if _invincibility_timer > _invincibility_time:
 		set_invincible(false)
 
 func take_damage(damager: Damager) -> void:
@@ -59,16 +57,17 @@ func take_damage(damager: Damager) -> void:
 		damage_effect.global_rotation = owner.global_rotation
 	if is_instance_valid(_flasher):
 		_flasher.flash()
+	elif is_instance_valid(_pulser):
+		_pulser.start_pulse()
 	took_damage.emit(damager)
 	if current_health <= 0:
 		_die()
 	else:
 		set_invincible(true, damage_invincibility_time)
-		_invincibility_timer = 0
 
 func take_multi_hit_damage(damager: Damager) -> void:
 	multi_hit_started.emit()
-	set_invincible(true)
+	set_invincible()
 	var damage_left: int = damager.damage_amount
 	for i in damager.damage_amount:
 		damage_left -= 1
@@ -83,15 +82,14 @@ func take_multi_hit_damage(damager: Damager) -> void:
 			multi_hit_ended.emit()
 			if is_instance_valid(_flasher):
 				_flasher.flash()
-			_invincibility_timer = 0
+			elif is_instance_valid(_pulser):
+				_pulser.start_pulse()
+			set_invincible(true, damage_invincibility_time)
 
-func set_invincible(be_invincible: bool = true, duration: float = 0) -> void:
+func set_invincible(be_invincible: bool = true, duration: float = INF) -> void:
+	_invincibility_timer = 0
+	_invincibility_time = duration
 	_invincible = be_invincible
-	if be_invincible and duration > 0:
-		await get_tree().create_timer(duration, false).timeout
-		_invincible = false
-	elif duration <= 0:
-		_invincibility_timer = -INF
 
 func heal(amount: int) -> void:
 	current_health = min(current_health + amount, max_health)
@@ -100,12 +98,11 @@ func heal(amount: int) -> void:
 func _die() -> void:
 	if is_instance_valid(_pulser):
 		_pulser.stop_pulse()
-	set_invincible(true)
-	_invincibility_timer = -INF
+	set_invincible()
 	died.emit(owner)
 
 func _on_area_entered(area: Area3D) -> void:
-	if not _invincible and area is Damager:
+	if area is Damager:
 		if area.multi_hit:
 			take_multi_hit_damage(area)
 		else:

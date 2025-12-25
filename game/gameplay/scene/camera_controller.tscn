@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://b6ksgsq8ylhhd" path="res://game/gameplay/scene/game_camera.gd" id="2_bv4xb"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ewp70"]
-radius = 1.0
+radius = 0.25
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_bv4xb"]
 dof_blur_far_enabled = true
@@ -13,7 +13,7 @@ dof_blur_far_distance = 80.0
 [node name="CameraController" type="Node3D"]
 script = ExtResource("1_ewp70")
 min_yaw_degrees = -80.0
-max_yaw_degrees = 35.0
+max_yaw_degrees = 60.0
 
 [node name="CameraPitch" type="Node3D" parent="."]
 
@@ -24,9 +24,7 @@ shape = SubResource("SphereShape3D_ewp70")
 spring_length = 16.0
 
 [node name="Camera" type="Camera3D" parent="CameraPitch/Gimbal" groups=["Cameras"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
 attributes = SubResource("CameraAttributesPractical_bv4xb")
 current = true
 size = 70.0
 script = ExtResource("2_bv4xb")
-shake_interval = 0.01

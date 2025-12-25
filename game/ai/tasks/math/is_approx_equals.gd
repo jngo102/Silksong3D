@@ -17,7 +17,6 @@ func _tick(_delta: float) -> Status:
 	var compare_value = BBUtil.bb_value(compare_var, blackboard)
 	if compare_value == null:
 		return FAILURE
-	#print(value, " == ", compare_value, ": ", is_equal_approx(value, compare_value))
 	if is_equal_approx(value, compare_value):
 		return SUCCESS
 	return FAILURE

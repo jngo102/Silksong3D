@@ -71,8 +71,8 @@
 [ext_resource type="Script" uid="uid://c1dukcde8wlga" path="res://game/actors/player/player_sprint_stab_state.gd" id="52_4bmqs"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jgtgc"]
-radius = 0.25
-height = 5.136362
+radius = 0.8461914
+height = 5.4304857
 
 [sub_resource type="Animation" id="Animation_n7ghd"]
 resource_name = "Puff Out"
@@ -339,7 +339,7 @@ down_spike_speed = 90.0
 down_spike_bounce_spin_speed = 30.0
 
 [node name="Collision" parent="." index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.48468494, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.63174677, 0)
 shape = SubResource("CapsuleShape3D_jgtgc")
 
 [node name="Health" parent="." index="2" node_paths=PackedStringArray("_pulser")]
@@ -786,7 +786,7 @@ bone_idx = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.277, 1.5)
 
 [node name="Mesh" parent="Model/Armature/Skeleton3D/NeedleAttach/Needle" index="1"]
-transform = Transform3D(0.05756262, -0.6894976, -0.28944767, 0.66983664, 0.17659523, -0.2874587, 0.3324226, -0.23644799, 0.6293546, -0.43267757, 3.7365413, -3.5042882)
+transform = Transform3D(0.05756262, -0.6894976, -0.28944767, 0.66983664, 0.17659523, -0.28745866, 0.3324226, -0.23644799, 0.6293546, -0.43267757, 3.7365413, -3.5042882)
 
 [node name="Collision" parent="Model/Armature/Skeleton3D/NeedleAttach/Needle/Mesh/DownSpikeDamager" index="0"]
 transform = Transform3D(0.9999996, -1.5795231e-06, -7.584691e-06, 4.172325e-07, 0.99999905, -1.1920929e-06, -4.4703484e-07, 1.0728836e-06, 0.9999977, -0.0094542205, 2.0044737, 0.0029330254)
