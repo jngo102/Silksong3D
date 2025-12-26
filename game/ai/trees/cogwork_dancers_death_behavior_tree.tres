@@ -1,4 +1,4 @@
-[gd_resource type="BehaviorTree" load_steps=111 format=3 uid="uid://ciko0edbnitaw"]
+[gd_resource type="BehaviorTree" load_steps=113 format=3 uid="uid://ciko0edbnitaw"]
 
 [ext_resource type="Script" uid="uid://dfxh5qmwucb7e" path="res://game/ai/tasks/scene/get_first_in_group.gd" id="1_7k3xq"]
 [ext_resource type="Script" uid="uid://cvw5s3jjrdnkq" path="res://game/ai/tasks/transform/face_target.gd" id="2_tqd6i"]
@@ -127,6 +127,15 @@ resource_name = "Damager/Collision"
 script = ExtResource("8_ywbep")
 collider_var = SubResource("BBVariant_opc4v")
 
+[sub_resource type="BBVariant" id="BBVariant_73ljc"]
+type = 22
+saved_value = NodePath("Health/Collision")
+resource_name = "Health/Collision"
+
+[sub_resource type="BTAction" id="BTAction_oi7s7"]
+script = ExtResource("8_ywbep")
+collider_var = SubResource("BBVariant_73ljc")
+
 [sub_resource type="BBNode" id="BBNode_ywbep"]
 saved_value = NodePath("Model/AnimationPlayer")
 resource_name = "Model/AnimationPlayer"
@@ -157,7 +166,7 @@ duration = 0.5
 
 [sub_resource type="BTSequence" id="BTSequence_nr5y5"]
 custom_name = "Stun"
-children = [SubResource("BTAction_6q4rm"), SubResource("BTAction_h8iei"), SubResource("BTAction_n133n"), SubResource("BTPlayAnimation_sw5t1"), SubResource("BTPlayAnimation_lyoeb"), SubResource("BTAction_cuinw"), SubResource("BTAction_l2mi2"), SubResource("BTWait_2elll")]
+children = [SubResource("BTAction_6q4rm"), SubResource("BTAction_h8iei"), SubResource("BTAction_n133n"), SubResource("BTAction_oi7s7"), SubResource("BTPlayAnimation_sw5t1"), SubResource("BTPlayAnimation_lyoeb"), SubResource("BTAction_cuinw"), SubResource("BTAction_l2mi2"), SubResource("BTWait_2elll")]
 
 [sub_resource type="BBVariant" id="BBVariant_q5c76"]
 type = 1
