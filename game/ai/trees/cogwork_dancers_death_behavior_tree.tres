@@ -1,9 +1,10 @@
-[gd_resource type="BehaviorTree" load_steps=108 format=3 uid="uid://ciko0edbnitaw"]
+[gd_resource type="BehaviorTree" load_steps=111 format=3 uid="uid://ciko0edbnitaw"]
 
 [ext_resource type="Script" uid="uid://dfxh5qmwucb7e" path="res://game/ai/tasks/scene/get_first_in_group.gd" id="1_7k3xq"]
 [ext_resource type="Script" uid="uid://cvw5s3jjrdnkq" path="res://game/ai/tasks/transform/face_target.gd" id="2_tqd6i"]
 [ext_resource type="Script" uid="uid://ycnpkfx0h776" path="res://game/ai/tasks/transform/get_position.gd" id="3_2elll"]
 [ext_resource type="AudioStream" uid="uid://o25apn70srja" path="res://game/copyrighted/cogwork_dancers/sfx/CogD_stun_hit_duo_01.wav" id="3_cuinw"]
+[ext_resource type="Script" uid="uid://ciifoff10b56r" path="res://game/ai/tasks/scene/set_visible.gd" id="3_expln"]
 [ext_resource type="Script" uid="uid://5qpw7k5phkni" path="res://game/ai/tasks/audio/play_random_audio.gd" id="3_tqd6i"]
 [ext_resource type="AudioStream" uid="uid://d87l3oah06mb" path="res://game/copyrighted/cogwork_dancers/sfx/CogD_stun_hit_duo_02.wav" id="4_2elll"]
 [ext_resource type="AudioStream" uid="uid://cybmx234ig5t" path="res://game/copyrighted/cogwork_dancers/sfx/CogD_stun_hit_single.wav" id="5_wekhm"]
@@ -87,6 +88,15 @@ output_position_var = &"self_position"
 custom_name = "Initialization"
 children = [SubResource("BTAction_pbk4n"), SubResource("BTAction_wekhm")]
 
+[sub_resource type="BBVariant" id="BBVariant_twb4b"]
+type = 22
+saved_value = NodePath("TargetPoint")
+resource_name = "TargetPoint"
+
+[sub_resource type="BTAction" id="BTAction_6q4rm"]
+script = ExtResource("3_expln")
+node_var = SubResource("BBVariant_twb4b")
+
 [sub_resource type="BBVariant" id="BBVariant_4a848"]
 type = 3
 saved_value = 1.0
@@ -147,7 +157,7 @@ duration = 0.5
 
 [sub_resource type="BTSequence" id="BTSequence_nr5y5"]
 custom_name = "Stun"
-children = [SubResource("BTAction_h8iei"), SubResource("BTAction_n133n"), SubResource("BTPlayAnimation_sw5t1"), SubResource("BTPlayAnimation_lyoeb"), SubResource("BTAction_cuinw"), SubResource("BTAction_l2mi2"), SubResource("BTWait_2elll")]
+children = [SubResource("BTAction_6q4rm"), SubResource("BTAction_h8iei"), SubResource("BTAction_n133n"), SubResource("BTPlayAnimation_sw5t1"), SubResource("BTPlayAnimation_lyoeb"), SubResource("BTAction_cuinw"), SubResource("BTAction_l2mi2"), SubResource("BTWait_2elll")]
 
 [sub_resource type="BBVariant" id="BBVariant_q5c76"]
 type = 1

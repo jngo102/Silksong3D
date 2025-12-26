@@ -19,19 +19,27 @@ class_name Player extends GroundedActor
 @onready var _cloak_anim: AnimationPlayer = _skeleton.get_node_or_null("CloakAttach/CloakAnimator")
 @onready var model_animator: AnimationPlayer = _model.get_node_or_null("AnimationPlayer")
 @onready var walk_blend_tree: AnimationTree = model_animator.get_node_or_null("WalkBlend")
-@onready var targeter: RayCast3D = _head.get_node_or_null("Targeter")
-@onready var _initial_targeter_offset: Vector3 = targeter.position
+@onready var targeter: Marker3D = _head.get_node_or_null("Targeter")
+@onready var _targeter_offset: Vector3 = targeter.position
 
 var moving_forward: bool:
 	get:
 		return velocity.rotated(Vector3.UP, global_rotation.y).z < 0
 
-var target: Node3D
+var target: Node3D:
+	set(value):
+		target = value
+		if is_instance_valid(value):
+			camera_controller.add_target(targeter)
+		else:
+			camera_controller.remove_target(targeter)
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	camera_controller.targets.append(self)
-	camera_controller.camera.targets.append(targeter)
+	_init_camera_targets()
+
+func _init_camera_targets() -> void:
+	camera_controller.add_target(self)
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
@@ -81,17 +89,21 @@ func _look_joystick(delta: float) -> void:
 		_check_change_target(look_vector, Vector2.ZERO, change_target_distance_joystick)
 
 func _check_look_at_target(delta: float) -> void:
-	var target_position: Vector3 = global_position + _initial_targeter_offset
-	var distance: float = targeter.global_position.distance_to(target_position)
-	if distance > 128:
-		_clear_target()
 	if is_instance_valid(target):
+		var target_position: Vector3 = target.global_position
+		var distance: float = targeter.global_position.distance_to(target_position)
+		if distance > 128:
+			_clear_target()
+			return
 		if target is Enemy:
 			var point: VisibleOnScreenNotifier3D = target.target_point
+			if not point.visible:
+				_clear_target()
+				return
 			target_position = point.global_position
-			if not point.screen_exited.is_connected(_clear_target):
-				point.screen_exited.connect(_clear_target)
-	targeter.global_position = targeter.global_position.lerp(target_position, delta * 8)
+		targeter.global_position = targeter.global_position.lerp(target_position, delta * 8)
+	else:
+		targeter.position = targeter.position.lerp(_targeter_offset, delta * 8)
 
 func _choose_target() -> void:
 	var new_target: Node3D
@@ -106,6 +118,7 @@ func _choose_target() -> void:
 
 func _select_target(new_target: Node3D) -> void:
 	if is_instance_valid(new_target):
+		_clear_target()
 		target = new_target
 
 func _check_change_target(look_vector: Vector2, event_position: Vector2, threshold: float) -> void:
@@ -129,8 +142,4 @@ func _check_change_target(look_vector: Vector2, event_position: Vector2, thresho
 		_select_target(next_target)
 
 func _clear_target() -> void:
-	if target is Enemy:
-		var point: VisibleOnScreenNotifier3D = target.target_point
-		if point.screen_exited.is_connected(_clear_target):
-			point.screen_exited.disconnect(_clear_target)
 	target = null

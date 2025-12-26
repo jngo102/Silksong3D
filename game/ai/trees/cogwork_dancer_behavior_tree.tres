@@ -1,4 +1,4 @@
-[gd_resource type="BehaviorTree" load_steps=1025 format=3 uid="uid://chh6lvoe5ufr8"]
+[gd_resource type="BehaviorTree" load_steps=1032 format=3 uid="uid://chh6lvoe5ufr8"]
 
 [ext_resource type="Script" uid="uid://dfxh5qmwucb7e" path="res://game/ai/tasks/scene/get_first_in_group.gd" id="1_lkiki"]
 [ext_resource type="Script" uid="uid://oufr1n61rgt6" path="res://game/ai/tasks/audio/get_current_music_player.gd" id="3_ngxa6"]
@@ -35,6 +35,7 @@
 [ext_resource type="Script" uid="uid://dvdqux1hfw046" path="res://game/ai/tasks/scene/queue_free.gd" id="21_mdpca"]
 [ext_resource type="Script" uid="uid://d03jex37smyoc" path="res://game/ai/tasks/logic/kill_tween.gd" id="22_dphll"]
 [ext_resource type="AudioStream" uid="uid://dvdperp7jn1qi" path="res://game/copyrighted/cogwork_dancers/sfx/CogD_attack_large_04.wav" id="22_e8anh"]
+[ext_resource type="Script" uid="uid://ciifoff10b56r" path="res://game/ai/tasks/scene/set_visible.gd" id="22_mdpca"]
 [ext_resource type="AudioStream" uid="uid://dkqjngri23cmb" path="res://game/copyrighted/cogwork_dancers/sfx/clockwork_dancer_look_up_after_bow.wav" id="26_mdpca"]
 [ext_resource type="AudioStream" uid="uid://huqy8mpc427n" path="res://game/copyrighted/cogwork_dancers/sfx/clockwork_dancers_halo.wav" id="30_drhsk"]
 [ext_resource type="AudioStream" uid="uid://ci01hprg2606n" path="res://game/copyrighted/cogwork_dancers/sfx/clockwork_dancers_halov2_1.wav" id="31_877ps"]
@@ -843,6 +844,16 @@ script = ExtResource("18_fuw20")
 collider_var = SubResource("BBVariant_536ec")
 enabled = true
 
+[sub_resource type="BBVariant" id="BBVariant_nxtgw"]
+type = 22
+saved_value = NodePath("TargetPoint")
+resource_name = "TargetPoint"
+
+[sub_resource type="BTAction" id="BTAction_xvdyq"]
+script = ExtResource("22_mdpca")
+node_var = SubResource("BBVariant_nxtgw")
+visible = true
+
 [sub_resource type="BBVariant" id="BBVariant_phhuc"]
 type = 1
 saved_value = false
@@ -980,7 +991,7 @@ children = [SubResource("BTSelector_q81r8"), SubResource("BTSelector_bxjok"), Su
 
 [sub_resource type="BTSequence" id="BTSequence_e8anh"]
 custom_name = "Restart Fight"
-children = [SubResource("BTCallMethod_3g83i"), SubResource("BTAction_lmr6b"), SubResource("BTAction_5lvyq"), SubResource("BTCallMethod_7io1o"), SubResource("BTSequence_tfrvw")]
+children = [SubResource("BTCallMethod_3g83i"), SubResource("BTAction_lmr6b"), SubResource("BTAction_5lvyq"), SubResource("BTAction_xvdyq"), SubResource("BTCallMethod_7io1o"), SubResource("BTSequence_tfrvw")]
 
 [sub_resource type="BBVariant" id="BBVariant_tfrvw"]
 type = 2
@@ -3401,9 +3412,18 @@ target_position_var = &"teleport_point_position"
 time = 0.25
 ease_type = 3
 
+[sub_resource type="BBVariant" id="BBVariant_xvdyq"]
+type = 22
+saved_value = NodePath("TargetPoint")
+resource_name = "TargetPoint"
+
+[sub_resource type="BTAction" id="BTAction_sbia3"]
+script = ExtResource("22_mdpca")
+node_var = SubResource("BBVariant_xvdyq")
+
 [sub_resource type="BTSequence" id="BTSequence_ueah8"]
 custom_name = "Do Teleport"
-children = [SubResource("BTPlayAnimation_3guyw"), SubResource("BTAction_pappx"), SubResource("BTAction_iegny"), SubResource("BTAction_3g83i"), SubResource("BTAction_uyp3b"), SubResource("BTAction_tidaw")]
+children = [SubResource("BTPlayAnimation_3guyw"), SubResource("BTAction_pappx"), SubResource("BTAction_iegny"), SubResource("BTAction_3g83i"), SubResource("BTAction_uyp3b"), SubResource("BTAction_tidaw"), SubResource("BTAction_sbia3")]
 
 [sub_resource type="BBNode" id="BBNode_3guyw"]
 value_source = 1
@@ -3513,9 +3533,19 @@ script = ExtResource("20_ucsdq")
 clips_array = Array[AudioStream]([ExtResource("55_qm002")])
 play_position_var = &"self_position"
 
+[sub_resource type="BBVariant" id="BBVariant_sbia3"]
+type = 22
+saved_value = NodePath("TargetPoint")
+resource_name = "TargetPoint"
+
+[sub_resource type="BTAction" id="BTAction_eo4a1"]
+script = ExtResource("22_mdpca")
+node_var = SubResource("BBVariant_sbia3")
+visible = true
+
 [sub_resource type="BTSequence" id="BTSequence_fuw20"]
 custom_name = "Return Finish"
-children = [SubResource("BTAction_biu47"), SubResource("BTAction_eme4l"), SubResource("BTPlayAnimation_pappx"), SubResource("BTAction_lalf6"), SubResource("BTAction_bwuyh")]
+children = [SubResource("BTAction_biu47"), SubResource("BTAction_eme4l"), SubResource("BTPlayAnimation_pappx"), SubResource("BTAction_lalf6"), SubResource("BTAction_bwuyh"), SubResource("BTAction_eo4a1")]
 
 [sub_resource type="BTAction" id="BTAction_o7vs3"]
 script = ExtResource("8_ngxa6")

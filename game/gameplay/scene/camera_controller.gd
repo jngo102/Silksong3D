@@ -24,30 +24,28 @@ var target_count: int:
 		return len(valid_targets)
 var midpoint: Vector3:
 	get:
-		var midpoint := Vector3.ZERO
+		var point := Vector3.ZERO
 		if len(valid_targets) > 0:
 			for target in valid_targets:
 				if is_instance_valid(target):
-					midpoint += target.global_position
-			midpoint /= target_count
-		return midpoint
+					point += target.global_position
+			point /= target_count
+		return point
 
 func _process(delta: float) -> void:
 	if target_count > 0:
 		global_position = targets[0].global_position	
 		if target_count > 1:
 			var others_midpoint := Vector3.ZERO
-			var valid_targets: int = 0
-			var target_index: int = 0
-			for target in targets:
-				target_index += 1
-				if target_index == 1:
+			var main_target: Node3D = valid_targets[0]
+			for target in valid_targets:
+				if target == main_target:
 					continue
-				if is_instance_valid(target):
-					others_midpoint += target.global_position
-					valid_targets += 1
-			others_midpoint /= valid_targets
+				others_midpoint += target.global_position
+			others_midpoint /= target_count
 			look_at(others_midpoint)
+			#var midpoint_to_main_target_vector: Vector3 = main_target.global_position - others_midpoint
+			#
 		else:
 			rotation.x = 0
 			rotation.z = 0

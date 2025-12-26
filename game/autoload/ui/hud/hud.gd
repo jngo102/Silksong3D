@@ -20,7 +20,11 @@ func _focus_target() -> void:
 		return
 	if is_instance_valid(_linked_player.target):
 		_target.visible = true
-		_target.position = get_viewport().get_camera_3d().unproject_position(_linked_player.targeter.global_position)
+		var target: Node3D = _linked_player.target
+		var target_position: Vector3 = target.global_position
+		if target is Enemy:
+			target_position = target.target_point.global_position
+		_target.position = get_viewport().get_camera_3d().unproject_position(target_position)
 	else:
 		_target.visible = false
 

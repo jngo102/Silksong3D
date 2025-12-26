@@ -27,14 +27,13 @@ var target_count: int:
 		return len(valid_targets)
 var midpoint: Vector3:
 	get:
-		var midpoint := Vector3.ZERO
+		var point := Vector3.ZERO
 		if target_count > 0:
 			for target in valid_targets:
 				if is_instance_valid(target):
 					midpoint += target.global_position
-					target_count += 1
-			midpoint /= target_count
-		return midpoint
+			point /= target_count
+		return point
 
 var shaking: bool:
 	get:
@@ -48,7 +47,16 @@ func _process(delta: float) -> void:
 	current_shake_time += delta
 	if current_shake_time >= shake_interval and shaking:
 		update_shake()
-	if target_count > 0:
+	if target_count > 1:
+		var others_midpoint := Vector3.ZERO
+		var main_target: Node3D = valid_targets[0]
+		for target in valid_targets:
+			if target == main_target:
+				continue
+			others_midpoint += target.global_position
+		others_midpoint /= target_count
+		look_at(others_midpoint)
+	elif target_count == 1:
 		look_at(valid_targets[-1].global_position)
 
 ## Begin object shake in all directions
