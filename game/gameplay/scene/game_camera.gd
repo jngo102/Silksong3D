@@ -15,20 +15,41 @@ var current_shake_time: float = INF
 
 var _shake_timer: float = INF
 var _shake_duration: float
+var _initial_offset: Vector3
 
-var target: Node3D
+var targets: Array[Node3D]
+var valid_targets: Array[Node3D]:
+	get:
+		return targets.filter(func(target):
+			return is_instance_valid(target))
+var target_count: int:
+	get:
+		return len(valid_targets)
+var midpoint: Vector3:
+	get:
+		var midpoint := Vector3.ZERO
+		if target_count > 0:
+			for target in valid_targets:
+				if is_instance_valid(target):
+					midpoint += target.global_position
+					target_count += 1
+			midpoint /= target_count
+		return midpoint
 
 var shaking: bool:
 	get:
 		return _shake_timer < _shake_duration
+
+func _ready() -> void:
+	_initial_offset = position
 
 func _process(delta: float) -> void:
 	_shake_timer += delta
 	current_shake_time += delta
 	if current_shake_time >= shake_interval and shaking:
 		update_shake()
-	elif is_instance_valid(target):
-		look_at(target.global_position)
+	if target_count > 0:
+		look_at(valid_targets[-1].global_position)
 
 ## Begin object shake in all directions
 func shake(amount: float = 1, duration: float = 0.25, taper_off: bool = true) -> void:
@@ -45,9 +66,8 @@ func shake(amount: float = 1, duration: float = 0.25, taper_off: bool = true) ->
 func update_shake() -> void:
 	current_shake_vector = Vector3(randf_range(-1, 1), randf_range(-1, 1), randf_range(-1, 1)).normalized() * current_shake_magnitude
 	position = original_position + current_shake_vector
-	if is_instance_valid(target):
-		var direction: Vector3 = global_position.direction_to(target.global_position)
-		look_at(target.global_position - current_shake_vector)
-		global_rotation.z = 0
+	var direction: Vector3 = global_position.direction_to(midpoint)
+	look_at(midpoint - current_shake_vector)
+	global_rotation.z = 0
 	current_shake_magnitude -= unshake_amount * current_shake_time
 	current_shake_time = 0

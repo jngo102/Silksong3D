@@ -51,6 +51,8 @@ text = "Change Bindings"
 visible = false
 layout_mode = 2
 
+[connection signal="ui_popped" from="." to="." method="_on_ui_popped"]
+[connection signal="ui_stacked" from="." to="." method="_on_ui_stacked"]
 [connection signal="value_changed" from="SettingsContainer/LookSensitivityMouse" to="." method="_on_look_sensitivity_mouse_value_changed"]
 [connection signal="value_changed" from="SettingsContainer/LookSensitivityJoystick" to="." method="_on_look_sensitivity_joystick_value_changed"]
 [connection signal="value_changed" from="SettingsContainer/InvertMouseX" to="." method="_on_invert_mouse_x_value_changed"]
@@ -58,4 +60,4 @@ layout_mode = 2
 [connection signal="value_changed" from="SettingsContainer/InvertJoystickX" to="." method="_on_invert_joystick_x_value_changed"]
 [connection signal="value_changed" from="SettingsContainer/InvertJoystickY" to="." method="_on_invert_joystick_y_value_changed"]
 [connection signal="pressed" from="SettingsContainer/BindingsButton" to="." method="_on_bindings_button_pressed"]
-[connection signal="hidden" from="InputBindingsPage" to="." method="_on_input_bindings_page_hidden"]
+[connection signal="visibility_changed" from="InputBindingsPage" to="." method="_on_input_bindings_page_visibility_changed"]

@@ -13,8 +13,6 @@ dof_blur_far_transition = 8.0
 
 [node name="CameraController" type="Node3D"]
 script = ExtResource("1_ewp70")
-min_yaw_degrees = -59.0
-max_yaw_degrees = 60.0
 
 [node name="CameraPitch" type="Node3D" parent="."]
 
@@ -25,6 +23,7 @@ shape = SubResource("SphereShape3D_ewp70")
 spring_length = 16.0
 
 [node name="Camera" type="Camera3D" parent="CameraPitch/Gimbal" groups=["Cameras"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.12298298, 15.885372)
 attributes = SubResource("CameraAttributesPractical_bv4xb")
 current = true
 size = 70.0

@@ -8,8 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://c8jlv2oiu45hg" path="res://game/autoload/ui/settings/graphics/graphics_settings_page.tscn" id="6_5e0nd"]
 [ext_resource type="PackedScene" uid="uid://dtetst652jshg" path="res://game/autoload/ui/settings/accessibility_settings_page.tscn" id="6_mgrx7"]
 
-[node name="SettingsUI" instance=ExtResource("1_54iid")]
+[node name="SettingsUI" node_paths=PackedStringArray("child_uis", "default_ui") instance=ExtResource("1_54iid")]
 script = ExtResource("1_5bhgl")
+child_uis = [NodePath("MarginContainer/Page/Contents/Pages/AccessibilitySettingsPage"), NodePath("MarginContainer/Page/Contents/Pages/AudioSettingsPage"), NodePath("MarginContainer/Page/Contents/Pages/GraphicsSettingsPage"), NodePath("MarginContainer/Page/Contents/Pages/InputSettingsPage")]
+default_ui = NodePath("MarginContainer/Page/Contents/Pages/AccessibilitySettingsPage")
 
 [node name="Title" parent="MarginContainer/Page/Header" index="0"]
 text = "Settings"
@@ -53,7 +55,7 @@ flat = true
 
 [node name="GraphicsSettings" type="Button" parent="MarginContainer/Page/Contents/TopBar/SettingsTabs" index="2"]
 layout_mode = 2
-text = "Graphics"
+text = "Display"
 flat = true
 
 [node name="InputSettings" type="Button" parent="MarginContainer/Page/Contents/TopBar/SettingsTabs" index="3"]
@@ -83,3 +85,6 @@ layout_mode = 1
 visible = false
 layout_mode = 1
 child_uis = []
+
+[connection signal="bindings_page_closed" from="MarginContainer/Page/Contents/Pages/InputSettingsPage" to="." method="_on_input_settings_page_bindings_page_closed"]
+[connection signal="bindings_page_opened" from="MarginContainer/Page/Contents/Pages/InputSettingsPage" to="." method="_on_input_settings_page_bindings_page_opened"]

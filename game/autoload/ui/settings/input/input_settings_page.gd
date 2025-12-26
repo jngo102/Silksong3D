@@ -9,9 +9,13 @@ class_name InputSettingsPage extends StackableUI
 @onready var _invert_joystick_y_select: SettingSelectOption = _settings_container.get_node_or_null("InvertJoystickY")
 @onready var _bindings_page: InputBindingsPage = $InputBindingsPage
 
+signal bindings_page_opened
+signal bindings_page_closed
+
 func _ready() -> void:
 	super._ready()
 	InputHelper.device_changed.connect(_on_device_change)
+	_on_device_change(InputHelper.device, InputHelper.device_index)
 	_look_sensitivity_mouse_slider.slider_value = SaveManager.settings.look_sensitivity_mouse
 	_look_sensitivity_joystick_slider.slider_value = SaveManager.settings.look_sensitivity_joystick
 	_invert_mouse_x_select.current_option = SaveManager.settings.invert_mouse_x
@@ -56,3 +60,9 @@ func _on_invert_joystick_y_value_changed(new_value: bool) -> void:
 
 func _on_bindings_button_pressed() -> void:
 	_stack(_bindings_page)
+
+func _on_input_bindings_page_visibility_changed() -> void:
+	if _bindings_page.visible:
+		bindings_page_opened.emit()
+	else:
+		bindings_page_closed.emit()

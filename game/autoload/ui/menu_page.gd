@@ -1,7 +1,10 @@
-class_name MenuPage extends Control
+class_name MenuPage extends StackableUI
 
 @onready var _animator: AnimationPlayer = $Animator
-@onready var _contents: VBoxContainer = $MarginContainer/Page/Contents
+@onready var _margin_container: MarginContainer = $MarginContainer
+@onready var _page: VBoxContainer = _margin_container.get_node_or_null("Page")
+@onready var _contents: VBoxContainer = _page.get_node_or_null("Contents")
+@onready var _back_button: UIButton = _page.get_node_or_null("BackButton")
 
 func _on_visibility_changed() -> void:
 	if visible:

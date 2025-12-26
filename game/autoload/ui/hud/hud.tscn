@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://boyxvnlcjkhpy"]
+[gd_scene load_steps=16 format=3 uid="uid://boyxvnlcjkhpy"]
 
 [ext_resource type="Texture2D" uid="uid://cd4a0v7nsj70t" path="res://game/copyrighted/textures/ui/hud/silk/crest/appear/005_0592.png" id="1_mp78n"]
 [ext_resource type="Script" uid="uid://0vrfc2bunc4w" path="res://game/autoload/ui/hud/hud.gd" id="1_sfe4u"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://daf1qe7ul6xbk" path="res://game/copyrighted/textures/ui/hud/silk/spool/appear/002_0152.png" id="10_r5a8t"]
 [ext_resource type="Texture2D" uid="uid://bo3vnaacqcx35" path="res://game/copyrighted/textures/ui/hud/silk/spool/appear/003_0150.png" id="11_irp7l"]
 [ext_resource type="Texture2D" uid="uid://cjj3shsyl5spj" path="res://game/copyrighted/textures/ui/hud/silk/spool/spool.png" id="12_v3g5g"]
+[ext_resource type="Texture2D" uid="uid://f47sxctqgn3c" path="res://game/autoload/ui/hud/target.png" id="13_jqafx"]
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_wm8x1"]
 frames = 6
@@ -99,3 +100,11 @@ offset_right = -25.5
 offset_bottom = 24.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Target" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+pivot_offset = Vector2(4, 4)
+texture = ExtResource("13_jqafx")
+stretch_mode = 3

@@ -2,6 +2,8 @@
 ## top of each other and may be navigated through
 class_name StackableUI extends Control
 
+const FADE_TIME: float = 0.25
+
 ## A list of all the child UIs that may be stacked
 @export var child_uis: Array[Control]
 ## The default child UI to show when this UI is shown
@@ -16,6 +18,8 @@ signal uis_emptied()
 
 ## The managed stack of active child UIs
 var ui_stack: Array[Control]
+
+var _fade_tween: Tween
 
 func _ready() -> void:
 	if not is_instance_valid(default_ui):
@@ -37,16 +41,20 @@ func _unhandled_input(event: InputEvent) -> void:
 func _stack(ui: Control) -> void:
 	if len(ui_stack) > 0:
 		var topmost_ui: Control = ui_stack[-1]
-		var fade_tween: Tween = create_tween()
-		fade_tween.tween_property(topmost_ui, "modulate", Color.TRANSPARENT, 0.25).from(Color.WHITE)
-		fade_tween.tween_callback(topmost_ui.hide)
-		await fade_tween.finished
-	var fade_tween: Tween = create_tween()
-	fade_tween.tween_property(ui, "modulate", Color.WHITE, 0.15).from(Color.TRANSPARENT)
+		if is_instance_valid(_fade_tween) and _fade_tween.is_running():
+			_fade_tween.pause()
+			_fade_tween.custom_step(FADE_TIME)
+			_fade_tween.kill()
+		_fade_tween = create_tween()
+		_fade_tween.parallel().tween_property(topmost_ui, "modulate", Color.TRANSPARENT, 0.25).from(Color.WHITE)
+		_fade_tween.tween_callback(topmost_ui.hide)
+		await _fade_tween.finished
+	_fade_tween = create_tween()
+	_fade_tween.tween_property(ui, "modulate", Color.WHITE, FADE_TIME).from(Color.TRANSPARENT)
 	# Prevent flicker when showing for the first time
 	await get_tree().process_frame
 	ui.show()
-	await fade_tween.finished
+	await _fade_tween.finished
 	ui_stack.push_back(ui)
 	ui_stacked.emit(ui)
 
@@ -59,13 +67,12 @@ func check_empty() -> void:
 	if len(ui_stack) > 1:
 		var topmost_ui: Control = ui_stack.pop_back()
 		var fade_tween: Tween = create_tween()
-		fade_tween.tween_property(topmost_ui, "modulate", Color.TRANSPARENT, 0.25).from(Color.WHITE)
+		fade_tween.parallel().tween_property(topmost_ui, "modulate", Color.TRANSPARENT, FADE_TIME).from(Color.WHITE)
 		fade_tween.tween_callback(topmost_ui.hide)
-		ui_popped.emit(topmost_ui)
 		var next_ui: Control = ui_stack.back()
-		fade_tween.tween_property(next_ui, "modulate", Color.WHITE, 0.25).from(Color.TRANSPARENT)
-		# Prevent flicker when showing for the first time
-		await get_tree().process_frame
+		fade_tween.tween_property(next_ui, "modulate", Color.WHITE, FADE_TIME).from(Color.TRANSPARENT)
+		fade_tween.tween_callback(func():
+			ui_popped.emit(topmost_ui))
 		next_ui.show()
 		if len(ui_stack) <= 1:
 			uis_emptied.emit()

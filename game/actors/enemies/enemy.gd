@@ -1,6 +1,7 @@
 class_name Enemy extends Actor
 
 @onready var behavior_tree: BTPlayer = $BehaviorTree
+@onready var target_point: VisibleOnScreenNotifier3D = $TargetPoint
 
 var bb: Blackboard:
 	get:
@@ -8,4 +9,9 @@ var bb: Blackboard:
 
 func _on_health_took_damage(damager: Damager) -> void:
 	pass
-	#create_tween().tween_property(mesh, "albedo_color", Color.WHITE, 0.5).from(Color.RED).set_trans(Tween.TRANS_CUBIC)
+
+func _on_target_point_screen_entered() -> void:
+	add_to_group(&"Targetable")
+
+func _on_target_point_screen_exited() -> void:
+	remove_from_group(&"Targetable")

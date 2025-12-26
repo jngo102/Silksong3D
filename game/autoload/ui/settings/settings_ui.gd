@@ -69,3 +69,17 @@ func _check_show_navigation_icons(device: String = InputHelper.device, _device_i
 	else:
 		_left_navigation_icon.texture = InputManager.current_input_icons[InputHelper.get_joypad_input_for_action(&"ui_prev_tab").button_index]
 		_right_navigation_icon.texture = InputManager.current_input_icons[InputHelper.get_joypad_input_for_action(&"ui_next_tab").button_index]
+
+func _on_input_settings_page_bindings_page_opened() -> void:
+	_top_bar.hide()
+	if not _back_button.pressed.is_connected(_input_settings_page.pop):
+		_back_button.pressed.connect(_input_settings_page.pop)
+	if _back_button.pressed.is_connected(_on_back_button_pressed):
+		_back_button.pressed.disconnect(_on_back_button_pressed)
+
+func _on_input_settings_page_bindings_page_closed() -> void:
+	_top_bar.show()
+	if not _back_button.pressed.is_connected(_on_back_button_pressed):
+		_back_button.pressed.connect(_on_back_button_pressed)
+	if _back_button.pressed.is_connected(_input_settings_page.pop):
+		_back_button.pressed.disconnect(_input_settings_page.pop)

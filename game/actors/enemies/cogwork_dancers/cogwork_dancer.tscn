@@ -854,10 +854,10 @@ shader_parameter/SlashGradientSliderY = 0.75
 [sub_resource type="BoxShape3D" id="BoxShape3D_tmqvu"]
 size = Vector3(6, 4, 8)
 
-[sub_resource type="BlackboardPlan" id="BlackboardPlan_s7qtj"]
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_tlpfg"]
 prefetch_nodepath_vars = false
 
-[sub_resource type="BlackboardPlan" id="BlackboardPlan_tlpfg"]
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_s7qtj"]
 prefetch_nodepath_vars = false
 
 [node name="CogworkDancer" instance=ExtResource("1_aqi66")]
@@ -1040,14 +1040,12 @@ collision_mask = 1
 damage_amount = 2
 
 [node name="Collision" parent="SlashEffectRight/SlashEffectDamager" index="0"]
-transform = Transform3D(0.92579067, -0.30802637, 0.2191499, 0.3686109, 0.6069523, -0.7040822, 0.08386243, 0.7326131, 0.6754564, -0.10546088, -1.1433492, 2.2193463)
+transform = Transform3D(0.92579067, -0.30802634, 0.21914992, 0.3686109, 0.60695225, -0.7040822, 0.08386243, 0.732613, 0.6754564, -0.10546088, -1.1433492, 2.2193463)
 shape = SubResource("BoxShape3D_tmqvu")
 
-[node name="BehaviorTree" parent="." index="11"]
-behavior_tree = ExtResource("3_7e4hr")
-update_mode = 0
-active = false
-blackboard_plan = SubResource("BlackboardPlan_s7qtj")
+[node name="TargetPoint" parent="." index="11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.652595, 0)
+aabb = AABB(-1.368941, -5.6746383, -0.94101375, 2.737882, 11.349277, 1.8820275)
 
 [node name="DeathBehaviorTree" type="BTPlayer" parent="." index="12"]
 behavior_tree = ExtResource("8_s7qtj")
@@ -1055,7 +1053,13 @@ update_mode = 0
 active = false
 blackboard_plan = SubResource("BlackboardPlan_tlpfg")
 
-[node name="VoicePlayer" parent="." index="13"]
+[node name="BehaviorTree" parent="." index="13"]
+behavior_tree = ExtResource("3_7e4hr")
+update_mode = 0
+active = false
+blackboard_plan = SubResource("BlackboardPlan_s7qtj")
+
+[node name="VoicePlayer" parent="." index="14"]
 volume_db = 2.0
 script = null
 
