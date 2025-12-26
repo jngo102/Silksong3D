@@ -56,4 +56,3 @@ func _create_spool_chunks() -> void:
 		_spool_chunks.add_child(spool_chunk)
 		spool_chunk.position += Vector2.RIGHT * 12 * chunk_index
 		chunk_index += 1
-		await get_tree().create_timer(0.25, false).timeout

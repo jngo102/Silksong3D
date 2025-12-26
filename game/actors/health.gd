@@ -20,11 +20,16 @@ class_name Health extends Area3D
 
 signal took_damage(damager: Damager)
 signal healed(amount: int)
+signal health_changed(new_health: int)
 signal died(actor: Actor)
 signal multi_hit_started
 signal multi_hit_ended
 
-@onready var current_health: int = max_health
+@onready var current_health: int = max_health:
+	set(value):
+		if current_health != value:
+			health_changed.emit(value)
+		current_health = value
 
 var is_dead: bool:
 	get:

@@ -4,4 +4,7 @@
 
 [resource]
 script = ExtResource("1_f7tcb")
+high_scores = Dictionary[String, int]({
+"CogworkDancersFight": 0
+})
 metadata/_custom_type_script = "uid://cicw3xldtdges"

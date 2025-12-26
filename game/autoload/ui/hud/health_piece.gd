@@ -9,12 +9,15 @@ var health_index: int
 var broken: bool
 
 func _ready() -> void:
-	health.took_damage.connect(func(_damager):
-		if health.current_health <= health_index:
+	if health.current_health <= health_index:
+		var fsm: AnimationNodeStateMachinePlayback = _anim_tree.get("parameters/playback")
+		broken = true
+		fsm.start("Empty", true)
+	health.health_changed.connect(func(new_health: int):
+		if new_health > health_index:
+			refill()
+		else:
 			break_piece())
-	health.healed.connect(func(_damager):
-		if health.current_health > health_index:
-			refill())
 
 func break_piece() -> void:
 	broken = true

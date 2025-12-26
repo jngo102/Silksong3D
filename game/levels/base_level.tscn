@@ -1,14 +1,57 @@
-[gd_scene load_steps=7 format=3 uid="uid://c7e6xi1cekoax"]
+[gd_scene load_steps=10 format=3 uid="uid://c7e6xi1cekoax"]
 
 [ext_resource type="Script" uid="uid://hssorlhiwg5v" path="res://game/levels/base_level.gd" id="1_weh0f"]
 [ext_resource type="PackedScene" uid="uid://boyxvnlcjkhpy" path="res://game/autoload/ui/hud/hud.tscn" id="2_vfi3j"]
 [ext_resource type="PackedScene" uid="uid://cispplpjiljwj" path="res://game/autoload/ui/pause_menu/pause_menu.tscn" id="3_nscfr"]
 [ext_resource type="Environment" uid="uid://dpsb82o3h1rey" path="res://game/resources/world_environments/cogwork_dancers_environment.tres" id="3_obg7k"]
 [ext_resource type="PackedScene" uid="uid://b37skkjsvgidd" path="res://game/gameplay/scene/camera_controller.tscn" id="3_vfi3j"]
+[ext_resource type="StyleBox" uid="uid://tyj5n3lmu606" path="res://game/resources/themes/styles/input_binding_style.tres" id="4_fva2c"]
+[ext_resource type="Texture2D" uid="uid://danccuyvmym6r" path="res://game/copyrighted/textures/ui/input/mouse/button_mouse_left_click.png" id="5_a42gf"]
 [ext_resource type="PackedScene" uid="uid://tx8iq0rvq40q" path="res://game/actors/player/player.tscn" id="6_obg7k"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j7edc"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.225, 0.225, 0.225, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
 
 [node name="BaseLevel" type="Node3D"]
 script = ExtResource("1_weh0f")
+
+[node name="BindTip" type="HBoxContainer" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="BindIcon" type="Button" parent="BindTip"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+mouse_filter = 2
+theme_override_styles/normal = ExtResource("4_fva2c")
+theme_override_styles/pressed = ExtResource("4_fva2c")
+theme_override_styles/pressed_mirrored = ExtResource("4_fva2c")
+theme_override_styles/focus = SubResource("StyleBoxFlat_j7edc")
+icon = ExtResource("5_a42gf")
+
+[node name="BindLabel" type="Label" parent="BindTip"]
+layout_mode = 2
+text = "Bind"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="HUD" parent="." instance=ExtResource("2_vfi3j")]
 
@@ -23,3 +66,5 @@ environment = ExtResource("3_obg7k")
 [node name="CameraController" parent="." instance=ExtResource("3_vfi3j")]
 
 [node name="Player" parent="." instance=ExtResource("6_obg7k")]
+change_target_distance_mouse = 0.3
+change_target_distance_joystick = 0.2

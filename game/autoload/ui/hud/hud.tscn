@@ -102,6 +102,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Target" type="TextureRect" parent="."]
+visible = false
 layout_mode = 0
 offset_right = 16.0
 offset_bottom = 16.0
