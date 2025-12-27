@@ -1,18 +1,109 @@
-[gd_scene load_steps=16 format=3 uid="uid://boyxvnlcjkhpy"]
+[gd_scene load_steps=31 format=3 uid="uid://boyxvnlcjkhpy"]
 
 [ext_resource type="Texture2D" uid="uid://cd4a0v7nsj70t" path="res://game/copyrighted/textures/ui/hud/silk/crest/appear/005_0592.png" id="1_mp78n"]
 [ext_resource type="Script" uid="uid://0vrfc2bunc4w" path="res://game/autoload/ui/hud/hud.gd" id="1_sfe4u"]
 [ext_resource type="Texture2D" uid="uid://bf880ntmstbqv" path="res://game/copyrighted/textures/ui/hud/silk/crest/appear/000_0587.png" id="2_xt5g7"]
+[ext_resource type="Texture2D" uid="uid://dfd6dyuxj7vmg" path="res://game/copyrighted/textures/ui/hud/silk/crest/orb/up/000_0268.png" id="2_ywihs"]
 [ext_resource type="Texture2D" uid="uid://bap1royhilpad" path="res://game/copyrighted/textures/ui/hud/silk/crest/appear/001_0588.png" id="3_sgnu5"]
+[ext_resource type="Texture2D" uid="uid://b3t6ewjnyobgm" path="res://game/copyrighted/textures/ui/hud/silk/crest/orb/up/001_0271.png" id="3_wd2tw"]
+[ext_resource type="Texture2D" uid="uid://8l4h2fty1mwq" path="res://game/copyrighted/textures/ui/hud/silk/crest/orb/up/002_0267.png" id="4_lh3es"]
 [ext_resource type="Texture2D" uid="uid://c5hlddyp0lr0m" path="res://game/copyrighted/textures/ui/hud/silk/crest/appear/002_0589.png" id="4_q6fvh"]
+[ext_resource type="Texture2D" uid="uid://cuvjstkgaowqj" path="res://game/copyrighted/textures/ui/hud/silk/crest/orb/up/003_0269.png" id="5_10uvn"]
 [ext_resource type="Texture2D" uid="uid://blvdfcksg75e5" path="res://game/copyrighted/textures/ui/hud/silk/crest/appear/003_0590.png" id="5_owppg"]
+[ext_resource type="Texture2D" uid="uid://cciupm413esvj" path="res://game/copyrighted/textures/ui/hud/silk/crest/orb/up/004_0270.png" id="6_8fif1"]
 [ext_resource type="Texture2D" uid="uid://bw8vu4e06eitq" path="res://game/copyrighted/textures/ui/hud/silk/crest/appear/004_0591.png" id="6_c0soc"]
+[ext_resource type="Texture2D" uid="uid://cvvh7l37qawv2" path="res://game/copyrighted/textures/ui/hud/silk/crest/orb/burst/000_0026.png" id="8_8fif1"]
+[ext_resource type="Texture2D" uid="uid://b0c8wrqx5stb0" path="res://game/copyrighted/textures/ui/hud/silk/crest/orb/up/005_0266.png" id="8_r5a8t"]
 [ext_resource type="Texture2D" uid="uid://cubat6lkmho5d" path="res://game/copyrighted/textures/ui/hud/silk/spool/appear/000_0008.png" id="8_wm8x1"]
+[ext_resource type="Texture2D" uid="uid://cb80mgwyibywq" path="res://game/copyrighted/textures/ui/hud/silk/crest/orb/burst/002_0028.png" id="9_irp7l"]
 [ext_resource type="Texture2D" uid="uid://q4ddjadfcl7g" path="res://game/copyrighted/textures/ui/hud/silk/spool/appear/001_0151.png" id="9_jqafx"]
+[ext_resource type="Texture2D" uid="uid://dv7eou6lli42n" path="res://game/copyrighted/textures/ui/hud/silk/crest/orb/burst/001_0035.png" id="9_roqyg"]
 [ext_resource type="Texture2D" uid="uid://daf1qe7ul6xbk" path="res://game/copyrighted/textures/ui/hud/silk/spool/appear/002_0152.png" id="10_r5a8t"]
 [ext_resource type="Texture2D" uid="uid://bo3vnaacqcx35" path="res://game/copyrighted/textures/ui/hud/silk/spool/appear/003_0150.png" id="11_irp7l"]
+[ext_resource type="Texture2D" uid="uid://kipd7uqfbnh4" path="res://game/copyrighted/textures/ui/hud/silk/crest/orb/burst/003_0038.png" id="11_m8usa"]
+[ext_resource type="Texture2D" uid="uid://chc8qovx8wqm" path="res://game/copyrighted/textures/ui/hud/silk/crest/orb/burst/004_0037.png" id="12_ih327"]
 [ext_resource type="Texture2D" uid="uid://cjj3shsyl5spj" path="res://game/copyrighted/textures/ui/hud/silk/spool/spool.png" id="12_v3g5g"]
 [ext_resource type="Texture2D" uid="uid://f47sxctqgn3c" path="res://game/autoload/ui/hud/target.png" id="13_jqafx"]
+
+[sub_resource type="Animation" id="Animation_8fif1"]
+resource_name = "Bind Orb Down"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Crest/BindOrb:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.049999997, 0.10000001, 0.15, 0.20000002),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("8_r5a8t"), ExtResource("4_lh3es"), ExtResource("3_wd2tw"), ExtResource("2_ywihs"), null]
+}
+
+[sub_resource type="Animation" id="Animation_irp7l"]
+resource_name = "Bind Orb Up"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Crest/BindOrb:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.050000012, 0.10000001, 0.15, 0.20000002, 0.25, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [null, ExtResource("2_ywihs"), ExtResource("3_wd2tw"), ExtResource("4_lh3es"), ExtResource("5_10uvn"), ExtResource("6_8fif1"), ExtResource("8_r5a8t")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Crest/BindBurst:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [null, ExtResource("8_8fif1"), ExtResource("9_roqyg"), ExtResource("9_irp7l"), ExtResource("11_m8usa"), ExtResource("12_ih327"), null]
+}
+
+[sub_resource type="Animation" id="Animation_roqyg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Crest/BindOrb:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Crest/BindBurst:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v3g5g"]
+_data = {
+&"Bind Orb Down": SubResource("Animation_8fif1"),
+&"Bind Orb Up": SubResource("Animation_irp7l"),
+&"RESET": SubResource("Animation_roqyg")
+}
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_wm8x1"]
 frames = 6
@@ -50,6 +141,9 @@ anchors_preset = 0
 script = ExtResource("1_sfe4u")
 
 [node name="Animator" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_v3g5g")
+}
 
 [node name="Crest" type="TextureRect" parent="."]
 layout_mode = 0
@@ -59,6 +153,26 @@ offset_right = 399.0
 offset_bottom = 174.0
 scale = Vector2(1.25, 1.25)
 texture = SubResource("AnimatedTexture_wm8x1")
+
+[node name="BindOrb" type="TextureRect" parent="Crest"]
+custom_minimum_size = Vector2(168, 130)
+layout_mode = 0
+offset_left = -15.200001
+offset_top = -0.79999924
+offset_right = 152.8
+offset_bottom = 137.2
+pivot_offset = Vector2(84, 69)
+stretch_mode = 3
+
+[node name="BindBurst" type="TextureRect" parent="Crest"]
+custom_minimum_size = Vector2(474, 446)
+layout_mode = 0
+offset_left = -166.4
+offset_top = -159.2
+offset_right = 307.6
+offset_bottom = 286.8
+pivot_offset = Vector2(237, 223)
+stretch_mode = 3
 
 [node name="HealthPieces" type="Control" parent="."]
 layout_mode = 1

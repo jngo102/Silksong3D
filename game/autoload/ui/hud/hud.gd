@@ -1,5 +1,6 @@
 class_name HUD extends Control
 
+@onready var _animator: AnimationPlayer = $Animator
 @onready var _health_pieces: Control = $HealthPieces
 @onready var _spool_chunks: Control = $Spool/Chunks
 @onready var _target: TextureRect = $Target
@@ -35,6 +36,7 @@ func _set_up_hud() -> void:
 
 func _link_player_components() -> void:
 	_linked_player = get_tree().get_first_node_in_group("Players")
+	_linked_player.spool_manager.bind_state_changed.connect(_on_bind_state_change)
 
 func _create_health_pieces() -> void:
 	var health_index: int = 0
@@ -56,3 +58,11 @@ func _create_spool_chunks() -> void:
 		_spool_chunks.add_child(spool_chunk)
 		spool_chunk.position += Vector2.RIGHT * 12 * chunk_index
 		chunk_index += 1
+
+func _on_bind_state_change(can_bind: bool) -> void:
+	if can_bind:
+		_animator.play(&"Bind Orb Up")
+	else:
+		_animator.play(&"RESET")
+		await _animator.animation_finished
+		_animator.play(&"Bind Orb Down")

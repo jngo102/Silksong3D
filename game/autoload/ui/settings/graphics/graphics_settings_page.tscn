@@ -32,7 +32,7 @@ _options = Dictionary[StringName, Variant]({
 layout_mode = 2
 _setting_name = "Mode"
 _options = Dictionary[StringName, Variant]({
-&"Full Screen": 4,
+&"Full Screen": 3,
 &"Windowed": 0
 })
 

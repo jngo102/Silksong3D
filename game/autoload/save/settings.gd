@@ -32,6 +32,10 @@ class_name Settings extends Resource
 
 @export var display_resolution := Vector2i(1920, 1080)
 
+@export var display_mode := DisplayServer.WINDOW_MODE_FULLSCREEN
+
+@export var v_sync_enabled: bool = false
+
 ## The look sensitivity using the mouse
 @export_range(0.1, 2) var look_sensitivity_mouse: float = 1
 

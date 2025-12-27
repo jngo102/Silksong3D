@@ -2,9 +2,8 @@ class_name Health extends Area3D
 
 @export var max_health: int = 5
 @export var _invincible: bool:
-	get:
-		return _collision.disabled
 	set(value):
+		_invincible = value
 		if not value and is_instance_valid(_pulser):
 			_pulser.stop_pulse()
 		_collision.set_disabled.call_deferred(value)
@@ -91,10 +90,10 @@ func take_multi_hit_damage(damager: Damager) -> void:
 				_pulser.start_pulse()
 			set_invincible(true, damage_invincibility_time)
 
-func set_invincible(be_invincible: bool = true, duration: float = INF) -> void:
+func set_invincible(invincible: bool = true, duration: float = INF) -> void:
 	_invincibility_timer = 0
 	_invincibility_time = duration
-	_invincible = be_invincible
+	_invincible = invincible
 
 func heal(amount: int) -> void:
 	current_health = min(current_health + amount, max_health)
@@ -107,7 +106,7 @@ func _die() -> void:
 	died.emit(owner)
 
 func _on_area_entered(area: Area3D) -> void:
-	if area is Damager:
+	if not _invincible and area is Damager:
 		if area.multi_hit:
 			take_multi_hit_damage(area)
 		else:

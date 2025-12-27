@@ -372,16 +372,6 @@ script = ExtResource("3_hlqpx")
 [node name="Model" parent="." index="7" instance=ExtResource("5_qdo3w")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 
-[node name="Skeleton3D" parent="Model/Armature" index="0"]
-bones/5/rotation = Quaternion(-0.7070091, -0.0117546, -0.011754517, 0.7070091)
-bones/6/rotation = Quaternion(-4.440892e-16, -1.8873794e-15, -1.8626451e-09, 1)
-bones/8/rotation = Quaternion(-0.7070091, 0.011754569, 0.011754549, 0.7070091)
-bones/9/rotation = Quaternion(2.6469783e-23, 1.0408346e-16, 1.8626451e-09, 1)
-bones/10/position = Vector3(0.35971394, -2.1283069, 0.07078907)
-bones/11/rotation = Quaternion(0.5000001, 0.49999997, 0.4999999, 0.5)
-bones/12/position = Vector3(-0.35971394, -2.1283069, 0.07078907)
-bones/13/rotation = Quaternion(0.5000001, -0.49999997, -0.4999999, 0.5)
-
 [node name="CloakAttach" type="BoneAttachment3D" parent="Model/Armature/Skeleton3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.91961265, 0)
 bone_name = "Spine2"

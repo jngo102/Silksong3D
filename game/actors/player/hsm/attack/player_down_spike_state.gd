@@ -26,7 +26,7 @@ func _enter() -> void:
 func _exit() -> void:
 	_down_spike_transition_tree.set_active(false)
 	_needle.down_spike_reset()
-	_player.rotation = Vector3(0, _player.rotation.y, 0)
+	_player.armature.rotation = Vector3.ZERO
 	_player.gravity_scale = _original_gravity_scale
 
 func _update(delta: float) -> void:
@@ -39,7 +39,7 @@ func _update(delta: float) -> void:
 func _attack() -> void:
 	var down_spike_direction: Vector3 = -_player.camera_controller.camera.global_basis.z.normalized()
 	_attack_effect_clips.play_random(_player.global_position)
-	_player.look_at(_player.global_position + down_spike_direction)
+	_player.armature.look_at(_player.global_position + down_spike_direction)
 	_player.velocity = down_spike_direction * _down_spike_speed
 
 func _on_animation_finish(anim_name: StringName) -> void:

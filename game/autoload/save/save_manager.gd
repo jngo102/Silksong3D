@@ -29,6 +29,7 @@ func _init() -> void:
 	settings = _load_settings()
 
 func _ready() -> void:
+	_set_up_display_settings()
 	tree_exiting.connect(_on_tree_exiting)
 
 ## Load game data and settings from disk
@@ -49,6 +50,14 @@ func _load_settings() -> Settings:
 		print("No settings found, creating new settings")
 		return Settings.new()
 	return load(SETTINGS_PATH)
+
+func _set_up_display_settings() -> void:
+	DisplayServer.window_set_size(settings.display_resolution)
+	DisplayServer.window_set_mode(settings.display_mode)
+	if settings.v_sync_enabled:
+		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
+	else:
+		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
 
 ## Save game data and settings to disk
 func _save_game() -> void:
