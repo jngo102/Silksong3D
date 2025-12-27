@@ -1,29 +1,37 @@
 [gd_scene load_steps=4 format=3 uid="uid://c2d6gh3lllnsu"]
 
 [ext_resource type="PackedScene" uid="uid://o76gduhspdg" path="res://game/autoload/ui/settings/settings_page.tscn" id="1_4xy22"]
-[ext_resource type="Script" uid="uid://dow2v2v1q57do" path="res://game/autoload/ui/settings/input/input_bindings_page.gd" id="2_aibso"]
 [ext_resource type="PackedScene" uid="uid://2at86fvhvt8v" path="res://game/autoload/ui/settings/input/input_rebinder.tscn" id="3_crgbu"]
 
+[sub_resource type="GDScript" id="GDScript_aibso"]
+script/source = "class_name InputBindingsPage extends SettingsPage
+
+## The input rebinder prefab to spawn for each input binding
+@export var _input_rebinder_prefab: PackedScene
+
+@onready var _rebinders_container: VBoxContainer = $ScrollContainer/RebindersContainer
+
+## Whether an input is currently being rebound
+var rebinding: bool:
+	get:
+		return _rebinders_container.get_children().any(func(child: Node):
+			if child is InputRebinder:
+				return child.rebinding)
+
+func _ready() -> void:
+	for action in InputMap.get_actions().filter(func(action): return not action.contains(\"ui_\")):
+		var input_rebinder: InputRebinder = _input_rebinder_prefab.instantiate()
+		input_rebinder.action_name = action
+		_rebinders_container.add_child(input_rebinder)
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed(&\"ui_back\"):
+		hide()
+
+func focus(child_index: int) -> void:
+	_rebinders_container.get_child(child_index).grab_focus()
+"
+
 [node name="InputBindingsPage" instance=ExtResource("1_4xy22")]
-script = ExtResource("2_aibso")
+script = SubResource("GDScript_aibso")
 _input_rebinder_prefab = ExtResource("3_crgbu")
-
-[node name="Labels" type="HBoxContainer" parent="." index="0"]
-layout_mode = 2
-alignment = 1
-
-[node name="ActionLabel" type="Label" parent="Labels" index="0"]
-layout_mode = 2
-size_flags_horizontal = 4
-text = "Action"
-vertical_alignment = 1
-
-[node name="RebindLabel" type="Label" parent="Labels" index="1"]
-layout_mode = 2
-size_flags_horizontal = 4
-text = "Rebind"
-vertical_alignment = 1
-
-[node name="RebindersContainer" type="VBoxContainer" parent="." index="1"]
-layout_mode = 2
-size_flags_vertical = 3

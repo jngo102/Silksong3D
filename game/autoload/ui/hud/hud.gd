@@ -3,7 +3,6 @@ class_name HUD extends Control
 @onready var _animator: AnimationPlayer = $Animator
 @onready var _health_pieces: Control = $HealthPieces
 @onready var _spool_chunks: Control = $Spool/Chunks
-@onready var _target: TextureRect = $Target
 
 var health_piece_scene: PackedScene = preload("uid://bnf2ejvq7yjwy")
 var spool_chunk_scene: PackedScene = preload("uid://sl4ip8f7wcqj")
@@ -12,23 +11,6 @@ var _linked_player: Player
 
 func _ready() -> void:
 	_set_up_hud.call_deferred()
-
-func _process(delta: float) -> void:
-	_focus_target()
-
-func _focus_target() -> void:
-	if not is_instance_valid(_linked_player):
-		return
-	if is_instance_valid(_linked_player.target):
-		_target.visible = true
-		var target: Node3D = _linked_player.target
-		var target_position: Vector3 = target.global_position
-		if target is Enemy:
-			target_position = target.target_point.global_position
-		_target.position = get_viewport().get_camera_3d().unproject_position(target_position)
-	else:
-		_target.visible = false
-
 func _set_up_hud() -> void:
 	_link_player_components()
 	_create_health_pieces()

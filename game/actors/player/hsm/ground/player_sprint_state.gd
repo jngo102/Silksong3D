@@ -18,7 +18,7 @@ func _update(delta: float) -> void:
 	if not Input.is_action_pressed(&"Dash"):
 		send_event(_hsm.STOP_EVENT)
 	else:
-		var move_vector: Vector2 = Input.get_vector(&"ui_left", &"ui_right", &"ui_up", &"ui_down")
+		var move_vector: Vector2 = Input.get_vector(&"Left", &"Right", &"Forward", &"Backward")
 		if move_vector.length() > 0:
 			_player.face_direction(Vector3(move_vector.x, 0, move_vector.y))
 			_player.move(Vector2.UP * _sprint_speed)

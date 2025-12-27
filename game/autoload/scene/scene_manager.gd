@@ -17,7 +17,6 @@ var current_level: BaseLevel:
 var _main_menu_scene: PackedScene = preload("uid://d0nkpdyoqawun")
 
 func _ready() -> void:
-	get_tree().root.size = SaveManager.settings.display_resolution
 	set_process_mode(PROCESS_MODE_ALWAYS)
 
 ## Generic scene change function

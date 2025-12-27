@@ -7,7 +7,7 @@ func _enter() -> void:
 
 func _update(delta: float) -> void:
 	super._update(delta)
-	var move_vector: Vector2 = Input.get_vector(&"ui_left", &"ui_right", &"ui_up", &"ui_down")
+	var move_vector: Vector2 = Input.get_vector(&"Left", &"Right", &"Forward", &"Backward")
 	if move_vector.length() > 0:
 		if Input.is_action_pressed(&"Dash"):
 			send_event(_hsm.DASH_EVENT)

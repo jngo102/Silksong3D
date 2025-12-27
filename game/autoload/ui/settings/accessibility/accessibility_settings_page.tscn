@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://dtetst652jshg"]
+
+[ext_resource type="Script" uid="uid://dnh7fat0yxup3" path="res://game/autoload/ui/settings/accessibility/accessibility_settings_page.gd" id="2_ke575"]
+[ext_resource type="PackedScene" uid="uid://biisedaow62y2" path="res://game/autoload/ui/settings/setting_value_slider.tscn" id="3_xqxdn"]
+
+[node name="AccessibilitySettingsPage" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+script = ExtResource("2_ke575")
+
+[node name="ScreenShakeSlider" parent="." instance=ExtResource("3_xqxdn")]
+layout_mode = 2
+setting_name = "Screen Shake"
+
+[connection signal="value_changed" from="ScreenShakeSlider" to="." method="_on_screen_shake_slider_value_changed"]

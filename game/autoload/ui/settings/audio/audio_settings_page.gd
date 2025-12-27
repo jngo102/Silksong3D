@@ -1,5 +1,5 @@
 ## UI for adjusting audio levels
-class_name AudioSettingsPage extends SettingsPage
+class_name AudioSettingsPage extends VBoxContainer
 
 ## Control for master volume
 @onready var _master_volume_slider: SettingValueSlider = $MasterVolumeSlider

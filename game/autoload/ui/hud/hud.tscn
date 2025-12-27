@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://boyxvnlcjkhpy"]
+[gd_scene load_steps=30 format=3 uid="uid://boyxvnlcjkhpy"]
 
 [ext_resource type="Texture2D" uid="uid://cd4a0v7nsj70t" path="res://game/copyrighted/textures/ui/hud/silk/crest/appear/005_0592.png" id="1_mp78n"]
 [ext_resource type="Script" uid="uid://0vrfc2bunc4w" path="res://game/autoload/ui/hud/hud.gd" id="1_sfe4u"]
@@ -23,7 +23,6 @@
 [ext_resource type="Texture2D" uid="uid://kipd7uqfbnh4" path="res://game/copyrighted/textures/ui/hud/silk/crest/orb/burst/003_0038.png" id="11_m8usa"]
 [ext_resource type="Texture2D" uid="uid://chc8qovx8wqm" path="res://game/copyrighted/textures/ui/hud/silk/crest/orb/burst/004_0037.png" id="12_ih327"]
 [ext_resource type="Texture2D" uid="uid://cjj3shsyl5spj" path="res://game/copyrighted/textures/ui/hud/silk/spool/spool.png" id="12_v3g5g"]
-[ext_resource type="Texture2D" uid="uid://f47sxctqgn3c" path="res://game/autoload/ui/hud/target.png" id="13_jqafx"]
 
 [sub_resource type="Animation" id="Animation_8fif1"]
 resource_name = "Bind Orb Down"
@@ -214,12 +213,3 @@ offset_right = -25.5
 offset_bottom = 24.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="Target" type="TextureRect" parent="."]
-visible = false
-layout_mode = 0
-offset_right = 16.0
-offset_bottom = 16.0
-pivot_offset = Vector2(4, 4)
-texture = ExtResource("13_jqafx")
-stretch_mode = 3

@@ -1,8 +1,6 @@
 ## Manager of player input
 extends Node
 
-@export var input_icons: Array[InputIcons]
-
 ## Reference to parent of all input actions
 @onready var input_actions: Node = $InputActions
 
@@ -14,15 +12,6 @@ var action_map: Dictionary:
 		for action in actions:
 			map[action.action_name] = action
 		return map
-
-## The active input device's button icons
-var current_input_icons: Array[Texture2D]:
-	get:
-		var icons_index: int = input_icons.find_custom(func(icons: InputIcons):
-			return icons.device_name == InputHelper.device)
-		if icons_index >= 0:
-			return input_icons[icons_index].button_icons
-		return []
 
 ## Whether the player is using keyboard/mouse
 var on_keys: bool:

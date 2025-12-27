@@ -1,10 +1,7 @@
 class_name SettingsUI extends MenuPage
 ## UI for modifying game settings
 
-@onready var _top_bar: Control = _contents.get_node_or_null("TopBar")
-@onready var _settings_tabs: Control = _top_bar.get_node_or_null("SettingsTabs")
-@onready var _left_navigation_icon: TextureRect = _top_bar.get_node_or_null("LeftNav")
-@onready var _right_navigation_icon: TextureRect = _top_bar.get_node_or_null("RightNav")
+@onready var _settings_tabs: Control = _contents.get_node_or_null("SettingsTabs")
 @onready var _pages: Control = _contents.get_node_or_null("Pages")
 @onready var _input_settings_page: InputSettingsPage = _pages.get_node_or_null("InputSettingsPage")
 @onready var _cursor: Cursor = _settings_tabs.get_child(0).get_node_or_null("Cursor")
@@ -28,12 +25,10 @@ var _selected_tab_index: int:
 		next_focused.grab_focus.call_deferred()
 
 func _ready() -> void:
-	InputHelper.device_changed.connect(_check_show_navigation_icons)
-	_check_show_navigation_icons()
 	_set_up_settings_tabs()
 
 func _input(event: InputEvent) -> void:
-	if not visible:
+	if not visible or _input_settings_page.rebinding:
 		return
 	# Check previous focus neighbor before next so because Tab button is evaluated alone first
 	if event.is_action_pressed(&"ui_prev_tab"):
@@ -61,25 +56,3 @@ func _set_up_settings_tabs() -> void:
 			)
 			tab_button_index += 1
 		var first_tab_button: Button = _settings_tab_buttons[0]
-
-func _check_show_navigation_icons(device: String = InputHelper.device, _device_index: int = InputHelper.device_index) -> void:
-	if InputManager.on_keys:
-		_left_navigation_icon.texture = null
-		_right_navigation_icon.texture = null
-	else:
-		_left_navigation_icon.texture = InputManager.current_input_icons[InputHelper.get_joypad_input_for_action(&"ui_prev_tab").button_index]
-		_right_navigation_icon.texture = InputManager.current_input_icons[InputHelper.get_joypad_input_for_action(&"ui_next_tab").button_index]
-
-func _on_input_settings_page_bindings_page_opened() -> void:
-	_top_bar.hide()
-	if not _back_button.pressed.is_connected(_input_settings_page.pop):
-		_back_button.pressed.connect(_input_settings_page.pop)
-	if _back_button.pressed.is_connected(_on_back_button_pressed):
-		_back_button.pressed.disconnect(_on_back_button_pressed)
-
-func _on_input_settings_page_bindings_page_closed() -> void:
-	_top_bar.show()
-	if not _back_button.pressed.is_connected(_on_back_button_pressed):
-		_back_button.pressed.connect(_on_back_button_pressed)
-	if _back_button.pressed.is_connected(_input_settings_page.pop):
-		_back_button.pressed.disconnect(_input_settings_page.pop)

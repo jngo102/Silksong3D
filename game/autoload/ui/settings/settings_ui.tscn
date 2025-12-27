@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://s3r8q4i5fd4i" path="res://game/autoload/ui/settings/cursor.tscn" id="2_54iid"]
 [ext_resource type="PackedScene" uid="uid://bkj1s30wrgg4q" path="res://game/autoload/ui/settings/audio/audio_settings_page.tscn" id="4_mgrx7"]
 [ext_resource type="PackedScene" uid="uid://c8jlv2oiu45hg" path="res://game/autoload/ui/settings/graphics/graphics_settings_page.tscn" id="6_5e0nd"]
-[ext_resource type="PackedScene" uid="uid://dtetst652jshg" path="res://game/autoload/ui/settings/accessibility_settings_page.tscn" id="6_mgrx7"]
+[ext_resource type="PackedScene" uid="uid://dtetst652jshg" path="res://game/autoload/ui/settings/accessibility/accessibility_settings_page.tscn" id="6_mgrx7"]
 
 [node name="SettingsUI" node_paths=PackedStringArray("child_uis", "default_ui") instance=ExtResource("1_54iid")]
 script = ExtResource("1_5bhgl")
@@ -16,25 +16,21 @@ default_ui = NodePath("MarginContainer/Page/Contents/Pages/AccessibilitySettings
 [node name="Title" parent="MarginContainer/Page/Header" index="0"]
 text = "Settings"
 
-[node name="TopBar" type="HBoxContainer" parent="MarginContainer/Page/Contents" index="0"]
-layout_mode = 2
-alignment = 1
+[node name="Contents" parent="MarginContainer/Page" index="1"]
+focus_mode = 0
 
-[node name="LeftNav" type="TextureRect" parent="MarginContainer/Page/Contents/TopBar" index="0"]
-layout_mode = 2
-
-[node name="SettingsTabs" type="HBoxContainer" parent="MarginContainer/Page/Contents/TopBar" index="1"]
+[node name="SettingsTabs" type="HBoxContainer" parent="MarginContainer/Page/Contents" index="0"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 64
 alignment = 1
 
-[node name="AccessibilitySettings" type="Button" parent="MarginContainer/Page/Contents/TopBar/SettingsTabs" index="0"]
+[node name="AccessibilitySettings" type="Button" parent="MarginContainer/Page/Contents/SettingsTabs" index="0"]
 layout_mode = 2
 text = "Accessibility"
 flat = true
 
-[node name="Cursor" parent="MarginContainer/Page/Contents/TopBar/SettingsTabs/AccessibilitySettings" index="0" instance=ExtResource("2_54iid")]
+[node name="Cursor" parent="MarginContainer/Page/Contents/SettingsTabs/AccessibilitySettings" index="0" instance=ExtResource("2_54iid")]
 layout_mode = 0
 anchors_preset = 0
 anchor_left = 0.0
@@ -48,23 +44,20 @@ offset_bottom = -404.0
 grow_horizontal = 1
 grow_vertical = 1
 
-[node name="AudioSettings" type="Button" parent="MarginContainer/Page/Contents/TopBar/SettingsTabs" index="1"]
+[node name="AudioSettings" type="Button" parent="MarginContainer/Page/Contents/SettingsTabs" index="1"]
 layout_mode = 2
 text = "Audio"
 flat = true
 
-[node name="GraphicsSettings" type="Button" parent="MarginContainer/Page/Contents/TopBar/SettingsTabs" index="2"]
+[node name="GraphicsSettings" type="Button" parent="MarginContainer/Page/Contents/SettingsTabs" index="2"]
 layout_mode = 2
 text = "Display"
 flat = true
 
-[node name="InputSettings" type="Button" parent="MarginContainer/Page/Contents/TopBar/SettingsTabs" index="3"]
+[node name="InputSettings" type="Button" parent="MarginContainer/Page/Contents/SettingsTabs" index="3"]
 layout_mode = 2
 text = "Input"
 flat = true
-
-[node name="RightNav" type="TextureRect" parent="MarginContainer/Page/Contents/TopBar" index="2"]
-layout_mode = 2
 
 [node name="Pages" type="Control" parent="MarginContainer/Page/Contents" index="1"]
 layout_mode = 2
@@ -81,10 +74,6 @@ layout_mode = 1
 visible = false
 layout_mode = 1
 
-[node name="InputSettingsPage" parent="MarginContainer/Page/Contents/Pages" index="3" node_paths=PackedStringArray("child_uis") instance=ExtResource("1_27rnl")]
+[node name="InputSettingsPage" parent="MarginContainer/Page/Contents/Pages" index="3" instance=ExtResource("1_27rnl")]
 visible = false
 layout_mode = 1
-child_uis = []
-
-[connection signal="bindings_page_closed" from="MarginContainer/Page/Contents/Pages/InputSettingsPage" to="." method="_on_input_settings_page_bindings_page_closed"]
-[connection signal="bindings_page_opened" from="MarginContainer/Page/Contents/Pages/InputSettingsPage" to="." method="_on_input_settings_page_bindings_page_opened"]

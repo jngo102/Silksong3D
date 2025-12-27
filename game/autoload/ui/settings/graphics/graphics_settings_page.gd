@@ -1,4 +1,4 @@
-class_name GraphicsSettingsPage extends SettingsPage
+class_name GraphicsSettingsPage extends VBoxContainer
 
 @onready var _resolution_select_option: SettingSelectOption = $ResolutionSelectOption
 @onready var _display_mode_select_option: SettingSelectOption = $DisplayModeSelectOption

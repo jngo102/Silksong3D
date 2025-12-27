@@ -10,7 +10,7 @@ func _update(delta: float) -> void:
 	if _model_animator.current_animation != _slash_animation_name:
 		send_event(_hsm.EVENT_FINISHED)
 	else:
-		var move_vector: Vector2 = Input.get_vector(&"ui_left", &"ui_right", &"ui_up", &"ui_down")
+		var move_vector: Vector2 = Input.get_vector(&"Left", &"Right", &"Forward", &"Backward")
 		_player.move(move_vector * _walk_speed)
 
 func _attack() -> void:

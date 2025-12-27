@@ -22,7 +22,7 @@ func _enter() -> void:
 func _update(delta: float) -> void:
 	_player.turn_to_camera(delta)
 	super._update(delta)
-	var move_vector: Vector2 = Input.get_vector(&"ui_left", &"ui_right", &"ui_up", &"ui_down")
+	var move_vector: Vector2 = Input.get_vector(&"Left", &"Right", &"Forward", &"Backward")
 	_player.move(move_vector.normalized() * _mid_air_move_speed)
 	if Input.is_action_just_pressed(&"Jump"):
 		send_event(_hsm.JUMP_EVENT)

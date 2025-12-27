@@ -16,15 +16,14 @@ var rebinding: bool:
 	set(value):
 		rebinding = value
 		if value:
-			_rebind_button.icon = null
 			_rebind_button.text = "Listening..."
 		else:
-			_update_device_icons()
+			_update_device_labels()
 
 func _ready() -> void:
 	_action_label.text = action_name
-	InputHelper.device_changed.connect(_update_device_icons)
-	_update_device_icons()
+	InputHelper.device_changed.connect(_update_device_labels)
+	_update_device_labels()
 
 func _unhandled_input(event: InputEvent) -> void:
 	if not rebinding or not event.is_pressed():
@@ -33,7 +32,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		cancel_rebind()
 		return
 	if (InputManager.on_keys and not event is InputEventKey and not event is InputEventMouseButton) or \
-		(InputManager.on_joypad and not event is InputEventJoypadButton):
+		(InputManager.on_joypad and not event is InputEventJoypadButton and not event is InputEventJoypadMotion):
 		return
 	if rebinding:
 		rebind(event)
@@ -47,7 +46,7 @@ func rebind(input: InputEvent) -> void:
 	elif input is InputEventJoypadButton:
 		if InputHelper.set_joypad_input_for_action(action_name, input) != OK:
 			printerr("Failed to set joypad input for action \"", action_name, "\" to ", input)
-	_update_device_icons()
+	_update_device_labels()
 
 ## Cancel the current rebind process
 func cancel_rebind() -> void:
@@ -55,20 +54,23 @@ func cancel_rebind() -> void:
 	rebinding = false
 	_rebind_button.grab_focus()
 
-func _update_device_icons(device: String = InputHelper.device, _device_index: int = 0) -> void:
+func _update_device_labels(device: String = InputHelper.device, _device_index: int = 0) -> void:
 	if InputManager.on_keys:
 		var key_mouse_input: InputEvent = InputHelper.get_keyboard_input_for_action(action_name)
 		if key_mouse_input is InputEventKey:
-			_rebind_button.icon = null
 			_rebind_button.text = OS.get_keycode_string(key_mouse_input.keycode)
 		elif key_mouse_input is InputEventMouseButton:
-			_rebind_button.icon = InputManager.current_input_icons[key_mouse_input.button_index]
-			_rebind_button.text = ""
+			var button_index: MouseButton = key_mouse_input.button_index
+			match button_index:
+				MOUSE_BUTTON_WHEEL_UP, \
+				MOUSE_BUTTON_WHEEL_DOWN, \
+				MOUSE_BUTTON_WHEEL_DOWN, \
+				MOUSE_BUTTON_WHEEL_RIGHT:
+					button_index = MOUSE_BUTTON_MIDDLE
+			_rebind_button.text = InputHelper.get_label_for_input(key_mouse_input)
 	else:
 		var joypad_input: InputEvent = InputHelper.get_joypad_input_for_action(action_name)
-		if joypad_input is InputEventJoypadButton:
-			_rebind_button.icon = InputManager.current_input_icons[joypad_input.button_index]
-		_rebind_button.text = ""
+		_rebind_button.text = InputHelper.get_label_for_input(joypad_input)
 
 func _on_rebind_button_pressed() -> void:
 	rebinding = true

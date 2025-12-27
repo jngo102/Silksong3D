@@ -24,16 +24,19 @@ func _show_bind_tip() -> void:
 	if InputManager.on_keys:
 		var key_mouse_input: InputEvent = InputHelper.get_keyboard_input_for_action("Bind")
 		if key_mouse_input is InputEventKey:
-			_bind_icon.icon = null
 			_bind_icon.text = OS.get_keycode_string(key_mouse_input.keycode)
 		elif key_mouse_input is InputEventMouseButton:
-			_bind_icon.icon = InputManager.current_input_icons[key_mouse_input.button_index]
-			_bind_icon.text = ""
+			var button_index: MouseButton = key_mouse_input.button_index
+			match button_index:
+				MOUSE_BUTTON_WHEEL_UP, \
+				MOUSE_BUTTON_WHEEL_DOWN, \
+				MOUSE_BUTTON_WHEEL_DOWN, \
+				MOUSE_BUTTON_WHEEL_RIGHT:
+					button_index = MOUSE_BUTTON_MIDDLE
+			_bind_icon.text = InputHelper.get_label_for_input(key_mouse_input)
 	else:
 		var joypad_input: InputEvent = InputHelper.get_joypad_input_for_action("Bind")
-		if joypad_input is InputEventJoypadButton:
-			_bind_icon.icon = InputManager.current_input_icons[joypad_input.button_index]
-		_bind_icon.text = ""
+		_bind_icon.text = InputHelper.get_label_for_input(joypad_input)
 	_bind_tip.show()
 	await player.health.healed
 	_bind_tip.hide()
@@ -46,4 +49,4 @@ func _play_music() -> void:
 func finish() -> void:
 	ScoreManager.calculate_score()
 	await get_tree().create_timer(8, false).timeout
-	SceneManager.change_scene(_score_screen)
+	SceneManager.change_scene( _score_screen)

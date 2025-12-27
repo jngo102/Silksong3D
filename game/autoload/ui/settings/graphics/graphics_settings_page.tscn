@@ -1,15 +1,23 @@
-[gd_scene load_steps=6 format=3 uid="uid://c8jlv2oiu45hg"]
+[gd_scene load_steps=5 format=3 uid="uid://c8jlv2oiu45hg"]
 
-[ext_resource type="PackedScene" uid="uid://o76gduhspdg" path="res://game/autoload/ui/settings/settings_page.tscn" id="1_iihpb"]
 [ext_resource type="Script" uid="uid://bvhn2v86kvlto" path="res://game/autoload/ui/settings/graphics/graphics_settings_page.gd" id="2_i4h3c"]
 [ext_resource type="PackedScene" uid="uid://c5gl82w6sfw7u" path="res://game/autoload/ui/settings/select/setting_select_option.tscn" id="3_6s2km"]
 [ext_resource type="PackedScene" uid="uid://hqhyvp4gjw8i" path="res://game/autoload/ui/ui_button.tscn" id="4_6s2km"]
 [ext_resource type="PackedScene" uid="uid://bibpel52dklny" path="res://game/autoload/ui/settings/select/bool_select_option.tscn" id="4_6v75f"]
 
-[node name="GraphicsSettingsPage" instance=ExtResource("1_iihpb")]
+[node name="GraphicsSettingsPage" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
 script = ExtResource("2_i4h3c")
 
-[node name="ResolutionSelectOption" parent="." index="0" instance=ExtResource("3_6s2km")]
+[node name="ResolutionSelectOption" parent="." instance=ExtResource("3_6s2km")]
+visible = false
 layout_mode = 2
 _setting_name = "Resolution"
 _options = Dictionary[StringName, Variant]({
@@ -28,7 +36,7 @@ _options = Dictionary[StringName, Variant]({
 &"960 x 540": Vector2i(960, 540)
 })
 
-[node name="DisplayModeSelectOption" parent="." index="1" instance=ExtResource("3_6s2km")]
+[node name="DisplayModeSelectOption" parent="." instance=ExtResource("3_6s2km")]
 layout_mode = 2
 _setting_name = "Mode"
 _options = Dictionary[StringName, Variant]({
@@ -36,11 +44,11 @@ _options = Dictionary[StringName, Variant]({
 &"Windowed": 0
 })
 
-[node name="VSyncSelectOption" parent="." index="2" instance=ExtResource("4_6v75f")]
+[node name="VSyncSelectOption" parent="." instance=ExtResource("4_6v75f")]
 layout_mode = 2
 _setting_name = "VSync"
 
-[node name="ApplyButton" parent="." index="3" instance=ExtResource("4_6s2km")]
+[node name="ApplyButton" parent="." instance=ExtResource("4_6s2km")]
 layout_mode = 2
 text = "Apply"
 

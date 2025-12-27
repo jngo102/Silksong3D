@@ -19,20 +19,10 @@ class_name Player extends GroundedActor
 @onready var _cloak_anim: AnimationPlayer = _skeleton.get_node_or_null("CloakAttach/CloakAnimator")
 @onready var model_animator: AnimationPlayer = _model.get_node_or_null("AnimationPlayer")
 @onready var walk_blend_tree: AnimationTree = model_animator.get_node_or_null("WalkBlend")
-@onready var targeter: Marker3D = _head.get_node_or_null("Targeter")
-@onready var _targeter_offset: Vector3 = targeter.position
 
 var moving_forward: bool:
 	get:
 		return velocity.rotated(Vector3.UP, global_rotation.y).z < 0
-
-var target: Node3D:
-	set(value):
-		target = value
-		if is_instance_valid(value):
-			camera_controller.add_target(targeter)
-		else:
-			camera_controller.remove_target(targeter)
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -48,19 +38,10 @@ func _input(event: InputEvent) -> void:
 			look_vector.x = -look_vector.x
 		if SaveManager.settings.invert_mouse_y:
 			look_vector.y = -look_vector.y
-		if not is_instance_valid(target):
-			_look_mouse(look_vector)
-		else:
-			_check_change_target(event.relative, event.position, change_target_distance_mouse)
-	elif event.is_action_pressed(&"Target"):
-		if not is_instance_valid(target):
-			_choose_target()
-		else:
-			_clear_target()
+		_look_mouse(look_vector)
 
 func _process(delta: float) -> void:
 	_look_joystick(delta)
-	_check_look_at_target(delta)
 	super._process(delta)
 
 func face_direction(direction: Vector3) -> void:
@@ -81,65 +62,5 @@ func _look_joystick(delta: float) -> void:
 		look.x = -look.x
 	if SaveManager.settings.invert_joystick_y:
 		look.y = -look.y
-	
-	if not is_instance_valid(target):
-		camera_controller.add_yaw(look.x)
-		camera_controller.add_pitch(look.y)
-	else:
-		_check_change_target(look_vector, Vector2.ZERO, change_target_distance_joystick)
-
-func _check_look_at_target(delta: float) -> void:
-	if is_instance_valid(target):
-		var target_position: Vector3 = target.global_position
-		var distance: float = targeter.global_position.distance_to(target_position)
-		if distance > 128:
-			_clear_target()
-			return
-		if target is Enemy:
-			var point: VisibleOnScreenNotifier3D = target.target_point
-			if not point.visible:
-				_clear_target()
-				return
-			target_position = point.global_position
-		targeter.global_position = targeter.global_position.lerp(target_position, delta * 8)
-	else:
-		targeter.position = targeter.position.lerp(_targeter_offset, delta * 8)
-
-func _choose_target() -> void:
-	var new_target: Node3D
-	var shortest_distance: float = 64
-	for candidate in get_tree().get_nodes_in_group(&"Targetable"):
-		if candidate is Node3D:
-			var direction: Vector3 = -targeter.global_basis.z
-			var distance: float = targeter.global_position.cross(direction).length() / direction.length()
-			if distance < shortest_distance:
-				new_target = candidate
-	_select_target(new_target)
-
-func _select_target(new_target: Node3D) -> void:
-	if is_instance_valid(new_target):
-		_clear_target()
-		target = new_target
-
-func _check_change_target(look_vector: Vector2, event_position: Vector2, threshold: float) -> void:
-	if look_vector.length() * get_process_delta_time() > threshold:
-		var shortest_distance: float = INF
-		var next_target: Node3D
-		var candidates: Array[Node] = get_tree().get_nodes_in_group(&"Targetable").filter(func(node): return node != target)
-		for candidate in candidates:
-			if candidate is Node3D:
-				var target_screen_position: Vector2 = get_viewport().get_camera_3d().unproject_position(target.global_position)
-				var candidate_screen_position: Vector2 = get_viewport().get_camera_3d().unproject_position(candidate.global_position)
-				var target_to_candidate_angle: float = (candidate_screen_position - target_screen_position).angle()
-				var mouse_to_candidate_vector: Vector2 = event_position.direction_to(candidate_screen_position)
-				var look_angle: float = atan2(look_vector.y, look_vector.x)
-				if abs(target_to_candidate_angle - look_angle) > PI / 2:
-					continue
-				var distance: float = abs(mouse_to_candidate_vector.cross(look_vector)) / look_vector.length()
-				if distance < shortest_distance:
-					shortest_distance = distance
-					next_target = candidate
-		_select_target(next_target)
-
-func _clear_target() -> void:
-	target = null
+	camera_controller.add_yaw(look.x)
+	camera_controller.add_pitch(look.y)
