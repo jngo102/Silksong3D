@@ -339,8 +339,6 @@ walk_speed = 24.0
 sprint_speed = 48.0
 down_spike_speed = 90.0
 down_spike_bounce_spin_speed = 30.0
-change_target_distance_mouse = 0.1
-change_target_distance_joystick = 0.004
 
 [node name="Collision" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.63174677, 0)
@@ -986,7 +984,10 @@ parameters/blend_position = Vector2(0, 0)
 [node name="GroundDetector" parent="." index="9"]
 target_position = Vector3(0, -2.5, 0)
 
-[node name="Bind" type="Node3D" parent="." index="10"]
+[node name="CameraTarget" type="Node3D" parent="." index="10"]
+transform = Transform3D(-1, 0, -3.2584137e-07, 0, 1, 0, 3.2584137e-07, 0, -1, 0, 2.515503, 0)
+
+[node name="Bind" type="Node3D" parent="." index="11"]
 
 [node name="BindAnimator" type="AnimationPlayer" parent="Bind" index="0"]
 libraries = {
@@ -1019,7 +1020,7 @@ scale_amount_curve = SubResource("Curve_jbv7g")
 [node name="BindSilk" parent="Bind" index="3" instance=ExtResource("9_3luqa")]
 visible = false
 
-[node name="PlayerHSM" type="LimboHSM" parent="." index="11"]
+[node name="PlayerHSM" type="LimboHSM" parent="." index="12"]
 update_mode = 0
 script = ExtResource("28_4s16b")
 

@@ -1,6 +1,6 @@
 extends Node
 
-var current_camera: GameCamera:
+var current_camera: CameraController:
 	get:
 		return get_tree().get_first_node_in_group(&"Cameras")
 

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Silksong 3D"
-config/version="0.6.0"
+config/version="0.7.0"
 run/main_scene="uid://d0nkpdyoqawun"
 config/features=PackedStringArray("4.5", "4.5.1", "Forward Plus")
 config/icon="uid://dfed24vi280po"
@@ -30,7 +30,7 @@ SceneManager="*res://game/autoload/scene/scene_manager.gd"
 UIManager="*res://game/autoload/ui/ui_manager.tscn"
 AudioManager="*res://game/autoload/audio/audio_manager.tscn"
 InputHelper="*res://addons/input_helper/input_helper.gd"
-CameraManager="*res://game/gameplay/scene/camera_manager.gd"
+CameraManager="*res://game/autoload/scene/camera_manager.gd"
 TimeManager="*res://game/autoload/time_manager.gd"
 ScoreManager="*res://game/autoload/score/score_manager.gd"
 

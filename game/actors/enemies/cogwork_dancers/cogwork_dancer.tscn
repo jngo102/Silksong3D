@@ -11,7 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://bhkqb17ayujpd" path="res://game/copyrighted/cogwork_dancers/sfx/clockwork_dancers_shing_to_add_onto_clash_together.wav" id="4_kn74s"]
 [ext_resource type="PackedScene" uid="uid://dqfhh1nwvvxj3" path="res://game/actors/enemies/cogwork_dancers/corpse/dancer_corpse.tscn" id="4_tlpfg"]
 [ext_resource type="PackedScene" uid="uid://dqqog7us3m1g3" path="res://game/gameplay/combat/slash.tscn" id="5_esq63"]
-[ext_resource type="ArrayMesh" path="res://game/resources/meshes/cog_particle2_mesh.res" id="6_etufu"]
+[ext_resource type="ArrayMesh" uid="uid://c0ayqalcew7dy" path="res://game/resources/meshes/cog_particle2_mesh.res" id="6_etufu"]
 [ext_resource type="Curve" uid="uid://c2gis7phupc2g" path="res://game/resources/curves/blood_particles_curve.tres" id="6_tmqvu"]
 [ext_resource type="PackedScene" uid="uid://bpa6of12yh2pe" path="res://game/actors/enemies/cogwork_dancers/direction_light.glb" id="6_vigla"]
 [ext_resource type="BehaviorTree" uid="uid://ciko0edbnitaw" path="res://game/ai/trees/cogwork_dancers_death_behavior_tree.tres" id="8_s7qtj"]

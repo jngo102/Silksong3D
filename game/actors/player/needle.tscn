@@ -402,6 +402,7 @@ script = ExtResource("1_bb050")
 libraries = {
 &"": SubResource("AnimationLibrary_a8o31")
 }
+autoplay = "RESET"
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.057562616, -0.6894967, -0.28944737, 0.6698366, 0.176595, -0.28745836, 0.33242258, -0.23644769, 0.62935394, -0.43267757, 3.7365413, -3.5042882)

@@ -7,14 +7,12 @@ class_name Player extends GroundedActor
 @export var down_spike_bounce_spin_speed: float = 30
 
 @export var camera_controller: CameraController
-@export var change_target_distance_mouse: float = 0.3
-@export var change_target_distance_joystick: float = 0.2
 
 @onready var spool_manager: SpoolManager = $SpoolManager
 @onready var _model: Node3D = $Model
 @onready var armature: Node3D = _model.get_node_or_null("Armature")
 @onready var _skeleton = armature.get_node_or_null("Skeleton3D")
-@onready var _head: MeshInstance3D = _skeleton.get_node_or_null("Head")
+@onready var _cam_target: Node3D = $CameraTarget
 @onready var needle: Needle = _skeleton.get_node_or_null("NeedleAttach/Needle")
 @onready var _cloak_anim: AnimationPlayer = _skeleton.get_node_or_null("CloakAttach/CloakAnimator")
 @onready var model_animator: AnimationPlayer = _model.get_node_or_null("AnimationPlayer")
@@ -29,7 +27,7 @@ func _ready() -> void:
 	_init_camera_targets()
 
 func _init_camera_targets() -> void:
-	camera_controller.add_target(self)
+	camera_controller.target = _cam_target
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:

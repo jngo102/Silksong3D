@@ -1,7 +1,112 @@
-[gd_scene load_steps=13 format=3 uid="uid://8h3avd0nw4el"]
+[gd_scene load_steps=19 format=3 uid="uid://8h3avd0nw4el"]
 
-[ext_resource type="PackedScene" uid="uid://kbm2v33787ln" path="res://game/actors/player/effects/combat/double_damage_hit_effect.tscn" id="1_k8h2r"]
 [ext_resource type="AudioStream" uid="uid://ckdd7p6k5283v" path="res://game/copyrighted/sfx/hornet/hurt/multi_hit/lace_multi_stab_hornet_damaging_final_hit.wav" id="2_12mu4"]
+
+[sub_resource type="Animation" id="Animation_fh0ll"]
+resource_name = "Hit"
+length = 2.0
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(20, 20, 20)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mesh:surface_material_override/0:shader_parameter/Alpha")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.5, 0.0]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("LeftCrackEffect")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [false],
+"method": &"restart"
+}]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("RightCrackEffect")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [false],
+"method": &"restart"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_o0856"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mesh:surface_material_override/0:shader_parameter/Alpha")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e5jel"]
+_data = {
+&"Hit": SubResource("Animation_fh0ll"),
+&"RESET": SubResource("Animation_o0856")
+}
+
+[sub_resource type="SphereMesh" id="SphereMesh_nt6bl"]
 
 [sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_12mu4"]
 
@@ -96,10 +201,66 @@ render_priority = 0
 shader = SubResource("VisualShader_fvnl2")
 shader_parameter/Alpha = 0.5
 
-[node name="MultiHitFinalEffect" instance=ExtResource("1_k8h2r")]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_avddw"]
+shading_mode = 0
 
-[node name="HitAudio" parent="." index="1"]
-audio_clips = Array[AudioStream]([ExtResource("2_12mu4")])
+[sub_resource type="SphereMesh" id="SphereMesh_ssa7n"]
+material = SubResource("StandardMaterial3D_avddw")
+radius = 0.25
+height = 0.5
 
-[node name="Mesh" parent="." index="2"]
+[sub_resource type="Curve" id="Curve_avddw"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.9405919, 0.0, 0, 0]
+point_count = 2
+
+[node name="MultiHitFinalEffect" type="Node3D"]
+
+[node name="Animator" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_e5jel")
+}
+autoplay = "Hit"
+
+[node name="HitAudio" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_12mu4")
+unit_size = 32.0
+autoplay = true
+bus = &"SFX"
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+mesh = SubResource("SphereMesh_nt6bl")
 surface_material_override/0 = SubResource("ShaderMaterial_aqugh")
+
+[node name="LeftCrackEffect" type="CPUParticles3D" parent="."]
+emitting = false
+amount = 256
+lifetime = 0.25
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+local_coords = true
+mesh = SubResource("SphereMesh_ssa7n")
+direction = Vector3(-1, 0, 0)
+spread = 15.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 30.0
+initial_velocity_max = 50.0
+scale_amount_min = 0.5
+scale_amount_curve = SubResource("Curve_avddw")
+
+[node name="RightCrackEffect" type="CPUParticles3D" parent="."]
+emitting = false
+amount = 256
+lifetime = 0.25
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+local_coords = true
+mesh = SubResource("SphereMesh_ssa7n")
+spread = 15.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 30.0
+initial_velocity_max = 50.0
+scale_amount_min = 0.5
+scale_amount_curve = SubResource("Curve_avddw")
