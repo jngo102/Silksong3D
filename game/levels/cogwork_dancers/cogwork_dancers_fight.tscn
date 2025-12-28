@@ -740,7 +740,11 @@ size = Vector3(97.74127, 50.75241, 58.673035)
 [node name="CameraController" parent="." index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.728561, 50.48007)
 
-[node name="Physical" type="Node3D" parent="." index="5"]
+[node name="Player" parent="." index="5" node_paths=PackedStringArray("camera_controller")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.18139, 50.52649)
+camera_controller = NodePath("../CameraController")
+
+[node name="Physical" type="Node3D" parent="." index="6"]
 
 [node name="Ground" type="StaticBody3D" parent="Physical" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.43029)
@@ -788,16 +792,15 @@ transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, -38.3868)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 37.411846, 0)
 shape = SubResource("BoxShape3D_e4ccn")
 
-[node name="Light" type="OmniLight3D" parent="." index="6"]
-transform = Transform3D(0.7254783, -0.20325895, 0.6575463, -0.058854267, 0.9335742, 0.35351855, -0.6857241, -0.2951694, 0.66532516, 0, 20, -2.234)
-visible = false
+[node name="Light" type="OmniLight3D" parent="." index="7"]
+transform = Transform3D(0.7254783, -0.20325893, 0.6575463, -0.058854267, 0.9335742, 0.35351855, -0.6857241, -0.2951694, 0.66532516, 0, 20, -2.234)
 light_color = Color(0.7647059, 0.827451, 0.8784314, 1)
 light_energy = 64.0
 light_volumetric_fog_energy = 0.2
 shadow_enabled = true
 omni_range = 64.0
 
-[node name="DancerManager" type="Node3D" parent="." index="7" node_paths=PackedStringArray("starting_waypoint1", "starting_waypoint2", "alcove1", "alcove2", "dashers")]
+[node name="DancerManager" type="Node3D" parent="." index="8" node_paths=PackedStringArray("starting_waypoint1", "starting_waypoint2", "alcove1", "alcove2", "dashers")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14, 0)
 script = ExtResource("6_jgp2n")
 music_list = Dictionary[int, ExtResource("9_4y2hd")]({
@@ -917,7 +920,7 @@ transform = Transform3D(0.07049059, -0.7724493, 7.962308, 5.8465347, 5.4398055, 
 [node name="TeleportPoint" type="Marker3D" parent="DancerManager" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 35, 0)
 
-[node name="Waypoints" type="Node3D" parent="." index="8"]
+[node name="Waypoints" type="Node3D" parent="." index="9"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -1.9674954)
 
 [node name="TopLayer" type="Node3D" parent="Waypoints" index="0"]
@@ -978,7 +981,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 25)
 [node name="Waypoint9" parent="Waypoints/BottomLayer" index="8" instance=ExtResource("5_sd8jx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, 25)
 
-[node name="DasherAttack" type="Node3D" parent="." index="9"]
+[node name="DasherAttack" type="Node3D" parent="." index="10"]
 
 [node name="Dasher1" parent="DasherAttack" index="0" instance=ExtResource("12_awspu")]
 
@@ -1004,7 +1007,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, 25)
 
 [node name="Dasher12" parent="DasherAttack" index="11" instance=ExtResource("12_awspu")]
 
-[node name="Scene" parent="." index="10" instance=ExtResource("17_glf46")]
+[node name="Scene" parent="." index="11" instance=ExtResource("17_glf46")]
 transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0.08052063, 3.7522936, -37.72847)
 
 [node name="Pendulum" parent="Scene" index="22" instance=ExtResource("24_e4ccn")]
@@ -1038,16 +1041,12 @@ transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, -0.5, 3.2190003, -17
 [node name="GearBottomR" parent="Scene/Alcove2" index="1" instance=ExtResource("25_twn58")]
 transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, -0.5, -2, -17.136)
 
-[node name="DoorCloseTrigger" type="Area3D" parent="." index="11"]
+[node name="DoorCloseTrigger" type="Area3D" parent="." index="12"]
 collision_layer = 0
 
 [node name="Collision" type="CollisionShape3D" parent="DoorCloseTrigger" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16, -4)
 shape = SubResource("BoxShape3D_seyxp")
-
-[node name="Player" parent="." index="12" node_paths=PackedStringArray("camera_controller")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.387915, 50.52649)
-camera_controller = NodePath("../CameraController")
 
 [connection signal="body_entered" from="DoorCloseTrigger" to="." method="_on_door_close_trigger_body_entered"]
 [connection signal="body_entered" from="DoorCloseTrigger" to="DancerManager" method="_on_door_close_trigger_body_entered"]

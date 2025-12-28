@@ -9,7 +9,7 @@ signal landed
 
 var _current_floor: MaterialFloor
 var _gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
-var _was_on_ground: bool
+var _was_on_ground: bool = true
 
 func _process(delta: float) -> void:
 	_apply_gravity(delta)

@@ -283,13 +283,13 @@ _data = {
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_seyxp"]
-size = Vector3(7.381075, 5.190155, 36.677773)
+size = Vector3(7.381075, 4.8500824, 36.677773)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8aboh"]
 size = Vector3(1.2579956, 11.022705, 4)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_e4ccn"]
-size = Vector3(9.837022, 4.356903, 4.0562525)
+size = Vector3(9.837022, 4.221306, 4.0562525)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3jh15"]
 size = Vector3(23.554144, 4.3569336, 4.0684814)
@@ -330,7 +330,7 @@ collision_layer = 4
 collision_mask = 0
 
 [node name="Collision" type="CollisionShape3D" parent="WallBody"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.573616, 0.09507751, 12.925456)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.573616, -0.074958816, 12.925456)
 shape = SubResource("BoxShape3D_seyxp")
 
 [node name="DoorTop" type="StaticBody3D" parent="."]
@@ -354,11 +354,11 @@ collision_mask = 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.0923011, 0)
 
 [node name="Collision" type="CollisionShape3D" parent="DoorBottom"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.920961, 0.6158905, 13.031954)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.920961, 0.5480919, 13.031954)
 shape = SubResource("BoxShape3D_e4ccn")
 
 [node name="Floor" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.106131, -0.35342407, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.106131, -0.62326396, 0)
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("3_gf8wq")
