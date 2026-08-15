@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c5gl82w6sfw7u"]
+[gd_scene format=3 uid="uid://c5gl82w6sfw7u"]
 
 [ext_resource type="Script" uid="uid://crj34uf8gwfdm" path="res://game/autoload/ui/settings/select/setting_select_option.gd" id="1_mm8hr"]
 [ext_resource type="Texture2D" uid="uid://jwcwo1mx6npv" path="res://game/copyrighted/textures/ui/cursor/main_menu_cursor_small0010.png" id="1_yymqk"]
@@ -69,7 +69,7 @@ _data = {
 &"RESET": SubResource("Animation_l3baq")
 }
 
-[node name="SettingSelectOption" type="Button"]
+[node name="SettingSelectOption" type="Button" unique_id=1278807480]
 custom_minimum_size = Vector2(0, 64)
 anchors_preset = 15
 anchor_right = 1.0
@@ -80,12 +80,10 @@ size_flags_horizontal = 3
 flat = true
 script = ExtResource("1_mm8hr")
 
-[node name="Animator" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_0wg0m")
-}
+[node name="Animator" type="AnimationPlayer" parent="." unique_id=54513878]
+libraries/ = SubResource("AnimationLibrary_0wg0m")
 
-[node name="Select" type="HBoxContainer" parent="."]
+[node name="Select" type="HBoxContainer" parent="." unique_id=632981239]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -94,30 +92,30 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="LeftArrow" type="TextureRect" parent="Select"]
+[node name="LeftArrow" type="TextureRect" parent="Select" unique_id=485679077]
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
 size_flags_horizontal = 8
 stretch_mode = 5
 
-[node name="Contents" type="HBoxContainer" parent="Select"]
+[node name="Contents" type="HBoxContainer" parent="Select" unique_id=823560437]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="SettingLabel" type="Label" parent="Select/Contents"]
+[node name="SettingLabel" type="Label" parent="Select/Contents" unique_id=1861400570]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Setting"
 vertical_alignment = 1
 
-[node name="ValueLabel" type="Label" parent="Select/Contents"]
+[node name="ValueLabel" type="Label" parent="Select/Contents" unique_id=561544774]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Value"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="RightArrow" type="TextureRect" parent="Select"]
+[node name="RightArrow" type="TextureRect" parent="Select" unique_id=360528000]
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
 size_flags_horizontal = 0

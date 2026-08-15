@@ -1,4 +1,4 @@
-[gd_resource type="VisualShader" load_steps=8 format=3 uid="uid://d2adeewmk07rq"]
+[gd_resource type="VisualShader" format=3 uid="uid://d2adeewmk07rq"]
 
 [sub_resource type="Gradient" id="Gradient_33lnv"]
 offsets = PackedFloat32Array(0, 0.33164984, 0.84175086)
@@ -25,43 +25,6 @@ op_type = 0
 operator = 2
 
 [resource]
-code = "shader_type spatial;
-render_mode blend_mix, depth_draw_opaque, depth_test_default, cull_back, diffuse_lambert, specular_schlick_ggx;
-
-uniform float SlashGradientSlider;
-uniform sampler2D tex_frg_2;
-
-
-
-void fragment() {
-// Input:3
-	vec2 n_out3p0 = UV;
-
-
-// VectorOp:6
-	vec2 n_in6p1 = vec2(0.12500, 0.00000);
-	vec2 n_out6p0 = n_out3p0 * n_in6p1;
-
-
-// FloatParameter:5
-	float n_out5p0 = SlashGradientSlider;
-
-
-// UVFunc:4
-	vec2 n_in4p1 = vec2(1.00000, 0.00000);
-	vec2 n_out4p0 = vec2(n_out5p0) * n_in4p1 + n_out6p0;
-
-
-// Texture2D:2
-	vec4 n_out2p0 = texture(tex_frg_2, n_out4p0);
-
-
-// Output:0
-	ALPHA = n_out2p0.x;
-
-
-}
-"
 nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_ayb8v")
 nodes/fragment/2/position = Vector2(-660, 160)
 nodes/fragment/3/node = SubResource("VisualShaderNodeInput_33lnv")

@@ -1,4 +1,4 @@
-[gd_resource type="BehaviorTree" load_steps=113 format=3 uid="uid://ciko0edbnitaw"]
+[gd_resource type="BehaviorTree" format=3 uid="uid://ciko0edbnitaw"]
 
 [ext_resource type="Script" uid="uid://dfxh5qmwucb7e" path="res://game/ai/tasks/scene/get_first_in_group.gd" id="1_7k3xq"]
 [ext_resource type="Script" uid="uid://cvw5s3jjrdnkq" path="res://game/ai/tasks/transform/face_target.gd" id="2_tqd6i"]

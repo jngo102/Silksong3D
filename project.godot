@@ -8,12 +8,16 @@
 
 config_version=5
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
 config/name="Silksong 3D"
 config/version="1.0.0"
 run/main_scene="uid://d0nkpdyoqawun"
-config/features=PackedStringArray("4.5", "4.5.1", "Forward Plus")
+config/features=PackedStringArray("4.7", "Forward Plus")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/show_image=false
 config/icon="uid://dfed24vi280po"
@@ -31,7 +35,7 @@ InputManager="*res://game/autoload/input/input_manager.tscn"
 SceneManager="*res://game/autoload/scene/scene_manager.gd"
 UIManager="*res://game/autoload/ui/ui_manager.tscn"
 AudioManager="*res://game/autoload/audio/audio_manager.tscn"
-InputHelper="*res://addons/input_helper/input_helper.gd"
+InputHelper="*uid://cholww48njaeh"
 CameraManager="*res://game/autoload/scene/camera_manager.gd"
 TimeManager="*res://game/autoload/time_manager.gd"
 ScoreManager="*res://game/autoload/score/score_manager.gd"
