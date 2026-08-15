@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://tkt0qnsojd35"]
+
+[ext_resource type="PackedScene" uid="uid://c7e6xi1cekoax" path="res://game/levels/base_level.tscn" id="1_l4y3c"]
+[ext_resource type="PackedScene" uid="uid://darh7o4drrasg" path="res://game/actors/enemies/phantom/phantom_boss.tscn" id="2_vuuix"]
+
+[sub_resource type="Environment" id="Environment_mdpca"]
+ambient_light_source = 2
+ambient_light_color = Color(0.6542321, 0.6542321, 0.654232, 1)
+ssao_enabled = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_14s3j"]
+size = Vector2(100, 100)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_14s3j"]
+size = Vector3(100, 100, 100)
+
+[node name="PhantomFight" unique_id=793946330 instance=ExtResource("1_l4y3c")]
+
+[node name="WorldEnvironment" parent="Environment" parent_id_path=PackedInt32Array(921388622) index="0" unique_id=986338651]
+environment = SubResource("Environment_mdpca")
+
+[node name="Ground" type="StaticBody3D" parent="." index="6" unique_id=433638540]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.194898, 0)
+collision_layer = 4
+
+[node name="Mesh" type="MeshInstance3D" parent="Ground" index="0" unique_id=1870164113]
+mesh = SubResource("PlaneMesh_14s3j")
+
+[node name="Collision" type="CollisionShape3D" parent="Ground" index="1" unique_id=658511662]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -50, 0)
+shape = SubResource("BoxShape3D_14s3j")
+
+[node name="PhantomBoss" parent="." index="7" unique_id=1724463133 instance=ExtResource("2_vuuix")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00020456314, 0.18464899, -10.346679)
