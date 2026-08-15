@@ -4,10 +4,18 @@
 [ext_resource type="PackedScene" uid="uid://bsfr1056711yp" path="res://game/actors/enemies/phantom/phantom.glb" id="2_ix5q8"]
 [ext_resource type="ArrayMesh" uid="uid://djrx8w2k84nd4" path="res://game/actors/enemies/phantom/wings.tres" id="3_4lqec"]
 [ext_resource type="PackedScene" uid="uid://xal232da7bpf" path="res://game/gameplay/combat/damager.tscn" id="4_aygqo"]
+[ext_resource type="ArrayMesh" uid="uid://efox85te8wrt" path="res://game/actors/enemies/phantom/silk_particle1_mesh.tres" id="4_vep8l"]
+[ext_resource type="Curve" uid="uid://c2gis7phupc2g" path="res://game/resources/curves/blood_particles_curve.tres" id="5_0nndk"]
+[ext_resource type="BehaviorTree" uid="uid://1liih5vvkdi4" path="res://game/actors/enemies/phantom/phantom_behavior_tree.tres" id="5_tqvn5"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4lqec"]
 radius = 0.7
 height = 7.4609375
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ojd61"]
+cull_mode = 2
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_drhsk"]
 radius = 0.4453125
@@ -79,8 +87,37 @@ autoplay = &"Idle"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3465714, 0)
 shape = SubResource("CapsuleShape3D_4lqec")
 
-[node name="Health" parent="." index="3"]
+[node name="Health" parent="." index="3" node_paths=PackedStringArray("damage_particles")]
 max_health = 650
+damage_particles = [NodePath("SilkParticles")]
+
+[node name="BloodParticles" parent="Health" index="1"]
+visible = false
+
+[node name="SilkParticles" type="CPUParticles3D" parent="Health" index="2" unique_id=1576864788]
+material_override = SubResource("StandardMaterial3D_ojd61")
+emitting = false
+amount = 64
+lifetime = 0.35000000000000003
+one_shot = true
+explosiveness = 1.0
+randomness = 0.67
+lifetime_randomness = 0.59
+mesh = ExtResource("4_vep8l")
+emission_shape = 1
+emission_sphere_radius = 1.0
+particle_flag_align_y = true
+direction = Vector3(1, 1, 0)
+gravity = Vector3(0, -10, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 15.0
+angular_velocity_min = 8.0
+angular_velocity_max = 16.0
+radial_accel_min = -6.67
+radial_accel_max = 15.83
+scale_amount_min = 0.25
+scale_amount_max = 0.5
+scale_amount_curve = ExtResource("5_0nndk")
 
 [node name="Damager" parent="." index="4" unique_id=443682562 instance=ExtResource("4_aygqo")]
 collision_layer = 16
@@ -91,6 +128,9 @@ shape = SubResource("CapsuleShape3D_drhsk")
 
 [node name="Flasher" parent="." index="6" node_paths=PackedStringArray("_meshes")]
 _meshes = [NodePath("../Mesh/Armature/Skeleton3D/Body"), NodePath("../Mesh/Armature/Skeleton3D/Head"), NodePath("../Mesh/Armature/Skeleton3D/Mask"), NodePath("../Mesh/Armature/Skeleton3D/SpineAttach/Wings")]
+
+[node name="BehaviorTree" parent="." index="8"]
+behavior_tree = ExtResource("5_tqvn5")
 
 [editable path="Mesh"]
 [editable path="Health"]

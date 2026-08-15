@@ -1,0 +1,33 @@
+[gd_resource type="ArrayMesh" format=4 uid="uid://bwyj0ltp6a8os"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t3k3h"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_cxt1i"]
+_surfaces = [{
+"aabb": AABB(-1.1119491, -0.10000002, -0.7849201, 1.6443028, 0.20000003, 1.0221161),
+"format": 34896613377,
+"index_count": 48,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAgABAAQAAgAEAAUABQAEAAYABQAGAAcABwAGAAgABwAIAAkACQAIAAoACQAKAAsACwAKAAwACwAMAA0ADQAMAA4ADQAOAA8ADwAOABAADwAQABEA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 18,
+"vertex_data": PackedByteArray("2CH+/2rPAAAAAAAAszAAAAAA/v+zMAAA2CEAAGrPAAD8AgAAAAAAAPwC/v8AAAAAMCEAAHAcAAAwIf//cBwAAP9QAAAiZQAA/1D+/yJlAADLiAAANrkAAMuI/v82uQAA+L4AAMv3AAD4vv7/y/cAAOjpAAD//wAA6On+////AAD//wAA8bAAAP///v/xsAAA")
+}]
+blend_shape_mode = 0
+
+[resource]
+resource_name = "silk_particle3_BézierCurve_002"
+_surfaces = [{
+"aabb": AABB(-1.1119491, -0.10000002, -0.7849201, 1.6443028, 0.20000003, 1.0221161),
+"attribute_data": PackedByteArray("AAAAAP8f////HwAAAAD///8/////PwAA/1////9fAAD/f////38AAP+f////nwAA/7////+/AAD/3////98AAP///////wAA"),
+"format": 34896613399,
+"index_count": 48,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAgABAAQAAgAEAAUABQAEAAYABQAGAAcABwAGAAgABwAIAAkACQAIAAoACQAKAAsACwAKAAwACwAMAA0ADQAMAA4ADQAOAA8ADwAOABAADwAQABEA"),
+"material": SubResource("StandardMaterial3D_t3k3h"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 18,
+"vertex_data": PackedByteArray("2CH+/2rPAAAAAAAAszAAAAAA/v+zMAAA2CEAAGrPAAD8AgAAAAAAAPwC/v8AAAAAMCEAAHAcAAAwIf//cBwAAP9QAAAiZQAA/1D+/yJlAADLiAAANrkAAMuI/v82uQAA+L4AAMv3AAD4vv7/y/cAAOjpAAD//wAA6On+////AAD//wAA8bAAAP///v/xsAAAq0r/f7dD/3+3Q/9/q0r/f///NWf//8mYAOD/fwDg/3+n2/9/p9v/fz/e/38/3v9/zOv/f8zr/3///6+a//+vmv//RrL//0ay")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_cxt1i")
