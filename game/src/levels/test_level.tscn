@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://bx1fy5obuyvl"]
+
+[ext_resource type="PackedScene" uid="uid://c7e6xi1cekoax" path="res://src/levels/base_level.tscn" id="1_46m3m"]
+
+[sub_resource type="Gradient" id="Gradient_46m3m"]
+interpolation_mode = 2
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yeikn"]
+gradient = SubResource("Gradient_46m3m")
+width = 2048
+height = 2048
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_giiqr"]
+albedo_texture = SubResource("GradientTexture2D_yeikn")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_46m3m"]
+material = SubResource("StandardMaterial3D_giiqr")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yeikn"]
+size = Vector3(2, 2, 2)
+
+[node name="TestLevel" instance=ExtResource("1_46m3m")]
+
+[node name="Player" parent="." index="3"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 2.1374521, 0)
+
+[node name="Floor" type="StaticBody3D" parent="." index="4"]
+transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
+collision_layer = 4
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="Floor" index="0"]
+mesh = SubResource("PlaneMesh_46m3m")
+
+[node name="Collision" type="CollisionShape3D" parent="Floor" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+shape = SubResource("BoxShape3D_yeikn")

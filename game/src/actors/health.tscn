@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://djok8768tq4tr"]
+
+[ext_resource type="Script" uid="uid://beoutqoga4xnq" path="res://src/actors/health.gd" id="1_f3r4x"]
+[ext_resource type="Curve" uid="uid://c2gis7phupc2g" path="res://src/resources/curves/blood_particles_curve.tres" id="3_vn45b"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ledv5"]
+radius = 0.5566406
+height = 3.9101563
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bn7r2"]
+shading_mode = 0
+
+[sub_resource type="SphereMesh" id="SphereMesh_tabjh"]
+material = SubResource("StandardMaterial3D_bn7r2")
+radius = 0.25
+height = 0.5
+
+[node name="Health" type="Area3D" unique_id=661398979 node_paths=PackedStringArray("damage_particles")]
+script = ExtResource("1_f3r4x")
+damage_particles = [NodePath("BloodParticles")]
+
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=76614683]
+shape = SubResource("CapsuleShape3D_ledv5")
+
+[node name="BloodParticles" type="CPUParticles3D" parent="." unique_id=384959486]
+emitting = false
+amount = 64
+one_shot = true
+explosiveness = 1.0
+lifetime_randomness = 1.0
+mesh = SubResource("SphereMesh_tabjh")
+emission_shape = 1
+emission_sphere_radius = 1.0
+particle_flag_align_y = true
+gravity = Vector3(0, -50, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 30.0
+scale_amount_min = 0.35
+scale_amount_max = 0.65
+scale_amount_curve = ExtResource("3_vn45b")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

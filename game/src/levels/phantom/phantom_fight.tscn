@@ -1,0 +1,306 @@
+[gd_scene format=3 uid="uid://tkt0qnsojd35"]
+
+[ext_resource type="PackedScene" uid="uid://c7e6xi1cekoax" path="res://src/levels/base_level.tscn" id="1_l4y3c"]
+[ext_resource type="PackedScene" uid="uid://darh7o4drrasg" path="res://src/actors/enemies/phantom/phantom_boss.tscn" id="2_vuuix"]
+[ext_resource type="AudioStream" uid="uid://cak1muwygj208" path="res://src/copyrighted/phantom/music/H78 Phantom of the Organ RESTRUCTURE-33.wav" id="2_w66we"]
+[ext_resource type="Script" uid="uid://q4qqnvxnwemw" path="res://src/autoload/audio/music_track.gd" id="3_tjorh"]
+[ext_resource type="PackedScene" uid="uid://bxocwtp45yp0e" path="res://src/levels/phantom/structureA.glb" id="5_lerc2"]
+[ext_resource type="Shader" uid="uid://dr7csw7olf1b8" path="res://src/levels/phantom/silk_strand.tres" id="6_ktfto"]
+
+[sub_resource type="Resource" id="Resource_ojd61"]
+script = ExtResource("3_tjorh")
+music_clip = ExtResource("2_w66we")
+metadata/_custom_type_script = "uid://q4qqnvxnwemw"
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ktfto"]
+sky_top_color = Color(0.8039735, 0.7180228, 0.6472382, 1)
+sky_horizon_color = Color(0.54920304, 0.5602086, 0.57612264, 1)
+sky_energy_multiplier = 2.02
+ground_bottom_color = Color(0.32220736, 0.35388005, 0.438502, 1)
+ground_horizon_color = Color(0.54920304, 0.5602086, 0.57612264, 1)
+sun_angle_max = 39.52
+sun_curve = 0.19118404
+
+[sub_resource type="Sky" id="Sky_ktfto"]
+sky_material = SubResource("ProceduralSkyMaterial_ktfto")
+
+[sub_resource type="Environment" id="Environment_mdpca"]
+sky = SubResource("Sky_ktfto")
+ambient_light_source = 3
+reflected_light_source = 2
+tonemap_mode = 4
+ssr_enabled = true
+ssao_enabled = true
+ssil_enabled = true
+sdfgi_enabled = true
+volumetric_fog_density = 0.0025
+volumetric_fog_emission = Color(0.2562154, 0.2765893, 0.26210725, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_14s3j"]
+size = Vector2(100, 100)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_14s3j"]
+size = Vector3(100, 100, 100)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ktfto"]
+albedo_color = Color(0.74409366, 0.36731857, 0.12404799, 1)
+metallic = 0.89
+metallic_specular = 0.61
+roughness = 0.19
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lerc2"]
+render_priority = 0
+shader = ExtResource("6_ktfto")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oif61"]
+cull_mode = 1
+albedo_color = Color(0, 0, 0, 1)
+metallic = 0.67
+metallic_specular = 0.15
+roughness = 0.9
+
+[node name="PhantomFight" unique_id=793946330 instance=ExtResource("1_l4y3c")]
+music_track = SubResource("Resource_ojd61")
+
+[node name="WorldEnvironment" parent="Environment" parent_id_path=PackedInt32Array(921388622) index="0" unique_id=986338651]
+environment = SubResource("Environment_mdpca")
+
+[node name="Ground" type="StaticBody3D" parent="." index="6" unique_id=433638540]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.194898, 0)
+collision_layer = 4
+
+[node name="Mesh" type="MeshInstance3D" parent="Ground" index="0" unique_id=1870164113]
+mesh = SubResource("PlaneMesh_14s3j")
+
+[node name="Collision" type="CollisionShape3D" parent="Ground" index="1" unique_id=658511662]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -50, 0)
+shape = SubResource("BoxShape3D_14s3j")
+
+[node name="PhantomBoss" parent="." index="7" unique_id=1724463133 instance=ExtResource("2_vuuix")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00020456314, 0.18464899, -10.346679)
+
+[node name="structureA" parent="." index="8" unique_id=1152383996 instance=ExtResource("5_lerc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.641411, 0, -23.069153)
+
+[node name="BézierCurve" parent="structureA" index="0" unique_id=1624026274]
+surface_material_override/0 = SubResource("StandardMaterial3D_ktfto")
+
+[node name="BézierCurve_001" parent="structureA" index="1" unique_id=1183896677]
+surface_material_override/0 = SubResource("StandardMaterial3D_ktfto")
+
+[node name="BézierCurve_002" parent="structureA" index="2" unique_id=601492680]
+surface_material_override/0 = SubResource("StandardMaterial3D_ktfto")
+
+[node name="BézierCurve_003" parent="structureA" index="3" unique_id=731772989]
+surface_material_override/0 = SubResource("StandardMaterial3D_ktfto")
+
+[node name="BézierCurve_004" parent="structureA" index="4" unique_id=343092030]
+surface_material_override/0 = SubResource("StandardMaterial3D_ktfto")
+
+[node name="BézierCurve_005" parent="structureA" index="5" unique_id=94333405]
+surface_material_override/0 = SubResource("StandardMaterial3D_ktfto")
+
+[node name="BézierCurve_006" parent="structureA" index="6" unique_id=1937397584]
+surface_material_override/0 = SubResource("StandardMaterial3D_ktfto")
+
+[node name="BézierCurve_007" parent="structureA" index="7" unique_id=360547721]
+surface_material_override/0 = SubResource("StandardMaterial3D_ktfto")
+
+[node name="BézierCurve_008" parent="structureA" index="8" unique_id=4179710]
+surface_material_override/0 = SubResource("StandardMaterial3D_ktfto")
+
+[node name="BézierCurve_009" parent="structureA" index="9" unique_id=310258983]
+surface_material_override/0 = SubResource("StandardMaterial3D_ktfto")
+
+[node name="BézierCurve_010" parent="structureA" index="10" unique_id=1013426281]
+surface_material_override/0 = SubResource("StandardMaterial3D_ktfto")
+
+[node name="BézierCurve_011" parent="structureA" index="11" unique_id=1197276417]
+surface_material_override/0 = SubResource("StandardMaterial3D_ktfto")
+
+[node name="BézierCurve_012" parent="structureA" index="12" unique_id=715885884]
+surface_material_override/0 = SubResource("StandardMaterial3D_ktfto")
+
+[node name="BézierCurve_013" parent="structureA" index="13" unique_id=1415790467]
+surface_material_override/0 = SubResource("StandardMaterial3D_ktfto")
+
+[node name="BézierCurve_014" parent="structureA" index="14" unique_id=1846998183]
+surface_material_override/0 = SubResource("StandardMaterial3D_ktfto")
+
+[node name="BézierCurve_015" parent="structureA" index="15" unique_id=351800147]
+surface_material_override/0 = SubResource("StandardMaterial3D_ktfto")
+
+[node name="BézierCurve_016" parent="structureA" index="16" unique_id=1700460121]
+surface_material_override/0 = SubResource("StandardMaterial3D_ktfto")
+
+[node name="BézierCurve_017" parent="structureA" index="17" unique_id=895866787]
+surface_material_override/0 = SubResource("StandardMaterial3D_ktfto")
+
+[node name="BézierCurve_018" parent="structureA" index="18" unique_id=488837902]
+surface_material_override/0 = SubResource("StandardMaterial3D_ktfto")
+
+[node name="BézierCurve_019" parent="structureA" index="19" unique_id=1731109535]
+surface_material_override/0 = SubResource("StandardMaterial3D_ktfto")
+
+[node name="BézierCurve_020" parent="structureA" index="20" unique_id=1360624894]
+surface_material_override/0 = SubResource("StandardMaterial3D_ktfto")
+
+[node name="BézierCurve_021" parent="structureA" index="21" unique_id=624544683]
+surface_material_override/0 = SubResource("StandardMaterial3D_ktfto")
+
+[node name="BézierCurve_022" parent="structureA" index="22" unique_id=1750891991]
+surface_material_override/0 = SubResource("StandardMaterial3D_ktfto")
+
+[node name="BézierCurve_023" parent="structureA" index="23" unique_id=1122279632]
+surface_material_override/0 = SubResource("StandardMaterial3D_ktfto")
+
+[node name="BézierCurve_024" parent="structureA" index="24" unique_id=1684315390]
+surface_material_override/0 = SubResource("StandardMaterial3D_ktfto")
+
+[node name="BézierCurve_025" parent="structureA" index="25" unique_id=82673646]
+surface_material_override/0 = SubResource("StandardMaterial3D_ktfto")
+
+[node name="BézierCurve_026" parent="structureA" index="26" unique_id=1528588129]
+surface_material_override/0 = SubResource("StandardMaterial3D_ktfto")
+
+[node name="BézierCurve_027" parent="structureA" index="27" unique_id=1947849290]
+surface_material_override/0 = SubResource("StandardMaterial3D_ktfto")
+
+[node name="BézierCurve_028" parent="structureA" index="28" unique_id=1301319834]
+surface_material_override/0 = SubResource("StandardMaterial3D_ktfto")
+
+[node name="BézierCurve_029" parent="structureA" index="29" unique_id=1774756623]
+surface_material_override/0 = SubResource("StandardMaterial3D_ktfto")
+
+[node name="BézierCurve_030" parent="structureA" index="30" unique_id=1419368500]
+surface_material_override/0 = SubResource("StandardMaterial3D_ktfto")
+
+[node name="BézierCurve_031" parent="structureA" index="31" unique_id=1889414157]
+surface_material_override/0 = SubResource("StandardMaterial3D_ktfto")
+
+[node name="BézierCurve_032" parent="structureA" index="32" unique_id=1801513920]
+surface_material_override/0 = SubResource("StandardMaterial3D_ktfto")
+
+[node name="BézierCurve_033" parent="structureA" index="33" unique_id=1315808712]
+surface_material_override/0 = SubResource("StandardMaterial3D_ktfto")
+
+[node name="BézierCurve_034" parent="structureA" index="34" unique_id=1048999751]
+surface_material_override/0 = SubResource("StandardMaterial3D_ktfto")
+
+[node name="BézierCurve_035" parent="structureA" index="35" unique_id=581036199]
+surface_material_override/0 = SubResource("StandardMaterial3D_ktfto")
+
+[node name="Circle" parent="structureA" index="36" unique_id=554629049]
+surface_material_override/0 = SubResource("StandardMaterial3D_ktfto")
+
+[node name="Cube" parent="structureA" index="37" unique_id=1043578994]
+surface_material_override/0 = SubResource("StandardMaterial3D_ktfto")
+
+[node name="Cylinder_001" parent="structureA" index="39" unique_id=867291456]
+transform = Transform3D(1.1957419, -0.05245834, 0.084038585, 0.05903397, 1.1946753, -0.09422709, -0.07955723, 0.09804019, 1.1931773, 0, -0.5674111, 0)
+surface_material_override/0 = SubResource("ShaderMaterial_lerc2")
+
+[node name="Cylinder_002" parent="structureA" index="40" unique_id=1903516243]
+transform = Transform3D(0.8060868, -0.010706847, 0.04442757, 0.011397362, 0.8072077, -0.012258509, -0.044255465, 0.0128660165, 0.80606467, 0.40529346, -0.5349876, 0)
+surface_material_override/0 = SubResource("ShaderMaterial_lerc2")
+
+[node name="Cylinder_003" parent="structureA" index="41" unique_id=346837258]
+transform = Transform3D(1.12485, -0.055228125, 0.0045144674, 0.055224355, 1.1248586, 0.0010431309, -0.004560189, -0.00082049874, 1.1262045, 0.8754339, -0.48635238, 0)
+surface_material_override/0 = SubResource("ShaderMaterial_lerc2")
+
+[node name="Cylinder_004" parent="structureA" index="42" unique_id=2021206654]
+transform = Transform3D(0.8429841, -0.073829204, -0.054357965, 0.0706468, 0.8435214, -0.050082732, 0.058434326, 0.04526034, 0.84472746, 1.5887508, -0.5998346, 0)
+surface_material_override/0 = SubResource("ShaderMaterial_lerc2")
+
+[node name="Cylinder_005" parent="structureA" index="43" unique_id=2020055658]
+transform = Transform3D(1.1017039, -0.08492059, 0.03614781, 0.08997963, 1.0846292, -0.19430183, -0.020538628, 0.19656557, 1.0877546, 2.1723738, -0.29181144, 0)
+surface_material_override/0 = SubResource("ShaderMaterial_lerc2")
+
+[node name="Cylinder_006" parent="structureA" index="44" unique_id=1171336192]
+transform = Transform3D(1.1709282, 0.07033843, -0.059042543, -0.06457739, 1.1675549, 0.11023404, 0.06529377, -0.10665028, 1.167848, 2.7235732, -0.12969397, 2.8817463)
+surface_material_override/0 = SubResource("ShaderMaterial_lerc2")
+
+[node name="Cylinder_007" parent="structureA" index="45" unique_id=132971332]
+transform = Transform3D(0.90863127, -0.012215338, 0.0090270005, 0.011704078, 0.90732324, 0.049691822, -0.009680694, -0.049568616, 0.90735376, 2.8208437, -0.16211747, 0)
+surface_material_override/0 = SubResource("ShaderMaterial_lerc2")
+
+[node name="Cylinder_008" parent="structureA" index="46" unique_id=1128196715]
+transform = Transform3D(0.98053014, 0.058965128, 0.055942263, -0.061525088, 0.9809626, 0.044413943, -0.0531139, -0.04776033, 0.9812968, -1.2645168, 0.16211745, 0)
+surface_material_override/0 = SubResource("ShaderMaterial_lerc2")
+
+[node name="Cylinder_009" parent="structureA" index="47" unique_id=1743555162]
+transform = Transform3D(1.0779914, -0.017027546, 0.07094016, 0.011981801, 1.077672, 0.07659743, -0.07196443, -0.07563595, 1.0754012, 3.0315962, -0.7619521, 0)
+surface_material_override/0 = SubResource("ShaderMaterial_lerc2")
+
+[node name="Cylinder_010" parent="structureA" index="48" unique_id=1680316046]
+transform = Transform3D(1.1391182, -0.07454642, 0.08626253, 0.076635204, 1.1419652, -0.0251225, -0.08441232, 0.03077215, 1.1412781, 3.631431, -1.2969397, 0)
+surface_material_override/0 = SubResource("ShaderMaterial_lerc2")
+
+[node name="Cylinder_011" parent="structureA" index="49" unique_id=50592579]
+transform = Transform3D(0.97040623, 0.034679417, -0.0103835445, -0.035280567, 0.96840084, -0.062878765, 0.008109347, 0.06321231, 0.9689878, 1.4428453, -0.30802315, 0)
+surface_material_override/0 = SubResource("ShaderMaterial_lerc2")
+
+[node name="Cylinder_012" parent="structureA" index="50" unique_id=257708612]
+transform = Transform3D(1.1527957, 0.077253975, -0.02544897, -0.078030445, 1.1524559, -0.036205932, 0.022958068, 0.03783446, 1.154814, 0.8430109, -0.79437554, 2.8756332)
+surface_material_override/0 = SubResource("ShaderMaterial_lerc2")
+
+[node name="Cylinder_013" parent="structureA" index="51" unique_id=1045325749]
+transform = Transform3D(0.8953736, -0.018029405, 0.019889938, 0.018238964, 0.89554214, -0.009280858, -0.019697946, 0.00968167, 0.89550704, 1.1023989, -0.6160463, 0)
+surface_material_override/0 = SubResource("ShaderMaterial_lerc2")
+
+[node name="Cylinder_014" parent="structureA" index="52" unique_id=282744442]
+transform = Transform3D(0.9267824, -0.07471737, 0.035616796, 0.074984334, 0.927428, -0.0055918097, -0.03505128, 0.008439907, 0.9297725, -0.51877594, -0.48635232, 0)
+surface_material_override/0 = SubResource("ShaderMaterial_lerc2")
+
+[node name="Cylinder_015" parent="structureA" index="53" unique_id=1477288334]
+transform = Transform3D(1.0289153, 0.00028560258, -0.013432986, -0.00033237162, 1.0289967, -0.0035805947, 0.013431913, 0.0035846282, 1.0289088, -5.528206, -0.24317613, 1.8049641)
+surface_material_override/0 = SubResource("ShaderMaterial_lerc2")
+
+[node name="Cylinder_016" parent="structureA" index="54" unique_id=882412063]
+transform = Transform3D(0.9037564, -0.02195929, 0.034471203, 0.027458603, 0.89138657, -0.15205947, -0.030273732, 0.15295045, 0.8911429, -6.8737793, -0.22696438, 0)
+surface_material_override/0 = SubResource("ShaderMaterial_lerc2")
+
+[node name="Cylinder_017" parent="structureA" index="55" unique_id=142890526]
+transform = Transform3D(0.92179626, -0.021553637, 0.03825782, 0.021818772, 0.92256445, -0.0059554377, -0.03810723, 0.006853224, 0.9220291, -6.273946, -0.14590564, 0)
+surface_material_override/0 = SubResource("ShaderMaterial_lerc2")
+
+[node name="Cylinder_018" parent="structureA" index="56" unique_id=321139486]
+transform = Transform3D(0.8191617, 0.05090205, 0.048387747, -0.049641885, 0.8203559, -0.022589799, -0.049679745, 0.019585606, 0.82043076, -5.982134, -0.048635155, 0)
+surface_material_override/0 = SubResource("ShaderMaterial_lerc2")
+
+[node name="Cylinder_019" parent="structureA" index="57" unique_id=1353625710]
+transform = Transform3D(0.8528336, 0.056548636, 0.05465239, -0.058071043, 0.8541883, 0.022355014, -0.053031918, -0.025966235, 0.8544139, -5.00943, -0.17832914, 0)
+surface_material_override/0 = SubResource("ShaderMaterial_lerc2")
+
+[node name="Cylinder_020" parent="structureA" index="58" unique_id=1626313371]
+transform = Transform3D(1.0601636, 0.043492515, 0.07545866, -0.03674912, 1.0589334, -0.09403277, -0.07896272, 0.09111017, 1.0568804, -4.6365595, 0.2918115, 0)
+surface_material_override/0 = SubResource("ShaderMaterial_lerc2")
+
+[node name="Cylinder_021" parent="structureA" index="59" unique_id=1031404953]
+transform = Transform3D(0.9067125, 0.06812253, 0.017595205, -0.06801727, 0.90687096, -0.0060377857, -0.017997807, 0.0047037383, 0.9092478, -7.42498, -0.11348218, 0)
+surface_material_override/0 = SubResource("ShaderMaterial_lerc2")
+
+[node name="Cylinder_022" parent="structureA" index="60" unique_id=1137367204]
+transform = Transform3D(1.0581946, -0.0842184, 0.07694059, 0.08234674, 1.0607511, 0.028539987, -0.07894055, -0.022422705, 1.061157, -7.9275436, 0.21075276, 0)
+surface_material_override/0 = SubResource("ShaderMaterial_lerc2")
+
+[node name="Cylinder_023" parent="structureA" index="61" unique_id=1774307333]
+transform = Transform3D(0.8999349, -0.06064123, 0.03969115, 0.059472077, 0.9004731, 0.02733104, -0.041422453, -0.024628319, 0.9015615, -8.657072, -0.35665837, 0)
+surface_material_override/0 = SubResource("ShaderMaterial_lerc2")
+
+[node name="Cylinder_024" parent="structureA" index="62" unique_id=2016009684]
+transform = Transform3D(0.93603176, 0.013306281, -0.028924681, -0.009182175, 0.92752486, 0.12954684, 0.030485772, -0.12918837, 0.92711926, -8.235567, -0.17832915, 1.8309116)
+surface_material_override/0 = SubResource("ShaderMaterial_lerc2")
+
+[node name="Cylinder_025" parent="structureA" index="63" unique_id=1369858360]
+transform = Transform3D(0.9299284, 0.07275987, -0.048724096, -0.07400689, 0.93083525, -0.022446187, 0.04680829, 0.026207881, 0.93250054, -9.240696, -0.6160463, 0)
+surface_material_override/0 = SubResource("ShaderMaterial_lerc2")
+
+[node name="Cylinder_026" parent="structureA" index="64" unique_id=1665618000]
+transform = Transform3D(0.9372348, -0.03050736, -0.023496237, 0.030028809, 0.9373475, -0.019234946, 0.024104828, 0.018466555, 0.93753403, -9.5162945, -0.27559963, 0)
+surface_material_override/0 = SubResource("ShaderMaterial_lerc2")
+
+[node name="Plane_002" parent="structureA" index="68" unique_id=2101058987]
+surface_material_override/0 = SubResource("StandardMaterial3D_oif61")
+
+[editable path="structureA"]

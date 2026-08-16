@@ -1,0 +1,101 @@
+#wrapper * {
+  color: white !important;
+  opacity: 100% !important;
+  font-family: 'Perpetua', 'Trajan Pro', serif;
+  font-size: 1.125rem !important;
+}
+
+.wrapper .button {
+    background-color: transparent;
+    box-shadow: none;
+    display: inline-flex;
+    vertical-align: middle;
+    text-shadow: none;
+}
+
+@keyframes cursor {
+    to {
+        background-position: right center;
+    }
+}
+
+@keyframes tween {
+    from {
+        transform: translateX(8px);
+    }
+    to {
+        transform: translateX(-8px);
+    }
+}
+
+.wrapper .button::before {
+    background: none;
+    content: '';
+    display: inline-flex;
+    height: 100%;
+    scale: 50%;
+    width: 42px;
+}
+
+.wrapper .button:hover {
+    background-color: transparent;
+    text-shadow: none;
+    text-decoration: underline;
+}
+
+.wrapper .button:hover::before {
+    animation: cursor 0.25s steps(5, jump-none) 1 forwards, tween 0.25s linear 0s infinite alternate;
+    background: url('https://files.catbox.moe/2azg50.png') left center no-repeat;
+}
+
+.wrapper .button::after {
+    background: none;
+    content: '';
+    display: inline-flex;
+    height: 100%;
+    scale: -50%;
+    width: 42px;
+}
+
+.wrapper .button:hover::after {
+    animation: cursor 0.25s steps(5, jump-none) 1 forwards, tween 0.25s linear 0s infinite alternate;
+    background: url('https://files.catbox.moe/2azg50.png') left center no-repeat;
+}
+
+#download {
+    visibility: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+@keyframes top-fleur {
+    to {
+        background-position: center bottom;
+    }
+}
+
+.embed_wrapper::before {
+    animation: top-fleur 0.25s steps(5, jump-none) 1 forwards;
+    background: url('https://files.catbox.moe/4jl5xm.png') center top no-repeat;
+    content: '';
+    display: inline-flex;
+    height: 85px;
+    justify-content: center;
+    width: 100%;
+}
+
+@keyframes bottom-fleur {
+    to {
+        background-position: center bottom;
+    }
+}
+
+.embed_wrapper::after {
+    animation: bottom-fleur 0.25s steps(5, jump-none) 1 forwards;
+    background: url('https://files.catbox.moe/0gtm6o.png') center top no-repeat;
+    content: '';
+    display: inline-flex;
+    height: 66px;
+    justify-content: center;
+    width: 100%;
+}

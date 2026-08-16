@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://bkj1s30wrgg4q"]
+
+[ext_resource type="Script" uid="uid://gvrnmvlnm6bl" path="res://src/autoload/ui/settings/audio/audio_settings_page.gd" id="2_3kpoi"]
+[ext_resource type="PackedScene" uid="uid://biisedaow62y2" path="res://src/autoload/ui/settings/setting_value_slider.tscn" id="3_hv8pd"]
+
+[node name="AudioSettingsPage" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+script = ExtResource("2_3kpoi")
+
+[node name="MasterVolumeSlider" parent="." instance=ExtResource("3_hv8pd")]
+layout_mode = 2
+setting_name = "Master Volume"
+
+[node name="MusicVolumeSlider" parent="." instance=ExtResource("3_hv8pd")]
+layout_mode = 2
+setting_name = "Music Volume"
+
+[node name="SFXVolumeSlider" parent="." instance=ExtResource("3_hv8pd")]
+layout_mode = 2
+setting_name = "SFX Volume"
+
+[connection signal="value_changed" from="MasterVolumeSlider" to="." method="_on_master_volume_slider_value_changed"]
+[connection signal="value_changed" from="MusicVolumeSlider" to="." method="_on_music_volume_slider_value_changed"]
+[connection signal="value_changed" from="SFXVolumeSlider" to="." method="_on_sfx_volume_slider_value_changed"]

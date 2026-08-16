@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://36gmo74w6e2q"]
+
+[ext_resource type="PackedScene" uid="uid://djok8768tq4tr" path="res://src/actors/health.tscn" id="1_hr3hk"]
+[ext_resource type="Script" uid="uid://nfgwo51p2xih" path="res://src/actors/actor.gd" id="1_oka2p"]
+[ext_resource type="Script" uid="uid://ci132uxvr133w" path="res://src/actors/death.gd" id="3_lvhic"]
+[ext_resource type="Script" uid="uid://dj5upywmu1hm2" path="res://src/actors/random_audio_player.gd" id="3_rktbm"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hr3hk"]
+
+[node name="Actor" type="CharacterBody3D" unique_id=1745641035]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_oka2p")
+
+[node name="Animator" type="AnimationPlayer" parent="." unique_id=1379909966]
+
+[node name="AnimationTree" type="AnimationTree" parent="Animator" unique_id=74717349]
+root_node = NodePath("../..")
+advance_expression_base_node = NodePath("../..")
+anim_player = NodePath("..")
+
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=1496356468]
+shape = SubResource("CapsuleShape3D_hr3hk")
+
+[node name="Health" parent="." unique_id=1048848430 instance=ExtResource("1_hr3hk")]
+give_silk = false
+
+[node name="Death" type="Node" parent="." unique_id=262351254 node_paths=PackedStringArray("health")]
+script = ExtResource("3_lvhic")
+health = NodePath("../Health")
+metadata/_custom_type_script = "uid://ci132uxvr133w"
+
+[node name="VoicePlayer" type="AudioStreamPlayer3D" parent="." unique_id=430572606]
+bus = &"SFX"
+script = ExtResource("3_rktbm")

@@ -1,0 +1,137 @@
+[gd_scene format=3 uid="uid://darh7o4drrasg"]
+
+[ext_resource type="PackedScene" uid="uid://dubnsno8bya0v" path="res://src/actors/enemies/enemy.tscn" id="1_n1qxd"]
+[ext_resource type="PackedScene" uid="uid://bsfr1056711yp" path="res://src/actors/enemies/phantom/phantom.glb" id="2_ix5q8"]
+[ext_resource type="ArrayMesh" uid="uid://djrx8w2k84nd4" path="res://src/actors/enemies/phantom/wings.tres" id="3_4lqec"]
+[ext_resource type="PackedScene" uid="uid://xal232da7bpf" path="res://src/gameplay/combat/damager.tscn" id="4_aygqo"]
+[ext_resource type="ArrayMesh" uid="uid://efox85te8wrt" path="res://src/actors/enemies/phantom/silk_particle1_mesh.tres" id="4_vep8l"]
+[ext_resource type="Curve" uid="uid://c2gis7phupc2g" path="res://src/resources/curves/blood_particles_curve.tres" id="5_0nndk"]
+[ext_resource type="BehaviorTree" uid="uid://1liih5vvkdi4" path="res://src/actors/enemies/phantom/phantom_behavior_tree.tres" id="5_tqvn5"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4lqec"]
+radius = 0.7
+height = 7.4609375
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ojd61"]
+cull_mode = 2
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_drhsk"]
+radius = 0.4453125
+height = 5.604492
+
+[node name="PhantomBoss" unique_id=1724463133 instance=ExtResource("1_n1qxd")]
+
+[node name="Mesh" parent="." index="1" unique_id=176040917 instance=ExtResource("2_ix5q8")]
+
+[node name="Skeleton3D" parent="Mesh/Armature" parent_id_path=PackedInt32Array(176040917, 776016117) index="0" unique_id=1095642843]
+bones/0/rotation = Quaternion(0.21599099, 0, -0.97639537, 0)
+bones/2/rotation = Quaternion(0.50000006, 0.49999997, 0.49999997, -0.49999997)
+bones/3/rotation = Quaternion(-0.73563015, 0.1352395, -0.15189414, 0.6461321)
+bones/6/rotation = Quaternion(-0.74184763, -0.06612122, 0.07472544, 0.66310346)
+bones/8/rotation = Quaternion(0, -0.4308982, 0, 0.90240055)
+bones/9/rotation = Quaternion(0, -0.4695507, 0, 0.88290554)
+bones/10/rotation = Quaternion(0.068649605, -0.05311927, -0.8302027, 0.5506625)
+bones/11/rotation = Quaternion(0.42007515, -0.17393424, 0.20753413, 0.86614853)
+bones/12/rotation = Quaternion(0.7723082, 0.058509313, 0.4147077, 0.47763404)
+bones/13/rotation = Quaternion(-0.07368506, -0.25175112, 0.73998094, 0.6193708)
+bones/14/rotation = Quaternion(0.043676883, -0.16125304, 0.04094873, 0.98509544)
+bones/15/rotation = Quaternion(0.83696365, -0.4196789, 0.16137946, 0.31195894)
+bones/16/position = Vector3(-0.06823749, -0.2319609, -0.35559478)
+bones/16/rotation = Quaternion(0.06741213, 0.8107758, 0.11631542, 0.5697095)
+bones/18/rotation = Quaternion(0.0705894, -0.02419119, -0.008175935, 0.99717855)
+
+[node name="SpineAttach" type="BoneAttachment3D" parent="Mesh/Armature/Skeleton3D" index="4" unique_id=1651600474]
+transform = Transform3D(-0.24198112, 0, 0.97028106, 0, 0.99999994, 0, -0.970281, 0, -0.24198112, -1.1338725e-10, 0.7896912, 2.1258319e-10)
+bone_name = "Spine1"
+bone_idx = 8
+
+[node name="Wings" type="SoftBody3D" parent="Mesh/Armature/Skeleton3D/SpineAttach" index="0" unique_id=1001270735]
+transform = Transform3D(0.709946, 0, 0.7042565, 0, 1.0000002, 0, -0.7042564, 0, 0.70994616, 0.08291346, -1.3903477, 0.15661487)
+mesh = ExtResource("3_4lqec")
+parent_collision_ignore = NodePath("../../../../..")
+total_mass = 0.5
+linear_stiffness = 0.8
+drag_coefficient = 0.1
+pinned_points = [91, 49, 90, 19, 127, 69, 70, 25]
+attachments/0/point_index = 91
+attachments/0/spatial_attachment_path = NodePath("")
+attachments/0/offset = Vector3(0, 0, 0)
+attachments/1/point_index = 49
+attachments/1/spatial_attachment_path = NodePath("")
+attachments/1/offset = Vector3(0, 0, 0)
+attachments/2/point_index = 90
+attachments/2/spatial_attachment_path = NodePath("")
+attachments/2/offset = Vector3(0, 0, 0)
+attachments/3/point_index = 19
+attachments/3/spatial_attachment_path = NodePath("")
+attachments/3/offset = Vector3(0, 0, 0)
+attachments/4/point_index = 127
+attachments/4/spatial_attachment_path = NodePath("")
+attachments/4/offset = Vector3(0, 0, 0)
+attachments/5/point_index = 69
+attachments/5/spatial_attachment_path = NodePath("")
+attachments/5/offset = Vector3(0, 0, 0)
+attachments/6/point_index = 70
+attachments/6/spatial_attachment_path = NodePath("")
+attachments/6/offset = Vector3(0, 0, 0)
+attachments/7/point_index = 25
+attachments/7/spatial_attachment_path = NodePath("")
+attachments/7/offset = Vector3(0, 0, 0)
+
+[node name="AnimationPlayer" parent="Mesh" index="1" unique_id=913755212]
+autoplay = &"Idle"
+
+[node name="Collision" parent="." index="2" unique_id=1496356468]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3465714, 0)
+shape = SubResource("CapsuleShape3D_4lqec")
+
+[node name="Health" parent="." index="3" unique_id=1048848430 node_paths=PackedStringArray("damage_particles")]
+max_health = 650
+damage_particles = [NodePath("SilkParticles")]
+
+[node name="BloodParticles" parent="Health" index="1" unique_id=384959486]
+visible = false
+
+[node name="SilkParticles" type="CPUParticles3D" parent="Health" index="2" unique_id=1576864788]
+material_override = SubResource("StandardMaterial3D_ojd61")
+emitting = false
+amount = 64
+lifetime = 0.35000000000000003
+one_shot = true
+explosiveness = 1.0
+randomness = 0.67
+lifetime_randomness = 0.59
+mesh = ExtResource("4_vep8l")
+emission_shape = 1
+emission_sphere_radius = 1.0
+particle_flag_align_y = true
+direction = Vector3(1, 1, 0)
+gravity = Vector3(0, -10, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 15.0
+angular_velocity_min = 8.0
+angular_velocity_max = 16.0
+radial_accel_min = -6.67
+radial_accel_max = 15.83
+scale_amount_min = 0.25
+scale_amount_max = 0.5
+scale_amount_curve = ExtResource("5_0nndk")
+
+[node name="Damager" parent="." index="4" unique_id=443682562 instance=ExtResource("4_aygqo")]
+collision_layer = 16
+
+[node name="Collision" parent="Damager" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45751953, 0)
+shape = SubResource("CapsuleShape3D_drhsk")
+
+[node name="Flasher" parent="." index="6" unique_id=1018484248 node_paths=PackedStringArray("_meshes")]
+_meshes = [NodePath("../Mesh/Armature/Skeleton3D/Body"), NodePath("../Mesh/Armature/Skeleton3D/Head"), NodePath("../Mesh/Armature/Skeleton3D/Mask"), NodePath("../Mesh/Armature/Skeleton3D/SpineAttach/Wings")]
+
+[node name="BehaviorTree" parent="." index="8" unique_id=1868026853]
+behavior_tree = ExtResource("5_tqvn5")
+
+[editable path="Mesh"]
+[editable path="Health"]
+[editable path="Damager"]

@@ -1,0 +1,239 @@
+[gd_scene format=3 uid="uid://cwc5xgupucvyt"]
+
+[ext_resource type="Script" uid="uid://dj5upywmu1hm2" path="res://src/actors/random_audio_player.gd" id="1_hr7f7"]
+[ext_resource type="AudioStream" uid="uid://bqqnmgh6gml0o" path="res://src/copyrighted/sfx/hornet/hurt/normal/hero_damage_less_harsh.wav" id="2_w2dfj"]
+
+[sub_resource type="Animation" id="Animation_fh0ll"]
+resource_name = "Hit"
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(20, 20, 20)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mesh:surface_material_override/0:shader_parameter/Alpha")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.5, 0.0]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("LeftCrackEffect")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [true],
+"method": &"set_emitting"
+}]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("RightCrackEffect")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [true],
+"method": &"set_emitting"
+}]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("HitAudio")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0, 0.85, 1.15],
+"method": &"play_random"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_o0856"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mesh:surface_material_override/0:shader_parameter/Alpha")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o0856"]
+_data = {
+&"Hit": SubResource("Animation_fh0ll"),
+&"RESET": SubResource("Animation_o0856")
+}
+
+[sub_resource type="SphereMesh" id="SphereMesh_3hqh3"]
+
+[sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_avddw"]
+
+[sub_resource type="Gradient" id="Gradient_x4adb"]
+resource_local_to_scene = true
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.8005865, 0.9985337, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mcsty"]
+gradient = SubResource("Gradient_x4adb")
+fill_from = Vector2(0.48504272, 1)
+fill_to = Vector2(0.48290598, 0.034188036)
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_ssa7n"]
+texture = SubResource("GradientTexture2D_mcsty")
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_bctpt"]
+parameter_name = "Alpha"
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_ykbd4"]
+operator = 2
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_14efb"]
+operator = 6
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_1irvr"]
+input_name = "uv"
+
+[sub_resource type="VisualShader" id="VisualShader_3onww"]
+resource_local_to_scene = true
+nodes/fragment/0/position = Vector2(680, 580)
+nodes/fragment/8/node = SubResource("VisualShaderNodeInput_1irvr")
+nodes/fragment/8/position = Vector2(-2580, 740)
+nodes/fragment/12/node = SubResource("VisualShaderNodeUVFunc_avddw")
+nodes/fragment/12/position = Vector2(-1680, 680)
+nodes/fragment/13/node = SubResource("VisualShaderNodeTexture_ssa7n")
+nodes/fragment/13/position = Vector2(-920, 500)
+nodes/fragment/15/node = SubResource("VisualShaderNodeFloatParameter_bctpt")
+nodes/fragment/15/position = Vector2(-980, 1240)
+nodes/fragment/16/node = SubResource("VisualShaderNodeFloatOp_ykbd4")
+nodes/fragment/16/position = Vector2(-160, 600)
+nodes/fragment/17/node = SubResource("VisualShaderNodeFloatOp_14efb")
+nodes/fragment/17/position = Vector2(660, 580)
+nodes/fragment/connections = PackedInt32Array(12, 0, 13, 0, 8, 0, 12, 0, 13, 0, 16, 0, 15, 0, 16, 1, 16, 0, 0, 1, 16, 0, 17, 0, 17, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jrce2"]
+resource_local_to_scene = true
+render_priority = 0
+shader = SubResource("VisualShader_3onww")
+shader_parameter/Alpha = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_avddw"]
+shading_mode = 0
+
+[sub_resource type="SphereMesh" id="SphereMesh_hr7f7"]
+material = SubResource("StandardMaterial3D_avddw")
+radius = 0.25
+height = 0.5
+
+[sub_resource type="Curve" id="Curve_w2dfj"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.9405919, 0.0, 0, 0]
+point_count = 2
+
+[node name="PlayerHitEffect" type="Node3D" unique_id=1531162591]
+
+[node name="Animator" type="AnimationPlayer" parent="." unique_id=784061316]
+libraries/ = SubResource("AnimationLibrary_o0856")
+autoplay = &"Hit"
+
+[node name="HitAudio" type="AudioStreamPlayer3D" parent="." unique_id=1934592231]
+unit_size = 32.0
+bus = &"SFX"
+script = ExtResource("1_hr7f7")
+audio_clips = Array[AudioStream]([ExtResource("2_w2dfj")])
+metadata/_custom_type_script = "uid://dj5upywmu1hm2"
+
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=734043411]
+transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+mesh = SubResource("SphereMesh_3hqh3")
+surface_material_override/0 = SubResource("ShaderMaterial_jrce2")
+
+[node name="LeftCrackEffect" type="CPUParticles3D" parent="." unique_id=981187269]
+emitting = false
+amount = 256
+lifetime = 0.38
+one_shot = true
+preprocess = 0.13
+explosiveness = 1.0
+randomness = 1.0
+local_coords = true
+mesh = SubResource("SphereMesh_hr7f7")
+direction = Vector3(-1, 0, 0)
+spread = 15.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 30.0
+initial_velocity_max = 50.0
+scale_amount_min = 0.5
+scale_amount_curve = SubResource("Curve_w2dfj")
+
+[node name="RightCrackEffect" type="CPUParticles3D" parent="." unique_id=526859606]
+emitting = false
+amount = 256
+lifetime = 0.38
+one_shot = true
+preprocess = 0.13
+explosiveness = 1.0
+randomness = 1.0
+local_coords = true
+mesh = SubResource("SphereMesh_hr7f7")
+spread = 15.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 30.0
+initial_velocity_max = 50.0
+scale_amount_min = 0.5
+scale_amount_curve = SubResource("Curve_w2dfj")

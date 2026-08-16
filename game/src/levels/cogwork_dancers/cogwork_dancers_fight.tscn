@@ -1,0 +1,958 @@
+[gd_scene format=3 uid="uid://dugp1elqcy03h"]
+
+[ext_resource type="PackedScene" uid="uid://c7e6xi1cekoax" path="res://src/levels/base_level.tscn" id="1_frof6"]
+[ext_resource type="Resource" uid="uid://cbxskjf0ajc00" path="res://src/resources/music/cogdancers2.tres" id="2_0qq8w"]
+[ext_resource type="Resource" uid="uid://s05a04ohrxuf" path="res://src/resources/music/cogdancers1.tres" id="2_sd8jx"]
+[ext_resource type="Script" uid="uid://ob43xcsgefpw" path="res://src/levels/cogwork_dancers/cogwork_dancers_fight.gd" id="2_seyxp"]
+[ext_resource type="Environment" uid="uid://dpsb82o3h1rey" path="res://src/resources/world_environments/cogwork_dancers_environment.tres" id="3_fi3d2"]
+[ext_resource type="Script" uid="uid://bq4j0l51gfuco" path="res://src/levels/material_floor.gd" id="3_q2pry"]
+[ext_resource type="PackedScene" uid="uid://wme5tm2qkeg2" path="res://src/levels/cogwork_dancers/arena_wall.tscn" id="4_gi80b"]
+[ext_resource type="Resource" uid="uid://cdhpw43qtfwce" path="res://src/resources/random_audio_plays/footsteps_metal.tres" id="4_qax2k"]
+[ext_resource type="Texture2D" uid="uid://cddh7us3g7l8c" path="res://src/levels/cogwork_dancers/GroundDiffuse.png" id="5_1nr1l"]
+[ext_resource type="AudioStream" uid="uid://dkuoifc3ivndh" path="res://src/copyrighted/sfx/hornet/movement/metal/hornet_land_metal.wav" id="5_qax2k"]
+[ext_resource type="PackedScene" uid="uid://bs1v5xrhsia2d" path="res://src/levels/cogwork_dancers/waypoint.tscn" id="5_sd8jx"]
+[ext_resource type="PackedScene" uid="uid://c1fle5fyo6r8h" path="res://src/actors/enemies/cogwork_dancers/cogwork_dancer.tscn" id="5_xmi2e"]
+[ext_resource type="PackedScene" uid="uid://dfpirxhj8gky4" path="res://src/levels/cogwork_dancers/ceiling.glb" id="6_e4ccn"]
+[ext_resource type="Script" uid="uid://ecvq3yiktph3" path="res://src/levels/cogwork_dancers/dancer_manager.gd" id="6_jgp2n"]
+[ext_resource type="Texture2D" uid="uid://b02pbhqu2cqf" path="res://src/levels/cogwork_dancers/GroundNormal.png" id="6_t6wio"]
+[ext_resource type="Script" uid="uid://dxbi27aygq70q" path="res://src/levels/spinner.gd" id="6_y2jbv"]
+[ext_resource type="Script" uid="uid://q4qqnvxnwemw" path="res://src/autoload/audio/music_track.gd" id="9_4y2hd"]
+[ext_resource type="Script" uid="uid://b5oj3iqy1cnm" path="res://src/levels/cogwork_dancers/spin_slashes.gd" id="9_vv8co"]
+[ext_resource type="PackedScene" uid="uid://xal232da7bpf" path="res://src/gameplay/combat/damager.tscn" id="9_xmi2e"]
+[ext_resource type="Resource" uid="uid://b8l05qok73wph" path="res://src/resources/music/cogdancers3.tres" id="11_42bj1"]
+[ext_resource type="AudioStream" uid="uid://b1pa7q3ccdpaw" path="res://src/copyrighted/cogwork_dancers/sfx/clockwork_dancers_middle_white_circle.wav" id="11_uj4lg"]
+[ext_resource type="PackedScene" uid="uid://chkk3uavdu205" path="res://src/levels/cogwork_dancers/spin_slash_effect.tscn" id="11_x4adb"]
+[ext_resource type="Resource" uid="uid://fkmii6aywjmi" path="res://src/resources/music/cogdancers4.tres" id="12_42bj1"]
+[ext_resource type="AudioStream" uid="uid://dpp1bvp5t1cfq" path="res://src/copyrighted/cogwork_dancers/sfx/clockwork_dancers_centre_meet_and_slashes.wav" id="12_a4ncn"]
+[ext_resource type="PackedScene" uid="uid://bcaddbgdttgyu" path="res://src/levels/cogwork_dancers/dasher.tscn" id="12_awspu"]
+[ext_resource type="PackedScene" uid="uid://bqltw4st6n5jx" path="res://src/levels/cogwork_dancers/cogwork_dancers_environment.glb" id="17_glf46"]
+[ext_resource type="Material" uid="uid://cgnxxrytvhv4q" path="res://src/resources/materials/fading_ring_material.tres" id="18_ox3hg"]
+[ext_resource type="PackedScene" uid="uid://dv0vitwdg4ybr" path="res://src/levels/cogwork_dancers/pendulum.glb" id="24_e4ccn"]
+[ext_resource type="PackedScene" uid="uid://q7887peqb1cm" path="res://src/levels/cogwork_dancers/gear.glb" id="25_twn58"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4y2hd"]
+albedo_texture = ExtResource("5_1nr1l")
+metallic = 0.28
+roughness = 0.67
+normal_enabled = true
+normal_texture = ExtResource("6_t6wio")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_uw0g5"]
+material = SubResource("StandardMaterial3D_4y2hd")
+size = Vector2(60, 60)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gi80b"]
+size = Vector3(60, 10, 60)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e4ccn"]
+size = Vector3(64, 16, 64)
+
+[sub_resource type="Animation" id="Animation_vv8co"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Antic/Light:omni_range")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [30.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Antic/Light:light_energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Antic:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "scale_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Antic/Mesh")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, 1, 1, 1)
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Slashes:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Slashes/SlashEffect1/Visual/BézierCurve:surface_material_override/0:shader_parameter/SlashGradientSliderX")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.5]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Slashes/SlashEffect2/Visual/BézierCurve:surface_material_override/0:shader_parameter/SlashGradientSliderX")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.5]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Slashes/SlashEffect3/Visual/BézierCurve:surface_material_override/0:shader_parameter/SlashGradientSliderX")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.5]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Slashes/SlashEffect4/Visual/BézierCurve:surface_material_override/0:shader_parameter/SlashGradientSliderX")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.5]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Slashes/SlashEffect5/Visual/BézierCurve:surface_material_override/0:shader_parameter/SlashGradientSliderX")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.5]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Slashes/SlashEffect6/Visual/BézierCurve:surface_material_override/0:shader_parameter/SlashGradientSliderX")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.5]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Slashes/SlashEffect7/Visual/BézierCurve:surface_material_override/0:shader_parameter/SlashGradientSliderX")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.5]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Slashes/SlashEffect8/Visual/BézierCurve:surface_material_override/0:shader_parameter/SlashGradientSliderX")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.5]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Slashes/SlashEffect9/Visual/BézierCurve:surface_material_override/0:shader_parameter/SlashGradientSliderX")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Slashes/SlashEffect10/Visual/BézierCurve:surface_material_override/0:shader_parameter/SlashGradientSliderX")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Slashes/SlashEffect11/Visual/BézierCurve:surface_material_override/0:shader_parameter/SlashGradientSliderX")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Slashes/SlashEffect12/Visual/BézierCurve:surface_material_override/0:shader_parameter/SlashGradientSliderX")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Slashes/SlashEffect13/Visual/BézierCurve:surface_material_override/0:shader_parameter/SlashGradientSliderX")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Slashes/SlashEffect14/Visual/BézierCurve:surface_material_override/0:shader_parameter/SlashGradientSliderX")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("Slashes/SlashEffect15/Visual/BézierCurve:surface_material_override/0:shader_parameter/SlashGradientSliderX")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("Slashes/SlashEffect16/Visual/BézierCurve:surface_material_override/0:shader_parameter/SlashGradientSliderX")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("Antic/Mesh:mesh:material:shader_parameter/Alpha")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.5]
+}
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("Damager/Collision:disabled")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_x4adb"]
+resource_name = "Slashes"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Antic/Light:omni_range")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [30.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Antic/Light:light_energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [30.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Slashes:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Slashes/SlashEffect1/Visual/BézierCurve:surface_material_override/0:shader_parameter/SlashGradientSliderX")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.3, 0.36991635, 0.5918662, 0.7168662, 0.8333333, 0.89094746),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Slashes/SlashEffect2/Visual/BézierCurve:surface_material_override/0:shader_parameter/SlashGradientSliderX")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.17500001, 0.3, 0.46666667, 0.5416667, 0.775, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.5, -0.5, -0.5, 0.5, 0.5, -0.5]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Slashes/SlashEffect3/Visual/BézierCurve:surface_material_override/0:shader_parameter/SlashGradientSliderX")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.075, 0.2, 0.55833334, 0.6666667, 0.80751956, 0.93251956),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.5, -0.5, -0.5, 0.5, 0.5, -0.5]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Slashes/SlashEffect4/Visual/BézierCurve:surface_material_override/0:shader_parameter/SlashGradientSliderX")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.20833334, 0.33333334, 0.52260524, 0.64760524, 0.8333333, 0.9177074),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.5, -0.5, 0.5, -0.5, -0.5, 0.5]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Slashes/SlashEffect5/Visual/BézierCurve:surface_material_override/0:shader_parameter/SlashGradientSliderX")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.1275031, 0.2525031, 0.49166664, 0.56666666, 0.8059454, 0.9309454),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.5, -0.5, -0.5, 0.5, 0.5, -0.5]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Slashes/SlashEffect6/Visual/BézierCurve:surface_material_override/0:shader_parameter/SlashGradientSliderX")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.03333336, 0.15833336, 0.33333334, 0.4171397, 0.73038805, 0.85538805),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.5, -0.5, -0.5, 0.5, 0.5, -0.5]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Slashes/SlashEffect7/Visual/BézierCurve:surface_material_override/0:shader_parameter/SlashGradientSliderX")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.29435897, 0.41935897, 0.56666666, 0.64166665, 0.8333333, 0.93333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Slashes/SlashEffect8/Visual/BézierCurve:surface_material_override/0:shader_parameter/SlashGradientSliderX")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0.051347826, 0.17634782, 0.25833333, 0.33333334, 0.5, 0.625, 0.8762231, 0.96666664),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Slashes/SlashEffect9/Visual/BézierCurve:surface_material_override/0:shader_parameter/SlashGradientSliderX")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.3, 0.3777869, 0.74612916, 0.87112916),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.5, -0.5, -0.5, 0.5, 0.5, -0.5]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Slashes/SlashEffect10/Visual/BézierCurve:surface_material_override/0:shader_parameter/SlashGradientSliderX")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 0.0047223363, 0.12972234, 0.2581544, 0.3831544, 0.46666667, 0.65325654, 0.6579789, 0.7829789, 0.88315433, 0.96666664),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.5, -0.5, 0.5, -0.5, 0.0, 0.0, 0.5, -0.5, -0.5, 0.0]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Slashes/SlashEffect11/Visual/BézierCurve:surface_material_override/0:shader_parameter/SlashGradientSliderX")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 0.0047223363, 0.12972234, 0.2849143, 0.28963664, 0.41463667, 0.6, 0.74770325, 0.75242555, 0.8333334, 0.83805573, 0.96305573),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.5, -0.5, 0.0, 0.5, -0.5, -0.5, 0.0, 0.5, 0.0, 0.5, -0.5]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Slashes/SlashEffect12/Visual/BézierCurve:surface_material_override/0:shader_parameter/SlashGradientSliderX")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0, 0.0047223363, 0.12972234, 0.3, 0.36519402, 0.36991635, 0.53333336, 0.6, 0.6047224, 0.7681393, 0.8333333, 0.8380557, 0.8967503, 0.9619443, 0.96666664),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.5, -0.5, -0.5, 0.0, 0.5, -0.5, 0.0, 0.5, -0.5, 0.0, 0.5, -0.5, 0.0, 0.5]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Slashes/SlashEffect13/Visual/BézierCurve:surface_material_override/0:shader_parameter/SlashGradientSliderX")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0, 0.0047223363, 0.12972234, 0.26666668, 0.34166667, 0.59973675, 0.72473675, 0.8311312, 0.9061312),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Slashes/SlashEffect14/Visual/BézierCurve:surface_material_override/0:shader_parameter/SlashGradientSliderX")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0, 0.0047223363, 0.12972234, 0.19999999, 0.32741532, 0.33213764, 0.46666667, 0.6233484, 0.7530707, 0.85789114, 0.9853065, 0.9900288),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.5, -0.5, -0.5, 0.0, 0.5, 0.5, 0.0, -0.5, -0.5, 0.0, 0.5]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Slashes/SlashEffect15/Visual/BézierCurve:surface_material_override/0:shader_parameter/SlashGradientSliderX")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0, 0.0047223363, 0.12972234, 0.33333334, 0.40926915, 0.41399148, 0.5651063, 0.5698286, 0.6948286, 0.76666665, 0.8043713, 0.8090936, 0.8689099, 0.87363225, 0.96666664),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.5, -0.5, -0.5, 0.0, 0.5, 0.0, 0.5, -0.5, -0.5, 0.0, 0.5, 0.0, 0.5, -0.5]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Slashes/SlashEffect16/Visual/BézierCurve:surface_material_override/0:shader_parameter/SlashGradientSliderX")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0, 0.0047223363, 0.12972234, 0.26602495, 0.27074727, 0.3957473, 0.56666666, 0.6280708, 0.63279307, 0.785482, 0.93333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.5, -0.5, 0.0, 0.5, -0.5, -0.5, 0.0, 0.5, -0.5, 0.0]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("Damager/Collision:disabled")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_xmi2e"]
+resource_name = "Spin Antic"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Antic/Light:omni_range")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [30.0, 32.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Antic/Light:light_energy")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [100.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Antic:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "scale_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Antic/Mesh")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, 1, 1, 1, 0.5, 1, 1.1, 1.1, 1.1)
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Antic/Mesh:mesh:material:shader_parameter/Alpha")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x4adb"]
+_data = {
+&"RESET": SubResource("Animation_vv8co"),
+&"Slashes": SubResource("Animation_x4adb"),
+&"Spin Antic": SubResource("Animation_xmi2e")
+}
+
+[sub_resource type="SphereMesh" id="SphereMesh_e4ccn"]
+resource_local_to_scene = true
+material = ExtResource("18_ox3hg")
+radius = 12.0
+height = 24.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_twn58"]
+radius = 12.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_seyxp"]
+size = Vector3(40, 32, 40)
+
+[node name="CogworkDancersFight" unique_id=1725877029 node_paths=PackedStringArray("_doors") instance=ExtResource("1_frof6")]
+script = ExtResource("2_seyxp")
+_doors = [NodePath("Physical/WallL"), NodePath("Physical/WallR"), NodePath("Physical/WallBack")]
+
+[node name="WorldEnvironment" parent="Environment" parent_id_path=PackedInt32Array(921388622) index="0" unique_id=986338651]
+environment = ExtResource("3_fi3d2")
+
+[node name="WindowLight" type="DirectionalLight3D" parent="Environment" parent_id_path=PackedInt32Array(921388622) index="1" unique_id=486035112]
+transform = Transform3D(-1, -6.238395e-15, -8.742276e-08, -2.260014e-08, 0.96600735, 0.25851557, 8.4451e-08, 0.25851557, -0.96600735, 0, 41.384796, -118.976295)
+light_color = Color(0.7647059, 0.827451, 0.8784314, 1)
+light_energy = 4.0
+light_volumetric_fog_energy = 0.2
+shadow_enabled = true
+shadow_opacity = 0.5
+
+[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="Environment" parent_id_path=PackedInt32Array(921388622) index="2" unique_id=1893366064]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.19979858, 25.18544, -5.1095886)
+size = Vector3(97.74127, 50.75241, 58.673035)
+
+[node name="CameraController" parent="." index="4" unique_id=969489915]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.728561, 50.48007)
+
+[node name="Player" parent="." index="5" unique_id=1127319379]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.18139, 50.52649)
+
+[node name="Physical" type="Node3D" parent="." index="6" unique_id=145985667]
+
+[node name="Ground" type="StaticBody3D" parent="Physical" index="0" unique_id=1650733460]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.43029)
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("3_q2pry")
+footsteps_audio = ExtResource("4_qax2k")
+land_audio = ExtResource("5_qax2k")
+
+[node name="Mesh" type="MeshInstance3D" parent="Physical/Ground" index="0" unique_id=386614635]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
+mesh = SubResource("PlaneMesh_uw0g5")
+
+[node name="Collision" type="CollisionShape3D" parent="Physical/Ground" index="1" unique_id=1697732294]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
+shape = SubResource("BoxShape3D_gi80b")
+
+[node name="WallFront" type="StaticBody3D" parent="Physical" index="1" unique_id=1837257105]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 18, -28.328636)
+collision_layer = 4
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="Physical/WallFront" index="0" unique_id=1132561651]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
+shape = SubResource("BoxShape3D_gi80b")
+
+[node name="WallL" parent="Physical" index="2" unique_id=1865129205 instance=ExtResource("4_gi80b")]
+transform = Transform3D(-2.5, 0, 0, 0, 2.5, -2.1855695e-07, 0, 2.1855695e-07, 2.5, -0.7, 3.75, -38.018005)
+
+[node name="WallR" parent="Physical" index="3" unique_id=1493135478 instance=ExtResource("4_gi80b")]
+transform = Transform3D(2.5, 1.9106854e-14, -2.1855695e-07, 0, 2.5, 2.1855695e-07, -2.1855695e-07, 2.1855695e-07, -2.5, 1.173, 3.75, 27.395)
+
+[node name="WallBack" parent="Physical" index="4" unique_id=1307914719 instance=ExtResource("4_gi80b")]
+transform = Transform3D(-1.09278474e-07, -9.553427e-15, 2.5, -2.1855695e-07, 2.5, 0, 2.5, 2.1855695e-07, 1.09278474e-07, -32.326725, 3.75, -3.9762406)
+
+[node name="Ceiling" type="StaticBody3D" parent="Physical" index="5" unique_id=1529425516]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.2314262, 0)
+collision_layer = 4
+collision_mask = 0
+
+[node name="Mesh" parent="Physical/Ceiling" index="0" unique_id=1173642712 instance=ExtResource("6_e4ccn")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, -38.3868)
+
+[node name="Collision" type="CollisionShape3D" parent="Physical/Ceiling" index="1" unique_id=528636113]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 37.411846, 0)
+shape = SubResource("BoxShape3D_e4ccn")
+
+[node name="DancerManager" type="Node3D" parent="." index="7" unique_id=1911745866 node_paths=PackedStringArray("starting_waypoint1", "starting_waypoint2", "alcove1", "alcove2", "dashers")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14, 0)
+script = ExtResource("6_jgp2n")
+music_list = Dictionary[int, ExtResource("9_4y2hd")]({
+1: ExtResource("2_sd8jx"),
+2: ExtResource("2_0qq8w"),
+3: ExtResource("11_42bj1"),
+4: ExtResource("12_42bj1")
+})
+starting_waypoint1 = NodePath("../Waypoints/BottomLayer/Waypoint4")
+starting_waypoint2 = NodePath("../Waypoints/BottomLayer/Waypoint6")
+alcove1 = NodePath("../Scene/Alcove1")
+alcove2 = NodePath("../Scene/Alcove2")
+dashers = [NodePath("../DasherAttack/Dasher1"), NodePath("../DasherAttack/Dasher2"), NodePath("../DasherAttack/Dasher3"), NodePath("../DasherAttack/Dasher4"), NodePath("../DasherAttack/Dasher5"), NodePath("../DasherAttack/Dasher6"), NodePath("../DasherAttack/Dasher7"), NodePath("../DasherAttack/Dasher8"), NodePath("../DasherAttack/Dasher9"), NodePath("../DasherAttack/Dasher10"), NodePath("../DasherAttack/Dasher11"), NodePath("../DasherAttack/Dasher12")]
+
+[node name="Spinner" type="Node3D" parent="DancerManager" index="0" unique_id=1901277564]
+script = ExtResource("6_y2jbv")
+deg_per_sec = 1080.0
+
+[node name="DancerSpinTarget1" type="Marker3D" parent="DancerManager/Spinner" index="0" unique_id=1617279431]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+
+[node name="Dancer1" parent="DancerManager/Spinner/DancerSpinTarget1" index="0" unique_id=2100360912 instance=ExtResource("5_xmi2e")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -15.500874, 2.9876213, -37.263626)
+top = true
+
+[node name="DancerSpinTarget2" type="Marker3D" parent="DancerManager/Spinner" index="1" unique_id=57978526]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+
+[node name="Dancer2" parent="DancerManager/Spinner/DancerSpinTarget2" index="0" unique_id=322091899 instance=ExtResource("5_xmi2e")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 15.5, 3, -37.264168)
+
+[node name="SpinSlashes" type="Node3D" parent="DancerManager" index="1" unique_id=100545961]
+script = ExtResource("9_vv8co")
+antic_audio = ExtResource("11_uj4lg")
+slash_audio = ExtResource("12_a4ncn")
+
+[node name="Animator" type="AnimationPlayer" parent="DancerManager/SpinSlashes" index="0" unique_id=1554504291]
+libraries/ = SubResource("AnimationLibrary_x4adb")
+autoplay = &"RESET"
+
+[node name="SlashAudio" type="AudioStreamPlayer3D" parent="DancerManager/SpinSlashes" index="1" unique_id=1817621710]
+unit_size = 32.0
+
+[node name="Antic" type="Node3D" parent="DancerManager/SpinSlashes" index="2" unique_id=1749079558]
+visible = false
+
+[node name="Mesh" type="MeshInstance3D" parent="DancerManager/SpinSlashes/Antic" index="0" unique_id=1269285595]
+mesh = SubResource("SphereMesh_e4ccn")
+skeleton = NodePath("../..")
+
+[node name="Light" type="OmniLight3D" parent="DancerManager/SpinSlashes/Antic" index="1" unique_id=86876157]
+light_energy = 0.0
+omni_range = 30.0
+
+[node name="Damager" parent="DancerManager/SpinSlashes" index="3" unique_id=1010172926 instance=ExtResource("9_xmi2e")]
+collision_layer = 16
+damage_amount = 2
+multi_hit = true
+
+[node name="Collision" parent="DancerManager/SpinSlashes/Damager" index="0"]
+shape = SubResource("SphereShape3D_twn58")
+disabled = true
+
+[node name="Slashes" type="Node3D" parent="DancerManager/SpinSlashes" index="4" unique_id=1567350241]
+visible = false
+
+[node name="SlashEffect1" parent="DancerManager/SpinSlashes/Slashes" index="0" unique_id=2106558455 instance=ExtResource("11_x4adb")]
+transform = Transform3D(3.2277231, 0, -7.319959, 3.2438357, 7.171582, 1.4303637, 6.561961, -3.5451953, 2.8934853, 0, 0, 0)
+
+[node name="SlashEffect2" parent="DancerManager/SpinSlashes/Slashes" index="1" unique_id=2038322655 instance=ExtResource("11_x4adb")]
+transform = Transform3D(-1.8496609, 2.3185172, -7.429888, -1.1826742, 7.4644094, 2.6237147, 7.692856, 1.7050145, -1.3830717, 0, 0, 0)
+
+[node name="SlashEffect3" parent="DancerManager/SpinSlashes/Slashes" index="2" unique_id=724574752 instance=ExtResource("11_x4adb")]
+transform = Transform3D(-7.7347927, -0.5322856, -1.9722193, -1.6387258, 6.22822, 4.7459283, 1.219653, 4.992587, -6.1307836, 0, 0, 0)
+
+[node name="SlashEffect4" parent="DancerManager/SpinSlashes/Slashes" index="3" unique_id=98411975 instance=ExtResource("11_x4adb")]
+transform = Transform3D(-2.5832946, 4.1472683, -6.3345685, 4.381167, 6.277563, 2.323267, 6.1751094, -2.7188888, -4.298333, 0, 0, 0)
+
+[node name="SlashEffect5" parent="DancerManager/SpinSlashes/Slashes" index="4" unique_id=1722614749 instance=ExtResource("11_x4adb")]
+transform = Transform3D(-6.200973, -0.21187624, -5.050052, -1.3439238, 7.7743673, 1.324029, 4.872556, 1.8746461, -6.061675, 0, 0, 0)
+
+[node name="SlashEffect6" parent="DancerManager/SpinSlashes/Slashes" index="5" unique_id=1631116881 instance=ExtResource("11_x4adb")]
+transform = Transform3D(1.1511973, -5.1621566, -6.002238, 0.5609019, 6.103306, -5.141504, 7.896843, 0.3190267, 1.2401955, 0, 0, 0)
+
+[node name="SlashEffect7" parent="DancerManager/SpinSlashes/Slashes" index="6" unique_id=1941357036 instance=ExtResource("11_x4adb")]
+transform = Transform3D(0.80028415, -0.9585162, 7.9019504, 2.607448, 7.5351686, 0.6499483, -7.5206895, 2.5104718, 1.0661948, 0, 0, 0)
+
+[node name="SlashEffect8" parent="DancerManager/SpinSlashes/Slashes" index="7" unique_id=441774369 instance=ExtResource("11_x4adb")]
+transform = Transform3D(7.5629096, -2.60319, -0.16064209, 2.4676826, 6.9825106, 3.025735, -0.84436244, -2.909973, 7.403996, 0, 0, 0)
+
+[node name="SlashEffect9" parent="DancerManager/SpinSlashes/Slashes" index="8" unique_id=1036662812 instance=ExtResource("11_x4adb")]
+transform = Transform3D(-4.225738, 5.5431066, 3.9264643, 6.5744247, 4.5006595, 0.72180843, -1.7088237, 3.6080525, -6.93267, 0, 0, 0)
+
+[node name="SlashEffect10" parent="DancerManager/SpinSlashes/Slashes" index="9" unique_id=140353628 instance=ExtResource("11_x4adb")]
+transform = Transform3D(-4.13944, -1.9201397, 6.5710073, 3.0709412, 6.3420763, 3.7877977, -6.1183624, 4.482317, -2.5445, 0, 0, 0)
+
+[node name="SlashEffect11" parent="DancerManager/SpinSlashes/Slashes" index="10" unique_id=1045988708 instance=ExtResource("11_x4adb")]
+transform = Transform3D(6.0284915, 4.102507, 3.2903986, -1.9520457, 6.39334, -4.3948536, -4.883319, 2.5089145, 5.8188114, 0, 0, 0)
+
+[node name="SlashEffect12" parent="DancerManager/SpinSlashes/Slashes" index="11" unique_id=342871789 instance=ExtResource("11_x4adb")]
+transform = Transform3D(3.3607354, -1.7125113, 7.054983, 1.4024706, 7.7809467, 1.2206433, -7.1231, 0.72401667, 3.5689325, 0, 0, 0)
+
+[node name="SlashEffect13" parent="DancerManager/SpinSlashes/Slashes" index="12" unique_id=257670661 instance=ExtResource("11_x4adb")]
+transform = Transform3D(-7.752951, 1.5822599, -1.1782278, 0.41425806, 5.9772444, 5.301036, 1.9287722, 5.0763226, -5.8745933, 0, 0, 0)
+
+[node name="SlashEffect14" parent="DancerManager/SpinSlashes/Slashes" index="13" unique_id=650125792 instance=ExtResource("11_x4adb")]
+transform = Transform3D(-4.130277, 4.0901647, 5.4964886, 1.9512237, 6.85445, -3.6344566, -6.5676146, -0.5358046, -4.5364494, 0, 0, 0)
+
+[node name="SlashEffect15" parent="DancerManager/SpinSlashes/Slashes" index="14" unique_id=584428417 instance=ExtResource("11_x4adb")]
+transform = Transform3D(6.012087, 3.4284577, -4.012544, -1.3540106, 6.8805695, 3.850252, 5.1011252, -2.2143776, 5.7510924, 0, 0, 0)
+
+[node name="SlashEffect16" parent="DancerManager/SpinSlashes/Slashes" index="15" unique_id=317506661 instance=ExtResource("11_x4adb")]
+transform = Transform3D(0.07049059, -0.7724493, 7.962308, 5.8465347, 5.4398055, 0.4759727, -5.460132, 5.8147955, 0.6124514, 0, 0, 0)
+
+[node name="TeleportPoint" type="Marker3D" parent="DancerManager" index="2" unique_id=1589621657]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 35, 0)
+
+[node name="Waypoints" type="Node3D" parent="." index="8" unique_id=598213717]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -1.9674954)
+
+[node name="TopLayer" type="Node3D" parent="Waypoints" index="0" unique_id=2010810712]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 24, 0.1)
+
+[node name="Waypoint1" parent="Waypoints/TopLayer" index="0" unique_id=1586998555 instance=ExtResource("5_sd8jx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, -25)
+
+[node name="Waypoint2" parent="Waypoints/TopLayer" index="1" unique_id=981450654 instance=ExtResource("5_sd8jx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -25)
+
+[node name="Waypoint3" parent="Waypoints/TopLayer" index="2" unique_id=1845477152 instance=ExtResource("5_sd8jx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, -25)
+
+[node name="Waypoint4" parent="Waypoints/TopLayer" index="3" unique_id=1365708658 instance=ExtResource("5_sd8jx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, 0)
+
+[node name="Waypoint5" parent="Waypoints/TopLayer" index="4" unique_id=44681649 instance=ExtResource("5_sd8jx")]
+
+[node name="Waypoint6" parent="Waypoints/TopLayer" index="5" unique_id=1382045739 instance=ExtResource("5_sd8jx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, 0)
+
+[node name="Waypoint7" parent="Waypoints/TopLayer" index="6" unique_id=1090880583 instance=ExtResource("5_sd8jx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, 25)
+
+[node name="Waypoint8" parent="Waypoints/TopLayer" index="7" unique_id=833451238 instance=ExtResource("5_sd8jx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 25)
+
+[node name="Waypoint9" parent="Waypoints/TopLayer" index="8" unique_id=319087522 instance=ExtResource("5_sd8jx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, 25)
+
+[node name="BottomLayer" type="Node3D" parent="Waypoints" index="1" unique_id=1148384646]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
+
+[node name="Waypoint1" parent="Waypoints/BottomLayer" index="0" unique_id=1967532443 instance=ExtResource("5_sd8jx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, -25)
+
+[node name="Waypoint2" parent="Waypoints/BottomLayer" index="1" unique_id=712787158 instance=ExtResource("5_sd8jx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -25)
+
+[node name="Waypoint3" parent="Waypoints/BottomLayer" index="2" unique_id=1391124461 instance=ExtResource("5_sd8jx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, -25)
+
+[node name="Waypoint4" parent="Waypoints/BottomLayer" index="3" unique_id=1704560443 instance=ExtResource("5_sd8jx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, 0)
+
+[node name="Waypoint5" parent="Waypoints/BottomLayer" index="4" unique_id=1087213005 instance=ExtResource("5_sd8jx")]
+
+[node name="Waypoint6" parent="Waypoints/BottomLayer" index="5" unique_id=1908899165 instance=ExtResource("5_sd8jx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, 0)
+
+[node name="Waypoint7" parent="Waypoints/BottomLayer" index="6" unique_id=1794206419 instance=ExtResource("5_sd8jx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, 25)
+
+[node name="Waypoint8" parent="Waypoints/BottomLayer" index="7" unique_id=2131312421 instance=ExtResource("5_sd8jx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 25)
+
+[node name="Waypoint9" parent="Waypoints/BottomLayer" index="8" unique_id=1452596469 instance=ExtResource("5_sd8jx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, 25)
+
+[node name="DasherAttack" type="Node3D" parent="." index="9" unique_id=1883142098]
+
+[node name="Dasher1" parent="DasherAttack" index="0" unique_id=610294540 instance=ExtResource("12_awspu")]
+
+[node name="Dasher2" parent="DasherAttack" index="1" unique_id=1349387290 instance=ExtResource("12_awspu")]
+
+[node name="Dasher3" parent="DasherAttack" index="2" unique_id=612609680 instance=ExtResource("12_awspu")]
+
+[node name="Dasher4" parent="DasherAttack" index="3" unique_id=2032531614 instance=ExtResource("12_awspu")]
+
+[node name="Dasher5" parent="DasherAttack" index="4" unique_id=1121239951 instance=ExtResource("12_awspu")]
+
+[node name="Dasher6" parent="DasherAttack" index="5" unique_id=1536071215 instance=ExtResource("12_awspu")]
+
+[node name="Dasher7" parent="DasherAttack" index="6" unique_id=507912682 instance=ExtResource("12_awspu")]
+
+[node name="Dasher8" parent="DasherAttack" index="7" unique_id=1987958928 instance=ExtResource("12_awspu")]
+
+[node name="Dasher9" parent="DasherAttack" index="8" unique_id=251359866 instance=ExtResource("12_awspu")]
+
+[node name="Dasher10" parent="DasherAttack" index="9" unique_id=37902226 instance=ExtResource("12_awspu")]
+
+[node name="Dasher11" parent="DasherAttack" index="10" unique_id=416560431 instance=ExtResource("12_awspu")]
+
+[node name="Dasher12" parent="DasherAttack" index="11" unique_id=75443233 instance=ExtResource("12_awspu")]
+
+[node name="Scene" parent="." index="10" unique_id=317692626 instance=ExtResource("17_glf46")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0.06520271, 3.7522936, -37.72847)
+
+[node name="Pendulum2" parent="Scene" index="22" unique_id=1042331252 instance=ExtResource("24_e4ccn")]
+transform = Transform3D(0.7071067, 0.7071067, 0, -0.7071067, 0.7071067, 0, 0, 0, 1, 0, 14.650822, -13.350818)
+
+[node name="Alcove1" type="Marker3D" parent="Scene" index="23" unique_id=1115932779]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 5.597, 0)
+
+[node name="GearTopL" parent="Scene/Alcove1" index="0" unique_id=896543367 instance=ExtResource("25_twn58")]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0.5, 3.2190003, -17.136349)
+
+[node name="GearBottomL" parent="Scene/Alcove1" index="1" unique_id=1405634385 instance=ExtResource("25_twn58")]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0.5, -2, -17.136)
+
+[node name="Alcove2" type="Marker3D" parent="Scene" index="24" unique_id=234149865]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 5.597, 0)
+
+[node name="GearTopR" parent="Scene/Alcove2" index="0" unique_id=413095958 instance=ExtResource("25_twn58")]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, -0.5, 3.2190003, -17.136349)
+
+[node name="GearBottomR" parent="Scene/Alcove2" index="1" unique_id=54505106 instance=ExtResource("25_twn58")]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, -0.5, -2, -17.136)
+
+[node name="DoorCloseTrigger" type="Area3D" parent="." index="11" unique_id=1920475064]
+collision_layer = 0
+
+[node name="Collision" type="CollisionShape3D" parent="DoorCloseTrigger" index="0" unique_id=1651184944]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16, -4)
+shape = SubResource("BoxShape3D_seyxp")
+
+[connection signal="body_entered" from="DoorCloseTrigger" to="." method="_on_door_close_trigger_body_entered"]
+[connection signal="body_entered" from="DoorCloseTrigger" to="DancerManager" method="_on_door_close_trigger_body_entered"]
+
+[editable path="CameraController"]
+[editable path="DancerManager/SpinSlashes/Damager"]

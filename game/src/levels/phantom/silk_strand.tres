@@ -1,0 +1,18 @@
+[gd_resource type="VisualShader" format=3 uid="uid://dr7csw7olf1b8"]
+
+[sub_resource type="Gradient" id="Gradient_oif61"]
+offsets = PackedFloat32Array(0, 0.5340314, 1)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ea6lq"]
+gradient = SubResource("Gradient_oif61")
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_vwyj8"]
+output_port_for_preview = 0
+texture = SubResource("GradientTexture1D_ea6lq")
+
+[resource]
+nodes/vertex/0/position = Vector2(530, 100)
+nodes/vertex/2/node = SubResource("VisualShaderNodeTexture_vwyj8")
+nodes/vertex/2/position = Vector2(0, 200)
+nodes/vertex/connections = PackedInt32Array(2, 0, 0, 6, 2, 0, 0, 7)
