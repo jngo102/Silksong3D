@@ -1,4 +1,4 @@
-[gd_scene load_steps=113 format=3 uid="uid://tx8iq0rvq40q"]
+[gd_scene format=3 uid="uid://tx8iq0rvq40q"]
 
 [ext_resource type="PackedScene" uid="uid://cuw4nfnpxgivn" path="res://game/actors/grounded_actor.tscn" id="1_sl7gj"]
 [ext_resource type="Script" uid="uid://cyskkgbbkdq4d" path="res://game/actors/player/player.gd" id="2_dw050"]
@@ -238,14 +238,19 @@ animation = &"Idle"
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_0l0iu"]
 blend_point_0/node = SubResource("AnimationNodeAnimation_7c4js")
 blend_point_0/pos = Vector2(0, 1)
+blend_point_0/name = &"0"
 blend_point_1/node = SubResource("AnimationNodeAnimation_6xo6p")
 blend_point_1/pos = Vector2(0, -1)
+blend_point_1/name = &"1"
 blend_point_2/node = SubResource("AnimationNodeAnimation_0nwbe")
 blend_point_2/pos = Vector2(1, 0)
+blend_point_2/name = &"2"
 blend_point_3/node = SubResource("AnimationNodeAnimation_3do8f")
 blend_point_3/pos = Vector2(-1, 0)
+blend_point_3/name = &"3"
 blend_point_4/node = SubResource("AnimationNodeAnimation_0fe1s")
 blend_point_4/pos = Vector2(0, 0)
+blend_point_4/name = &"4"
 
 [sub_resource type="Animation" id="Animation_s8joe"]
 resource_name = "Bind"
@@ -331,7 +336,7 @@ script = ExtResource("13_41lfd")
 clips = Array[AudioStream]([ExtResource("19_gu2gy"), ExtResource("20_2gkjk"), ExtResource("21_pg3u5"), ExtResource("22_yig60"), ExtResource("23_sl7gj"), ExtResource("24_4bmqs"), ExtResource("25_yt37h"), ExtResource("26_lvele"), ExtResource("27_rees2"), ExtResource("28_6x7ot")])
 metadata/_custom_type_script = "uid://d2a87b3tfbpuf"
 
-[node name="Player" groups=["Players"] instance=ExtResource("1_sl7gj")]
+[node name="Player" unique_id=1407905218 groups=["Players"] instance=ExtResource("1_sl7gj")]
 collision_layer = 1
 script = ExtResource("2_dw050")
 jump_height = 7.0
@@ -344,9 +349,10 @@ down_spike_bounce_spin_speed = 30.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.63174677, 0)
 shape = SubResource("CapsuleShape3D_jgtgc")
 
-[node name="Health" parent="." index="2" node_paths=PackedStringArray("_pulser")]
+[node name="Health" parent="." index="2" node_paths=PackedStringArray("damage_particles", "_pulser")]
 collision_mask = 16
 damage_invincibility_time = 1.0
+damage_particles = []
 _pulser = NodePath("../Pulser")
 
 [node name="Collision" parent="Health" index="0"]
@@ -355,27 +361,27 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.13183594, 0)
 [node name="Death" parent="." index="3"]
 corpse_prefab = ExtResource("21_2vult")
 
-[node name="Flasher" type="Node" parent="." index="4" node_paths=PackedStringArray("_meshes")]
+[node name="Flasher" type="Node" parent="." index="4" unique_id=81880987 node_paths=PackedStringArray("_meshes")]
 script = ExtResource("4_lvele")
 _meshes = [NodePath("../Model/Armature/Skeleton3D/Body"), NodePath("../Model/Armature/Skeleton3D/Head"), NodePath("../Model/Armature/Skeleton3D/CloakAttach/Cloak"), NodePath("../Model/Armature/Skeleton3D/NeedleAttach/Needle/Mesh")]
 metadata/_custom_type_script = "uid://htjsg10vl7mo"
 
-[node name="Pulser" type="Node" parent="." index="5" node_paths=PackedStringArray("_flasher")]
+[node name="Pulser" type="Node" parent="." index="5" unique_id=578531861 node_paths=PackedStringArray("_flasher")]
 script = ExtResource("5_rees2")
 _flasher = NodePath("../Flasher")
 
-[node name="SpoolManager" type="Node" parent="." index="6"]
+[node name="SpoolManager" type="Node" parent="." index="6" unique_id=1263273380]
 script = ExtResource("3_hlqpx")
 
-[node name="Model" parent="." index="7" instance=ExtResource("5_qdo3w")]
+[node name="Model" parent="." index="7" unique_id=1386607369 instance=ExtResource("5_qdo3w")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 
-[node name="CloakAttach" type="BoneAttachment3D" parent="Model/Armature/Skeleton3D" index="0"]
+[node name="CloakAttach" type="BoneAttachment3D" parent="Model/Armature/Skeleton3D" index="0" unique_id=1453873214]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.91961265, 0)
 bone_name = "Spine2"
 bone_idx = 2
 
-[node name="Cloak" type="SoftBody3D" parent="Model/Armature/Skeleton3D/CloakAttach" index="0"]
+[node name="Cloak" type="SoftBody3D" parent="Model/Armature/Skeleton3D/CloakAttach" index="0" unique_id=378781349]
 transform = Transform3D(1, 2.4436088e-06, -1.6023201e-05, -2.4436088e-06, 1, -6.473269e-06, 1.6023201e-05, 6.473269e-06, 1, 0, -0.9671147, 0)
 mesh = ExtResource("5_b26j0")
 surface_material_override/0 = ExtResource("6_n7ghd")
@@ -918,26 +924,27 @@ script = ExtResource("10_rees2")
 _collar_height_y = 1.0
 _attachment_point_path = NodePath("..")
 
-[node name="CloakAnimator" type="AnimationPlayer" parent="Model/Armature/Skeleton3D/CloakAttach" index="1"]
-libraries = {
-&"": SubResource("AnimationLibrary_ivps1")
-}
+[node name="CloakAnimator" type="AnimationPlayer" parent="Model/Armature/Skeleton3D/CloakAttach" index="1" unique_id=649912782]
+libraries/ = SubResource("AnimationLibrary_ivps1")
 
-[node name="PuffBody" type="StaticBody3D" parent="Model/Armature/Skeleton3D/CloakAttach" index="2"]
+[node name="PuffBody" type="StaticBody3D" parent="Model/Armature/Skeleton3D/CloakAttach" index="2" unique_id=1844093763]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.3118987, 0)
 collision_mask = 0
 
-[node name="Collision" type="CollisionShape3D" parent="Model/Armature/Skeleton3D/CloakAttach/PuffBody" index="0"]
+[node name="Collision" type="CollisionShape3D" parent="Model/Armature/Skeleton3D/CloakAttach/PuffBody" index="0" unique_id=403261323]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.14477539, 0)
 shape = SubResource("CapsuleShape3D_rees2")
 
-[node name="NeedleAttach" type="BoneAttachment3D" parent="Model/Armature/Skeleton3D" index="1"]
+[node name="NeedleAttach" type="BoneAttachment3D" parent="Model/Armature/Skeleton3D" index="1" unique_id=1972309379]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.91961265, 0)
 bone_name = "Spine2"
 bone_idx = 2
 
-[node name="Needle" parent="Model/Armature/Skeleton3D/NeedleAttach" index="0" instance=ExtResource("7_nvl01")]
+[node name="Needle" parent="Model/Armature/Skeleton3D/NeedleAttach" index="0" unique_id=1037699834 instance=ExtResource("7_nvl01")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.277, 1.5)
+
+[node name="Animator" parent="Model/Armature/Skeleton3D/NeedleAttach/Needle" index="0"]
+autoplay = &"RESET"
 
 [node name="Mesh" parent="Model/Armature/Skeleton3D/NeedleAttach/Needle" index="1"]
 transform = Transform3D(0.05756262, -0.6894976, -0.28944767, 0.66983664, 0.17659523, -0.28745866, 0.3324226, -0.23644799, 0.6293546, -0.43267757, 3.7365413, -3.5042882)
@@ -945,37 +952,37 @@ transform = Transform3D(0.05756262, -0.6894976, -0.28944767, 0.66983664, 0.17659
 [node name="Collision" parent="Model/Armature/Skeleton3D/NeedleAttach/Needle/Mesh/DownSpikeDamager" index="0"]
 transform = Transform3D(0.9999996, -1.5795231e-06, -7.584691e-06, 4.172325e-07, 0.99999905, -1.1920929e-06, -4.4703484e-07, 1.0728836e-06, 0.9999977, -0.0094542205, 2.0044737, 0.0029330254)
 
-[node name="Targeter" type="Marker3D" parent="Model/Armature/Skeleton3D/Head" index="0"]
+[node name="Targeter" type="Marker3D" parent="Model/Armature/Skeleton3D/Head" index="0" unique_id=1500822753]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -3.2549305e-08, 2.233923, 0.37232065)
 
 [node name="AnimationPlayer" parent="Model" index="1"]
-autoplay = "Idle"
+autoplay = &"Idle"
 
-[node name="DownSpikeTransition" type="AnimationTree" parent="Model/AnimationPlayer" index="0"]
+[node name="DownSpikeTransition" type="AnimationTree" parent="Model/AnimationPlayer" index="0" unique_id=682122023]
 active = false
 root_node = NodePath("../..")
 tree_root = SubResource("AnimationNodeStateMachine_0sqxv")
 anim_player = NodePath("..")
 
-[node name="FloatTransition" type="AnimationTree" parent="Model/AnimationPlayer" index="1"]
+[node name="FloatTransition" type="AnimationTree" parent="Model/AnimationPlayer" index="1" unique_id=1147619373]
 active = false
 root_node = NodePath("../..")
 tree_root = SubResource("AnimationNodeStateMachine_elx7m")
 anim_player = NodePath("..")
 
-[node name="SprintJumpTransition" type="AnimationTree" parent="Model/AnimationPlayer" index="2"]
+[node name="SprintJumpTransition" type="AnimationTree" parent="Model/AnimationPlayer" index="2" unique_id=1275706493]
 active = false
 root_node = NodePath("../..")
 tree_root = SubResource("AnimationNodeStateMachine_0le53")
 anim_player = NodePath("..")
 
-[node name="ThreadStormTransition" type="AnimationTree" parent="Model/AnimationPlayer" index="3"]
+[node name="ThreadStormTransition" type="AnimationTree" parent="Model/AnimationPlayer" index="3" unique_id=312060919]
 active = false
 root_node = NodePath("../..")
 tree_root = SubResource("AnimationNodeStateMachine_qjxdb")
 anim_player = NodePath("..")
 
-[node name="WalkBlend" type="AnimationTree" parent="Model/AnimationPlayer" index="4"]
+[node name="WalkBlend" type="AnimationTree" parent="Model/AnimationPlayer" index="4" unique_id=2128699487]
 active = false
 root_node = NodePath("../..")
 tree_root = SubResource("AnimationNodeBlendSpace2D_0l0iu")
@@ -985,22 +992,20 @@ parameters/blend_position = Vector2(0, 0)
 [node name="GroundDetector" parent="." index="9"]
 target_position = Vector3(0, -2.5, 0)
 
-[node name="CameraTarget" type="Node3D" parent="." index="10"]
+[node name="CameraTarget" type="Node3D" parent="." index="10" unique_id=93159821]
 transform = Transform3D(-1, 0, -3.2584137e-07, 0, 1, 0, 3.2584137e-07, 0, -1, 0, 2.515503, 0)
 
-[node name="Bind" type="Node3D" parent="." index="11"]
+[node name="Bind" type="Node3D" parent="." index="11" unique_id=427455445]
 
-[node name="BindAnimator" type="AnimationPlayer" parent="Bind" index="0"]
-libraries = {
-&"": SubResource("AnimationLibrary_xrjoj")
-}
-autoplay = "RESET"
+[node name="BindAnimator" type="AnimationPlayer" parent="Bind" index="0" unique_id=1445803146]
+libraries/ = SubResource("AnimationLibrary_xrjoj")
+autoplay = &"RESET"
 
-[node name="BindLight" type="OmniLight3D" parent="Bind" index="1"]
+[node name="BindLight" type="OmniLight3D" parent="Bind" index="1" unique_id=1543224125]
 light_energy = 0.0
 omni_range = 16.0
 
-[node name="BindParticles" type="CPUParticles3D" parent="Bind" index="2"]
+[node name="BindParticles" type="CPUParticles3D" parent="Bind" index="2" unique_id=1676368405]
 emitting = false
 amount = 256
 lifetime = 0.5
@@ -1018,18 +1023,18 @@ damping_max = 64.0
 scale_amount_min = 0.5
 scale_amount_curve = SubResource("Curve_jbv7g")
 
-[node name="BindSilk" parent="Bind" index="3" instance=ExtResource("9_3luqa")]
+[node name="BindSilk" parent="Bind" index="3" unique_id=1165317557 instance=ExtResource("9_3luqa")]
 visible = false
 
-[node name="PlayerHSM" type="LimboHSM" parent="." index="12"]
+[node name="PlayerHSM" type="LimboHSM" parent="." index="12" unique_id=1783304164]
 update_mode = 0
 script = ExtResource("28_4s16b")
 
-[node name="AirDashState" type="LimboState" parent="PlayerHSM" index="0"]
+[node name="AirDashState" type="LimboState" parent="PlayerHSM" index="0" unique_id=1313923699]
 script = ExtResource("29_0nwbe")
 _spin_speed = 1080.0
 
-[node name="BindState" type="LimboState" parent="PlayerHSM" index="1" node_paths=PackedStringArray("_bind_effect", "_bind_animator", "_needle_animator")]
+[node name="BindState" type="LimboState" parent="PlayerHSM" index="1" unique_id=657693573 node_paths=PackedStringArray("_bind_effect", "_bind_animator", "_needle_animator")]
 script = ExtResource("11_ihiqv")
 _bind_effect = NodePath("../../Bind/BindSilk")
 _bind_animator = NodePath("../../Bind/BindAnimator")
@@ -1038,13 +1043,13 @@ _bind_time = 1.0
 _bind_voice_clips = SubResource("Resource_tefms")
 _needle_animator = NodePath("../../Model/Armature/Skeleton3D/NeedleAttach/Needle/Animator")
 
-[node name="BigRecoilState" type="LimboState" parent="PlayerHSM" index="2"]
+[node name="BigRecoilState" type="LimboState" parent="PlayerHSM" index="2" unique_id=1931673307]
 script = ExtResource("34_7c4js")
 _hurt_voice_clips = SubResource("Resource_tiymp")
 _damage_effect_prefab = ExtResource("14_cxuv5")
 _bind_break_effect_prefab = ExtResource("13_s8joe")
 
-[node name="DownSpikeState" type="LimboState" parent="PlayerHSM" index="3" node_paths=PackedStringArray("_down_spike_transition_tree", "_needle", "_needle_animator")]
+[node name="DownSpikeState" type="LimboState" parent="PlayerHSM" index="3" unique_id=212772296 node_paths=PackedStringArray("_down_spike_transition_tree", "_needle", "_needle_animator")]
 script = ExtResource("29_3do8f")
 _down_spike_transition_tree = NodePath("../../Model/AnimationPlayer/DownSpikeTransition")
 _needle = NodePath("../../Model/Armature/Skeleton3D/NeedleAttach/Needle")
@@ -1052,7 +1057,7 @@ _needle_animator = NodePath("../../Model/Armature/Skeleton3D/NeedleAttach/Needle
 _attack_voice_clips = ExtResource("38_0g54q")
 _attack_effect_clips = ExtResource("25_bu7in")
 
-[node name="DownSpikeBounceState" type="LimboState" parent="PlayerHSM" index="4" node_paths=PackedStringArray("_needle_animator")]
+[node name="DownSpikeBounceState" type="LimboState" parent="PlayerHSM" index="4" unique_id=1673770330 node_paths=PackedStringArray("_needle_animator")]
 script = ExtResource("30_0fe1s")
 _spin_speeds = Dictionary[int, float]({
 1: 1080.0,
@@ -1062,63 +1067,63 @@ _down_spike_bounce_speed = 65.0
 _needle_animator = NodePath("../../Model/Armature/Skeleton3D/NeedleAttach/Needle/Animator")
 _down_spike_bounce_time = 0.4
 
-[node name="AttackChoiceState" type="LimboState" parent="PlayerHSM" index="5"]
+[node name="AttackChoiceState" type="LimboState" parent="PlayerHSM" index="5" unique_id=463636048]
 script = ExtResource("29_qsypv")
 
-[node name="FallState" type="LimboState" parent="PlayerHSM" index="6"]
+[node name="FallState" type="LimboState" parent="PlayerHSM" index="6" unique_id=566681912]
 script = ExtResource("29_6o7jk")
 _fall_animation_name = &"Fall"
 
-[node name="FloatState" type="LimboState" parent="PlayerHSM" index="7" node_paths=PackedStringArray("_cloak_animator", "_float_transition_tree")]
+[node name="FloatState" type="LimboState" parent="PlayerHSM" index="7" unique_id=1064302274 node_paths=PackedStringArray("_cloak_animator", "_float_transition_tree")]
 script = ExtResource("31_lje7i")
 _cloak_animator = NodePath("../../Model/Armature/Skeleton3D/CloakAttach/CloakAnimator")
 _float_transition_tree = NodePath("../../Model/AnimationPlayer/FloatTransition")
 _float_start_clip = ExtResource("37_4bmqs")
 
-[node name="IdleState" type="LimboState" parent="PlayerHSM" index="8"]
+[node name="IdleState" type="LimboState" parent="PlayerHSM" index="8" unique_id=689924048]
 script = ExtResource("28_41lfd")
 _idle_animation_name = &"Idle"
 _footstep_interval = inf
 
-[node name="LandState" type="LimboState" parent="PlayerHSM" index="9"]
+[node name="LandState" type="LimboState" parent="PlayerHSM" index="9" unique_id=1905285511]
 script = ExtResource("31_5qatl")
 _land_animation_name = &"Land"
 
-[node name="JumpState" type="LimboState" parent="PlayerHSM" index="10"]
+[node name="JumpState" type="LimboState" parent="PlayerHSM" index="10" unique_id=1987574905]
 script = ExtResource("31_747sf")
 _jump_height = 28.0
 _jump_voice = ExtResource("41_yt37h")
 
-[node name="NormalRecoilState" type="LimboState" parent="PlayerHSM" index="11"]
+[node name="NormalRecoilState" type="LimboState" parent="PlayerHSM" index="11" unique_id=1713793089]
 script = ExtResource("34_7c4js")
 _hurt_voice_clips = SubResource("Resource_sguwt")
 _damage_effect_prefab = ExtResource("40_rsjix")
 _bind_break_effect_prefab = ExtResource("13_s8joe")
 
-[node name="MultiHitState" type="LimboState" parent="PlayerHSM" index="12"]
+[node name="MultiHitState" type="LimboState" parent="PlayerHSM" index="12" unique_id=1119652162]
 script = ExtResource("48_yig60")
 _recoil_animation_name = &"Multi Hit"
 _hurt_voice_clips = SubResource("Resource_sguwt")
 _damage_effect_prefab = ExtResource("49_yig60")
 _bind_break_effect_prefab = ExtResource("13_s8joe")
 
-[node name="SlashState" type="LimboState" parent="PlayerHSM" index="13" node_paths=PackedStringArray("_needle_animator")]
+[node name="SlashState" type="LimboState" parent="PlayerHSM" index="13" unique_id=1553669608 node_paths=PackedStringArray("_needle_animator")]
 script = ExtResource("38_d4m7k")
 _needle_animator = NodePath("../../Model/Armature/Skeleton3D/NeedleAttach/Needle/Animator")
 _attack_voice_clips = ExtResource("38_0g54q")
 _attack_effect_clips = ExtResource("25_bu7in")
 
-[node name="SprintState" type="LimboState" parent="PlayerHSM" index="14"]
+[node name="SprintState" type="LimboState" parent="PlayerHSM" index="14" unique_id=23586055]
 script = ExtResource("37_6xo6p")
 _footstep_interval = 0.27
 
-[node name="SprintJumpState" type="LimboState" parent="PlayerHSM" index="15" node_paths=PackedStringArray("_sprint_jump_transition_tree")]
+[node name="SprintJumpState" type="LimboState" parent="PlayerHSM" index="15" unique_id=448219995 node_paths=PackedStringArray("_sprint_jump_transition_tree")]
 script = ExtResource("36_6xo6p")
 _sprint_jump_transition_tree = NodePath("../../Model/AnimationPlayer/SprintJumpTransition")
 _sprint_jump_height = 24.0
 _spin_speed = 1440.0
 
-[node name="SprintStabState" type="LimboState" parent="PlayerHSM" index="16" node_paths=PackedStringArray("_needle")]
+[node name="SprintStabState" type="LimboState" parent="PlayerHSM" index="16" unique_id=1162923090 node_paths=PackedStringArray("_needle")]
 script = ExtResource("52_4bmqs")
 _needle = NodePath("../../Model/Armature/Skeleton3D/NeedleAttach/Needle")
 _stab_speed = 75.0
@@ -1126,7 +1131,7 @@ _stab_time = 0.25
 _attack_voice_clips = ExtResource("38_0g54q")
 _attack_effect_clips = ExtResource("25_bu7in")
 
-[node name="ThreadStormState" type="LimboState" parent="PlayerHSM" index="17" node_paths=PackedStringArray("_thread_storm_transition_tree")]
+[node name="ThreadStormState" type="LimboState" parent="PlayerHSM" index="17" unique_id=175747425 node_paths=PackedStringArray("_thread_storm_transition_tree")]
 script = ExtResource("18_xrjoj")
 _min_attack_time = 0.65
 _max_attack_time = 1.5
@@ -1134,7 +1139,7 @@ _thread_storm_transition_tree = NodePath("../../Model/AnimationPlayer/ThreadStor
 _thread_storm_prefab = ExtResource("52_2gkjk")
 _attack_voice_clips = SubResource("Resource_aw6r3")
 
-[node name="WalkState" type="LimboState" parent="PlayerHSM" index="18" node_paths=PackedStringArray("_walk_blend_tree")]
+[node name="WalkState" type="LimboState" parent="PlayerHSM" index="18" unique_id=2060770839 node_paths=PackedStringArray("_walk_blend_tree")]
 script = ExtResource("30_m4n5g")
 _walk_blend_tree = NodePath("../../Model/AnimationPlayer/WalkBlend")
 _footstep_interval = 0.5

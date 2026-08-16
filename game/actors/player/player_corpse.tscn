@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://b0wa350b6fbky"]
+[gd_scene format=4 uid="uid://b0wa350b6fbky"]
 
 [ext_resource type="PackedScene" uid="uid://pj02xii8jggq" path="res://game/actors/player/hornet.glb" id="1_7wyyb"]
 [ext_resource type="Script" uid="uid://bpmjh1hxxc7gu" path="res://game/actors/player/player_corpse.gd" id="1_t4cps"]
@@ -11,6 +11,12 @@
 [ext_resource type="AudioStream" uid="uid://ck6dir00pa0nm" path="res://game/copyrighted/sfx/hornet/death/d4.wav" id="6_guylx"]
 [ext_resource type="PackedScene" uid="uid://kbm2v33787ln" path="res://game/actors/player/effects/combat/double_damage_hit_effect.tscn" id="10_5uikp"]
 [ext_resource type="Script" uid="uid://di515m7mr03x5" path="res://game/actors/player/cloak.gd" id="10_pw4o8"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ojd61"]
+streams_count = 4
+stream_0/stream = ExtResource("3_5uikp")
+stream_1/stream = ExtResource("5_smdo3")
+stream_2/stream = ExtResource("5_smdo3")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1isk3"]
 resource_name = "Needle"
@@ -139,17 +145,18 @@ gradient = SubResource("Gradient_b3c30")
 fill = 1
 fill_from = Vector2(0.5, 0.52991456)
 
-[node name="PlayerCorpse" type="Node3D"]
+[node name="PlayerCorpse" type="Node3D" unique_id=93518285]
 script = ExtResource("1_t4cps")
 
-[node name="DeathVoice" type="AudioStreamPlayer3D" parent="."]
+[node name="DeathVoice" type="AudioStreamPlayer3D" parent="." unique_id=1070046104]
+stream = SubResource("AudioStreamRandomizer_ojd61")
 unit_size = 32.0
 autoplay = true
 script = ExtResource("2_rl31j")
 audio_clips = Array[AudioStream]([ExtResource("3_5uikp"), ExtResource("4_pw4o8"), ExtResource("5_smdo3"), ExtResource("6_guylx")])
 metadata/_custom_type_script = "uid://dj5upywmu1hm2"
 
-[node name="Model" parent="." instance=ExtResource("1_7wyyb")]
+[node name="Model" parent="." unique_id=656094121 instance=ExtResource("1_7wyyb")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 
 [node name="Skeleton3D" parent="Model/Armature" index="0"]
@@ -169,12 +176,12 @@ bones/12/position = Vector3(-0.6025021, -1.330074, -0.16947612)
 bones/13/position = Vector3(-0.35971394, -0.79203105, 0.16036023)
 bones/13/rotation = Quaternion(0.5000001, -0.49999997, -0.4999999, 0.5)
 
-[node name="CloakAttach" type="BoneAttachment3D" parent="Model/Armature/Skeleton3D" index="2"]
+[node name="CloakAttach" type="BoneAttachment3D" parent="Model/Armature/Skeleton3D" index="2" unique_id=482963619]
 transform = Transform3D(1, 0, 0, 0, -0.068006754, 0.99768484, 0, -0.99768484, -0.068006754, 0, 0.8152993, -0.7269722)
 bone_name = "Spine2"
 bone_idx = 2
 
-[node name="Cloak" type="SoftBody3D" parent="Model/Armature/Skeleton3D/CloakAttach"]
+[node name="Cloak" type="SoftBody3D" parent="Model/Armature/Skeleton3D/CloakAttach" unique_id=896812973]
 transform = Transform3D(1, 2.4436088e-06, -1.6023201e-05, -2.4436088e-06, 1, -6.473269e-06, 1.6023201e-05, 6.473269e-06, 1, 0, -0.967, 0)
 mesh = ExtResource("2_t4cps")
 surface_material_override/0 = ExtResource("3_1s8gr")
@@ -716,28 +723,26 @@ script = ExtResource("10_pw4o8")
 _collar_height_y = 1.0
 _attachment_point_path = NodePath("..")
 
-[node name="NeedleAttach" type="BoneAttachment3D" parent="Model/Armature/Skeleton3D" index="3"]
+[node name="NeedleAttach" type="BoneAttachment3D" parent="Model/Armature/Skeleton3D" index="3" unique_id=398895100]
 transform = Transform3D(1, 0, 0, 0, -0.068006754, 0.99768484, 0, -0.99768484, -0.068006754, 0, 0.8152993, -0.7269722)
 bone_name = "Spine2"
 bone_idx = 2
 
-[node name="Needle" type="MeshInstance3D" parent="Model/Armature/Skeleton3D/NeedleAttach"]
+[node name="Needle" type="MeshInstance3D" parent="Model/Armature/Skeleton3D/NeedleAttach" unique_id=673397104]
 transform = Transform3D(0.1683683, -0.72156996, -0.1161418, 0.6864135, 0.19704801, -0.2291466, 0.2509743, -0.05485375, 0.70462954, -0.97825414, 0.33540154, -1.7833134)
 mesh = SubResource("ArrayMesh_t4cps")
 skeleton = NodePath("")
 
 [node name="AnimationPlayer" parent="Model" index="1"]
-autoplay = "Death"
+autoplay = &"Death"
 
-[node name="DeathEffectScreen" type="CanvasLayer" parent="."]
+[node name="DeathEffectScreen" type="CanvasLayer" parent="." unique_id=862999257]
 
-[node name="ScreenAnimator" type="AnimationPlayer" parent="DeathEffectScreen"]
-libraries = {
-&"": SubResource("AnimationLibrary_41lfd")
-}
-autoplay = "Show"
+[node name="ScreenAnimator" type="AnimationPlayer" parent="DeathEffectScreen" unique_id=514282571]
+libraries/ = SubResource("AnimationLibrary_41lfd")
+autoplay = &"Show"
 
-[node name="DeathEffectTexture" type="TextureRect" parent="DeathEffectScreen"]
+[node name="DeathEffectTexture" type="TextureRect" parent="DeathEffectScreen" unique_id=921810587]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -753,6 +758,6 @@ scale = Vector2(1e-05, 1e-05)
 texture = SubResource("GradientTexture2D_7wyyb")
 stretch_mode = 3
 
-[node name="DoubleDamageHitEffect" parent="." instance=ExtResource("10_5uikp")]
+[node name="DoubleDamageHitEffect" parent="." unique_id=1220705087 instance=ExtResource("10_5uikp")]
 
 [editable path="Model"]

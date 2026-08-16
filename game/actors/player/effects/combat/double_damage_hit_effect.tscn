@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://kbm2v33787ln"]
+[gd_scene format=3 uid="uid://kbm2v33787ln"]
 
 [ext_resource type="Script" uid="uid://dj5upywmu1hm2" path="res://game/actors/random_audio_player.gd" id="1_avddw"]
 [ext_resource type="AudioStream" uid="uid://ctmkvdqifldlv" path="res://game/copyrighted/sfx/hornet/hurt/big/hero_double_damage_1.wav" id="2_ssa7n"]
@@ -41,7 +41,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": [0.0],
+"args": [0.0, 0.85, 1.15],
 "method": &"play_random"
 }]
 }
@@ -62,7 +62,7 @@ tracks/3/keys = {
 tracks/4/type = "method"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("LeftCrackEffect")
+tracks/4/path = NodePath("Mesh/LeftCrackEffect")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -153,48 +153,6 @@ input_name = "uv"
 
 [sub_resource type="VisualShader" id="VisualShader_3onww"]
 resource_local_to_scene = true
-code = "shader_type spatial;
-render_mode blend_mix, depth_draw_opaque, depth_test_default, cull_back, diffuse_lambert, specular_schlick_ggx;
-
-uniform sampler2D tex_frg_13;
-uniform float Alpha;
-
-
-
-void fragment() {
-// Input:8
-	vec2 n_out8p0 = UV;
-
-
-// UVFunc:12
-	vec2 n_in12p1 = vec2(1.00000, 1.00000);
-	vec2 n_in12p2 = vec2(0.00000, 0.00000);
-	vec2 n_out12p0 = n_in12p2 * n_in12p1 + n_out8p0;
-
-
-// Texture2D:13
-	vec4 n_out13p0 = texture(tex_frg_13, n_out12p0);
-
-
-// FloatParameter:15
-	float n_out15p0 = Alpha;
-
-
-// FloatOp:16
-	float n_out16p0 = n_out13p0.x * n_out15p0;
-
-
-// FloatOp:17
-	float n_in17p1 = 0.00000;
-	float n_out17p0 = max(n_out16p0, n_in17p1);
-
-
-// Output:0
-	ALPHA = n_out17p0;
-
-
-}
-"
 nodes/fragment/0/position = Vector2(680, 580)
 nodes/fragment/8/node = SubResource("VisualShaderNodeInput_1irvr")
 nodes/fragment/8/position = Vector2(-2580, 740)
@@ -228,31 +186,31 @@ height = 0.5
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.9405919, 0.0, 0, 0]
 point_count = 2
 
-[node name="DoubleDamageHitEffect" type="Node3D"]
+[node name="DoubleDamageHitEffect" type="Node3D" unique_id=1229305961]
 
-[node name="Animator" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_o0856")
-}
-autoplay = "Hit"
+[node name="Animator" type="AnimationPlayer" parent="." unique_id=335779427]
+libraries/ = SubResource("AnimationLibrary_o0856")
+autoplay = &"Hit"
 
-[node name="HitAudio" type="AudioStreamPlayer3D" parent="."]
+[node name="HitAudio" type="AudioStreamPlayer3D" parent="." unique_id=1936876913]
 unit_size = 32.0
 bus = &"SFX"
 script = ExtResource("1_avddw")
 audio_clips = Array[AudioStream]([ExtResource("2_ssa7n"), ExtResource("3_bctpt")])
 metadata/_custom_type_script = "uid://dj5upywmu1hm2"
 
-[node name="Mesh" type="MeshInstance3D" parent="."]
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=624673165]
 transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 mesh = SubResource("SphereMesh_nt6bl")
 surface_material_override/0 = SubResource("ShaderMaterial_k6q6b")
 
-[node name="LeftCrackEffect" type="CPUParticles3D" parent="."]
+[node name="LeftCrackEffect" type="CPUParticles3D" parent="Mesh" unique_id=1148955409]
+transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 emitting = false
 amount = 256
-lifetime = 0.25
+lifetime = 0.38
 one_shot = true
+preprocess = 0.13
 explosiveness = 1.0
 randomness = 1.0
 local_coords = true
@@ -265,11 +223,12 @@ initial_velocity_max = 50.0
 scale_amount_min = 0.5
 scale_amount_curve = SubResource("Curve_avddw")
 
-[node name="RightCrackEffect" type="CPUParticles3D" parent="."]
+[node name="RightCrackEffect" type="CPUParticles3D" parent="." unique_id=795228612]
 emitting = false
 amount = 256
-lifetime = 0.25
+lifetime = 0.38
 one_shot = true
+preprocess = 0.13
 explosiveness = 1.0
 randomness = 1.0
 local_coords = true
