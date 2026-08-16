@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://dpkqjvyr32cys"]
+[gd_scene format=4 uid="uid://dpkqjvyr32cys"]
 
 [ext_resource type="Script" uid="uid://iji6ec63s7tt" path="res://game/actors/player/needle.gd" id="1_bb050"]
 [ext_resource type="PackedScene" uid="uid://xal232da7bpf" path="res://game/gameplay/combat/damager.tscn" id="2_s1w8d"]
@@ -395,21 +395,19 @@ height = 8.0
 radius = 1.0
 height = 7.7419434
 
-[node name="Needle" type="Node3D"]
+[node name="Needle" type="Node3D" unique_id=700626282]
 script = ExtResource("1_bb050")
 
-[node name="Animator" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_a8o31")
-}
-autoplay = "RESET"
+[node name="Animator" type="AnimationPlayer" parent="." unique_id=1991879983]
+libraries/ = SubResource("AnimationLibrary_a8o31")
+autoplay = &"RESET"
 
-[node name="Mesh" type="MeshInstance3D" parent="."]
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=1302043455]
 transform = Transform3D(0.057562616, -0.6894967, -0.28944737, 0.6698366, 0.176595, -0.28745836, 0.33242258, -0.23644769, 0.62935394, -0.43267757, 3.7365413, -3.5042882)
 mesh = SubResource("ArrayMesh_sev4e")
 skeleton = NodePath("")
 
-[node name="DownSpikeDamager" parent="Mesh" instance=ExtResource("2_s1w8d")]
+[node name="DownSpikeDamager" parent="Mesh" unique_id=706411475 instance=ExtResource("2_s1w8d")]
 transform = Transform3D(1.3333349, 0, 0, 0, -5.82819e-08, -1.3333347, 0, 1.3333344, -5.828191e-08, 0, 0, 0)
 collision_layer = 8
 collision_mask = 2
@@ -420,7 +418,7 @@ transform = Transform3D(0.9999995, -1.5795231e-06, -7.56979e-06, 4.4703484e-07, 
 shape = SubResource("CapsuleShape3D_g78k6")
 disabled = true
 
-[node name="StabDamager" parent="Mesh" instance=ExtResource("2_s1w8d")]
+[node name="StabDamager" parent="Mesh" unique_id=81393513 instance=ExtResource("2_s1w8d")]
 transform = Transform3D(1.3333349, 0, 0, 0, -5.82819e-08, -1.3333347, 0, 1.3333344, -5.828191e-08, 0, 0, 0)
 collision_layer = 8
 collision_mask = 2
@@ -431,7 +429,7 @@ transform = Transform3D(0.9999942, -1.5711412e-06, -7.197261e-06, 5.187467e-07, 
 shape = SubResource("CapsuleShape3D_m1lj5")
 disabled = true
 
-[node name="SlashEffect" parent="." instance=ExtResource("3_g78k6")]
+[node name="SlashEffect" parent="." unique_id=528815861 instance=ExtResource("3_g78k6")]
 transform = Transform3D(1.1804705, -0.41108325, 0, 0.35600856, 1.0223173, 0.625, -0.20554164, -0.5902352, 1.0825317, 0, 2.2247343, 0)
 
 [node name="SlashEffectDamager" parent="SlashEffect" index="0"]

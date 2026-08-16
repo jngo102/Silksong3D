@@ -7,7 +7,8 @@ class_name PlayerSlashState extends PlayerAttackState
 
 func _update(delta: float) -> void:
 	_player.turn_to_camera(delta)
-	if _model_animator.current_animation != _slash_animation_name:
+	if _model_animator.current_animation != _slash_animation_name and \
+		_needle_animator.current_animation != _slash_animation_name:
 		send_event(_hsm.EVENT_FINISHED)
 	else:
 		var move_vector: Vector2 = Input.get_vector(&"Left", &"Right", &"Forward", &"Backward")
