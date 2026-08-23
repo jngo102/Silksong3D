@@ -14,13 +14,13 @@ func _generate_name() -> String:
 	]
 
 func _tick(_delta: float) -> Status:
-	var min = BBUtil.bb_value(min_var, blackboard)
-	if min == null:
-		min = 0.0
-	var max = BBUtil.bb_value(max_var, blackboard)
-	if max == null:
-		max = 0.0
-	var value: float = randf_range(min, max)
+	var min_value = BBUtil.bb_value(min_var, blackboard, agent)
+	if min_value == null:
+		min_value = 0.0
+	var max_value = BBUtil.bb_value(max_var, blackboard, agent)
+	if max_value == null:
+		max_value = 0.0
+	var value: float = randf_range(min_value, max_value)
 	if blackboard.has_var(output_value_var):
 		blackboard.set_var(output_value_var, value)
 	return SUCCESS

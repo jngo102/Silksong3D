@@ -11,7 +11,7 @@ func _generate_name() -> String:
 	return "Get Playback Position of %s %s" % [_audio_player, output_time]
 
 func _setup() -> void:
-	_audio_player = audio_stream_player.get_value(scene_root, blackboard)
+	_audio_player = audio_stream_player.get_value(scene_root, blackboard, agent)
 
 func _tick(_delta: float) -> Status:
 	if is_instance_valid(_audio_player):

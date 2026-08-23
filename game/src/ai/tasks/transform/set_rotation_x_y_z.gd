@@ -25,13 +25,13 @@ func _tick(_delta: float) -> Status:
 		new_rotation = target.rotation_degrees
 	else:
 		new_rotation = target.global_rotation_degrees
-	var x = BBUtil.bb_value(x_var, blackboard)
+	var x = BBUtil.bb_value(x_var, blackboard, agent)
 	if x != null:
 		new_rotation.x = x
-	var y = BBUtil.bb_value(y_var, blackboard)
+	var y = BBUtil.bb_value(y_var, blackboard, agent)
 	if y != null:
 		new_rotation.y = y
-	var z = BBUtil.bb_value(z_var, blackboard)
+	var z = BBUtil.bb_value(z_var, blackboard, agent)
 	if z != null:
 		new_rotation.z = z
 	if local:

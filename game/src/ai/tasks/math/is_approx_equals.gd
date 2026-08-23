@@ -11,10 +11,10 @@ func _generate_name() -> String:
 	]
 
 func _tick(_delta: float) -> Status:
-	var value = BBUtil.bb_value(value_var, blackboard)
+	var value = BBUtil.bb_value(value_var, blackboard, agent)
 	if value == null:
 		return FAILURE
-	var compare_value = BBUtil.bb_value(compare_var, blackboard)
+	var compare_value = BBUtil.bb_value(compare_var, blackboard, agent)
 	if compare_value == null:
 		return FAILURE
 	if is_equal_approx(value, compare_value):

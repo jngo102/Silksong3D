@@ -16,10 +16,10 @@ func _tick(_delta: float) -> Status:
 	var value: float = blackboard.get_var(value_var)
 	if value == null:
 		return FAILURE
-	var min_value = BBUtil.bb_value(min_var, blackboard)
+	var min_value = BBUtil.bb_value(min_var, blackboard, agent)
 	if min_value == null:
 		min_value = -INF
-	var max_value = BBUtil.bb_value(max_var, blackboard)
+	var max_value = BBUtil.bb_value(max_var, blackboard, agent)
 	if max_value == null:
 		max_value = INF
 	var clamped_value: float = clampf(value, min_value, max_value)

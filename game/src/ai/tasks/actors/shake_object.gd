@@ -14,19 +14,19 @@ func _generate_name() -> String:
 	]
 
 func _tick(_delta: float) -> Status:
-	var shaker_component = BBUtil.bb_value(shaker_component_var, blackboard)
+	var shaker_component = BBUtil.bb_value(shaker_component_var, blackboard, agent)
 	if not is_instance_valid(shaker_component):
 		return FAILURE
-	var shake_amount = BBUtil.bb_value(shake_amount_var, blackboard)
+	var shake_amount = BBUtil.bb_value(shake_amount_var, blackboard, agent)
 	if shake_amount == null:
 		shake_amount = 0
-	var shake_duration = BBUtil.bb_value(shake_duration_var, blackboard)
+	var shake_duration = BBUtil.bb_value(shake_duration_var, blackboard, agent)
 	if shake_duration == null:
 		shake_duration = 0
-	var shake_in_place = BBUtil.bb_value(shake_in_place_var, blackboard)
+	var shake_in_place = BBUtil.bb_value(shake_in_place_var, blackboard, agent)
 	if shake_in_place == null:
 		shake_in_place = true
-	var shake_taper_off = BBUtil.bb_value(shake_taper_off_var, blackboard)
+	var shake_taper_off = BBUtil.bb_value(shake_taper_off_var, blackboard, agent)
 	if shake_taper_off == null:
 		shake_taper_off = false
 	_do_shake(shaker_component, shake_amount, shake_duration, shake_in_place, shake_taper_off)

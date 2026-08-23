@@ -77,11 +77,17 @@ var/spin_to_waypoint/hint_string = ""
 [sub_resource type="BTAction" id="BTAction_pbk4n"]
 script = ExtResource("1_7k3xq")
 group = &"Players"
+get_node_path = null
 output_var = &"player"
+
+[sub_resource type="BBVariant" id="BBVariant_vvrqo"]
+value_source = 1
+variable = &"self"
+resource_name = "$self"
 
 [sub_resource type="BTAction" id="BTAction_wekhm"]
 script = ExtResource("3_2elll")
-target_var = &"self"
+target_var = SubResource("BBVariant_vvrqo")
 output_position_var = &"self_position"
 
 [sub_resource type="BTSequence" id="BTSequence_l2mi2"]
@@ -152,9 +158,20 @@ resource_name = "Direction/Animator"
 animation_player = SubResource("BBNode_nr5y5")
 animation_name = &"RESET"
 
+[sub_resource type="BBVariant" id="BBVariant_avkx2"]
+value_source = 1
+variable = &"self"
+resource_name = "$self"
+
+[sub_resource type="BBVariant" id="BBVariant_j53ot"]
+value_source = 1
+variable = &"player"
+resource_name = "$player"
+
 [sub_resource type="BTAction" id="BTAction_cuinw"]
 script = ExtResource("2_tqd6i")
-target_var = &"player"
+node_var = SubResource("BBVariant_avkx2")
+target_var = SubResource("BBVariant_j53ot")
 
 [sub_resource type="BTAction" id="BTAction_l2mi2"]
 script = ExtResource("3_tqd6i")
@@ -322,9 +339,14 @@ resource_name = "Collision"
 script = ExtResource("8_ywbep")
 collider_var = SubResource("BBVariant_oi7s7")
 
+[sub_resource type="BBVariant" id="BBVariant_llkrc"]
+value_source = 1
+variable = &"alcove"
+resource_name = "$alcove"
+
 [sub_resource type="BTAction" id="BTAction_6r4af"]
 script = ExtResource("3_2elll")
-target_var = &"alcove"
+target_var = SubResource("BBVariant_llkrc")
 output_position_var = &"alcove_position"
 
 [sub_resource type="BTAction" id="BTAction_f8rwa"]
@@ -369,9 +391,14 @@ script = ExtResource("10_ftj12")
 target_position_var = &"alcove_position"
 time = 0.4
 
+[sub_resource type="BBVariant" id="BBVariant_uhqsx"]
+value_source = 1
+variable = &"alcove"
+resource_name = "$alcove"
+
 [sub_resource type="BTAction" id="BTAction_ftj12"]
 script = ExtResource("3_2elll")
-target_var = &"alcove"
+target_var = SubResource("BBVariant_uhqsx")
 output_position_var = &"alcove_position"
 
 [sub_resource type="BTAction" id="BTAction_3ps0h"]
@@ -462,8 +489,26 @@ children = [SubResource("BTSetVar_yx2rc"), SubResource("BTPlayAnimation_solc0"),
 custom_name = "Stun Death"
 children = [SubResource("BTSequence_f8rwa"), SubResource("BTSequence_wekhm")]
 
+[sub_resource type="BBVariant" id="BBVariant_opkf4"]
+type = 3
+saved_value = 0.25
+resource_name = "0.25"
+
+[sub_resource type="BBVariant" id="BBVariant_t2wi4"]
+type = 3
+saved_value = 0.25
+resource_name = "0.25"
+
+[sub_resource type="BBVariant" id="BBVariant_u7osy"]
+type = 1
+saved_value = true
+resource_name = "true"
+
 [sub_resource type="BTAction" id="BTAction_tyjx1"]
 script = ExtResource("14_sw5t1")
+shake_amount_var = SubResource("BBVariant_opkf4")
+shake_duration_var = SubResource("BBVariant_t2wi4")
+shake_taper_off_var = SubResource("BBVariant_u7osy")
 
 [sub_resource type="BTSequence" id="BTSequence_q5c76"]
 children = [SubResource("BTSelector_3shy2"), SubResource("BTSequence_6q4rm"), SubResource("BTAction_tyjx1")]

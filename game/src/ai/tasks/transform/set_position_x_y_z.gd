@@ -25,13 +25,13 @@ func _tick(_delta: float) -> Status:
 		new_position = target.position
 	else:
 		new_position = target.global_position
-	var x = BBUtil.bb_value(x_var, blackboard)
+	var x = BBUtil.bb_value(x_var, blackboard, agent)
 	if x != null:
 		new_position.x = x
-	var y = BBUtil.bb_value(y_var, blackboard)
+	var y = BBUtil.bb_value(y_var, blackboard, agent)
 	if y != null:
 		new_position.y = y
-	var z = BBUtil.bb_value(z_var, blackboard)
+	var z = BBUtil.bb_value(z_var, blackboard, agent)
 	if z != null:
 		new_position.z = z
 	if local:

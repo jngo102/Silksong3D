@@ -14,13 +14,13 @@ func _generate_name() -> String:
 func _tick(_delta: float) -> Status:
 	if not is_instance_valid(CameraManager.current_camera):
 		return FAILURE
-	var shake_amount = BBUtil.bb_value(shake_amount_var, blackboard)
+	var shake_amount = BBUtil.bb_value(shake_amount_var, blackboard, agent)
 	if shake_amount == null:
 		shake_amount = 0
-	var shake_duration = BBUtil.bb_value(shake_duration_var, blackboard)
+	var shake_duration = BBUtil.bb_value(shake_duration_var, blackboard, agent)
 	if shake_duration == null:
 		shake_duration = 0
-	var shake_taper_off = BBUtil.bb_value(shake_taper_off_var, blackboard)
+	var shake_taper_off = BBUtil.bb_value(shake_taper_off_var, blackboard, agent)
 	if shake_taper_off == null:
 		shake_taper_off = false
 	var camera: CameraController = CameraManager.current_camera

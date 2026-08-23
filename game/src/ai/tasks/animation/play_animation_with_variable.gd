@@ -13,7 +13,7 @@ func _generate_name() -> String:
 
 func _enter() -> void:
 	_anim_finished = false
-	_animator = animation_player.get_value(agent, blackboard)
+	_animator = animation_player.get_value(agent, blackboard, agent)
 	if is_instance_valid(_animator):
 		_anim_name = blackboard.get_var(animation_var)
 		if _anim_name != null:

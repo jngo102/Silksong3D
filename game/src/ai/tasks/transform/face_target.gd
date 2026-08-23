@@ -1,28 +1,26 @@
 @tool
 extends BTAction
 
-@export var node_var := &"self"
+@export var node_var: BBVariant
 ## Blackboard variable that stores our target (expecting Node3D).
-@export var target_var: StringName = &"target"
+@export var target_var: BBVariant
 @export var face_x: bool
 @export var face_y: bool = true
 @export var face_z: bool
 
 func _generate_name() -> String:
 	return "Face %s to Target %s" % [
-		LimboUtility.decorate_var(node_var),
-		LimboUtility.decorate_var(target_var),
+		BBUtil.bb_var(node_var),
+		BBUtil.bb_var(target_var),
 	]
 
 func _tick(_delta: float) -> Status:
-	var target: Node3D = blackboard.get_var(target_var)
+	var target = BBUtil.bb_value(target_var, blackboard, agent)
 	if not is_instance_valid(target):
 		return FAILURE
-	var node: Node3D = agent
-	if blackboard.has_var(node_var):
-		node = blackboard.get_var(node_var)
-		if not is_instance_valid(node):
-			node = agent
+	var node: Node3D = BBUtil.bb_value(node_var, blackboard, agent)
+	if not is_instance_valid(node):
+		node = agent
 	var old_x: float = node.global_rotation.x
 	var old_y: float = node.global_rotation.y
 	var old_z: float = node.global_rotation.z

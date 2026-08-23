@@ -15,7 +15,7 @@ func _tick(_delta: float) -> Status:
 	agent.add_child(roar_effect)
 	if not is_instance_valid(roar_effect):	
 		return FAILURE
-	var roar_position = BBUtil.bb_value(roar_position_var, blackboard)
+	var roar_position = BBUtil.bb_value(roar_position_var, blackboard, agent)
 	if roar_position != null:
 		roar_effect.global_position = roar_position
 	else:

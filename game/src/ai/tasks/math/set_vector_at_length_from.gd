@@ -16,13 +16,13 @@ func _generate_name() -> String:
 	]
 
 func _tick(_delta: float) -> Status:
-	var start_vector = BBUtil.bb_value(start_var, blackboard)
+	var start_vector = BBUtil.bb_value(start_var, blackboard, agent)
 	if start_vector == null:
 		return FAILURE
-	var direction = BBUtil.bb_value(direction_var, blackboard)
+	var direction = BBUtil.bb_value(direction_var, blackboard, agent)
 	if direction == null:
 		return FAILURE
-	var length = BBUtil.bb_value(length_var, blackboard)
+	var length = BBUtil.bb_value(length_var, blackboard, agent)
 	if length == null:
 		return FAILURE
 	var output_vector: Vector3 = start_vector + direction.normalized() * length

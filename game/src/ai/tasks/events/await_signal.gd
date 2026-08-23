@@ -16,7 +16,6 @@ func _enter() -> void:
 		node.connect(signal_name, _on_signal_emitted)
 
 func _on_signal_emitted() -> void:
-	print("EMIT ", signal_name)
 	_signal_emitted = true
 
 func _tick(_delta: float) -> Status:

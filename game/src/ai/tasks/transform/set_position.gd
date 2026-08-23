@@ -13,7 +13,7 @@ func _generate_name() -> String:
 	]
 
 func _tick(_delta: float) -> Status:
-	var target = BBUtil.bb_value(target_var, blackboard)
+	var target = BBUtil.bb_value(target_var, blackboard, agent)
 	if not is_instance_valid(target):
 		target = agent
 	var new_position: Vector3
@@ -21,7 +21,7 @@ func _tick(_delta: float) -> Status:
 		new_position = target.position
 	else:
 		new_position = target.global_position
-	var vector = BBUtil.bb_value(vector_var, blackboard)
+	var vector = BBUtil.bb_value(vector_var, blackboard, agent)
 	if vector == null:
 		return FAILURE
 	new_position = vector
