@@ -6,7 +6,7 @@ extends BTAction
 @export var enabled: bool
 
 func _generate_name() -> String:
-	return "Set Collider " + ("Enabled" if enabled else "Disabled")
+	return "Set " + BBUtil.bb_var(collider_var) + " " + ("Enabled" if enabled else "Disabled")
 
 func _tick(_delta: float) -> Status:
 	var collider = BBUtil.bb_value(collider_var, blackboard, agent)

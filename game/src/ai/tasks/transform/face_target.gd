@@ -23,11 +23,14 @@ func _tick(_delta: float) -> Status:
 		node = blackboard.get_var(node_var)
 		if not is_instance_valid(node):
 			node = agent
+	var old_x: float = node.global_rotation.x
+	var old_y: float = node.global_rotation.y
+	var old_z: float = node.global_rotation.z
 	node.look_at(target.global_position)
 	if not face_x:
-		node.global_rotation.x = 0
+		node.global_rotation.x = old_x
 	if not face_y:
-		node.global_rotation.y = 0
+		node.global_rotation.y = old_y
 	if not face_z:
-		node.global_rotation.z = 0
+		node.global_rotation.z = old_z
 	return SUCCESS

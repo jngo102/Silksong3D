@@ -6,6 +6,7 @@ extends BTAction
 @export var volume_scale: float = 1
 @export var pitch_min: float = 1
 @export var pitch_max: float = 1
+@export var range: float = 24
 
 var _previous_clip: AudioStream
 
@@ -19,6 +20,6 @@ func _tick(_delta: float) -> Status:
 	var clip: AudioStream = clips_array.pick_random()
 	while len(clips_array) > 1 and clip == _previous_clip:
 		clip = clips_array.pick_random()
-	AudioManager.play_clip(clip, false, play_position, pitch_min, pitch_max, volume_scale)
+	AudioManager.play_clip(clip, false, play_position, pitch_min, pitch_max, volume_scale, range)
 	_previous_clip = clip
 	return SUCCESS

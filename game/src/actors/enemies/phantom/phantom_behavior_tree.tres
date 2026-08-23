@@ -1,9 +1,587 @@
 [gd_resource type="BehaviorTree" format=3 uid="uid://1liih5vvkdi4"]
 
+[ext_resource type="Script" uid="uid://c1x0iqb5iong2" path="res://src/ai/tasks/physics/set_velocity_in_direction.gd" id="1_7l5er"]
+[ext_resource type="Script" uid="uid://dfxh5qmwucb7e" path="res://src/ai/tasks/scene/get_first_in_group.gd" id="1_wxj2u"]
+[ext_resource type="AudioStream" uid="uid://ju2fsk38pj5j" path="res://src/copyrighted/phantom/sfx/Phantom-2-Attack-Big-018.wav" id="2_11ce5"]
+[ext_resource type="Script" uid="uid://ycnpkfx0h776" path="res://src/ai/tasks/transform/get_position.gd" id="2_f6tfq"]
+[ext_resource type="Script" uid="uid://ciifoff10b56r" path="res://src/ai/tasks/scene/set_visible.gd" id="3_7l5er"]
+[ext_resource type="Script" uid="uid://cnvl4kjqa7qju" path="res://src/ai/tasks/transform/set_position_x_y_z.gd" id="3_iruob"]
+[ext_resource type="Script" uid="uid://buqbm7gtcnnpi" path="res://src/ai/tasks/logic/randf_range.gd" id="3_oyjsi"]
+[ext_resource type="AudioStream" uid="uid://mbh11xmevdmd" path="res://src/copyrighted/phantom/sfx/Phantom-2-Attack-Big-019.wav" id="3_q1tlo"]
+[ext_resource type="AudioStream" uid="uid://drfyyl74qn6ec" path="res://src/copyrighted/phantom/sfx/Phantom-2-Attack-Big-025.wav" id="4_h0i2w"]
+[ext_resource type="AudioStream" uid="uid://dhcoxu0ysewfx" path="res://src/copyrighted/phantom/sfx/Phantom-2-Attack-Big-026.wav" id="5_f6tfq"]
+[ext_resource type="Script" uid="uid://cawha32gubgkl" path="res://src/ai/tasks/scene/set_collider.gd" id="5_oyjsi"]
+[ext_resource type="AudioStream" uid="uid://d1k5rfb6frxpj" path="res://src/copyrighted/phantom/sfx/Phantom-2-Attack-Big-030.wav" id="6_iruob"]
+[ext_resource type="Script" uid="uid://5qpw7k5phkni" path="res://src/ai/tasks/audio/play_random_audio.gd" id="7_h0i2w"]
+[ext_resource type="Script" uid="uid://br84132pv8riw" path="res://src/ai/tasks/actors/shake_camera.gd" id="7_q1tlo"]
+[ext_resource type="Script" uid="uid://cvw5s3jjrdnkq" path="res://src/ai/tasks/transform/face_target.gd" id="15_e7dx6"]
+[ext_resource type="Script" uid="uid://b0mh6vbdv44ds" path="res://src/ai/tasks/math/set_vector_x_y_z.gd" id="16_gps7j"]
+[ext_resource type="Script" uid="uid://c3f8aqpqj61xf" path="res://src/ai/tasks/physics/get_direction_to_target.gd" id="16_lyner"]
+[ext_resource type="PackedScene" uid="uid://crvovu5x6uwp7" path="res://src/actors/enemies/phantom/thrown_pin.tscn" id="18_ep25s"]
+[ext_resource type="Script" uid="uid://d16pmifc21cw6" path="res://src/ai/tasks/events/await_signal.gd" id="18_h3c6o"]
+[ext_resource type="AudioStream" uid="uid://bi1frvr44lmd8" path="res://src/copyrighted/phantom/sfx/Phantom-2-Attack-Big-002.wav" id="18_y0rx0"]
+[ext_resource type="AudioStream" uid="uid://cubqxq1u46jvi" path="res://src/copyrighted/phantom/sfx/Phantom-2-Attack-Big-004.wav" id="19_0ncbx"]
+[ext_resource type="Script" uid="uid://csgh34cpettq0" path="res://src/ai/tasks/scene/instantiate_scene.gd" id="19_e27sc"]
+[ext_resource type="AudioStream" uid="uid://binveegocjxmo" path="res://src/copyrighted/phantom/sfx/Phantom-2-Attack-Big-007.wav" id="20_13qii"]
+[ext_resource type="AudioStream" uid="uid://copvkqnmutu1x" path="res://src/copyrighted/phantom/sfx/Phantom-2-Attack-Big-010.wav" id="21_0vw3d"]
+[ext_resource type="AudioStream" uid="uid://b3sced0ndyvsk" path="res://src/copyrighted/phantom/sfx/Phantom-2-Attack-Big-024.wav" id="22_7ervn"]
+[ext_resource type="AudioStream" uid="uid://cqd272swuvjb" path="res://src/copyrighted/phantom/sfx/Phantom-2-Attack-Big-032.wav" id="23_7114d"]
+[ext_resource type="Script" uid="uid://c6x14fd7s2d0i" path="res://src/ai/tasks/transform/get_distance_to.gd" id="27_0ncbx"]
+
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_ojd61"]
+var/arena_min_x/name = &"arena_min_x"
+var/arena_min_x/type = 3
+var/arena_min_x/value = 0.0
+var/arena_min_x/hint = 0
+var/arena_min_x/hint_string = ""
+var/arena_max_x/name = &"arena_max_x"
+var/arena_max_x/type = 3
+var/arena_max_x/value = 0.0
+var/arena_max_x/hint = 0
+var/arena_max_x/hint_string = ""
+var/arena_min_z/name = &"arena_min_z"
+var/arena_min_z/type = 3
+var/arena_min_z/value = 0.0
+var/arena_min_z/hint = 0
+var/arena_min_z/hint_string = ""
+var/arena_max_z/name = &"arena_max_z"
+var/arena_max_z/type = 3
+var/arena_max_z/value = 0.0
+var/arena_max_z/hint = 0
+var/arena_max_z/hint_string = ""
+var/dash_direction/name = &"dash_direction"
+var/dash_direction/type = 9
+var/dash_direction/value = Vector3(0, 0, 0)
+var/dash_direction/hint = 0
+var/dash_direction/hint_string = ""
+var/direction_to_player/name = &"direction_to_player"
+var/direction_to_player/type = 9
+var/direction_to_player/value = Vector3(0, 0, 0)
+var/direction_to_player/hint = 0
+var/direction_to_player/hint_string = ""
+var/distance_to_pin/name = &"distance_to_pin"
+var/distance_to_pin/type = 3
+var/distance_to_pin/value = 0.0
+var/distance_to_pin/hint = 0
+var/distance_to_pin/hint_string = ""
+var/dive_position/name = &"dive_position"
+var/dive_position/type = 9
+var/dive_position/value = Vector3(0, 0, 0)
+var/dive_position/hint = 0
+var/dive_position/hint_string = ""
+var/dive_x/name = &"dive_x"
+var/dive_x/type = 3
+var/dive_x/value = 0.0
+var/dive_x/hint = 0
+var/dive_x/hint_string = ""
+var/dive_z/name = &"dive_z"
+var/dive_z/type = 3
+var/dive_z/value = 0.0
+var/dive_z/hint = 0
+var/dive_z/hint_string = ""
+var/ground_y/name = &"ground_y"
+var/ground_y/type = 3
+var/ground_y/value = 0.0
+var/ground_y/hint = 0
+var/ground_y/hint_string = ""
+var/jump_direction/name = &"jump_direction"
+var/jump_direction/type = 9
+var/jump_direction/value = Vector3(0, 0, 0)
+var/jump_direction/hint = 0
+var/jump_direction/hint_string = ""
+var/player/name = &"player"
+var/player/type = 24
+var/player/hint = 34
+var/player/hint_string = ""
+var/rotation_y/name = &"rotation_y"
+var/rotation_y/type = 3
+var/rotation_y/value = 0.0
+var/rotation_y/hint = 0
+var/rotation_y/hint_string = ""
+var/self/name = &"self"
+var/self/type = 24
+var/self/hint = 34
+var/self/hint_string = ""
+var/self_position/name = &"self_position"
+var/self_position/type = 9
+var/self_position/value = Vector3(0, 0, 0)
+var/self_position/hint = 0
+var/self_position/hint_string = ""
+var/steam_particles_path/name = &"steam_particles_path"
+var/steam_particles_path/type = 22
+var/steam_particles_path/value = NodePath("SteamPoint/SteamColumnParticles")
+var/steam_particles_path/hint = 26
+var/steam_particles_path/hint_string = ""
+var/throw_position/name = &"throw_position"
+var/throw_position/type = 9
+var/throw_position/value = Vector3(0, 0, 0)
+var/throw_position/hint = 0
+var/throw_position/hint_string = ""
+var/thrown_pin_path/name = &"thrown_pin_path"
+var/thrown_pin_path/type = 22
+var/thrown_pin_path/value = NodePath("")
+var/thrown_pin_path/hint = 0
+var/thrown_pin_path/hint_string = ""
+binding/self_position = NodePath(".:position")
+
+[sub_resource type="BTAction" id="BTAction_lyner"]
+script = ExtResource("1_wxj2u")
+group = &"Players"
+get_node_path = null
+output_var = &"player"
+
+[sub_resource type="BTSequence" id="BTSequence_ep25s"]
+custom_name = "Initialize"
+children = [SubResource("BTAction_lyner")]
+
+[sub_resource type="BBNode" id="BBNode_3sjwb"]
+saved_value = NodePath("Mesh/AnimationPlayer")
+resource_name = "Mesh/AnimationPlayer"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_t43nk"]
+animation_player = SubResource("BBNode_3sjwb")
+animation_name = &"Idle"
+blend = 0.5
+custom_name = "Idle Animation"
+
+[sub_resource type="BTWait" id="BTWait_oyjsi"]
+
+[sub_resource type="BTSequence" id="BTSequence_scgdb"]
+custom_name = "Initial Idle"
+children = [SubResource("BTPlayAnimation_t43nk"), SubResource("BTWait_oyjsi")]
+
+[sub_resource type="BBNode" id="BBNode_oyjsi"]
+saved_value = NodePath("Mesh/AnimationPlayer")
+resource_name = "Mesh/AnimationPlayer"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_81262"]
+await_completion = 0.1
+animation_player = SubResource("BBNode_oyjsi")
+animation_name = &"Dragoon Antic"
+blend = 0.1
+custom_name = "Dragoon Antic Animation"
+
+[sub_resource type="BTSequence" id="BTSequence_wxj2u"]
+custom_name = "Dragoon Antic"
+children = [SubResource("BTPlayAnimation_81262")]
+
+[sub_resource type="BBNode" id="BBNode_t43nk"]
+saved_value = NodePath("Mesh/AnimationPlayer")
+resource_name = "Mesh/AnimationPlayer"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_2gtvw"]
+animation_player = SubResource("BBNode_t43nk")
+animation_name = &"Jump"
+custom_name = "Jump Animation"
+
+[sub_resource type="BTAction" id="BTAction_bfoa7"]
+script = ExtResource("1_7l5er")
+direction_var = &"jump_direction"
+speed = 256.0
+face_velocity = false
+
+[sub_resource type="BTWait" id="BTWait_bfoa7"]
+duration = 0.25
+
+[sub_resource type="BTSequence" id="BTSequence_3sjwb"]
+custom_name = "Dragoon Up"
+children = [SubResource("BTPlayAnimation_2gtvw"), SubResource("BTAction_bfoa7"), SubResource("BTWait_bfoa7")]
+
+[sub_resource type="BTAction" id="BTAction_oyjsi"]
+script = ExtResource("1_7l5er")
+direction_var = &"jump_direction"
+
+[sub_resource type="BBVariant" id="BBVariant_h3c6o"]
+value_source = 1
+variable = &"arena_max_x"
+resource_name = "$arena_max_x"
+
+[sub_resource type="BBVariant" id="BBVariant_lyner"]
+value_source = 1
+variable = &"arena_min_x"
+resource_name = "$arena_min_x"
+
+[sub_resource type="BTAction" id="BTAction_ep25s"]
+script = ExtResource("3_oyjsi")
+min_var = SubResource("BBVariant_lyner")
+max_var = SubResource("BBVariant_h3c6o")
+output_value_var = &"dive_x"
+
+[sub_resource type="BBVariant" id="BBVariant_q432r"]
+value_source = 1
+variable = &"arena_max_z"
+resource_name = "$arena_max_z"
+
+[sub_resource type="BBVariant" id="BBVariant_xtr6t"]
+value_source = 1
+variable = &"arena_min_z"
+resource_name = "$arena_min_z"
+
+[sub_resource type="BTAction" id="BTAction_we86o"]
+script = ExtResource("3_oyjsi")
+min_var = SubResource("BBVariant_xtr6t")
+max_var = SubResource("BBVariant_q432r")
+output_value_var = &"dive_z"
+
+[sub_resource type="BBVariant" id="BBVariant_ep25s"]
+value_source = 1
+variable = &"dive_x"
+resource_name = "$dive_x"
+
+[sub_resource type="BBVariant" id="BBVariant_e27sc"]
+value_source = 1
+variable = &"ground_y"
+resource_name = "$ground_y"
+
+[sub_resource type="BBVariant" id="BBVariant_yci3e"]
+value_source = 1
+variable = &"dive_z"
+resource_name = "$dive_z"
+
+[sub_resource type="BTAction" id="BTAction_q432r"]
+script = ExtResource("3_iruob")
+target_var = &"self"
+x_var = SubResource("BBVariant_ep25s")
+y_var = SubResource("BBVariant_e27sc")
+z_var = SubResource("BBVariant_yci3e")
+
+[sub_resource type="BTSequence" id="BTSequence_bfoa7"]
+custom_name = "Random Position"
+children = [SubResource("BTAction_oyjsi"), SubResource("BTAction_ep25s"), SubResource("BTAction_we86o"), SubResource("BTAction_q432r")]
+
+[sub_resource type="BBVariant" id="BBVariant_e7dx6"]
+type = 22
+saved_value = NodePath("Mesh")
+resource_name = "Mesh"
+
+[sub_resource type="BTAction" id="BTAction_gps7j"]
+script = ExtResource("3_7l5er")
+node_var = SubResource("BBVariant_e7dx6")
+
+[sub_resource type="BBNode" id="BBNode_81262"]
+saved_value = NodePath("SteamPoint/SteamColumnParticles/Animator")
+resource_name = "SteamPoint/SteamColumnParticles/Animator"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_wxj2u"]
+animation_player = SubResource("BBNode_81262")
+animation_name = &"Steam Antic"
+
+[sub_resource type="BBVariant" id="BBVariant_wxj2u"]
+type = 3
+saved_value = 0.035
+resource_name = "0.035"
+
+[sub_resource type="BBVariant" id="BBVariant_we86o"]
+type = 3
+saved_value = 1.0
+resource_name = "1.0"
+
+[sub_resource type="BBVariant" id="BBVariant_y0rx0"]
+type = 1
+saved_value = false
+resource_name = "false"
+
+[sub_resource type="BTAction" id="BTAction_0ncbx"]
+script = ExtResource("7_q1tlo")
+shake_amount_var = SubResource("BBVariant_wxj2u")
+shake_duration_var = SubResource("BBVariant_we86o")
+shake_taper_off_var = SubResource("BBVariant_y0rx0")
+
+[sub_resource type="BTWait" id="BTWait_3sjwb"]
+
+[sub_resource type="BTSequence" id="BTSequence_2gtvw"]
+custom_name = "Steam"
+children = [SubResource("BTAction_gps7j"), SubResource("BTPlayAnimation_wxj2u"), SubResource("BTAction_0ncbx"), SubResource("BTWait_3sjwb")]
+
+[sub_resource type="BBVariant" id="BBVariant_gps7j"]
+type = 22
+saved_value = NodePath("Mesh")
+resource_name = "Mesh"
+
+[sub_resource type="BTAction" id="BTAction_h3c6o"]
+script = ExtResource("3_7l5er")
+node_var = SubResource("BBVariant_gps7j")
+visible = true
+
+[sub_resource type="BBNode" id="BBNode_wxj2u"]
+saved_value = NodePath("SteamPoint/SteamColumnParticles/Animator")
+resource_name = "SteamPoint/SteamColumnParticles/Animator"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_e7dx6"]
+animation_player = SubResource("BBNode_wxj2u")
+animation_name = &"Steam Burst"
+
+[sub_resource type="BBVariant" id="BBVariant_h0i2w"]
+type = 3
+saved_value = 2.0
+resource_name = "2.0"
+
+[sub_resource type="BBVariant" id="BBVariant_f6tfq"]
+type = 3
+saved_value = 0.25
+resource_name = "0.25"
+
+[sub_resource type="BBVariant" id="BBVariant_iruob"]
+type = 1
+saved_value = true
+resource_name = "true"
+
+[sub_resource type="BTAction" id="BTAction_7l5er"]
+script = ExtResource("7_q1tlo")
+shake_amount_var = SubResource("BBVariant_h0i2w")
+shake_duration_var = SubResource("BBVariant_f6tfq")
+shake_taper_off_var = SubResource("BBVariant_iruob")
+
+[sub_resource type="BTAction" id="BTAction_iruob"]
+script = ExtResource("2_f6tfq")
+target_var = &"self"
+output_position_var = &"self_position"
+
+[sub_resource type="BTAction" id="BTAction_f6tfq"]
+script = ExtResource("7_h0i2w")
+clips_array = Array[AudioStream]([ExtResource("2_11ce5"), ExtResource("3_q1tlo"), ExtResource("4_h0i2w"), ExtResource("5_f6tfq"), ExtResource("6_iruob")])
+play_position_var = &"self_position"
+pitch_min = 0.95
+range = 64.0
+
+[sub_resource type="BTSequence" id="BTSequence_iruob"]
+custom_name = "Play Voice"
+children = [SubResource("BTAction_iruob"), SubResource("BTAction_f6tfq")]
+
+[sub_resource type="BBNode" id="BBNode_2gtvw"]
+saved_value = NodePath("Mesh/AnimationPlayer")
+resource_name = "Mesh/AnimationPlayer"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_scgdb"]
+await_completion = 0.25
+animation_player = SubResource("BBNode_2gtvw")
+animation_name = &"Dive"
+custom_name = "Dive Animation"
+
+[sub_resource type="BBVariant" id="BBVariant_oyjsi"]
+type = 22
+saved_value = NodePath("SteamPoint/SteamColumnParticles/Damager/Collision")
+resource_name = "SteamPoint/SteamColumnParticles/Damager/Collision"
+
+[sub_resource type="BTAction" id="BTAction_81262"]
+script = ExtResource("5_oyjsi")
+collider_var = SubResource("BBVariant_oyjsi")
+
+[sub_resource type="BTSequence" id="BTSequence_ph50l"]
+custom_name = "Dive"
+children = [SubResource("BTAction_h3c6o"), SubResource("BTPlayAnimation_e7dx6"), SubResource("BTAction_7l5er"), SubResource("BTSequence_iruob"), SubResource("BTPlayAnimation_scgdb"), SubResource("BTAction_81262")]
+
+[sub_resource type="BTSequence" id="BTSequence_t43nk"]
+custom_name = "Dragoon Dive"
+children = [SubResource("BTSequence_wxj2u"), SubResource("BTSequence_3sjwb"), SubResource("BTSequence_bfoa7"), SubResource("BTSequence_2gtvw"), SubResource("BTSequence_ph50l")]
+
+[sub_resource type="BTAction" id="BTAction_wxj2u"]
+custom_name = "Stop"
+script = ExtResource("1_7l5er")
+direction_var = &"jump_direction"
+
+[sub_resource type="BTAction" id="BTAction_e27sc"]
+script = ExtResource("15_e7dx6")
+target_var = &"player"
+
+[sub_resource type="BTAction" id="BTAction_yci3e"]
+script = ExtResource("16_lyner")
+target_var = &"player"
+output_direction_var = &"jump_direction"
+
+[sub_resource type="BBVariant" id="BBVariant_v1dko"]
+saved_value = null
+resource_name = "<null>"
+
+[sub_resource type="BBVariant" id="BBVariant_f3fnf"]
+type = 3
+saved_value = 1.0
+resource_name = "1.0"
+
+[sub_resource type="BBVariant" id="BBVariant_lo2j8"]
+saved_value = null
+resource_name = "<null>"
+
+[sub_resource type="BTAction" id="BTAction_8hf85"]
+script = ExtResource("16_gps7j")
+vector_var = &"jump_direction"
+x_var = SubResource("BBVariant_v1dko")
+y_var = SubResource("BBVariant_f3fnf")
+z_var = SubResource("BBVariant_lo2j8")
+
+[sub_resource type="BBNode" id="BBNode_e7dx6"]
+saved_value = NodePath("Mesh/AnimationPlayer")
+resource_name = "Mesh/AnimationPlayer"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_gps7j"]
+await_completion = 0.125
+animation_player = SubResource("BBNode_e7dx6")
+animation_name = &"Jump Antic"
+blend = 0.125
+custom_name = "Jump Antic Animation"
+
+[sub_resource type="BTSequence" id="BTSequence_oyjsi"]
+custom_name = "Jump Antic"
+children = [SubResource("BTAction_wxj2u"), SubResource("BTAction_e27sc"), SubResource("BTAction_yci3e"), SubResource("BTAction_8hf85"), SubResource("BTPlayAnimation_gps7j")]
+
+[sub_resource type="BTAction" id="BTAction_v1dko"]
+script = ExtResource("1_7l5er")
+direction_var = &"jump_direction"
+speed = 16.0
+
+[sub_resource type="BTWait" id="BTWait_gps7j"]
+duration = 0.5
+
+[sub_resource type="BTSequence" id="BTSequence_e7dx6"]
+custom_name = "Jump"
+children = [SubResource("BTAction_v1dko"), SubResource("BTWait_gps7j")]
+
+[sub_resource type="BTAction" id="BTAction_0vw3d"]
+custom_name = "Stop"
+script = ExtResource("1_7l5er")
+direction_var = &"jump_direction"
+
+[sub_resource type="BBNode" id="BBNode_gps7j"]
+saved_value = NodePath("Mesh/AnimationPlayer")
+resource_name = "Mesh/AnimationPlayer"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_h3c6o"]
+await_completion = 1.0
+animation_player = SubResource("BBNode_gps7j")
+animation_name = &"Throw"
+blend = 0.125
+
+[sub_resource type="BTAction" id="BTAction_f3fnf"]
+script = ExtResource("7_h0i2w")
+clips_array = Array[AudioStream]([ExtResource("18_y0rx0"), ExtResource("19_0ncbx"), ExtResource("20_13qii"), ExtResource("21_0vw3d"), ExtResource("22_7ervn"), ExtResource("23_7114d")])
+play_position_var = &"self_position"
+pitch_min = 0.9
+range = 128.0
+
+[sub_resource type="BTSequence" id="BTSequence_lyner"]
+custom_name = "Aim Throw"
+children = [SubResource("BTAction_0vw3d"), SubResource("BTPlayAnimation_h3c6o"), SubResource("BTAction_f3fnf")]
+
+[sub_resource type="BTAction" id="BTAction_y0rx0"]
+script = ExtResource("16_lyner")
+target_var = &"player"
+output_direction_var = &"direction_to_player"
+
+[sub_resource type="BBVariant" id="BBVariant_7ervn"]
+type = 22
+saved_value = NodePath("Mesh/Armature/Skeleton3D/Pin")
+resource_name = "Mesh/Armature/Skeleton3D/Pin"
+
+[sub_resource type="BTAction" id="BTAction_7114d"]
+script = ExtResource("3_7l5er")
+node_var = SubResource("BBVariant_7ervn")
+
+[sub_resource type="BBVariant" id="BBVariant_0ncbx"]
+type = 24
+saved_value = ExtResource("18_ep25s")
+resource_name = "(res://src/actors/enemies/phantom/thrown_pin.tscn):<PackedScene#-9222542401761869847>"
+
+[sub_resource type="BTAction" id="BTAction_13qii"]
+custom_name = "Instantiate Pin"
+script = ExtResource("19_e27sc")
+scene_to_instantiate_var = SubResource("BBVariant_0ncbx")
+get_node_path = null
+output_var = &"thrown_pin_path"
+
+[sub_resource type="BBVariant" id="BBVariant_13qii"]
+value_source = 1
+variable = &"direction_to_player"
+resource_name = "$direction_to_player"
+
+[sub_resource type="BBVariant" id="BBVariant_7114d"]
+type = 3
+saved_value = 8.0
+resource_name = "8.0"
+
+[sub_resource type="BBNode" id="BBNode_ep25s"]
+value_source = 1
+variable = &"thrown_pin_path"
+resource_name = "$thrown_pin_path"
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_e27sc"]
+node = SubResource("BBNode_ep25s")
+method = &"shoot"
+args = Array[BBVariant]([SubResource("BBVariant_13qii"), SubResource("BBVariant_7114d")])
+
+[sub_resource type="BBVariant" id="BBVariant_0vw3d"]
+value_source = 1
+variable = &"thrown_pin_path"
+resource_name = "$thrown_pin_path"
+
+[sub_resource type="BTAction" id="BTAction_xtr6t"]
+script = ExtResource("18_h3c6o")
+node_var = SubResource("BBVariant_0vw3d")
+signal_name = &"collided"
+
+[sub_resource type="BTSequence" id="BTSequence_0vw3d"]
+custom_name = "Throw Pin"
+children = [SubResource("BTAction_y0rx0"), SubResource("BTAction_7114d"), SubResource("BTAction_13qii"), SubResource("BTCallMethod_e27sc"), SubResource("BTAction_xtr6t")]
+
+[sub_resource type="BTWait" id="BTWait_0ncbx"]
+duration = 0.25
+
+[sub_resource type="BTSequence" id="BTSequence_0ncbx"]
+custom_name = "Dash Wait"
+children = [SubResource("BTWait_0ncbx")]
+
+[sub_resource type="BTAction" id="BTAction_7ervn"]
+script = ExtResource("16_lyner")
+target_var = &"thrown_pin_path"
+output_direction_var = &"dash_direction"
+
+[sub_resource type="BTAction" id="BTAction_lo2j8"]
+script = ExtResource("1_7l5er")
+direction_var = &"dash_direction"
+speed = 16.0
+
+[sub_resource type="BTAction" id="BTAction_0qf8d"]
+script = ExtResource("27_0ncbx")
+from_var = &"self"
+to_var = &"thrown_pin_path"
+output_distance_var = &"distance_to_pin"
+
+[sub_resource type="BBVariant" id="BBVariant_cymf8"]
+type = 3
+saved_value = 1.0
+resource_name = "1.0"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_6ih7d"]
+variable = &"distance_to_pin"
+check_type = 1
+value = SubResource("BBVariant_cymf8")
+
+[sub_resource type="BTSequence" id="BTSequence_4b2un"]
+custom_name = "Check Reached Pin"
+children = [SubResource("BTAction_0qf8d"), SubResource("BTCheckVar_6ih7d")]
+
+[sub_resource type="BTRepeatUntilSuccess" id="BTRepeatUntilSuccess_76t5u"]
+children = [SubResource("BTSequence_4b2un")]
+
+[sub_resource type="BTSequence" id="BTSequence_8hf85"]
+custom_name = "Dash To Pin"
+children = [SubResource("BTAction_7ervn"), SubResource("BTAction_lo2j8"), SubResource("BTRepeatUntilSuccess_76t5u")]
+
+[sub_resource type="BTSequence" id="BTSequence_81262"]
+custom_name = "Air Throw"
+children = [SubResource("BTSequence_oyjsi"), SubResource("BTSequence_e7dx6"), SubResource("BTSequence_lyner"), SubResource("BTSequence_0vw3d"), SubResource("BTSequence_0ncbx"), SubResource("BTSequence_8hf85")]
+
+[sub_resource type="BTRandomSelector" id="BTRandomSelector_3sjwb"]
+custom_name = "Attack Choice"
+children = [SubResource("BTSequence_t43nk"), SubResource("BTSequence_81262")]
+
+[sub_resource type="BTRepeat" id="BTRepeat_oyjsi"]
+forever = true
+custom_name = "Logic Loop"
+children = [SubResource("BTRandomSelector_3sjwb")]
 
 [sub_resource type="BTSequence" id="BTSequence_ojd61"]
 custom_name = "Main"
+children = [SubResource("BTSequence_ep25s"), SubResource("BTSequence_scgdb"), SubResource("BTRepeat_oyjsi")]
 
 [resource]
 blackboard_plan = SubResource("BlackboardPlan_ojd61")

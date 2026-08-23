@@ -2,15 +2,21 @@
 
 [ext_resource type="PackedScene" uid="uid://dubnsno8bya0v" path="res://src/actors/enemies/enemy.tscn" id="1_n1qxd"]
 [ext_resource type="PackedScene" uid="uid://bsfr1056711yp" path="res://src/actors/enemies/phantom/phantom.glb" id="2_ix5q8"]
+[ext_resource type="Script" uid="uid://3uqw0ncp8rhd" path="res://src/actors/enemies/phantom/phantom_boss.gd" id="2_tr76i"]
 [ext_resource type="ArrayMesh" uid="uid://djrx8w2k84nd4" path="res://src/actors/enemies/phantom/wings.tres" id="3_4lqec"]
 [ext_resource type="PackedScene" uid="uid://xal232da7bpf" path="res://src/gameplay/combat/damager.tscn" id="4_aygqo"]
 [ext_resource type="ArrayMesh" uid="uid://efox85te8wrt" path="res://src/actors/enemies/phantom/silk_particle1_mesh.tres" id="4_vep8l"]
 [ext_resource type="Curve" uid="uid://c2gis7phupc2g" path="res://src/resources/curves/blood_particles_curve.tres" id="5_0nndk"]
 [ext_resource type="BehaviorTree" uid="uid://1liih5vvkdi4" path="res://src/actors/enemies/phantom/phantom_behavior_tree.tres" id="5_tqvn5"]
+[ext_resource type="PackedScene" uid="uid://ci8vhhfslnoce" path="res://src/actors/enemies/phantom/dive_steam.tscn" id="8_xe2rs"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4lqec"]
 radius = 0.7
 height = 7.4609375
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xe2rs"]
+radius = 1.0
+height = 8.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ojd61"]
 cull_mode = 2
@@ -21,67 +27,103 @@ emission = Color(1, 1, 1, 1)
 radius = 0.4453125
 height = 5.604492
 
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_tr76i"]
+var/arena_min_x/name = &"arena_min_x"
+var/arena_min_x/type = 3
+var/arena_min_x/value = -32.0
+var/arena_min_x/hint = 0
+var/arena_min_x/hint_string = ""
+var/arena_max_x/name = &"arena_max_x"
+var/arena_max_x/type = 3
+var/arena_max_x/value = 32.0
+var/arena_max_x/hint = 0
+var/arena_max_x/hint_string = ""
+var/arena_min_z/name = &"arena_min_z"
+var/arena_min_z/type = 3
+var/arena_min_z/value = -32.0
+var/arena_min_z/hint = 0
+var/arena_min_z/hint_string = ""
+var/arena_max_z/name = &"arena_max_z"
+var/arena_max_z/type = 3
+var/arena_max_z/value = 32.0
+var/arena_max_z/hint = 0
+var/arena_max_z/hint_string = ""
+var/jump_direction/name = &"jump_direction"
+var/jump_direction/type = 9
+var/jump_direction/value = Vector3(0, 1, 0)
+var/jump_direction/hint = 0
+var/jump_direction/hint_string = ""
+var/self/name = &"self"
+var/self/type = 24
+var/self/value = Object(CharacterBody3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"disable_mode":0,"collision_layer":2,"collision_mask":4,"collision_priority":1.0,"input_ray_pickable":true,"input_capture_on_drag":false,"axis_lock_linear_x":false,"axis_lock_linear_y":false,"axis_lock_linear_z":false,"axis_lock_angular_x":false,"axis_lock_angular_y":false,"axis_lock_angular_z":false,"motion_mode":0,"up_direction":Vector3(0, 1, 0),"slide_on_ceiling":true,"velocity":Vector3(0, 0, 0),"max_slides":6,"wall_min_slide_angle":0.2617994,"floor_stop_on_slope":true,"floor_constant_speed":false,"floor_block_on_wall":true,"floor_max_angle":0.7853982,"floor_snap_length":0.1,"platform_on_leave":0,"platform_floor_layers":4294967295,"platform_wall_layers":0,"safe_margin":0.001,"script":ExtResource("2_tr76i"),"steam_particles":null)
+
+var/self/hint = 34
+var/self/hint_string = ""
+var/steam_particles_path/name = &"steam_particles_path"
+var/steam_particles_path/type = 22
+var/steam_particles_path/value = NodePath("../Mesh/SteamPoint/SteamColumnParticles")
+var/steam_particles_path/hint = 26
+var/steam_particles_path/hint_string = ""
+var/thrown_pin_path/name = &"thrown_pin_path"
+var/thrown_pin_path/type = 22
+var/thrown_pin_path/value = NodePath("../Mesh/Throw Point")
+var/thrown_pin_path/hint = 0
+var/thrown_pin_path/hint_string = ""
+binding/throw_position = NodePath("../Mesh/Throw Point:position")
+
 [node name="PhantomBoss" unique_id=1724463133 instance=ExtResource("1_n1qxd")]
+script = ExtResource("2_tr76i")
 
 [node name="Mesh" parent="." index="1" unique_id=176040917 instance=ExtResource("2_ix5q8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 
-[node name="Skeleton3D" parent="Mesh/Armature" parent_id_path=PackedInt32Array(176040917, 776016117) index="0" unique_id=1095642843]
-bones/0/rotation = Quaternion(0.21599099, 0, -0.97639537, 0)
-bones/2/rotation = Quaternion(0.50000006, 0.49999997, 0.49999997, -0.49999997)
-bones/3/rotation = Quaternion(-0.73563015, 0.1352395, -0.15189414, 0.6461321)
-bones/6/rotation = Quaternion(-0.74184763, -0.06612122, 0.07472544, 0.66310346)
-bones/8/rotation = Quaternion(0, -0.4308982, 0, 0.90240055)
-bones/9/rotation = Quaternion(0, -0.4695507, 0, 0.88290554)
-bones/10/rotation = Quaternion(0.068649605, -0.05311927, -0.8302027, 0.5506625)
-bones/11/rotation = Quaternion(0.42007515, -0.17393424, 0.20753413, 0.86614853)
-bones/12/rotation = Quaternion(0.7723082, 0.058509313, 0.4147077, 0.47763404)
-bones/13/rotation = Quaternion(-0.07368506, -0.25175112, 0.73998094, 0.6193708)
-bones/14/rotation = Quaternion(0.043676883, -0.16125304, 0.04094873, 0.98509544)
-bones/15/rotation = Quaternion(0.83696365, -0.4196789, 0.16137946, 0.31195894)
-bones/16/position = Vector3(-0.06823749, -0.2319609, -0.35559478)
-bones/16/rotation = Quaternion(0.06741213, 0.8107758, 0.11631542, 0.5697095)
-bones/18/rotation = Quaternion(0.0705894, -0.02419119, -0.008175935, 0.99717855)
-
-[node name="SpineAttach" type="BoneAttachment3D" parent="Mesh/Armature/Skeleton3D" index="4" unique_id=1651600474]
-transform = Transform3D(-0.24198112, 0, 0.97028106, 0, 0.99999994, 0, -0.970281, 0, -0.24198112, -1.1338725e-10, 0.7896912, 2.1258319e-10)
-bone_name = "Spine1"
-bone_idx = 8
+[node name="SpineAttach" type="BoneAttachment3D" parent="Mesh/Armature/Skeleton3D" parent_id_path=PackedInt32Array(176040917, 5543216) index="4" unique_id=1651600474]
+transform = Transform3D(1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, 1, 0, 0.17558289, 0)
+bone_name = "Spine0"
+bone_idx = 1
 
 [node name="Wings" type="SoftBody3D" parent="Mesh/Armature/Skeleton3D/SpineAttach" index="0" unique_id=1001270735]
-transform = Transform3D(0.709946, 0, 0.7042565, 0, 1.0000002, 0, -0.7042564, 0, 0.70994616, 0.08291346, -1.3903477, 0.15661487)
+transform = Transform3D(0.99882615, -0.01486406, 0.046116382, 0.016442396, 0.99928606, -0.03403753, -0.045577645, 0.034755856, 0.99835676, 0, -0.889, 0.21)
 mesh = ExtResource("3_4lqec")
+collision_layer = 2
 parent_collision_ignore = NodePath("../../../../..")
 total_mass = 0.5
 linear_stiffness = 0.8
-drag_coefficient = 0.1
-pinned_points = [91, 49, 90, 19, 127, 69, 70, 25]
-attachments/0/point_index = 91
+pinned_points = [38, 67, 39, 68, 87, 3, 47, 28]
+attachments/0/point_index = 38
 attachments/0/spatial_attachment_path = NodePath("")
 attachments/0/offset = Vector3(0, 0, 0)
-attachments/1/point_index = 49
+attachments/1/point_index = 67
 attachments/1/spatial_attachment_path = NodePath("")
 attachments/1/offset = Vector3(0, 0, 0)
-attachments/2/point_index = 90
+attachments/2/point_index = 39
 attachments/2/spatial_attachment_path = NodePath("")
 attachments/2/offset = Vector3(0, 0, 0)
-attachments/3/point_index = 19
+attachments/3/point_index = 68
 attachments/3/spatial_attachment_path = NodePath("")
 attachments/3/offset = Vector3(0, 0, 0)
-attachments/4/point_index = 127
+attachments/4/point_index = 87
 attachments/4/spatial_attachment_path = NodePath("")
 attachments/4/offset = Vector3(0, 0, 0)
-attachments/5/point_index = 69
+attachments/5/point_index = 3
 attachments/5/spatial_attachment_path = NodePath("")
 attachments/5/offset = Vector3(0, 0, 0)
-attachments/6/point_index = 70
+attachments/6/point_index = 47
 attachments/6/spatial_attachment_path = NodePath("")
 attachments/6/offset = Vector3(0, 0, 0)
-attachments/7/point_index = 25
+attachments/7/point_index = 28
 attachments/7/spatial_attachment_path = NodePath("")
 attachments/7/offset = Vector3(0, 0, 0)
 
-[node name="AnimationPlayer" parent="Mesh" index="1" unique_id=913755212]
+[node name="AnimationPlayer" parent="Mesh" index="1" unique_id=1047222588]
 autoplay = &"Idle"
+
+[node name="SteamPoint" type="Marker3D" parent="Mesh" index="2" unique_id=291217177]
+
+[node name="SteamColumnParticles" parent="Mesh/SteamPoint" index="0" unique_id=1251483514 instance=ExtResource("8_xe2rs")]
+
+[node name="Throw Point" type="Marker3D" parent="Mesh" index="3" unique_id=459646857]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.22143555, 0.0026855469, 4.2176127)
 
 [node name="Collision" parent="." index="2" unique_id=1496356468]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3465714, 0)
@@ -90,6 +132,10 @@ shape = SubResource("CapsuleShape3D_4lqec")
 [node name="Health" parent="." index="3" unique_id=1048848430 node_paths=PackedStringArray("damage_particles")]
 max_health = 650
 damage_particles = [NodePath("SilkParticles")]
+
+[node name="Collision" parent="Health" index="0" unique_id=76614683]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.65252686, 0)
+shape = SubResource("CapsuleShape3D_xe2rs")
 
 [node name="BloodParticles" parent="Health" index="1" unique_id=384959486]
 visible = false
@@ -131,7 +177,13 @@ _meshes = [NodePath("../Mesh/Armature/Skeleton3D/Body"), NodePath("../Mesh/Armat
 
 [node name="BehaviorTree" parent="." index="8" unique_id=1868026853]
 behavior_tree = ExtResource("5_tqvn5")
+blackboard_plan = SubResource("BlackboardPlan_tr76i")
+
+[node name="VoicePlayer" parent="." index="9" unique_id=430572606]
+volume_db = 1.0
 
 [editable path="Mesh"]
+[editable path="Mesh/SteamPoint/SteamColumnParticles"]
+[editable path="Mesh/SteamPoint/SteamColumnParticles/Damager"]
 [editable path="Health"]
 [editable path="Damager"]

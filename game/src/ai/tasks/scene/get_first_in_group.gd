@@ -15,6 +15,8 @@ extends BTAction
 
 ## Name of the SceneTree group.
 @export var group: StringName
+## Whether to get the NodePath instead of the Node itself
+@export var get_node_path: bool
 
 ## Blackboard variable in which the task will store the acquired node.
 @export var output_var: StringName = &"target"
@@ -26,8 +28,11 @@ func _generate_name() -> String:
 	]
 
 func _tick(_delta: float) -> Status:
-	var nodes: Array[Node] = agent.get_tree().get_nodes_in_group(group)
-	if nodes.size() <= 0:
+	var node: Node = agent.get_tree().get_first_node_in_group(group)
+	if not is_instance_valid(node):
 		return FAILURE
-	blackboard.set_var(output_var, nodes[0])
+	if get_node_path:
+		blackboard.set_var(output_var, node.get_path())
+	else:
+		blackboard.set_var(output_var, node)
 	return SUCCESS

@@ -36,6 +36,10 @@ sdfgi_enabled = true
 volumetric_fog_density = 0.0025
 volumetric_fog_emission = Color(0.2562154, 0.2765893, 0.26210725, 1)
 
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_ktfto"]
+dof_blur_far_distance = 64.0
+dof_blur_far_transition = 8.0
+
 [sub_resource type="PlaneMesh" id="PlaneMesh_14s3j"]
 size = Vector2(100, 100)
 
@@ -65,6 +69,14 @@ music_track = SubResource("Resource_ojd61")
 [node name="WorldEnvironment" parent="Environment" parent_id_path=PackedInt32Array(921388622) index="0" unique_id=986338651]
 environment = SubResource("Environment_mdpca")
 
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment" parent_id_path=PackedInt32Array(921388622) index="1" unique_id=1568374027]
+transform = Transform3D(-0.7072277, -0.35424432, 0.6118333, 0.70241356, -0.45033914, 0.5511896, 0.08027669, 0.8195765, 0.5673184, 0, 27.213322, 0)
+light_color = Color(0.88594085, 0.90867215, 0.901605, 1)
+shadow_enabled = true
+
+[node name="Camera" parent="CameraController/CameraPitch/Gimbal" parent_id_path=PackedInt32Array(969489915, 985846177) index="0" unique_id=707455384]
+attributes = SubResource("CameraAttributesPractical_ktfto")
+
 [node name="Ground" type="StaticBody3D" parent="." index="6" unique_id=433638540]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.194898, 0)
 collision_layer = 4
@@ -76,10 +88,7 @@ mesh = SubResource("PlaneMesh_14s3j")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -50, 0)
 shape = SubResource("BoxShape3D_14s3j")
 
-[node name="PhantomBoss" parent="." index="7" unique_id=1724463133 instance=ExtResource("2_vuuix")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00020456314, 0.18464899, -10.346679)
-
-[node name="structureA" parent="." index="8" unique_id=1152383996 instance=ExtResource("5_lerc2")]
+[node name="structureA" parent="." index="7" unique_id=1152383996 instance=ExtResource("5_lerc2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.641411, 0, -23.069153)
 
 [node name="BézierCurve" parent="structureA" index="0" unique_id=1624026274]
@@ -303,4 +312,8 @@ surface_material_override/0 = SubResource("ShaderMaterial_lerc2")
 [node name="Plane_002" parent="structureA" index="68" unique_id=2101058987]
 surface_material_override/0 = SubResource("StandardMaterial3D_oif61")
 
+[node name="PhantomBoss" parent="." index="8" unique_id=1724463133 instance=ExtResource("2_vuuix")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -19.110111)
+
+[editable path="CameraController"]
 [editable path="structureA"]

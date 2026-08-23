@@ -27,5 +27,9 @@ func bb_value(param: BBVariant, blackboard: Blackboard, root_node_path = null) -
 					return root_node_path.get_node_or_null(param.saved_value)
 		return param.saved_value
 	elif param.value_source == BBParam.ValueSource.BLACKBOARD_VAR:
-		return blackboard.get_var(param.variable)
+		var value = blackboard.get_var(param.variable)
+		if value is NodePath:
+			return root_node_path.get_node_or_null(value)
+		else:
+			return value
 	return null
