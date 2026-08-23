@@ -77,7 +77,6 @@ var/spin_to_waypoint/hint_string = ""
 [sub_resource type="BTAction" id="BTAction_pbk4n"]
 script = ExtResource("1_7k3xq")
 group = &"Players"
-get_node_path = null
 output_var = &"player"
 
 [sub_resource type="BBVariant" id="BBVariant_vvrqo"]

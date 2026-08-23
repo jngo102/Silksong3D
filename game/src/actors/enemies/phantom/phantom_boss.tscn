@@ -71,32 +71,33 @@ script = ExtResource("2_tr76i")
 [node name="Mesh" parent="." index="1" unique_id=176040917 instance=ExtResource("2_ix5q8")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 
-[node name="Skeleton3D" parent="Mesh/Armature" parent_id_path=PackedInt32Array(176040917, 1163787841) index="0" unique_id=5543216]
-bones/1/rotation = Quaternion(0.9929393, 8.955841e-09, -7.496483e-08, -0.11862373)
-bones/2/rotation = Quaternion(0.50000006, 0.49999997, 0.49999997, -0.49999997)
-bones/3/rotation = Quaternion(-0.50592947, 0.11353089, -0.28945643, 0.8045875)
-bones/4/rotation = Quaternion(0.13791452, 3.499623e-08, 0.10700347, 0.9846471)
-bones/4/scale = Vector3(0.99999994, 1, 0.99999994)
-bones/6/rotation = Quaternion(-0.5971912, -0.15113437, 0.3323421, 0.7141918)
-bones/7/rotation = Quaternion(0.22935225, -3.9104924e-09, -0.19968763, 0.9526397)
-bones/8/rotation = Quaternion(0.18431495, 0.10120098, -0.045722477, 0.9765735)
-bones/9/rotation = Quaternion(0.17334503, 0.07784772, -0.07797181, 0.9786785)
-bones/10/rotation = Quaternion(-0.21545073, 0.03516249, -0.66418976, 0.7149802)
-bones/11/rotation = Quaternion(-0.18513937, -0.030854871, 0.13329174, 0.97314173)
-bones/12/rotation = Quaternion(0.7689275, 0.31571388, 0.1695942, 0.5294459)
-bones/13/position = Vector3(-1.8155514, -2.069543, -0.86578965)
-bones/13/rotation = Quaternion(0.2713067, 0.9069138, 0.03366974, 0.3205719)
-bones/14/rotation = Quaternion(-1.2018238e-07, -3.4177667e-08, 0.77334225, 0.6339889)
-bones/15/rotation = Quaternion(0.41418013, 0.09265506, -0.12545373, 0.8967337)
-bones/16/rotation = Quaternion(0.75864965, 0.3272924, -0.3689619, 0.42567322)
-bones/17/rotation = Quaternion(0.11004816, -0.086996935, 0.16033591, 0.97704315)
-bones/18/rotation = Quaternion(-0.36043534, -0.05250167, 0.05581148, 0.9296317)
-bones/19/position = Vector3(1.2047963e-09, 1.4523029, 3.7252903e-08)
-bones/19/rotation = Quaternion(7.916243e-09, 1.5154122e-09, -8.9576224e-10, 1)
-bones/19/scale = Vector3(0.99999994, 0.99999994, 0.99999994)
+[node name="Skeleton3D" parent="Mesh/Armature" parent_id_path=PackedInt32Array(176040917, 957305432) index="0" unique_id=1608424252]
+bones/0/position = Vector3(0, -2.0610468, 0)
+bones/1/rotation = Quaternion(0.8302588, 0.2533602, 0.44791648, 0.21412565)
+bones/2/rotation = Quaternion(0.39054963, 0.8303217, 0.1521203, -0.36728224)
+bones/3/rotation = Quaternion(-0.5169547, 0.018098863, -0.038617656, 0.85494965)
+bones/4/rotation = Quaternion(-0.38995263, -0.17314246, 0.560149, 0.7100646)
+bones/4/scale = Vector3(1.0000001, 1, 1)
+bones/5/rotation = Quaternion(-0.83032167, 0.39054975, 0.3672822, 0.15212044)
+bones/6/rotation = Quaternion(-0.32392702, -0.32128233, -0.12532316, 0.8809899)
+bones/7/rotation = Quaternion(0.021471584, 0.9659165, -0.008251931, 0.25782996)
+bones/8/rotation = Quaternion(0.06889742, -0.0958323, 0.07332875, 0.9902991)
+bones/9/rotation = Quaternion(0.08419341, -0.1518814, 0.05440656, 0.9833023)
+bones/10/rotation = Quaternion(-0.28556487, -0.044105034, -0.6142475, 0.7343075)
+bones/11/rotation = Quaternion(0.30922905, -0.23797998, 0.18532482, 0.9018857)
+bones/12/rotation = Quaternion(0.25274327, 0.058293313, 0.0039861877, 0.9657675)
+bones/13/position = Vector3(-0.9972769, 2.849577, -1.356416)
+bones/13/rotation = Quaternion(0.89908427, 0.28257495, 0.2135341, 0.25729778)
+bones/14/rotation = Quaternion(0.12786004, 0.21228656, 0.7625724, 0.59755313)
+bones/15/rotation = Quaternion(0.32678106, -0.78205377, -0.10192086, 0.5207862)
+bones/16/rotation = Quaternion(-0.032747354, -0.16705184, -0.5372208, 0.8260842)
+bones/17/rotation = Quaternion(0.28152648, -0.08665331, 0.079090126, 0.9523544)
+bones/18/rotation = Quaternion(0.09714142, -0.097409494, 0.016651833, 0.99035233)
+bones/19/position = Vector3(2.9802322e-08, 1.4523027, 2.9802322e-08)
+bones/19/rotation = Quaternion(2.7939677e-09, 5.5879354e-09, -2.3283064e-09, 1)
 
 [node name="SpineAttach" type="BoneAttachment3D" parent="Mesh/Armature/Skeleton3D" index="4" unique_id=1651600474]
-transform = Transform3D(1, -3.5527137e-15, -1.509958e-07, -3.557043e-08, 0.97185683, -0.23557234, 1.467463e-07, 0.23557234, 0.97185683, 0, 0.17558289, 0)
+transform = Transform3D(0.47035885, 0.22888826, 0.852275, -0.6125299, 0.7799176, 0.12859099, -0.6352713, -0.5825278, 0.50704205, 0, -0.68201137, 0)
 bone_name = "Spine0"
 bone_idx = 1
 
@@ -112,30 +113,30 @@ drag_coefficient = 0.25
 pinned_points = [38, 67, 39, 68, 87, 3, 47, 28]
 attachments/0/point_index = 38
 attachments/0/spatial_attachment_path = NodePath("..")
-attachments/0/offset = Vector3(-0.26851937, 0.49333054, 0.17660706)
+attachments/0/offset = Vector3(-0.26851934, 0.49333072, 0.17660704)
 attachments/1/point_index = 67
 attachments/1/spatial_attachment_path = NodePath("..")
-attachments/1/offset = Vector3(-0.22743215, 0.5077824, 0.13234426)
+attachments/1/offset = Vector3(-0.22743212, 0.50778246, 0.13234423)
 attachments/2/point_index = 39
 attachments/2/spatial_attachment_path = NodePath("..")
-attachments/2/offset = Vector3(-0.22639468, 0.15732008, 0.011573806)
+attachments/2/offset = Vector3(-0.22639467, 0.15732026, 0.0115737915)
 attachments/3/point_index = 68
 attachments/3/spatial_attachment_path = NodePath("..")
-attachments/3/offset = Vector3(-0.2721578, 0.12930661, 0.06373398)
+attachments/3/offset = Vector3(-0.2721578, 0.12930667, 0.06373398)
 attachments/4/point_index = 87
 attachments/4/spatial_attachment_path = NodePath("..")
-attachments/4/offset = Vector3(0.22401802, 0.13747448, 0.041092873)
+attachments/4/offset = Vector3(0.22401802, 0.13747454, 0.041092873)
 attachments/5/point_index = 3
 attachments/5/spatial_attachment_path = NodePath("..")
-attachments/5/offset = Vector3(0.17280057, 0.1638915, -0.006641954)
+attachments/5/offset = Vector3(0.17280059, 0.16389167, -0.006641954)
 attachments/6/point_index = 47
 attachments/6/spatial_attachment_path = NodePath("..")
-attachments/6/offset = Vector3(0.17331769, 0.51437944, 0.11405757)
+attachments/6/offset = Vector3(0.17331772, 0.5143795, 0.11405753)
 attachments/7/point_index = 28
 attachments/7/spatial_attachment_path = NodePath("..")
-attachments/7/offset = Vector3(0.21871673, 0.5013513, 0.15437388)
+attachments/7/offset = Vector3(0.21871676, 0.5013515, 0.15437387)
 
-[node name="AnimationPlayer" parent="Mesh" index="1" unique_id=1047222588]
+[node name="AnimationPlayer" parent="Mesh" index="1" unique_id=2139348027]
 autoplay = &"Idle"
 
 [node name="SteamPoint" type="Marker3D" parent="Mesh" index="2" unique_id=291217177]
