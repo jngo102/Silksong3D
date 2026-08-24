@@ -44,7 +44,7 @@ func _show_bind_tip() -> void:
 
 func _play_music() -> void:
 	if music_track:
-		AudioManager.play_music(music_track)
+		AudioManager.play_music(music_track, 0, true)
 
 func finish() -> void:
 	ScoreManager.calculate_score()

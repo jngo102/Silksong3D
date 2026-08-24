@@ -90,8 +90,8 @@ func play_clip(clip: AudioStream, global: bool = false, play_position := Vector3
 
 ## Play a music track, fading out from the current track into the new track
 func play_music(track: MusicTrack, fade_time: float = 2, immediate: bool = false) -> void:
-	# Immediately play music if nothing is currently playing (or if immediate specified)
 	current_track = track
+	# Immediately play music if nothing is currently playing (or if immediate specified)
 	if not current_music_player.stream or immediate:
 		current_music_player.set_stream(track.music_clip)
 		current_music_player.play()
