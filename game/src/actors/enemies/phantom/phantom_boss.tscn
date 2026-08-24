@@ -12,9 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://ci8vhhfslnoce" path="res://src/actors/enemies/phantom/dive_steam.tscn" id="8_xe2rs"]
 [ext_resource type="Script" uid="uid://ce776cixolsw1" path="res://src/actors/grounder.gd" id="9_h3dl7"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_14s3j"]
-size = Vector3(0.5, 8.226, 0.5)
-
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4lqec"]
 radius = 0.7
 height = 7.4609375
@@ -84,33 +81,31 @@ script = ExtResource("2_tr76i")
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 
 [node name="Skeleton3D" parent="Mesh/Armature" parent_id_path=PackedInt32Array(176040917, 641122305) index="0" unique_id=593260346]
-bones/0/position = Vector3(0, -2.1142893, -1.4796976)
-bones/1/rotation = Quaternion(0.9811916, 0.06136906, -0.01897863, 0.18203513)
+bones/0/rotation = Quaternion(0.21599099, 0, -0.97639537, 0)
 bones/2/rotation = Quaternion(0.50000006, 0.49999997, 0.49999997, -0.49999997)
-bones/3/rotation = Quaternion(-0.5350875, -0.3477127, 0.011767389, 0.76983047)
-bones/4/rotation = Quaternion(0.27529502, 0.23843172, 0.66111475, 0.6559652)
-bones/4/scale = Vector3(1, 1, 0.99999994)
-bones/5/rotation = Quaternion(-0.5, 0.50000006, 0.5, 0.5)
-bones/6/rotation = Quaternion(-0.6652499, 0.12980144, 0.1849788, 0.7116018)
-bones/7/rotation = Quaternion(3.7252907e-09, -4.656595e-10, -1.8626443e-09, 1)
-bones/8/rotation = Quaternion(0.2562964, 0.017048217, 0.030173903, 0.9659768)
-bones/9/rotation = Quaternion(0.25756228, 0.028413443, 0.0365262, 0.965153)
-bones/10/rotation = Quaternion(4.0971887e-08, -5.781624e-08, -0.77334225, 0.6339889)
-bones/11/rotation = Quaternion(-0.22720572, 0.47613597, 0.3732503, 0.7631227)
-bones/12/rotation = Quaternion(-0.4752717, 0.7964006, -0.13261577, 0.34968)
-bones/13/position = Vector3(-1.1524502, 1.241807, 1.520257)
-bones/13/rotation = Quaternion(0.29075897, -0.27023292, 0.71850264, -0.57112825)
-bones/14/rotation = Quaternion(-8.377916e-08, -5.6795468e-08, 0.77334225, 0.6339889)
-bones/15/rotation = Quaternion(0.6478904, -0.43079382, -0.25947547, 0.5721252)
-bones/16/rotation = Quaternion(-0.20149097, -0.017333364, -0.19998121, 0.9587015)
-bones/17/rotation = Quaternion(0.31868756, -0.0009956872, 0.0017004625, 0.9478578)
-bones/18/rotation = Quaternion(-0.4318552, -0.00066610397, 0.00072522135, 0.90194243)
-bones/19/position = Vector3(3.4924597e-10, 1.4523026, 2.0954758e-07)
-bones/19/rotation = Quaternion(8.731149e-11, -3.4924597e-10, -1.1641538e-10, 1)
-bones/19/scale = Vector3(1, 0.99999994, 0.9999999)
+bones/3/rotation = Quaternion(-0.73563015, 0.13523956, -0.15189423, 0.6461321)
+bones/4/rotation = Quaternion(9.313227e-10, -1.5133994e-08, 0, 1)
+bones/4/scale = Vector3(0.9999999, 0.99999994, 0.9999999)
+bones/5/rotation = Quaternion(-0.49999997, 0.5, 0.50000006, 0.49999997)
+bones/6/rotation = Quaternion(-0.74184763, -0.06612128, 0.07472549, 0.66310346)
+bones/7/rotation = Quaternion(-2.3283067e-09, 3.958123e-09, -4.6566134e-10, 1)
+bones/8/rotation = Quaternion(0, -0.32027248, 0, 0.94732547)
+bones/9/rotation = Quaternion(0, -0.22130337, 0, 0.975205)
+bones/10/rotation = Quaternion(0.06864952, -0.053119328, -0.8302027, 0.5506625)
+bones/11/rotation = Quaternion(-0.26438403, 0.51356786, -0.4442882, 0.6848045)
+bones/12/rotation = Quaternion(0.77230823, 0.058509346, 0.41470763, 0.47763392)
+bones/13/position = Vector3(1.0753614, -1.7212774, 0.70798963)
+bones/13/rotation = Quaternion(-0.122242555, 0.8984684, -0.1906243, -0.37613004)
+bones/14/rotation = Quaternion(-0.0736851, -0.25175112, 0.7399809, 0.6193708)
+bones/15/rotation = Quaternion(0.6363356, -0.090263546, -0.10164788, 0.75934005)
+bones/16/rotation = Quaternion(-0.8066046, -0.5445208, -0.2270857, 0.036307104)
+bones/17/rotation = Quaternion(0, -0.31710795, 0, 0.9483895)
+bones/18/rotation = Quaternion(0.0705894, -0.02419122, -0.0081759365, 0.99717855)
+bones/19/position = Vector3(3.7252903e-09, 1.4523029, 1.1175871e-08)
+bones/19/rotation = Quaternion(0, -1.5075784e-08, 1.8626451e-09, 1)
 
 [node name="SpineAttach" type="BoneAttachment3D" parent="Mesh/Armature/Skeleton3D" index="4" unique_id=1651600474]
-transform = Transform3D(0.9917473, 0.12733915, -0.014900692, -0.11352004, 0.92619395, 0.35955206, 0.05958599, -0.35489324, 0.9330059, 0, -0.7352538, -1.4796976)
+transform = Transform3D(-0.9066958, 0, 0.42178535, 0, 1, 0, -0.42178535, 0, -0.9066957, 0, 0.17558289, 0)
 bone_name = "Spine0"
 bone_idx = 1
 
@@ -126,43 +121,35 @@ drag_coefficient = 0.25
 pinned_points = [38, 67, 39, 68, 87, 3, 47, 28]
 attachments/0/point_index = 38
 attachments/0/spatial_attachment_path = NodePath("..")
-attachments/0/offset = Vector3(-0.26851934, 0.49333042, 0.1766071)
+attachments/0/offset = Vector3(-0.26851937, 0.49333054, 0.17660706)
 attachments/1/point_index = 67
 attachments/1/spatial_attachment_path = NodePath("..")
-attachments/1/offset = Vector3(-0.2274321, 0.5077823, 0.1323443)
+attachments/1/offset = Vector3(-0.22743213, 0.5077824, 0.13234425)
 attachments/2/point_index = 39
 attachments/2/spatial_attachment_path = NodePath("..")
-attachments/2/offset = Vector3(-0.22639465, 0.15731996, 0.011573851)
+attachments/2/offset = Vector3(-0.22639467, 0.15732008, 0.011573806)
 attachments/3/point_index = 68
 attachments/3/spatial_attachment_path = NodePath("..")
-attachments/3/offset = Vector3(-0.27215776, 0.1293065, 0.063734025)
+attachments/3/offset = Vector3(-0.2721578, 0.12930661, 0.063733995)
 attachments/4/point_index = 87
 attachments/4/spatial_attachment_path = NodePath("..")
-attachments/4/offset = Vector3(0.22401804, 0.13747436, 0.041092917)
+attachments/4/offset = Vector3(0.22401802, 0.13747448, 0.041092888)
 attachments/5/point_index = 3
 attachments/5/spatial_attachment_path = NodePath("..")
-attachments/5/offset = Vector3(0.1728006, 0.16389138, -0.0066419095)
+attachments/5/offset = Vector3(0.17280059, 0.1638915, -0.0066419393)
 attachments/6/point_index = 47
 attachments/6/spatial_attachment_path = NodePath("..")
-attachments/6/offset = Vector3(0.17331773, 0.5143793, 0.1140576)
+attachments/6/offset = Vector3(0.1733177, 0.51437944, 0.114057556)
 attachments/7/point_index = 28
 attachments/7/spatial_attachment_path = NodePath("..")
-attachments/7/offset = Vector3(0.21871674, 0.5013512, 0.15437393)
+attachments/7/offset = Vector3(0.21871673, 0.5013513, 0.15437388)
 
 [node name="PinAttach" type="BoneAttachment3D" parent="Mesh/Armature/Skeleton3D" index="5" unique_id=1039707015]
-transform = Transform3D(0.28837168, -0.5122698, -0.8089632, -0.35645017, -0.84156346, 0.40584967, -0.88869834, 0.17131963, -0.42528147, 2.172854, 3.5633574, -0.5007624)
+transform = Transform3D(0.38903612, 0.92090815, -0.024062697, 0.9173783, -0.38489693, 0.10134551, 0.08406848, -0.06150137, -0.9945599, -2.824229, 1.8544415, -0.40270865)
 bone_name = "Pin_2"
 bone_idx = 13
 
-[node name="Damager" parent="Mesh/Armature/Skeleton3D/PinAttach" index="0" unique_id=1871070805 instance=ExtResource("4_aygqo")]
-transform = Transform3D(1.0000004, 0, 1.8741048e-08, 1.3969839e-09, 1, -2.3283064e-10, -1.2461896e-08, 0, 1.0000004, 0.02409929, 3.5239294, 0.004091263)
-collision_layer = 16
-
-[node name="Collision" parent="Mesh/Armature/Skeleton3D/PinAttach/Damager" index="0"]
-transform = Transform3D(1, 0, 1.4901161e-08, 2.9802322e-08, 1, 2.9802322e-08, -1.4901161e-08, 0, 1, 0, 0, 0)
-shape = SubResource("BoxShape3D_14s3j")
-
-[node name="PhantomStabEffect" parent="Mesh/Armature/Skeleton3D/PinAttach" index="1" unique_id=299169921 instance=ExtResource("4_nyv0l")]
+[node name="PhantomStabEffect" parent="Mesh/Armature/Skeleton3D/PinAttach" index="0" unique_id=299169921 instance=ExtResource("4_nyv0l")]
 transform = Transform3D(0.99853665, -0.05407881, 1.5255056e-09, -3.885693e-09, -4.353834e-08, 1.0000001, -0.05407881, -0.99853665, -4.3684764e-08, 0, 0, 0)
 
 [node name="Animator" parent="Mesh/Armature/Skeleton3D/PinAttach/PhantomStabEffect" index="0" unique_id=1327176990]
@@ -172,7 +159,7 @@ autoplay = &"RESET"
 damage_amount = 1
 multi_hit = false
 
-[node name="PhantomSwipeEffect" parent="Mesh/Armature/Skeleton3D/PinAttach" index="2" unique_id=776235306 instance=ExtResource("4_nyv0l")]
+[node name="PhantomSwipeEffect" parent="Mesh/Armature/Skeleton3D/PinAttach" index="1" unique_id=776235306 instance=ExtResource("4_nyv0l")]
 transform = Transform3D(0.99853665, -0.05407881, 1.5255056e-09, -3.885693e-09, -4.353834e-08, 1.0000001, -0.05407881, -0.99853665, -4.3684764e-08, 0, 0, 0)
 
 [node name="Animator" parent="Mesh/Armature/Skeleton3D/PinAttach/PhantomSwipeEffect" index="0" unique_id=1327176990]
@@ -267,7 +254,6 @@ blackboard_plan = SubResource("BlackboardPlan_tr76i")
 volume_db = 1.0
 
 [editable path="Mesh"]
-[editable path="Mesh/Armature/Skeleton3D/PinAttach/Damager"]
 [editable path="Mesh/Armature/Skeleton3D/PinAttach/PhantomStabEffect"]
 [editable path="Mesh/Armature/Skeleton3D/PinAttach/PhantomStabEffect/Mesh"]
 [editable path="Mesh/Armature/Skeleton3D/PinAttach/PhantomSwipeEffect"]
