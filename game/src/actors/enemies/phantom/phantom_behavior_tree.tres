@@ -559,6 +559,11 @@ value = SubResource("BBVariant_cowyg")
 custom_name = "Check"
 children = [SubResource("BTAction_6nlpx"), SubResource("BTCheckVar_fofke")]
 
+[sub_resource type="BTAction" id="BTAction_edsfe"]
+custom_name = "Stop"
+script = ExtResource("1_7l5er")
+direction_var = &"jump_direction"
+
 [sub_resource type="BBVariant" id="BBVariant_r6xgw"]
 type = 3
 saved_value = 0.0
@@ -594,8 +599,8 @@ blend = 0.125
 
 [sub_resource type="BBVariant" id="BBVariant_oavyp"]
 type = 22
-saved_value = NodePath("Hitbox/Collision")
-resource_name = "Hitbox/Collision"
+saved_value = NodePath("BodyDamager/Collision")
+resource_name = "BodyDamager/Collision"
 
 [sub_resource type="BTAction" id="BTAction_2kdm6"]
 script = ExtResource("5_oyjsi")
@@ -606,7 +611,7 @@ duration = 0.125
 
 [sub_resource type="BTSequence" id="BTSequence_s81cj"]
 custom_name = "Antic"
-children = [SubResource("BTSetVar_o25ki"), SubResource("BTAction_iomy1"), SubResource("BTPlayAnimation_su1gk"), SubResource("BTAction_2kdm6"), SubResource("BTWait_7qu64")]
+children = [SubResource("BTAction_edsfe"), SubResource("BTSetVar_o25ki"), SubResource("BTAction_iomy1"), SubResource("BTPlayAnimation_su1gk"), SubResource("BTAction_2kdm6"), SubResource("BTWait_7qu64")]
 
 [sub_resource type="BBVariant" id="BBVariant_t7f3w"]
 type = 3
@@ -964,8 +969,8 @@ duration = 0.5
 
 [sub_resource type="BBVariant" id="BBVariant_2kdm6"]
 type = 22
-saved_value = NodePath("Hitbox/Collision")
-resource_name = "Hitbox/Collision"
+saved_value = NodePath("BodyDamager/Collision")
+resource_name = "BodyDamager/Collision"
 
 [sub_resource type="BTAction" id="BTAction_lmbcp"]
 script = ExtResource("5_oyjsi")
@@ -984,6 +989,11 @@ children = [SubResource("BTSequence_s81cj"), SubResource("BTSequence_hevjx"), Su
 custom_name = "Check Can Parry"
 children = [SubResource("BTSequence_brhsx"), SubResource("BTSequence_q4pmx")]
 
+[sub_resource type="BTAction" id="BTAction_46wjl"]
+custom_name = "Stop"
+script = ExtResource("1_7l5er")
+direction_var = &"jump_direction"
+
 [sub_resource type="BBNode" id="BBNode_oyjsi"]
 saved_value = NodePath("Mesh/AnimationPlayer")
 resource_name = "Mesh/AnimationPlayer"
@@ -994,12 +1004,30 @@ animation_name = &"Dragoon Antic"
 blend = 0.125
 custom_name = "Dragoon Antic Animation"
 
+[sub_resource type="BBVariant" id="BBVariant_2lubu"]
+type = 22
+saved_value = NodePath("Health/Collision")
+resource_name = "Health/Collision"
+
+[sub_resource type="BTAction" id="BTAction_unryd"]
+script = ExtResource("5_oyjsi")
+collider_var = SubResource("BBVariant_2lubu")
+
+[sub_resource type="BBVariant" id="BBVariant_t5eui"]
+type = 22
+saved_value = NodePath("BodyDamager/Collision")
+resource_name = "BodyDamager/Collision"
+
+[sub_resource type="BTAction" id="BTAction_2lubu"]
+script = ExtResource("5_oyjsi")
+collider_var = SubResource("BBVariant_t5eui")
+
 [sub_resource type="BTWait" id="BTWait_v1dko"]
 duration = 0.125
 
 [sub_resource type="BTSequence" id="BTSequence_wxj2u"]
 custom_name = "Dragoon Antic"
-children = [SubResource("BTPlayAnimation_81262"), SubResource("BTWait_v1dko")]
+children = [SubResource("BTAction_46wjl"), SubResource("BTPlayAnimation_81262"), SubResource("BTAction_unryd"), SubResource("BTAction_2lubu"), SubResource("BTWait_v1dko")]
 
 [sub_resource type="BBNode" id="BBNode_t43nk"]
 saved_value = NodePath("Mesh/AnimationPlayer")
@@ -1177,15 +1205,6 @@ resource_name = "Mesh/Armature"
 script = ExtResource("3_7l5er")
 node_var = SubResource("BBVariant_e7dx6")
 
-[sub_resource type="BBVariant" id="BBVariant_t5eui"]
-type = 22
-saved_value = NodePath("Hitbox/Collision")
-resource_name = "Hitbox/Collision"
-
-[sub_resource type="BTAction" id="BTAction_2lubu"]
-script = ExtResource("5_oyjsi")
-collider_var = SubResource("BBVariant_t5eui")
-
 [sub_resource type="BBNode" id="BBNode_81262"]
 saved_value = NodePath("Mesh/SteamPoint/SteamColumnParticles/Animator")
 resource_name = "Mesh/SteamPoint/SteamColumnParticles/Animator"
@@ -1219,7 +1238,7 @@ shake_taper_off_var = SubResource("BBVariant_y0rx0")
 
 [sub_resource type="BTSequence" id="BTSequence_2gtvw"]
 custom_name = "Steam"
-children = [SubResource("BTAction_gps7j"), SubResource("BTAction_2lubu"), SubResource("BTPlayAnimation_wxj2u"), SubResource("BTAction_0ncbx"), SubResource("BTWait_3sjwb")]
+children = [SubResource("BTAction_gps7j"), SubResource("BTPlayAnimation_wxj2u"), SubResource("BTAction_0ncbx"), SubResource("BTWait_3sjwb")]
 
 [sub_resource type="BBVariant" id="BBVariant_gps7j"]
 type = 22
@@ -1284,12 +1303,22 @@ custom_name = "Dive Animation"
 
 [sub_resource type="BBVariant" id="BBVariant_ui7bt"]
 type = 22
-saved_value = NodePath("Hitbox/Collision")
-resource_name = "Hitbox/Collision"
+saved_value = NodePath("BodyDamager/Collision")
+resource_name = "BodyDamager/Collision"
 
 [sub_resource type="BTAction" id="BTAction_prrtk"]
 script = ExtResource("5_oyjsi")
 collider_var = SubResource("BBVariant_ui7bt")
+enabled = true
+
+[sub_resource type="BBVariant" id="BBVariant_udcfd"]
+type = 22
+saved_value = NodePath("Health/Collision")
+resource_name = "Health/Collision"
+
+[sub_resource type="BTAction" id="BTAction_00wwj"]
+script = ExtResource("5_oyjsi")
+collider_var = SubResource("BBVariant_udcfd")
 enabled = true
 
 [sub_resource type="BTWait" id="BTWait_q4pmx"]
@@ -1307,7 +1336,7 @@ blend = 0.25
 
 [sub_resource type="BTSequence" id="BTSequence_ph50l"]
 custom_name = "Dive"
-children = [SubResource("BTAction_h3c6o"), SubResource("BTPlayAnimation_e7dx6"), SubResource("BTAction_7l5er"), SubResource("BTSequence_iruob"), SubResource("BTPlayAnimation_scgdb"), SubResource("BTAction_prrtk"), SubResource("BTWait_q4pmx"), SubResource("BTPlayAnimation_f3fnf")]
+children = [SubResource("BTAction_h3c6o"), SubResource("BTPlayAnimation_e7dx6"), SubResource("BTAction_7l5er"), SubResource("BTSequence_iruob"), SubResource("BTPlayAnimation_scgdb"), SubResource("BTAction_prrtk"), SubResource("BTAction_00wwj"), SubResource("BTWait_q4pmx"), SubResource("BTPlayAnimation_f3fnf")]
 
 [sub_resource type="BTSequence" id="BTSequence_t43nk"]
 custom_name = "Dragoon Dive"
@@ -1567,6 +1596,20 @@ clips_array = Array[AudioStream]([ExtResource("29_bnfm7"), ExtResource("30_nryh5
 play_position_var = &"self_position"
 range = 24.0
 
+[sub_resource type="BBVariant" id="BBVariant_prrtk"]
+value_source = 1
+variable = &"self_position"
+resource_name = "$self_position"
+
+[sub_resource type="BTSetVar" id="BTSetVar_fducu"]
+variable = &"direction_to_player"
+value = SubResource("BBVariant_prrtk")
+operation = 1
+
+[sub_resource type="BTAction" id="BTAction_syrp3"]
+script = ExtResource("1_7l5er")
+direction_var = &"direction_to_player"
+
 [sub_resource type="BBVariant" id="BBVariant_7ervn"]
 type = 22
 saved_value = NodePath("Mesh/Armature/Skeleton3D/Pin")
@@ -1588,7 +1631,7 @@ signal_name = &"collided"
 
 [sub_resource type="BTSequence" id="BTSequence_0vw3d"]
 custom_name = "Throw Pin"
-children = [SubResource("BTAction_13qii"), SubResource("BTAction_cymf8"), SubResource("BTAction_bnfm7"), SubResource("BTCallMethod_e27sc"), SubResource("BTAction_6wah7"), SubResource("BTAction_7114d"), SubResource("BTAction_xtr6t")]
+children = [SubResource("BTAction_13qii"), SubResource("BTAction_cymf8"), SubResource("BTAction_bnfm7"), SubResource("BTCallMethod_e27sc"), SubResource("BTAction_6wah7"), SubResource("BTSetVar_fducu"), SubResource("BTAction_syrp3"), SubResource("BTAction_7114d"), SubResource("BTAction_xtr6t")]
 
 [sub_resource type="BTWait" id="BTWait_0ncbx"]
 duration = 0.35
@@ -2065,6 +2108,11 @@ custom_name = "Ground Throw"
 children = [SubResource("BTSequence_1jjx0"), SubResource("BTSequence_fqkd3"), SubResource("BTSequence_nkwqa"), SubResource("BTSequence_mjk3h"), SubResource("BTSequence_gd6r0")]
 _enabled = false
 
+[sub_resource type="BTAction" id="BTAction_1xo60"]
+custom_name = "Stop"
+script = ExtResource("1_7l5er")
+direction_var = &"jump_direction"
+
 [sub_resource type="BBVariant" id="BBVariant_64vl4"]
 value_source = 1
 variable = &"self"
@@ -2088,21 +2136,6 @@ resource_name = "Mesh/AnimationPlayer"
 animation_player = SubResource("BBNode_f3fnf")
 animation_name = &"Stab Antic"
 blend = 0.125
-
-[sub_resource type="BTWait" id="BTWait_lo2j8"]
-duration = 0.5
-
-[sub_resource type="BTSequence" id="BTSequence_0qf8d"]
-custom_name = "Stab Antic"
-children = [SubResource("BTAction_p38gw"), SubResource("BTPlayAnimation_lo2j8"), SubResource("BTWait_lo2j8")]
-
-[sub_resource type="BBNode" id="BBNode_s81cj"]
-saved_value = NodePath("Mesh/Armature/Skeleton3D/PinAttach/PhantomStabEffect/Animator")
-resource_name = "Mesh/Armature/Skeleton3D/PinAttach/PhantomStabEffect/Animator"
-
-[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_6id38"]
-animation_player = SubResource("BBNode_s81cj")
-animation_name = &"Stab Effect"
 
 [sub_resource type="BBVariant" id="BBVariant_t1hyf"]
 value_source = 1
@@ -2132,6 +2165,21 @@ x_var = SubResource("BBVariant_85jcb")
 y_var = SubResource("BBVariant_f2o3u")
 z_var = SubResource("BBVariant_2tpwg")
 
+[sub_resource type="BTWait" id="BTWait_lo2j8"]
+duration = 0.5
+
+[sub_resource type="BTSequence" id="BTSequence_0qf8d"]
+custom_name = "Stab Antic"
+children = [SubResource("BTAction_1xo60"), SubResource("BTAction_p38gw"), SubResource("BTPlayAnimation_lo2j8"), SubResource("BTAction_erets"), SubResource("BTAction_u70i2"), SubResource("BTWait_lo2j8")]
+
+[sub_resource type="BBNode" id="BBNode_s81cj"]
+saved_value = NodePath("Mesh/Armature/Skeleton3D/PinAttach/PhantomStabEffect/Animator")
+resource_name = "Mesh/Armature/Skeleton3D/PinAttach/PhantomStabEffect/Animator"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_6id38"]
+animation_player = SubResource("BBNode_s81cj")
+animation_name = &"Stab Effect"
+
 [sub_resource type="BTAction" id="BTAction_4b2un"]
 script = ExtResource("1_7l5er")
 direction_var = &"direction_to_player"
@@ -2155,7 +2203,7 @@ duration = 0.2
 
 [sub_resource type="BTSequence" id="BTSequence_cymf8"]
 custom_name = "Stab 1"
-children = [SubResource("BTPlayAnimation_6id38"), SubResource("BTAction_erets"), SubResource("BTAction_u70i2"), SubResource("BTAction_4b2un"), SubResource("BTAction_su1gk"), SubResource("BTAction_mlomx"), SubResource("BTWait_8hf85")]
+children = [SubResource("BTPlayAnimation_6id38"), SubResource("BTAction_4b2un"), SubResource("BTAction_su1gk"), SubResource("BTAction_mlomx"), SubResource("BTWait_8hf85")]
 
 [sub_resource type="BTAction" id="BTAction_ui7bt"]
 script = ExtResource("2_64vl4")
@@ -2175,30 +2223,6 @@ resource_name = "Mesh/AnimationPlayer"
 [sub_resource type="BTPlayAnimation" id="BTPlayAnimation_hggkp"]
 animation_player = SubResource("BBNode_we3h4")
 animation_name = &"Stab Recover"
-
-[sub_resource type="BTWait" id="BTWait_cuh1j"]
-duration = 0.15
-
-[sub_resource type="BTSequence" id="BTSequence_cuh1j"]
-custom_name = "Stab Recover 1"
-children = [SubResource("BTInvert_64vl4"), SubResource("BTAction_pt02h"), SubResource("BTPlayAnimation_hggkp"), SubResource("BTWait_cuh1j")]
-
-[sub_resource type="BBNode" id="BBNode_vbeax"]
-saved_value = NodePath("Mesh/AnimationPlayer")
-resource_name = "Mesh/AnimationPlayer"
-
-[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_85jcb"]
-animation_player = SubResource("BBNode_vbeax")
-animation_name = &"Stab"
-blend = 0.125
-
-[sub_resource type="BBNode" id="BBNode_xppty"]
-saved_value = NodePath("Mesh/Armature/Skeleton3D/PinAttach/PhantomStabEffect/Animator")
-resource_name = "Mesh/Armature/Skeleton3D/PinAttach/PhantomStabEffect/Animator"
-
-[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_7y135"]
-animation_player = SubResource("BBNode_xppty")
-animation_name = &"Stab Effect"
 
 [sub_resource type="BBVariant" id="BBVariant_erets"]
 value_source = 1
@@ -2228,6 +2252,30 @@ x_var = SubResource("BBVariant_p38gw")
 y_var = SubResource("BBVariant_f4hly")
 z_var = SubResource("BBVariant_vbeax")
 
+[sub_resource type="BTWait" id="BTWait_cuh1j"]
+duration = 0.15
+
+[sub_resource type="BTSequence" id="BTSequence_cuh1j"]
+custom_name = "Stab Recover 1"
+children = [SubResource("BTInvert_64vl4"), SubResource("BTAction_pt02h"), SubResource("BTPlayAnimation_hggkp"), SubResource("BTAction_64vl4"), SubResource("BTAction_85jcb"), SubResource("BTWait_cuh1j")]
+
+[sub_resource type="BBNode" id="BBNode_vbeax"]
+saved_value = NodePath("Mesh/AnimationPlayer")
+resource_name = "Mesh/AnimationPlayer"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_85jcb"]
+animation_player = SubResource("BBNode_vbeax")
+animation_name = &"Stab"
+blend = 0.125
+
+[sub_resource type="BBNode" id="BBNode_xppty"]
+saved_value = NodePath("Mesh/Armature/Skeleton3D/PinAttach/PhantomStabEffect/Animator")
+resource_name = "Mesh/Armature/Skeleton3D/PinAttach/PhantomStabEffect/Animator"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_7y135"]
+animation_player = SubResource("BBNode_xppty")
+animation_name = &"Stab Effect"
+
 [sub_resource type="BTAction" id="BTAction_f2o3u"]
 script = ExtResource("1_7l5er")
 direction_var = &"direction_to_player"
@@ -2250,7 +2298,7 @@ duration = 0.2
 
 [sub_resource type="BTSequence" id="BTSequence_uywq4"]
 custom_name = "Stab 2"
-children = [SubResource("BTPlayAnimation_85jcb"), SubResource("BTPlayAnimation_7y135"), SubResource("BTAction_64vl4"), SubResource("BTAction_85jcb"), SubResource("BTAction_f2o3u"), SubResource("BTAction_hevjx"), SubResource("BTAction_q4pmx"), SubResource("BTWait_0qf8d")]
+children = [SubResource("BTPlayAnimation_85jcb"), SubResource("BTPlayAnimation_7y135"), SubResource("BTAction_f2o3u"), SubResource("BTAction_hevjx"), SubResource("BTAction_q4pmx"), SubResource("BTWait_0qf8d")]
 
 [sub_resource type="BTAction" id="BTAction_fducu"]
 script = ExtResource("2_64vl4")
@@ -2270,30 +2318,6 @@ resource_name = "Mesh/AnimationPlayer"
 [sub_resource type="BTPlayAnimation" id="BTPlayAnimation_0qf8d"]
 animation_player = SubResource("BBNode_8hf85")
 animation_name = &"Stab Recover"
-
-[sub_resource type="BTWait" id="BTWait_bnfm7"]
-duration = 0.125
-
-[sub_resource type="BTSequence" id="BTSequence_hggkp"]
-custom_name = "Stab Recover 2"
-children = [SubResource("BTInvert_iya6y"), SubResource("BTAction_we3h4"), SubResource("BTPlayAnimation_0qf8d"), SubResource("BTWait_bnfm7")]
-
-[sub_resource type="BBNode" id="BBNode_wor4f"]
-saved_value = NodePath("Mesh/AnimationPlayer")
-resource_name = "Mesh/AnimationPlayer"
-
-[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_xdajs"]
-animation_player = SubResource("BBNode_wor4f")
-animation_name = &"Stab"
-blend = 0.125
-
-[sub_resource type="BBNode" id="BBNode_7y135"]
-saved_value = NodePath("Mesh/Armature/Skeleton3D/PinAttach/PhantomStabEffect/Animator")
-resource_name = "Mesh/Armature/Skeleton3D/PinAttach/PhantomStabEffect/Animator"
-
-[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_6wah7"]
-animation_player = SubResource("BBNode_7y135")
-animation_name = &"Stab Effect"
 
 [sub_resource type="BBVariant" id="BBVariant_so4p7"]
 value_source = 1
@@ -2323,6 +2347,30 @@ x_var = SubResource("BBVariant_uywq4")
 y_var = SubResource("BBVariant_wor4f")
 z_var = SubResource("BBVariant_xdajs")
 
+[sub_resource type="BTWait" id="BTWait_bnfm7"]
+duration = 0.125
+
+[sub_resource type="BTSequence" id="BTSequence_hggkp"]
+custom_name = "Stab Recover 2"
+children = [SubResource("BTInvert_iya6y"), SubResource("BTAction_we3h4"), SubResource("BTPlayAnimation_0qf8d"), SubResource("BTAction_vbeax"), SubResource("BTAction_nctop"), SubResource("BTWait_bnfm7")]
+
+[sub_resource type="BBNode" id="BBNode_wor4f"]
+saved_value = NodePath("Mesh/AnimationPlayer")
+resource_name = "Mesh/AnimationPlayer"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_xdajs"]
+animation_player = SubResource("BBNode_wor4f")
+animation_name = &"Stab"
+blend = 0.125
+
+[sub_resource type="BBNode" id="BBNode_7y135"]
+saved_value = NodePath("Mesh/Armature/Skeleton3D/PinAttach/PhantomStabEffect/Animator")
+resource_name = "Mesh/Armature/Skeleton3D/PinAttach/PhantomStabEffect/Animator"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_6wah7"]
+animation_player = SubResource("BBNode_7y135")
+animation_name = &"Stab Effect"
+
 [sub_resource type="BTAction" id="BTAction_2tpwg"]
 script = ExtResource("1_7l5er")
 direction_var = &"direction_to_player"
@@ -2345,7 +2393,7 @@ duration = 0.2
 
 [sub_resource type="BTSequence" id="BTSequence_nctop"]
 custom_name = "Stab 3"
-children = [SubResource("BTPlayAnimation_xdajs"), SubResource("BTPlayAnimation_6wah7"), SubResource("BTAction_vbeax"), SubResource("BTAction_nctop"), SubResource("BTAction_2tpwg"), SubResource("BTAction_6fi2f"), SubResource("BTAction_s81cj"), SubResource("BTWait_cymf8")]
+children = [SubResource("BTPlayAnimation_xdajs"), SubResource("BTPlayAnimation_6wah7"), SubResource("BTAction_2tpwg"), SubResource("BTAction_6fi2f"), SubResource("BTAction_s81cj"), SubResource("BTWait_cymf8")]
 
 [sub_resource type="BTAction" id="BTAction_f2qh8"]
 script = ExtResource("2_64vl4")

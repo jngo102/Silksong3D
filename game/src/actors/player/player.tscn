@@ -351,6 +351,7 @@ shape = SubResource("CapsuleShape3D_jgtgc")
 
 [node name="Health" parent="." index="2" unique_id=1048848430 node_paths=PackedStringArray("damage_particles", "_pulser")]
 collision_mask = 16
+max_health = 100
 damage_invincibility_time = 1.0
 damage_particles = []
 _pulser = NodePath("../Pulser")
