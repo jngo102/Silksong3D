@@ -176,6 +176,7 @@ target_var = SubResource("BBVariant_j53ot")
 script = ExtResource("3_tqd6i")
 clips_array = Array[AudioStream]([ExtResource("3_cuinw"), ExtResource("4_2elll"), ExtResource("5_wekhm")])
 play_position_var = &"self_position"
+range = 24.0
 
 [sub_resource type="BTWait" id="BTWait_2elll"]
 duration = 0.5
@@ -221,6 +222,7 @@ duration = 2.0
 script = ExtResource("3_tqd6i")
 clips_array = Array[AudioStream]([ExtResource("8_f8rwa")])
 play_position_var = &"self_position"
+range = 24.0
 
 [sub_resource type="BTWait" id="BTWait_f8rwa"]
 duration = 2.47
@@ -287,6 +289,7 @@ blend = 0.125
 script = ExtResource("3_tqd6i")
 clips_array = Array[AudioStream]([ExtResource("8_wekhm")])
 play_position_var = &"self_position"
+range = 24.0
 
 [sub_resource type="BTSequence" id="BTSequence_ftj12"]
 custom_name = "Fall"
@@ -404,16 +407,19 @@ output_position_var = &"alcove_position"
 script = ExtResource("3_tqd6i")
 clips_array = Array[AudioStream]([ExtResource("12_3shy2")])
 play_position_var = &"alcove_position"
+range = 24.0
 
 [sub_resource type="BTAction" id="BTAction_expln"]
 script = ExtResource("3_tqd6i")
 clips_array = Array[AudioStream]([ExtResource("15_solc0")])
 play_position_var = &"alcove_position"
+range = 24.0
 
 [sub_resource type="BTAction" id="BTAction_7i34u"]
 script = ExtResource("3_tqd6i")
 clips_array = Array[AudioStream]([ExtResource("8_wekhm")])
 play_position_var = &"alcove_position"
+range = 24.0
 
 [sub_resource type="BTSequence" id="BTSequence_7i34u"]
 custom_name = "Enter Alcove Audio"

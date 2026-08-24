@@ -6,7 +6,7 @@ extends BTAction
 @export var volume_scale: float = 1
 @export var pitch_min: float = 1
 @export var pitch_max: float = 1
-@export var range: float = 24
+@export var range: float = 64
 
 var _previous_clip: AudioStream
 

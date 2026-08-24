@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bfhiqg04f4mvm" path="res://src/autoload/audio/global_audio_player.tscn" id="3_c6ins"]
 
 [node name="AudioManager" type="Node3D" unique_id=1887643951]
+process_mode = 3
 script = ExtResource("1_wb5gv")
 positional_audio_player_prefab = ExtResource("2_2ljm0")
 global_audio_player_prefab = ExtResource("3_c6ins")

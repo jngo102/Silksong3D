@@ -13,7 +13,7 @@ func _generate_name() -> String:
 	]
 
 func _tick(_delta: float) -> Status:
-	var target: Node3D = BBUtil.bb_value(target_var, blackboard, agent)
+	var target = BBUtil.bb_value(target_var, blackboard, agent)
 	if not is_instance_valid(target):
 		return FAILURE
 	var direction: Vector3 = agent.global_position.direction_to(target.global_position)
