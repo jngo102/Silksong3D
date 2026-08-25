@@ -2,21 +2,18 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8u0f7rjmsdy5"
-path.s3tc="res://.godot/imported/stab_effect_stab_effect.png-477d3ea73cd4a84f39fceec7a79a578d.s3tc.ctex"
-path.etc2="res://.godot/imported/stab_effect_stab_effect.png-477d3ea73cd4a84f39fceec7a79a578d.etc2.ctex"
+uid="uid://demq6naff3mxt"
+path.s3tc="res://.godot/imported/steam_particle3.png-6afd6cf2bc1b9d90d973615807474235.s3tc.ctex"
+path.etc2="res://.godot/imported/steam_particle3.png-6afd6cf2bc1b9d90d973615807474235.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
-generator_parameters={
-"md5": "855eb4e7b1180583b08826ca05fca009"
-}
 
 [deps]
 
-source_file="res://src/actors/enemies/phantom/stab_effect_stab_effect.png"
-dest_files=["res://.godot/imported/stab_effect_stab_effect.png-477d3ea73cd4a84f39fceec7a79a578d.s3tc.ctex", "res://.godot/imported/stab_effect_stab_effect.png-477d3ea73cd4a84f39fceec7a79a578d.etc2.ctex"]
+source_file="res://src/actors/enemies/phantom/steam_particle3.png"
+dest_files=["res://.godot/imported/steam_particle3.png-6afd6cf2bc1b9d90d973615807474235.s3tc.ctex", "res://.godot/imported/steam_particle3.png-6afd6cf2bc1b9d90d973615807474235.etc2.ctex"]
 
 [params]
 

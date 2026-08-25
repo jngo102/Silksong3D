@@ -11,6 +11,7 @@ dof_blur_far_distance = 64.0
 dof_blur_far_transition = 8.0
 
 [node name="CameraController" type="Node3D" unique_id=1768754009 groups=["Cameras"]]
+process_mode = 3
 script = ExtResource("1_ewp70")
 shake_interval = 0.02
 min_yaw_degrees = -59.0

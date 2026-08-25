@@ -1377,10 +1377,31 @@ clips_array = Array[AudioStream]([ExtResource("52_q4pmx")])
 play_position_var = &"self_position"
 range = 24.0
 
+[sub_resource type="BBVariant" id="BBVariant_ega3v"]
+type = 3
+saved_value = 1.0
+resource_name = "1.0"
+
+[sub_resource type="BBVariant" id="BBVariant_sdyr6"]
+type = 3
+saved_value = 0.35
+resource_name = "0.35"
+
+[sub_resource type="BBVariant" id="BBVariant_ljy8h"]
+type = 1
+saved_value = false
+resource_name = "false"
+
+[sub_resource type="BTAction" id="BTAction_s6lnm"]
+script = ExtResource("7_q1tlo")
+shake_amount_var = SubResource("BBVariant_ega3v")
+shake_duration_var = SubResource("BBVariant_sdyr6")
+shake_taper_off_var = SubResource("BBVariant_ljy8h")
+
 [sub_resource type="BBVariant" id="BBVariant_qvtbj"]
 type = 3
-saved_value = 0.25
-resource_name = "0.25"
+saved_value = 0.35
+resource_name = "0.35"
 
 [sub_resource type="BTAction" id="BTAction_uvu2g"]
 script = ExtResource("52_hevjx")
@@ -1601,7 +1622,7 @@ children = [SubResource("BTSequence_7y135"), SubResource("BTAction_n5th1"), SubR
 
 [sub_resource type="BTSequence" id="BTSequence_uvu2g"]
 custom_name = "Hit"
-children = [SubResource("BTAction_swxcp"), SubResource("BTPlayAnimation_hevjx"), SubResource("BTAction_wor4f"), SubResource("BTAction_uvu2g"), SubResource("BTSequence_7qu64")]
+children = [SubResource("BTAction_swxcp"), SubResource("BTPlayAnimation_hevjx"), SubResource("BTAction_wor4f"), SubResource("BTAction_s6lnm"), SubResource("BTAction_uvu2g"), SubResource("BTSequence_7qu64")]
 
 [sub_resource type="BTAction" id="BTAction_1xqnx"]
 script = ExtResource("57_xppty")
@@ -2702,8 +2723,8 @@ script = ExtResource("3_7l5er")
 node_var = SubResource("BBVariant_e7dx6")
 
 [sub_resource type="BBNode" id="BBNode_81262"]
-saved_value = NodePath("Mesh/SteamPoint/SteamColumnParticles/Animator")
-resource_name = "Mesh/SteamPoint/SteamColumnParticles/Animator"
+saved_value = NodePath("Mesh/SteamPoint/DiveSteam/Animator")
+resource_name = "Mesh/SteamPoint/DiveSteam/Animator"
 
 [sub_resource type="BTPlayAnimation" id="BTPlayAnimation_wxj2u"]
 animation_player = SubResource("BBNode_81262")
@@ -2747,8 +2768,8 @@ node_var = SubResource("BBVariant_gps7j")
 visible = true
 
 [sub_resource type="BBNode" id="BBNode_wxj2u"]
-saved_value = NodePath("Mesh/SteamPoint/SteamColumnParticles/Animator")
-resource_name = "Mesh/SteamPoint/SteamColumnParticles/Animator"
+saved_value = NodePath("Mesh/SteamPoint/DiveSteam/Animator")
+resource_name = "Mesh/SteamPoint/DiveSteam/Animator"
 
 [sub_resource type="BTPlayAnimation" id="BTPlayAnimation_e7dx6"]
 animation_player = SubResource("BBNode_wxj2u")
@@ -2825,14 +2846,16 @@ saved_value = NodePath("Mesh/AnimationPlayer")
 resource_name = "Mesh/AnimationPlayer"
 
 [sub_resource type="BTPlayAnimation" id="BTPlayAnimation_f3fnf"]
-await_completion = 0.5
 animation_player = SubResource("BBNode_v1dko")
 animation_name = &"Idle"
 blend = 0.25
 
+[sub_resource type="BTWait" id="BTWait_f4hly"]
+duration = 0.5
+
 [sub_resource type="BTSequence" id="BTSequence_ph50l"]
 custom_name = "Dive"
-children = [SubResource("BTAction_h3c6o"), SubResource("BTPlayAnimation_e7dx6"), SubResource("BTAction_7l5er"), SubResource("BTSequence_iruob"), SubResource("BTPlayAnimation_scgdb"), SubResource("BTAction_prrtk"), SubResource("BTAction_00wwj"), SubResource("BTWait_q4pmx"), SubResource("BTPlayAnimation_f3fnf")]
+children = [SubResource("BTAction_h3c6o"), SubResource("BTPlayAnimation_e7dx6"), SubResource("BTAction_7l5er"), SubResource("BTSequence_iruob"), SubResource("BTPlayAnimation_scgdb"), SubResource("BTAction_prrtk"), SubResource("BTAction_00wwj"), SubResource("BTWait_q4pmx"), SubResource("BTPlayAnimation_f3fnf"), SubResource("BTWait_f4hly")]
 
 [sub_resource type="BTSequence" id="BTSequence_t43nk"]
 custom_name = "Dragoon Dive"

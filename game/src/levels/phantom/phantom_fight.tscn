@@ -313,7 +313,7 @@ surface_material_override/0 = SubResource("ShaderMaterial_lerc2")
 surface_material_override/0 = SubResource("StandardMaterial3D_oif61")
 
 [node name="PhantomBoss" parent="." index="8" unique_id=1724463133 instance=ExtResource("2_vuuix")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -10.681658)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -27.527832)
 
 [editable path="CameraController"]
 [editable path="structureA"]
