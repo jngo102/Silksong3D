@@ -5,10 +5,9 @@
 [ext_resource type="AudioStream" uid="uid://cak1muwygj208" path="res://src/copyrighted/phantom/music/H78 Phantom of the Organ RESTRUCTURE-33.wav" id="2_w66we"]
 [ext_resource type="Script" uid="uid://q4qqnvxnwemw" path="res://src/autoload/audio/music_track.gd" id="3_tjorh"]
 [ext_resource type="Texture2D" uid="uid://d3jm7v8arm3ua" path="res://src/actors/enemies/phantom/steam_particle0.png" id="4_ktfto"]
+[ext_resource type="LightmapGIData" uid="uid://e3fv78a4ic8t" path="res://src/levels/phantom/phantom_fight.lmbake" id="5_gc3yy"]
 [ext_resource type="PackedScene" uid="uid://bxocwtp45yp0e" path="res://src/levels/phantom/structureA.glb" id="5_lerc2"]
 [ext_resource type="AudioStream" uid="uid://bnn5wtr58pyyu" path="res://src/copyrighted/phantom/sfx/phantom_big_down_attack_antic.wav" id="7_gc3yy"]
-[ext_resource type="Texture2D" uid="uid://t26agsdjav76" path="res://src/actors/enemies/phantom/steam_particle1.png" id="9_pijb2"]
-[ext_resource type="Texture2D" uid="uid://cehepcydafi8f" path="res://src/actors/enemies/phantom/steam_particle2.png" id="10_s54ku"]
 [ext_resource type="Texture2D" uid="uid://demq6naff3mxt" path="res://src/actors/enemies/phantom/steam_particle3.png" id="11_kq32x"]
 [ext_resource type="PackedScene" uid="uid://xal232da7bpf" path="res://src/gameplay/combat/damager.tscn" id="12_lvdly"]
 
@@ -30,14 +29,19 @@ sun_curve = 0.19118404
 sky_material = SubResource("ProceduralSkyMaterial_ktfto")
 
 [sub_resource type="Environment" id="Environment_mdpca"]
+background_mode = 2
+background_energy_multiplier = 0.03
 sky = SubResource("Sky_ktfto")
 ambient_light_source = 3
 reflected_light_source = 2
-tonemap_mode = 4
+tonemap_exposure = 0.88
+tonemap_agx_contrast = 1.54
 ssr_enabled = true
-ssao_enabled = true
-ssil_enabled = true
-sdfgi_enabled = true
+ssr_max_steps = 256
+fog_light_color = Color(0.6897163, 0.6400764, 0.6292417, 1)
+fog_light_energy = 0.17
+fog_sky_affect = 0.171
+fog_height = -196.68
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.0145
 volumetric_fog_anisotropy = 0.53
@@ -575,92 +579,14 @@ emission_ring_radius = 10.0
 emission_ring_inner_radius = 10.0
 emission_ring_cone_angle = 90.0
 spread = 180.0
-flatness = 0.5
-initial_velocity_min = 100.0
-initial_velocity_max = 150.0
+flatness = 1.0
+initial_velocity_min = 50.0
+initial_velocity_max = 60.0
 gravity = Vector3(0, 0, 0)
 scale_min = 2.0
 scale_max = 4.0
 scale_curve = SubResource("CurveTexture_8x2ta")
 alpha_curve = SubResource("CurveTexture_h0i2w")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b8yp4"]
-transparency = 1
-cull_mode = 2
-shading_mode = 0
-vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("9_pijb2")
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_srrul"]
-resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_b8yp4")
-size = Vector2(4, 4)
-orientation = 2
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jleah"]
-transparency = 1
-cull_mode = 2
-shading_mode = 0
-vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("9_pijb2")
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_o17fk"]
-resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_jleah")
-size = Vector2(4, 4)
-orientation = 2
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fabjd"]
-transparency = 1
-cull_mode = 2
-shading_mode = 0
-vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("10_s54ku")
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_8ags5"]
-resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_fabjd")
-size = Vector2(4, 4)
-orientation = 2
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rg1gp"]
-transparency = 1
-cull_mode = 2
-shading_mode = 0
-vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("10_s54ku")
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_acajb"]
-resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_rg1gp")
-size = Vector2(4, 4)
-orientation = 2
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_biro6"]
-transparency = 1
-cull_mode = 2
-shading_mode = 0
-vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("11_kq32x")
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_85kbg"]
-resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_biro6")
-size = Vector2(4, 4)
-orientation = 2
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cwwuk"]
-transparency = 1
-cull_mode = 2
-shading_mode = 0
-vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("11_kq32x")
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_oew4l"]
-resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_cwwuk")
-size = Vector2(4, 4)
-orientation = 2
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jrqyy"]
 particle_flag_align_y = true
@@ -680,157 +606,54 @@ scale_curve = SubResource("CurveTexture_8x2ta")
 color = Color(1, 1, 1, 0.1254902)
 alpha_curve = SubResource("CurveTexture_h0i2w")
 
-[sub_resource type="Animation" id="Animation_m65xi"]
-resource_name = "Intro Steam"
-length = 0.1
-loop_mode = 1
-step = 0.125
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../IntroSteamParticles/ColumnParticles0:emitting")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Audio:stream")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("7_gc3yy")]
-}
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Audio")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [0.0],
-"method": &"play"
-}]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Damager/Collision:disabled")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("../IntroSteamParticles/ColumnParticles0/SpreadParticles:emitting")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("../IntroSteamParticles/ColumnParticles1:emitting")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("../IntroSteamParticles/ColumnParticles1/SpreadParticles:emitting")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [true]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("../IntroSteamParticles/ColumnParticles2:emitting")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("../IntroSteamParticles/ColumnParticles2/SpreadParticles:emitting")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("../IntroSteamParticles/ColumnParticles3:emitting")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("../IntroSteamParticles/ColumnParticles3/SpreadParticles:emitting")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("../AnticParticles:emitting")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cwwuk"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("11_kq32x")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_oew4l"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_cwwuk")
+size = Vector2(4, 4)
+orientation = 2
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gc3yy"]
+animation = &"Intro Steam End"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_h6u7j"]
+animation = &"Intro Steam Fall"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jrqyy"]
+animation = &"Intro Steam Spread"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gc3yy"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_h6u7j"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1y2o3"]
+advance_mode = 2
+advance_condition = &"end"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jrqyy"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_14s3j"]
+states/End/position = Vector2(1166, 100.15625)
+"states/Intro Steam End/node" = SubResource("AnimationNodeAnimation_gc3yy")
+"states/Intro Steam End/position" = Vector2(939.5, 100.203125)
+"states/Intro Steam Fall/node" = SubResource("AnimationNodeAnimation_h6u7j")
+"states/Intro Steam Fall/position" = Vector2(408.5, 99.8125)
+"states/Intro Steam Spread/node" = SubResource("AnimationNodeAnimation_jrqyy")
+"states/Intro Steam Spread/position" = Vector2(690, 100.5)
+states/Start/position = Vector2(200, 100.25)
+transitions = ["Intro Steam Fall", "Intro Steam Spread", SubResource("AnimationNodeStateMachineTransition_gc3yy"), "Start", "Intro Steam Fall", SubResource("AnimationNodeStateMachineTransition_h6u7j"), "Intro Steam Spread", "Intro Steam End", SubResource("AnimationNodeStateMachineTransition_1y2o3"), "Intro Steam End", "End", SubResource("AnimationNodeStateMachineTransition_jrqyy")]
+graph_offset = Vector2(124, -1)
 
 [sub_resource type="Animation" id="Animation_jrqyy"]
 resource_name = "Intro Steam Antic"
@@ -888,6 +711,229 @@ tracks/3/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_h6u7j"]
+resource_name = "Intro Steam End"
+length = 0.9
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Audio:stream")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Audio:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Damager/Collision:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../IntroSteamParticles/ColumnParticles:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../IntroSteamParticles/ColumnParticles/SpreadParticles:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.9),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../AnticParticles:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_m65xi"]
+resource_name = "Intro Steam Fall"
+length = 0.9
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../IntroSteamParticles/ColumnParticles:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Audio:stream")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("7_gc3yy")]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Audio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Damager/Collision:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../AnticParticles:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_1y2o3"]
+resource_name = "Intro Steam Spread"
+length = 0.1
+loop_mode = 1
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../IntroSteamParticles/ColumnParticles:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Audio:stream")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("7_gc3yy")]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Audio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Damager/Collision:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../IntroSteamParticles/ColumnParticles/SpreadParticles:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../AnticParticles:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="Animation" id="Animation_ut1ry"]
 length = 0.001
 tracks/0/type = "value"
@@ -929,7 +975,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../IntroSteamParticles/ColumnParticles0:emitting")
+tracks/3/path = NodePath("../IntroSteamParticles/ColumnParticles:emitting")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -941,19 +987,19 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../IntroSteamParticles/ColumnParticles0:amount")
+tracks/4/path = NodePath("../IntroSteamParticles/ColumnParticles/SpreadParticles:emitting")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [16]
+"values": [false]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../IntroSteamParticles/ColumnParticles0/SpreadParticles:emitting")
+tracks/5/path = NodePath("../AnticParticles:emitting")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -962,95 +1008,13 @@ tracks/5/keys = {
 "update": 1,
 "values": [false]
 }
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("../IntroSteamParticles/ColumnParticles1:emitting")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("../IntroSteamParticles/ColumnParticles1/SpreadParticles:emitting")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [false]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("../IntroSteamParticles/ColumnParticles2:emitting")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("../IntroSteamParticles/ColumnParticles2/SpreadParticles:emitting")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("../IntroSteamParticles/ColumnParticles3:emitting")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("../IntroSteamParticles/ColumnParticles3/SpreadParticles:emitting")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/12/type = "value"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("../AnticParticles:emitting")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jrqyy"]
 _data = {
-&"Intro Steam": SubResource("Animation_m65xi"),
 &"Intro Steam Antic": SubResource("Animation_jrqyy"),
+&"Intro Steam End": SubResource("Animation_h6u7j"),
+&"Intro Steam Fall": SubResource("Animation_m65xi"),
+&"Intro Steam Spread": SubResource("Animation_1y2o3"),
 &"RESET": SubResource("Animation_ut1ry")
 }
 
@@ -1080,6 +1044,9 @@ transform_align = 1
 transform_align_channel_filter = 1
 process_material = SubResource("ParticleProcessMaterial_7y7vd")
 draw_pass_1 = SubResource("PlaneMesh_64vl4")
+
+[node name="LightmapGI" type="LightmapGI" parent="Environment" parent_id_path=PackedInt32Array(921388622) index="3" unique_id=1002673949]
+light_data = ExtResource("5_gc3yy")
 
 [node name="Camera" parent="CameraController/CameraPitch/Gimbal" parent_id_path=PackedInt32Array(969489915, 985846177) index="0" unique_id=707455384]
 attributes = SubResource("CameraAttributesPractical_ktfto")
@@ -1120,28 +1087,27 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.020447, -2.1603022, -30.2
 [node name="structureB" parent="." index="8" unique_id=367714657 instance=ExtResource("5_lerc2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.979553, -2.1603022, -30.278881)
 
-[node name="PhantomBoss" parent="." index="9" unique_id=1724463133 node_paths=PackedStringArray("intro_steam_anim") instance=ExtResource("2_vuuix")]
+[node name="PhantomBoss" parent="." index="9" unique_id=1724463133 node_paths=PackedStringArray("intro_steam_tree") instance=ExtResource("2_vuuix")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16.974518)
-intro_steam_anim = NodePath("../IntroSteam/IntroSteamController/Animator")
+intro_steam_tree = NodePath("../IntroSteam/IntroSteamController/AnimationTree")
 
 [node name="IntroSteam" type="Node3D" parent="." index="10" unique_id=969698322]
 
 [node name="IntroSteamParticles" type="Node3D" parent="IntroSteam" index="0" unique_id=2012007609]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -17.211483)
 
-[node name="ColumnParticles0" type="GPUParticles3D" parent="IntroSteam/IntroSteamParticles" index="0" unique_id=1837490766]
+[node name="ColumnParticles" type="GPUParticles3D" parent="IntroSteam/IntroSteamParticles" index="0" unique_id=1837490766]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 47.59901, 0)
 emitting = false
-amount = 16
-sub_emitter = NodePath("SpreadParticles")
+amount = 1024
 visibility_aabb = AABB(-32, -48, -32, 64, 64, 64)
 process_material = SubResource("ShaderMaterial_246s2")
 draw_pass_1 = SubResource("PlaneMesh_vh2i6")
 
-[node name="SpreadParticles" type="GPUParticles3D" parent="IntroSteam/IntroSteamParticles/ColumnParticles0" index="0" unique_id=414573470]
+[node name="SpreadParticles" type="GPUParticles3D" parent="IntroSteam/IntroSteamParticles/ColumnParticles" index="0" unique_id=414573470]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -48, 0)
 emitting = false
-amount = 1024
+amount = 256
 lifetime = 0.25
 collision_base_size = 0.5
 visibility_aabb = AABB(-32, -48, -32, 64, 64, 64)
@@ -1149,69 +1115,6 @@ transform_align = 1
 transform_align_channel_filter = 1
 process_material = SubResource("ParticleProcessMaterial_25ms4")
 draw_pass_1 = SubResource("PlaneMesh_vh2i6")
-
-[node name="ColumnParticles1" type="GPUParticles3D" parent="IntroSteam/IntroSteamParticles" index="1" unique_id=1240077772]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 47.59901, 0)
-emitting = false
-amount = 256
-sub_emitter = NodePath("SpreadParticles")
-visibility_aabb = AABB(-32, -48, -32, 64, 64, 64)
-process_material = SubResource("ShaderMaterial_246s2")
-draw_pass_1 = SubResource("PlaneMesh_srrul")
-
-[node name="SpreadParticles" type="GPUParticles3D" parent="IntroSteam/IntroSteamParticles/ColumnParticles1" index="0" unique_id=2093768260]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -48, 0)
-emitting = false
-amount = 1024
-lifetime = 0.25
-collision_base_size = 0.5
-visibility_aabb = AABB(-32, -48, -32, 64, 64, 64)
-transform_align = 1
-transform_align_channel_filter = 1
-process_material = SubResource("ParticleProcessMaterial_25ms4")
-draw_pass_1 = SubResource("PlaneMesh_o17fk")
-
-[node name="ColumnParticles2" type="GPUParticles3D" parent="IntroSteam/IntroSteamParticles" index="2" unique_id=1613874888]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 47.59901, 0)
-emitting = false
-amount = 256
-sub_emitter = NodePath("SpreadParticles")
-visibility_aabb = AABB(-32, -48, -32, 64, 64, 64)
-process_material = SubResource("ShaderMaterial_246s2")
-draw_pass_1 = SubResource("PlaneMesh_8ags5")
-
-[node name="SpreadParticles" type="GPUParticles3D" parent="IntroSteam/IntroSteamParticles/ColumnParticles2" index="0" unique_id=1474998692]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -48, 0)
-emitting = false
-amount = 1024
-lifetime = 0.25
-collision_base_size = 0.5
-visibility_aabb = AABB(-32, -48, -32, 64, 64, 64)
-transform_align = 1
-transform_align_channel_filter = 1
-process_material = SubResource("ParticleProcessMaterial_25ms4")
-draw_pass_1 = SubResource("PlaneMesh_acajb")
-
-[node name="ColumnParticles3" type="GPUParticles3D" parent="IntroSteam/IntroSteamParticles" index="3" unique_id=1220548648]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 47.59901, 0)
-emitting = false
-amount = 256
-sub_emitter = NodePath("SpreadParticles")
-visibility_aabb = AABB(-32, -48, -32, 64, 64, 64)
-process_material = SubResource("ShaderMaterial_246s2")
-draw_pass_1 = SubResource("PlaneMesh_85kbg")
-
-[node name="SpreadParticles" type="GPUParticles3D" parent="IntroSteam/IntroSteamParticles/ColumnParticles3" index="0" unique_id=2067907389]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -48, 0)
-emitting = false
-amount = 1024
-lifetime = 0.25
-collision_base_size = 0.5
-visibility_aabb = AABB(-32, -48, -32, 64, 64, 64)
-transform_align = 1
-transform_align_channel_filter = 1
-process_material = SubResource("ParticleProcessMaterial_25ms4")
-draw_pass_1 = SubResource("PlaneMesh_oew4l")
 
 [node name="AnticParticles" type="GPUParticles3D" parent="IntroSteam" index="1" unique_id=1195717052]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.40098953, -17.211483)
@@ -1230,7 +1133,14 @@ draw_pass_1 = SubResource("PlaneMesh_oew4l")
 [node name="IntroSteamController" type="Node3D" parent="IntroSteam" index="2" unique_id=1409634913]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -17.211483)
 
-[node name="Animator" type="AnimationPlayer" parent="IntroSteam/IntroSteamController" index="0" unique_id=1369293164 groups=["Steam"]]
+[node name="AnimationTree" type="AnimationTree" parent="IntroSteam/IntroSteamController" index="0" unique_id=69873053]
+active = false
+tree_root = SubResource("AnimationNodeStateMachine_14s3j")
+anim_player = NodePath("Animator")
+parameters/conditions/end = false
+
+[node name="Animator" type="AnimationPlayer" parent="IntroSteam/IntroSteamController/AnimationTree" index="0" unique_id=1369293164 groups=["Steam"]]
+root_node = NodePath("../..")
 libraries/ = SubResource("AnimationLibrary_jrqyy")
 
 [node name="Damager" parent="IntroSteam/IntroSteamController" index="1" unique_id=966797267 instance=ExtResource("12_lvdly")]

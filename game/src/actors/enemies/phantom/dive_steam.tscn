@@ -734,7 +734,7 @@ draw_pass_1 = SubResource("SphereMesh_h0i2w")
 [node name="Sparkle" type="OmniLight3D" parent="." unique_id=1194167530]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.9277296, 0)
 visible = false
-light_energy = 256.0
+light_energy = 128.0
 shadow_enabled = true
 omni_range = 64.0
 
