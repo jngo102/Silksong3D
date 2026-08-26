@@ -42,7 +42,7 @@ nodes/fragment/15/position = Vector2(-980, 1240)
 nodes/fragment/16/node = SubResource("VisualShaderNodeFloatOp_x4adb")
 nodes/fragment/16/position = Vector2(-160, 600)
 nodes/fragment/17/node = SubResource("VisualShaderNodeFloatOp_awspu")
-nodes/fragment/17/position = Vector2(660, 580)
+nodes/fragment/17/position = Vector2(220, 460)
 nodes/fragment/connections = PackedInt32Array(12, 0, 13, 0, 8, 0, 12, 0, 13, 0, 16, 0, 15, 0, 16, 1, 16, 0, 0, 1, 16, 0, 17, 0, 17, 0, 0, 1)
 
 [resource]

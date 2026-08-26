@@ -4,8 +4,13 @@
 [ext_resource type="PackedScene" uid="uid://darh7o4drrasg" path="res://src/actors/enemies/phantom/phantom_boss.tscn" id="2_vuuix"]
 [ext_resource type="AudioStream" uid="uid://cak1muwygj208" path="res://src/copyrighted/phantom/music/H78 Phantom of the Organ RESTRUCTURE-33.wav" id="2_w66we"]
 [ext_resource type="Script" uid="uid://q4qqnvxnwemw" path="res://src/autoload/audio/music_track.gd" id="3_tjorh"]
+[ext_resource type="Texture2D" uid="uid://d3jm7v8arm3ua" path="res://src/actors/enemies/phantom/steam_particle0.png" id="4_ktfto"]
 [ext_resource type="PackedScene" uid="uid://bxocwtp45yp0e" path="res://src/levels/phantom/structureA.glb" id="5_lerc2"]
-[ext_resource type="Shader" uid="uid://dr7csw7olf1b8" path="res://src/levels/phantom/silk_strand.tres" id="6_ktfto"]
+[ext_resource type="AudioStream" uid="uid://bnn5wtr58pyyu" path="res://src/copyrighted/phantom/sfx/phantom_big_down_attack_antic.wav" id="7_gc3yy"]
+[ext_resource type="Texture2D" uid="uid://t26agsdjav76" path="res://src/actors/enemies/phantom/steam_particle1.png" id="9_pijb2"]
+[ext_resource type="Texture2D" uid="uid://cehepcydafi8f" path="res://src/actors/enemies/phantom/steam_particle2.png" id="10_s54ku"]
+[ext_resource type="Texture2D" uid="uid://demq6naff3mxt" path="res://src/actors/enemies/phantom/steam_particle3.png" id="11_kq32x"]
+[ext_resource type="PackedScene" uid="uid://xal232da7bpf" path="res://src/gameplay/combat/damager.tscn" id="12_lvdly"]
 
 [sub_resource type="Resource" id="Resource_ojd61"]
 script = ExtResource("3_tjorh")
@@ -33,35 +38,1025 @@ ssr_enabled = true
 ssao_enabled = true
 ssil_enabled = true
 sdfgi_enabled = true
-volumetric_fog_density = 0.0025
-volumetric_fog_emission = Color(0.2562154, 0.2765893, 0.26210725, 1)
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0145
+volumetric_fog_anisotropy = 0.53
+volumetric_fog_length = 51.17
+volumetric_fog_detail_spread = 1.2745605
+
+[sub_resource type="Curve" id="Curve_f6tfq"]
+_data = [Vector2(0.0071684606, 0.2166667), 0.0, -0.12533794, 0, 0, Vector2(1, 0.0333333), -0.6940297, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_h0i2w"]
+curve = SubResource("Curve_f6tfq")
+
+[sub_resource type="Curve" id="Curve_25ms4"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.49999994, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.2780735, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_8x2ta"]
+curve = SubResource("Curve_25ms4")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7y7vd"]
+emission_shape = 6
+emission_ring_axis = Vector3(0, 90, 1)
+emission_ring_height = 0.0
+emission_ring_radius = 0.0
+emission_ring_inner_radius = 0.0
+emission_ring_cone_angle = 90.0
+spread = 180.0
+flatness = 1.0
+initial_velocity_min = 16.0
+initial_velocity_max = 24.0
+gravity = Vector3(0, 0, 0)
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_8x2ta")
+color = Color(0.9372549, 0.9372549, 0.9372549, 0.0627451)
+alpha_curve = SubResource("CurveTexture_h0i2w")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_si4fk"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("4_ktfto")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_64vl4"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_si4fk")
+size = Vector2(4, 4)
+orientation = 2
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_ktfto"]
 dof_blur_far_distance = 64.0
 dof_blur_far_transition = 8.0
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_14s3j"]
-size = Vector2(100, 100)
+size = Vector2(64, 64)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_14s3j"]
-size = Vector3(100, 100, 100)
+size = Vector3(64, 100, 64)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ktfto"]
-albedo_color = Color(0.74409366, 0.36731857, 0.12404799, 1)
-metallic = 0.89
-metallic_specular = 0.61
-roughness = 0.19
+[sub_resource type="Shader" id="Shader_ut1ry"]
+resource_local_to_scene = true
+code = "// NOTE: Shader automatically converted from Godot Engine 4.7.2.stable's ParticleProcessMaterial.
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_lerc2"]
-render_priority = 0
-shader = ExtResource("6_ktfto")
+shader_type particles;
+render_mode disable_velocity;
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oif61"]
-cull_mode = 1
-albedo_color = Color(0, 0, 0, 1)
-metallic = 0.67
-metallic_specular = 0.15
-roughness = 0.9
+uniform vec3 direction;
+uniform float spread;
+uniform float flatness;
+uniform float inherit_emitter_velocity_ratio = 0.0;
+uniform float initial_linear_velocity_min;
+uniform float initial_linear_velocity_max;
+uniform float directional_velocity_min;
+uniform float directional_velocity_max;
+uniform float angular_velocity_min;
+uniform float angular_velocity_max;
+uniform float orbit_velocity_min;
+uniform float orbit_velocity_max;
+uniform float radial_velocity_min;
+uniform float radial_velocity_max;
+uniform float linear_accel_min;
+uniform float linear_accel_max;
+uniform float radial_accel_min;
+uniform float radial_accel_max;
+uniform float tangent_accel_min;
+uniform float tangent_accel_max;
+uniform float damping_min;
+uniform float damping_max;
+uniform float initial_angle_min;
+uniform float initial_angle_max;
+uniform vec3 scale_3d_min;
+uniform vec3 scale_3d_max;
+uniform float hue_variation_min;
+uniform float hue_variation_max;
+uniform float anim_speed_min;
+uniform float anim_speed_max;
+uniform float anim_offset_min;
+uniform float anim_offset_max;
+uniform float lifetime_randomness;
+uniform vec3 emission_shape_offset = vec3(0.0);
+uniform vec3 emission_shape_scale = vec3(1.0);
+uniform vec3 velocity_pivot = vec3(0.0);
+uniform vec3 emission_ring_axis;
+uniform float emission_ring_height;
+uniform float emission_ring_radius;
+uniform float emission_ring_inner_radius;
+uniform float emission_ring_cone_angle;
+uniform int sub_emitter_amount_at_end;
+uniform bool sub_emitter_keep_velocity;
+uniform vec4 color_value : source_color;
+uniform vec3 gravity;
+uniform sampler2D alpha_curve : repeat_disable;
+uniform sampler2D damping_texture : repeat_disable;
+
+vec3 normalize_or_else(vec3 _in, const vec3 _else) {
+	if (_in == vec3(0.0)) {
+		return _else;
+	}
+	return normalize(_in);
+}
+
+vec4 rotate_hue(vec4 current_color, float hue_rot_angle) {
+	float hue_rot_c = cos(hue_rot_angle);
+	float hue_rot_s = sin(hue_rot_angle);
+	mat4 hue_rot_mat =
+			mat4(vec4(0.299, 0.587, 0.114, 0.0),
+					vec4(0.299, 0.587, 0.114, 0.0),
+					vec4(0.299, 0.587, 0.114, 0.0),
+					vec4(0.000, 0.000, 0.000, 1.0)) +
+			mat4(vec4(0.701, -0.587, -0.114, 0.0),
+					vec4(-0.299, 0.413, -0.114, 0.0),
+					vec4(-0.300, -0.588, 0.886, 0.0),
+					vec4(0.000, 0.000, 0.000, 0.0)) *
+					hue_rot_c +
+			mat4(vec4(0.168, 0.330, -0.497, 0.0),
+					vec4(-0.328, 0.035, 0.292, 0.0),
+					vec4(1.250, -1.050, -0.203, 0.0),
+					vec4(0.000, 0.000, 0.000, 0.0)) *
+					hue_rot_s;
+	return hue_rot_mat * current_color;
+}
+
+float rand_from_seed(inout uint seed) {
+	int k;
+	int s = int(seed);
+	if (s == 0) {
+		s = 305420679;
+	}
+	k = s / 127773;
+	s = 16807 * (s - k * 127773) - 2836 * k;
+	if (s < 0) {
+		s += 2147483647;
+	}
+	seed = uint(s);
+	return float(seed % uint(65536)) / 65535.0;
+}
+
+float rand_from_seed_m1_p1(inout uint seed) {
+	return rand_from_seed(seed) * 2.0 - 1.0;
+}
+
+float rand(vec2 co) {
+	return fract(sin(dot(co.xy, vec2(12.9898, 78.233))) * 43758.5453);
+}
+
+float randf_range(vec2 co, float min_value, float max_value) {
+	return rand(co) * (max_value - min_value) + min_value;
+}
+
+uint hash(uint x) {
+	x = ((x >> uint(16)) ^ x) * uint(73244475);
+	x = ((x >> uint(16)) ^ x) * uint(73244475);
+	x = (x >> uint(16)) ^ x;
+	return x;
+}
+
+struct DisplayParameters {
+	vec3 scale;
+	float hue_rotation;
+	float animation_speed;
+	float animation_offset;
+	float lifetime;
+	vec4 color;
+	float emission_texture_position;
+};
+
+struct DynamicsParameters {
+	float angle;
+	float angular_velocity;
+	float initial_velocity_multiplier;
+	float directional_velocity;
+	float radial_velocity;
+	float orbit_velocity;
+};
+
+struct PhysicalParameters {
+	float linear_accel;
+	float radial_accel;
+	float tangent_accel;
+	float damping;
+};
+
+void calculate_initial_physical_params(inout PhysicalParameters params, inout uint alt_seed) {
+	params.linear_accel = mix(linear_accel_min, linear_accel_max, rand_from_seed(alt_seed));
+	params.radial_accel = mix(radial_accel_min, radial_accel_max, rand_from_seed(alt_seed));
+	params.tangent_accel = mix(tangent_accel_min, tangent_accel_max, rand_from_seed(alt_seed));
+	params.damping = mix(damping_min, damping_max, rand_from_seed(alt_seed));
+}
+
+void calculate_initial_dynamics_params(inout DynamicsParameters params, inout uint alt_seed) {
+	// -------------------- DO NOT REORDER OPERATIONS, IT BREAKS VISUAL COMPATIBILITY
+	// -------------------- ADD NEW OPERATIONS AT THE BOTTOM
+	params.angle = mix(initial_angle_min, initial_angle_max, rand_from_seed(alt_seed));
+	params.angular_velocity = mix(angular_velocity_min, angular_velocity_max, rand_from_seed(alt_seed));
+	params.initial_velocity_multiplier = mix(initial_linear_velocity_min, initial_linear_velocity_max, rand_from_seed(alt_seed));
+	params.directional_velocity = mix(directional_velocity_min, directional_velocity_max, rand_from_seed(alt_seed));
+	params.radial_velocity = mix(radial_velocity_min, radial_velocity_max, rand_from_seed(alt_seed));
+	params.orbit_velocity = mix(orbit_velocity_min, orbit_velocity_max, rand_from_seed(alt_seed));
+}
+
+void calculate_initial_display_params(inout DisplayParameters params, inout uint alt_seed) {
+	// -------------------- DO NOT REORDER OPERATIONS, IT BREAKS VISUAL COMPATIBILITY
+	// -------------------- ADD NEW OPERATIONS AT THE BOTTOM
+	float pi = 3.14159;
+	params.scale = mix(scale_3d_min, scale_3d_max, rand_from_seed(alt_seed));
+	params.scale = sign(params.scale) * max(abs(params.scale), 0.001);
+	params.hue_rotation = pi * 2.0 * mix(hue_variation_min, hue_variation_max, rand_from_seed(alt_seed));
+	params.animation_speed = mix(anim_speed_min, anim_speed_max, rand_from_seed(alt_seed));
+	params.animation_offset = mix(anim_offset_min, anim_offset_max, rand_from_seed(alt_seed));
+	params.lifetime = (1.0 - lifetime_randomness * rand_from_seed(alt_seed));
+	params.color = color_value;
+}
+
+void process_display_param(inout DisplayParameters parameters, float lifetime) {
+	// Compile-time add textures.
+	parameters.color.a *= texture(alpha_curve, vec2(lifetime)).r;
+	parameters.color = rotate_hue(parameters.color, parameters.hue_rotation);
+}
+
+vec3 calculate_initial_position(inout DisplayParameters params, inout uint alt_seed) {
+	float pi = 3.14159;
+	vec3 pos = vec3(0.0);
+	{ // Emission shape.
+		float radius_clamped = max(0.001, emission_ring_radius);
+		float top_radius = max(radius_clamped - tan(radians(90.0 - emission_ring_cone_angle)) * emission_ring_height, 0.0);
+		float y_pos = rand_from_seed(alt_seed);
+		float skew = max(min(radius_clamped, top_radius) / max(radius_clamped, top_radius), 0.5);
+		y_pos = radius_clamped < top_radius ? pow(y_pos, skew) : 1.0 - pow(y_pos, skew);
+		float ring_spawn_angle = rand_from_seed(alt_seed) * 2.0 * pi;
+		float ring_random_radius = sqrt(rand_from_seed(alt_seed) * (radius_clamped * radius_clamped - emission_ring_inner_radius * emission_ring_inner_radius) + emission_ring_inner_radius * emission_ring_inner_radius);
+		ring_random_radius = mix(ring_random_radius, ring_random_radius * (top_radius / radius_clamped), y_pos);
+		vec3 axis = emission_ring_axis == vec3(0.0) ? vec3(0.0, 0.0, 1.0) : normalize(emission_ring_axis);
+		vec3 ortho_axis = vec3(0.0);
+		if (abs(axis) == vec3(1.0, 0.0, 0.0)) {
+			ortho_axis = cross(axis, vec3(0.0, 1.0, 0.0));
+		} else {
+ 			ortho_axis = cross(axis, vec3(1.0, 0.0, 0.0));
+		}
+		ortho_axis = normalize(ortho_axis);
+		float s = sin(ring_spawn_angle);
+		float c = cos(ring_spawn_angle);
+		float oc = 1.0 - c;
+		ortho_axis = mat3(
+			vec3(c + axis.x * axis.x * oc, axis.x * axis.y * oc - axis.z * s, axis.x * axis.z *oc + axis.y * s),
+			vec3(axis.x * axis.y * oc + s * axis.z, c + axis.y * axis.y * oc, axis.y * axis.z * oc - axis.x * s),
+			vec3(axis.z * axis.x * oc - axis.y * s, axis.z * axis.y * oc + axis.x * s, c + axis.z * axis.z * oc)
+			) * ortho_axis;
+		ortho_axis = normalize(ortho_axis);
+		pos = ortho_axis * ring_random_radius + (y_pos * emission_ring_height - emission_ring_height / 2.0) * axis;
+	}
+	return pos * emission_shape_scale + emission_shape_offset;
+}
+
+vec3 get_random_direction_from_spread(inout uint alt_seed, float spread_angle) {
+	float pi = 3.14159;
+	float degree_to_rad = pi / 180.0;
+	float spread_rad = spread_angle * degree_to_rad;
+	float angle1_rad = rand_from_seed_m1_p1(alt_seed) * spread_rad;
+	float angle2_rad = rand_from_seed_m1_p1(alt_seed) * spread_rad * (1.0 - flatness);
+	vec3 direction_xz = vec3(sin(angle1_rad), 0.0, cos(angle1_rad));
+	vec3 direction_yz = vec3(0.0, sin(angle2_rad), cos(angle2_rad));
+	direction_yz.z = direction_yz.z / max(0.0001, sqrt(abs(direction_yz.z))); // Better uniform distribution.
+	vec3 spread_direction = vec3(direction_xz.x * direction_yz.z, direction_yz.y, direction_xz.z * direction_yz.z);
+	vec3 direction_nrm = length(direction) > 0.0 ? normalize(direction) : vec3(0.0, 0.0, 1.0);
+	// Rotate spread to direction.
+	vec3 binormal = cross(vec3(0.0, 1.0, 0.0), direction_nrm);
+	if (length(binormal) < 0.0001) {
+		// Direction is parallel to Y. Choose Z as the binormal.
+		binormal = vec3(0.0, 0.0, 1.0);
+	}
+	binormal = normalize(binormal);
+	vec3 normal = cross(binormal, direction_nrm);
+	spread_direction = binormal * spread_direction.x + normal * spread_direction.y + direction_nrm * spread_direction.z;
+	return normalize(spread_direction);
+}
+
+vec3 process_radial_displacement(DynamicsParameters param, float lifetime, inout uint alt_seed, mat4 transform, mat4 emission_transform, float delta) {
+	vec3 radial_displacement = vec3(0.0);
+	if (delta < 0.001) {
+		return radial_displacement;
+	}
+	float radial_displacement_multiplier = 1.0;
+	vec3 global_pivot = (emission_transform * vec4(velocity_pivot, 1.0)).xyz;
+	if (length(transform[3].xyz - global_pivot) > 0.01) {
+		radial_displacement = normalize(transform[3].xyz - global_pivot) * radial_displacement_multiplier * param.radial_velocity;
+	} else {
+		radial_displacement = get_random_direction_from_spread(alt_seed, 360.0) * param.radial_velocity;
+	}
+	if (radial_displacement_multiplier * param.radial_velocity < 0.0) {
+		// Prevent inwards velocity to flicker once the point is reached.
+		radial_displacement = normalize(radial_displacement) * min(abs(radial_displacement_multiplier * param.radial_velocity), length(transform[3].xyz - global_pivot) / delta);
+	}
+	return radial_displacement;
+}
+
+void process_physical_parameters(inout PhysicalParameters params, float lifetime_percent) {
+	params.damping *= texture(damping_texture, vec2(lifetime_percent)).r;
+}
+
+void start() {
+	uint base_number = NUMBER;
+	uint alt_seed = hash(base_number + uint(1) + RANDOM_SEED);
+	DisplayParameters params;
+	calculate_initial_display_params(params, alt_seed);
+	// Reset alt seed?
+	//alt_seed = hash(base_number + uint(1) + RANDOM_SEED);
+	DynamicsParameters dynamic_params;
+	calculate_initial_dynamics_params(dynamic_params, alt_seed);
+	PhysicalParameters physics_params;
+	calculate_initial_physical_params(physics_params, alt_seed);
+	process_display_param(params, 0.0);
+	if (rand_from_seed(alt_seed) > AMOUNT_RATIO) {
+		ACTIVE = false;
+	}
+
+	if (RESTART_CUSTOM) {
+		CUSTOM = vec4(0.0);
+		CUSTOM.w = params.lifetime;
+		CUSTOM.x = dynamic_params.angle;
+		USERDATA1.w = 0.0;
+	}
+	if (RESTART_COLOR) {
+		COLOR = params.color;
+	}
+	if (RESTART_ROT_SCALE) {
+		TRANSFORM[0].xyz = vec3(1.0, 0.0, 0.0);
+		TRANSFORM[1].xyz = vec3(0.0, 1.0, 0.0);
+		TRANSFORM[2].xyz = vec3(0.0, 0.0, 1.0);
+	}
+	process_display_param(params, 0.0);
+
+	if (RESTART_POSITION) {
+		TRANSFORM[3].xyz = calculate_initial_position(params, alt_seed);
+		TRANSFORM = EMISSION_TRANSFORM * TRANSFORM;
+	}
+	if (RESTART_VELOCITY) {
+		// We use USERDATA to accumulate our velocities. That way, we can pass both animated velocities and accumulated velocities from
+		// acceleration in VELOCITY, allowing for proper interpolation of animated velocities as well. 
+		USERDATA1.xyz = get_random_direction_from_spread(alt_seed, spread) * dynamic_params.initial_velocity_multiplier;
+	} else {
+		USERDATA1.xyz = VELOCITY.xyz;
+	}
+
+	process_display_param(params, 0.0);
+
+	USERDATA1.xyz = (EMISSION_TRANSFORM * vec4(USERDATA1.xyz, 0.0)).xyz;
+	USERDATA1.xyz += EMITTER_VELOCITY * inherit_emitter_velocity_ratio;
+	
+	vec3 pos = TRANSFORM[3].xyz;
+	vec3 pos_to_center_dir = normalize(vec3(pos.x, 0.0, pos.z));
+	
+	vec3 tangent_dir = vec3(-pos_to_center_dir.z, 0.0, pos_to_center_dir.x);
+	vec3 up_dir = vec3(0.0, 1.0, 0.0);
+	
+	TRANSFORM[0].xyz = tangent_dir * length(TRANSFORM[0].xyz);
+	TRANSFORM[1].xyz = up_dir * length(TRANSFORM[1].xyz);
+	TRANSFORM[2].xyz = pos_to_center_dir * length(TRANSFORM[2].xyz);
+}
+
+void process() {
+	uint base_number = NUMBER;
+	//if (repeatable) {
+	//	base_number = INDEX;
+	//}
+	uint alt_seed = hash(base_number + uint(1) + RANDOM_SEED);
+	DisplayParameters params;
+	calculate_initial_display_params(params, alt_seed);
+	DynamicsParameters dynamic_params;
+	calculate_initial_dynamics_params(dynamic_params, alt_seed);
+	PhysicalParameters physics_params;
+	calculate_initial_physical_params(physics_params, alt_seed);
+
+	float pi = 3.14159;
+	float degree_to_rad = pi / 180.0;
+
+	bool first_frame = CUSTOM.y == 0.0;
+	CUSTOM.y += DELTA / LIFETIME;
+	CUSTOM.y = mix(CUSTOM.y, 1.0, INTERPOLATE_TO_END);
+	float lifetime_percent = CUSTOM.y / params.lifetime;
+	if (CUSTOM.y > CUSTOM.w) {
+		ACTIVE = false;
+	}
+
+	// Calculate all velocity.
+	vec3 controlled_displacement = vec3(0.0);
+	controlled_displacement += process_radial_displacement(dynamic_params, lifetime_percent, alt_seed, TRANSFORM, EMISSION_TRANSFORM, DELTA);
+
+	process_physical_parameters(physics_params, lifetime_percent);
+	{
+		// Copied from previous version.
+		if (physics_params.damping > 0.0) {
+			float v = length(USERDATA1.xyz);
+			v -= physics_params.damping * DELTA;
+			if (v < 0.0) {
+				USERDATA1.xyz = vec3(0.0);
+			} else {
+				USERDATA1.xyz = normalize(USERDATA1.xyz) * v;
+			}
+		}
+	}
+
+	// Turbulence before limiting.
+	vec3 final_velocity = controlled_displacement + USERDATA1.xyz;
+
+	VELOCITY = final_velocity;
+	TRANSFORM[3].xyz += final_velocity * DELTA;
+
+	process_display_param(params, lifetime_percent);
+
+	float base_angle = dynamic_params.angle;
+	base_angle += CUSTOM.y * LIFETIME * dynamic_params.angular_velocity;
+	CUSTOM.x = base_angle * degree_to_rad;
+	float value = randf_range(TRANSFORM[3].xz, 0.5, 0.8);
+	params.color = vec4(value, value, value, 0.25);
+	COLOR = params.color;
+
+	TRANSFORM[0].xyz = normalize_or_else(TRANSFORM[0].xyz, vec3(1.0, 0.0, 0.0));
+	TRANSFORM[1].xyz = normalize_or_else(TRANSFORM[1].xyz, vec3(0.0, 1.0, 0.0));
+	TRANSFORM[2].xyz = normalize_or_else(TRANSFORM[2].xyz, vec3(0.0, 0.0, 1.0));
+	if (first_frame) {
+		float scale_sign_x = params.scale.x < 0.0 ? -1.0 : 1.0;
+		float scale_sign_y = params.scale.y < 0.0 ? -1.0 : 1.0;
+		float scale_sign_z = params.scale.z < 0.0 ? -1.0 : 1.0;
+		float scale_minimum = 0.001;
+		TRANSFORM[0].xyz *= scale_sign_x * max(abs(params.scale.x), scale_minimum);
+		TRANSFORM[1].xyz *= scale_sign_y * max(abs(params.scale.y), scale_minimum);
+		TRANSFORM[2].xyz *= scale_sign_z * max(abs(params.scale.z), scale_minimum);
+	} else {
+		float scale_minimum = 0.001;
+		TRANSFORM[0].xyz *= max(abs(params.scale.x), scale_minimum);
+		TRANSFORM[1].xyz *= max(abs(params.scale.y), scale_minimum);
+		TRANSFORM[2].xyz *= max(abs(params.scale.z), scale_minimum);
+	}
+
+	CUSTOM.z = params.animation_offset + lifetime_percent * params.animation_speed;
+
+	int emit_count = 0;
+	if ((CUSTOM.y / CUSTOM.w * LIFETIME) > (LIFETIME - DELTA)) {
+		emit_count = sub_emitter_amount_at_end;
+	}
+	for (int i = 0; i < emit_count; i++) {
+		uint flags = FLAG_EMIT_POSITION | FLAG_EMIT_ROT_SCALE;
+		if (sub_emitter_keep_velocity) {
+			flags |= FLAG_EMIT_VELOCITY;
+		}
+		emit_subparticle(TRANSFORM, VELOCITY, vec4(0.0), vec4(0.0), flags);
+	}
+
+	if (CUSTOM.y > CUSTOM.w) {
+		ACTIVE = false;
+	}
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_246s2"]
+shader = SubResource("Shader_ut1ry")
+shader_parameter/direction = Vector3(0, -1, 0)
+shader_parameter/spread = 0.0
+shader_parameter/flatness = 1.0
+shader_parameter/inherit_emitter_velocity_ratio = 0.0
+shader_parameter/initial_linear_velocity_min = 150.0
+shader_parameter/initial_linear_velocity_max = 200.0
+shader_parameter/directional_velocity_min = 1.0
+shader_parameter/directional_velocity_max = 1.0
+shader_parameter/angular_velocity_min = 0.0
+shader_parameter/angular_velocity_max = 0.0
+shader_parameter/orbit_velocity_min = 0.0
+shader_parameter/orbit_velocity_max = 0.0
+shader_parameter/radial_velocity_min = 0.0
+shader_parameter/radial_velocity_max = 0.0
+shader_parameter/linear_accel_min = 0.0
+shader_parameter/linear_accel_max = 0.0
+shader_parameter/radial_accel_min = 0.0
+shader_parameter/radial_accel_max = 0.0
+shader_parameter/tangent_accel_min = 0.0
+shader_parameter/tangent_accel_max = 0.0
+shader_parameter/damping_min = 0.0
+shader_parameter/damping_max = 0.0
+shader_parameter/initial_angle_min = 0.0
+shader_parameter/initial_angle_max = 0.0
+shader_parameter/scale_3d_min = Vector3(2, 2, 4)
+shader_parameter/scale_3d_max = Vector3(3, 3, 8)
+shader_parameter/hue_variation_min = 0.0
+shader_parameter/hue_variation_max = 0.0
+shader_parameter/anim_speed_min = 0.0
+shader_parameter/anim_speed_max = 0.0
+shader_parameter/anim_offset_min = 0.0
+shader_parameter/anim_offset_max = 0.0
+shader_parameter/lifetime_randomness = 0.0
+shader_parameter/emission_shape_offset = Vector3(0, 139.96, 0)
+shader_parameter/emission_shape_scale = Vector3(1, 0, 1)
+shader_parameter/velocity_pivot = Vector3(0, 0, 0)
+shader_parameter/emission_ring_axis = Vector3(0, 90, 0)
+shader_parameter/emission_ring_height = 0.0
+shader_parameter/emission_ring_radius = 10.0
+shader_parameter/emission_ring_inner_radius = 10.0
+shader_parameter/emission_ring_cone_angle = 90.0
+shader_parameter/sub_emitter_amount_at_end = 1
+shader_parameter/sub_emitter_keep_velocity = false
+shader_parameter/color_value = Color(0, 0, 0, 1)
+shader_parameter/gravity = Vector3(0, -1e-06, 0)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_vh2i6"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_si4fk")
+size = Vector2(4, 4)
+orientation = 2
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_25ms4"]
+emission_shape = 6
+emission_ring_axis = Vector3(0, 90, 1)
+emission_ring_height = 0.0
+emission_ring_radius = 10.0
+emission_ring_inner_radius = 10.0
+emission_ring_cone_angle = 90.0
+spread = 180.0
+flatness = 0.5
+initial_velocity_min = 100.0
+initial_velocity_max = 150.0
+gravity = Vector3(0, 0, 0)
+scale_min = 2.0
+scale_max = 4.0
+scale_curve = SubResource("CurveTexture_8x2ta")
+alpha_curve = SubResource("CurveTexture_h0i2w")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b8yp4"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("9_pijb2")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_srrul"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_b8yp4")
+size = Vector2(4, 4)
+orientation = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jleah"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("9_pijb2")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_o17fk"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_jleah")
+size = Vector2(4, 4)
+orientation = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fabjd"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("10_s54ku")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_8ags5"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_fabjd")
+size = Vector2(4, 4)
+orientation = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rg1gp"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("10_s54ku")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_acajb"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_rg1gp")
+size = Vector2(4, 4)
+orientation = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_biro6"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("11_kq32x")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_85kbg"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_biro6")
+size = Vector2(4, 4)
+orientation = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cwwuk"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("11_kq32x")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_oew4l"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_cwwuk")
+size = Vector2(4, 4)
+orientation = 2
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jrqyy"]
+particle_flag_align_y = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 90, 1)
+emission_ring_height = 120.0
+emission_ring_radius = 10.0
+emission_ring_inner_radius = 10.0
+emission_ring_cone_angle = 90.0
+direction = Vector3(0, -1, 0)
+spread = 0.0
+initial_velocity_min = 1.0
+initial_velocity_max = 2.0
+gravity = Vector3(0, 0, 0)
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_8x2ta")
+color = Color(1, 1, 1, 0.1254902)
+alpha_curve = SubResource("CurveTexture_h0i2w")
+
+[sub_resource type="Animation" id="Animation_m65xi"]
+resource_name = "Intro Steam"
+length = 0.1
+loop_mode = 1
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../IntroSteamParticles/ColumnParticles0:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Audio:stream")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("7_gc3yy")]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Audio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Damager/Collision:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../IntroSteamParticles/ColumnParticles0/SpreadParticles:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../IntroSteamParticles/ColumnParticles1:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../IntroSteamParticles/ColumnParticles1/SpreadParticles:emitting")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../IntroSteamParticles/ColumnParticles2:emitting")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../IntroSteamParticles/ColumnParticles2/SpreadParticles:emitting")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../IntroSteamParticles/ColumnParticles3:emitting")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../IntroSteamParticles/ColumnParticles3/SpreadParticles:emitting")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("../AnticParticles:emitting")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_jrqyy"]
+resource_name = "Intro Steam Antic"
+length = 0.1
+loop_mode = 1
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Audio:stream")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("7_gc3yy")]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Audio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Damager/Collision:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../AnticParticles:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_ut1ry"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Audio:stream")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Audio:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Damager/Collision:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../IntroSteamParticles/ColumnParticles0:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../IntroSteamParticles/ColumnParticles0:amount")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [16]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../IntroSteamParticles/ColumnParticles0/SpreadParticles:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../IntroSteamParticles/ColumnParticles1:emitting")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../IntroSteamParticles/ColumnParticles1/SpreadParticles:emitting")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../IntroSteamParticles/ColumnParticles2:emitting")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../IntroSteamParticles/ColumnParticles2/SpreadParticles:emitting")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../IntroSteamParticles/ColumnParticles3:emitting")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("../IntroSteamParticles/ColumnParticles3/SpreadParticles:emitting")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("../AnticParticles:emitting")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jrqyy"]
+_data = {
+&"Intro Steam": SubResource("Animation_m65xi"),
+&"Intro Steam Antic": SubResource("Animation_jrqyy"),
+&"RESET": SubResource("Animation_ut1ry")
+}
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_bfoa7"]
+height = 93.62793
+radius = 10.0
 
 [node name="PhantomFight" unique_id=793946330 instance=ExtResource("1_l4y3c")]
 music_track = SubResource("Resource_ojd61")
@@ -72,10 +1067,25 @@ environment = SubResource("Environment_mdpca")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment" parent_id_path=PackedInt32Array(921388622) index="1" unique_id=1568374027]
 transform = Transform3D(-0.7072277, -0.35424432, 0.6118333, 0.70241356, -0.45033914, 0.5511896, 0.08027669, 0.8195765, 0.5673184, 0, 27.213322, 0)
 light_color = Color(0.88594085, 0.90867215, 0.901605, 1)
+light_volumetric_fog_energy = 0.409
 shadow_enabled = true
+
+[node name="GroundSteam" type="GPUParticles3D" parent="Environment" parent_id_path=PackedInt32Array(921388622) index="2" unique_id=1349132750]
+amount = 1024
+lifetime = 2.0
+randomness = 1.0
+collision_base_size = 0.5
+visibility_aabb = AABB(-32, -48, -32, 64, 64, 64)
+transform_align = 1
+transform_align_channel_filter = 1
+process_material = SubResource("ParticleProcessMaterial_7y7vd")
+draw_pass_1 = SubResource("PlaneMesh_64vl4")
 
 [node name="Camera" parent="CameraController/CameraPitch/Gimbal" parent_id_path=PackedInt32Array(969489915, 985846177) index="0" unique_id=707455384]
 attributes = SubResource("CameraAttributesPractical_ktfto")
+
+[node name="Player" parent="." index="5" unique_id=1127319379]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 25.210205)
 
 [node name="Ground" type="StaticBody3D" parent="." index="6" unique_id=433638540]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.194898, 0)
@@ -88,232 +1098,155 @@ mesh = SubResource("PlaneMesh_14s3j")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -50, 0)
 shape = SubResource("BoxShape3D_14s3j")
 
+[node name="WallLeft" type="CollisionShape3D" parent="Ground" index="2" unique_id=483938843]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64, 0, 0)
+shape = SubResource("BoxShape3D_14s3j")
+
+[node name="WallRight" type="CollisionShape3D" parent="Ground" index="3" unique_id=78203925]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64, 0, 0)
+shape = SubResource("BoxShape3D_14s3j")
+
+[node name="WallFront" type="CollisionShape3D" parent="Ground" index="4" unique_id=1803025287]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -64)
+shape = SubResource("BoxShape3D_14s3j")
+
+[node name="WallBack" type="CollisionShape3D" parent="Ground" index="5" unique_id=1429697490]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 64)
+shape = SubResource("BoxShape3D_14s3j")
+
 [node name="structureA" parent="." index="7" unique_id=1152383996 instance=ExtResource("5_lerc2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.641411, 0, -23.069153)
-
-[node name="BézierCurve" parent="structureA" index="0" unique_id=1624026274]
-surface_material_override/0 = SubResource("StandardMaterial3D_ktfto")
-
-[node name="BézierCurve_001" parent="structureA" index="1" unique_id=1183896677]
-surface_material_override/0 = SubResource("StandardMaterial3D_ktfto")
-
-[node name="BézierCurve_002" parent="structureA" index="2" unique_id=601492680]
-surface_material_override/0 = SubResource("StandardMaterial3D_ktfto")
-
-[node name="BézierCurve_003" parent="structureA" index="3" unique_id=731772989]
-surface_material_override/0 = SubResource("StandardMaterial3D_ktfto")
-
-[node name="BézierCurve_004" parent="structureA" index="4" unique_id=343092030]
-surface_material_override/0 = SubResource("StandardMaterial3D_ktfto")
-
-[node name="BézierCurve_005" parent="structureA" index="5" unique_id=94333405]
-surface_material_override/0 = SubResource("StandardMaterial3D_ktfto")
-
-[node name="BézierCurve_006" parent="structureA" index="6" unique_id=1937397584]
-surface_material_override/0 = SubResource("StandardMaterial3D_ktfto")
-
-[node name="BézierCurve_007" parent="structureA" index="7" unique_id=360547721]
-surface_material_override/0 = SubResource("StandardMaterial3D_ktfto")
-
-[node name="BézierCurve_008" parent="structureA" index="8" unique_id=4179710]
-surface_material_override/0 = SubResource("StandardMaterial3D_ktfto")
-
-[node name="BézierCurve_009" parent="structureA" index="9" unique_id=310258983]
-surface_material_override/0 = SubResource("StandardMaterial3D_ktfto")
-
-[node name="BézierCurve_010" parent="structureA" index="10" unique_id=1013426281]
-surface_material_override/0 = SubResource("StandardMaterial3D_ktfto")
-
-[node name="BézierCurve_011" parent="structureA" index="11" unique_id=1197276417]
-surface_material_override/0 = SubResource("StandardMaterial3D_ktfto")
-
-[node name="BézierCurve_012" parent="structureA" index="12" unique_id=715885884]
-surface_material_override/0 = SubResource("StandardMaterial3D_ktfto")
-
-[node name="BézierCurve_013" parent="structureA" index="13" unique_id=1415790467]
-surface_material_override/0 = SubResource("StandardMaterial3D_ktfto")
-
-[node name="BézierCurve_014" parent="structureA" index="14" unique_id=1846998183]
-surface_material_override/0 = SubResource("StandardMaterial3D_ktfto")
-
-[node name="BézierCurve_015" parent="structureA" index="15" unique_id=351800147]
-surface_material_override/0 = SubResource("StandardMaterial3D_ktfto")
-
-[node name="BézierCurve_016" parent="structureA" index="16" unique_id=1700460121]
-surface_material_override/0 = SubResource("StandardMaterial3D_ktfto")
-
-[node name="BézierCurve_017" parent="structureA" index="17" unique_id=895866787]
-surface_material_override/0 = SubResource("StandardMaterial3D_ktfto")
-
-[node name="BézierCurve_018" parent="structureA" index="18" unique_id=488837902]
-surface_material_override/0 = SubResource("StandardMaterial3D_ktfto")
-
-[node name="BézierCurve_019" parent="structureA" index="19" unique_id=1731109535]
-surface_material_override/0 = SubResource("StandardMaterial3D_ktfto")
-
-[node name="BézierCurve_020" parent="structureA" index="20" unique_id=1360624894]
-surface_material_override/0 = SubResource("StandardMaterial3D_ktfto")
-
-[node name="BézierCurve_021" parent="structureA" index="21" unique_id=624544683]
-surface_material_override/0 = SubResource("StandardMaterial3D_ktfto")
-
-[node name="BézierCurve_022" parent="structureA" index="22" unique_id=1750891991]
-surface_material_override/0 = SubResource("StandardMaterial3D_ktfto")
-
-[node name="BézierCurve_023" parent="structureA" index="23" unique_id=1122279632]
-surface_material_override/0 = SubResource("StandardMaterial3D_ktfto")
-
-[node name="BézierCurve_024" parent="structureA" index="24" unique_id=1684315390]
-surface_material_override/0 = SubResource("StandardMaterial3D_ktfto")
-
-[node name="BézierCurve_025" parent="structureA" index="25" unique_id=82673646]
-surface_material_override/0 = SubResource("StandardMaterial3D_ktfto")
-
-[node name="BézierCurve_026" parent="structureA" index="26" unique_id=1528588129]
-surface_material_override/0 = SubResource("StandardMaterial3D_ktfto")
-
-[node name="BézierCurve_027" parent="structureA" index="27" unique_id=1947849290]
-surface_material_override/0 = SubResource("StandardMaterial3D_ktfto")
-
-[node name="BézierCurve_028" parent="structureA" index="28" unique_id=1301319834]
-surface_material_override/0 = SubResource("StandardMaterial3D_ktfto")
-
-[node name="BézierCurve_029" parent="structureA" index="29" unique_id=1774756623]
-surface_material_override/0 = SubResource("StandardMaterial3D_ktfto")
-
-[node name="BézierCurve_030" parent="structureA" index="30" unique_id=1419368500]
-surface_material_override/0 = SubResource("StandardMaterial3D_ktfto")
-
-[node name="BézierCurve_031" parent="structureA" index="31" unique_id=1889414157]
-surface_material_override/0 = SubResource("StandardMaterial3D_ktfto")
-
-[node name="BézierCurve_032" parent="structureA" index="32" unique_id=1801513920]
-surface_material_override/0 = SubResource("StandardMaterial3D_ktfto")
-
-[node name="BézierCurve_033" parent="structureA" index="33" unique_id=1315808712]
-surface_material_override/0 = SubResource("StandardMaterial3D_ktfto")
-
-[node name="BézierCurve_034" parent="structureA" index="34" unique_id=1048999751]
-surface_material_override/0 = SubResource("StandardMaterial3D_ktfto")
-
-[node name="BézierCurve_035" parent="structureA" index="35" unique_id=581036199]
-surface_material_override/0 = SubResource("StandardMaterial3D_ktfto")
-
-[node name="Circle" parent="structureA" index="36" unique_id=554629049]
-surface_material_override/0 = SubResource("StandardMaterial3D_ktfto")
-
-[node name="Cube" parent="structureA" index="37" unique_id=1043578994]
-surface_material_override/0 = SubResource("StandardMaterial3D_ktfto")
-
-[node name="Cylinder_001" parent="structureA" index="39" unique_id=867291456]
-transform = Transform3D(1.1957419, -0.05245834, 0.084038585, 0.05903397, 1.1946753, -0.09422709, -0.07955723, 0.09804019, 1.1931773, 0, -0.5674111, 0)
-surface_material_override/0 = SubResource("ShaderMaterial_lerc2")
-
-[node name="Cylinder_002" parent="structureA" index="40" unique_id=1903516243]
-transform = Transform3D(0.8060868, -0.010706847, 0.04442757, 0.011397362, 0.8072077, -0.012258509, -0.044255465, 0.0128660165, 0.80606467, 0.40529346, -0.5349876, 0)
-surface_material_override/0 = SubResource("ShaderMaterial_lerc2")
-
-[node name="Cylinder_003" parent="structureA" index="41" unique_id=346837258]
-transform = Transform3D(1.12485, -0.055228125, 0.0045144674, 0.055224355, 1.1248586, 0.0010431309, -0.004560189, -0.00082049874, 1.1262045, 0.8754339, -0.48635238, 0)
-surface_material_override/0 = SubResource("ShaderMaterial_lerc2")
-
-[node name="Cylinder_004" parent="structureA" index="42" unique_id=2021206654]
-transform = Transform3D(0.8429841, -0.073829204, -0.054357965, 0.0706468, 0.8435214, -0.050082732, 0.058434326, 0.04526034, 0.84472746, 1.5887508, -0.5998346, 0)
-surface_material_override/0 = SubResource("ShaderMaterial_lerc2")
-
-[node name="Cylinder_005" parent="structureA" index="43" unique_id=2020055658]
-transform = Transform3D(1.1017039, -0.08492059, 0.03614781, 0.08997963, 1.0846292, -0.19430183, -0.020538628, 0.19656557, 1.0877546, 2.1723738, -0.29181144, 0)
-surface_material_override/0 = SubResource("ShaderMaterial_lerc2")
-
-[node name="Cylinder_006" parent="structureA" index="44" unique_id=1171336192]
-transform = Transform3D(1.1709282, 0.07033843, -0.059042543, -0.06457739, 1.1675549, 0.11023404, 0.06529377, -0.10665028, 1.167848, 2.7235732, -0.12969397, 2.8817463)
-surface_material_override/0 = SubResource("ShaderMaterial_lerc2")
-
-[node name="Cylinder_007" parent="structureA" index="45" unique_id=132971332]
-transform = Transform3D(0.90863127, -0.012215338, 0.0090270005, 0.011704078, 0.90732324, 0.049691822, -0.009680694, -0.049568616, 0.90735376, 2.8208437, -0.16211747, 0)
-surface_material_override/0 = SubResource("ShaderMaterial_lerc2")
-
-[node name="Cylinder_008" parent="structureA" index="46" unique_id=1128196715]
-transform = Transform3D(0.98053014, 0.058965128, 0.055942263, -0.061525088, 0.9809626, 0.044413943, -0.0531139, -0.04776033, 0.9812968, -1.2645168, 0.16211745, 0)
-surface_material_override/0 = SubResource("ShaderMaterial_lerc2")
-
-[node name="Cylinder_009" parent="structureA" index="47" unique_id=1743555162]
-transform = Transform3D(1.0779914, -0.017027546, 0.07094016, 0.011981801, 1.077672, 0.07659743, -0.07196443, -0.07563595, 1.0754012, 3.0315962, -0.7619521, 0)
-surface_material_override/0 = SubResource("ShaderMaterial_lerc2")
-
-[node name="Cylinder_010" parent="structureA" index="48" unique_id=1680316046]
-transform = Transform3D(1.1391182, -0.07454642, 0.08626253, 0.076635204, 1.1419652, -0.0251225, -0.08441232, 0.03077215, 1.1412781, 3.631431, -1.2969397, 0)
-surface_material_override/0 = SubResource("ShaderMaterial_lerc2")
-
-[node name="Cylinder_011" parent="structureA" index="49" unique_id=50592579]
-transform = Transform3D(0.97040623, 0.034679417, -0.0103835445, -0.035280567, 0.96840084, -0.062878765, 0.008109347, 0.06321231, 0.9689878, 1.4428453, -0.30802315, 0)
-surface_material_override/0 = SubResource("ShaderMaterial_lerc2")
-
-[node name="Cylinder_012" parent="structureA" index="50" unique_id=257708612]
-transform = Transform3D(1.1527957, 0.077253975, -0.02544897, -0.078030445, 1.1524559, -0.036205932, 0.022958068, 0.03783446, 1.154814, 0.8430109, -0.79437554, 2.8756332)
-surface_material_override/0 = SubResource("ShaderMaterial_lerc2")
-
-[node name="Cylinder_013" parent="structureA" index="51" unique_id=1045325749]
-transform = Transform3D(0.8953736, -0.018029405, 0.019889938, 0.018238964, 0.89554214, -0.009280858, -0.019697946, 0.00968167, 0.89550704, 1.1023989, -0.6160463, 0)
-surface_material_override/0 = SubResource("ShaderMaterial_lerc2")
-
-[node name="Cylinder_014" parent="structureA" index="52" unique_id=282744442]
-transform = Transform3D(0.9267824, -0.07471737, 0.035616796, 0.074984334, 0.927428, -0.0055918097, -0.03505128, 0.008439907, 0.9297725, -0.51877594, -0.48635232, 0)
-surface_material_override/0 = SubResource("ShaderMaterial_lerc2")
-
-[node name="Cylinder_015" parent="structureA" index="53" unique_id=1477288334]
-transform = Transform3D(1.0289153, 0.00028560258, -0.013432986, -0.00033237162, 1.0289967, -0.0035805947, 0.013431913, 0.0035846282, 1.0289088, -5.528206, -0.24317613, 1.8049641)
-surface_material_override/0 = SubResource("ShaderMaterial_lerc2")
-
-[node name="Cylinder_016" parent="structureA" index="54" unique_id=882412063]
-transform = Transform3D(0.9037564, -0.02195929, 0.034471203, 0.027458603, 0.89138657, -0.15205947, -0.030273732, 0.15295045, 0.8911429, -6.8737793, -0.22696438, 0)
-surface_material_override/0 = SubResource("ShaderMaterial_lerc2")
-
-[node name="Cylinder_017" parent="structureA" index="55" unique_id=142890526]
-transform = Transform3D(0.92179626, -0.021553637, 0.03825782, 0.021818772, 0.92256445, -0.0059554377, -0.03810723, 0.006853224, 0.9220291, -6.273946, -0.14590564, 0)
-surface_material_override/0 = SubResource("ShaderMaterial_lerc2")
-
-[node name="Cylinder_018" parent="structureA" index="56" unique_id=321139486]
-transform = Transform3D(0.8191617, 0.05090205, 0.048387747, -0.049641885, 0.8203559, -0.022589799, -0.049679745, 0.019585606, 0.82043076, -5.982134, -0.048635155, 0)
-surface_material_override/0 = SubResource("ShaderMaterial_lerc2")
-
-[node name="Cylinder_019" parent="structureA" index="57" unique_id=1353625710]
-transform = Transform3D(0.8528336, 0.056548636, 0.05465239, -0.058071043, 0.8541883, 0.022355014, -0.053031918, -0.025966235, 0.8544139, -5.00943, -0.17832914, 0)
-surface_material_override/0 = SubResource("ShaderMaterial_lerc2")
-
-[node name="Cylinder_020" parent="structureA" index="58" unique_id=1626313371]
-transform = Transform3D(1.0601636, 0.043492515, 0.07545866, -0.03674912, 1.0589334, -0.09403277, -0.07896272, 0.09111017, 1.0568804, -4.6365595, 0.2918115, 0)
-surface_material_override/0 = SubResource("ShaderMaterial_lerc2")
-
-[node name="Cylinder_021" parent="structureA" index="59" unique_id=1031404953]
-transform = Transform3D(0.9067125, 0.06812253, 0.017595205, -0.06801727, 0.90687096, -0.0060377857, -0.017997807, 0.0047037383, 0.9092478, -7.42498, -0.11348218, 0)
-surface_material_override/0 = SubResource("ShaderMaterial_lerc2")
-
-[node name="Cylinder_022" parent="structureA" index="60" unique_id=1137367204]
-transform = Transform3D(1.0581946, -0.0842184, 0.07694059, 0.08234674, 1.0607511, 0.028539987, -0.07894055, -0.022422705, 1.061157, -7.9275436, 0.21075276, 0)
-surface_material_override/0 = SubResource("ShaderMaterial_lerc2")
-
-[node name="Cylinder_023" parent="structureA" index="61" unique_id=1774307333]
-transform = Transform3D(0.8999349, -0.06064123, 0.03969115, 0.059472077, 0.9004731, 0.02733104, -0.041422453, -0.024628319, 0.9015615, -8.657072, -0.35665837, 0)
-surface_material_override/0 = SubResource("ShaderMaterial_lerc2")
-
-[node name="Cylinder_024" parent="structureA" index="62" unique_id=2016009684]
-transform = Transform3D(0.93603176, 0.013306281, -0.028924681, -0.009182175, 0.92752486, 0.12954684, 0.030485772, -0.12918837, 0.92711926, -8.235567, -0.17832915, 1.8309116)
-surface_material_override/0 = SubResource("ShaderMaterial_lerc2")
-
-[node name="Cylinder_025" parent="structureA" index="63" unique_id=1369858360]
-transform = Transform3D(0.9299284, 0.07275987, -0.048724096, -0.07400689, 0.93083525, -0.022446187, 0.04680829, 0.026207881, 0.93250054, -9.240696, -0.6160463, 0)
-surface_material_override/0 = SubResource("ShaderMaterial_lerc2")
-
-[node name="Cylinder_026" parent="structureA" index="64" unique_id=1665618000]
-transform = Transform3D(0.9372348, -0.03050736, -0.023496237, 0.030028809, 0.9373475, -0.019234946, 0.024104828, 0.018466555, 0.93753403, -9.5162945, -0.27559963, 0)
-surface_material_override/0 = SubResource("ShaderMaterial_lerc2")
-
-[node name="Plane_002" parent="structureA" index="68" unique_id=2101058987]
-surface_material_override/0 = SubResource("StandardMaterial3D_oif61")
-
-[node name="PhantomBoss" parent="." index="8" unique_id=1724463133 instance=ExtResource("2_vuuix")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -27.527832)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.020447, -2.1603022, -30.278881)
+
+[node name="structureB" parent="." index="8" unique_id=367714657 instance=ExtResource("5_lerc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.979553, -2.1603022, -30.278881)
+
+[node name="PhantomBoss" parent="." index="9" unique_id=1724463133 node_paths=PackedStringArray("intro_steam_anim") instance=ExtResource("2_vuuix")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16.974518)
+intro_steam_anim = NodePath("../IntroSteam/IntroSteamController/Animator")
+
+[node name="IntroSteam" type="Node3D" parent="." index="10" unique_id=969698322]
+
+[node name="IntroSteamParticles" type="Node3D" parent="IntroSteam" index="0" unique_id=2012007609]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -17.211483)
+
+[node name="ColumnParticles0" type="GPUParticles3D" parent="IntroSteam/IntroSteamParticles" index="0" unique_id=1837490766]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 47.59901, 0)
+emitting = false
+amount = 16
+sub_emitter = NodePath("SpreadParticles")
+visibility_aabb = AABB(-32, -48, -32, 64, 64, 64)
+process_material = SubResource("ShaderMaterial_246s2")
+draw_pass_1 = SubResource("PlaneMesh_vh2i6")
+
+[node name="SpreadParticles" type="GPUParticles3D" parent="IntroSteam/IntroSteamParticles/ColumnParticles0" index="0" unique_id=414573470]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -48, 0)
+emitting = false
+amount = 1024
+lifetime = 0.25
+collision_base_size = 0.5
+visibility_aabb = AABB(-32, -48, -32, 64, 64, 64)
+transform_align = 1
+transform_align_channel_filter = 1
+process_material = SubResource("ParticleProcessMaterial_25ms4")
+draw_pass_1 = SubResource("PlaneMesh_vh2i6")
+
+[node name="ColumnParticles1" type="GPUParticles3D" parent="IntroSteam/IntroSteamParticles" index="1" unique_id=1240077772]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 47.59901, 0)
+emitting = false
+amount = 256
+sub_emitter = NodePath("SpreadParticles")
+visibility_aabb = AABB(-32, -48, -32, 64, 64, 64)
+process_material = SubResource("ShaderMaterial_246s2")
+draw_pass_1 = SubResource("PlaneMesh_srrul")
+
+[node name="SpreadParticles" type="GPUParticles3D" parent="IntroSteam/IntroSteamParticles/ColumnParticles1" index="0" unique_id=2093768260]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -48, 0)
+emitting = false
+amount = 1024
+lifetime = 0.25
+collision_base_size = 0.5
+visibility_aabb = AABB(-32, -48, -32, 64, 64, 64)
+transform_align = 1
+transform_align_channel_filter = 1
+process_material = SubResource("ParticleProcessMaterial_25ms4")
+draw_pass_1 = SubResource("PlaneMesh_o17fk")
+
+[node name="ColumnParticles2" type="GPUParticles3D" parent="IntroSteam/IntroSteamParticles" index="2" unique_id=1613874888]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 47.59901, 0)
+emitting = false
+amount = 256
+sub_emitter = NodePath("SpreadParticles")
+visibility_aabb = AABB(-32, -48, -32, 64, 64, 64)
+process_material = SubResource("ShaderMaterial_246s2")
+draw_pass_1 = SubResource("PlaneMesh_8ags5")
+
+[node name="SpreadParticles" type="GPUParticles3D" parent="IntroSteam/IntroSteamParticles/ColumnParticles2" index="0" unique_id=1474998692]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -48, 0)
+emitting = false
+amount = 1024
+lifetime = 0.25
+collision_base_size = 0.5
+visibility_aabb = AABB(-32, -48, -32, 64, 64, 64)
+transform_align = 1
+transform_align_channel_filter = 1
+process_material = SubResource("ParticleProcessMaterial_25ms4")
+draw_pass_1 = SubResource("PlaneMesh_acajb")
+
+[node name="ColumnParticles3" type="GPUParticles3D" parent="IntroSteam/IntroSteamParticles" index="3" unique_id=1220548648]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 47.59901, 0)
+emitting = false
+amount = 256
+sub_emitter = NodePath("SpreadParticles")
+visibility_aabb = AABB(-32, -48, -32, 64, 64, 64)
+process_material = SubResource("ShaderMaterial_246s2")
+draw_pass_1 = SubResource("PlaneMesh_85kbg")
+
+[node name="SpreadParticles" type="GPUParticles3D" parent="IntroSteam/IntroSteamParticles/ColumnParticles3" index="0" unique_id=2067907389]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -48, 0)
+emitting = false
+amount = 1024
+lifetime = 0.25
+collision_base_size = 0.5
+visibility_aabb = AABB(-32, -48, -32, 64, 64, 64)
+transform_align = 1
+transform_align_channel_filter = 1
+process_material = SubResource("ParticleProcessMaterial_25ms4")
+draw_pass_1 = SubResource("PlaneMesh_oew4l")
+
+[node name="AnticParticles" type="GPUParticles3D" parent="IntroSteam" index="1" unique_id=1195717052]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.40098953, -17.211483)
+emitting = false
+amount = 1024
+lifetime = 2.0
+one_shot = true
+randomness = 1.0
+collision_base_size = 0.5
+visibility_aabb = AABB(-32, -48, -32, 64, 64, 64)
+transform_align = 1
+transform_align_channel_filter = 1
+process_material = SubResource("ParticleProcessMaterial_jrqyy")
+draw_pass_1 = SubResource("PlaneMesh_oew4l")
+
+[node name="IntroSteamController" type="Node3D" parent="IntroSteam" index="2" unique_id=1409634913]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -17.211483)
+
+[node name="Animator" type="AnimationPlayer" parent="IntroSteam/IntroSteamController" index="0" unique_id=1369293164 groups=["Steam"]]
+libraries/ = SubResource("AnimationLibrary_jrqyy")
+
+[node name="Damager" parent="IntroSteam/IntroSteamController" index="1" unique_id=966797267 instance=ExtResource("12_lvdly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 47.59901, 0)
+collision_layer = 16
+damage_amount = 2
+multi_hit = true
+
+[node name="Collision" parent="IntroSteam/IntroSteamController/Damager" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.0073814, 0)
+shape = SubResource("CylinderShape3D_bfoa7")
+disabled = true
+
+[node name="Audio" type="AudioStreamPlayer3D" parent="IntroSteam/IntroSteamController" index="2" unique_id=106902063]
+unit_size = 64.0
+bus = &"SFX"
 
 [editable path="CameraController"]
-[editable path="structureA"]
+[editable path="IntroSteam/IntroSteamController/Damager"]

@@ -231,9 +231,144 @@ script = ExtResource("1_wxj2u")
 group = &"Players"
 output_var = &"player"
 
+[sub_resource type="BBVariant" id="BBVariant_y6gpi"]
+type = 22
+saved_value = NodePath("Mesh/Armature")
+resource_name = "Mesh/Armature"
+
+[sub_resource type="BTAction" id="BTAction_bxgmw"]
+script = ExtResource("3_7l5er")
+node_var = SubResource("BBVariant_y6gpi")
+
+[sub_resource type="BBVariant" id="BBVariant_hsmts"]
+type = 22
+saved_value = NodePath("Health/Collision")
+resource_name = "Health/Collision"
+
+[sub_resource type="BTAction" id="BTAction_5m202"]
+script = ExtResource("5_oyjsi")
+collider_var = SubResource("BBVariant_hsmts")
+
+[sub_resource type="BBVariant" id="BBVariant_56lep"]
+type = 22
+saved_value = NodePath("BodyDamager/Collision")
+resource_name = "BodyDamager/Collision"
+
+[sub_resource type="BTAction" id="BTAction_nlyyx"]
+script = ExtResource("5_oyjsi")
+collider_var = SubResource("BBVariant_56lep")
+
 [sub_resource type="BTSequence" id="BTSequence_ep25s"]
 custom_name = "Initialize"
-children = [SubResource("BTAction_lyner")]
+children = [SubResource("BTAction_lyner"), SubResource("BTAction_bxgmw"), SubResource("BTAction_5m202"), SubResource("BTAction_nlyyx")]
+
+[sub_resource type="BBNode" id="BBNode_so4p7"]
+saved_value = NodePath(".")
+resource_name = "."
+
+[sub_resource type="BTEvaluateExpression" id="BTEvaluateExpression_vbeax"]
+node = SubResource("BBNode_so4p7")
+expression_string = "intro_steam_anim.play(\"Intro Steam Antic\", -1, 0.25)"
+
+[sub_resource type="BBVariant" id="BBVariant_xfwq3"]
+type = 3
+saved_value = 0.25
+resource_name = "0.25"
+
+[sub_resource type="BBVariant" id="BBVariant_2dxt5"]
+type = 3
+saved_value = 1.0
+resource_name = "1.0"
+
+[sub_resource type="BBVariant" id="BBVariant_uwn1d"]
+type = 1
+saved_value = false
+resource_name = "<null>"
+
+[sub_resource type="BTAction" id="BTAction_hsmts"]
+script = ExtResource("7_q1tlo")
+shake_amount_var = SubResource("BBVariant_xfwq3")
+shake_duration_var = SubResource("BBVariant_2dxt5")
+shake_taper_off_var = SubResource("BBVariant_uwn1d")
+
+[sub_resource type="BTWait" id="BTWait_5m202"]
+
+[sub_resource type="BTSequence" id="BTSequence_f2o3u"]
+custom_name = "Intro Steam Antic"
+children = [SubResource("BTEvaluateExpression_vbeax"), SubResource("BTAction_hsmts"), SubResource("BTWait_5m202")]
+
+[sub_resource type="BBNode" id="BBNode_f4hly"]
+saved_value = NodePath(".")
+resource_name = "."
+
+[sub_resource type="BTEvaluateExpression" id="BTEvaluateExpression_so4p7"]
+node = SubResource("BBNode_f4hly")
+expression_string = "intro_steam_anim.play(\"Intro Steam\")"
+
+[sub_resource type="BBVariant" id="BBVariant_edsfe"]
+type = 3
+saved_value = 0.25
+resource_name = "0.25"
+
+[sub_resource type="BBVariant" id="BBVariant_0y5d0"]
+type = 3
+saved_value = 1.0
+resource_name = "1.0"
+
+[sub_resource type="BBVariant" id="BBVariant_kx6ah"]
+type = 1
+saved_value = false
+resource_name = "<null>"
+
+[sub_resource type="BTAction" id="BTAction_ywxfm"]
+script = ExtResource("7_q1tlo")
+shake_amount_var = SubResource("BBVariant_edsfe")
+shake_duration_var = SubResource("BBVariant_0y5d0")
+shake_taper_off_var = SubResource("BBVariant_kx6ah")
+
+[sub_resource type="BTWait" id="BTWait_so4p7"]
+
+[sub_resource type="BBNode" id="BBNode_p38gw"]
+saved_value = NodePath(".")
+resource_name = "."
+
+[sub_resource type="BTEvaluateExpression" id="BTEvaluateExpression_f4hly"]
+node = SubResource("BBNode_p38gw")
+expression_string = "intro_steam_anim.play(\"RESET\")"
+
+[sub_resource type="BTSequence" id="BTSequence_85jcb"]
+custom_name = "Intro Steam"
+children = [SubResource("BTEvaluateExpression_so4p7"), SubResource("BTAction_ywxfm"), SubResource("BTWait_so4p7"), SubResource("BTEvaluateExpression_f4hly")]
+
+[sub_resource type="BBVariant" id="BBVariant_5m202"]
+type = 22
+saved_value = NodePath("Mesh/Armature")
+resource_name = "Mesh/Armature"
+
+[sub_resource type="BTAction" id="BTAction_56lep"]
+script = ExtResource("3_7l5er")
+node_var = SubResource("BBVariant_5m202")
+visible = true
+
+[sub_resource type="BBVariant" id="BBVariant_nlyyx"]
+type = 22
+saved_value = NodePath("Health/Collision")
+resource_name = "Health/Collision"
+
+[sub_resource type="BTAction" id="BTAction_y6gpi"]
+script = ExtResource("5_oyjsi")
+collider_var = SubResource("BBVariant_nlyyx")
+enabled = true
+
+[sub_resource type="BBVariant" id="BBVariant_bxgmw"]
+type = 22
+saved_value = NodePath("BodyDamager/Collision")
+resource_name = "BodyDamager/Collision"
+
+[sub_resource type="BTAction" id="BTAction_ukowx"]
+script = ExtResource("5_oyjsi")
+collider_var = SubResource("BBVariant_bxgmw")
+enabled = true
 
 [sub_resource type="BBNode" id="BBNode_3sjwb"]
 saved_value = NodePath("Mesh/AnimationPlayer")
@@ -245,11 +380,18 @@ animation_name = &"Idle"
 blend = 0.5
 custom_name = "Idle Animation"
 
+[sub_resource type="BTAction" id="BTAction_6jxdy"]
+script = ExtResource("7_h0i2w")
+clips_array = Array[AudioStream]([ExtResource("3_si4fk"), ExtResource("4_p38gw"), ExtResource("5_f4hly"), ExtResource("6_so4p7"), ExtResource("7_vbeax"), ExtResource("8_85jcb")])
+play_position_var = &"self_position"
+pitch_min = 0.95
+
 [sub_resource type="BTWait" id="BTWait_64vl4"]
+duration = 2.0
 
 [sub_resource type="BTSequence" id="BTSequence_scgdb"]
 custom_name = "Initial Idle"
-children = [SubResource("BTPlayAnimation_t43nk"), SubResource("BTWait_64vl4")]
+children = [SubResource("BTAction_56lep"), SubResource("BTAction_y6gpi"), SubResource("BTAction_ukowx"), SubResource("BTPlayAnimation_t43nk"), SubResource("BTAction_6jxdy"), SubResource("BTWait_64vl4")]
 
 [sub_resource type="BTAction" id="BTAction_oavyp"]
 script = ExtResource("2_64vl4")
@@ -305,39 +447,9 @@ variable = &"count_throws"
 check_type = 4
 value = SubResource("BBVariant_6nlpx")
 
-[sub_resource type="BBVariant" id="BBVariant_edsfe"]
-value_source = 1
-variable = &"self"
-resource_name = "$self"
-
-[sub_resource type="BBVariant" id="BBVariant_0y5d0"]
-value_source = 1
-variable = &"player"
-resource_name = "$player"
-
-[sub_resource type="BTAction" id="BTAction_wbqw5"]
-script = ExtResource("27_0ncbx")
-from_var = SubResource("BBVariant_edsfe")
-to_var = SubResource("BBVariant_0y5d0")
-output_distance_var = &"distance_to_player"
-
-[sub_resource type="BBVariant" id="BBVariant_kx6ah"]
-type = 3
-saved_value = 20.0
-resource_name = "20.0"
-
-[sub_resource type="BTCheckVar" id="BTCheckVar_ywxfm"]
-variable = &"distance_to_player"
-check_type = 1
-value = SubResource("BBVariant_kx6ah")
-
-[sub_resource type="BTSequence" id="BTSequence_d5dg2"]
-custom_name = "Check Distance"
-children = [SubResource("BTAction_wbqw5"), SubResource("BTCheckVar_ywxfm")]
-
 [sub_resource type="BTSelector" id="BTSelector_64vl4"]
 custom_name = "Check"
-children = [SubResource("BTCheckVar_cowyg"), SubResource("BTSequence_d5dg2")]
+children = [SubResource("BTCheckVar_cowyg")]
 
 [sub_resource type="BBVariant" id="BBVariant_w4qqg"]
 type = 2
@@ -830,6 +942,18 @@ blend = 0.25
 [sub_resource type="BTWait" id="BTWait_si4fk"]
 duration = 0.5
 
+[sub_resource type="BTSequence" id="BTSequence_p38gw"]
+custom_name = "Idle"
+children = [SubResource("BTPlayAnimation_64vl4"), SubResource("BTWait_si4fk")]
+
+[sub_resource type="BTSequence" id="BTSequence_81262"]
+custom_name = "Air Throw"
+children = [SubResource("BTSequence_64vl4"), SubResource("BTSequence_oyjsi"), SubResource("BTSequence_e7dx6"), SubResource("BTSequence_lyner"), SubResource("BTSequence_0vw3d"), SubResource("BTSequence_0ncbx"), SubResource("BTSequence_8hf85"), SubResource("BTSequence_f3fnf"), SubResource("BTSequence_p38gw")]
+
+[sub_resource type="BTSelector" id="BTSelector_1vq4m"]
+custom_name = "Check Can Air Throw"
+children = [SubResource("BTSelector_64vl4"), SubResource("BTSequence_81262")]
+
 [sub_resource type="BBVariant" id="BBVariant_gd6r0"]
 value_source = 1
 variable = &"self"
@@ -881,6 +1005,7 @@ output_direction_var = &"direction_to_player"
 
 [sub_resource type="BBVariant" id="BBVariant_omncn"]
 saved_value = null
+resource_name = "<null>"
 
 [sub_resource type="BBVariant" id="BBVariant_uqlw3"]
 type = 3
@@ -889,6 +1014,7 @@ resource_name = "<null>"
 
 [sub_resource type="BBVariant" id="BBVariant_tv57j"]
 saved_value = null
+resource_name = "<null>"
 
 [sub_resource type="BTAction" id="BTAction_vj3a2"]
 script = ExtResource("16_gps7j")
@@ -920,8 +1046,8 @@ output_distance_var = &"distance_to_player"
 
 [sub_resource type="BBVariant" id="BBVariant_cj572"]
 type = 3
-saved_value = 16.0
-resource_name = "16.0"
+saved_value = 24.0
+resource_name = "24.0"
 
 [sub_resource type="BTCheckVar" id="BTCheckVar_msscq"]
 variable = &"distance_to_player"
@@ -944,18 +1070,6 @@ face_velocity = false
 [sub_resource type="BTSelector" id="BTSelector_8a4m4"]
 custom_name = "Check Can Chase"
 children = [SubResource("BTSequence_644oe"), SubResource("BTRepeatUntilSuccess_so4p7"), SubResource("BTAction_u8mfj")]
-
-[sub_resource type="BTSequence" id="BTSequence_p38gw"]
-custom_name = "Idle"
-children = [SubResource("BTPlayAnimation_64vl4"), SubResource("BTWait_si4fk"), SubResource("BTSelector_8a4m4")]
-
-[sub_resource type="BTSequence" id="BTSequence_81262"]
-custom_name = "Air Throw"
-children = [SubResource("BTSequence_64vl4"), SubResource("BTSequence_oyjsi"), SubResource("BTSequence_e7dx6"), SubResource("BTSequence_lyner"), SubResource("BTSequence_0vw3d"), SubResource("BTSequence_0ncbx"), SubResource("BTSequence_8hf85"), SubResource("BTSequence_f3fnf"), SubResource("BTSequence_p38gw")]
-
-[sub_resource type="BTSelector" id="BTSelector_1vq4m"]
-custom_name = "Check Can Air Throw"
-children = [SubResource("BTSelector_64vl4"), SubResource("BTSequence_81262")]
 
 [sub_resource type="BBVariant" id="BBVariant_nb51y"]
 type = 2
@@ -1069,6 +1183,7 @@ output_direction_var = &"evade_direction"
 
 [sub_resource type="BBVariant" id="BBVariant_hy7u4"]
 saved_value = null
+resource_name = "<null>"
 
 [sub_resource type="BBVariant" id="BBVariant_rdwe7"]
 type = 3
@@ -1077,6 +1192,7 @@ resource_name = "<null>"
 
 [sub_resource type="BBVariant" id="BBVariant_ht3iw"]
 saved_value = null
+resource_name = "<null>"
 
 [sub_resource type="BTAction" id="BTAction_1w4wn"]
 script = ExtResource("16_gps7j")
@@ -1492,6 +1608,7 @@ output_direction_var = &"direction_to_player"
 
 [sub_resource type="BBVariant" id="BBVariant_4lbgp"]
 saved_value = null
+resource_name = "<null>"
 
 [sub_resource type="BBVariant" id="BBVariant_gqfoe"]
 type = 3
@@ -1500,6 +1617,7 @@ resource_name = "<null>"
 
 [sub_resource type="BBVariant" id="BBVariant_o1wsh"]
 saved_value = null
+resource_name = "<null>"
 
 [sub_resource type="BTAction" id="BTAction_k4vxl"]
 script = ExtResource("16_gps7j")
@@ -1540,6 +1658,7 @@ output_direction_var = &"direction_to_player"
 
 [sub_resource type="BBVariant" id="BBVariant_j8lls"]
 saved_value = null
+resource_name = "<null>"
 
 [sub_resource type="BBVariant" id="BBVariant_g2mta"]
 type = 3
@@ -1548,6 +1667,7 @@ resource_name = "<null>"
 
 [sub_resource type="BBVariant" id="BBVariant_lvxpv"]
 saved_value = null
+resource_name = "<null>"
 
 [sub_resource type="BTAction" id="BTAction_imp7a"]
 script = ExtResource("16_gps7j")
@@ -1588,6 +1708,7 @@ output_direction_var = &"direction_to_player"
 
 [sub_resource type="BBVariant" id="BBVariant_imp7a"]
 saved_value = null
+resource_name = "<null>"
 
 [sub_resource type="BBVariant" id="BBVariant_5kvju"]
 type = 3
@@ -1596,6 +1717,7 @@ resource_name = "<null>"
 
 [sub_resource type="BBVariant" id="BBVariant_mjk3h"]
 saved_value = null
+resource_name = "<null>"
 
 [sub_resource type="BTAction" id="BTAction_8bs8v"]
 script = ExtResource("16_gps7j")
@@ -1845,6 +1967,7 @@ output_direction_var = &"direction_to_player"
 
 [sub_resource type="BBVariant" id="BBVariant_85jcb"]
 saved_value = null
+resource_name = "<null>"
 
 [sub_resource type="BBVariant" id="BBVariant_f2o3u"]
 type = 3
@@ -1853,6 +1976,7 @@ resource_name = "<null>"
 
 [sub_resource type="BBVariant" id="BBVariant_2tpwg"]
 saved_value = null
+resource_name = "<null>"
 
 [sub_resource type="BTAction" id="BTAction_u70i2"]
 script = ExtResource("16_gps7j")
@@ -1932,6 +2056,7 @@ output_direction_var = &"direction_to_player"
 
 [sub_resource type="BBVariant" id="BBVariant_p38gw"]
 saved_value = null
+resource_name = "<null>"
 
 [sub_resource type="BBVariant" id="BBVariant_f4hly"]
 type = 3
@@ -1940,6 +2065,7 @@ resource_name = "<null>"
 
 [sub_resource type="BBVariant" id="BBVariant_vbeax"]
 saved_value = null
+resource_name = "<null>"
 
 [sub_resource type="BTAction" id="BTAction_85jcb"]
 script = ExtResource("16_gps7j")
@@ -2027,6 +2153,7 @@ output_direction_var = &"direction_to_player"
 
 [sub_resource type="BBVariant" id="BBVariant_uywq4"]
 saved_value = null
+resource_name = "<null>"
 
 [sub_resource type="BBVariant" id="BBVariant_wor4f"]
 type = 3
@@ -2035,6 +2162,7 @@ resource_name = "<null>"
 
 [sub_resource type="BBVariant" id="BBVariant_xdajs"]
 saved_value = null
+resource_name = "<null>"
 
 [sub_resource type="BTAction" id="BTAction_nctop"]
 script = ExtResource("16_gps7j")
@@ -2867,7 +2995,7 @@ children = [SubResource("BTSequence_kjh6e"), SubResource("BTSequence_t43nk")]
 
 [sub_resource type="BTRandomSelector" id="BTRandomSelector_3sjwb"]
 custom_name = "Attack Choice"
-children = [SubResource("BTSelector_1vq4m"), SubResource("BTSelector_ht3iw"), SubResource("BTSelector_an710"), SubResource("BTSelector_vb8lp"), SubResource("BTSequence_hy7u4"), SubResource("BTSelector_fy5k8")]
+children = [SubResource("BTSelector_1vq4m"), SubResource("BTSelector_8a4m4"), SubResource("BTSelector_ht3iw"), SubResource("BTSelector_an710"), SubResource("BTSelector_vb8lp"), SubResource("BTSequence_hy7u4"), SubResource("BTSelector_fy5k8")]
 
 [sub_resource type="BTSelector" id="BTSelector_brhsx"]
 custom_name = "Logic"
@@ -2880,7 +3008,7 @@ children = [SubResource("BTSelector_brhsx")]
 
 [sub_resource type="BTSequence" id="BTSequence_ojd61"]
 custom_name = "Main"
-children = [SubResource("BTSequence_ep25s"), SubResource("BTSequence_scgdb"), SubResource("BTRepeat_oyjsi")]
+children = [SubResource("BTSequence_ep25s"), SubResource("BTSequence_f2o3u"), SubResource("BTSequence_85jcb"), SubResource("BTSequence_scgdb"), SubResource("BTRepeat_oyjsi")]
 
 [resource]
 blackboard_plan = SubResource("BlackboardPlan_ojd61")

@@ -1,3 +1,3 @@
 class_name Phantom extends Enemy
 
-@export var steam_particles: GPUParticles3D
+@export var intro_steam_anim: AnimationPlayer
