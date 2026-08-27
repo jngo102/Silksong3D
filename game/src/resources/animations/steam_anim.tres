@@ -1,9 +1,148 @@
 [gd_resource type="AnimationLibrary" format=3 uid="uid://boqi0rg25fl8h"]
 
 [ext_resource type="AudioStream" uid="uid://bnn5wtr58pyyu" path="res://src/copyrighted/phantom/sfx/phantom_big_down_attack_antic.wav" id="1_spg7f"]
+[ext_resource type="AudioStream" uid="uid://cymx1ttqpqrvu" path="res://src/copyrighted/sfx/misc_rumble_loop.wav" id="1_x1gwt"]
 [ext_resource type="AudioStream" uid="uid://f5vtsxxt1de5" path="res://src/copyrighted/phantom/sfx/phantom_big_down_attack.wav" id="2_x1gwt"]
 
-[sub_resource type="Animation" id="Animation_ut1ry"]
+[sub_resource type="Animation" id="Animation_phxw1"]
+resource_name = "Intro Steam"
+length = 2.6667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Audio:stream")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_x1gwt")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Audio:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Damager/Collision:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.1666667, 2.6666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Damager/BurstCollision:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sparkle:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SteamBurstParticles:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Audio")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("SteamColumnParticles/ColumnParticles:emitting")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.8333333, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("SteamColumnParticles/ColumnParticles/SpreadParticles:emitting")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 1, 2.6667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("SteamColumnParticles/AnticParticles:emitting")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.8333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Damager:multi_hit")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_pijb2"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -56,7 +195,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("SteamColumnParticles/ColumnParticles0:emitting")
+tracks/4/path = NodePath("Sparkle:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -68,31 +207,31 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("SteamColumnParticles/ColumnParticles0:amount")
+tracks/5/path = NodePath("SteamBurstParticles:emitting")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [16]
+"values": [false]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("SteamColumnParticles/ColumnParticles0/SpreadParticles:emitting")
+tracks/6/path = NodePath("Sparkle:light_energy")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [64.0]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("SteamColumnParticles/ColumnParticles1:emitting")
+tracks/7/path = NodePath("SteamColumnParticles/ColumnParticles:emitting")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -104,19 +243,19 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("SteamColumnParticles/ColumnParticles1/SpreadParticles:emitting")
+tracks/8/path = NodePath("SteamColumnParticles/ColumnParticles/SpreadParticles:emitting")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
+"update": 1,
 "values": [false]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("SteamColumnParticles/ColumnParticles2:emitting")
+tracks/9/path = NodePath("SteamColumnParticles/AnticParticles:emitting")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -128,7 +267,7 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("SteamColumnParticles/ColumnParticles2/SpreadParticles:emitting")
+tracks/10/path = NodePath("Damager:multi_hit")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
@@ -137,361 +276,139 @@ tracks/10/keys = {
 "update": 1,
 "values": [false]
 }
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("SteamColumnParticles/ColumnParticles3:emitting")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/12/type = "value"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("SteamColumnParticles/ColumnParticles3/SpreadParticles:emitting")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/13/type = "value"
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/path = NodePath("Sparkle:visible")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/14/type = "value"
-tracks/14/imported = false
-tracks/14/enabled = true
-tracks/14/path = NodePath("SteamBurstParticles:emitting")
-tracks/14/interp = 1
-tracks/14/loop_wrap = true
-tracks/14/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
 
-[sub_resource type="Animation" id="Animation_m65xi"]
-resource_name = "Steam Antic"
-length = 0.1
-loop_mode = 1
-step = 0.125
+[sub_resource type="Animation" id="Animation_pn7q2"]
+resource_name = "Steam"
+length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SteamColumnParticles/ColumnParticles0:emitting")
+tracks/0/path = NodePath("Audio:stream")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [true]
+"values": [ExtResource("1_spg7f"), ExtResource("2_x1gwt")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sparkle:light_energy")
+tracks/1/path = NodePath("Audio:volume_db")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.05),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [64.0, 8.0]
+"values": [0.0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sparkle:visible")
+tracks/2/path = NodePath("Damager/Collision:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1, 1.1666666),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [true]
+"values": [true, false, true]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Audio:stream")
+tracks/3/path = NodePath("Damager/BurstCollision:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1, 1.1666666),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [ExtResource("1_spg7f")]
+"values": [true, false, true]
 }
-tracks/4/type = "method"
+tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Audio")
+tracks/4/path = NodePath("Sparkle:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"values": [{
-"args": [0.0],
-"method": &"play"
-}]
+"update": 1,
+"values": [true]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Damager/Collision:disabled")
+tracks/5/path = NodePath("SteamBurstParticles:emitting")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [true]
+"values": [false, true]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Damager/BurstCollision:disabled")
+tracks/6/path = NodePath("Sparkle:light_energy")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.10000001, 0.13333334, 0.16666669, 0.20000002, 0.23333336, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.40000004, 0.43333337, 0.4666667, 0.50000006, 0.53333336, 0.5666667, 0.6, 0.6333334, 0.66666675, 0.70000005, 0.73333335, 0.7666667, 0.8000001, 0.8333334, 0.86666673, 0.9000001, 0.9333334, 0.96666676, 1, 1.1666666),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [16.0, 4.0, 16.0, 4.0, 16.0, 4.0, 16.0, 4.0, 16.0, 4.0, 16.0, 4.0, 16.0, 4.0, 16.0, 4.0, 16.0, 4.0, 16.0, 4.0, 16.0, 4.0, 16.0, 4.0, 16.0, 4.0, 16.0, 4.0, 16.0, 4.0, 64.0, 0.0]
 }
-tracks/7/type = "value"
+tracks/7/type = "method"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("SteamColumnParticles/ColumnParticles0/SpreadParticles:emitting")
+tracks/7/path = NodePath("Audio")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("SteamColumnParticles/ColumnParticles1:emitting")
+tracks/8/path = NodePath("SteamColumnParticles/ColumnParticles:emitting")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("SteamColumnParticles/ColumnParticles1/SpreadParticles:emitting")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [true]
-}
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("SteamColumnParticles/ColumnParticles2:emitting")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("SteamColumnParticles/ColumnParticles2/SpreadParticles:emitting")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/12/type = "value"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("SteamColumnParticles/ColumnParticles3:emitting")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/13/type = "value"
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/path = NodePath("SteamColumnParticles/ColumnParticles3/SpreadParticles:emitting")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
-[sub_resource type="Animation" id="Animation_b8yp4"]
-resource_name = "Steam Burst"
-length = 0.25
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("SteamColumnParticles/ColumnParticles0:emitting")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sparkle:light_energy")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [128.0, 0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sparkle:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.25),
+"times": PackedFloat32Array(0, 0.8333333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Audio:stream")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("2_x1gwt")]
-}
-tracks/4/type = "method"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Audio")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [0.0],
-"method": &"play"
-}]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Damager/Collision:disabled")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Damager/BurstCollision:disabled")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("SteamColumnParticles/ColumnParticles0/SpreadParticles:emitting")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("SteamColumnParticles/ColumnParticles1:emitting")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("SteamColumnParticles/ColumnParticles1/SpreadParticles:emitting")
+tracks/9/path = NodePath("SteamColumnParticles/ColumnParticles/SpreadParticles:emitting")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [false]
+"times": PackedFloat32Array(0, 0.16666667, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
 }
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("SteamColumnParticles/ColumnParticles2:emitting")
+tracks/10/path = NodePath("Damager:multi_hit")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
@@ -500,58 +417,10 @@ tracks/10/keys = {
 "update": 1,
 "values": [false]
 }
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("SteamColumnParticles/ColumnParticles2/SpreadParticles:emitting")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/12/type = "value"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("SteamColumnParticles/ColumnParticles3:emitting")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/13/type = "value"
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/path = NodePath("SteamColumnParticles/ColumnParticles3/SpreadParticles:emitting")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/14/type = "value"
-tracks/14/imported = false
-tracks/14/enabled = true
-tracks/14/path = NodePath("SteamBurstParticles:emitting")
-tracks/14/interp = 1
-tracks/14/loop_wrap = true
-tracks/14/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
 
 [resource]
 _data = {
-&"RESET": SubResource("Animation_ut1ry"),
-&"Steam Antic": SubResource("Animation_m65xi"),
-&"Steam Burst": SubResource("Animation_b8yp4")
+&"Intro Steam": SubResource("Animation_phxw1"),
+&"RESET": SubResource("Animation_pijb2"),
+&"Steam": SubResource("Animation_pn7q2")
 }

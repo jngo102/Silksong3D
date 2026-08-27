@@ -16,7 +16,6 @@
 [ext_resource type="AudioStream" uid="uid://dhcoxu0ysewfx" path="res://src/copyrighted/phantom/sfx/Phantom-2-Attack-Big-026.wav" id="5_f6tfq"]
 [ext_resource type="Script" uid="uid://cawha32gubgkl" path="res://src/ai/tasks/scene/set_collider.gd" id="5_oyjsi"]
 [ext_resource type="Script" uid="uid://bhbfx0nq52wad" path="res://src/ai/tasks/math/clamp_value.gd" id="6_e1tjg"]
-[ext_resource type="AudioStream" uid="uid://d1k5rfb6frxpj" path="res://src/copyrighted/phantom/sfx/Phantom-2-Attack-Big-030.wav" id="6_iruob"]
 [ext_resource type="AudioStream" uid="uid://bgt400k643hdy" path="res://src/copyrighted/phantom/sfx/Phantom-Mock-015.wav" id="6_so4p7"]
 [ext_resource type="Script" uid="uid://du8y378pbmc3b" path="res://src/ai/tasks/transform/get_position_x_y_z.gd" id="6_swc3g"]
 [ext_resource type="Script" uid="uid://5qpw7k5phkni" path="res://src/ai/tasks/audio/play_random_audio.gd" id="7_h0i2w"]
@@ -262,13 +261,13 @@ collider_var = SubResource("BBVariant_56lep")
 custom_name = "Initialize"
 children = [SubResource("BTAction_lyner"), SubResource("BTAction_bxgmw"), SubResource("BTAction_5m202"), SubResource("BTAction_nlyyx")]
 
-[sub_resource type="BBNode" id="BBNode_so4p7"]
-saved_value = NodePath(".")
-resource_name = "."
+[sub_resource type="BBNode" id="BBNode_p38gw"]
+saved_value = NodePath("Mesh/SteamPoint/DiveSteam/Animator")
+resource_name = "Mesh/SteamPoint/DiveSteam/Animator"
 
-[sub_resource type="BTEvaluateExpression" id="BTEvaluateExpression_vbeax"]
-node = SubResource("BBNode_so4p7")
-expression_string = "intro_steam_tree.set_active(true)"
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_f4hly"]
+animation_player = SubResource("BBNode_p38gw")
+animation_name = &"Intro Steam"
 
 [sub_resource type="BBVariant" id="BBVariant_xfwq3"]
 type = 3
@@ -295,42 +294,35 @@ shake_taper_off_var = SubResource("BBVariant_uwn1d")
 
 [sub_resource type="BTSequence" id="BTSequence_f2o3u"]
 custom_name = "Intro Steam Antic"
-children = [SubResource("BTEvaluateExpression_vbeax"), SubResource("BTAction_hsmts"), SubResource("BTWait_5m202")]
+children = [SubResource("BTPlayAnimation_f4hly"), SubResource("BTAction_hsmts"), SubResource("BTWait_5m202")]
 
 [sub_resource type="BBVariant" id="BBVariant_edsfe"]
 type = 3
 saved_value = 0.25
 resource_name = "0.25"
 
-[sub_resource type="BBVariant" id="BBVariant_0y5d0"]
+[sub_resource type="BBVariant" id="BBVariant_6jxdy"]
 type = 3
-saved_value = 1.0
-resource_name = "1.0"
+saved_value = 1.5
+resource_name = "1.5"
 
-[sub_resource type="BBVariant" id="BBVariant_kx6ah"]
+[sub_resource type="BBVariant" id="BBVariant_8bs8v"]
 type = 1
 saved_value = false
 resource_name = "<null>"
 
-[sub_resource type="BTAction" id="BTAction_ywxfm"]
+[sub_resource type="BTAction" id="BTAction_0y5d0"]
 script = ExtResource("7_q1tlo")
 shake_amount_var = SubResource("BBVariant_edsfe")
-shake_duration_var = SubResource("BBVariant_0y5d0")
-shake_taper_off_var = SubResource("BBVariant_kx6ah")
+shake_duration_var = SubResource("BBVariant_6jxdy")
+shake_taper_off_var = SubResource("BBVariant_8bs8v")
 
-[sub_resource type="BTWait" id="BTWait_so4p7"]
+[sub_resource type="BTWait" id="BTWait_wbqw5"]
+duration = 1.5
 
-[sub_resource type="BBNode" id="BBNode_f4hly"]
-saved_value = NodePath(".")
-resource_name = "."
-
-[sub_resource type="BTEvaluateExpression" id="BTEvaluateExpression_so4p7"]
-node = SubResource("BBNode_f4hly")
-expression_string = "intro_steam_tree.set(\"parameters/conditions/end\", true)"
-
-[sub_resource type="BTSequence" id="BTSequence_85jcb"]
+[sub_resource type="BTSequence" id="BTSequence_34gi5"]
 custom_name = "Intro Steam"
-children = [SubResource("BTAction_ywxfm"), SubResource("BTWait_so4p7"), SubResource("BTEvaluateExpression_so4p7")]
+children = [SubResource("BTAction_0y5d0"), SubResource("BTWait_wbqw5")]
 
 [sub_resource type="BBVariant" id="BBVariant_5m202"]
 type = 22
@@ -539,8 +531,8 @@ resource_name = "<null>"
 
 [sub_resource type="BBVariant" id="BBVariant_f3fnf"]
 type = 3
-saved_value = 2.0
-resource_name = "2.0"
+saved_value = 4.0
+resource_name = "4.0"
 
 [sub_resource type="BBVariant" id="BBVariant_lo2j8"]
 saved_value = null
@@ -574,6 +566,7 @@ children = [SubResource("BTAction_wxj2u"), SubResource("BTAction_e27sc"), SubRes
 script = ExtResource("1_7l5er")
 direction_var = &"jump_direction"
 speed = 100.0
+face_velocity = false
 
 [sub_resource type="BTWait" id="BTWait_gps7j"]
 duration = 0.5
@@ -617,14 +610,22 @@ saved_value = NodePath("Mesh/AnimationPlayer")
 resource_name = "Mesh/AnimationPlayer"
 
 [sub_resource type="BTPlayAnimation" id="BTPlayAnimation_h3c6o"]
-await_completion = 1.0
 animation_player = SubResource("BBNode_gps7j")
 animation_name = &"Air Throw"
 blend = 0.125
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_64vl4"]
+streams_count = 6
+stream_0/stream = ExtResource("18_y0rx0")
+stream_1/stream = ExtResource("19_0ncbx")
+stream_2/stream = ExtResource("20_13qii")
+stream_3/stream = ExtResource("21_0vw3d")
+stream_4/stream = ExtResource("22_7ervn")
+stream_5/stream = ExtResource("23_7114d")
+
 [sub_resource type="BTAction" id="BTAction_f3fnf"]
 script = ExtResource("7_h0i2w")
-clips_array = Array[AudioStream]([ExtResource("18_y0rx0"), ExtResource("19_0ncbx"), ExtResource("20_13qii"), ExtResource("21_0vw3d"), ExtResource("22_7ervn"), ExtResource("23_7114d")])
+clips_array = Array[AudioStream]([SubResource("AudioStreamRandomizer_64vl4")])
 play_position_var = &"self_position"
 pitch_min = 0.9
 range = 128.0
@@ -680,9 +681,12 @@ z_var = SubResource("BBVariant_mlomx")
 custom_name = "Ensure Pin Goes Downward"
 children = [SubResource("BTCheckVar_s81cj"), SubResource("BTAction_swc3g")]
 
+[sub_resource type="BTWait" id="BTWait_85jcb"]
+duration = 0.458
+
 [sub_resource type="BTSequence" id="BTSequence_lyner"]
 custom_name = "Aim Throw"
-children = [SubResource("BTAction_0vw3d"), SubResource("BTAction_7y135"), SubResource("BTCallMethod_7ervn"), SubResource("BTPlayAnimation_h3c6o"), SubResource("BTAction_f3fnf"), SubResource("BTAction_y0rx0"), SubResource("BTAction_6id38"), SubResource("BTSelector_f3fnf")]
+children = [SubResource("BTAction_0vw3d"), SubResource("BTAction_7y135"), SubResource("BTCallMethod_7ervn"), SubResource("BTPlayAnimation_h3c6o"), SubResource("BTAction_f3fnf"), SubResource("BTAction_y0rx0"), SubResource("BTAction_6id38"), SubResource("BTSelector_f3fnf"), SubResource("BTWait_85jcb")]
 
 [sub_resource type="BBVariant" id="BBVariant_0ncbx"]
 type = 24
@@ -1189,14 +1193,22 @@ saved_value = NodePath("Mesh/AnimationPlayer")
 resource_name = "Mesh/AnimationPlayer"
 
 [sub_resource type="BTPlayAnimation" id="BTPlayAnimation_1vq4m"]
-await_completion = 1.0
 animation_player = SubResource("BBNode_d5dg2")
 animation_name = &"Air Throw"
 blend = 0.125
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_si4fk"]
+streams_count = 6
+stream_0/stream = ExtResource("18_y0rx0")
+stream_1/stream = ExtResource("19_0ncbx")
+stream_2/stream = ExtResource("20_13qii")
+stream_3/stream = ExtResource("21_0vw3d")
+stream_4/stream = ExtResource("22_7ervn")
+stream_5/stream = ExtResource("23_7114d")
+
 [sub_resource type="BTAction" id="BTAction_hy7u4"]
 script = ExtResource("7_h0i2w")
-clips_array = Array[AudioStream]([ExtResource("18_y0rx0"), ExtResource("19_0ncbx"), ExtResource("20_13qii"), ExtResource("21_0vw3d"), ExtResource("22_7ervn"), ExtResource("23_7114d")])
+clips_array = Array[AudioStream]([SubResource("AudioStreamRandomizer_si4fk")])
 play_position_var = &"self_position"
 pitch_min = 0.9
 range = 128.0
@@ -1213,6 +1225,7 @@ output_direction_var = &"direction_to_player"
 
 [sub_resource type="BBVariant" id="BBVariant_00wwj"]
 saved_value = null
+resource_name = "<null>"
 
 [sub_resource type="BBVariant" id="BBVariant_mgq7u"]
 type = 3
@@ -1221,6 +1234,7 @@ resource_name = "<null>"
 
 [sub_resource type="BBVariant" id="BBVariant_lot5q"]
 saved_value = null
+resource_name = "<null>"
 
 [sub_resource type="BTAction" id="BTAction_l8lxr"]
 script = ExtResource("16_gps7j")
@@ -1229,9 +1243,12 @@ x_var = SubResource("BBVariant_00wwj")
 y_var = SubResource("BBVariant_mgq7u")
 z_var = SubResource("BBVariant_lot5q")
 
+[sub_resource type="BTWait" id="BTWait_vbeax"]
+duration = 0.458
+
 [sub_resource type="BTSequence" id="BTSequence_ns7q0"]
 custom_name = "Aim Throw"
-children = [SubResource("BTAction_vb8lp"), SubResource("BTAction_ee786"), SubResource("BTPlayAnimation_1vq4m"), SubResource("BTAction_hy7u4"), SubResource("BTAction_kqeg5"), SubResource("BTAction_l8lxr")]
+children = [SubResource("BTAction_vb8lp"), SubResource("BTAction_ee786"), SubResource("BTPlayAnimation_1vq4m"), SubResource("BTAction_hy7u4"), SubResource("BTAction_kqeg5"), SubResource("BTAction_l8lxr"), SubResource("BTWait_vbeax")]
 
 [sub_resource type="BBVariant" id="BBVariant_dimi3"]
 type = 24
@@ -1403,6 +1420,27 @@ custom_name = "Stop"
 script = ExtResource("1_7l5er")
 direction_var = &"jump_direction"
 
+[sub_resource type="BBVariant" id="BBVariant_0oxhu"]
+type = 3
+saved_value = 0.0
+resource_name = "<null>"
+
+[sub_resource type="BBVariant" id="BBVariant_vakva"]
+saved_value = null
+resource_name = "<null>"
+
+[sub_resource type="BBVariant" id="BBVariant_ydu7w"]
+type = 3
+saved_value = 0.0
+resource_name = "<null>"
+
+[sub_resource type="BTAction" id="BTAction_lvxpv"]
+script = ExtResource("31_7114d")
+target_var = &"self"
+x_var = SubResource("BBVariant_0oxhu")
+y_var = SubResource("BBVariant_vakva")
+z_var = SubResource("BBVariant_ydu7w")
+
 [sub_resource type="BBVariant" id="BBVariant_s3l5l"]
 value_source = 1
 variable = &"thrown_pin_path"
@@ -1430,7 +1468,7 @@ visible = true
 
 [sub_resource type="BTSequence" id="BTSequence_inr4p"]
 custom_name = "Recover"
-children = [SubResource("BTAction_pfphc"), SubResource("BTAction_cruxi"), SubResource("BTAction_nxkg3"), SubResource("BTAction_5kqph")]
+children = [SubResource("BTAction_pfphc"), SubResource("BTAction_lvxpv"), SubResource("BTAction_cruxi"), SubResource("BTAction_nxkg3"), SubResource("BTAction_5kqph")]
 
 [sub_resource type="BBNode" id="BBNode_re52h"]
 saved_value = NodePath("Mesh/AnimationPlayer")
@@ -1912,6 +1950,21 @@ shake_amount_var = SubResource("BBVariant_ega3v")
 shake_duration_var = SubResource("BBVariant_sdyr6")
 shake_taper_off_var = SubResource("BBVariant_ljy8h")
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_p38gw"]
+random_pitch = 1.0293022
+streams_count = 5
+stream_0/stream = ExtResource("2_11ce5")
+stream_1/stream = ExtResource("3_q1tlo")
+stream_2/stream = ExtResource("4_h0i2w")
+stream_3/stream = ExtResource("4_h0i2w")
+stream_4/stream = ExtResource("5_f6tfq")
+
+[sub_resource type="BTAction" id="BTAction_so4p7"]
+script = ExtResource("7_h0i2w")
+clips_array = Array[AudioStream]([SubResource("AudioStreamRandomizer_p38gw")])
+play_position_var = &"self_position"
+pitch_min = 0.95
+
 [sub_resource type="BBVariant" id="BBVariant_qvtbj"]
 type = 3
 saved_value = 0.35
@@ -2142,7 +2195,7 @@ children = [SubResource("BTSequence_7y135"), SubResource("BTAction_n5th1"), SubR
 
 [sub_resource type="BTSequence" id="BTSequence_uvu2g"]
 custom_name = "Hit"
-children = [SubResource("BTAction_swxcp"), SubResource("BTPlayAnimation_hevjx"), SubResource("BTAction_wor4f"), SubResource("BTAction_s6lnm"), SubResource("BTAction_uvu2g"), SubResource("BTSequence_7qu64")]
+children = [SubResource("BTAction_swxcp"), SubResource("BTPlayAnimation_hevjx"), SubResource("BTAction_wor4f"), SubResource("BTAction_s6lnm"), SubResource("BTAction_so4p7"), SubResource("BTAction_uvu2g"), SubResource("BTSequence_7qu64")]
 
 [sub_resource type="BTAction" id="BTAction_1xqnx"]
 script = ExtResource("57_xppty")
@@ -2947,7 +3000,7 @@ resource_name = "Mesh/SteamPoint/DiveSteam/Animator"
 
 [sub_resource type="BTPlayAnimation" id="BTPlayAnimation_wxj2u"]
 animation_player = SubResource("BBNode_81262")
-animation_name = &"Steam Antic"
+animation_name = &"Steam"
 
 [sub_resource type="BBVariant" id="BBVariant_wxj2u"]
 type = 3
@@ -2993,6 +3046,7 @@ resource_name = "Mesh/SteamPoint/DiveSteam/Animator"
 [sub_resource type="BTPlayAnimation" id="BTPlayAnimation_e7dx6"]
 animation_player = SubResource("BBNode_wxj2u")
 animation_name = &"Steam Burst"
+_enabled = false
 
 [sub_resource type="BBVariant" id="BBVariant_h0i2w"]
 type = 3
@@ -3015,18 +3069,24 @@ shake_amount_var = SubResource("BBVariant_h0i2w")
 shake_duration_var = SubResource("BBVariant_f6tfq")
 shake_taper_off_var = SubResource("BBVariant_iruob")
 
-[sub_resource type="BTAction" id="BTAction_iruob"]
-script = ExtResource("2_f6tfq")
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_erets"]
+random_pitch = 1.0293022
+streams_count = 5
+stream_0/stream = ExtResource("2_11ce5")
+stream_1/stream = ExtResource("3_q1tlo")
+stream_2/stream = ExtResource("4_h0i2w")
+stream_3/stream = ExtResource("4_h0i2w")
+stream_4/stream = ExtResource("5_f6tfq")
 
 [sub_resource type="BTAction" id="BTAction_f6tfq"]
 script = ExtResource("7_h0i2w")
-clips_array = Array[AudioStream]([ExtResource("2_11ce5"), ExtResource("3_q1tlo"), ExtResource("4_h0i2w"), ExtResource("5_f6tfq"), ExtResource("6_iruob")])
+clips_array = Array[AudioStream]([SubResource("AudioStreamRandomizer_erets")])
 play_position_var = &"self_position"
 pitch_min = 0.95
 
 [sub_resource type="BTSequence" id="BTSequence_iruob"]
 custom_name = "Play Voice"
-children = [SubResource("BTAction_iruob"), SubResource("BTAction_f6tfq")]
+children = [SubResource("BTAction_f6tfq")]
 
 [sub_resource type="BBNode" id="BBNode_2gtvw"]
 saved_value = NodePath("Mesh/AnimationPlayer")
@@ -3099,7 +3159,7 @@ children = [SubResource("BTSelector_brhsx")]
 
 [sub_resource type="BTSequence" id="BTSequence_ojd61"]
 custom_name = "Main"
-children = [SubResource("BTSequence_ep25s"), SubResource("BTSequence_f2o3u"), SubResource("BTSequence_85jcb"), SubResource("BTSequence_scgdb"), SubResource("BTRepeat_oyjsi")]
+children = [SubResource("BTSequence_ep25s"), SubResource("BTSequence_f2o3u"), SubResource("BTSequence_34gi5"), SubResource("BTSequence_scgdb"), SubResource("BTRepeat_oyjsi")]
 
 [resource]
 blackboard_plan = SubResource("BlackboardPlan_ojd61")

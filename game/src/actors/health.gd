@@ -10,7 +10,7 @@ class_name Health extends Area3D
 @export var damage_invincibility_time: float = 0.5
 @export var give_silk: bool = true
 @export var silk_amount: int = 1
-@export var damage_particles: Array[CPUParticles3D]
+@export var damage_particles: Array[GeometryInstance3D]
 @export var damage_effect_prefab: PackedScene
 @export var _flasher: Flasher
 @export var _pulser: Pulser

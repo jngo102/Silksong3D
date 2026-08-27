@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://ccjntjndehkwt"]
 
 [ext_resource type="Script" uid="uid://dj5upywmu1hm2" path="res://src/actors/random_audio_player.gd" id="1_wtwsi"]
+[ext_resource type="AudioStream" uid="uid://crwn16fmnbx8o" path="res://src/copyrighted/sfx/enemy/damage/normal/enemy_damage_old.wav" id="2_wln8w"]
 
 [sub_resource type="Animation" id="Animation_xroym"]
 resource_name = "Hit"
@@ -24,16 +25,16 @@ _data = {
 &"Hit": SubResource("Animation_xroym")
 }
 
-[node name="EnemyHitEffect" type="Node3D"]
+[node name="EnemyHitEffect" type="Node3D" unique_id=1866446261]
 
-[node name="Animator" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_pi76t")
-}
-autoplay = "Hit"
+[node name="Animator" type="AnimationPlayer" parent="." unique_id=1388251665]
+libraries/ = SubResource("AnimationLibrary_pi76t")
+autoplay = &"Hit"
 
-[node name="HitAudio" type="AudioStreamPlayer3D" parent="."]
+[node name="HitAudio" type="AudioStreamPlayer3D" parent="." unique_id=1605927310]
+volume_db = -4.0
 unit_size = 32.0
 bus = &"SFX"
 script = ExtResource("1_wtwsi")
+audio_clips = Array[AudioStream]([ExtResource("2_wln8w")])
 metadata/_custom_type_script = "uid://dj5upywmu1hm2"

@@ -5,7 +5,8 @@
 [ext_resource type="AudioStream" uid="uid://dmdnka5ampot2" path="res://src/copyrighted/sfx/enemy/damage/cog/automaton_generic_damage_2.wav" id="3_225ca"]
 [ext_resource type="AudioStream" uid="uid://6rcyt4lj0mmb" path="res://src/copyrighted/sfx/enemy/damage/cog/automaton_generic_damage_3.wav" id="4_jvjns"]
 
-[node name="EnemyHitEffectCog" instance=ExtResource("1_05d2w")]
+[node name="EnemyHitEffectCog" unique_id=156299265 instance=ExtResource("1_05d2w")]
 
-[node name="HitAudio" parent="." index="1"]
+[node name="HitAudio" parent="." index="1" unique_id=1605927310]
+volume_db = 0.0
 audio_clips = Array[AudioStream]([ExtResource("2_wf5au"), ExtResource("3_225ca"), ExtResource("4_jvjns")])
