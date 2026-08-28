@@ -464,27 +464,30 @@ resource_name = "false"
 variable = &"spin_to_waypoint"
 value = SubResource("BBVariant_sw5t1")
 
-[sub_resource type="BBVariant" id="BBVariant_3shy2"]
+[sub_resource type="BBVariant" id="BBVariant_721jo"]
+saved_value = null
+
+[sub_resource type="BBVariant" id="BBVariant_weq2w"]
 type = 3
 saved_value = 0.0
 resource_name = "<null>"
 
-[sub_resource type="BBVariant" id="BBVariant_expln"]
+[sub_resource type="BBVariant" id="BBVariant_dt3yc"]
 type = 3
 saved_value = 180.0
 resource_name = "180.0"
 
-[sub_resource type="BBVariant" id="BBVariant_7i34u"]
+[sub_resource type="BBVariant" id="BBVariant_ihgc3"]
 type = 3
 saved_value = 0.0
 resource_name = "<null>"
 
 [sub_resource type="BTAction" id="BTAction_q5c76"]
 script = ExtResource("12_6r4af")
-target_var = &"self"
-x_var = SubResource("BBVariant_3shy2")
-y_var = SubResource("BBVariant_expln")
-z_var = SubResource("BBVariant_7i34u")
+target_var = SubResource("BBVariant_721jo")
+x_var = SubResource("BBVariant_weq2w")
+y_var = SubResource("BBVariant_dt3yc")
+z_var = SubResource("BBVariant_ihgc3")
 
 [sub_resource type="BTSequence" id="BTSequence_wekhm"]
 custom_name = "Return To Alcove"

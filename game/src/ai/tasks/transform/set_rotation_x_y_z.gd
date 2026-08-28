@@ -1,7 +1,7 @@
 @tool
 extends BTAction
 
-@export var target_var := &"target"
+@export var target_var: BBVariant
 @export var x_var: BBVariant
 @export var y_var: BBVariant
 @export var z_var: BBVariant
@@ -10,15 +10,15 @@ extends BTAction
 func _generate_name() -> String:
 	return "Set %s Rotation of %s to (%s, %s, %s)" % [
 		"Local" if local else "Global",
-		LimboUtility.decorate_var(target_var),
+		BBUtil.bb_var(target_var),
 		BBUtil.bb_var(x_var),
 		BBUtil.bb_var(y_var),
 		BBUtil.bb_var(z_var),
 	]
 
 func _tick(_delta: float) -> Status:
-	var target: Node3D = blackboard.get_var(target_var)
-	if not is_instance_valid(target):
+	var target = BBUtil.bb_value(target_var, blackboard, agent)
+	if target == null:
 		target = agent
 	var new_rotation: Vector3
 	if local:

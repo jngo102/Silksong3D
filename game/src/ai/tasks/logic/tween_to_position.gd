@@ -1,6 +1,7 @@
 @tool
 extends BTAction
 
+@export var tween_target_var: BBVariant
 @export var target_position_var := &"target_position"
 @export var time: float = 1
 @export var delay: float
@@ -15,13 +16,16 @@ var _target_position: Vector3
 var _tween_finished: bool
 
 func _generate_name() -> String:
-	return "Tween To Position " + LimboUtility.decorate_var(target_position_var)
+	return "Tween " + BBUtil.bb_var(tween_target_var) + " To Position " + LimboUtility.decorate_var(target_position_var)
 
 func _enter() -> void:
 	_target_position = blackboard.get_var(target_position_var)
+	var tween_target = BBUtil.bb_value(tween_target_var, blackboard, agent)
+	if tween_target == null:
+		tween_target = agent
 	_tween_finished = false
-	_move_to_tween = agent.create_tween()
-	_move_to_tween.tween_property(agent, "global_position", _target_position, time) \
+	_move_to_tween = tween_target.create_tween()
+	_move_to_tween.tween_property(tween_target, "global_position", _target_position, time) \
 		.set_trans(transition_type) \
 		.set_ease(ease_type) \
 		.set_delay(delay)

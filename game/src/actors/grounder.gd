@@ -11,7 +11,7 @@ var _current_floor: MaterialFloor
 var _gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 var _was_on_ground: bool = true
 
-var _previous_gravity_scale: float
+var _previous_gravity_scale: float = gravity_scale
 
 func _process(delta: float) -> void:
 	_apply_gravity(delta)

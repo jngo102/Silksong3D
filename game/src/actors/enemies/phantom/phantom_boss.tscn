@@ -11,6 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://d3jm7v8arm3ua" path="res://src/actors/enemies/phantom/steam_particle0.png" id="7_gbv14"]
 [ext_resource type="PackedScene" uid="uid://ci8vhhfslnoce" path="res://src/actors/enemies/phantom/dive_steam.tscn" id="8_xe2rs"]
 [ext_resource type="Script" uid="uid://ce776cixolsw1" path="res://src/actors/grounder.gd" id="9_h3dl7"]
+[ext_resource type="Script" uid="uid://68mqfnuh2m02" path="res://src/actors/enemies/stun_manager.gd" id="11_4oy55"]
+[ext_resource type="BehaviorTree" uid="uid://df6ts1h867yas" path="res://src/actors/enemies/phantom/phantom_stun_behavior_tree.tres" id="12_12deh"]
+[ext_resource type="PackedScene" uid="uid://b1577tfmh0225" path="res://src/actors/enemies/stun_effect.tscn" id="12_g8htn"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jrqyy"]
 transparency = 1
@@ -19,7 +22,7 @@ shading_mode = 0
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("7_gbv14")
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_nyv0l"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_g8htn"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_jrqyy")
 size = Vector2(4, 4)
@@ -32,7 +35,7 @@ shading_mode = 0
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("7_gbv14")
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_12deh"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_gbv14"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_4oy55")
 size = Vector2(4, 4)
@@ -140,38 +143,53 @@ var/thrown_pin_path/value = NodePath("../Mesh/Throw Point")
 var/thrown_pin_path/hint = 0
 var/thrown_pin_path/hint_string = ""
 
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_4oy55"]
+var/max_stun_hits/name = &"max_stun_hits"
+var/max_stun_hits/type = 2
+var/max_stun_hits/value = 3
+var/max_stun_hits/hint = 0
+var/max_stun_hits/hint_string = ""
+var/self/name = &"self"
+var/self/type = 24
+var/self/value = Object(CharacterBody3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"disable_mode":0,"collision_layer":2,"collision_mask":4,"collision_priority":1.0,"input_ray_pickable":true,"input_capture_on_drag":false,"axis_lock_linear_x":false,"axis_lock_linear_y":false,"axis_lock_linear_z":false,"axis_lock_angular_x":false,"axis_lock_angular_y":false,"axis_lock_angular_z":false,"motion_mode":0,"up_direction":Vector3(0, 1, 0),"slide_on_ceiling":true,"velocity":Vector3(0, 0, 0),"max_slides":6,"wall_min_slide_angle":0.2617994,"floor_stop_on_slope":true,"floor_constant_speed":false,"floor_block_on_wall":true,"floor_max_angle":0.7853982,"floor_snap_length":0.1,"platform_on_leave":0,"platform_floor_layers":4294967295,"platform_wall_layers":0,"safe_margin":0.001,"script":ExtResource("2_tr76i"),"intro_steam_tree":null)
+
+var/self/hint = 34
+var/self/hint_string = ""
+binding/self_position = NodePath("../..:position")
+
 [node name="PhantomBoss" unique_id=1724463133 instance=ExtResource("1_n1qxd")]
 script = ExtResource("2_tr76i")
 
 [node name="Mesh" parent="." index="1" unique_id=176040917 instance=ExtResource("2_ix5q8")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 
-[node name="Skeleton3D" parent="Mesh/Armature" parent_id_path=PackedInt32Array(176040917, 641122305) index="0" unique_id=593260346]
-bones/1/rotation = Quaternion(0.89040786, -0.13491601, 0.43409175, 0.023148717)
-bones/2/rotation = Quaternion(0.50000006, 0.49999994, 0.49999997, -0.50000006)
-bones/3/rotation = Quaternion(-0.55235577, -0.43856257, -0.34077045, 0.62164414)
-bones/4/rotation = Quaternion(-0.26992285, -0.019162321, 0.8741853, 0.40320528)
-bones/5/rotation = Quaternion(-0.49999997, 0.5, 0.50000006, 0.49999997)
-bones/6/rotation = Quaternion(-0.38432503, -0.12626615, -0.105216034, 0.9084497)
-bones/7/rotation = Quaternion(1.1175871e-08, -1.8626436e-09, -1.1175871e-08, 1)
-bones/8/rotation = Quaternion(-0.008300471, 0.06647378, -0.00079921214, 0.9977534)
-bones/9/rotation = Quaternion(-0.018135114, 0.14598876, 0.0071756463, 0.989094)
-bones/10/rotation = Quaternion(5.7386945e-08, -6.663834e-08, -0.77334225, 0.6339889)
-bones/11/rotation = Quaternion(-0.73452145, -0.26375103, 0.24288537, 0.5761252)
-bones/12/rotation = Quaternion(0.74220246, 0.36482874, -0.06891364, 0.5579305)
-bones/13/position = Vector3(0.89662546, 1.1961677, -1.3891021)
-bones/13/rotation = Quaternion(-0.41452354, 0.69689626, 0.58510196, -0.01271376)
-bones/14/rotation = Quaternion(-8.941356e-08, -6.421919e-08, 0.77334225, 0.6339889)
-bones/15/rotation = Quaternion(0.9294505, -0.023335459, 0.1320219, 0.34372592)
-bones/16/rotation = Quaternion(0.55427164, -0.058743432, 0.040978957, 0.8292484)
-bones/17/rotation = Quaternion(-0.0030487054, -0.16413188, 0.03618114, 0.9857699)
-bones/18/rotation = Quaternion(0.067992315, -0.48583156, 0.019851549, 0.8711778)
-bones/19/position = Vector3(1.3411045e-07, 1.4523026, -5.9604645e-08)
-bones/19/rotation = Quaternion(-2.7939675e-09, -9.313226e-10, 5.471521e-09, 1)
-bones/19/scale = Vector3(0.99999994, 0.99999994, 1)
+[node name="Skeleton3D" parent="Mesh/Armature" parent_id_path=PackedInt32Array(176040917, 1163629509) index="0" unique_id=1666768321]
+bones/0/position = Vector3(0, -2.613281, 0)
+bones/1/rotation = Quaternion(0.9723915, -1.590977e-08, -7.3413524e-08, 0.2333555)
+bones/2/rotation = Quaternion(0.50000006, 0.49999997, 0.49999997, -0.49999997)
+bones/3/rotation = Quaternion(-0.5465584, 0.1603589, 0.10755947, 0.8148559)
+bones/4/rotation = Quaternion(-0.1722346, 0.111461766, 0.7206704, 0.6622278)
+bones/4/scale = Vector3(1, 1, 0.99999994)
+bones/6/rotation = Quaternion(-0.5538806, -0.1605078, -0.109814756, 0.80956423)
+bones/7/rotation = Quaternion(-0.2184006, -0.039733708, -0.739903, 0.6350323)
+bones/8/rotation = Quaternion(-0.11748655, 1.6179231e-07, -1.4010038e-09, 0.9930745)
+bones/9/rotation = Quaternion(-0.1288093, 3.7392954e-14, -2.2521718e-08, 0.9916694)
+bones/10/rotation = Quaternion(5.366596e-08, -4.7409582e-08, -0.77334225, 0.6339889)
+bones/11/rotation = Quaternion(-0.5553784, -0.047197804, -0.33146533, 0.7612213)
+bones/12/rotation = Quaternion(0.09567518, 0.0033145545, -0.02270673, 0.99514806)
+bones/13/position = Vector3(-0.08985078, 0.5466547, -1.7837663)
+bones/13/rotation = Quaternion(-0.14841811, 0.76654494, 0.5628433, -0.27127174)
+bones/14/rotation = Quaternion(-8.036858e-08, -6.200003e-08, 0.77334225, 0.6339889)
+bones/15/rotation = Quaternion(0.32571012, -0.09610195, -0.6021148, 0.7225892)
+bones/16/rotation = Quaternion(0.647232, 0.617649, -0.43993214, 0.07784707)
+bones/17/rotation = Quaternion(-0.16621268, -1.17551075e-07, -9.247446e-09, 0.98608994)
+bones/18/rotation = Quaternion(-0.2993596, 2.3271693e-16, 1.9033909e-08, 0.95414037)
+bones/19/position = Vector3(-2.220446e-15, 1.4523025, -2.220446e-16)
+bones/19/rotation = Quaternion(-1.4901163e-08, -2.2204463e-15, 8.0491175e-16, 1)
+bones/19/scale = Vector3(1, 0.99999994, 0.99999994)
 
 [node name="SpineAttach" type="BoneAttachment3D" parent="Mesh/Armature/Skeleton3D" index="4" unique_id=1651600474]
-transform = Transform3D(0.58672404, -0.2603579, 0.76679116, 0.22016321, 0.9625237, 0.15835544, -0.7792837, 0.07590825, 0.62205696, 0, 0.17558289, 0)
+transform = Transform3D(1, 3.3218512e-09, -1.5019864e-07, 6.520395e-08, 0.8910904, 0.45382583, 1.353481e-07, -0.45382583, 0.8910904, 0, -1.2342455, 0)
 bone_name = "Spine0"
 bone_idx = 1
 
@@ -187,31 +205,31 @@ drag_coefficient = 0.25
 pinned_points = [38, 67, 39, 68, 87, 3, 47, 28]
 attachments/0/point_index = 38
 attachments/0/spatial_attachment_path = NodePath("..")
-attachments/0/offset = Vector3(-0.26851937, 0.4933306, 0.17660701)
+attachments/0/offset = Vector3(-0.26851937, 0.49333048, 0.17660704)
 attachments/1/point_index = 67
 attachments/1/spatial_attachment_path = NodePath("..")
-attachments/1/offset = Vector3(-0.22743215, 0.50778234, 0.13234422)
+attachments/1/offset = Vector3(-0.22743215, 0.50778234, 0.13234423)
 attachments/2/point_index = 39
 attachments/2/spatial_attachment_path = NodePath("..")
-attachments/2/offset = Vector3(-0.22639468, 0.15732014, 0.011573777)
+attachments/2/offset = Vector3(-0.22639468, 0.15732002, 0.011573777)
 attachments/3/point_index = 68
 attachments/3/spatial_attachment_path = NodePath("..")
-attachments/3/offset = Vector3(-0.2721578, 0.12930655, 0.06373395)
+attachments/3/offset = Vector3(-0.2721578, 0.12930667, 0.063733965)
 attachments/4/point_index = 87
 attachments/4/spatial_attachment_path = NodePath("..")
-attachments/4/offset = Vector3(0.22401802, 0.13747442, 0.041092828)
+attachments/4/offset = Vector3(0.22401802, 0.13747454, 0.041092873)
 attachments/5/point_index = 3
 attachments/5/spatial_attachment_path = NodePath("..")
-attachments/5/offset = Vector3(0.17280057, 0.16389155, -0.006642014)
+attachments/5/offset = Vector3(0.17280057, 0.16389143, -0.006641984)
 attachments/6/point_index = 47
 attachments/6/spatial_attachment_path = NodePath("..")
-attachments/6/offset = Vector3(0.17331769, 0.5143794, 0.11405749)
+attachments/6/offset = Vector3(0.17331769, 0.5143794, 0.114057526)
 attachments/7/point_index = 28
 attachments/7/spatial_attachment_path = NodePath("..")
-attachments/7/offset = Vector3(0.21871673, 0.50135136, 0.15437382)
+attachments/7/offset = Vector3(0.21871673, 0.50135124, 0.15437385)
 
 [node name="PinAttach" type="BoneAttachment3D" parent="Mesh/Armature/Skeleton3D" index="5" unique_id=1039707015]
-transform = Transform3D(-0.48984736, 0.8631189, -0.122781605, 0.7090059, 0.4763547, 0.519997, 0.5073069, 0.16766617, -0.8452973, -2.7297578, 0.63513637, -1.784502)
+transform = Transform3D(0.5898003, 0.74134254, 0.32022917, 0.55799484, -0.08747031, -0.8252215, -0.5837611, 0.665402, -0.4652556, -0.7179022, -2.1113575, -2.062088)
 bone_name = "Pin_2"
 bone_idx = 13
 
@@ -231,7 +249,7 @@ transform = Transform3D(0.99853665, -0.05407881, 1.5255056e-09, -3.885693e-09, -
 [node name="Animator" parent="Mesh/Armature/Skeleton3D/PinAttach/PhantomSwipeEffect" index="0" unique_id=1327176990]
 autoplay = &"RESET"
 
-[node name="AnimationPlayer" parent="Mesh" index="1" unique_id=239865194]
+[node name="AnimationPlayer" parent="Mesh" index="1" unique_id=38851585]
 autoplay = &"Idle"
 
 [node name="SteamPoint" type="Marker3D" parent="Mesh" index="2" unique_id=291217177]
@@ -239,13 +257,13 @@ autoplay = &"Idle"
 [node name="DiveSteam" parent="Mesh/SteamPoint" index="0" unique_id=1251483514 instance=ExtResource("8_xe2rs")]
 
 [node name="AnticParticles" parent="Mesh/SteamPoint/DiveSteam/SteamColumnParticles" parent_id_path=PackedInt32Array(1251483514, 2012007609) index="0" unique_id=1678567091]
-draw_pass_1 = SubResource("PlaneMesh_nyv0l")
+draw_pass_1 = SubResource("PlaneMesh_g8htn")
 
 [node name="ColumnParticles" parent="Mesh/SteamPoint/DiveSteam/SteamColumnParticles" parent_id_path=PackedInt32Array(1251483514, 2012007609) index="1" unique_id=321247775]
-draw_pass_1 = SubResource("PlaneMesh_nyv0l")
+draw_pass_1 = SubResource("PlaneMesh_g8htn")
 
 [node name="SpreadParticles" parent="Mesh/SteamPoint/DiveSteam/SteamColumnParticles/ColumnParticles" index="0" unique_id=1500484103]
-draw_pass_1 = SubResource("PlaneMesh_12deh")
+draw_pass_1 = SubResource("PlaneMesh_gbv14")
 
 [node name="Throw Point" type="Marker3D" parent="Mesh" index="3" unique_id=459646857]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.22143555, 0.0026855469, 4.2176127)
@@ -291,6 +309,9 @@ collision_mask = 8
 transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, -0.31445307, 1.4330078, -1.390228)
 shape = SubResource("BoxShape3D_vvrqo")
 
+[node name="Death" parent="." index="6" unique_id=262351254]
+special_death = true
+
 [node name="Flasher" parent="." index="7" unique_id=1018484248 node_paths=PackedStringArray("_meshes")]
 _meshes = [NodePath("../Mesh/Armature/Skeleton3D/Body"), NodePath("../Mesh/Armature/Skeleton3D/Head"), NodePath("../Mesh/Armature/Skeleton3D/Mask"), NodePath("../Mesh/Armature/Skeleton3D/SpineAttach/Wings")]
 
@@ -306,12 +327,30 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.33, 0)
 target_position = Vector3(0, -0.2, 0)
 collision_mask = 4
 
-[node name="BehaviorTree" parent="." index="11" unique_id=1868026853]
+[node name="StunManager" type="Timer" parent="." index="10" unique_id=358826899 node_paths=PackedStringArray("health", "stun_behavior_tree")]
+one_shot = true
+script = ExtResource("11_4oy55")
+combo_time = 1.25
+health = NodePath("../Health")
+stun_behavior_tree = NodePath("../BehaviorTree/StunBehaviorTree")
+stun_combo_hits = 14
+stun_max_hits = 16
+stun_effect_prefab = ExtResource("12_g8htn")
+metadata/_custom_type_script = "uid://68mqfnuh2m02"
+
+[node name="BehaviorTree" parent="." index="12" unique_id=1868026853]
 behavior_tree = ExtResource("5_tqvn5")
 update_mode = 0
 blackboard_plan = SubResource("BlackboardPlan_tr76i")
 
-[node name="VoicePlayer" parent="." index="12" unique_id=430572606]
+[node name="StunBehaviorTree" type="BTPlayer" parent="BehaviorTree" index="0" unique_id=1859301972]
+behavior_tree = ExtResource("12_12deh")
+agent_node = NodePath("../..")
+update_mode = 0
+active = false
+blackboard_plan = SubResource("BlackboardPlan_4oy55")
+
+[node name="VoicePlayer" parent="." index="13" unique_id=430572606]
 volume_db = 1.0
 
 [editable path="Mesh"]

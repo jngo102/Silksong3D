@@ -1057,7 +1057,6 @@ tween_var = &"move_to_tween"
 [sub_resource type="BTAction" id="BTAction_57nll"]
 script = ExtResource("16_yf5od")
 group = &"Players"
-get_node_path = null
 output_var = &"player"
 
 [sub_resource type="BTAction" id="BTAction_4gcbf"]
@@ -2307,8 +2306,12 @@ script = ExtResource("18_oh81h")
 target_var = SubResource("BBVariant_rayvk")
 output_position_var = &"waypoint_position"
 
+[sub_resource type="BBVariant" id="BBVariant_qerno"]
+saved_value = null
+
 [sub_resource type="BTAction" id="BTAction_3v7kt"]
 script = ExtResource("28_jen0x")
+tween_target_var = SubResource("BBVariant_qerno")
 target_position_var = &"waypoint_position"
 time = 0.25
 
@@ -2316,25 +2319,26 @@ time = 0.25
 custom_name = "Dash To Center"
 children = [SubResource("BTPlayAnimation_vdc7o"), SubResource("BTPlayAnimation_qqr1w"), SubResource("BTCallMethod_oa2qd"), SubResource("BTAction_kk73g"), SubResource("BTAction_3v7kt")]
 
-[sub_resource type="BBVariant" id="BBVariant_253gg"]
+[sub_resource type="BBVariant" id="BBVariant_npwep"]
+saved_value = null
+
+[sub_resource type="BBVariant" id="BBVariant_wb2ck"]
 type = 3
 saved_value = 0.0
 resource_name = "<null>"
 
-[sub_resource type="BBVariant" id="BBVariant_t1h38"]
+[sub_resource type="BBVariant" id="BBVariant_mxb7v"]
 saved_value = null
-resource_name = "<null>"
 
-[sub_resource type="BBVariant" id="BBVariant_l67pb"]
+[sub_resource type="BBVariant" id="BBVariant_bpiby"]
 saved_value = null
-resource_name = "<null>"
 
 [sub_resource type="BTAction" id="BTAction_efeba"]
 script = ExtResource("46_7sxhv")
-target_var = &"self"
-x_var = SubResource("BBVariant_253gg")
-y_var = SubResource("BBVariant_t1h38")
-z_var = SubResource("BBVariant_l67pb")
+target_var = SubResource("BBVariant_npwep")
+x_var = SubResource("BBVariant_wb2ck")
+y_var = SubResource("BBVariant_mxb7v")
+z_var = SubResource("BBVariant_bpiby")
 
 [sub_resource type="BBVariant" id="BBVariant_xnvf2"]
 value_source = 1
@@ -3725,25 +3729,26 @@ time = 0.5
 transition_type = 4
 ease_type = 1
 
-[sub_resource type="BBVariant" id="BBVariant_ud0sg"]
+[sub_resource type="BBVariant" id="BBVariant_oaf88"]
+saved_value = null
+
+[sub_resource type="BBVariant" id="BBVariant_3ilw0"]
 type = 3
 saved_value = 0.0
 resource_name = "<null>"
 
-[sub_resource type="BBVariant" id="BBVariant_mvymf"]
+[sub_resource type="BBVariant" id="BBVariant_4nyab"]
 saved_value = null
-resource_name = "<null>"
 
-[sub_resource type="BBVariant" id="BBVariant_x2cwm"]
+[sub_resource type="BBVariant" id="BBVariant_cqyyn"]
 saved_value = null
-resource_name = "<null>"
 
 [sub_resource type="BTAction" id="BTAction_l67pb"]
 script = ExtResource("46_7sxhv")
-target_var = &"self"
-x_var = SubResource("BBVariant_ud0sg")
-y_var = SubResource("BBVariant_mvymf")
-z_var = SubResource("BBVariant_x2cwm")
+target_var = SubResource("BBVariant_oaf88")
+x_var = SubResource("BBVariant_3ilw0")
+y_var = SubResource("BBVariant_4nyab")
+z_var = SubResource("BBVariant_cqyyn")
 
 [sub_resource type="BTAction" id="BTAction_ud0sg"]
 script = ExtResource("50_rl1md")
@@ -4343,25 +4348,26 @@ ease_type = 1
 custom_name = "Dash Back To Waypoint"
 children = [SubResource("BTAction_fuw20"), SubResource("BTAction_3b8xs"), SubResource("BTPlayAnimation_tidaw"), SubResource("BTAction_0p5ck")]
 
-[sub_resource type="BBVariant" id="BBVariant_tj05u"]
+[sub_resource type="BBVariant" id="BBVariant_v5b1c"]
+saved_value = null
+
+[sub_resource type="BBVariant" id="BBVariant_w7jfe"]
 type = 3
 saved_value = 0.0
 resource_name = "<null>"
 
-[sub_resource type="BBVariant" id="BBVariant_sscbu"]
+[sub_resource type="BBVariant" id="BBVariant_4a611"]
 saved_value = null
-resource_name = "<null>"
 
-[sub_resource type="BBVariant" id="BBVariant_x8iu8"]
+[sub_resource type="BBVariant" id="BBVariant_6h6re"]
 saved_value = null
-resource_name = "<null>"
 
 [sub_resource type="BTAction" id="BTAction_biu47"]
 script = ExtResource("46_7sxhv")
-target_var = &"self"
-x_var = SubResource("BBVariant_tj05u")
-y_var = SubResource("BBVariant_sscbu")
-z_var = SubResource("BBVariant_x8iu8")
+target_var = SubResource("BBVariant_v5b1c")
+x_var = SubResource("BBVariant_w7jfe")
+y_var = SubResource("BBVariant_4a611")
+z_var = SubResource("BBVariant_6h6re")
 
 [sub_resource type="BTAction" id="BTAction_eme4l"]
 script = ExtResource("48_1l358")
@@ -5327,25 +5333,26 @@ x_var = SubResource("BBVariant_4kugs")
 y_var = SubResource("BBVariant_02iu5")
 z_var = SubResource("BBVariant_3nrf2")
 
-[sub_resource type="BBVariant" id="BBVariant_xgy0o"]
+[sub_resource type="BBVariant" id="BBVariant_8tqy6"]
+saved_value = null
+
+[sub_resource type="BBVariant" id="BBVariant_1gexi"]
 type = 3
 saved_value = 0.0
 resource_name = "<null>"
 
-[sub_resource type="BBVariant" id="BBVariant_4iru6"]
+[sub_resource type="BBVariant" id="BBVariant_ju7ey"]
 saved_value = null
-resource_name = "<null>"
 
-[sub_resource type="BBVariant" id="BBVariant_pgiae"]
+[sub_resource type="BBVariant" id="BBVariant_onhwc"]
 saved_value = null
-resource_name = "<null>"
 
 [sub_resource type="BTAction" id="BTAction_mg4fk"]
 script = ExtResource("46_7sxhv")
-target_var = &"self"
-x_var = SubResource("BBVariant_xgy0o")
-y_var = SubResource("BBVariant_4iru6")
-z_var = SubResource("BBVariant_pgiae")
+target_var = SubResource("BBVariant_8tqy6")
+x_var = SubResource("BBVariant_1gexi")
+y_var = SubResource("BBVariant_ju7ey")
+z_var = SubResource("BBVariant_onhwc")
 
 [sub_resource type="BTAction" id="BTAction_a5k7h"]
 script = ExtResource("15_50u80")
@@ -5423,25 +5430,26 @@ transition_type = 4
 ease_type = 1
 move_to_tween_var = &""
 
-[sub_resource type="BBVariant" id="BBVariant_3gfkp"]
+[sub_resource type="BBVariant" id="BBVariant_fwpx0"]
+saved_value = null
+
+[sub_resource type="BBVariant" id="BBVariant_f3con"]
 type = 3
 saved_value = 0.0
 resource_name = "<null>"
 
-[sub_resource type="BBVariant" id="BBVariant_k0swp"]
+[sub_resource type="BBVariant" id="BBVariant_trtkh"]
 saved_value = null
-resource_name = "<null>"
 
-[sub_resource type="BBVariant" id="BBVariant_juop0"]
+[sub_resource type="BBVariant" id="BBVariant_jj4ys"]
 saved_value = null
-resource_name = "<null>"
 
 [sub_resource type="BTAction" id="BTAction_x8iu8"]
 script = ExtResource("46_7sxhv")
-target_var = &"self"
-x_var = SubResource("BBVariant_3gfkp")
-y_var = SubResource("BBVariant_k0swp")
-z_var = SubResource("BBVariant_juop0")
+target_var = SubResource("BBVariant_fwpx0")
+x_var = SubResource("BBVariant_f3con")
+y_var = SubResource("BBVariant_trtkh")
+z_var = SubResource("BBVariant_jj4ys")
 
 [sub_resource type="BTAction" id="BTAction_4kugs"]
 script = ExtResource("50_rl1md")
@@ -5694,7 +5702,7 @@ children = [SubResource("BTSequence_kn74s")]
 custom_name = "Main"
 children = [SubResource("BTSequence_34w61"), SubResource("BTSequence_3b8xs"), SubResource("BTRepeat_kn74s")]
 
-[sub_resource type="BehaviorTree" id="BehaviorTree_2306h"]
+[sub_resource type="BehaviorTree" id="BehaviorTree_eoyyr"]
 blackboard_plan = SubResource("BlackboardPlan_ucsdq")
 root_task = SubResource("BTSequence_s7qtj")
 resource_local_to_scene = true
@@ -5894,7 +5902,7 @@ active = false
 blackboard_plan = SubResource("BlackboardPlan_tlpfg")
 
 [node name="BehaviorTree" parent="." index="13" unique_id=1868026853]
-behavior_tree = SubResource("BehaviorTree_2306h")
+behavior_tree = SubResource("BehaviorTree_eoyyr")
 update_mode = 0
 active = false
 blackboard_plan = SubResource("BlackboardPlan_s7qtj")

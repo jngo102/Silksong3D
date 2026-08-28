@@ -12,11 +12,18 @@ func _generate_name() -> String:
 func _enter() -> void:
 	_signal_emitted = false
 	var node: Node = BBUtil.bb_value(node_var, blackboard, agent)
-	if is_instance_valid(node) and not node.is_connected(signal_name, _on_signal_emitted):
-		node.connect(signal_name, _on_signal_emitted)
+	var arg_count: int = 0
+	var signals = node.get_signal_list()
+	for node_signal in signals:
+		if node_signal["name"] == signal_name:
+			arg_count = node_signal["args"].size()
+	var unbound_func: Callable = _on_signal_emitted
+	if arg_count >= 1:
+		unbound_func = unbound_func.unbind(arg_count)
+	if is_instance_valid(node) and not node.is_connected(signal_name, unbound_func):
+		node.connect(signal_name, unbound_func)
 
 func _on_signal_emitted() -> void:
-	print("EMIT ", signal_name)
 	_signal_emitted = true
 
 func _tick(_delta: float) -> Status:

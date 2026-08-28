@@ -7,7 +7,7 @@ class_name BaseLevel extends Node3D
 
 @onready var player: Player = $Player
 @onready var hud: HUD = $HUD
-@onready var _bind_tip: HBoxContainer = $BindTip
+@onready var _bind_tip: InputPrompt = $BindTip
 @onready var _bind_icon: Button = _bind_tip.get_node_or_null("BindIcon")
 
 var _score_screen: PackedScene = preload("uid://dcvpcta71mmie")
@@ -21,22 +21,6 @@ func _ready() -> void:
 		player.health.current_health -= 3
 
 func _show_bind_tip() -> void:
-	if InputManager.on_keys:
-		var key_mouse_input: InputEvent = InputHelper.get_keyboard_input_for_action("Bind")
-		if key_mouse_input is InputEventKey:
-			_bind_icon.text = OS.get_keycode_string(key_mouse_input.keycode)
-		elif key_mouse_input is InputEventMouseButton:
-			var button_index: MouseButton = key_mouse_input.button_index
-			match button_index:
-				MOUSE_BUTTON_WHEEL_UP, \
-				MOUSE_BUTTON_WHEEL_DOWN, \
-				MOUSE_BUTTON_WHEEL_DOWN, \
-				MOUSE_BUTTON_WHEEL_RIGHT:
-					button_index = MOUSE_BUTTON_MIDDLE
-			_bind_icon.text = InputHelper.get_label_for_input(key_mouse_input)
-	else:
-		var joypad_input: InputEvent = InputHelper.get_joypad_input_for_action("Bind")
-		_bind_icon.text = InputHelper.get_label_for_input(joypad_input)
 	_bind_tip.show()
 	await player.health.healed
 	_bind_tip.hide()
