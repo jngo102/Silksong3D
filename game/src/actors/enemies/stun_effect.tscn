@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b1577tfmh0225"]
 
-[ext_resource type="Script" uid="uid://dj5upywmu1hm2" path="res://src/actors/random_audio_player.gd" id="1_yipmf"]
-[ext_resource type="AudioStream" uid="uid://bqqnmgh6gml0o" path="res://src/copyrighted/sfx/hornet/hurt/normal/hero_damage_less_harsh.wav" id="2_bgpdp"]
+[ext_resource type="AudioStream" uid="uid://dxl07s06ruaes" path="res://src/copyrighted/sfx/enemy/damage/boss_stun.wav" id="2_hegl8"]
+[ext_resource type="Script" uid="uid://5qpw7k5phkni" path="res://src/ai/tasks/audio/play_random_audio.gd" id="2_smqt3"]
 [ext_resource type="Script" uid="uid://bip2jd13nei0m" path="res://src/ai/tasks/utility/freeze_time.gd" id="3_bgpdp"]
 [ext_resource type="Script" uid="uid://br84132pv8riw" path="res://src/ai/tasks/actors/shake_camera.gd" id="4_17o6p"]
 [ext_resource type="Script" uid="uid://dvdqux1hfw046" path="res://src/ai/tasks/scene/queue_free.gd" id="5_hegl8"]
@@ -95,6 +95,7 @@ _data = {
 transparency = 1
 shading_mode = 0
 vertex_color_use_as_albedo = true
+albedo_color = Color(1, 1, 1, 0.25098038)
 
 [sub_resource type="SphereMesh" id="SphereMesh_byv0f"]
 material = SubResource("StandardMaterial3D_seisg")
@@ -131,15 +132,19 @@ radial_segments = 4
 rings = 0
 
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_17o6p"]
+var/self_position/name = &"self_position"
+var/self_position/type = 9
+var/self_position/value = Vector3(0, 0, 0)
+var/self_position/hint = 0
+var/self_position/hint_string = ""
+binding/self_position = NodePath(".:position")
 
-[sub_resource type="BBVariant" id="BBVariant_hegl8"]
-type = 3
-saved_value = 0.25
-resource_name = "0.25"
-
-[sub_resource type="BTAction" id="BTAction_smqt3"]
-script = ExtResource("3_bgpdp")
-duration_var = SubResource("BBVariant_hegl8")
+[sub_resource type="BTAction" id="BTAction_byv0f"]
+script = ExtResource("2_smqt3")
+clips_array = Array[AudioStream]([ExtResource("2_hegl8")])
+play_position_var = &"self_position"
+pitch_min = 0.85
+pitch_max = 1.15
 
 [sub_resource type="BBVariant" id="BBVariant_byv0f"]
 type = 3
@@ -162,6 +167,15 @@ shake_amount_var = SubResource("BBVariant_byv0f")
 shake_duration_var = SubResource("BBVariant_wpfyr")
 shake_taper_off_var = SubResource("BBVariant_bb3r1")
 
+[sub_resource type="BBVariant" id="BBVariant_hegl8"]
+type = 3
+saved_value = 0.25
+resource_name = "0.25"
+
+[sub_resource type="BTAction" id="BTAction_smqt3"]
+script = ExtResource("3_bgpdp")
+duration_var = SubResource("BBVariant_hegl8")
+
 [sub_resource type="BTWait" id="BTWait_smqt3"]
 
 [sub_resource type="BBVariant" id="BBVariant_gp54p"]
@@ -175,7 +189,7 @@ object_to_free_var = SubResource("BBVariant_gp54p")
 
 [sub_resource type="BTSequence" id="BTSequence_rrwr8"]
 custom_name = "Stun Effect"
-children = [SubResource("BTAction_smqt3"), SubResource("BTAction_gp54p"), SubResource("BTWait_smqt3"), SubResource("BTAction_rrwr8")]
+children = [SubResource("BTAction_byv0f"), SubResource("BTAction_gp54p"), SubResource("BTAction_smqt3"), SubResource("BTWait_smqt3"), SubResource("BTAction_rrwr8")]
 
 [sub_resource type="BehaviorTree" id="BehaviorTree_14s3j"]
 blackboard_plan = SubResource("BlackboardPlan_17o6p")
@@ -188,13 +202,6 @@ root_task = SubResource("BTSequence_rrwr8")
 [node name="Animator" type="AnimationPlayer" parent="." unique_id=1095265597]
 libraries/ = SubResource("AnimationLibrary_smqt3")
 autoplay = &"Stun Effect"
-
-[node name="HitAudio" type="AudioStreamPlayer3D" parent="." unique_id=711451088]
-unit_size = 32.0
-bus = &"SFX"
-script = ExtResource("1_yipmf")
-audio_clips = Array[AudioStream]([ExtResource("2_bgpdp")])
-metadata/_custom_type_script = "uid://dj5upywmu1hm2"
 
 [node name="Mesh" type="MeshInstance3D" parent="." unique_id=1333218643]
 mesh = SubResource("SphereMesh_byv0f")

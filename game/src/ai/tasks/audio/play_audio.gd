@@ -12,7 +12,6 @@ func _tick(_delta: float) -> Status:
 	if not is_instance_valid(audio_player):
 		return FAILURE
 	if audio_player is AudioPlayer3D:
-		print("PLAY AUDIO")
 		audio_player.stream = stream
 		audio_player.play()
 	return SUCCESS
