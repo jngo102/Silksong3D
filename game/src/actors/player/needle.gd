@@ -1,6 +1,9 @@
 class_name Needle extends Node3D
 
+@export var _recoiler: Recoiler
+
 @onready var _animator: AnimationPlayer = $Animator
+@onready var _slash_damager: Damager = $SlashEffect/SlashEffectDamager
 
 signal down_spiked
 signal slashed
@@ -39,3 +42,7 @@ func _stab_hit() -> void:
 func _on_stab_damager_area_entered(area: Area3D) -> void:
 	if area is Health:
 		_stab_hit()
+
+func _on_slash_effect_damager_damaged(health: Health) -> void:
+	if is_instance_valid(_recoiler):
+		_recoiler.recoil(-_slash_damager.global_hit_direction, _slash_damager.hit_force)

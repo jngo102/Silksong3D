@@ -163,31 +163,31 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("SlashEffect/SlashEffectDamager:rotation")
+tracks/3/path = NodePath("SlashEffect/SlashEffectDamager/Collision:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-0.6398901, 0, 0)]
+"values": [Vector3(0.45031425, -2.4085186, 2.7235012)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("SlashEffect/SlashEffectDamager:quaternion")
+tracks/4/path = NodePath("SlashEffect/SlashEffectDamager/Collision:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Quaternion(-0.35097998, 0.4619737, 0.04999716, 0.81295365)]
+"update": 1,
+"values": [true]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("SlashEffect/SlashEffectDamager/Collision:disabled")
+tracks/5/path = NodePath("Mesh/DownSpikeDamager/Collision:disabled")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -199,7 +199,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Mesh/DownSpikeDamager/Collision:disabled")
+tracks/6/path = NodePath("Mesh/StabDamager/Collision:disabled")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -211,14 +211,14 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Mesh/StabDamager/Collision:disabled")
+tracks/7/path = NodePath("SlashEffect/SlashEffectDamager/Collision:position")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"update": 0,
+"values": [Vector3(-1.0219219, 2.0750926, 2.2271311)]
 }
 
 [sub_resource type="Animation" id="Animation_a8o31"]
@@ -263,38 +263,38 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("SlashEffect/SlashEffectDamager:rotation")
+tracks/3/path = NodePath("SlashEffect/SlashEffectDamager/Collision:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0.06666667),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0.06666667, 0.13333334, 0.20000002),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(0.1473502, -1.2122253, 0.4875942)]
+"values": [Vector3(0.15751028, -1.307632, -2.605973), Vector3(0.07490214, 0.37285078, 3.0474093), Vector3(0.09280167, 1.562313, -2.8993726)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("SlashEffect/SlashEffectDamager:quaternion")
+tracks/4/path = NodePath("SlashEffect/SlashEffectDamager/Collision:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0.06666667, 0.19896272),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Quaternion(-0.078433275, -0.5659341, 0.23854505, 0.785279), Quaternion(-0.35097998, 0.4619737, 0.04999716, 0.81295365)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("SlashEffect/SlashEffectDamager/Collision:disabled")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
 "times": PackedFloat32Array(0, 0.06666667, 0.19999999),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SlashEffect/SlashEffectDamager/Collision:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.06666667, 0.13333334, 0.20000002),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-3.147624, 0.89988256, 0.58513236), Vector3(0.25282425, 0.8893635, 2.515112), Vector3(1.4506538, 0.6556244, -0.12593937)]
 }
 
 [sub_resource type="Animation" id="Animation_m1lj5"]
@@ -395,6 +395,9 @@ height = 8.0
 radius = 1.0
 height = 7.7419434
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_nu6iw"]
+size = Vector3(2, 2, 8)
+
 [node name="Needle" type="Node3D" unique_id=700626282]
 script = ExtResource("1_bb050")
 
@@ -413,7 +416,7 @@ collision_layer = 8
 collision_mask = 2
 damage_amount = 9
 
-[node name="Collision" parent="Mesh/DownSpikeDamager" index="0"]
+[node name="Collision" parent="Mesh/DownSpikeDamager" index="0" unique_id=1910053338]
 transform = Transform3D(0.9999995, -1.5795231e-06, -7.56979e-06, 4.4703484e-07, 0.99999905, -1.2218952e-06, -4.4703484e-07, 1.0728836e-06, 0.99999774, 0, 2, 0)
 shape = SubResource("CapsuleShape3D_g78k6")
 disabled = true
@@ -424,7 +427,7 @@ collision_layer = 8
 collision_mask = 2
 damage_amount = 9
 
-[node name="Collision" parent="Mesh/StabDamager" index="0"]
+[node name="Collision" parent="Mesh/StabDamager" index="0" unique_id=1910053338]
 transform = Transform3D(0.9999942, -1.5711412e-06, -7.197261e-06, 5.187467e-07, 0.9999932, -1.1250377e-06, -1.1473894e-06, 2.682209e-07, 0.9999914, -1.847744e-06, 3.151974, 1.0728836e-06)
 shape = SubResource("CapsuleShape3D_m1lj5")
 disabled = true
@@ -432,13 +435,18 @@ disabled = true
 [node name="SlashEffect" parent="." unique_id=528815861 instance=ExtResource("3_g78k6")]
 transform = Transform3D(1.1804705, -0.41108325, 0, 0.35600856, 1.0223173, 0.625, -0.20554164, -0.5902352, 1.0825317, 0, 2.2247343, 0)
 
-[node name="SlashEffectDamager" parent="SlashEffect" index="0"]
-transform = Transform3D(0.45452914, -0.32446226, 0.57282436, -0.19439709, 0.5989014, 0.4934845, -0.62897813, -0.41957295, 0.2614294, -0.5068957, -1.4556062, -0.8898939)
+[node name="SlashEffectDamager" parent="SlashEffect" index="0" unique_id=960803585]
+transform = Transform3D(0.8000003, 0, 0, 0, 0.8000001, 0, 0, 0, 0.8, 0, 0, 0)
 collision_mask = 2
 damage_amount = 9
 
+[node name="Collision" parent="SlashEffect/SlashEffectDamager" index="0" unique_id=1910053338]
+transform = Transform3D(0.56085986, 0.5678826, -0.60245013, 0.36554116, -0.8227623, -0.43524918, -0.7428423, 0.023893436, -0.66904044, -1.0219219, 2.0750926, 2.2271311)
+shape = SubResource("BoxShape3D_nu6iw")
+
 [connection signal="area_entered" from="Mesh/DownSpikeDamager" to="." method="_on_down_spike_damager_area_entered"]
 [connection signal="area_entered" from="Mesh/StabDamager" to="." method="_on_stab_damager_area_entered"]
+[connection signal="damaged" from="SlashEffect/SlashEffectDamager" to="." method="_on_slash_effect_damager_damaged"]
 
 [editable path="Mesh/DownSpikeDamager"]
 [editable path="Mesh/StabDamager"]

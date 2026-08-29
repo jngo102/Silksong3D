@@ -95,7 +95,6 @@ _data = {
 transparency = 1
 shading_mode = 0
 vertex_color_use_as_albedo = true
-albedo_color = Color(1, 1, 1, 0.25098038)
 
 [sub_resource type="SphereMesh" id="SphereMesh_byv0f"]
 material = SubResource("StandardMaterial3D_seisg")

@@ -183,7 +183,7 @@ omni_range = 64.0
 collision_layer = 16
 damage_amount = 2
 
-[node name="Collision" parent="Damager" index="0"]
+[node name="Collision" parent="Damager" index="0" unique_id=1910053338]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 48, 0)
 shape = SubResource("CylinderShape3D_bfoa7")
 disabled = true

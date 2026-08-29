@@ -14,6 +14,7 @@ class_name Health extends Area3D
 @export var damage_effect_prefab: PackedScene
 @export var _flasher: Flasher
 @export var _pulser: Pulser
+@export var _recoiler: Recoiler
 
 @onready var _collision: CollisionShape3D = $Collision
 
@@ -49,8 +50,8 @@ func _update_invincibility_timer(delta: float) -> void:
 
 func take_damage(damager: Damager) -> void:
 	current_health = max(0, current_health - damager.damage_amount)
-	var direction: Vector3 = damager.global_position - global_position
-	var angle: float = atan2(direction.z, -direction.x)
+	var to_damager_direction: Vector3 = damager.global_position - global_position
+	var angle: float = atan2(to_damager_direction.z, -to_damager_direction.x)
 	for particles in damage_particles:
 		particles.global_rotation.y = angle
 		particles.restart()
@@ -63,6 +64,9 @@ func take_damage(damager: Damager) -> void:
 		_flasher.flash()
 	elif is_instance_valid(_pulser):
 		_pulser.start_pulse()
+	if is_instance_valid(_recoiler):
+		print("HIT TOWARDS ", damager.global_hit_direction, " FOR ", damager.hit_force)
+		_recoiler.recoil(damager.global_hit_direction, damager.hit_force)
 	took_damage.emit(damager)
 	if current_health <= 0:
 		_die()

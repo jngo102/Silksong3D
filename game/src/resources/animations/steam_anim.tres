@@ -279,7 +279,7 @@ tracks/10/keys = {
 
 [sub_resource type="Animation" id="Animation_pn7q2"]
 resource_name = "Steam"
-length = 2.0
+length = 1.1667
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true

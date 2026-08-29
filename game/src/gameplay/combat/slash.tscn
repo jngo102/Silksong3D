@@ -100,11 +100,10 @@ surface_material_override/0 = SubResource("ShaderMaterial_jkg7i")
 
 [node name="SlashEffectDamager" parent="." unique_id=960803585 instance=ExtResource("2_n7i0f")]
 transform = Transform3D(0.45452905, -0.32446226, 0.57282436, -0.19439706, 0.5989014, 0.4934845, -0.6289781, -0.41957295, 0.2614294, -0.5068957, -1.4556062, -0.8898939)
-rotation_edit_mode = 1
 collision_layer = 8
 collision_mask = 0
 
-[node name="Collision" parent="SlashEffectDamager" index="0"]
+[node name="Collision" parent="SlashEffectDamager" index="0" unique_id=1910053338]
 transform = Transform3D(0.9999969, -1.6763806e-07, -9.685755e-08, -6.787479e-06, 0.99999774, -2.9802322e-08, -7.450581e-09, -3.2782555e-07, 1, 1.2229998, 1.6729993, 4)
 shape = SubResource("BoxShape3D_7s2iq")
 disabled = true
