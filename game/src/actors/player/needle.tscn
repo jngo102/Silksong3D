@@ -396,7 +396,7 @@ radius = 1.0
 height = 7.7419434
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nu6iw"]
-size = Vector3(2, 2, 8)
+size = Vector3(4, 4, 8)
 
 [node name="Needle" type="Node3D" unique_id=700626282]
 script = ExtResource("1_bb050")
@@ -441,7 +441,7 @@ collision_mask = 2
 damage_amount = 9
 
 [node name="Collision" parent="SlashEffect/SlashEffectDamager" index="0" unique_id=1910053338]
-transform = Transform3D(0.56085986, 0.5678826, -0.60245013, 0.36554116, -0.8227623, -0.43524918, -0.7428423, 0.023893436, -0.66904044, -1.0219219, 2.0750926, 2.2271311)
+transform = Transform3D(0.5608598, 0.5678826, -0.60245013, 0.36554116, -0.8227623, -0.43524918, -0.7428423, 0.023893436, -0.66904044, -1.0219219, 2.0750926, 2.2271311)
 shape = SubResource("BoxShape3D_nu6iw")
 
 [connection signal="area_entered" from="Mesh/DownSpikeDamager" to="." method="_on_down_spike_damager_area_entered"]

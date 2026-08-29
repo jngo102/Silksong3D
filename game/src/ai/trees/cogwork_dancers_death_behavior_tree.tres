@@ -466,6 +466,7 @@ value = SubResource("BBVariant_sw5t1")
 
 [sub_resource type="BBVariant" id="BBVariant_721jo"]
 saved_value = null
+resource_name = "<null>"
 
 [sub_resource type="BBVariant" id="BBVariant_weq2w"]
 type = 3

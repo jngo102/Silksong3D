@@ -17,7 +17,7 @@ func _generate_name() -> String:
 	]
 
 func _tick(_delta: float) -> Status:
-	var target: Node3D = blackboard.get_var(target_var)
+	var target = blackboard.get_var(target_var)
 	if not is_instance_valid(target):
 		target = agent
 	var new_position: Vector3

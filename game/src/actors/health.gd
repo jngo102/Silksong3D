@@ -65,7 +65,6 @@ func take_damage(damager: Damager) -> void:
 	elif is_instance_valid(_pulser):
 		_pulser.start_pulse()
 	if is_instance_valid(_recoiler):
-		print("HIT TOWARDS ", damager.global_hit_direction, " FOR ", damager.hit_force)
 		_recoiler.recoil(damager.global_hit_direction, damager.hit_force)
 	took_damage.emit(damager)
 	if current_health <= 0:
@@ -106,7 +105,7 @@ func heal(amount: int) -> void:
 func _die() -> void:
 	if is_instance_valid(_pulser):
 		_pulser.stop_pulse()
-	set_invincible()
+	#set_invincible()
 	died.emit(owner)
 
 func _on_area_entered(area: Area3D) -> void:

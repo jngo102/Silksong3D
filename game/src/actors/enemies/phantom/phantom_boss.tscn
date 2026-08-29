@@ -2,7 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://dubnsno8bya0v" path="res://src/actors/enemies/enemy.tscn" id="1_n1qxd"]
 [ext_resource type="PackedScene" uid="uid://bsfr1056711yp" path="res://src/actors/enemies/phantom/phantom.glb" id="2_ix5q8"]
-[ext_resource type="Script" uid="uid://3uqw0ncp8rhd" path="res://src/actors/enemies/phantom/phantom_boss.gd" id="2_tr76i"]
 [ext_resource type="ArrayMesh" uid="uid://djrx8w2k84nd4" path="res://src/actors/enemies/phantom/wings.tres" id="3_4lqec"]
 [ext_resource type="PackedScene" uid="uid://xal232da7bpf" path="res://src/gameplay/combat/damager.tscn" id="4_aygqo"]
 [ext_resource type="PackedScene" uid="uid://c5debtr6afm5x" path="res://src/actors/enemies/phantom/phantom_stab_effect.tscn" id="4_nyv0l"]
@@ -152,14 +151,13 @@ var/max_stun_hits/hint = 0
 var/max_stun_hits/hint_string = ""
 var/self/name = &"self"
 var/self/type = 24
-var/self/value = Object(CharacterBody3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"disable_mode":0,"collision_layer":2,"collision_mask":4,"collision_priority":1.0,"input_ray_pickable":true,"input_capture_on_drag":false,"axis_lock_linear_x":false,"axis_lock_linear_y":false,"axis_lock_linear_z":false,"axis_lock_angular_x":false,"axis_lock_angular_y":false,"axis_lock_angular_z":false,"motion_mode":0,"up_direction":Vector3(0, 1, 0),"slide_on_ceiling":true,"velocity":Vector3(0, 0, 0),"max_slides":6,"wall_min_slide_angle":0.2617994,"floor_stop_on_slope":true,"floor_constant_speed":false,"floor_block_on_wall":true,"floor_max_angle":0.7853982,"floor_snap_length":0.1,"platform_on_leave":0,"platform_floor_layers":4294967295,"platform_wall_layers":0,"safe_margin":0.001,"script":ExtResource("2_tr76i"),"intro_steam_tree":null)
+var/self/value = Object(CharacterBody3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"disable_mode":0,"collision_layer":2,"collision_mask":4,"collision_priority":1.0,"input_ray_pickable":true,"input_capture_on_drag":false,"axis_lock_linear_x":false,"axis_lock_linear_y":false,"axis_lock_linear_z":false,"axis_lock_angular_x":false,"axis_lock_angular_y":false,"axis_lock_angular_z":false,"motion_mode":0,"up_direction":Vector3(0, 1, 0),"slide_on_ceiling":true,"velocity":Vector3(0, 0, 0),"max_slides":6,"wall_min_slide_angle":0.2617994,"floor_stop_on_slope":true,"floor_constant_speed":false,"floor_block_on_wall":true,"floor_max_angle":0.7853982,"floor_snap_length":0.1,"platform_on_leave":0,"platform_floor_layers":4294967295,"platform_wall_layers":0,"safe_margin":0.001,"script":null,"intro_steam_tree":null)
 
 var/self/hint = 34
 var/self/hint_string = ""
 binding/self_position = NodePath("../..:position")
 
 [node name="PhantomBoss" unique_id=1724463133 instance=ExtResource("1_n1qxd")]
-script = ExtResource("2_tr76i")
 
 [node name="Mesh" parent="." index="1" unique_id=176040917 instance=ExtResource("2_ix5q8")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
@@ -282,7 +280,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3465714, 0)
 shape = SubResource("CapsuleShape3D_4lqec")
 
 [node name="Health" parent="." index="3" unique_id=1048848430 node_paths=PackedStringArray("damage_particles", "_recoiler")]
-max_health = 100
+max_health = 20
 damage_particles = [NodePath("SilkParticles")]
 _recoiler = NodePath("../Recoiler")
 

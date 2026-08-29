@@ -11,7 +11,5 @@ func _tick(_delta: float) -> Status:
 	if input_action == null:
 		return FAILURE
 	if not Input.is_action_pressed(input_action):
-		print("INPUT: ", input_action)
 		return RUNNING
-	print("PRESSED INPUT")
 	return SUCCESS
