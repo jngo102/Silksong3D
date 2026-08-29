@@ -159,6 +159,11 @@ var/dive_z/type = 3
 var/dive_z/value = 0.0
 var/dive_z/hint = 0
 var/dive_z/hint_string = ""
+var/dragoon_health/name = &"dragoon_health"
+var/dragoon_health/type = 2
+var/dragoon_health/value = 0
+var/dragoon_health/hint = 0
+var/dragoon_health/hint_string = ""
 var/evade_direction/name = &"evade_direction"
 var/evade_direction/type = 9
 var/evade_direction/value = Vector3(0, 0, 0)
@@ -330,7 +335,7 @@ resource_name = "Health"
 [sub_resource type="BTAction" id="BTAction_ckkqk"]
 script = ExtResource("12_64vl4")
 health_component_var = SubResource("BBVariant_2v7w7")
-output_health_value_var = &"phase2_health"
+output_health_value_var = &"dragoon_health"
 
 [sub_resource type="BBVariant" id="BBVariant_cfiuy"]
 type = 3
@@ -338,13 +343,33 @@ saved_value = 0.7
 resource_name = "0.7"
 
 [sub_resource type="BTSetVar" id="BTSetVar_lldwq"]
-variable = &"phase2_health"
+variable = &"dragoon_health"
 value = SubResource("BBVariant_cfiuy")
+operation = 3
+
+[sub_resource type="BBVariant" id="BBVariant_s85b7"]
+type = 22
+saved_value = NodePath("Health")
+resource_name = "Health"
+
+[sub_resource type="BTAction" id="BTAction_8h0ke"]
+script = ExtResource("12_64vl4")
+health_component_var = SubResource("BBVariant_s85b7")
+output_health_value_var = &"phase2_health"
+
+[sub_resource type="BBVariant" id="BBVariant_qxasw"]
+type = 3
+saved_value = 0.5
+resource_name = "0.5"
+
+[sub_resource type="BTSetVar" id="BTSetVar_0kedk"]
+variable = &"phase2_health"
+value = SubResource("BBVariant_qxasw")
 operation = 3
 
 [sub_resource type="BTSequence" id="BTSequence_76tnu"]
 custom_name = "Set Phase 2 Health"
-children = [SubResource("BTAction_ckkqk"), SubResource("BTSetVar_lldwq")]
+children = [SubResource("BTAction_ckkqk"), SubResource("BTSetVar_lldwq"), SubResource("BTAction_8h0ke"), SubResource("BTSetVar_0kedk")]
 
 [sub_resource type="BTSequence" id="BTSequence_ep25s"]
 custom_name = "Initialize"
@@ -492,6 +517,15 @@ resource_name = "<null>"
 variable = &"idle_after_attack"
 value = SubResource("BBVariant_c2w5n")
 
+[sub_resource type="BBNode" id="BBNode_so4p7"]
+saved_value = NodePath("Mesh/AnimationPlayer")
+resource_name = "Mesh/AnimationPlayer"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_vbeax"]
+animation_player = SubResource("BBNode_so4p7")
+animation_name = &"Idle"
+blend = 0.25
+
 [sub_resource type="BTAction" id="BTAction_8vuw7"]
 script = ExtResource("57_xppty")
 output_delta_var = &"last_delta_time"
@@ -546,7 +580,7 @@ collider_var = SubResource("BBVariant_r7rdo")
 
 [sub_resource type="BTSequence" id="BTSequence_2tpwg"]
 custom_name = "Idle"
-children = [SubResource("BTAction_8vuw7"), SubResource("BTSetVar_l85es"), SubResource("BTCheckVar_v32k1"), SubResource("BTSetVar_7ayrg"), SubResource("BTAction_dpxlk"), SubResource("BTAction_fl5cj")]
+children = [SubResource("BTPlayAnimation_vbeax"), SubResource("BTAction_8vuw7"), SubResource("BTSetVar_l85es"), SubResource("BTCheckVar_v32k1"), SubResource("BTSetVar_7ayrg"), SubResource("BTAction_dpxlk"), SubResource("BTAction_fl5cj")]
 
 [sub_resource type="BBVariant" id="BBVariant_fbk28"]
 type = 22
@@ -3610,9 +3644,33 @@ variable = &"count_dives"
 check_type = 4
 value = SubResource("BBVariant_an710")
 
-[sub_resource type="BTSequence" id="BTSequence_kjh6e"]
+[sub_resource type="BBVariant" id="BBVariant_1mpy3"]
+type = 22
+saved_value = NodePath("Health")
+resource_name = "Health"
+
+[sub_resource type="BTAction" id="BTAction_qxasw"]
+script = ExtResource("12_64vl4")
+health_component_var = SubResource("BBVariant_1mpy3")
+output_health_value_var = &"current_health"
+
+[sub_resource type="BBVariant" id="BBVariant_0kedk"]
+value_source = 1
+variable = &"dragoon_health"
+resource_name = "$dragoon_health"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_i7ln1"]
+variable = &"current_health"
+check_type = 3
+value = SubResource("BBVariant_0kedk")
+
+[sub_resource type="BTSequence" id="BTSequence_xdajs"]
+custom_name = "Check Health"
+children = [SubResource("BTAction_qxasw"), SubResource("BTCheckVar_i7ln1")]
+
+[sub_resource type="BTSelector" id="BTSelector_2tpwg"]
 custom_name = "Check"
-children = [SubResource("BTCheckVar_nb51y")]
+children = [SubResource("BTCheckVar_nb51y"), SubResource("BTSequence_xdajs")]
 
 [sub_resource type="BBVariant" id="BBVariant_ho01y"]
 type = 2
@@ -4028,7 +4086,7 @@ children = [SubResource("BTSequence_uwn1d"), SubResource("BTSequence_wxj2u"), Su
 
 [sub_resource type="BTSelector" id="BTSelector_fy5k8"]
 custom_name = "Check Can Dragoon Dive"
-children = [SubResource("BTSequence_kjh6e"), SubResource("BTSequence_t43nk")]
+children = [SubResource("BTSelector_2tpwg"), SubResource("BTSequence_t43nk")]
 
 [sub_resource type="BTRandomSelector" id="BTRandomSelector_3sjwb"]
 custom_name = "Attack Choice"
