@@ -27,7 +27,8 @@ func _ready() -> void:
 	_init_camera_targets()
 
 func _init_camera_targets() -> void:
-	camera_controller.target = _cam_target
+	if is_instance_valid(camera_controller):
+		camera_controller.target = _cam_target
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:

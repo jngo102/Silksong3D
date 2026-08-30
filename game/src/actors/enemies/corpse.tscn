@@ -96,19 +96,17 @@ material = ExtResource("2_cavwe")
 radius = 0.001
 height = 0.001
 
-[node name="Corpse" type="Node3D"]
+[node name="Corpse" type="Node3D" unique_id=1485609135]
 script = ExtResource("1_r3oq0")
 
-[node name="Animator" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_cavwe")
-}
-autoplay = "Explode"
+[node name="Animator" type="AnimationPlayer" parent="." unique_id=686408794]
+libraries/ = SubResource("AnimationLibrary_cavwe")
+autoplay = &"Explode"
 
-[node name="ExplodeRing" type="MeshInstance3D" parent="."]
+[node name="ExplodeRing" type="MeshInstance3D" parent="." unique_id=1845933310]
 mesh = SubResource("SphereMesh_6rxqg")
 
-[node name="ExplosionAudio" type="AudioStreamPlayer3D" parent="."]
+[node name="ExplosionAudio" type="AudioStreamPlayer3D" parent="." unique_id=1708747346]
 stream = ExtResource("3_jiiaq")
 unit_size = 32.0
 autoplay = true

@@ -1,5 +1,5 @@
 @tool
-class_name ShakeCamera extends BTAction
+class_name SetCameraTarget extends BTAction
 
 @export var shake_amount_var: BBVariant
 @export var shake_duration_var: BBVariant

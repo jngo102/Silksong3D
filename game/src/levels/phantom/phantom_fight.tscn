@@ -2,17 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://c7e6xi1cekoax" path="res://src/levels/base_level.tscn" id="1_l4y3c"]
 [ext_resource type="PackedScene" uid="uid://darh7o4drrasg" path="res://src/actors/enemies/phantom/phantom_boss.tscn" id="2_vuuix"]
-[ext_resource type="AudioStream" uid="uid://cak1muwygj208" path="res://src/copyrighted/phantom/music/H78 Phantom of the Organ RESTRUCTURE-33.wav" id="2_w66we"]
-[ext_resource type="Script" uid="uid://q4qqnvxnwemw" path="res://src/autoload/audio/music_track.gd" id="3_tjorh"]
 [ext_resource type="Texture2D" uid="uid://d3jm7v8arm3ua" path="res://src/actors/enemies/phantom/steam_particle0.png" id="4_ktfto"]
 [ext_resource type="LightmapGIData" uid="uid://e3fv78a4ic8t" path="res://src/levels/phantom/phantom_fight.lmbake" id="5_gc3yy"]
 [ext_resource type="PackedScene" uid="uid://bxocwtp45yp0e" path="res://src/levels/phantom/structureA.glb" id="5_lerc2"]
 [ext_resource type="PackedScene" uid="uid://ctppls27w4kke" path="res://src/levels/phantom/podium.glb" id="7_jrqyy"]
-
-[sub_resource type="Resource" id="Resource_ojd61"]
-script = ExtResource("3_tjorh")
-music_clip = ExtResource("2_w66we")
-metadata/_custom_type_script = "uid://q4qqnvxnwemw"
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ktfto"]
 sky_top_color = Color(0.8039735, 0.7180228, 0.6472382, 1)
@@ -127,8 +120,58 @@ size = Vector2(128, 128)
 [sub_resource type="BoxShape3D" id="BoxShape3D_14s3j"]
 size = Vector3(64, 100, 64)
 
+[sub_resource type="Curve" id="Curve_ktfto"]
+_data = [Vector2(0, 0), 0.0, -0.051224705, 0, 0, Vector2(0.6391213, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -4.995711, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_ut1ry"]
+curve = SubResource("Curve_ktfto")
+
+[sub_resource type="Curve" id="Curve_7y7vd"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.2780735, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_jleah"]
+curve = SubResource("Curve_7y7vd")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_uq13r"]
+lifetime_randomness = 0.82
+emission_shape_offset = Vector3(0, 24, 0)
+emission_shape = 3
+emission_box_extents = Vector3(32, 24, 32)
+spread = 180.0
+initial_velocity_min = 0.5
+initial_velocity_max = 4.0
+gravity = Vector3(0, 0, 0)
+damping_min = 8.706
+damping_max = 11.059001
+scale_min = 2.0
+scale_max = 4.0
+scale_curve = SubResource("CurveTexture_jleah")
+color = Color(1, 1, 1, 0.0627451)
+alpha_curve = SubResource("CurveTexture_ut1ry")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_246s2"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.7854017, 0.7643491, 0.75294095, 1)
+albedo_texture = ExtResource("4_ktfto")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_fsmdn"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_246s2")
+size = Vector2(4, 4)
+orientation = 2
+
 [node name="PhantomFight" unique_id=793946330 instance=ExtResource("1_l4y3c")]
-music_track = SubResource("Resource_ojd61")
+level_over_pause = 3.0
 
 [node name="WorldEnvironment" parent="Environment" parent_id_path=PackedInt32Array(921388622) index="0" unique_id=986338651]
 environment = SubResource("Environment_mdpca")
@@ -211,5 +254,15 @@ shape = SubResource("BoxShape3D_14s3j")
 [node name="WallBack" type="CollisionShape3D" parent="Floor" index="5" unique_id=1429697490]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 64)
 shape = SubResource("BoxShape3D_14s3j")
+
+[node name="Phase2Steam" type="GPUParticles3D" parent="." index="8" unique_id=345427354]
+emitting = false
+amount = 2048
+lifetime = 4.0
+randomness = 0.83
+collision_base_size = 0.5
+visibility_aabb = AABB(-32, -48, -32, 64, 64, 64)
+process_material = SubResource("ParticleProcessMaterial_uq13r")
+draw_pass_1 = SubResource("PlaneMesh_fsmdn")
 
 [editable path="CameraController"]

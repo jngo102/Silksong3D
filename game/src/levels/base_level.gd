@@ -4,6 +4,7 @@ class_name BaseLevel extends Node3D
 ## The music track played in this scene
 @export var music_track: MusicTrack
 @export var starting_score: int = 100000
+@export var level_over_pause: float = 8
 
 @onready var player: Player = $Player
 @onready var hud: HUD = $HUD
@@ -32,5 +33,5 @@ func _play_music() -> void:
 
 func finish() -> void:
 	ScoreManager.calculate_score()
-	await get_tree().create_timer(8, false).timeout
+	await get_tree().create_timer(level_over_pause, false).timeout
 	SceneManager.change_scene( _score_screen)

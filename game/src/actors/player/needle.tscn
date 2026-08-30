@@ -121,6 +121,34 @@ tracks/3/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_nu6iw"]
+resource_name = "Parry Hit"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.344501, 6.6713843, -0.76029116)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mesh:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.738409, -1.7641243, 3.1242304)]
+}
+
 [sub_resource type="Animation" id="Animation_jkg7i"]
 resource_name = "RESET"
 length = 0.25
@@ -341,6 +369,7 @@ _data = {
 &"Bind": SubResource("Animation_g78k6"),
 &"Down Spike": SubResource("Animation_7s2iq"),
 &"Down Spike Bounce": SubResource("Animation_fynfr"),
+&"Parry Hit": SubResource("Animation_nu6iw"),
 &"RESET": SubResource("Animation_jkg7i"),
 &"Slash": SubResource("Animation_a8o31"),
 &"Stab": SubResource("Animation_m1lj5")
@@ -406,7 +435,7 @@ libraries/ = SubResource("AnimationLibrary_a8o31")
 autoplay = &"RESET"
 
 [node name="Mesh" type="MeshInstance3D" parent="." unique_id=1302043455]
-transform = Transform3D(0.057562616, -0.6894967, -0.28944737, 0.6698366, 0.176595, -0.28745836, 0.33242258, -0.23644769, 0.62935394, -0.43267757, 3.7365413, -3.5042882)
+transform = Transform3D(0.057562675, -0.6894986, -0.28944796, 0.66983724, 0.17659548, -0.28745896, 0.3324229, -0.23644833, 0.62935525, -0.43267757, 3.7365413, -3.5042882)
 mesh = SubResource("ArrayMesh_sev4e")
 skeleton = NodePath("")
 

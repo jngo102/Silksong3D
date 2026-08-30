@@ -11,7 +11,15 @@ var current_shake_magnitude: float
 ## The current time that the object has been offset for during a shake
 var current_shake_time: float = INF
 
-@export var target: Node3D
+@export var target: Node3D: set = set_target
+
+var _offset: Vector3: set = set_offset
+
+func set_offset(offset: Vector3) -> void:
+	_offset = offset
+
+func set_target(new_target: Node3D) -> void:
+	target = new_target
 
 var _shake_timer: float = INF
 var _shake_duration: float
@@ -45,7 +53,7 @@ func _process(delta: float) -> void:
 			camera.look_at(target.global_position)
 
 	if is_instance_valid(target):
-		global_position = target.global_position
+		global_position = target.global_position + _offset
 
 ## Begin object shake in all directions
 func shake(amount: float = 0.5, duration: float = 0.25, taper_off: bool = true) -> void:

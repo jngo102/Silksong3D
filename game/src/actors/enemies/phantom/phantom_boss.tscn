@@ -7,39 +7,12 @@
 [ext_resource type="PackedScene" uid="uid://c5debtr6afm5x" path="res://src/actors/enemies/phantom/phantom_stab_effect.tscn" id="4_nyv0l"]
 [ext_resource type="ArrayMesh" uid="uid://efox85te8wrt" path="res://src/actors/enemies/phantom/silk_particle1_mesh.tres" id="4_vep8l"]
 [ext_resource type="BehaviorTree" uid="uid://1liih5vvkdi4" path="res://src/actors/enemies/phantom/phantom_behavior_tree.tres" id="5_tqvn5"]
-[ext_resource type="Texture2D" uid="uid://d3jm7v8arm3ua" path="res://src/actors/enemies/phantom/steam_particle0.png" id="7_gbv14"]
 [ext_resource type="PackedScene" uid="uid://ci8vhhfslnoce" path="res://src/actors/enemies/phantom/dive_steam.tscn" id="8_xe2rs"]
 [ext_resource type="Script" uid="uid://ce776cixolsw1" path="res://src/actors/grounder.gd" id="9_h3dl7"]
 [ext_resource type="Script" uid="uid://68mqfnuh2m02" path="res://src/actors/enemies/stun_manager.gd" id="11_4oy55"]
 [ext_resource type="Script" uid="uid://c4ctdy3gej7v1" path="res://src/actors/recoiler.gd" id="11_gbv14"]
 [ext_resource type="BehaviorTree" uid="uid://df6ts1h867yas" path="res://src/actors/enemies/phantom/phantom_stun_behavior_tree.tres" id="12_12deh"]
 [ext_resource type="PackedScene" uid="uid://b1577tfmh0225" path="res://src/actors/enemies/stun_effect.tscn" id="12_g8htn"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jrqyy"]
-transparency = 1
-cull_mode = 2
-shading_mode = 0
-vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("7_gbv14")
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_gbv14"]
-resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_jrqyy")
-size = Vector2(4, 4)
-orientation = 2
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4oy55"]
-transparency = 1
-cull_mode = 2
-shading_mode = 0
-vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("7_gbv14")
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_ju27i"]
-resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_4oy55")
-size = Vector2(4, 4)
-orientation = 2
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4lqec"]
 radius = 0.7
@@ -60,14 +33,14 @@ albedo_color = Color(0.8239239, 0.82392395, 0.8239239, 1)
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.9369223, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_67j1t"]
+[sub_resource type="CurveTexture" id="CurveTexture_g8htn"]
 curve = SubResource("Curve_kdvmi")
 
 [sub_resource type="Curve" id="Curve_nyv0l"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.7751196, 0.86274517), -0.5828322, -0.5828322, 0, 0, Vector2(1, 0), -3.0598547, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="CurveTexture" id="CurveTexture_64vl4"]
+[sub_resource type="CurveTexture" id="CurveTexture_gbv14"]
 curve = SubResource("Curve_nyv0l")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_14s3j"]
@@ -86,8 +59,8 @@ gravity = Vector3(0, -4, 0)
 damping_min = 5.6270003
 damping_max = 7.51
 scale_min = 0.5
-scale_curve = SubResource("CurveTexture_64vl4")
-alpha_curve = SubResource("CurveTexture_67j1t")
+scale_curve = SubResource("CurveTexture_gbv14")
+alpha_curve = SubResource("CurveTexture_g8htn")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_drhsk"]
 radius = 0.4453125
@@ -151,7 +124,7 @@ var/max_stun_hits/hint = 0
 var/max_stun_hits/hint_string = ""
 var/self/name = &"self"
 var/self/type = 24
-var/self/value = Object(CharacterBody3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"disable_mode":0,"collision_layer":2,"collision_mask":4,"collision_priority":1.0,"input_ray_pickable":true,"input_capture_on_drag":false,"axis_lock_linear_x":false,"axis_lock_linear_y":false,"axis_lock_linear_z":false,"axis_lock_angular_x":false,"axis_lock_angular_y":false,"axis_lock_angular_z":false,"motion_mode":0,"up_direction":Vector3(0, 1, 0),"slide_on_ceiling":true,"velocity":Vector3(0, 0, 0),"max_slides":6,"wall_min_slide_angle":0.2617994,"floor_stop_on_slope":true,"floor_constant_speed":false,"floor_block_on_wall":true,"floor_max_angle":0.7853982,"floor_snap_length":0.1,"platform_on_leave":0,"platform_floor_layers":4294967295,"platform_wall_layers":0,"safe_margin":0.001,"script":null,"intro_steam_tree":null)
+var/self/value = Object(CharacterBody3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"disable_mode":0,"collision_layer":2,"collision_mask":4,"collision_priority":1.0,"input_ray_pickable":true,"input_capture_on_drag":false,"axis_lock_linear_x":false,"axis_lock_linear_y":false,"axis_lock_linear_z":false,"axis_lock_angular_x":false,"axis_lock_angular_y":false,"axis_lock_angular_z":false,"motion_mode":0,"up_direction":Vector3(0, 1, 0),"slide_on_ceiling":true,"velocity":Vector3(0, 0, 0),"max_slides":6,"wall_min_slide_angle":0.2617994,"floor_stop_on_slope":true,"floor_constant_speed":false,"floor_block_on_wall":true,"floor_max_angle":0.7853982,"floor_snap_length":0.1,"platform_on_leave":0,"platform_floor_layers":4294967295,"platform_wall_layers":0,"safe_margin":0.001,"script":null)
 
 var/self/hint = 34
 var/self/hint_string = ""
@@ -261,15 +234,6 @@ autoplay = &"Idle"
 
 [node name="DiveSteam" parent="Mesh/SteamPoint" index="0" unique_id=1251483514 instance=ExtResource("8_xe2rs")]
 
-[node name="AnticParticles" parent="Mesh/SteamPoint/DiveSteam/SteamColumnParticles" parent_id_path=PackedInt32Array(1251483514, 2012007609) index="0" unique_id=1678567091]
-draw_pass_1 = SubResource("PlaneMesh_gbv14")
-
-[node name="ColumnParticles" parent="Mesh/SteamPoint/DiveSteam/SteamColumnParticles" parent_id_path=PackedInt32Array(1251483514, 2012007609) index="1" unique_id=321247775]
-draw_pass_1 = SubResource("PlaneMesh_gbv14")
-
-[node name="SpreadParticles" parent="Mesh/SteamPoint/DiveSteam/SteamColumnParticles/ColumnParticles" index="0" unique_id=1500484103]
-draw_pass_1 = SubResource("PlaneMesh_ju27i")
-
 [node name="Throw Point" type="Marker3D" parent="Mesh" index="3" unique_id=459646857]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.22143555, 0.0026855469, 4.2176127)
 
@@ -278,7 +242,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3465714, 0)
 shape = SubResource("CapsuleShape3D_4lqec")
 
 [node name="Health" parent="." index="3" unique_id=1048848430 node_paths=PackedStringArray("damage_particles", "_recoiler")]
-max_health = 650
+max_health = 100
 damage_particles = [NodePath("SilkParticles")]
 _recoiler = NodePath("../Recoiler")
 
@@ -368,7 +332,5 @@ volume_db = 1.0
 [editable path="Mesh/Armature/Skeleton3D/PinAttach/PhantomStabEffect/Mesh"]
 [editable path="Mesh/Armature/Skeleton3D/PinAttach/PhantomSwipeEffect"]
 [editable path="Mesh/Armature/Skeleton3D/PinAttach/PhantomSwipeEffect/Mesh"]
-[editable path="Mesh/SteamPoint/DiveSteam"]
-[editable path="Mesh/SteamPoint/DiveSteam/Damager"]
 [editable path="Health"]
 [editable path="BodyDamager"]
