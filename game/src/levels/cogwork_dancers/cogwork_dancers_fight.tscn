@@ -775,7 +775,7 @@ collision_layer = 16
 damage_amount = 2
 multi_hit = true
 
-[node name="Collision" parent="DancerManager/SpinSlashes/Damager" index="0"]
+[node name="Collision" parent="DancerManager/SpinSlashes/Damager" index="0" unique_id=1910053338]
 shape = SubResource("SphereShape3D_twn58")
 disabled = true
 

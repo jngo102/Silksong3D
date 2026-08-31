@@ -9,7 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://b7do4wpmyxhlf" path="res://src/levels/phantom/platform.glb" id="6_7y7vd"]
 [ext_resource type="PackedScene" uid="uid://ctppls27w4kke" path="res://src/levels/phantom/podium.glb" id="7_jrqyy"]
 [ext_resource type="PackedScene" uid="uid://c6jikxlpvxxmj" path="res://src/levels/phantom/bench.glb" id="7_uq13r"]
+[ext_resource type="PackedScene" uid="uid://dfpirxhj8gky4" path="res://src/levels/cogwork_dancers/ceiling.glb" id="9_1y2o3"]
 [ext_resource type="Script" uid="uid://bq4j0l51gfuco" path="res://src/levels/material_floor.gd" id="10_gc3yy"]
+[ext_resource type="ArrayMesh" uid="uid://dfm3j8143xst0" path="res://src/resources/meshes/curtain.tres" id="10_pijb2"]
 [ext_resource type="Resource" uid="uid://cdhpw43qtfwce" path="res://src/resources/random_audio_plays/footsteps_metal.tres" id="11_1y2o3"]
 [ext_resource type="AudioStream" uid="uid://dkuoifc3ivndh" path="res://src/copyrighted/sfx/hornet/movement/metal/hornet_land_metal.wav" id="12_pijb2"]
 
@@ -65,8 +67,8 @@ curve = SubResource("Curve_25ms4")
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7y7vd"]
 spread = 90.0
 flatness = 0.9
-initial_velocity_min = 16.0
-initial_velocity_max = 24.0
+initial_velocity_min = 24.0
+initial_velocity_max = 32.0
 gravity = Vector3(0, 0, 0)
 scale_max = 2.0
 scale_curve = SubResource("CurveTexture_8x2ta")
@@ -125,6 +127,25 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_xrmlc")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_14s3j"]
+cull_mode = 1
+albedo_color = Color(0.9624992, 0.5531929, 0.3730129, 1)
+metallic = 0.88
+metallic_specular = 0.84
+roughness = 0.52
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e4ccn"]
+size = Vector3(64, 16, 64)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_51aw7"]
+cull_mode = 1
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_14s3j"]
+material = SubResource("StandardMaterial3D_51aw7")
+size = Vector3(128, 65, 128)
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_ktfto"]
 dof_blur_far_distance = 64.0
@@ -214,7 +235,19 @@ material = SubResource("StandardMaterial3D_64vl4")
 size = Vector2(128, 128)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_14s3j"]
-size = Vector3(64, 100, 64)
+size = Vector3(70, 100, 70)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pijb2"]
+size = Vector3(100, 100, 100)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s54ku"]
+size = Vector3(100, 100, 100)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kq32x"]
+size = Vector3(100, 100, 100)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lvdly"]
+size = Vector3(100, 100, 100)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_67j1t"]
 size = Vector3(64, 64, 64)
@@ -240,7 +273,7 @@ directional_shadow_mode = 1
 [node name="GroundSteam" type="GPUParticles3D" parent="Environment" parent_id_path=PackedInt32Array(921388622) index="2" unique_id=1349132750]
 transform = Transform3D(-4.3711385e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -4.3711385e-08, 0, 0, -33.447388)
 amount = 1024
-lifetime = 2.5
+lifetime = 3.0
 randomness = 1.0
 collision_base_size = 0.5
 visibility_aabb = AABB(-32, -48, -32, 64, 64, 64)
@@ -253,19 +286,19 @@ draw_pass_1 = SubResource("PlaneMesh_64vl4")
 light_data = ExtResource("5_gc3yy")
 
 [node name="FrontWall" type="Node3D" parent="Environment" parent_id_path=PackedInt32Array(921388622) index="4" unique_id=2145975545]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -47.897778)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -48)
 
 [node name="structureA" parent="Environment/FrontWall" index="0" unique_id=1152383996 instance=ExtResource("5_lerc2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.020447, -2.1603022, 4.467766)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.020447, 0.063, 4.467766)
 
 [node name="structureB" parent="Environment/FrontWall" index="1" unique_id=367714657 instance=ExtResource("5_lerc2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.979553, -2.1603022, 4.467766)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.979553, 0.063, 4.467766)
 
 [node name="structureC" parent="Environment/FrontWall" index="2" unique_id=329506777 instance=ExtResource("5_lerc2")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -14.134, -2.16, -3.8451538)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -14.134, 0.063, -3.8451538)
 
 [node name="structureD" parent="Environment/FrontWall" index="3" unique_id=1384119815 instance=ExtResource("5_lerc2")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 14.133583, -2.1603022, -3.8454819)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 14.133583, 0.063, -3.8454819)
 
 [node name="podium" parent="Environment/FrontWall" index="4" unique_id=418665468 instance=ExtResource("7_jrqyy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.0045319)
@@ -524,6 +557,305 @@ attachments/79/point_index = 25
 attachments/79/spatial_attachment_path = NodePath("")
 attachments/79/offset = Vector3(0, 0, 0)
 
+[node name="BackWall" type="Node3D" parent="Environment" parent_id_path=PackedInt32Array(921388622) index="5" unique_id=199521656]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 48)
+
+[node name="structureA" parent="Environment/BackWall" index="0" unique_id=821502956 instance=ExtResource("5_lerc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.020447, 0.062550545, 4.4677696)
+
+[node name="structureB" parent="Environment/BackWall" index="1" unique_id=1083337654 instance=ExtResource("5_lerc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.979553, 0.062550545, 4.467762)
+
+[node name="structureC" parent="Environment/BackWall" index="2" unique_id=1443928651 instance=ExtResource("5_lerc2")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -14.133999, 0.06285262, -3.8451538)
+
+[node name="structureD" parent="Environment/BackWall" index="3" unique_id=1054182248 instance=ExtResource("5_lerc2")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 14.133584, 0.062550545, -3.8454819)
+
+[node name="LeftWall" type="Node3D" parent="Environment" parent_id_path=PackedInt32Array(921388622) index="6" unique_id=1783246659]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -48, 0, 0)
+
+[node name="structureA" parent="Environment/LeftWall" index="0" unique_id=1629173094 instance=ExtResource("5_lerc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.020447, 0.062550545, 4.4677696)
+
+[node name="structureB" parent="Environment/LeftWall" index="1" unique_id=161659819 instance=ExtResource("5_lerc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.979553, 0.062550545, 4.467762)
+
+[node name="structureC" parent="Environment/LeftWall" index="2" unique_id=1777279478 instance=ExtResource("5_lerc2")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -14.133999, 0.06285262, -3.8451538)
+
+[node name="structureD" parent="Environment/LeftWall" index="3" unique_id=207816743 instance=ExtResource("5_lerc2")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 14.133584, 0.062550545, -3.8454819)
+
+[node name="RightWall" type="Node3D" parent="Environment" parent_id_path=PackedInt32Array(921388622) index="7" unique_id=931484072]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 48, 0, 0)
+
+[node name="structureA" parent="Environment/RightWall" index="0" unique_id=1902205007 instance=ExtResource("5_lerc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.020447, 0.062550545, 4.4677696)
+
+[node name="structureB" parent="Environment/RightWall" index="1" unique_id=170830593 instance=ExtResource("5_lerc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.979553, 0.062550545, 4.467762)
+
+[node name="structureC" parent="Environment/RightWall" index="2" unique_id=1772504828 instance=ExtResource("5_lerc2")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -14.133999, 0.06285262, -3.8451538)
+
+[node name="structureD" parent="Environment/RightWall" index="3" unique_id=1153235068 instance=ExtResource("5_lerc2")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 14.133584, 0.062550545, -3.8454819)
+
+[node name="Ceiling" type="StaticBody3D" parent="Environment" parent_id_path=PackedInt32Array(921388622) index="8" unique_id=1357346698]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.2314262, 0)
+collision_layer = 4
+collision_mask = 0
+
+[node name="Mesh" parent="Environment/Ceiling" index="0" unique_id=1490756872 instance=ExtResource("9_1y2o3")]
+transform = Transform3D(5, 0, 0, 0, 2.5, 0, 0, 0, 6, 0, 5.6903687, -96.500984)
+
+[node name="Circle_005" parent="Environment/Ceiling/Mesh" index="0" unique_id=69213236]
+surface_material_override/0 = SubResource("StandardMaterial3D_14s3j")
+
+[node name="Collision" type="CollisionShape3D" parent="Environment/Ceiling" index="1" unique_id=1331835297]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 37.411846, 0)
+shape = SubResource("BoxShape3D_e4ccn")
+
+[node name="BoundingWall" type="MeshInstance3D" parent="Environment" parent_id_path=PackedInt32Array(921388622) index="9" unique_id=1958470639]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 32, 0)
+mesh = SubResource("BoxMesh_14s3j")
+
+[node name="Curtains" type="Node3D" parent="Environment" parent_id_path=PackedInt32Array(921388622) index="10" unique_id=1414793278]
+
+[node name="Curtain0" type="SoftBody3D" parent="Environment/Curtains" index="0" unique_id=1272308702]
+transform = Transform3D(0.9979374, -0.0071306857, 0.06379779, 0, 0.99381167, 0.11107845, -0.064195044, -0.110849336, 0.9917618, -26.547096, 41.38808, 0)
+mesh = ExtResource("10_pijb2")
+pinned_points = [14, 13, 11, 9, 8, 7, 6, 3, 1, 2]
+attachments/0/point_index = 14
+attachments/0/spatial_attachment_path = NodePath("")
+attachments/0/offset = Vector3(0, 0, 0)
+attachments/1/point_index = 13
+attachments/1/spatial_attachment_path = NodePath("")
+attachments/1/offset = Vector3(0, 0, 0)
+attachments/2/point_index = 11
+attachments/2/spatial_attachment_path = NodePath("")
+attachments/2/offset = Vector3(0, 0, 0)
+attachments/3/point_index = 9
+attachments/3/spatial_attachment_path = NodePath("")
+attachments/3/offset = Vector3(0, 0, 0)
+attachments/4/point_index = 8
+attachments/4/spatial_attachment_path = NodePath("")
+attachments/4/offset = Vector3(0, 0, 0)
+attachments/5/point_index = 7
+attachments/5/spatial_attachment_path = NodePath("")
+attachments/5/offset = Vector3(0, 0, 0)
+attachments/6/point_index = 6
+attachments/6/spatial_attachment_path = NodePath("")
+attachments/6/offset = Vector3(0, 0, 0)
+attachments/7/point_index = 3
+attachments/7/spatial_attachment_path = NodePath("")
+attachments/7/offset = Vector3(0, 0, 0)
+attachments/8/point_index = 1
+attachments/8/spatial_attachment_path = NodePath("")
+attachments/8/offset = Vector3(0, 0, 0)
+attachments/9/point_index = 2
+attachments/9/spatial_attachment_path = NodePath("")
+attachments/9/offset = Vector3(0, 0, 0)
+
+[node name="Curtain1" type="SoftBody3D" parent="Environment/Curtains" index="1" unique_id=1055113367]
+transform = Transform3D(1.4853789, -0.041741848, 0.25064534, 0, 1.4807794, 0.111078456, -0.38713634, -0.16015665, 0.96168524, 24.340721, 41.519386, 18.914307)
+mesh = ExtResource("10_pijb2")
+pinned_points = [14, 13, 11, 9, 8, 7, 6, 3, 1, 2]
+attachments/0/point_index = 14
+attachments/0/spatial_attachment_path = NodePath("")
+attachments/0/offset = Vector3(0, 0, 0)
+attachments/1/point_index = 13
+attachments/1/spatial_attachment_path = NodePath("")
+attachments/1/offset = Vector3(0, 0, 0)
+attachments/2/point_index = 11
+attachments/2/spatial_attachment_path = NodePath("")
+attachments/2/offset = Vector3(0, 0, 0)
+attachments/3/point_index = 9
+attachments/3/spatial_attachment_path = NodePath("")
+attachments/3/offset = Vector3(0, 0, 0)
+attachments/4/point_index = 8
+attachments/4/spatial_attachment_path = NodePath("")
+attachments/4/offset = Vector3(0, 0, 0)
+attachments/5/point_index = 7
+attachments/5/spatial_attachment_path = NodePath("")
+attachments/5/offset = Vector3(0, 0, 0)
+attachments/6/point_index = 6
+attachments/6/spatial_attachment_path = NodePath("")
+attachments/6/offset = Vector3(0, 0, 0)
+attachments/7/point_index = 3
+attachments/7/spatial_attachment_path = NodePath("")
+attachments/7/offset = Vector3(0, 0, 0)
+attachments/8/point_index = 1
+attachments/8/spatial_attachment_path = NodePath("")
+attachments/8/offset = Vector3(0, 0, 0)
+attachments/9/point_index = 2
+attachments/9/spatial_attachment_path = NodePath("")
+attachments/9/offset = Vector3(0, 0, 0)
+
+[node name="Curtain2" type="SoftBody3D" parent="Environment/Curtains" index="2" unique_id=1981035053]
+transform = Transform3D(0.9022698, -0.06155335, -0.25760603, 0, 1.2277695, -0.18775544, 0.24522273, 0.22647867, 0.94783264, 17.22638, 43.463806, -19.473793)
+mesh = ExtResource("10_pijb2")
+pinned_points = [14, 13, 11, 9, 8, 7, 6, 3, 1, 2]
+attachments/0/point_index = 14
+attachments/0/spatial_attachment_path = NodePath("")
+attachments/0/offset = Vector3(0, 0, 0)
+attachments/1/point_index = 13
+attachments/1/spatial_attachment_path = NodePath("")
+attachments/1/offset = Vector3(0, 0, 0)
+attachments/2/point_index = 11
+attachments/2/spatial_attachment_path = NodePath("")
+attachments/2/offset = Vector3(0, 0, 0)
+attachments/3/point_index = 9
+attachments/3/spatial_attachment_path = NodePath("")
+attachments/3/offset = Vector3(0, 0, 0)
+attachments/4/point_index = 8
+attachments/4/spatial_attachment_path = NodePath("")
+attachments/4/offset = Vector3(0, 0, 0)
+attachments/5/point_index = 7
+attachments/5/spatial_attachment_path = NodePath("")
+attachments/5/offset = Vector3(0, 0, 0)
+attachments/6/point_index = 6
+attachments/6/spatial_attachment_path = NodePath("")
+attachments/6/offset = Vector3(0, 0, 0)
+attachments/7/point_index = 3
+attachments/7/spatial_attachment_path = NodePath("")
+attachments/7/offset = Vector3(0, 0, 0)
+attachments/8/point_index = 1
+attachments/8/spatial_attachment_path = NodePath("")
+attachments/8/offset = Vector3(0, 0, 0)
+attachments/9/point_index = 2
+attachments/9/spatial_attachment_path = NodePath("")
+attachments/9/offset = Vector3(0, 0, 0)
+
+[node name="Curtain3" type="SoftBody3D" parent="Environment/Curtains" index="3" unique_id=1259337567]
+transform = Transform3D(0.89730114, -0.08078781, 0.27356267, 0, 1.2165105, 0.22992425, -0.2628225, -0.2758173, 0.9339691, -1.9865284, 45.0858, -6.381996)
+mesh = ExtResource("10_pijb2")
+pinned_points = [14, 13, 11, 9, 8, 7, 6, 3, 1, 2, 125]
+attachments/0/point_index = 14
+attachments/0/spatial_attachment_path = NodePath("")
+attachments/0/offset = Vector3(0, 0, 0)
+attachments/1/point_index = 13
+attachments/1/spatial_attachment_path = NodePath("")
+attachments/1/offset = Vector3(0, 0, 0)
+attachments/2/point_index = 11
+attachments/2/spatial_attachment_path = NodePath("")
+attachments/2/offset = Vector3(0, 0, 0)
+attachments/3/point_index = 9
+attachments/3/spatial_attachment_path = NodePath("")
+attachments/3/offset = Vector3(0, 0, 0)
+attachments/4/point_index = 8
+attachments/4/spatial_attachment_path = NodePath("")
+attachments/4/offset = Vector3(0, 0, 0)
+attachments/5/point_index = 7
+attachments/5/spatial_attachment_path = NodePath("")
+attachments/5/offset = Vector3(0, 0, 0)
+attachments/6/point_index = 6
+attachments/6/spatial_attachment_path = NodePath("")
+attachments/6/offset = Vector3(0, 0, 0)
+attachments/7/point_index = 3
+attachments/7/spatial_attachment_path = NodePath("")
+attachments/7/offset = Vector3(0, 0, 0)
+attachments/8/point_index = 1
+attachments/8/spatial_attachment_path = NodePath("")
+attachments/8/offset = Vector3(0, 0, 0)
+attachments/9/point_index = 2
+attachments/9/spatial_attachment_path = NodePath("")
+attachments/9/offset = Vector3(0, 0, 0)
+attachments/10/point_index = 125
+attachments/10/spatial_attachment_path = NodePath("")
+attachments/10/offset = Vector3(0, 0, 0)
+
+[node name="Curtain4" type="SoftBody3D" parent="Environment/Curtains" index="4" unique_id=1961375673]
+transform = Transform3D(0.6625766, -0.048808176, 0.14446999, 0.037240498, 1.4121959, -0.14716099, -0.09222446, 0.21959157, 0.978505, -13.783159, 45.052795, 22.964828)
+mesh = ExtResource("10_pijb2")
+pinned_points = [14, 13, 11, 9, 8, 7, 6, 3, 1, 2, 125]
+attachments/0/point_index = 14
+attachments/0/spatial_attachment_path = NodePath("")
+attachments/0/offset = Vector3(0, 0, 0)
+attachments/1/point_index = 13
+attachments/1/spatial_attachment_path = NodePath("")
+attachments/1/offset = Vector3(0, 0, 0)
+attachments/2/point_index = 11
+attachments/2/spatial_attachment_path = NodePath("")
+attachments/2/offset = Vector3(0, 0, 0)
+attachments/3/point_index = 9
+attachments/3/spatial_attachment_path = NodePath("")
+attachments/3/offset = Vector3(0, 0, 0)
+attachments/4/point_index = 8
+attachments/4/spatial_attachment_path = NodePath("")
+attachments/4/offset = Vector3(0, 0, 0)
+attachments/5/point_index = 7
+attachments/5/spatial_attachment_path = NodePath("")
+attachments/5/offset = Vector3(0, 0, 0)
+attachments/6/point_index = 6
+attachments/6/spatial_attachment_path = NodePath("")
+attachments/6/offset = Vector3(0, 0, 0)
+attachments/7/point_index = 3
+attachments/7/spatial_attachment_path = NodePath("")
+attachments/7/offset = Vector3(0, 0, 0)
+attachments/8/point_index = 1
+attachments/8/spatial_attachment_path = NodePath("")
+attachments/8/offset = Vector3(0, 0, 0)
+attachments/9/point_index = 2
+attachments/9/spatial_attachment_path = NodePath("")
+attachments/9/offset = Vector3(0, 0, 0)
+attachments/10/point_index = 125
+attachments/10/spatial_attachment_path = NodePath("")
+attachments/10/offset = Vector3(0, 0, 0)
+
+[node name="Curtain5" type="SoftBody3D" parent="Environment/Curtains" index="5" unique_id=1850779582]
+transform = Transform3D(0.8773414, 0.15948665, -0.79182297, -0.18442121, 1.0720915, 0.090140745, 1.1775656, 0.04907772, 0.60406214, -26.880331, 40.335052, -20.066849)
+mesh = ExtResource("10_pijb2")
+pinned_points = [14, 13, 11, 9, 8, 7, 6, 3, 1, 2, 125]
+attachments/0/point_index = 14
+attachments/0/spatial_attachment_path = NodePath("")
+attachments/0/offset = Vector3(0, 0, 0)
+attachments/1/point_index = 13
+attachments/1/spatial_attachment_path = NodePath("")
+attachments/1/offset = Vector3(0, 0, 0)
+attachments/2/point_index = 11
+attachments/2/spatial_attachment_path = NodePath("")
+attachments/2/offset = Vector3(0, 0, 0)
+attachments/3/point_index = 9
+attachments/3/spatial_attachment_path = NodePath("")
+attachments/3/offset = Vector3(0, 0, 0)
+attachments/4/point_index = 8
+attachments/4/spatial_attachment_path = NodePath("")
+attachments/4/offset = Vector3(0, 0, 0)
+attachments/5/point_index = 7
+attachments/5/spatial_attachment_path = NodePath("")
+attachments/5/offset = Vector3(0, 0, 0)
+attachments/6/point_index = 6
+attachments/6/spatial_attachment_path = NodePath("")
+attachments/6/offset = Vector3(0, 0, 0)
+attachments/7/point_index = 3
+attachments/7/spatial_attachment_path = NodePath("")
+attachments/7/offset = Vector3(0, 0, 0)
+attachments/8/point_index = 1
+attachments/8/spatial_attachment_path = NodePath("")
+attachments/8/offset = Vector3(0, 0, 0)
+attachments/9/point_index = 2
+attachments/9/spatial_attachment_path = NodePath("")
+attachments/9/offset = Vector3(0, 0, 0)
+attachments/10/point_index = 125
+attachments/10/spatial_attachment_path = NodePath("")
+attachments/10/offset = Vector3(0, 0, 0)
+
+[node name="Corners" type="Node3D" parent="Environment" parent_id_path=PackedInt32Array(921388622) index="11" unique_id=1910119679]
+
+[node name="structureA" parent="Environment/Corners" index="0" unique_id=633844762 instance=ExtResource("5_lerc2")]
+transform = Transform3D(0.7778175, 0, 0.7778175, 0, 1.35, 0, -0.7778175, 0, 0.7778175, -40, 0.063, -40)
+
+[node name="structureB" parent="Environment/Corners" index="1" unique_id=1412758747 instance=ExtResource("5_lerc2")]
+transform = Transform3D(0.7778175, 0, -0.7778175, 0, 1.35, 0, 0.7778175, 0, 0.7778175, 40, 0.063, -40)
+
+[node name="structureC" parent="Environment/Corners" index="2" unique_id=766597224 instance=ExtResource("5_lerc2")]
+transform = Transform3D(-0.8838835, 0, -0.8838835, 0, 1.5, 0, 0.8838835, 0, -0.8838835, 40, 0.063, 40)
+
+[node name="structureD" parent="Environment/Corners" index="3" unique_id=996020233 instance=ExtResource("5_lerc2")]
+transform = Transform3D(-0.7778175, 0, 0.7778175, 0, 1.35, 0, -0.7778175, 0, -0.7778175, -40, 0.063, 40)
+
 [node name="Camera" parent="CameraController/CameraPitch/Gimbal" parent_id_path=PackedInt32Array(969489915, 985846177) index="0" unique_id=707455384]
 attributes = SubResource("CameraAttributesPractical_ktfto")
 
@@ -543,43 +875,68 @@ visibility_aabb = AABB(-32, -48, -32, 64, 64, 64)
 process_material = SubResource("ParticleProcessMaterial_uq13r")
 draw_pass_1 = SubResource("PlaneMesh_fsmdn")
 
-[node name="Floor" type="StaticBody3D" parent="." index="8" unique_id=433638540]
+[node name="Terrain" type="StaticBody3D" parent="." index="8" unique_id=433638540]
 collision_layer = 4
 script = ExtResource("10_gc3yy")
 footsteps_audio = ExtResource("11_1y2o3")
 land_audio = ExtResource("12_pijb2")
 
-[node name="Mesh" type="MeshInstance3D" parent="Floor" index="0" unique_id=1870164113]
+[node name="Mesh" type="MeshInstance3D" parent="Terrain" index="0" unique_id=1870164113]
 mesh = SubResource("PlaneMesh_14s3j")
 
-[node name="Collision" type="CollisionShape3D" parent="Floor" index="1" unique_id=658511662]
+[node name="Floor" type="CollisionShape3D" parent="Terrain" index="1" unique_id=658511662]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -50, 0)
 shape = SubResource("BoxShape3D_14s3j")
 
-[node name="WallLeft" type="CollisionShape3D" parent="Floor" index="2" unique_id=483938843]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64, 0, 0)
+[node name="WallLeft" type="CollisionShape3D" parent="Terrain" index="2" unique_id=483938843]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70, 0, 0)
 shape = SubResource("BoxShape3D_14s3j")
 
-[node name="WallRight" type="CollisionShape3D" parent="Floor" index="3" unique_id=78203925]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64, 0, 0)
+[node name="WallRight" type="CollisionShape3D" parent="Terrain" index="3" unique_id=78203925]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70, 0, 0)
 shape = SubResource("BoxShape3D_14s3j")
 
-[node name="WallFront" type="CollisionShape3D" parent="Floor" index="4" unique_id=1803025287]
+[node name="WallFront" type="CollisionShape3D" parent="Terrain" index="4" unique_id=1803025287]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -64)
 shape = SubResource("BoxShape3D_14s3j")
 
-[node name="WallBack" type="CollisionShape3D" parent="Floor" index="5" unique_id=1429697490]
+[node name="WallBack" type="CollisionShape3D" parent="Terrain" index="5" unique_id=1429697490]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 64)
 shape = SubResource("BoxShape3D_14s3j")
 
-[node name="StartFightTrigger" type="Area3D" parent="." index="9" unique_id=923284050]
+[node name="CameraCollisions" type="StaticBody3D" parent="." index="9" unique_id=1213189037]
+collision_layer = 32
+collision_mask = 0
+
+[node name="Floor" type="CollisionShape3D" parent="CameraCollisions" index="0" unique_id=1176373844]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -50, 0)
+shape = SubResource("BoxShape3D_14s3j")
+
+[node name="WallLeft" type="CollisionShape3D" parent="CameraCollisions" index="1" unique_id=1846947739]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -88, 0, 0)
+shape = SubResource("BoxShape3D_pijb2")
+
+[node name="WallRight" type="CollisionShape3D" parent="CameraCollisions" index="2" unique_id=1981269235]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 88, 0, 0)
+shape = SubResource("BoxShape3D_s54ku")
+
+[node name="WallFront" type="CollisionShape3D" parent="CameraCollisions" index="3" unique_id=893449049]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -88)
+shape = SubResource("BoxShape3D_kq32x")
+
+[node name="WallBack" type="CollisionShape3D" parent="CameraCollisions" index="4" unique_id=980557978]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 88)
+shape = SubResource("BoxShape3D_lvdly")
+
+[node name="StartFightTrigger" type="Area3D" parent="." index="10" unique_id=923284050]
 collision_layer = 0
 
 [node name="Collision" type="CollisionShape3D" parent="StartFightTrigger" index="0" unique_id=1903406756]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.013477)
 shape = SubResource("BoxShape3D_67j1t")
 
-[node name="IntroSteamPoint" type="Marker3D" parent="." index="10" unique_id=1196936059]
+[node name="IntroSteamPoint" type="Marker3D" parent="." index="11" unique_id=1196936059]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2380104, -26.57209)
 
+[editable path="Environment/Ceiling/Mesh"]
 [editable path="CameraController"]

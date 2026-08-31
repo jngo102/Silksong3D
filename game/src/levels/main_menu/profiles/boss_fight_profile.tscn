@@ -259,7 +259,7 @@ colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.49803922, 1, 1, 1, 0.49803922, 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_qijew"]
 gradient = SubResource("Gradient_micny")
 
-[node name="BossFightProfile" type="Control"]
+[node name="BossFightProfile" type="Control" unique_id=474644594]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -278,17 +278,13 @@ size_flags_vertical = 3
 mouse_filter = 2
 script = ExtResource("1_micny")
 
-[node name="Animator" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_i6pf3")
-}
+[node name="Animator" type="AnimationPlayer" parent="." unique_id=1148642389]
+libraries/ = SubResource("AnimationLibrary_i6pf3")
 
-[node name="ArrowsAnimator" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_fbv57")
-}
+[node name="ArrowsAnimator" type="AnimationPlayer" parent="." unique_id=1906958490]
+libraries/ = SubResource("AnimationLibrary_fbv57")
 
-[node name="ArrowLeft" type="TextureRect" parent="."]
+[node name="ArrowLeft" type="TextureRect" parent="." unique_id=1954314029]
 layout_mode = 0
 offset_left = -65.0
 offset_top = 319.0
@@ -298,7 +294,7 @@ scale = Vector2(1.5, 1.5)
 size_flags_vertical = 4
 stretch_mode = 3
 
-[node name="TopLeftFleur" type="TextureRect" parent="."]
+[node name="TopLeftFleur" type="TextureRect" parent="." unique_id=1721672685]
 z_index = 1
 layout_mode = 1
 offset_left = -1.0
@@ -306,10 +302,12 @@ offset_top = 1.0
 offset_right = 383.0
 offset_bottom = 500.0
 scale = Vector2(1.5, 1.5)
+offset_transform_enabled = true
+offset_transform_position = Vector2(-21, 16)
 texture = ExtResource("9_micny")
 stretch_mode = 2
 
-[node name="Thumbnail" type="Button" parent="."]
+[node name="Thumbnail" type="Button" parent="." unique_id=1130986929]
 layout_mode = 0
 offset_right = 512.0
 offset_bottom = 768.0
@@ -318,7 +316,7 @@ flat = true
 icon_alignment = 1
 expand_icon = true
 
-[node name="HighScoreLabel" type="Label" parent="Thumbnail"]
+[node name="HighScoreLabel" type="Label" parent="Thumbnail" unique_id=2050349670]
 layout_mode = 1
 offset_left = 80.0
 offset_top = 60.0
@@ -326,7 +324,7 @@ offset_right = 387.0
 offset_bottom = 157.0
 text = "High Score"
 
-[node name="HighScoreValue" type="Label" parent="Thumbnail"]
+[node name="HighScoreValue" type="Label" parent="Thumbnail" unique_id=431268393]
 layout_mode = 1
 offset_left = 80.0
 offset_top = 140.0
@@ -334,7 +332,7 @@ offset_right = 387.0
 offset_bottom = 291.0
 text = "100000"
 
-[node name="Name" type="Label" parent="Thumbnail"]
+[node name="Name" type="Label" parent="Thumbnail" unique_id=544882894]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -351,7 +349,7 @@ text = "Boss Fight"
 horizontal_alignment = 2
 vertical_alignment = 2
 
-[node name="HighlightOverlay" type="TextureRect" parent="Thumbnail"]
+[node name="HighlightOverlay" type="TextureRect" parent="Thumbnail" unique_id=1511126863]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 8
@@ -366,9 +364,11 @@ offset_bottom = 356.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(0, 384)
+offset_transform_enabled = true
+offset_transform_scale = Vector2(1, 0.945)
 texture = SubResource("GradientTexture1D_qijew")
 
-[node name="BottomRightFleur" type="TextureRect" parent="."]
+[node name="BottomRightFleur" type="TextureRect" parent="." unique_id=1382487037]
 z_index = 1
 layout_mode = 0
 offset_left = 511.0
@@ -376,12 +376,14 @@ offset_top = 769.0
 offset_right = 895.0
 offset_bottom = 978.0
 scale = Vector2(-1.5, -1.5)
+offset_transform_enabled = true
+offset_transform_position = Vector2(-12, 12)
 texture = ExtResource("9_hrr1x")
 stretch_mode = 2
 flip_h = true
 flip_v = true
 
-[node name="ArrowRight" type="TextureRect" parent="."]
+[node name="ArrowRight" type="TextureRect" parent="." unique_id=1650683908]
 layout_mode = 0
 offset_left = 512.0
 offset_top = 319.0

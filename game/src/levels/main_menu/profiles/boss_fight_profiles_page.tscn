@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dugp1elqcy03h" path="res://src/levels/cogwork_dancers/cogwork_dancers_fight.tscn" id="3_wrfrw"]
 [ext_resource type="Texture2D" uid="uid://1nnhio1kqrsg" path="res://src/levels/main_menu/profiles/cogwork_dancers.png" id="5_vd6hw"]
 [ext_resource type="PackedScene" uid="uid://tkt0qnsojd35" path="res://src/levels/phantom/phantom_fight.tscn" id="6_rvh5p"]
+[ext_resource type="Texture2D" uid="uid://bw7anmk5elplu" path="res://src/levels/main_menu/profiles/phantom.png" id="7_mvq0l"]
 
 [sub_resource type="Resource" id="Resource_vd6hw"]
 script = ExtResource("2_vd6hw")
@@ -18,6 +19,7 @@ metadata/_custom_type_script = "uid://mh6v8w8mh15m"
 [sub_resource type="Resource" id="Resource_ojd61"]
 script = ExtResource("2_vd6hw")
 scene = ExtResource("6_rvh5p")
+thumbnail = ExtResource("7_mvq0l")
 boss_name = "Phantom"
 root_node_name = "PhantomFight"
 metadata/_custom_type_script = "uid://mh6v8w8mh15m"

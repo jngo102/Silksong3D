@@ -247,6 +247,7 @@ Backward={
 3d_physics/layer_3="Terrain"
 3d_physics/layer_4="Player Attack"
 3d_physics/layer_5="Enemy Attack"
+3d_physics/layer_6="Camera Collision"
 
 [limbo_ai]
 

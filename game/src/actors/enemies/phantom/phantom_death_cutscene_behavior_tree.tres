@@ -354,6 +354,7 @@ children = [SubResource("BTAction_cev7j"), SubResource("BTCallMethod_de11o"), Su
 script = ExtResource("5_dhi3c")
 clips_array = Array[AudioStream]([ExtResource("9_8nh1b")])
 play_position_var = &"camera_position"
+output_audio_player_var = null
 
 [sub_resource type="BTAction" id="BTAction_74uk6"]
 script = ExtResource("5_dhi3c")
@@ -361,6 +362,7 @@ clips_array = Array[AudioStream]([ExtResource("6_l4brc")])
 play_position_var = &"camera_position"
 pitch_min = 0.85
 pitch_max = 1.15
+output_audio_player_var = null
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_vvrqo"]
 streams_count = 14
@@ -385,6 +387,7 @@ clips_array = Array[AudioStream]([SubResource("AudioStreamRandomizer_vvrqo")])
 play_position_var = &"camera_position"
 pitch_min = 0.85
 pitch_max = 1.15
+output_audio_player_var = null
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_dmpwu"]
 streams_count = 9
@@ -404,6 +407,7 @@ clips_array = Array[AudioStream]([SubResource("AudioStreamRandomizer_dmpwu")])
 play_position_var = &"camera_position"
 pitch_min = 0.85
 pitch_max = 1.15
+output_audio_player_var = null
 
 [sub_resource type="BBVariant" id="BBVariant_v128t"]
 type = 20
@@ -447,6 +451,7 @@ children = [SubResource("BTAction_gwn4k"), SubResource("BTAction_74uk6"), SubRes
 script = ExtResource("5_dhi3c")
 clips_array = Array[AudioStream]([ExtResource("35_rb3y3")])
 play_position_var = &"camera_position"
+output_audio_player_var = null
 
 [sub_resource type="BTAction" id="BTAction_v128t"]
 script = ExtResource("5_dhi3c")
@@ -454,6 +459,7 @@ clips_array = Array[AudioStream]([ExtResource("6_l4brc")])
 play_position_var = &"camera_position"
 pitch_min = 0.85
 pitch_max = 1.15
+output_audio_player_var = null
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_crhlj"]
 streams_count = 14
@@ -478,6 +484,7 @@ clips_array = Array[AudioStream]([SubResource("AudioStreamRandomizer_crhlj")])
 play_position_var = &"camera_position"
 pitch_min = 0.85
 pitch_max = 1.15
+output_audio_player_var = null
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_nmopw"]
 streams_count = 9
@@ -497,6 +504,7 @@ clips_array = Array[AudioStream]([SubResource("AudioStreamRandomizer_nmopw")])
 play_position_var = &"camera_position"
 pitch_min = 0.85
 pitch_max = 1.15
+output_audio_player_var = null
 
 [sub_resource type="BBVariant" id="BBVariant_74uk6"]
 type = 20
@@ -540,6 +548,7 @@ children = [SubResource("BTAction_xre5f"), SubResource("BTAction_v128t"), SubRes
 script = ExtResource("5_dhi3c")
 clips_array = Array[AudioStream]([ExtResource("36_3pjv8")])
 play_position_var = &"camera_position"
+output_audio_player_var = null
 
 [sub_resource type="BTAction" id="BTAction_mv0e0"]
 script = ExtResource("5_dhi3c")
@@ -547,6 +556,7 @@ clips_array = Array[AudioStream]([ExtResource("6_l4brc")])
 play_position_var = &"camera_position"
 pitch_min = 0.85
 pitch_max = 1.15
+output_audio_player_var = null
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_xre5f"]
 streams_count = 14
@@ -571,6 +581,7 @@ clips_array = Array[AudioStream]([SubResource("AudioStreamRandomizer_xre5f")])
 play_position_var = &"camera_position"
 pitch_min = 0.85
 pitch_max = 1.15
+output_audio_player_var = null
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_2tdqs"]
 streams_count = 9
@@ -590,6 +601,7 @@ clips_array = Array[AudioStream]([SubResource("AudioStreamRandomizer_2tdqs")])
 play_position_var = &"camera_position"
 pitch_min = 0.85
 pitch_max = 1.15
+output_audio_player_var = null
 
 [sub_resource type="BBVariant" id="BBVariant_85yog"]
 type = 20
@@ -747,6 +759,7 @@ clips_array = Array[AudioStream]([SubResource("AudioStreamRandomizer_avkx2")])
 play_position_var = &"camera_position"
 pitch_min = 0.85
 pitch_max = 1.15
+output_audio_player_var = null
 
 [sub_resource type="BTWait" id="BTWait_863ep"]
 duration = 0.2
@@ -842,6 +855,7 @@ script = ExtResource("5_dhi3c")
 clips_array = Array[AudioStream]([SubResource("AudioStreamRandomizer_t5y0t")])
 play_position_var = &"camera_position"
 pitch_min = 0.9
+output_audio_player_var = null
 
 [sub_resource type="BBVariant" id="BBVariant_geoq6"]
 type = 22
@@ -951,6 +965,7 @@ animation_name = &"Parry Hit"
 script = ExtResource("5_dhi3c")
 clips_array = Array[AudioStream]([ExtResource("47_3pjv8")])
 play_position_var = &"camera_position"
+output_audio_player_var = null
 
 [sub_resource type="BBVariant" id="BBVariant_gwn4k"]
 type = 22
@@ -1114,6 +1129,7 @@ script = ExtResource("5_dhi3c")
 clips_array = Array[AudioStream]([ExtResource("41_rb3y3")])
 play_position_var = &"camera_position"
 volume_scale = 0.7
+output_audio_player_var = null
 
 [sub_resource type="BTWait" id="BTWait_fbtfg"]
 duration = 0.5
@@ -1205,11 +1221,13 @@ stream_2/stream = ExtResource("18_ej2e2")
 script = ExtResource("5_dhi3c")
 clips_array = Array[AudioStream]([SubResource("AudioStreamRandomizer_gwn4k")])
 play_position_var = &"camera_position"
+output_audio_player_var = null
 
 [sub_resource type="BTAction" id="BTAction_fx2lo"]
 script = ExtResource("5_dhi3c")
 clips_array = Array[AudioStream]([ExtResource("55_2tdqs")])
 play_position_var = &"camera_position"
+output_audio_player_var = null
 
 [sub_resource type="BBVariant" id="BBVariant_5ygbr"]
 type = 3
@@ -1257,11 +1275,13 @@ args = Array[BBVariant]([SubResource("BBVariant_xre5f")])
 script = ExtResource("5_dhi3c")
 clips_array = Array[AudioStream]([ExtResource("19_b3wlm")])
 play_position_var = &"camera_position"
+output_audio_player_var = null
 
 [sub_resource type="BTAction" id="BTAction_6x23p"]
 script = ExtResource("5_dhi3c")
 clips_array = Array[AudioStream]([ExtResource("55_xre5f")])
 play_position_var = &"camera_position"
+output_audio_player_var = null
 
 [sub_resource type="BBVariant" id="BBVariant_i02io"]
 type = 3

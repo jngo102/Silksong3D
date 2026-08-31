@@ -6,7 +6,7 @@
 
 [sub_resource type="Animation" id="Animation_phxw1"]
 resource_name = "Intro Steam Down"
-length = 2.6667
+length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -38,7 +38,7 @@ tracks/2/path = NodePath("Damager/Collision:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 1.1666667, 2.6666667),
+"times": PackedFloat32Array(0, 1, 2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, false, true]
@@ -86,11 +86,14 @@ tracks/6/path = NodePath("Audio")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(1),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(1, 2),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [0.0],
 "method": &"play"
+}, {
+"args": [],
+"method": &"stop"
 }]
 }
 tracks/7/type = "value"
@@ -100,7 +103,7 @@ tracks/7/path = NodePath("SteamColumnParticles/ColumnParticles:emitting")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0, 0.8333333, 2.5),
+"times": PackedFloat32Array(0, 1, 2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [false, true, false]
@@ -112,7 +115,7 @@ tracks/8/path = NodePath("SteamColumnParticles/ColumnParticles/SpreadParticles:e
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0, 1, 2.6667),
+"times": PackedFloat32Array(0, 1, 2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [false, true, false]

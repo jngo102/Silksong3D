@@ -73,7 +73,7 @@ func check_downbeat() -> void:
 		downbeat.emit()
 	
 ## Play a one shot audio clip
-func play_clip(clip: AudioStream, global: bool = false, play_position := Vector3.ZERO, pitch_min: float = 1, pitch_max: float = 1, volume_scale: float = 1, audio_range: float = 24) -> void:
+func play_clip(clip: AudioStream, global: bool = false, play_position := Vector3.ZERO, pitch_min: float = 1, pitch_max: float = 1, volume_scale: float = 1, audio_range: float = 24) -> Node:
 	var audio_player: Variant = null
 	if global:
 		audio_player = global_audio_player_prefab.instantiate()
@@ -87,6 +87,7 @@ func play_clip(clip: AudioStream, global: bool = false, play_position := Vector3
 	audio_player.pitch_scale = randf_range(pitch_min, pitch_max)
 	audio_player.stream = clip
 	audio_player.play()
+	return audio_player
 
 ## Play a music track, fading out from the current track into the new track
 func play_music(track: MusicTrack, fade_time: float = 2, immediate: bool = false) -> void:

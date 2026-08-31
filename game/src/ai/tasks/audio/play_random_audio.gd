@@ -8,6 +8,8 @@ extends BTAction
 @export var pitch_max: float = 1
 @export var range: float = 64
 
+@export var output_audio_player_var: StringName = &"audio_player"
+
 var _previous_clip: AudioStream
 
 func _generate_name() -> String:
@@ -20,6 +22,8 @@ func _tick(_delta: float) -> Status:
 	var clip: AudioStream = clips_array.pick_random()
 	while len(clips_array) > 1 and clip == _previous_clip:
 		clip = clips_array.pick_random()
-	AudioManager.play_clip(clip, false, play_position, pitch_min, pitch_max, volume_scale, range)
+	var audio_player: Node = AudioManager.play_clip(clip, false, play_position, pitch_min, pitch_max, volume_scale, range)
 	_previous_clip = clip
+	if blackboard.has_var(output_audio_player_var):
+		blackboard.set_var(output_audio_player_var, audio_player)
 	return SUCCESS
