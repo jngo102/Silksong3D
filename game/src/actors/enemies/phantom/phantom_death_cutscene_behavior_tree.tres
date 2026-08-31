@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://dt2awuygt37mg" path="res://src/ai/tasks/transform/set_rotation_x_y_z.gd" id="4_fojrl"]
 [ext_resource type="Script" uid="uid://5qpw7k5phkni" path="res://src/ai/tasks/audio/play_random_audio.gd" id="5_dhi3c"]
 [ext_resource type="Script" uid="uid://c4y7yms544etu" path="res://src/ai/tasks/actors/set_camera_target.gd" id="5_e5f8o"]
+[ext_resource type="Script" uid="uid://drhn5ng0c18tm" path="res://src/ai/tasks/audio/play_music.gd" id="6_51aw7"]
 [ext_resource type="AudioStream" uid="uid://blca47u8f3aea" path="res://src/copyrighted/sfx/hornet/attacks/parry/hero_parry.wav" id="6_l4brc"]
 [ext_resource type="Script" uid="uid://bia8f8kue467p" path="res://src/ai/tasks/logic/tween_to_position.gd" id="7_e5f8o"]
 [ext_resource type="AudioStream" uid="uid://ju2fsk38pj5j" path="res://src/copyrighted/phantom/sfx/Phantom-2-Attack-Big-018.wav" id="8_fojrl"]
@@ -297,9 +298,12 @@ resource_name = "Phantom/Flasher"
 node = SubResource("BBNode_w6vsv")
 method = &"reset"
 
+[sub_resource type="BTAction" id="BTAction_6yvgk"]
+script = ExtResource("6_51aw7")
+
 [sub_resource type="BTSequence" id="BTSequence_nm84w"]
 custom_name = "Reset"
-children = [SubResource("BTSequence_ys6tr"), SubResource("BTCallMethod_51aw7"), SubResource("BTCallMethod_s1sr5")]
+children = [SubResource("BTSequence_ys6tr"), SubResource("BTCallMethod_51aw7"), SubResource("BTCallMethod_s1sr5"), SubResource("BTAction_6yvgk")]
 
 [sub_resource type="BBVariant" id="BBVariant_uxuoe"]
 type = 22
@@ -1375,6 +1379,7 @@ children = [SubResource("BTCallMethod_e8p82"), SubResource("BTAction_kf0p3"), Su
 
 [sub_resource type="BBVariant" id="BBVariant_ykmtk"]
 saved_value = null
+resource_name = "<null>"
 
 [sub_resource type="BTAction" id="BTAction_8nh1b"]
 script = ExtResource("3_jxs3l")

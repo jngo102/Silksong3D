@@ -1,11 +1,17 @@
-[gd_scene format=3 uid="uid://tkt0qnsojd35"]
+[gd_scene format=4 uid="uid://tkt0qnsojd35"]
 
 [ext_resource type="PackedScene" uid="uid://c7e6xi1cekoax" path="res://src/levels/base_level.tscn" id="1_l4y3c"]
+[ext_resource type="Resource" uid="uid://iuiueea1mjsv" path="res://src/resources/music/mist.tres" id="2_fsmdn"]
 [ext_resource type="PackedScene" uid="uid://darh7o4drrasg" path="res://src/actors/enemies/phantom/phantom_boss.tscn" id="2_vuuix"]
 [ext_resource type="Texture2D" uid="uid://d3jm7v8arm3ua" path="res://src/actors/enemies/phantom/steam_particle0.png" id="4_ktfto"]
 [ext_resource type="LightmapGIData" uid="uid://e3fv78a4ic8t" path="res://src/levels/phantom/phantom_fight.lmbake" id="5_gc3yy"]
 [ext_resource type="PackedScene" uid="uid://bxocwtp45yp0e" path="res://src/levels/phantom/structureA.glb" id="5_lerc2"]
+[ext_resource type="PackedScene" uid="uid://b7do4wpmyxhlf" path="res://src/levels/phantom/platform.glb" id="6_7y7vd"]
 [ext_resource type="PackedScene" uid="uid://ctppls27w4kke" path="res://src/levels/phantom/podium.glb" id="7_jrqyy"]
+[ext_resource type="PackedScene" uid="uid://c6jikxlpvxxmj" path="res://src/levels/phantom/bench.glb" id="7_uq13r"]
+[ext_resource type="Script" uid="uid://bq4j0l51gfuco" path="res://src/levels/material_floor.gd" id="10_gc3yy"]
+[ext_resource type="Resource" uid="uid://cdhpw43qtfwce" path="res://src/resources/random_audio_plays/footsteps_metal.tres" id="11_1y2o3"]
+[ext_resource type="AudioStream" uid="uid://dkuoifc3ivndh" path="res://src/copyrighted/sfx/hornet/movement/metal/hornet_land_metal.wav" id="12_pijb2"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ktfto"]
 sky_top_color = Color(0.8039735, 0.7180228, 0.6472382, 1)
@@ -80,9 +86,99 @@ material = SubResource("StandardMaterial3D_si4fk")
 size = Vector2(4, 4)
 orientation = 2
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jv88u"]
+resource_name = "Cloth"
+cull_mode = 2
+albedo_color = Color(0.71565974, 0.71565974, 0.71565974, 1)
+roughness = 0.9409091
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_xrmlc"]
+_surfaces = [{
+"aabb": AABB(-3.1418808, -2.920327, -3.575776, 6.2837615, 2.9203312, 5.7404976),
+"format": 34896613377,
+"index_count": 486,
+"index_data": PackedByteArray("OwABAAIAOwAAAAEAPAA7AAIAPAACAAMAPQAAADsAPQAHAAAANwA7ADwANwA9ADsAPgA8AAMAPgADAAQAPwA3ADwAPwA8AD4AQAAHAD0AQAAIAAcAQQA9ADcAQQBAAD0AOAA3AD8AOABBADcAQgAIAEAAQgAKAAgAQwBAAEEAQwBCAEAARABBADgARABDAEEARQAKAEIARQALAAoARgBCAEMARgBFAEIARwBDAEQARwBGAEMASAALAEUASAAMAAsASQBFAEYASQBIAEUASgBGAEcASgBJAEYASwAMAEgASwAiAAwATABIAEkATABLAEgATQBJAEoATQBMAEkATgAiAEsATgAjACIAJQAjAE4AJQAmACMAJAAlAE4ATwBOAEsAJABOAE8ATwBLAEwAIQAkAE8AUABPAEwAIQBPAFAAUABMAE0AIAAhAFAAIABQAFEAUQBQAE0AHwAgAFEAUQBNAFIAHwBRAFMAUwBRAFIAUgBNAEoAHgAfAFMAUgBKAFQAVABKAEcAUwBSAFUAVQBSAFQAHgBTADAAMABTAFUAHQAeADAAVABHAFYAVgBHAEQAVQBUAFcAVwBUAFYAMABVAFgAWABVAFcAHQAwADYANgAwAFgAHAAdADYAVgBEAFkAWQBEADgAVwBWAFoAWgBWAFkAHAA2ADUAGwAcADUAGwA1ABoANQA2AAkANgBYAAkAGgA1ADQANQAJADQAGgA0ABgAWABXAFsACQBYAFsAWwBXAFoANAAJADMACQBbADMAGAA0ADIANAAzADIAGAAyABkAWwBaAFwAMwBbAFwAXABaAF0AWgBZAF0AMwBcADEAMgAzADEAGQAyAC4AMgAxAC4AGQAuABcAMQBcAF4AXABdAF4ALgAxAC8AMQBeAC8AFwAuABUALgAvABUAFwAVABYAFgAVAC0AFgAtABQAFQAvAA0AFQANAC0ALwBeAF8ALwBfAA0AXgBgAF8AXgBdAGAAFAAtACwAFAAsABMALQANACoALQAqACwADQBfAGEADQBhACoAXwBiAGEAXwBgAGIAEwAsACsAEwArABEAEQArABAAEQAQABIAKwAPABAALAApACsAKwApAA8ALAAqACkAKQAOAA8AKgAoACkAKQAoAA4AKgBhACgAKAAGAA4AYQAnACgAKAAnAAYAYQBiACcAJwAFAAYAJwBjAAUAYgBjACcAYwAEAAUAYwA+AAQAYgA5AGMAOQA+AGMAYAA5AGIAOQA/AD4AYAA6ADkAOgA/ADkAXQA6AGAAOgA4AD8AXQBZADoAWQA4ADoA"),
+"lods": [0.00090955774, PackedByteArray("AAABAAIAAAACAAMAAAADAAQAAAAEAAUAJwAAAAUAJwAFAAYAKAAnAAYAKAAGAA4AKQAoAA4AKQAOAA8AKgAoACkAKgAnACgAKwApAA8AKwAPABAAEQArABAAEQAQABIAEwArABEALAApACsAEwAsACsALAAqACkAFAAsABMAFAAtACwALQAqACwAFgAtABQALQANACoADQAnACoAFgAVAC0AFQANAC0AFwAVABYAFwAuABUAGQAuABcAFQAvAA0ALgAvABUADQAwACcALwAwAA0ALgAxAC8AMQAwAC8AGQAyAC4AMgAxAC4AGAAyABkAMgAzADEAMwAwADEAGAA0ADIANAAzADIAGgA0ABgANAAJADMAMwAJADAAGgA1ADQANQAJADQAGwA1ABoAGwAcADUANQA2AAkAHAA2ADUANgAwAAkAHAAdADYAHQAwADYAHQAeADAAHgAfADAAHwAgADAAIAAhADAAIQAMADAAIQAiAAwAIwAiACEAIQAkACMAJAAlACMAJQAmACMADAALADAACwAKADAAMAAKAAgAMAAIADcANwAIAAcANwAHAAAAMAA3ADgAOQA3AAAAOAA3ADkAJwA5AAAAMAA5ACcAOgA4ADkAMAA4ADoAMAA6ADkA"), 0.32864845, PackedByteArray("AAABAAIAAAACAAMAAAADAAQAAAAEAAUABgAAAAUABgAHAAAABgAIAAcACQAIAAYACQAKAAgACwAKAAkADAALAAkADQAJAAYADQAGAA4ADQAOAA8AEAANAA8AEQAQABIAEwAQABEAFAAQABMAFAAVABAAFQANABAAFgAVABQAFwAVABYAFwANABUAFwAJAA0AGAAXABkAGAAJABcAGgAJABgAGwAcABoAGgAcAAkAHAAdAAkAHQAeAAkAHgAfAAkAHwAgAAkAIAAhAAkAIQAMAAkAIQAiAAwAIwAiACEAIQAkACMAJAAlACMAJQAmACMA")],
+"name": "Cloth",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 100,
+"vertex_data": PackedByteArray("jeP//wAAAAD/////AAAAAP////9vIwAA/////99GAAD/////TmoAAP////++jQAA/////y2xAAAbx///AAAAAKqq//8AAAAA4zj+/wz4AAA4jv//AAAAAMZx//8AAAAAVFX//wAAAACqqv7/DPgAAP////+d1AAA///+/wz4AAD///q6//8AAI3jAADs+AAA///1dez4AAAbx/V17PgAAKqqYV/s+AAAOI4+nv//AAA4jiYt7PgAAMZx85js+AAA4zjrj+z4AABUVbxZ7PgAAHEcITrs+AAAAAD1dez4AAAAAPq6//8AAAAA/v8M+AAAAAD//53UAAAAAP//LbEAAAAA//++jQAAAAD//05qAADjOP//AAAAAHEc//8AAAAAAAD//99GAAAAAP//byMAAAAA//8AAAAAjeP//y2xAACN4///ndQAAI3j/v8M+AAAG8f+/wz4AACN452N//8AABvHBsH//wAAqqoXs///AADGcVPV//8AADiO/v8M+AAAcRz//53UAADGcf7/DPgAAFRVUK7//wAAVFX+/wz4AADjOPDU//8AAHEciJz//wAAcRz+/wz4AAAbx///30YAAKqq//9OagAAG8f//76NAACqqv//vo0AAI3j//9vIwAAjeP//99GAAAbx///byMAAI3j//9OagAAG8f//05qAACqqv//byMAAKqq///fRgAAOI7//28jAAA4jv//30YAADiO//9OagAAxnH//28jAADGcf//30YAAMZx//9OagAAVFX//28jAABUVf//30YAAFRV//9OagAA4zj//28jAADjOP//30YAAOM4//9OagAAcRz//28jAABxHP//30YAAHEc//9OagAAcRz//76NAADjOP//vo0AAHEc//8tsQAAVFX//76NAADjOP//LbEAAMZx//++jQAAVFX//y2xAADjOP//ndQAADiO//++jQAAxnH//y2xAABUVf//ndQAAMZx//+d1AAAOI7//y2xAAA4jv//ndQAAKqq//+d1AAAqqr//y2xAAAbx///ndQAABvH//8tsQAAjeP//76NAAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_b6d4n"]
+resource_name = "mat_Plane_003"
+_surfaces = [{
+"aabb": AABB(-3.1418808, -2.920327, -3.575776, 6.2837615, 2.9203312, 5.7404976),
+"attribute_data": PackedByteArray("jeMAAP//AAD//3Ec///jOP//VFX//8Zx//84jhvHAACqqgAA4zgbxziOAADGcQAAVVUAAKqqG8f//6mq//8bxwAAG8cAAKmqAAA4jgAAxnEAAFRV4zgAAHEcAAAAAOM4AABxHAAAAAAAAP//AACN43Ec///jOBvHAAAbx+M4///Gcf//VVX//6qqG8c4jo3jOI7//6qq/////43j//8bxxvH//+N4////////43jOI6N46mqjeMbxxvHG8dxHKmqOI4bx8ZxG8dVVRvHcRwbxxvH4ziqqlRVG8fGcaqqxnFxHI3jcRwbx+M4jeNVVRvHVVWN48ZxG8fGcY3jOI4bx6qqjeMbxxvHG8eN443jG8eN443jjeNxHI3j4zgbx3EcjeNUVRvHVFWpqnEcqarjODiOcRw4juM4OI5UVcZxcRzGceM4xnFUVVVVcRxVVeM4VVVUVeM4cRzjOOM44zhUVXEccRxxHOM4cRxUVXEcxnHjOMZxcRw4jlVVxnHjODiO4zipqlVVOI7GccZxVVWpqsZxOI44jsZxxnGpqjiOOI44jqmqqqo4jqqqqaobxziOjePGcRvHqao="),
+"format": 34896613399,
+"index_count": 486,
+"index_data": PackedByteArray("RQABAAIARQAAAAEARgBFAAIARgACAAMARwAAAEUARwAHAAAANABFAEYANABHAEUASABGAAMASAADAAQASQA0AEYASQBGAEgASgAHAEcASgAIAAcASwBHADQASwBKAEcANQA0AEkANQBLADQATAAIAEoATAAKAAgATQBKAEsATQBMAEoATgBLADUATgBNAEsATwAKAEwATwALAAoAUABMAE0AUABPAEwAUQBNAE4AUQBQAE0AUgALAE8AUgAMAAsAUwBPAFAAUwBSAE8AVABQAFEAVABTAFAAVQAMAFIAVQAVAAwAVgBSAFMAVgBVAFIAVwBTAFQAVwBWAFMAWAAVAFUAWAAWABUAGAAWAFgAGAAZABYAFwAYAFgAWQBYAFUAFwBYAFkAWQBVAFYAFAAXAFkAWgBZAFYAFABZAFoAWgBWAFcAEwAUAFoAEwBaAFsAWwBaAFcAEgATAFsAWwBXAFwAEgBbAF0AXQBbAFwAXABXAFQAEQASAF0AXABUAF4AXgBUAFEAXQBcAF8AXwBcAF4AEQBdAC8ALwBdAF8AEAARAC8AEAAvADMAMwAvAGAALwBfAGAAMwBgAAkAXwBeAGEAYABfAGEAXgBRAGIAYQBeAGIAYgBRAE4ACQBgAGMAYABhAGMACQBjADIAYQBiAGQAYwBhAGQAYgBOAGUAZABiAGUAZQBOADUAMgBjAGYAYwBkAGYAMgBmADEAZABlAGcAZgBkAGcAZQA1ADcAZwBlADcANwA1AEkAMQBmAGgAZgBnAGgAMQBoADAAZwA3AGkAaABnAGkANwBJADYAaQA3ADYANgBJAEgAMABoAGoAaABpAGoAMABqAA0AaQA2AGsAagBpAGsANgBIAGwAawA2AGwAbABIAAQAbAAEAAUADQBqAG0AagBrAG0ADQBtAC4AawBsACsAKwBsAAUAbQBrACsAKwAFAAYALgBtACwAbQArACwALAArAAYALgAsAC0ALAAGAA4ALQAsAA4ALQAOAA8AGgA4ABwAGgAbADgAGwA5ADgAGwAeADkAOAA5AB0AHAA4ADoAOAAdADoAHAA6AB8AOgAdADsAHwA6ADwAOgA7ADwAHwA8ACEAPAA7AD0AIQA8AD4APAA9AD4AIQA+ACAAPgA9AD8AIAA+ACMAPgA/ACMAIAAjACQAIwA/ACIAJAAjAEAAIwAiAEAAJABAACUAQAAiAEEAJQBAAEIAQABBAEIAJQBCACgAQgBBAEMAKABCAEQAQgBDAEQARABDACcAKABEACkARAAnACYAKQBEACYAKQAmACoA"),
+"lods": [0.00090955774, PackedByteArray("AAABAAIAAAACAAMAAAADAAQAAAAEAAUAKwAAAAUAKwAFAAYALAArAAYALAAGAA4ALQAsAA4ALQAOAA8ALgAsAC0ALgArACwADQArAC4ADQAvACsAMAAvAA0AMQAvADAAMgAvADEAMgAJAC8AMwAvAAkAEAAvADMAEAARAC8AEQASAC8AEgATAC8AEwAUAC8AFAAMAC8AFAAVAAwAFgAVABQAFAAXABYAFwAYABYAGAAZABYADAALAC8ACwAKAC8ALwAKAAgALwAIADQANAAIAAcANAAHAAAALwA0ADUANgA0AAAANQA0ADYAKwA2AAAALwA2ACsANwA1ADYALwA1ADcALwA3ADYAGgA4ABwAGgAbADgAGwA5ADgAGwAeADkAOAA5AB0AHAA4ADoAOAAdADoAHAA6AB8AOgAdADsAHwA6ADwAOgA7ADwAHwA8ACEAPAA7AD0AIQA8AD4APAA9AD4AIQA+ACAAPgA9AD8AIAA+ACMAPgA/ACMAIAAjACQAIwA/ACIAJAAjAEAAIwAiAEAAJABAACUAQAAiAEEAJQBAAEIAQABBAEIAJQBCACgAQgBBAEMAKABCAEQAQgBDAEQARABDACcAKABEACkARAAnACYAKQBEACYAKQAmACoA"), 0.32864845, PackedByteArray("AAABAAIAAAACAAMAAAADAAQAAAAEAAUABgAAAAUABgAHAAAABgAIAAcACQAIAAYACQAKAAgACwAKAAkADAALAAkADQAJAAYADQAGAA4ADQAOAA8AEAARAAkAEQASAAkAEgATAAkAEwAUAAkAFAAMAAkAFAAVAAwAFgAVABQAFAAXABYAFwAYABYAGAAZABYAGgAbABwAHAAbAB0AGwAeAB0AHAAdAB8AHwAdACAAHwAgACEAIAAdACIAIAAiACMAIAAjACQAJAAjACUAIwAiACYAJQAjACYAJgAiACcAJQAmACgAKAAmACkAKQAmACoA")],
+"material": SubResource("StandardMaterial3D_jv88u"),
+"name": "Cloth",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 110,
+"vertex_data": PackedByteArray("jeP//wAA/7//////AAD/v/////9vI/+//////99G/7//////Tmr/v/////++jf+//////y2x/78bx///AAD/v6qq//8AAP+/4zj+/wz4/784jv//AAD/v8Zx//8AAP+/VFX//wAA/7+qqv7/DPj/v/////+d1P+////+/wz4/78AAP7/DPj/vwAA//+d1P+/AAD//y2x/78AAP//vo3/vwAA//9Oav+/4zj//wAA/79xHP//AAD/vwAA///fRv+/AAD//28j/78AAP//AAD/vwAA9XXs+GCbAAD6uv//vo5xHCE67Pjdh+M4/v8M+KSKAAD+/wz4sIfjOOuP7PjJisZx85js+PiHVFW8Wez4CYiqqv7/DPiAiDiOPp7//4+MOI4mLez4L4aqqmFf7PhUl///+rr///Gb///+/wz444obx/V17PhMkY3jAADs+JCI///1dez4IK2N4///LbH/v43j//+d1P+/jeP+/wz4/78bx/7/DPj/v3Ec//+d1P+/OI7+/wz4/7/Gcf7/DPj/v1RV/v8M+P+/cRz+/wz4/78bx///30b/v6qq//9Oav+/G8f//76N/7+qqv//vo3/v3EciJz//3mCcRz+/wz4IYnjOPDU//8niVRV/v8M+PGLVFVQrv//IYTGcf7/DPhyisZxU9X//yGFOI7+/wz47Yuqqhez//9RixvH/v8M+EeIG8cGwf//LoaN4/7/DPiaiY3jnY3//5mGjeP//28j/7+N4///30b/vxvH//9vI/+/jeP//05q/78bx///Tmr/v6qq//9vI/+/qqr//99G/784jv//byP/vziO///fRv+/OI7//05q/7/Gcf//byP/v8Zx///fRv+/xnH//05q/79UVf//byP/v1RV///fRv+/VFX//05q/7/jOP//byP/v+M4///fRv+/4zj//05q/79xHP//byP/v3Ec///fRv+/cRz//05q/79xHP//vo3/v+M4//++jf+/cRz//y2x/79UVf//vo3/v+M4//8tsf+/4zj//53U/79UVf//LbH/v8Zx//++jf+/VFX//53U/7/Gcf//LbH/vziO//++jf+/xnH//53U/784jv//LbH/vziO//+d1P+/qqr//y2x/7+qqv//ndT/vxvH//8tsf+/jeP//76N/78bx///ndT/v////3////9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/////f/7//3////9/////f////3////9/////f////3////9/A2QaibeQIYf8NoV13P73UtjkImerBS45rDFFjGcnznoN9t+kDXL7jPIgz4+9BN4cQfriCwbylMrNXaKKxEnJe+YHlBP///9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/aCEERhjMCI5I/uYt3ckVhihYkXf89+9RSvkyT0S8MXwH+H8IbfKkXQisdn9NwDWDNmW7fv///3////9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_xrmlc")
+
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_ktfto"]
 dof_blur_far_distance = 64.0
 dof_blur_far_transition = 8.0
+
+[sub_resource type="Curve" id="Curve_ktfto"]
+_data = [Vector2(0, 0), 0.0, -0.051224705, 0, 0, Vector2(0.6391213, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -4.995711, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_ut1ry"]
+curve = SubResource("Curve_ktfto")
+
+[sub_resource type="Curve" id="Curve_7y7vd"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.2780735, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_jleah"]
+curve = SubResource("Curve_7y7vd")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_uq13r"]
+lifetime_randomness = 0.82
+emission_shape_offset = Vector3(0, 24, 0)
+emission_shape = 3
+emission_box_extents = Vector3(32, 24, 32)
+spread = 180.0
+initial_velocity_min = 0.5
+initial_velocity_max = 4.0
+gravity = Vector3(0, 0, 0)
+damping_min = 8.706
+damping_max = 11.059001
+scale_min = 2.0
+scale_max = 4.0
+scale_curve = SubResource("CurveTexture_jleah")
+color = Color(1, 1, 1, 0.0627451)
+alpha_curve = SubResource("CurveTexture_ut1ry")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1y2o3"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.7854017, 0.7643491, 0.75294095, 1)
+albedo_texture = ExtResource("4_ktfto")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_fsmdn"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_1y2o3")
+size = Vector2(4, 4)
+orientation = 2
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_si4fk"]
 noise_type = 3
@@ -120,57 +216,11 @@ size = Vector2(128, 128)
 [sub_resource type="BoxShape3D" id="BoxShape3D_14s3j"]
 size = Vector3(64, 100, 64)
 
-[sub_resource type="Curve" id="Curve_ktfto"]
-_data = [Vector2(0, 0), 0.0, -0.051224705, 0, 0, Vector2(0.6391213, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -4.995711, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="CurveTexture" id="CurveTexture_ut1ry"]
-curve = SubResource("Curve_ktfto")
-
-[sub_resource type="Curve" id="Curve_7y7vd"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.2780735, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_jleah"]
-curve = SubResource("Curve_7y7vd")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_uq13r"]
-lifetime_randomness = 0.82
-emission_shape_offset = Vector3(0, 24, 0)
-emission_shape = 3
-emission_box_extents = Vector3(32, 24, 32)
-spread = 180.0
-initial_velocity_min = 0.5
-initial_velocity_max = 4.0
-gravity = Vector3(0, 0, 0)
-damping_min = 8.706
-damping_max = 11.059001
-scale_min = 2.0
-scale_max = 4.0
-scale_curve = SubResource("CurveTexture_jleah")
-color = Color(1, 1, 1, 0.0627451)
-alpha_curve = SubResource("CurveTexture_ut1ry")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_246s2"]
-transparency = 1
-cull_mode = 2
-shading_mode = 0
-vertex_color_use_as_albedo = true
-albedo_color = Color(0.7854017, 0.7643491, 0.75294095, 1)
-albedo_texture = ExtResource("4_ktfto")
-billboard_mode = 3
-billboard_keep_scale = true
-particles_anim_h_frames = 1
-particles_anim_v_frames = 1
-particles_anim_loop = false
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_fsmdn"]
-resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_246s2")
-size = Vector2(4, 4)
-orientation = 2
+[sub_resource type="BoxShape3D" id="BoxShape3D_67j1t"]
+size = Vector3(64, 64, 64)
 
 [node name="PhantomFight" unique_id=793946330 instance=ExtResource("1_l4y3c")]
+music_track = ExtResource("2_fsmdn")
 level_over_pause = 3.0
 
 [node name="WorldEnvironment" parent="Environment" parent_id_path=PackedInt32Array(921388622) index="0" unique_id=986338651]
@@ -218,19 +268,286 @@ transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -14.134, -2.16, -3.8451
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 14.133583, -2.1603022, -3.8454819)
 
 [node name="podium" parent="Environment/FrontWall" index="4" unique_id=418665468 instance=ExtResource("7_jrqyy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10.89032)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.0045319)
+
+[node name="platform" parent="Environment/FrontWall/podium" index="4" unique_id=159191848 instance=ExtResource("6_7y7vd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.002264, 4.5486298)
+
+[node name="bench" parent="Environment/FrontWall/podium/platform" index="9" unique_id=1448999800 instance=ExtResource("7_uq13r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.6609306, -0.6103821)
+
+[node name="mat" type="Node3D" parent="Environment/FrontWall/podium/platform" index="10" unique_id=826060411]
+
+[node name="Mesh" type="SoftBody3D" parent="Environment/FrontWall/podium/platform/mat" index="0" unique_id=1567044492]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.007815666, 0.57748795, 1.5661736)
+mesh = SubResource("ArrayMesh_b6d4n")
+skeleton = NodePath("")
+pinned_points = [16, 51, 9, 50, 49, 48, 13, 46, 45, 15, 17, 47, 96, 99, 102, 104, 106, 109, 44, 14, 18, 93, 95, 97, 100, 103, 105, 107, 43, 6, 5, 108, 54, 55, 101, 98, 94, 92, 91, 19, 20, 90, 87, 84, 81, 78, 53, 73, 72, 4, 3, 70, 52, 75, 77, 80, 83, 86, 89, 23, 24, 88, 85, 82, 79, 76, 74, 71, 69, 2, 1, 0, 7, 8, 10, 11, 12, 21, 22, 25]
+attachments/0/point_index = 16
+attachments/0/spatial_attachment_path = NodePath("")
+attachments/0/offset = Vector3(0, 0, 0)
+attachments/1/point_index = 51
+attachments/1/spatial_attachment_path = NodePath("")
+attachments/1/offset = Vector3(0, 0, 0)
+attachments/2/point_index = 9
+attachments/2/spatial_attachment_path = NodePath("")
+attachments/2/offset = Vector3(0, 0, 0)
+attachments/3/point_index = 50
+attachments/3/spatial_attachment_path = NodePath("")
+attachments/3/offset = Vector3(0, 0, 0)
+attachments/4/point_index = 49
+attachments/4/spatial_attachment_path = NodePath("")
+attachments/4/offset = Vector3(0, 0, 0)
+attachments/5/point_index = 48
+attachments/5/spatial_attachment_path = NodePath("")
+attachments/5/offset = Vector3(0, 0, 0)
+attachments/6/point_index = 13
+attachments/6/spatial_attachment_path = NodePath("")
+attachments/6/offset = Vector3(0, 0, 0)
+attachments/7/point_index = 46
+attachments/7/spatial_attachment_path = NodePath("")
+attachments/7/offset = Vector3(0, 0, 0)
+attachments/8/point_index = 45
+attachments/8/spatial_attachment_path = NodePath("")
+attachments/8/offset = Vector3(0, 0, 0)
+attachments/9/point_index = 15
+attachments/9/spatial_attachment_path = NodePath("")
+attachments/9/offset = Vector3(0, 0, 0)
+attachments/10/point_index = 17
+attachments/10/spatial_attachment_path = NodePath("")
+attachments/10/offset = Vector3(0, 0, 0)
+attachments/11/point_index = 47
+attachments/11/spatial_attachment_path = NodePath("")
+attachments/11/offset = Vector3(0, 0, 0)
+attachments/12/point_index = 96
+attachments/12/spatial_attachment_path = NodePath("")
+attachments/12/offset = Vector3(0, 0, 0)
+attachments/13/point_index = 99
+attachments/13/spatial_attachment_path = NodePath("")
+attachments/13/offset = Vector3(0, 0, 0)
+attachments/14/point_index = 102
+attachments/14/spatial_attachment_path = NodePath("")
+attachments/14/offset = Vector3(0, 0, 0)
+attachments/15/point_index = 104
+attachments/15/spatial_attachment_path = NodePath("")
+attachments/15/offset = Vector3(0, 0, 0)
+attachments/16/point_index = 106
+attachments/16/spatial_attachment_path = NodePath("")
+attachments/16/offset = Vector3(0, 0, 0)
+attachments/17/point_index = 109
+attachments/17/spatial_attachment_path = NodePath("")
+attachments/17/offset = Vector3(0, 0, 0)
+attachments/18/point_index = 44
+attachments/18/spatial_attachment_path = NodePath("")
+attachments/18/offset = Vector3(0, 0, 0)
+attachments/19/point_index = 14
+attachments/19/spatial_attachment_path = NodePath("")
+attachments/19/offset = Vector3(0, 0, 0)
+attachments/20/point_index = 18
+attachments/20/spatial_attachment_path = NodePath("")
+attachments/20/offset = Vector3(0, 0, 0)
+attachments/21/point_index = 93
+attachments/21/spatial_attachment_path = NodePath("")
+attachments/21/offset = Vector3(0, 0, 0)
+attachments/22/point_index = 95
+attachments/22/spatial_attachment_path = NodePath("")
+attachments/22/offset = Vector3(0, 0, 0)
+attachments/23/point_index = 97
+attachments/23/spatial_attachment_path = NodePath("")
+attachments/23/offset = Vector3(0, 0, 0)
+attachments/24/point_index = 100
+attachments/24/spatial_attachment_path = NodePath("")
+attachments/24/offset = Vector3(0, 0, 0)
+attachments/25/point_index = 103
+attachments/25/spatial_attachment_path = NodePath("")
+attachments/25/offset = Vector3(0, 0, 0)
+attachments/26/point_index = 105
+attachments/26/spatial_attachment_path = NodePath("")
+attachments/26/offset = Vector3(0, 0, 0)
+attachments/27/point_index = 107
+attachments/27/spatial_attachment_path = NodePath("")
+attachments/27/offset = Vector3(0, 0, 0)
+attachments/28/point_index = 43
+attachments/28/spatial_attachment_path = NodePath("")
+attachments/28/offset = Vector3(0, 0, 0)
+attachments/29/point_index = 6
+attachments/29/spatial_attachment_path = NodePath("")
+attachments/29/offset = Vector3(0, 0, 0)
+attachments/30/point_index = 5
+attachments/30/spatial_attachment_path = NodePath("")
+attachments/30/offset = Vector3(0, 0, 0)
+attachments/31/point_index = 108
+attachments/31/spatial_attachment_path = NodePath("")
+attachments/31/offset = Vector3(0, 0, 0)
+attachments/32/point_index = 54
+attachments/32/spatial_attachment_path = NodePath("")
+attachments/32/offset = Vector3(0, 0, 0)
+attachments/33/point_index = 55
+attachments/33/spatial_attachment_path = NodePath("")
+attachments/33/offset = Vector3(0, 0, 0)
+attachments/34/point_index = 101
+attachments/34/spatial_attachment_path = NodePath("")
+attachments/34/offset = Vector3(0, 0, 0)
+attachments/35/point_index = 98
+attachments/35/spatial_attachment_path = NodePath("")
+attachments/35/offset = Vector3(0, 0, 0)
+attachments/36/point_index = 94
+attachments/36/spatial_attachment_path = NodePath("")
+attachments/36/offset = Vector3(0, 0, 0)
+attachments/37/point_index = 92
+attachments/37/spatial_attachment_path = NodePath("")
+attachments/37/offset = Vector3(0, 0, 0)
+attachments/38/point_index = 91
+attachments/38/spatial_attachment_path = NodePath("")
+attachments/38/offset = Vector3(0, 0, 0)
+attachments/39/point_index = 19
+attachments/39/spatial_attachment_path = NodePath("")
+attachments/39/offset = Vector3(0, 0, 0)
+attachments/40/point_index = 20
+attachments/40/spatial_attachment_path = NodePath("")
+attachments/40/offset = Vector3(0, 0, 0)
+attachments/41/point_index = 90
+attachments/41/spatial_attachment_path = NodePath("")
+attachments/41/offset = Vector3(0, 0, 0)
+attachments/42/point_index = 87
+attachments/42/spatial_attachment_path = NodePath("")
+attachments/42/offset = Vector3(0, 0, 0)
+attachments/43/point_index = 84
+attachments/43/spatial_attachment_path = NodePath("")
+attachments/43/offset = Vector3(0, 0, 0)
+attachments/44/point_index = 81
+attachments/44/spatial_attachment_path = NodePath("")
+attachments/44/offset = Vector3(0, 0, 0)
+attachments/45/point_index = 78
+attachments/45/spatial_attachment_path = NodePath("")
+attachments/45/offset = Vector3(0, 0, 0)
+attachments/46/point_index = 53
+attachments/46/spatial_attachment_path = NodePath("")
+attachments/46/offset = Vector3(0, 0, 0)
+attachments/47/point_index = 73
+attachments/47/spatial_attachment_path = NodePath("")
+attachments/47/offset = Vector3(0, 0, 0)
+attachments/48/point_index = 72
+attachments/48/spatial_attachment_path = NodePath("")
+attachments/48/offset = Vector3(0, 0, 0)
+attachments/49/point_index = 4
+attachments/49/spatial_attachment_path = NodePath("")
+attachments/49/offset = Vector3(0, 0, 0)
+attachments/50/point_index = 3
+attachments/50/spatial_attachment_path = NodePath("")
+attachments/50/offset = Vector3(0, 0, 0)
+attachments/51/point_index = 70
+attachments/51/spatial_attachment_path = NodePath("")
+attachments/51/offset = Vector3(0, 0, 0)
+attachments/52/point_index = 52
+attachments/52/spatial_attachment_path = NodePath("")
+attachments/52/offset = Vector3(0, 0, 0)
+attachments/53/point_index = 75
+attachments/53/spatial_attachment_path = NodePath("")
+attachments/53/offset = Vector3(0, 0, 0)
+attachments/54/point_index = 77
+attachments/54/spatial_attachment_path = NodePath("")
+attachments/54/offset = Vector3(0, 0, 0)
+attachments/55/point_index = 80
+attachments/55/spatial_attachment_path = NodePath("")
+attachments/55/offset = Vector3(0, 0, 0)
+attachments/56/point_index = 83
+attachments/56/spatial_attachment_path = NodePath("")
+attachments/56/offset = Vector3(0, 0, 0)
+attachments/57/point_index = 86
+attachments/57/spatial_attachment_path = NodePath("")
+attachments/57/offset = Vector3(0, 0, 0)
+attachments/58/point_index = 89
+attachments/58/spatial_attachment_path = NodePath("")
+attachments/58/offset = Vector3(0, 0, 0)
+attachments/59/point_index = 23
+attachments/59/spatial_attachment_path = NodePath("")
+attachments/59/offset = Vector3(0, 0, 0)
+attachments/60/point_index = 24
+attachments/60/spatial_attachment_path = NodePath("")
+attachments/60/offset = Vector3(0, 0, 0)
+attachments/61/point_index = 88
+attachments/61/spatial_attachment_path = NodePath("")
+attachments/61/offset = Vector3(0, 0, 0)
+attachments/62/point_index = 85
+attachments/62/spatial_attachment_path = NodePath("")
+attachments/62/offset = Vector3(0, 0, 0)
+attachments/63/point_index = 82
+attachments/63/spatial_attachment_path = NodePath("")
+attachments/63/offset = Vector3(0, 0, 0)
+attachments/64/point_index = 79
+attachments/64/spatial_attachment_path = NodePath("")
+attachments/64/offset = Vector3(0, 0, 0)
+attachments/65/point_index = 76
+attachments/65/spatial_attachment_path = NodePath("")
+attachments/65/offset = Vector3(0, 0, 0)
+attachments/66/point_index = 74
+attachments/66/spatial_attachment_path = NodePath("")
+attachments/66/offset = Vector3(0, 0, 0)
+attachments/67/point_index = 71
+attachments/67/spatial_attachment_path = NodePath("")
+attachments/67/offset = Vector3(0, 0, 0)
+attachments/68/point_index = 69
+attachments/68/spatial_attachment_path = NodePath("")
+attachments/68/offset = Vector3(0, 0, 0)
+attachments/69/point_index = 2
+attachments/69/spatial_attachment_path = NodePath("")
+attachments/69/offset = Vector3(0, 0, 0)
+attachments/70/point_index = 1
+attachments/70/spatial_attachment_path = NodePath("")
+attachments/70/offset = Vector3(0, 0, 0)
+attachments/71/point_index = 0
+attachments/71/spatial_attachment_path = NodePath("")
+attachments/71/offset = Vector3(0, 0, 0)
+attachments/72/point_index = 7
+attachments/72/spatial_attachment_path = NodePath("")
+attachments/72/offset = Vector3(0, 0, 0)
+attachments/73/point_index = 8
+attachments/73/spatial_attachment_path = NodePath("")
+attachments/73/offset = Vector3(0, 0, 0)
+attachments/74/point_index = 10
+attachments/74/spatial_attachment_path = NodePath("")
+attachments/74/offset = Vector3(0, 0, 0)
+attachments/75/point_index = 11
+attachments/75/spatial_attachment_path = NodePath("")
+attachments/75/offset = Vector3(0, 0, 0)
+attachments/76/point_index = 12
+attachments/76/spatial_attachment_path = NodePath("")
+attachments/76/offset = Vector3(0, 0, 0)
+attachments/77/point_index = 21
+attachments/77/spatial_attachment_path = NodePath("")
+attachments/77/offset = Vector3(0, 0, 0)
+attachments/78/point_index = 22
+attachments/78/spatial_attachment_path = NodePath("")
+attachments/78/offset = Vector3(0, 0, 0)
+attachments/79/point_index = 25
+attachments/79/spatial_attachment_path = NodePath("")
+attachments/79/offset = Vector3(0, 0, 0)
 
 [node name="Camera" parent="CameraController/CameraPitch/Gimbal" parent_id_path=PackedInt32Array(969489915, 985846177) index="0" unique_id=707455384]
 attributes = SubResource("CameraAttributesPractical_ktfto")
 
 [node name="PhantomBoss" parent="." index="5" unique_id=1724463133 instance=ExtResource("2_vuuix")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.986, -12.655)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.660065, -42.09384)
 
 [node name="Player" parent="." index="6" unique_id=1127319379]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9777079, 25.210205)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9777079, 28.744781)
 
-[node name="Floor" type="StaticBody3D" parent="." index="7" unique_id=433638540]
+[node name="Phase2Steam" type="GPUParticles3D" parent="." index="7" unique_id=345427354]
+emitting = false
+amount = 2048
+lifetime = 4.0
+randomness = 0.83
+collision_base_size = 0.5
+visibility_aabb = AABB(-32, -48, -32, 64, 64, 64)
+process_material = SubResource("ParticleProcessMaterial_uq13r")
+draw_pass_1 = SubResource("PlaneMesh_fsmdn")
+
+[node name="Floor" type="StaticBody3D" parent="." index="8" unique_id=433638540]
 collision_layer = 4
+script = ExtResource("10_gc3yy")
+footsteps_audio = ExtResource("11_1y2o3")
+land_audio = ExtResource("12_pijb2")
 
 [node name="Mesh" type="MeshInstance3D" parent="Floor" index="0" unique_id=1870164113]
 mesh = SubResource("PlaneMesh_14s3j")
@@ -255,14 +572,14 @@ shape = SubResource("BoxShape3D_14s3j")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 64)
 shape = SubResource("BoxShape3D_14s3j")
 
-[node name="Phase2Steam" type="GPUParticles3D" parent="." index="8" unique_id=345427354]
-emitting = false
-amount = 2048
-lifetime = 4.0
-randomness = 0.83
-collision_base_size = 0.5
-visibility_aabb = AABB(-32, -48, -32, 64, 64, 64)
-process_material = SubResource("ParticleProcessMaterial_uq13r")
-draw_pass_1 = SubResource("PlaneMesh_fsmdn")
+[node name="StartFightTrigger" type="Area3D" parent="." index="9" unique_id=923284050]
+collision_layer = 0
+
+[node name="Collision" type="CollisionShape3D" parent="StartFightTrigger" index="0" unique_id=1903406756]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.013477)
+shape = SubResource("BoxShape3D_67j1t")
+
+[node name="IntroSteamPoint" type="Marker3D" parent="." index="10" unique_id=1196936059]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2380104, -26.57209)
 
 [editable path="CameraController"]

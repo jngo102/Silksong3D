@@ -37,7 +37,7 @@ damping_max = 11.059001
 scale_min = 2.0
 scale_max = 4.0
 scale_curve = SubResource("CurveTexture_jleah")
-color = Color(1, 1, 1, 0.0627451)
+color = Color(1, 1, 1, 0.2509804)
 alpha_curve = SubResource("CurveTexture_ut1ry")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_246s2"]
@@ -157,23 +157,23 @@ emitting = false
 amount = 128
 lifetime = 2.0
 collision_base_size = 0.5
-visibility_aabb = AABB(-32, -48, -32, 64, 64, 64)
+visibility_aabb = AABB(-32, 0, -32, 64, 64, 64)
 transform_align = 1
 transform_align_channel_filter = 1
 process_material = SubResource("ParticleProcessMaterial_ut1ry")
 draw_pass_1 = SubResource("PlaneMesh_64vl4")
 
 [node name="ColumnParticles" type="GPUParticles3D" parent="SteamColumnParticles" unique_id=321247775]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 47.59901, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 210, 0)
 emitting = false
 amount = 512
 lifetime = 0.25
-visibility_aabb = AABB(-32, -48, -32, 64, 64, 64)
+visibility_aabb = AABB(-256, -208, -256, 512, 512, 512)
 process_material = ExtResource("2_ut1ry")
 draw_pass_1 = SubResource("PlaneMesh_64vl4")
 
 [node name="SpreadParticles" type="GPUParticles3D" parent="SteamColumnParticles/ColumnParticles" unique_id=1500484103]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -48, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -208, 0)
 emitting = false
 amount = 128
 lifetime = 0.25
@@ -198,6 +198,7 @@ draw_pass_1 = SubResource("SphereMesh_h0i2w")
 [node name="SteamBurst" type="GPUParticles3D" parent="SteamBurstBalls" unique_id=1964477077]
 emitting = false
 amount = 256
+lifetime = 0.5
 one_shot = true
 explosiveness = 0.7
 randomness = 0.53

@@ -21,6 +21,7 @@ func _process(delta: float) -> void:
 func pause_gravity() -> void:
 	_previous_gravity_scale = gravity_scale
 	gravity_scale = 0
+	body.velocity.y = 0
 
 func resume_gravity() -> void:
 	gravity_scale = _previous_gravity_scale

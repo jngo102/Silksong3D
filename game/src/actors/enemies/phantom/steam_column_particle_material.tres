@@ -374,7 +374,7 @@ void process() {
 	base_angle += CUSTOM.y * LIFETIME * dynamic_params.angular_velocity;
 	CUSTOM.x = base_angle * degree_to_rad;
 	float value = randf_range(TRANSFORM[3].xz, 0.3, 0.6);
-	params.color = vec4(value, value, value, 0.25);
+	params.color = vec4(value, value, value, 0.5);
 	COLOR = params.color;
 
 	TRANSFORM[0].xyz = normalize_or_else(TRANSFORM[0].xyz, vec3(1.0, 0.0, 0.0));
@@ -450,7 +450,7 @@ shader_parameter/anim_speed_max = 0.0
 shader_parameter/anim_offset_min = 0.0
 shader_parameter/anim_offset_max = 0.0
 shader_parameter/lifetime_randomness = 0.0
-shader_parameter/emission_shape_offset = Vector3(0, 139.96, 0)
+shader_parameter/emission_shape_offset = Vector3(0, 0, 0)
 shader_parameter/emission_shape_scale = Vector3(1, 0, 1)
 shader_parameter/velocity_pivot = Vector3(0, 0, 0)
 shader_parameter/emission_ring_axis = Vector3(0, 90, 0)
