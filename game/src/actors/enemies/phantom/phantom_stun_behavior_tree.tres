@@ -195,7 +195,6 @@ script = ExtResource("4_nu2ce")
 clips_array = Array[AudioStream]([SubResource("AudioStreamRandomizer_vsfdh")])
 play_position_var = &"self_position"
 pitch_min = 0.95
-output_audio_player_var = null
 
 [sub_resource type="BTAction" id="BTAction_vsfdh"]
 script = ExtResource("1_7qn4j")
@@ -372,7 +371,6 @@ script = ExtResource("4_nu2ce")
 clips_array = Array[AudioStream]([ExtResource("16_g3dws"), ExtResource("17_msq8v"), ExtResource("18_4gup5"), ExtResource("19_yvaeq"), ExtResource("20_jndlm"), ExtResource("21_5l5nq"), ExtResource("22_dhn5e"), ExtResource("23_ihu5i"), ExtResource("24_yrgrv")])
 play_position_var = &"self_position"
 pitch_min = 0.9
-output_audio_player_var = null
 
 [sub_resource type="BBNode" id="BBNode_vu5oo"]
 saved_value = NodePath("Mesh/AnimationPlayer")

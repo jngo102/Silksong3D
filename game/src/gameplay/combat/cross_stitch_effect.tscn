@@ -1,0 +1,239 @@
+[gd_scene format=3 uid="uid://csdh2rnjby18m"]
+
+[ext_resource type="PackedScene" uid="uid://b7x7hsefehmao" path="res://src/levels/phantom/cross_stitch_effect.glb" id="1_ggk60"]
+
+[sub_resource type="Animation" id="Animation_ggk60"]
+resource_name = "Effect"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Effect0:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.16666667, 0.36666667, 0.46666664),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Effect1:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.23333333, 0.36666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Effect2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.06666666, 0.13333334, 0.33333334, 0.4333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Effect3:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.19999999, 0.33333337),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Effect4:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.23333335, 0.4, 0.49999997),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Effect5:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.23333335, 0.33333337),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_lm0xy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Effect0:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Effect1:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Effect2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Effect3:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Effect4:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Effect5:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mwd5l"]
+_data = {
+&"Effect": SubResource("Animation_ggk60"),
+&"RESET": SubResource("Animation_lm0xy")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_14s3j"]
+shading_mode = 0
+albedo_color = Color(0.89059, 0.89059, 0.8905901, 1)
+
+[node name="CrossStitchEffect" type="Node3D" unique_id=1689345566]
+
+[node name="Animator" type="AnimationPlayer" parent="." unique_id=1115267792]
+libraries/ = SubResource("AnimationLibrary_mwd5l")
+autoplay = &"Effect"
+
+[node name="Effect0" parent="." unique_id=1708859517 instance=ExtResource("1_ggk60")]
+transform = Transform3D(0.9950688, -0.077411816, -0.062011126, 0.068910345, 0.9892303, -0.12913118, 0.07133956, 0.124221206, 0.98968667, -2.4255333, 0, 0)
+visible = false
+
+[node name="CrossStitchEffect" parent="Effect0" index="0" unique_id=72774125]
+transform = Transform3D(0.3509273, 9.313226e-09, 1.7881393e-07, -5.355105e-09, 0.30052146, 1.1920929e-07, 1.8626451e-09, 7.450581e-09, 12.207123, 2.8476443, 2.468079, 3.2573023)
+surface_material_override/0 = SubResource("StandardMaterial3D_14s3j")
+
+[node name="Effect1" parent="." unique_id=103706463 instance=ExtResource("1_ggk60")]
+transform = Transform3D(0.97278005, 0.23141216, -0.0121436585, -0.22905183, 0.9681589, 0.10101405, 0.035132878, -0.09548296, 0.99481076, -3.9055214, -3.7290468, -6.571106)
+visible = false
+
+[node name="CrossStitchEffect" parent="Effect1" index="0" unique_id=72774125]
+transform = Transform3D(0.52234596, -5.47152e-09, 2.0861626e-07, -6.519258e-09, 0.4128277, 5.9604645e-08, -1.8626451e-09, 1.4901161e-08, 9.413384, 3.6847372, 3.5047457, 0.97345304)
+surface_material_override/0 = SubResource("StandardMaterial3D_14s3j")
+
+[node name="Effect2" parent="." unique_id=341602152 instance=ExtResource("1_ggk60")]
+transform = Transform3D(0.9505174, 0.17804329, -0.25459236, -0.22948754, 0.9547666, -0.1890949, 0.20940915, 0.23816375, 0.9483806, -1.4388771, -3.7290468, -1.7611523)
+visible = false
+
+[node name="CrossStitchEffect" parent="Effect2" index="0" unique_id=72774125]
+transform = Transform3D(0.81035453, -1.1175871e-08, 5.9604645e-07, 2.6077032e-08, 0.6625477, 3.5762787e-07, -7.4505806e-08, -8.940697e-08, 8.568254, 3.5141695, 3.244151, 3.1879046)
+surface_material_override/0 = SubResource("StandardMaterial3D_14s3j")
+
+[node name="Effect3" parent="." unique_id=826419123 instance=ExtResource("1_ggk60")]
+transform = Transform3D(0.9505174, 0.17804329, -0.25459236, -0.22948754, 0.9547666, -0.1890949, 0.20940915, 0.23816375, 0.9483806, -1.4388771, -3.7290468, -1.7611523)
+visible = false
+
+[node name="CrossStitchEffect" parent="Effect3" index="0" unique_id=72774125]
+transform = Transform3D(0.36406457, 0.018575553, 4.438545, -0.04148525, 0.34131747, 1.145133, -0.15656283, -0.047246303, 10.017763, -0.61115026, 5.205877, 3.6061654)
+surface_material_override/0 = SubResource("StandardMaterial3D_14s3j")
+
+[node name="Effect4" parent="." unique_id=1194155544 instance=ExtResource("1_ggk60")]
+transform = Transform3D(0.9505174, 0.17804329, -0.25459236, -0.22948754, 0.9547666, -0.1890949, 0.20940915, 0.23816375, 0.9483806, -1.4388771, -3.7290468, -1.7611523)
+visible = false
+
+[node name="CrossStitchEffect" parent="Effect4" index="0" unique_id=72774125]
+transform = Transform3D(0.5709585, -0.008284213, 3.4786968, -0.08556566, 0.4374092, 4.0975, -0.19773725, -0.213198, 8.271496, -1.1152529, 4.6325545, 1.3231661)
+surface_material_override/0 = SubResource("StandardMaterial3D_14s3j")
+
+[node name="Effect5" parent="." unique_id=253335566 instance=ExtResource("1_ggk60")]
+transform = Transform3D(0.9505174, 0.17804329, -0.25459236, -0.22948754, 0.9547666, -0.1890949, 0.20940915, 0.23816375, 0.9483806, -1.4388771, -3.7290468, -1.7611523)
+visible = false
+
+[node name="CrossStitchEffect" parent="Effect5" index="0" unique_id=72774125]
+transform = Transform3D(0.41701767, -0.17542659, 3.1113303, 0.19434887, 0.40191606, 0.47044396, -0.13890934, 0.03567774, 9.998676, -0.23383808, 4.533597, -3.2079434)
+surface_material_override/0 = SubResource("StandardMaterial3D_14s3j")
+
+[editable path="Effect0"]
+[editable path="Effect1"]
+[editable path="Effect2"]
+[editable path="Effect3"]
+[editable path="Effect4"]
+[editable path="Effect5"]

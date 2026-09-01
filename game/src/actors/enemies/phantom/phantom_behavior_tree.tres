@@ -661,7 +661,6 @@ script = ExtResource("7_h0i2w")
 clips_array = Array[AudioStream]([ExtResource("3_si4fk"), ExtResource("4_p38gw"), ExtResource("5_f4hly"), ExtResource("6_so4p7"), ExtResource("7_vbeax"), ExtResource("8_85jcb")])
 play_position_var = &"self_position"
 pitch_min = 0.95
-output_audio_player_var = null
 
 [sub_resource type="BTWait" id="BTWait_64vl4"]
 duration = 2.0
@@ -767,7 +766,6 @@ script = ExtResource("7_h0i2w")
 clips_array = Array[AudioStream]([ExtResource("52_q4pmx")])
 play_position_var = &"self_position"
 range = 24.0
-output_audio_player_var = null
 
 [sub_resource type="BBVariant" id="BBVariant_oo0pc"]
 type = 3
@@ -804,7 +802,6 @@ script = ExtResource("7_h0i2w")
 clips_array = Array[AudioStream]([SubResource("AudioStreamRandomizer_iijgd")])
 play_position_var = &"self_position"
 pitch_min = 0.95
-output_audio_player_var = null
 
 [sub_resource type="BBVariant" id="BBVariant_tipul"]
 type = 3
@@ -976,7 +973,6 @@ script = ExtResource("7_h0i2w")
 clips_array = Array[AudioStream]([ExtResource("3_si4fk"), ExtResource("4_p38gw"), ExtResource("5_f4hly"), ExtResource("6_so4p7"), ExtResource("7_vbeax"), ExtResource("8_85jcb")])
 play_position_var = &"self_position"
 pitch_min = 0.95
-output_audio_player_var = null
 
 [sub_resource type="BTWait" id="BTWait_oyjsi"]
 
@@ -1118,7 +1114,6 @@ clips_array = Array[AudioStream]([ExtResource("15_p38gw")])
 play_position_var = &"roar_point"
 pitch_min = 0.9
 range = 128.0
-output_audio_player_var = null
 
 [sub_resource type="BTAction" id="BTAction_gqfoe"]
 script = ExtResource("7_h0i2w")
@@ -1126,7 +1121,6 @@ clips_array = Array[AudioStream]([ExtResource("35_wor4f")])
 play_position_var = &"roar_point"
 pitch_min = 0.9
 range = 128.0
-output_audio_player_var = null
 
 [sub_resource type="BTWait" id="BTWait_f2o3u"]
 
@@ -1449,7 +1443,6 @@ script = ExtResource("7_h0i2w")
 clips_array = Array[AudioStream]([SubResource("AudioStreamRandomizer_hb2wt")])
 play_position_var = &"self_position"
 pitch_min = 0.95
-output_audio_player_var = null
 
 [sub_resource type="BTSequence" id="BTSequence_fl5cj"]
 custom_name = "Play Voice"
@@ -1779,7 +1772,6 @@ clips_array = Array[AudioStream]([SubResource("AudioStreamRandomizer_64vl4")])
 play_position_var = &"self_position"
 pitch_min = 0.9
 range = 128.0
-output_audio_player_var = null
 
 [sub_resource type="BBVariant" id="BBVariant_8hf85"]
 value_source = 1
@@ -1911,7 +1903,6 @@ script = ExtResource("7_h0i2w")
 clips_array = Array[AudioStream]([ExtResource("29_bnfm7"), ExtResource("30_nryh5")])
 play_position_var = &"self_position"
 range = 24.0
-output_audio_player_var = null
 
 [sub_resource type="BBVariant" id="BBVariant_prrtk"]
 value_source = 1
@@ -1962,7 +1953,6 @@ clips_array = Array[AudioStream]([ExtResource("57_uywq4")])
 play_position_var = &"pin_position"
 pitch_min = 0.95
 pitch_max = 1.05
-output_audio_player_var = null
 
 [sub_resource type="BTSequence" id="BTSequence_0vw3d"]
 custom_name = "Throw Pin"
@@ -1990,7 +1980,6 @@ script = ExtResource("7_h0i2w")
 clips_array = Array[AudioStream]([ExtResource("32_mlomx")])
 play_position_var = &"self_position"
 range = 24.0
-output_audio_player_var = null
 
 [sub_resource type="BBVariant" id="BBVariant_d58y8"]
 value_source = 1
@@ -2113,7 +2102,6 @@ script = ExtResource("7_h0i2w")
 clips_array = Array[AudioStream]([ExtResource("36_swc3g")])
 play_position_var = &"self_position"
 range = 24.0
-output_audio_player_var = null
 
 [sub_resource type="BBVariant" id="BBVariant_f22mr"]
 type = 22
@@ -2488,7 +2476,6 @@ clips_array = Array[AudioStream]([SubResource("AudioStreamRandomizer_si4fk")])
 play_position_var = &"self_position"
 pitch_min = 0.9
 range = 128.0
-output_audio_player_var = null
 
 [sub_resource type="BBVariant" id="BBVariant_ukowx"]
 value_source = 1
@@ -2589,7 +2576,6 @@ script = ExtResource("7_h0i2w")
 clips_array = Array[AudioStream]([ExtResource("29_bnfm7"), ExtResource("30_nryh5")])
 play_position_var = &"self_position"
 range = 24.0
-output_audio_player_var = null
 
 [sub_resource type="BBVariant" id="BBVariant_jgvls"]
 value_source = 1
@@ -2640,7 +2626,6 @@ clips_array = Array[AudioStream]([ExtResource("57_uywq4")])
 play_position_var = &"pin_position"
 pitch_min = 0.95
 pitch_max = 1.05
-output_audio_player_var = null
 
 [sub_resource type="BTSequence" id="BTSequence_17t2d"]
 custom_name = "Throw Pin"
@@ -2658,7 +2643,6 @@ script = ExtResource("7_h0i2w")
 clips_array = Array[AudioStream]([ExtResource("32_mlomx")])
 play_position_var = &"self_position"
 range = 24.0
-output_audio_player_var = null
 
 [sub_resource type="BBVariant" id="BBVariant_rh4mb"]
 value_source = 1
@@ -2773,7 +2757,6 @@ script = ExtResource("7_h0i2w")
 clips_array = Array[AudioStream]([ExtResource("36_swc3g")])
 play_position_var = &"self_position"
 range = 24.0
-output_audio_player_var = null
 
 [sub_resource type="BBVariant" id="BBVariant_326aj"]
 type = 22
@@ -3223,7 +3206,6 @@ clips_array = Array[AudioStream]([ExtResource("51_q4pmx")])
 play_position_var = &"self_position"
 pitch_min = 0.9
 pitch_max = 1.1
-output_audio_player_var = null
 
 [sub_resource type="BTAction" id="BTAction_1xqnx"]
 script = ExtResource("57_xppty")
@@ -3275,7 +3257,6 @@ script = ExtResource("7_h0i2w")
 clips_array = Array[AudioStream]([ExtResource("52_q4pmx")])
 play_position_var = &"self_position"
 range = 24.0
-output_audio_player_var = null
 
 [sub_resource type="BBVariant" id="BBVariant_ega3v"]
 type = 3
@@ -3312,7 +3293,6 @@ script = ExtResource("7_h0i2w")
 clips_array = Array[AudioStream]([SubResource("AudioStreamRandomizer_p38gw")])
 play_position_var = &"self_position"
 pitch_min = 0.95
-output_audio_player_var = null
 
 [sub_resource type="BBVariant" id="BBVariant_qvtbj"]
 type = 3
@@ -3343,7 +3323,6 @@ children = [SubResource("BTPlayAnimation_xppty"), SubResource("BTWait_6x3y8")]
 script = ExtResource("7_h0i2w")
 clips_array = Array[AudioStream]([ExtResource("55_6id38")])
 play_position_var = &"self_position"
-output_audio_player_var = null
 
 [sub_resource type="BBVariant" id="BBVariant_lt6va"]
 value_source = 1
@@ -3782,14 +3761,12 @@ script = ExtResource("7_h0i2w")
 clips_array = Array[AudioStream]([ExtResource("33_6fi2f"), ExtResource("34_pt02h"), ExtResource("35_we3h4"), ExtResource("36_hggkp"), ExtResource("37_cuh1j"), ExtResource("38_bnfm7"), ExtResource("39_nryh5"), ExtResource("40_mlomx"), ExtResource("41_swc3g")])
 play_position_var = &"self_position"
 pitch_min = 0.9
-output_audio_player_var = null
 
 [sub_resource type="BTAction" id="BTAction_mlomx"]
 script = ExtResource("7_h0i2w")
 clips_array = Array[AudioStream]([ExtResource("42_hggkp")])
 play_position_var = &"self_position"
 pitch_min = 0.9
-output_audio_player_var = null
 
 [sub_resource type="BTWait" id="BTWait_8hf85"]
 duration = 0.2
@@ -3881,14 +3858,12 @@ script = ExtResource("7_h0i2w")
 clips_array = Array[AudioStream]([ExtResource("33_6fi2f"), ExtResource("34_pt02h"), ExtResource("35_we3h4"), ExtResource("36_hggkp"), ExtResource("37_cuh1j"), ExtResource("38_bnfm7"), ExtResource("39_nryh5"), ExtResource("40_mlomx"), ExtResource("41_swc3g")])
 play_position_var = &"self_position"
 pitch_min = 0.9
-output_audio_player_var = null
 
 [sub_resource type="BTAction" id="BTAction_q4pmx"]
 script = ExtResource("7_h0i2w")
 clips_array = Array[AudioStream]([ExtResource("43_cuh1j")])
 play_position_var = &"self_position"
 pitch_min = 0.9
-output_audio_player_var = null
 
 [sub_resource type="BTWait" id="BTWait_0qf8d"]
 duration = 0.15
@@ -3980,14 +3955,12 @@ script = ExtResource("7_h0i2w")
 clips_array = Array[AudioStream]([ExtResource("33_6fi2f"), ExtResource("34_pt02h"), ExtResource("35_we3h4"), ExtResource("36_hggkp"), ExtResource("37_cuh1j"), ExtResource("38_bnfm7"), ExtResource("39_nryh5"), ExtResource("40_mlomx"), ExtResource("41_swc3g")])
 play_position_var = &"self_position"
 pitch_min = 0.9
-output_audio_player_var = null
 
 [sub_resource type="BTAction" id="BTAction_s81cj"]
 script = ExtResource("7_h0i2w")
 clips_array = Array[AudioStream]([ExtResource("44_bnfm7")])
 play_position_var = &"self_position"
 pitch_min = 0.9
-output_audio_player_var = null
 
 [sub_resource type="BTWait" id="BTWait_cymf8"]
 duration = 0.2
@@ -4423,7 +4396,6 @@ script = ExtResource("7_h0i2w")
 clips_array = Array[AudioStream]([SubResource("AudioStreamRandomizer_erets")])
 play_position_var = &"self_position"
 pitch_min = 0.95
-output_audio_player_var = null
 
 [sub_resource type="BTSequence" id="BTSequence_iruob"]
 custom_name = "Play Voice"

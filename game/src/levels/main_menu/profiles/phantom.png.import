@@ -3,11 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bw7anmk5elplu"
-valid=false
+path="res://.godot/imported/phantom.png-3f957ef82ebd499f51785d9b53284c37.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://src/levels/main_menu/profiles/phantom.png"
+dest_files=["res://.godot/imported/phantom.png-3f957ef82ebd499f51785d9b53284c37.ctex"]
 
 [params]
 

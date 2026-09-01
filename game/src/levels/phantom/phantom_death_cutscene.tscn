@@ -777,7 +777,7 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0
 [node name="Mesh" parent="Phantom" unique_id=2086143287 instance=ExtResource("1_eep7i")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 
-[node name="Skeleton3D" parent="Phantom/Mesh/Armature" parent_id_path=PackedInt32Array(2086143287, 1474117146) index="0" unique_id=1677922515]
+[node name="Skeleton3D" parent="Phantom/Mesh/Armature" parent_id_path=PackedInt32Array(2086143287, 22913490) index="0" unique_id=2134423735]
 bones/1/rotation = Quaternion(0.89040786, -0.13491601, 0.43409175, 0.023148717)
 bones/2/rotation = Quaternion(0.50000006, 0.49999994, 0.49999997, -0.50000006)
 bones/3/rotation = Quaternion(-0.55235577, -0.43856257, -0.34077045, 0.62164414)
