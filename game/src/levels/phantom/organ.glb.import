@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://b7do4wpmyxhlf"
-path="res://.godot/imported/platform.glb-a6eab3354b90cca171d64ab10b33b038.scn"
+uid="uid://cpdw2dx7hpb1d"
+path="res://.godot/imported/organ.glb-b0065e8e1f7e1d33b6060c4fab922560.scn"
 
 [deps]
 
-source_file="res://src/levels/phantom/platform.glb"
-dest_files=["res://.godot/imported/platform.glb-a6eab3354b90cca171d64ab10b33b038.scn"]
+source_file="res://src/levels/phantom/organ.glb"
+dest_files=["res://.godot/imported/organ.glb-b0065e8e1f7e1d33b6060c4fab922560.scn"]
 
 [params]
 
@@ -41,7 +41,7 @@ materials/extract_format=0
 materials/extract_path=""
 _subresources={
 "meshes": {
-"platform_BézierCurve_004": {
+"organ_BézierCurve_008": {
 "generate/lightmap_uv": 1,
 "generate/lods": 0,
 "generate/shadow_meshes": 0,
@@ -50,7 +50,7 @@ _subresources={
 "save_to_file/fallback_path": "",
 "save_to_file/path": ""
 },
-"platform_BézierCurve_005": {
+"organ_BézierCurve_014": {
 "generate/lightmap_uv": 1,
 "generate/lods": 0,
 "generate/shadow_meshes": 0,
@@ -59,7 +59,7 @@ _subresources={
 "save_to_file/fallback_path": "",
 "save_to_file/path": ""
 },
-"platform_BézierCurve_006": {
+"organ_BézierCurve_015": {
 "generate/lightmap_uv": 1,
 "generate/lods": 0,
 "generate/shadow_meshes": 0,
@@ -68,7 +68,7 @@ _subresources={
 "save_to_file/fallback_path": "",
 "save_to_file/path": ""
 },
-"platform_BézierCurve_007": {
+"organ_BézierCurve_016": {
 "generate/lightmap_uv": 1,
 "generate/lods": 0,
 "generate/shadow_meshes": 0,
@@ -77,7 +77,7 @@ _subresources={
 "save_to_file/fallback_path": "",
 "save_to_file/path": ""
 },
-"platform_Cube_005": {
+"organ_BézierCurve_017": {
 "generate/lightmap_uv": 1,
 "generate/lods": 0,
 "generate/shadow_meshes": 0,
@@ -86,7 +86,7 @@ _subresources={
 "save_to_file/fallback_path": "",
 "save_to_file/path": ""
 },
-"platform_Cube_006": {
+"organ_BézierCurve_018": {
 "generate/lightmap_uv": 1,
 "generate/lods": 0,
 "generate/shadow_meshes": 0,
@@ -95,7 +95,7 @@ _subresources={
 "save_to_file/fallback_path": "",
 "save_to_file/path": ""
 },
-"platform_Cylinder": {
+"organ_BézierCurve_019": {
 "generate/lightmap_uv": 1,
 "generate/lods": 0,
 "generate/shadow_meshes": 0,
@@ -104,7 +104,7 @@ _subresources={
 "save_to_file/fallback_path": "",
 "save_to_file/path": ""
 },
-"platform_Cylinder_027": {
+"organ_BézierCurve_020": {
 "generate/lightmap_uv": 1,
 "generate/lods": 0,
 "generate/shadow_meshes": 0,
@@ -113,7 +113,70 @@ _subresources={
 "save_to_file/fallback_path": "",
 "save_to_file/path": ""
 },
-"platform_Cylinder_029": {
+"organ_BézierCurve_021": {
+"generate/lightmap_uv": 1,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": false,
+"save_to_file/fallback_path": "",
+"save_to_file/path": ""
+},
+"organ_BézierCurve_022": {
+"generate/lightmap_uv": 1,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": false,
+"save_to_file/fallback_path": "",
+"save_to_file/path": ""
+},
+"organ_Circle_003": {
+"generate/lightmap_uv": 1,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": false,
+"save_to_file/fallback_path": "",
+"save_to_file/path": ""
+},
+"organ_Circle_004": {
+"generate/lightmap_uv": 1,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": false,
+"save_to_file/fallback_path": "",
+"save_to_file/path": ""
+},
+"organ_Circle_005": {
+"generate/lightmap_uv": 1,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": false,
+"save_to_file/fallback_path": "",
+"save_to_file/path": ""
+},
+"organ_Cylinder_030": {
+"generate/lightmap_uv": 1,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": false,
+"save_to_file/fallback_path": "",
+"save_to_file/path": ""
+},
+"organ_Plane": {
+"generate/lightmap_uv": 1,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": false,
+"save_to_file/fallback_path": "",
+"save_to_file/path": ""
+},
+"organ_sheet_music": {
 "generate/lightmap_uv": 1,
 "generate/lods": 0,
 "generate/shadow_meshes": 0,

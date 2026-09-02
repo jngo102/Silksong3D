@@ -224,6 +224,10 @@ var/parry_stance_timer/type = 3
 var/parry_stance_timer/value = 0.0
 var/parry_stance_timer/hint = 0
 var/parry_stance_timer/hint_string = ""
+var/phantom_mask/name = &"phantom_mask"
+var/phantom_mask/type = 24
+var/phantom_mask/hint = 0
+var/phantom_mask/hint_string = ""
 var/phase2_health/name = &"phase2_health"
 var/phase2_health/type = 2
 var/phase2_health/value = 0
@@ -484,6 +488,24 @@ shake_taper_off_var = SubResource("BBVariant_ugixi")
 custom_name = "Intro Steam Up"
 children = [SubResource("BTPlayAnimation_2tpwg"), SubResource("BTAction_2ewk4"), SubResource("BTWait_xdajs")]
 
+[sub_resource type="BBVariant" id="BBVariant_3asd6"]
+saved_value = null
+
+[sub_resource type="BTAction" id="BTAction_qw2r8"]
+script = ExtResource("25_so4p7")
+root_node_var = SubResource("BBVariant_3asd6")
+child_path = "../Environment/Mask"
+child_output_var = &"phantom_mask"
+
+[sub_resource type="BBVariant" id="BBVariant_mqa67"]
+value_source = 1
+variable = &"phantom_mask"
+resource_name = "$phantom_mask"
+
+[sub_resource type="BTAction" id="BTAction_gyeqi"]
+script = ExtResource("30_7ervn")
+object_to_free_var = SubResource("BBVariant_mqa67")
+
 [sub_resource type="BBVariant" id="BBVariant_y6gpi"]
 type = 22
 saved_value = NodePath("Mesh/Armature")
@@ -559,7 +581,7 @@ shake_taper_off_var = SubResource("BBVariant_uwn1d")
 
 [sub_resource type="BTSequence" id="BTSequence_f2o3u"]
 custom_name = "Intro Steam Down"
-children = [SubResource("BTAction_bxgmw"), SubResource("BTAction_5m202"), SubResource("BTAction_nlyyx"), SubResource("BTAction_c8pon"), SubResource("BTPlayAnimation_f4hly"), SubResource("BTAction_hsmts"), SubResource("BTWait_5m202")]
+children = [SubResource("BTAction_qw2r8"), SubResource("BTAction_gyeqi"), SubResource("BTAction_bxgmw"), SubResource("BTAction_5m202"), SubResource("BTAction_nlyyx"), SubResource("BTAction_c8pon"), SubResource("BTPlayAnimation_f4hly"), SubResource("BTAction_hsmts"), SubResource("BTWait_5m202")]
 
 [sub_resource type="BBVariant" id="BBVariant_edsfe"]
 type = 3
@@ -596,6 +618,26 @@ resource_name = "Mesh/Armature"
 [sub_resource type="BTAction" id="BTAction_56lep"]
 script = ExtResource("3_7l5er")
 node_var = SubResource("BBVariant_5m202")
+visible = true
+
+[sub_resource type="BBVariant" id="BBVariant_gyeqi"]
+type = 22
+saved_value = NodePath("Mesh/Armature/Skeleton3D/Mask")
+resource_name = "Mesh/Armature/Skeleton3D/Mask"
+
+[sub_resource type="BTAction" id="BTAction_1f2xv"]
+script = ExtResource("3_7l5er")
+node_var = SubResource("BBVariant_gyeqi")
+visible = true
+
+[sub_resource type="BBVariant" id="BBVariant_qw2r8"]
+type = 22
+saved_value = NodePath("Mesh/Armature/Skeleton3D/Pin")
+resource_name = "Mesh/Armature/Skeleton3D/Pin"
+
+[sub_resource type="BTAction" id="BTAction_jo57f"]
+script = ExtResource("3_7l5er")
+node_var = SubResource("BBVariant_qw2r8")
 visible = true
 
 [sub_resource type="BBVariant" id="BBVariant_nlyyx"]
@@ -667,7 +709,7 @@ duration = 2.0
 
 [sub_resource type="BTSequence" id="BTSequence_scgdb"]
 custom_name = "Initial Idle"
-children = [SubResource("BTAction_56lep"), SubResource("BTAction_y6gpi"), SubResource("BTAction_ukowx"), SubResource("BTAction_b5wfj"), SubResource("BTCallMethod_nctop"), SubResource("BTPlayAnimation_t43nk"), SubResource("BTAction_ralv6"), SubResource("BTAction_6jxdy"), SubResource("BTWait_64vl4")]
+children = [SubResource("BTAction_56lep"), SubResource("BTAction_1f2xv"), SubResource("BTAction_jo57f"), SubResource("BTAction_y6gpi"), SubResource("BTAction_ukowx"), SubResource("BTAction_b5wfj"), SubResource("BTCallMethod_nctop"), SubResource("BTPlayAnimation_t43nk"), SubResource("BTAction_ralv6"), SubResource("BTAction_6jxdy"), SubResource("BTWait_64vl4")]
 
 [sub_resource type="BTSequence" id="BTSequence_erets"]
 custom_name = "Intro"

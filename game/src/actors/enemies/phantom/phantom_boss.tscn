@@ -135,7 +135,13 @@ binding/self_position = NodePath("../..:position")
 [node name="Mesh" parent="." index="1" unique_id=176040917 instance=ExtResource("2_ix5q8")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 
-[node name="SpineAttach" type="BoneAttachment3D" parent="Mesh/Armature/Skeleton3D" parent_id_path=PackedInt32Array(176040917, 1677922515) index="4" unique_id=1651600474]
+[node name="Mask" parent="Mesh/Armature/Skeleton3D" parent_id_path=PackedInt32Array(176040917, 2134423735) index="2" unique_id=2038854711]
+visible = false
+
+[node name="Pin" parent="Mesh/Armature/Skeleton3D" parent_id_path=PackedInt32Array(176040917, 2134423735) index="3" unique_id=446491627]
+visible = false
+
+[node name="SpineAttach" type="BoneAttachment3D" parent="Mesh/Armature/Skeleton3D" parent_id_path=PackedInt32Array(176040917, 2134423735) index="4" unique_id=1651600474]
 transform = Transform3D(1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, 1, 0, 0.17558289, 0)
 bone_name = "Spine0"
 bone_idx = 1
@@ -175,7 +181,7 @@ attachments/7/point_index = 28
 attachments/7/spatial_attachment_path = NodePath("..")
 attachments/7/offset = Vector3(0.21871673, 0.5013513, 0.15437387)
 
-[node name="PinAttach" type="BoneAttachment3D" parent="Mesh/Armature/Skeleton3D" parent_id_path=PackedInt32Array(176040917, 1677922515) index="5" unique_id=1039707015]
+[node name="PinAttach" type="BoneAttachment3D" parent="Mesh/Armature/Skeleton3D" parent_id_path=PackedInt32Array(176040917, 2134423735) index="5" unique_id=1039707015]
 transform = Transform3D(-0.26592907, 1.4986544e-07, 0.9639926, 0.96399254, -3.9371557e-08, 0.26592904, 1.0579865e-07, 1, -1.3860944e-07, 2.7056756, 1.1985203, -9.9751745e-08)
 bone_name = "Pin_2"
 bone_idx = 13
@@ -196,7 +202,7 @@ transform = Transform3D(0.99853665, -0.05407881, 1.5255056e-09, -3.885693e-09, -
 [node name="Animator" parent="Mesh/Armature/Skeleton3D/PinAttach/PhantomSwipeEffect" index="0" unique_id=1327176990]
 autoplay = &"RESET"
 
-[node name="RoarPointAttach" type="BoneAttachment3D" parent="Mesh/Armature/Skeleton3D" parent_id_path=PackedInt32Array(176040917, 1677922515) index="6" unique_id=1420257166]
+[node name="RoarPointAttach" type="BoneAttachment3D" parent="Mesh/Armature/Skeleton3D" parent_id_path=PackedInt32Array(176040917, 2134423735) index="6" unique_id=1420257166]
 transform = Transform3D(1, 0, -6.357307e-08, 0, 0.99999994, 0, 6.357307e-08, 0, 1, 7.0485007e-12, 2.4174147, 2.1528263e-10)
 bone_name = "Head_2"
 bone_idx = 18
@@ -204,7 +210,7 @@ bone_idx = 18
 [node name="RoarPoint" type="Marker3D" parent="Mesh/Armature/Skeleton3D/RoarPointAttach" index="0" unique_id=975329313]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.075, 0.52)
 
-[node name="AnimationPlayer" parent="Mesh" index="1" unique_id=618951869]
+[node name="AnimationPlayer" parent="Mesh" index="1" unique_id=1635936757]
 autoplay = &"Idle"
 
 [node name="SteamPoint" type="Marker3D" parent="Mesh" index="2" unique_id=291217177]
