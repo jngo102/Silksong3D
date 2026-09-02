@@ -517,6 +517,7 @@ children = [SubResource("BTPlayAnimation_2tpwg"), SubResource("BTAction_2ewk4"),
 
 [sub_resource type="BBVariant" id="BBVariant_3asd6"]
 saved_value = null
+resource_name = "<null>"
 
 [sub_resource type="BTAction" id="BTAction_qw2r8"]
 script = ExtResource("25_so4p7")
@@ -4867,7 +4868,7 @@ children = [SubResource("BTPlayAnimation_2gtvw"), SubResource("BTAction_f22mr"),
 custom_name = "Jump Dive"
 children = [SubResource("BTSequence_wxj2u"), SubResource("BTSequence_3sjwb")]
 
-[sub_resource type="BTSequence" id="BTSequence_yp4gx"]
+[sub_resource type="BTSelector" id="BTSelector_nctop"]
 custom_name = "Check Teleport Dive"
 children = [SubResource("BTSequence_0ya4m"), SubResource("BTSequence_5qr0b")]
 
@@ -5148,7 +5149,7 @@ children = [SubResource("BTCallMethod_14ecf"), SubResource("BTCallMethod_n5th1")
 
 [sub_resource type="BTSequence" id="BTSequence_t43nk"]
 custom_name = "Dragoon Dive"
-children = [SubResource("BTSequence_uwn1d"), SubResource("BTSequence_yp4gx"), SubResource("BTSequence_bfoa7"), SubResource("BTSequence_2gtvw"), SubResource("BTSequence_ph50l")]
+children = [SubResource("BTSequence_uwn1d"), SubResource("BTSelector_nctop"), SubResource("BTSequence_bfoa7"), SubResource("BTSequence_2gtvw"), SubResource("BTSequence_ph50l")]
 
 [sub_resource type="BTSelector" id="BTSelector_fy5k8"]
 custom_name = "Check Can Dragoon Dive"

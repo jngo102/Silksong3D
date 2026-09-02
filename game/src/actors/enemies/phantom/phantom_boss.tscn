@@ -301,7 +301,7 @@ shape = SubResource("CapsuleShape3D_4lqec")
 disabled = true
 
 [node name="Health" parent="." index="3" unique_id=1048848430 node_paths=PackedStringArray("damage_particles", "_recoiler")]
-max_health = 10
+max_health = 650
 damage_particles = [NodePath("SilkParticles")]
 _recoiler = NodePath("../Recoiler")
 
