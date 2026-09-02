@@ -937,14 +937,6 @@ resource_name = "Canvas/ParryTip"
 script = ExtResource("1_ys6tr")
 node_var = SubResource("BBVariant_c02nk")
 
-[sub_resource type="BBNode" id="BBNode_de11o"]
-saved_value = NodePath("Hornet/Model/AnimationPlayer")
-resource_name = "Hornet/Model/AnimationPlayer"
-
-[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_53l7e"]
-animation_player = SubResource("BBNode_de11o")
-animation_name = &"Parry Cutscene Pose"
-
 [sub_resource type="BBNode" id="BBNode_qegn4"]
 saved_value = NodePath("Hornet/Model/Armature/Skeleton3D/NeedleAttach/Needle/Animator")
 resource_name = "Hornet/Model/Armature/Skeleton3D/NeedleAttach/Needle/Animator"
@@ -952,6 +944,14 @@ resource_name = "Hornet/Model/Armature/Skeleton3D/NeedleAttach/Needle/Animator"
 [sub_resource type="BTPlayAnimation" id="BTPlayAnimation_ihkj8"]
 animation_player = SubResource("BBNode_qegn4")
 animation_name = &"Parry Hit"
+
+[sub_resource type="BBNode" id="BBNode_de11o"]
+saved_value = NodePath("Hornet/Model/AnimationPlayer")
+resource_name = "Hornet/Model/AnimationPlayer"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_53l7e"]
+animation_player = SubResource("BBNode_de11o")
+animation_name = &"Parry Cutscene Pose"
 
 [sub_resource type="BTAction" id="BTAction_q5s5a"]
 script = ExtResource("5_dhi3c")
@@ -1010,15 +1010,16 @@ saved_value = 0.5
 resource_name = "0.5"
 
 [sub_resource type="BTAction" id="BTAction_xxmhu"]
+_enabled = false
 script = ExtResource("3_otima")
 duration_var = SubResource("BBVariant_cxjxr")
 
 [sub_resource type="BTWait" id="BTWait_2tdqs"]
-duration = 0.083
+duration = 0.5
 
 [sub_resource type="BTSequence" id="BTSequence_geoq6"]
 custom_name = "Hornet Parry"
-children = [SubResource("BTAction_eswlf"), SubResource("BTPlayAnimation_53l7e"), SubResource("BTPlayAnimation_ihkj8"), SubResource("BTAction_q5s5a"), SubResource("BTAction_85yog"), SubResource("BTAction_ctohn"), SubResource("BTAction_xxmhu"), SubResource("BTWait_2tdqs")]
+children = [SubResource("BTAction_eswlf"), SubResource("BTPlayAnimation_ihkj8"), SubResource("BTPlayAnimation_53l7e"), SubResource("BTAction_q5s5a"), SubResource("BTAction_85yog"), SubResource("BTAction_ctohn"), SubResource("BTAction_xxmhu"), SubResource("BTWait_2tdqs")]
 
 [sub_resource type="BBVariant" id="BBVariant_32sxb"]
 type = 22
@@ -1156,6 +1157,17 @@ clips_array = Array[AudioStream]([ExtResource("41_rb3y3")])
 play_position_var = &"camera_position"
 volume_scale = 0.7
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_e8p82"]
+streams_count = 3
+stream_0/stream = ExtResource("16_xcqy1")
+stream_1/stream = ExtResource("17_peslq")
+stream_2/stream = ExtResource("18_ej2e2")
+
+[sub_resource type="BTAction" id="BTAction_s1sr5"]
+script = ExtResource("5_dhi3c")
+clips_array = Array[AudioStream]([SubResource("AudioStreamRandomizer_e8p82")])
+play_position_var = &"camera_position"
+
 [sub_resource type="BTWait" id="BTWait_fbtfg"]
 duration = 0.5
 
@@ -1206,7 +1218,7 @@ duration = 1.75
 
 [sub_resource type="BTSequence" id="BTSequence_r87pe"]
 custom_name = "Hornet Parry Retaliate"
-children = [SubResource("BTAction_enyyy"), SubResource("BTAction_w6vsv"), SubResource("BTAction_nm84w"), SubResource("BTAction_5omgc"), SubResource("BTPlayAnimation_gwn4k"), SubResource("BTCallMethod_i02io"), SubResource("BTAction_5ygbr"), SubResource("BTAction_ikqlc"), SubResource("BTAction_e8p82"), SubResource("BTWait_fbtfg"), SubResource("BTAction_xi1ww"), SubResource("BTPlayAnimation_kndcm"), SubResource("BTCallMethod_dhi3c"), SubResource("BTWait_l4brc")]
+children = [SubResource("BTAction_enyyy"), SubResource("BTAction_w6vsv"), SubResource("BTAction_nm84w"), SubResource("BTAction_5omgc"), SubResource("BTPlayAnimation_gwn4k"), SubResource("BTCallMethod_i02io"), SubResource("BTAction_5ygbr"), SubResource("BTAction_ikqlc"), SubResource("BTAction_e8p82"), SubResource("BTAction_s1sr5"), SubResource("BTWait_fbtfg"), SubResource("BTAction_xi1ww"), SubResource("BTPlayAnimation_kndcm"), SubResource("BTCallMethod_dhi3c"), SubResource("BTWait_l4brc")]
 
 [sub_resource type="BBVariant" id="BBVariant_pfsfd"]
 type = 1

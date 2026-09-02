@@ -7,12 +7,14 @@
 [ext_resource type="PackedScene" uid="uid://c5debtr6afm5x" path="res://src/actors/enemies/phantom/phantom_stab_effect.tscn" id="4_nyv0l"]
 [ext_resource type="ArrayMesh" uid="uid://efox85te8wrt" path="res://src/actors/enemies/phantom/silk_particle1_mesh.tres" id="4_vep8l"]
 [ext_resource type="BehaviorTree" uid="uid://1liih5vvkdi4" path="res://src/actors/enemies/phantom/phantom_behavior_tree.tres" id="5_tqvn5"]
+[ext_resource type="Script" uid="uid://b5o8necuny7rl" path="res://src/actors/mesh_fader.gd" id="8_g8htn"]
 [ext_resource type="PackedScene" uid="uid://ci8vhhfslnoce" path="res://src/actors/enemies/phantom/dive_steam.tscn" id="8_xe2rs"]
 [ext_resource type="Script" uid="uid://ce776cixolsw1" path="res://src/actors/grounder.gd" id="9_h3dl7"]
 [ext_resource type="Script" uid="uid://68mqfnuh2m02" path="res://src/actors/enemies/stun_manager.gd" id="11_4oy55"]
 [ext_resource type="Script" uid="uid://c4ctdy3gej7v1" path="res://src/actors/recoiler.gd" id="11_gbv14"]
 [ext_resource type="BehaviorTree" uid="uid://df6ts1h867yas" path="res://src/actors/enemies/phantom/phantom_stun_behavior_tree.tres" id="12_12deh"]
 [ext_resource type="PackedScene" uid="uid://b1577tfmh0225" path="res://src/actors/enemies/stun_effect.tscn" id="12_g8htn"]
+[ext_resource type="Texture2D" uid="uid://d3jm7v8arm3ua" path="res://src/actors/enemies/phantom/steam_particle0.png" id="15_gbv14"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4lqec"]
 radius = 0.7
@@ -130,19 +132,95 @@ var/self/hint = 34
 var/self/hint_string = ""
 binding/self_position = NodePath("../..:position")
 
+[sub_resource type="Curve" id="Curve_ju27i"]
+_data = [Vector2(0, 0), 0.0, -0.051224705, 0, 0, Vector2(0.49999994, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -4.995711, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_ut1ry"]
+curve = SubResource("Curve_ju27i")
+
+[sub_resource type="Curve" id="Curve_u720e"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.2780735, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_jleah"]
+curve = SubResource("Curve_u720e")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_e7jeo"]
+lifetime_randomness = 0.41
+emission_shape_offset = Vector3(0, 1.955, 0)
+emission_shape = 6
+emission_ring_axis = Vector3(0, 90, 1)
+emission_ring_height = 8.0
+emission_ring_radius = 2.0
+emission_ring_inner_radius = 2.0
+emission_ring_cone_angle = 90.0
+direction = Vector3(0, 1, 0)
+spread = 180.0
+initial_velocity_max = 32.0
+gravity = Vector3(0, 0, 0)
+damping_min = 8.706
+damping_max = 11.059001
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_jleah")
+color = Color(1, 1, 1, 0.2509804)
+alpha_curve = SubResource("CurveTexture_ut1ry")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_246s2"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.8984694, 0.823897, 0.79426247, 1)
+albedo_texture = ExtResource("15_gbv14")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_8gmcg"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_246s2")
+size = Vector2(4, 4)
+orientation = 2
+
 [node name="PhantomBoss" unique_id=1724463133 instance=ExtResource("1_n1qxd")]
 
 [node name="Mesh" parent="." index="1" unique_id=176040917 instance=ExtResource("2_ix5q8")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 
-[node name="Mask" parent="Mesh/Armature/Skeleton3D" parent_id_path=PackedInt32Array(176040917, 2134423735) index="2" unique_id=2038854711]
+[node name="Skeleton3D" parent="Mesh/Armature" parent_id_path=PackedInt32Array(176040917, 22913490) index="0" unique_id=2134423735]
+bones/0/rotation = Quaternion(0.21599099, 0, -0.97639537, 0)
+bones/2/rotation = Quaternion(0.50000006, 0.49999997, 0.49999997, -0.49999997)
+bones/3/rotation = Quaternion(-0.73563015, 0.13523956, -0.15189423, 0.6461321)
+bones/4/rotation = Quaternion(9.313227e-10, -1.5133994e-08, 0, 1)
+bones/4/scale = Vector3(0.9999999, 0.99999994, 0.9999999)
+bones/6/rotation = Quaternion(-0.74184763, -0.06612128, 0.07472549, 0.66310346)
+bones/7/rotation = Quaternion(-2.3283067e-09, 3.958123e-09, -4.6566134e-10, 1)
+bones/8/rotation = Quaternion(0, -0.32027248, 0, 0.94732547)
+bones/9/rotation = Quaternion(0, -0.22130337, 0, 0.975205)
+bones/10/rotation = Quaternion(0.06864952, -0.053119328, -0.8302027, 0.5506625)
+bones/11/rotation = Quaternion(-0.26438403, 0.51356786, -0.4442882, 0.6848045)
+bones/12/rotation = Quaternion(0.77230823, 0.058509346, 0.41470763, 0.47763392)
+bones/13/position = Vector3(1.0753614, -1.7212774, 0.70798963)
+bones/13/rotation = Quaternion(-0.122242555, 0.8984684, -0.1906243, -0.37613004)
+bones/14/rotation = Quaternion(-0.0736851, -0.25175112, 0.7399809, 0.6193708)
+bones/15/rotation = Quaternion(0.6363356, -0.090263546, -0.10164788, 0.75934005)
+bones/16/rotation = Quaternion(-0.8066046, -0.5445208, -0.2270857, 0.036307104)
+bones/17/rotation = Quaternion(0, -0.31710795, 0, 0.9483895)
+bones/18/rotation = Quaternion(0.0705894, -0.02419122, -0.0081759365, 0.99717855)
+bones/19/position = Vector3(3.7252903e-09, 1.4523029, 1.1175871e-08)
+bones/19/rotation = Quaternion(0, -1.5075784e-08, 1.8626451e-09, 1)
+
+[node name="Mask" parent="Mesh/Armature/Skeleton3D" index="2" unique_id=2038854711]
 visible = false
 
-[node name="Pin" parent="Mesh/Armature/Skeleton3D" parent_id_path=PackedInt32Array(176040917, 2134423735) index="3" unique_id=446491627]
+[node name="Pin" parent="Mesh/Armature/Skeleton3D" index="3" unique_id=446491627]
 visible = false
 
-[node name="SpineAttach" type="BoneAttachment3D" parent="Mesh/Armature/Skeleton3D" parent_id_path=PackedInt32Array(176040917, 2134423735) index="4" unique_id=1651600474]
-transform = Transform3D(1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, 1, 0, 0.17558289, 0)
+[node name="SpineAttach" type="BoneAttachment3D" parent="Mesh/Armature/Skeleton3D" index="4" unique_id=1651600474]
+transform = Transform3D(-0.9066958, 0, 0.42178535, 0, 1, 0, -0.42178535, 0, -0.9066957, 0, 0.17558289, 0)
 bone_name = "Spine0"
 bone_idx = 1
 
@@ -158,31 +236,31 @@ drag_coefficient = 0.25
 pinned_points = [38, 67, 39, 68, 87, 3, 47, 28]
 attachments/0/point_index = 38
 attachments/0/spatial_attachment_path = NodePath("..")
-attachments/0/offset = Vector3(-0.26851937, 0.49333054, 0.17660704)
+attachments/0/offset = Vector3(-0.26851937, 0.49333054, 0.17660706)
 attachments/1/point_index = 67
 attachments/1/spatial_attachment_path = NodePath("..")
-attachments/1/offset = Vector3(-0.22743215, 0.5077824, 0.13234425)
+attachments/1/offset = Vector3(-0.22743213, 0.5077824, 0.13234425)
 attachments/2/point_index = 39
 attachments/2/spatial_attachment_path = NodePath("..")
-attachments/2/offset = Vector3(-0.22639468, 0.15732008, 0.0115737915)
+attachments/2/offset = Vector3(-0.22639467, 0.15732008, 0.011573806)
 attachments/3/point_index = 68
 attachments/3/spatial_attachment_path = NodePath("..")
-attachments/3/offset = Vector3(-0.2721578, 0.12930661, 0.063733965)
+attachments/3/offset = Vector3(-0.2721578, 0.12930661, 0.063733995)
 attachments/4/point_index = 87
 attachments/4/spatial_attachment_path = NodePath("..")
-attachments/4/offset = Vector3(0.22401802, 0.13747448, 0.041092873)
+attachments/4/offset = Vector3(0.22401802, 0.13747448, 0.041092888)
 attachments/5/point_index = 3
 attachments/5/spatial_attachment_path = NodePath("..")
-attachments/5/offset = Vector3(0.17280057, 0.1638915, -0.006641969)
+attachments/5/offset = Vector3(0.17280059, 0.1638915, -0.0066419393)
 attachments/6/point_index = 47
 attachments/6/spatial_attachment_path = NodePath("..")
-attachments/6/offset = Vector3(0.17331769, 0.51437944, 0.11405754)
+attachments/6/offset = Vector3(0.1733177, 0.51437944, 0.114057556)
 attachments/7/point_index = 28
 attachments/7/spatial_attachment_path = NodePath("..")
-attachments/7/offset = Vector3(0.21871673, 0.5013513, 0.15437387)
+attachments/7/offset = Vector3(0.21871673, 0.5013513, 0.15437388)
 
-[node name="PinAttach" type="BoneAttachment3D" parent="Mesh/Armature/Skeleton3D" parent_id_path=PackedInt32Array(176040917, 2134423735) index="5" unique_id=1039707015]
-transform = Transform3D(-0.26592907, 1.4986544e-07, 0.9639926, 0.96399254, -3.9371557e-08, 0.26592904, 1.0579865e-07, 1, -1.3860944e-07, 2.7056756, 1.1985203, -9.9751745e-08)
+[node name="PinAttach" type="BoneAttachment3D" parent="Mesh/Armature/Skeleton3D" index="5" unique_id=1039707015]
+transform = Transform3D(0.38903612, 0.92090815, -0.024062697, 0.9173783, -0.38489693, 0.10134551, 0.08406848, -0.06150137, -0.9945599, -2.824229, 1.8544415, -0.40270865)
 bone_name = "Pin_2"
 bone_idx = 13
 
@@ -202,16 +280,13 @@ transform = Transform3D(0.99853665, -0.05407881, 1.5255056e-09, -3.885693e-09, -
 [node name="Animator" parent="Mesh/Armature/Skeleton3D/PinAttach/PhantomSwipeEffect" index="0" unique_id=1327176990]
 autoplay = &"RESET"
 
-[node name="RoarPointAttach" type="BoneAttachment3D" parent="Mesh/Armature/Skeleton3D" parent_id_path=PackedInt32Array(176040917, 2134423735) index="6" unique_id=1420257166]
-transform = Transform3D(1, 0, -6.357307e-08, 0, 0.99999994, 0, 6.357307e-08, 0, 1, 7.0485007e-12, 2.4174147, 2.1528263e-10)
+[node name="RoarPointAttach" type="BoneAttachment3D" parent="Mesh/Armature/Skeleton3D" index="6" unique_id=1420257166]
+transform = Transform3D(0.6093803, 0.123217836, 0.7832452, -0.019721022, 0.9899005, -0.1403849, -0.79263276, 0.070101395, 0.6056559, 2.994139e-10, 2.4174147, 1.6121535e-11)
 bone_name = "Head_2"
 bone_idx = 18
 
 [node name="RoarPoint" type="Marker3D" parent="Mesh/Armature/Skeleton3D/RoarPointAttach" index="0" unique_id=975329313]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.075, 0.52)
-
-[node name="AnimationPlayer" parent="Mesh" index="1" unique_id=1635936757]
-autoplay = &"Idle"
 
 [node name="SteamPoint" type="Marker3D" parent="Mesh" index="2" unique_id=291217177]
 
@@ -226,7 +301,7 @@ shape = SubResource("CapsuleShape3D_4lqec")
 disabled = true
 
 [node name="Health" parent="." index="3" unique_id=1048848430 node_paths=PackedStringArray("damage_particles", "_recoiler")]
-max_health = 100
+max_health = 10
 damage_particles = [NodePath("SilkParticles")]
 _recoiler = NodePath("../Recoiler")
 
@@ -269,23 +344,28 @@ special_death = true
 [node name="Flasher" parent="." index="7" unique_id=1018484248 node_paths=PackedStringArray("_meshes")]
 _meshes = [NodePath("../Mesh/Armature/Skeleton3D/Body"), NodePath("../Mesh/Armature/Skeleton3D/Head"), NodePath("../Mesh/Armature/Skeleton3D/Mask"), NodePath("../Mesh/Armature/Skeleton3D/SpineAttach/Wings")]
 
-[node name="Grounder" type="Node" parent="." index="8" unique_id=306517061 node_paths=PackedStringArray("body", "_ground_detector")]
+[node name="MeshFader" type="Node" parent="." index="8" unique_id=847870035 node_paths=PackedStringArray("_meshes")]
+script = ExtResource("8_g8htn")
+_meshes = [NodePath("../Mesh/Armature/Skeleton3D/Body"), NodePath("../Mesh/Armature/Skeleton3D/Head"), NodePath("../Mesh/Armature/Skeleton3D/SpineAttach/Wings"), NodePath("../Mesh/Armature/Skeleton3D/Pin")]
+metadata/_custom_type_script = "uid://b5o8necuny7rl"
+
+[node name="Grounder" type="Node" parent="." index="9" unique_id=306517061 node_paths=PackedStringArray("body", "_ground_detector")]
 script = ExtResource("9_h3dl7")
 body = NodePath("..")
 _ground_detector = NodePath("../GroundDetector")
 gravity_scale = 24.0
 metadata/_custom_type_script = "uid://ce776cixolsw1"
 
-[node name="GroundDetector" type="RayCast3D" parent="." index="9" unique_id=436502172]
+[node name="GroundDetector" type="RayCast3D" parent="." index="10" unique_id=436502172]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.33, 0)
 target_position = Vector3(0, -0.2, 0)
 collision_mask = 4
 
-[node name="Recoiler" type="Node3D" parent="." index="10" unique_id=1462710265 node_paths=PackedStringArray("body")]
+[node name="Recoiler" type="Node3D" parent="." index="11" unique_id=1462710265 node_paths=PackedStringArray("body")]
 script = ExtResource("11_gbv14")
 body = NodePath("..")
 
-[node name="StunManager" type="Timer" parent="." index="11" unique_id=358826899 node_paths=PackedStringArray("health", "stun_behavior_tree")]
+[node name="StunManager" type="Timer" parent="." index="12" unique_id=358826899 node_paths=PackedStringArray("health", "stun_behavior_tree")]
 one_shot = true
 script = ExtResource("11_4oy55")
 combo_time = 1.25
@@ -296,7 +376,7 @@ stun_max_hits = 16
 stun_effect_prefab = ExtResource("12_g8htn")
 metadata/_custom_type_script = "uid://68mqfnuh2m02"
 
-[node name="BehaviorTree" parent="." index="13" unique_id=1868026853]
+[node name="BehaviorTree" parent="." index="14" unique_id=1868026853]
 behavior_tree = ExtResource("5_tqvn5")
 update_mode = 0
 blackboard_plan = SubResource("BlackboardPlan_tr76i")
@@ -308,8 +388,20 @@ update_mode = 0
 active = false
 blackboard_plan = SubResource("BlackboardPlan_4oy55")
 
-[node name="VoicePlayer" parent="." index="14" unique_id=430572606]
+[node name="VoicePlayer" parent="." index="15" unique_id=430572606]
 volume_db = 1.0
+
+[node name="TeleSteam" type="GPUParticles3D" parent="." index="16" unique_id=936167817]
+emitting = false
+amount = 128
+lifetime = 0.25
+one_shot = true
+explosiveness = 0.7
+randomness = 0.53
+collision_base_size = 0.5
+visibility_aabb = AABB(-32, -48, -32, 64, 64, 64)
+process_material = SubResource("ParticleProcessMaterial_e7jeo")
+draw_pass_1 = SubResource("PlaneMesh_8gmcg")
 
 [editable path="Mesh"]
 [editable path="Mesh/Armature/Skeleton3D/PinAttach/PhantomStabEffect"]

@@ -358,10 +358,10 @@ light_data = ExtResource("5_gc3yy")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -48)
 
 [node name="structureA" parent="Environment/FrontWall" index="0" unique_id=1152383996 instance=ExtResource("5_lerc2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.020447, 0.063, 4.467766)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.020447, 0.063, 6)
 
 [node name="structureB" parent="Environment/FrontWall" index="1" unique_id=367714657 instance=ExtResource("5_lerc2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.979553, 0.063, 4.467766)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.979553, 0.063, 6)
 
 [node name="structureC" parent="Environment/FrontWall" index="2" unique_id=329506777 instance=ExtResource("5_lerc2")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -14.134, 0.063, -3.8451538)
@@ -375,10 +375,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.0045319)
 [node name="platform" parent="Environment/FrontWall/podium" index="4" unique_id=159191848 instance=ExtResource("6_7y7vd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.002264, 4.5486298)
 
-[node name="bench" parent="Environment/FrontWall/podium/platform" index="9" unique_id=1448999800 instance=ExtResource("7_uq13r")]
+[node name="bench" parent="Environment/FrontWall/podium/platform" index="2" unique_id=1448999800 instance=ExtResource("7_uq13r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.6609306, -0.6103821)
 
-[node name="mat" type="Node3D" parent="Environment/FrontWall/podium/platform" index="10" unique_id=826060411]
+[node name="mat" type="Node3D" parent="Environment/FrontWall/podium/platform" index="3" unique_id=826060411]
 
 [node name="Mesh" type="SoftBody3D" parent="Environment/FrontWall/podium/platform/mat" index="0" unique_id=1567044492]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.007815666, 0.57748795, 1.5661736)
@@ -633,10 +633,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.12805176, 8.73452)
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 48)
 
 [node name="structureA" parent="Environment/BackWall" index="0" unique_id=821502956 instance=ExtResource("5_lerc2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.020447, 0.062550545, 4.4677696)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.020447, 0.062550545, 6)
 
 [node name="structureB" parent="Environment/BackWall" index="1" unique_id=1083337654 instance=ExtResource("5_lerc2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.979553, 0.062550545, 4.467762)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.979553, 0.062550545, 6)
 
 [node name="structureC" parent="Environment/BackWall" index="2" unique_id=1443928651 instance=ExtResource("5_lerc2")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -14.133999, 0.06285262, -3.8451538)
@@ -648,10 +648,10 @@ transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 14.133584, 0.062550545,
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -48, 0, 0)
 
 [node name="structureA" parent="Environment/LeftWall" index="0" unique_id=1629173094 instance=ExtResource("5_lerc2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.020447, 0.062550545, 4.4677696)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.020447, 0.062550545, 6)
 
 [node name="structureB" parent="Environment/LeftWall" index="1" unique_id=161659819 instance=ExtResource("5_lerc2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.979553, 0.062550545, 4.467762)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.979553, 0.062550545, 6)
 
 [node name="structureC" parent="Environment/LeftWall" index="2" unique_id=1777279478 instance=ExtResource("5_lerc2")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -14.133999, 0.06285262, -3.8451538)
@@ -663,10 +663,10 @@ transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 14.133584, 0.062550545,
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 48, 0, 0)
 
 [node name="structureA" parent="Environment/RightWall" index="0" unique_id=1902205007 instance=ExtResource("5_lerc2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.020447, 0.062550545, 4.4677696)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.020447, 0.062550545, 6)
 
 [node name="structureB" parent="Environment/RightWall" index="1" unique_id=170830593 instance=ExtResource("5_lerc2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.979553, 0.062550545, 4.467762)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.979553, 0.062550545, 6)
 
 [node name="structureC" parent="Environment/RightWall" index="2" unique_id=1772504828 instance=ExtResource("5_lerc2")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -14.133999, 0.06285262, -3.8451538)
@@ -943,17 +943,17 @@ mesh = ExtResource("12_vh2i6")
 surface_material_override/0 = SubResource("StandardMaterial3D_8ags5")
 
 [node name="Web2" type="MeshInstance3D" parent="Environment/Webs" index="2" unique_id=1258861122]
-transform = Transform3D(2.1463125, 0.1876307, -0.08518495, -0.11272725, 1.953584, -2.3126333, -0.055982433, 3.2598047, 1.3908522, -21.348755, 12.200562, -33.30445)
+transform = Transform3D(2.1463125, 0.1876307, -0.08518495, -0.11272725, 1.953584, -2.3126333, -0.055982433, 3.2598047, 1.3908522, -21.348755, 12.200562, -29.758522)
 mesh = ExtResource("12_vh2i6")
 surface_material_override/0 = SubResource("StandardMaterial3D_o17fk")
 
 [node name="Web3" type="MeshInstance3D" parent="Environment/Webs" index="3" unique_id=2082418208]
-transform = Transform3D(-2.076245, -0.7524854, -1.08096, 0.37505144, 1.9080178, -3.2529335, 0.6577557, -3.4632149, -1.557296, 11.1226425, 14.768188, 32.56465)
+transform = Transform3D(-1.4768493, -2.3188791, -1.7720246, -0.042350523, 2.5992818, -2.8737469, 1.6435394, -2.0167181, -1.666354, 5.582695, 14.768188, 38.487503)
 mesh = ExtResource("12_vh2i6")
 surface_material_override/0 = SubResource("StandardMaterial3D_rd5xj")
 
 [node name="Web4" type="MeshInstance3D" parent="Environment/Webs" index="4" unique_id=831104774]
-transform = Transform3D(1.4681945, -0.8027436, -1.2773069, -0.44868547, 1.4093491, -3.2289658, 0.46809223, 3.8687677, 0.9112431, 31.992981, 15.129639, -24.282295)
+transform = Transform3D(1.4575491, -1.2745153, -1.0342298, -0.3038384, 1.3246404, -3.3378394, 0.5993807, 3.7708042, 0.82297885, 30.668518, 15.129639, -30.129707)
 mesh = ExtResource("12_vh2i6")
 surface_material_override/0 = SubResource("StandardMaterial3D_8ags5")
 
@@ -963,7 +963,7 @@ mesh = ExtResource("12_vh2i6")
 surface_material_override/0 = SubResource("StandardMaterial3D_o17fk")
 
 [node name="Web6" type="MeshInstance3D" parent="Environment/Webs" index="6" unique_id=649240662]
-transform = Transform3D(-4.6155376, 1.1872956, 0.088167116, 0.15374663, 3.285787, -1.8508567, -0.7586646, -6.557349, -0.9114721, -29.524849, 11.52063, 32.56465)
+transform = Transform3D(-3.1086671, 5.0504155, 0.642283, 0.1537468, 3.2857876, -1.8508568, -3.4949894, -4.347619, -0.65270776, -35.639656, 9.568115, 4.955612)
 mesh = ExtResource("12_vh2i6")
 surface_material_override/0 = SubResource("StandardMaterial3D_rd5xj")
 
@@ -1003,11 +1003,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -50, 0)
 shape = SubResource("BoxShape3D_14s3j")
 
 [node name="WallLeft" type="CollisionShape3D" parent="Terrain" index="2" unique_id=483938843]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64, 0, 0)
 shape = SubResource("BoxShape3D_14s3j")
 
 [node name="WallRight" type="CollisionShape3D" parent="Terrain" index="3" unique_id=78203925]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64, 0, 0)
 shape = SubResource("BoxShape3D_14s3j")
 
 [node name="WallFront" type="CollisionShape3D" parent="Terrain" index="4" unique_id=1803025287]
@@ -1052,6 +1052,5 @@ shape = SubResource("BoxShape3D_67j1t")
 [node name="IntroSteamPoint" type="Marker3D" parent="." index="11" unique_id=1196936059]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2380104, -26.57209)
 
-[editable path="Environment/FrontWall/structureC"]
 [editable path="Environment/Ceiling/Mesh"]
 [editable path="CameraController"]
