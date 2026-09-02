@@ -374,7 +374,7 @@ void process() {
 	base_angle += CUSTOM.y * LIFETIME * dynamic_params.angular_velocity;
 	CUSTOM.x = base_angle * degree_to_rad;
 	float value = randf_range(TRANSFORM[3].xz, 0.3, 0.6);
-	params.color = vec4(value, value, value, 0.5);
+	params.color = vec4(value, value, value, 1.0);
 	COLOR = params.color;
 
 	TRANSFORM[0].xyz = normalize_or_else(TRANSFORM[0].xyz, vec3(1.0, 0.0, 0.0));

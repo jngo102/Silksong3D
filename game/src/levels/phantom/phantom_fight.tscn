@@ -16,6 +16,10 @@
 [ext_resource type="Resource" uid="uid://cdhpw43qtfwce" path="res://src/resources/random_audio_plays/footsteps_metal.tres" id="11_1y2o3"]
 [ext_resource type="PackedScene" uid="uid://bj16j8g0xqtqy" path="res://src/actors/enemies/phantom/phantom_mask.glb" id="12_kq32x"]
 [ext_resource type="AudioStream" uid="uid://dkuoifc3ivndh" path="res://src/copyrighted/sfx/hornet/movement/metal/hornet_land_metal.wav" id="12_pijb2"]
+[ext_resource type="ArrayMesh" uid="uid://bab2n4183r3pq" path="res://src/levels/phantom/cobweb_mesh.tres" id="12_vh2i6"]
+[ext_resource type="Texture2D" uid="uid://y8a5c6cp0pao" path="res://src/levels/phantom/webs0.png" id="13_srrul"]
+[ext_resource type="Texture2D" uid="uid://cayn8tw7wwvrf" path="res://src/levels/phantom/webs1.png" id="14_o17fk"]
+[ext_resource type="Texture2D" uid="uid://cvyp1cnk1xmmv" path="res://src/levels/phantom/webs2.png" id="15_srrul"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ktfto"]
 sky_top_color = Color(0.8039735, 0.7180228, 0.6472382, 1)
@@ -32,12 +36,12 @@ sky_material = SubResource("ProceduralSkyMaterial_ktfto")
 [sub_resource type="Environment" id="Environment_mdpca"]
 background_mode = 2
 background_color = Color(0.9195253, 0.82396984, 0.7487025, 1)
-background_energy_multiplier = 0.88
+background_energy_multiplier = 1.24
 sky = SubResource("Sky_ktfto")
 ambient_light_source = 3
 ambient_light_color = Color(0.9101676, 0.77554667, 0.68072474, 1)
-ambient_light_sky_contribution = 0.65
-ambient_light_energy = 0.55
+ambient_light_sky_contribution = 0.68
+ambient_light_energy = 1.09
 reflected_light_source = 2
 tonemap_exposure = 0.56
 tonemap_agx_contrast = 1.54
@@ -185,6 +189,27 @@ albedo_color = Color(0, 0, 0, 1)
 material = SubResource("StandardMaterial3D_51aw7")
 size = Vector3(128, 65, 128)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rd5xj"]
+transparency = 1
+albedo_texture = ExtResource("13_srrul")
+metallic = 0.16
+metallic_specular = 0.91
+roughness = 0.71
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8ags5"]
+transparency = 1
+albedo_texture = ExtResource("14_o17fk")
+metallic = 0.16
+metallic_specular = 0.91
+roughness = 0.71
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o17fk"]
+transparency = 1
+albedo_texture = ExtResource("15_srrul")
+metallic = 0.16
+metallic_specular = 0.91
+roughness = 0.71
+
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_ktfto"]
 dof_blur_far_distance = 64.0
 dof_blur_far_transition = 8.0
@@ -297,7 +322,7 @@ level_over_pause = 3.0
 [node name="WorldEnvironment" parent="Environment" parent_id_path=PackedInt32Array(921388622) index="0" unique_id=986338651]
 environment = SubResource("Environment_mdpca")
 
-[node name="DirectionalLight3D" type="AreaLight3D" parent="Environment" parent_id_path=PackedInt32Array(921388622) index="1" unique_id=200378466]
+[node name="BoxLight" type="AreaLight3D" parent="Environment" parent_id_path=PackedInt32Array(921388622) index="1" unique_id=200378466]
 transform = Transform3D(0.6443516, -0.39536154, 0.65459937, 0, 0.85598826, 0.5169954, -0.7647294, -0.33312678, 0.5515574, 51.56192, 84.86682, 57.067047)
 light_color = Color(0.9305943, 0.8364526, 0.7713976, 1)
 light_energy = 1.075
@@ -666,7 +691,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 37.411846, 0)
 shape = SubResource("BoxShape3D_e4ccn")
 
 [node name="BoundingWall" type="MeshInstance3D" parent="Environment" parent_id_path=PackedInt32Array(921388622) index="9" unique_id=1958470639]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 32, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.103515625, 32.099487, -0.6453934)
 cast_shadow = 0
 mesh = SubResource("BoxMesh_14s3j")
 
@@ -905,7 +930,44 @@ transform = Transform3D(-0.8838835, 0, -0.8838835, 0, 1.5, 0, 0.8838835, 0, -0.8
 [node name="structureD" parent="Environment/Corners" index="3" unique_id=996020233 instance=ExtResource("5_lerc2")]
 transform = Transform3D(-0.7778175, 0, 0.7778175, 0, 1.35, 0, -0.7778175, 0, -0.7778175, -40, 0.063, 40)
 
-[node name="Mask" parent="Environment" parent_id_path=PackedInt32Array(921388622) index="12" unique_id=1341316447 instance=ExtResource("12_kq32x")]
+[node name="Webs" type="Node3D" parent="Environment" parent_id_path=PackedInt32Array(921388622) index="12" unique_id=493246087]
+
+[node name="Web0" type="MeshInstance3D" parent="Environment/Webs" index="0" unique_id=1722266032]
+transform = Transform3D(0.079037465, 1.4132884, 0.6640644, 0.028566431, 0.49744976, -1.8865361, -1.7529868, 0.07182771, -0.00080171286, -34.762817, 9.194824, 19.483002)
+mesh = ExtResource("12_vh2i6")
+surface_material_override/0 = SubResource("StandardMaterial3D_rd5xj")
+
+[node name="Web1" type="MeshInstance3D" parent="Environment/Webs" index="1" unique_id=1192083225]
+transform = Transform3D(0.8661074, 1.1517427, 0.36949825, -0.016250066, 0.45397347, -1.4867373, -1.169025, 0.8469928, 0.2944206, -39.604614, 7.4258423, -9.642052)
+mesh = ExtResource("12_vh2i6")
+surface_material_override/0 = SubResource("StandardMaterial3D_8ags5")
+
+[node name="Web2" type="MeshInstance3D" parent="Environment/Webs" index="2" unique_id=1258861122]
+transform = Transform3D(2.1463125, 0.1876307, -0.08518495, -0.11272725, 1.953584, -2.3126333, -0.055982433, 3.2598047, 1.3908522, -21.348755, 12.200562, -33.30445)
+mesh = ExtResource("12_vh2i6")
+surface_material_override/0 = SubResource("StandardMaterial3D_o17fk")
+
+[node name="Web3" type="MeshInstance3D" parent="Environment/Webs" index="3" unique_id=2082418208]
+transform = Transform3D(-2.076245, -0.7524854, -1.08096, 0.37505144, 1.9080178, -3.2529335, 0.6577557, -3.4632149, -1.557296, 11.1226425, 14.768188, 32.56465)
+mesh = ExtResource("12_vh2i6")
+surface_material_override/0 = SubResource("StandardMaterial3D_rd5xj")
+
+[node name="Web4" type="MeshInstance3D" parent="Environment/Webs" index="4" unique_id=831104774]
+transform = Transform3D(1.4681945, -0.8027436, -1.2773069, -0.44868547, 1.4093491, -3.2289658, 0.46809223, 3.8687677, 0.9112431, 31.992981, 15.129639, -24.282295)
+mesh = ExtResource("12_vh2i6")
+surface_material_override/0 = SubResource("StandardMaterial3D_8ags5")
+
+[node name="Web5" type="MeshInstance3D" parent="Environment/Webs" index="5" unique_id=578310274]
+transform = Transform3D(-0.9805879, -0.87993723, -0.9365656, -0.010841697, 0.60165536, -2.1028738, 1.3517507, -0.63349915, -0.69627035, 43.126923, 10.460205, -0.32953644)
+mesh = ExtResource("12_vh2i6")
+surface_material_override/0 = SubResource("StandardMaterial3D_o17fk")
+
+[node name="Web6" type="MeshInstance3D" parent="Environment/Webs" index="6" unique_id=649240662]
+transform = Transform3D(-4.6155376, 1.1872956, 0.088167116, 0.15374663, 3.285787, -1.8508567, -0.7586646, -6.557349, -0.9114721, -29.524849, 11.52063, 32.56465)
+mesh = ExtResource("12_vh2i6")
+surface_material_override/0 = SubResource("StandardMaterial3D_rd5xj")
+
+[node name="Mask" parent="Environment" parent_id_path=PackedInt32Array(921388622) index="13" unique_id=1341316447 instance=ExtResource("12_kq32x")]
 transform = Transform3D(1, 0, 0, 0, 0.73318684, 0.6800272, 0, -0.6800272, 0.73318684, -4.3426127, 10.875911, -41.014572)
 
 [node name="Camera" parent="CameraController/CameraPitch/Gimbal" parent_id_path=PackedInt32Array(969489915, 985846177) index="0" unique_id=707455384]
