@@ -377,7 +377,7 @@ script = ExtResource("3_hlqpx")
 [node name="Model" parent="." index="7" unique_id=1386607369 instance=ExtResource("5_qdo3w")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 
-[node name="Skeleton3D" parent="Model/Armature" parent_id_path=PackedInt32Array(1386607369, 1109091191) index="0" unique_id=1373732580]
+[node name="Skeleton3D" parent="Model/Armature" parent_id_path=PackedInt32Array(1386607369, 83957955) index="0" unique_id=576696097]
 bones/0/position = Vector3(0.95374787, -2.1403482, -0.46624097)
 bones/1/position = Vector3(-1.2902989, -2.12286, 1.4769515)
 bones/2/position = Vector3(0.7113577, -2.8251338, 0.2623732)
@@ -964,7 +964,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.277, 1.5)
 _recoiler = NodePath("../../../../../Recoiler")
 
 [node name="Mesh" parent="Model/Armature/Skeleton3D/NeedleAttach/Needle" index="1" unique_id=1302043455]
-transform = Transform3D(0.05756267, -0.68949866, -0.28944796, 0.66983724, 0.1765955, -0.28745896, 0.3324229, -0.23644835, 0.62935525, -0.43267757, 3.7365413, -3.5042882)
+transform = Transform3D(0.05756267, -0.68949866, -0.28944796, 0.66983724, 0.17659551, -0.28745896, 0.3324229, -0.23644838, 0.62935525, -0.43267757, 3.7365413, -3.5042882)
 
 [node name="DownSpikeDamager" parent="Model/Armature/Skeleton3D/NeedleAttach/Needle/Mesh" index="0" unique_id=706411475 node_paths=PackedStringArray("root")]
 root = NodePath("../../../../../../..")
@@ -987,10 +987,10 @@ local_hit_direction = Vector3(0, 0, -16)
 [node name="Collision" parent="Model/Armature/Skeleton3D/NeedleAttach/Needle/SlashEffect/SlashEffectDamager" index="0" unique_id=1910053338]
 transform = Transform3D(0.56085837, 0.5678816, -0.6024492, 0.3655402, -0.8227608, -0.4352485, -0.74284035, 0.023893394, -0.6690394, -1.0219219, 2.0750926, 2.2271311)
 
-[node name="Targeter" type="Marker3D" parent="Model/Armature/Skeleton3D/Head" parent_id_path=PackedInt32Array(1386607369, 906519875) index="0" unique_id=1500822753]
+[node name="Targeter" type="Marker3D" parent="Model/Armature/Skeleton3D/Head" parent_id_path=PackedInt32Array(1386607369, 998748120) index="0" unique_id=1500822753]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -3.2549305e-08, 2.233923, 0.37232065)
 
-[node name="AnimationPlayer" parent="Model" index="1" unique_id=1901980979]
+[node name="AnimationPlayer" parent="Model" index="1" unique_id=830455628]
 autoplay = &"Idle"
 
 [node name="DownSpikeTransition" type="AnimationTree" parent="Model/AnimationPlayer" index="0" unique_id=682122023]
@@ -1182,18 +1182,6 @@ _attack_voice_clips = SubResource("Resource_aw6r3")
 script = ExtResource("30_m4n5g")
 _walk_blend_tree = NodePath("../../Model/AnimationPlayer/WalkBlend")
 _footstep_interval = 0.5
-
-[node name="DoubleDamageHitEffectPreloader" parent="." index="14" unique_id=1229305961 instance=ExtResource("14_cxuv5")]
-process_mode = 4
-visible = false
-
-[node name="PlayerHitEffectPreloader" parent="." index="15" unique_id=1531162591 instance=ExtResource("40_rsjix")]
-process_mode = 4
-visible = false
-
-[node name="BindBreakEffectPreloader" parent="." index="16" unique_id=881843497 instance=ExtResource("13_s8joe")]
-process_mode = 4
-visible = false
 
 [editable path="Health"]
 [editable path="Model"]

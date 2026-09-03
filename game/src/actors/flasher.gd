@@ -17,6 +17,8 @@ func _ready() -> void:
 			surface_material.emission = Color.WHITE
 			surface_material.emission_energy_multiplier = 0
 			_materials.append(surface_material)
+	# Preload material by flashing very quickly and lightly on ready to prevent stutters
+	flash(0.01, 0, 0.01)
 
 func flash(from: float = 1, to: float = 0, duration: float = 0.25) -> void:
 	var flash_tween: Tween = create_tween()
