@@ -14,6 +14,10 @@ func _ready() -> void:
 	AudioManager.play_music(_title_music)
 	Input.mouse_mode = Input.MouseMode.MOUSE_MODE_VISIBLE
 
+# Avoid main menu from being hidden
+func _unhandled_input(_event: InputEvent) -> void:
+	pass
+
 func _on_select_fight_button_pressed() -> void:
 	_show_child(_profiles_page)
 

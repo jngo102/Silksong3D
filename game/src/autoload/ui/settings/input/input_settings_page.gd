@@ -30,6 +30,10 @@ func _ready() -> void:
 	for action in InputMap.get_actions().filter(func(action): return not action.contains("ui_")):
 		var input_rebinder: InputRebinder = _input_rebinder_prefab.instantiate()
 		input_rebinder.action_name = action
+		input_rebinder.rebound.connect(func():
+			for child in _rebinders_container.get_children():
+				if child is InputRebinder:
+					child.update_device_labels())
 		_rebinders_container.add_child(input_rebinder)
 
 func _on_device_change(device: String, _device_index: int) -> void:

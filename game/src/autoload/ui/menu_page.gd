@@ -15,3 +15,6 @@ func _on_contents_visibility_changed() -> void:
 	if is_instance_valid(_page) and _page.is_visible_in_tree():
 		_animator.play(&"Show")
 		_page.update_focus.call_deferred()
+		await get_tree().process_frame
+		reset_focus()
+		_reset(true)

@@ -37,13 +37,6 @@ func _input(event: InputEvent) -> void:
 		var tab_button_count: int = len(_settings_tab_buttons)
 		_selected_tab_index = wrapi(_selected_tab_index + 1, 0, tab_button_count)
 
-func _on_contents_visibility_changed() -> void:
-	super._on_contents_visibility_changed()
-	_page.update_focus.call_deferred()
-	await get_tree().process_frame
-	reset_focus()
-	_reset(true)
-
 func _set_up_settings_tabs() -> void:
 	var tab_button_index: int = 0
 	for tab_button in _settings_tab_buttons:

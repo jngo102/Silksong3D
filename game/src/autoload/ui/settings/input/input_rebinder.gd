@@ -11,6 +11,8 @@ var action_name: StringName
 ## Button to begin rebinding an input action
 @onready var _rebind_button: Button = $RebindButton
 
+signal rebound()
+
 ## Whether the input action is currently being rebound
 var rebinding: bool:
 	set(value):
@@ -18,19 +20,20 @@ var rebinding: bool:
 		if value:
 			_rebind_button.text = "Listening..."
 		else:
-			_update_device_labels()
+			update_device_labels()
 
 func _ready() -> void:
 	_action_label.text = action_name
-	InputHelper.device_changed.connect(_update_device_labels)
-	_update_device_labels()
+	InputHelper.device_changed.connect(update_device_labels)
+	update_device_labels()
 
-func _unhandled_input(event: InputEvent) -> void:
+func _input(event: InputEvent) -> void:
 	if not rebinding or not event.is_pressed():
 		return
 	if event.is_action_pressed(&"ui_cancel") or event.is_action_pressed(&"ui_back"):
 		cancel_rebind()
 		return
+	print("On keys: ", InputManager.on_keys, ",\t\tevent: ", event)
 	if (InputManager.on_keys and not event is InputEventKey and not event is InputEventMouseButton) or \
 		(InputManager.on_joypad and not event is InputEventJoypadButton and not event is InputEventJoypadMotion):
 		return
@@ -40,13 +43,15 @@ func _unhandled_input(event: InputEvent) -> void:
 
 ## Rebind a joystick or joypad button on a game controllerr
 func rebind(input: InputEvent) -> void:
+	print("Rebind to: ", input)
 	if input is InputEventKey or input is InputEventMouseButton:
-		if InputHelper.set_keyboard_input_for_action(action_name, input) != OK:
+		if InputHelper.set_keyboard_input_for_action(action_name, input, true) != OK:
 			printerr("Failed to set keyboard input for action \"", action_name, "\" to ", input)
 	elif input is InputEventJoypadButton:
-		if InputHelper.set_joypad_input_for_action(action_name, input) != OK:
+		if InputHelper.set_joypad_input_for_action(action_name, input, true) != OK:
 			printerr("Failed to set joypad input for action \"", action_name, "\" to ", input)
-	_update_device_labels()
+	accept_event()
+	rebound.emit()
 
 ## Cancel the current rebind process
 func cancel_rebind() -> void:
@@ -54,7 +59,7 @@ func cancel_rebind() -> void:
 	rebinding = false
 	_rebind_button.grab_focus()
 
-func _update_device_labels(device: String = InputHelper.device, _device_index: int = 0) -> void:
+func update_device_labels(device: String = InputHelper.device, _device_index: int = 0) -> void:
 	if InputManager.on_keys:
 		var key_mouse_input: InputEvent = InputHelper.get_keyboard_input_for_action(action_name)
 		if key_mouse_input is InputEventKey:
