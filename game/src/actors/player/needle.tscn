@@ -435,7 +435,7 @@ libraries/ = SubResource("AnimationLibrary_a8o31")
 autoplay = &"RESET"
 
 [node name="Mesh" type="MeshInstance3D" parent="." unique_id=1302043455]
-transform = Transform3D(0.05756267, -0.68949866, -0.28944796, 0.66983724, 0.1765955, -0.28745896, 0.3324229, -0.23644835, 0.62935525, -0.43267757, 3.7365413, -3.5042882)
+transform = Transform3D(0.05756267, -0.68949866, -0.28944796, 0.66983724, 0.17659551, -0.28745896, 0.3324229, -0.23644838, 0.62935525, -0.43267757, 3.7365413, -3.5042882)
 mesh = SubResource("ArrayMesh_sev4e")
 skeleton = NodePath("")
 

@@ -34,4 +34,5 @@ theme_override_constants/separation = 8
 
 [node name="Elements" type="HBoxContainer" parent="Margins/Page/Contents" parent_id_path=PackedInt32Array(1226700975) index="0" unique_id=757080393]
 layout_mode = 2
+size_flags_vertical = 3
 script = ExtResource("8_ymsfe")
