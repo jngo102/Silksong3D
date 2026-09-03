@@ -3,9 +3,9 @@ class_name PauseMenu extends StackableUI
 @onready var _animator: AnimationPlayer = $Animator
 @onready var _background_blur: TextureRect = $BackgroundBlur
 @onready var _margin_container: MarginContainer = $MarginContainer
-@onready var _menu_buttons: VBoxContainer = _margin_container.get_node_or_null("MenuButtons")
-@onready var _quit_warning_page: QuitWarningPage = _margin_container.get_node_or_null("QuitWarningPage")
+@onready var _menu_buttons: WrappingUIList = _margin_container.get_node_or_null("MenuButtons")
 @onready var _settings_ui: SettingsUI = $SettingsUI
+@onready var _quit_warning_page: QuitWarningPage = $QuitWarningPage
 
 func _ready() -> void:
 	super._ready()
@@ -24,6 +24,10 @@ func _pause(pause: bool = true) -> void:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		UIManager.get_ui(Fader).hide()
 		_animator.play(&"Open")
+		await _animator.animation_finished
+		_menu_buttons.update_focus()
+		reset_focus()
+		_reset(true)
 	elif not pause and get_tree().paused:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		_animator.play(&"Close")

@@ -14,7 +14,10 @@ script = ExtResource("1_5bhgl")
 [node name="Title" parent="Margins/Page/Header" parent_id_path=PackedInt32Array(911594393) index="0" unique_id=420837012]
 text = "Settings"
 
-[node name="SettingsTabs" type="HBoxContainer" parent="Margins/Page/Contents" parent_id_path=PackedInt32Array(1226700975) index="0" unique_id=1639651188]
+[node name="Contents" parent="Margins/Page" parent_id_path=PackedInt32Array(2076434230) index="1" unique_id=1226700975]
+size_flags_vertical = 4
+
+[node name="SettingsTabs" type="HBoxContainer" parent="Margins/Page/Contents" index="0" unique_id=1639651188]
 layout_mode = 2
 size_flags_horizontal = 3
 focus_behavior_recursive = 1

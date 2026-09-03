@@ -7,6 +7,7 @@ class_name BossFightProfile extends Control
 @onready var _name_label: Label = _thumbnail_button.get_node_or_null("Name")
 
 var _enter_audio: AudioStream = preload("uid://dych7ifmqv8j0")
+var _select_audio: AudioStream = preload("uid://cksekixgpfns6")
 
 var data: BossFightProfileData
 
@@ -47,5 +48,6 @@ func _on_thumbnail_mouse_entered() -> void:
 
 func _on_thumbnail_pressed() -> void:
 	if is_instance_valid(data):
+		AudioManager.play_clip(_select_audio, true, "UI")
 		AudioManager.play_clip(_enter_audio, true, "UI")
 		SceneManager.change_scene(data.scene)

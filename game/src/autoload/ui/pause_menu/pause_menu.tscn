@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://ccagewgfbpjlq" path="res://src/copyrighted/textures/ui/misc/bottom_fleur0006.png" id="9_el8v2"]
 [ext_resource type="Texture2D" uid="uid://b7ovpmlucyd4r" path="res://src/copyrighted/textures/ui/misc/bottom_fleur0007.png" id="10_4p2qt"]
 [ext_resource type="Texture2D" uid="uid://bhugjf3plw01a" path="res://src/copyrighted/textures/ui/misc/bottom_fleur0008.png" id="11_m0g1j"]
-[ext_resource type="AudioStream" uid="uid://dfdmaf8r0xoam" path="res://src/copyrighted/sfx/ui/ui_button_cancel.wav" id="16_bpmqe"]
+[ext_resource type="Script" uid="uid://dkbckojlnpcyg" path="res://src/autoload/ui/wrapping_ui_list.gd" id="13_bpmqe"]
 
 [sub_resource type="Animation" id="Animation_42xwn"]
 resource_name = "Close"
@@ -193,14 +193,14 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("BackgroundColor:modulate")
+tracks/6/path = NodePath("BackgroundColor:color")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0, 0.0001, 0.25),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(0, 0, 0, 0.49803922)]
 }
 
 [sub_resource type="Animation" id="Animation_30xuc"]
@@ -289,7 +289,7 @@ _data = {
 shader = ExtResource("2_42xwn")
 shader_parameter/blur_radius = 15.0
 
-[node name="PauseMenu" type="Control" unique_id=473198118]
+[node name="PauseMenu" type="Control" unique_id=473198118 node_paths=PackedStringArray("_excluded_uis")]
 process_mode = 3
 z_index = 1
 layout_mode = 3
@@ -301,6 +301,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_vjtkf")
+_excluded_uis = [NodePath("BackgroundColor"), NodePath("BackgroundBlur")]
 
 [node name="Animator" type="AnimationPlayer" parent="." unique_id=441061093]
 libraries/ = SubResource("AnimationLibrary_30xuc")
@@ -343,6 +344,7 @@ layout_mode = 2
 size_flags_vertical = 0
 theme_override_constants/separation = 96
 alignment = 1
+script = ExtResource("13_bpmqe")
 
 [node name="TopFleur" type="TextureRect" parent="MarginContainer/MenuButtons" unique_id=2003846593]
 layout_mode = 2
@@ -368,28 +370,16 @@ text = "Quit to Menu"
 layout_mode = 2
 stretch_mode = 3
 
-[node name="QuitWarningPage" parent="MarginContainer" unique_id=192551286 instance=ExtResource("4_30xuc")]
-visible = false
-layout_mode = 2
-
-[node name="MarginContainer" parent="MarginContainer/QuitWarningPage" index="1" unique_id=1644627099]
-theme_override_constants/margin_left = 0
-
-[node name="Title" parent="MarginContainer/QuitWarningPage/MarginContainer/Page/Header" parent_id_path=PackedInt32Array(192551286, 911594393) index="0" unique_id=420837012]
-text = "Return to main menu?"
-
-[node name="Contents" parent="MarginContainer/QuitWarningPage/MarginContainer/Page" parent_id_path=PackedInt32Array(192551286, 2076434230) index="1" unique_id=1226700975]
-theme_override_constants/separation = 64
-
 [node name="SettingsUI" parent="." unique_id=530063549 instance=ExtResource("3_42xwn")]
 visible = false
 layout_mode = 1
-_cancel_sound = ExtResource("16_bpmqe")
+
+[node name="QuitWarningPage" parent="." unique_id=192551286 instance=ExtResource("4_30xuc")]
+visible = false
+layout_mode = 1
 
 [connection signal="pressed" from="MarginContainer/MenuButtons/ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="MarginContainer/MenuButtons/RestartButton" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="MarginContainer/MenuButtons/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="MarginContainer/MenuButtons/QuitButton" to="." method="_on_quit_button_pressed"]
-[connection signal="quit_confirmed" from="MarginContainer/QuitWarningPage" to="." method="_on_quit_warning_page_quit_confirmed"]
-
-[editable path="MarginContainer/QuitWarningPage"]
+[connection signal="quit_confirmed" from="QuitWarningPage" to="." method="_on_quit_warning_page_quit_confirmed"]

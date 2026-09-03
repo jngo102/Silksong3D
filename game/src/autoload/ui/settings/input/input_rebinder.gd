@@ -76,7 +76,10 @@ func update_device_labels(device: String = InputHelper.device, _device_index: in
 	if InputManager.on_keys:
 		var key_mouse_input: InputEvent = InputHelper.get_keyboard_input_for_action(action_name)
 		if key_mouse_input is InputEventKey:
-			_rebind_button.text = OS.get_keycode_string(key_mouse_input.keycode)
+			var keycode: Key = key_mouse_input.physical_keycode
+			if keycode == Key.KEY_NONE:
+				keycode = key_mouse_input.keycode
+			_rebind_button.text = OS.get_keycode_string(DisplayServer.keyboard_get_label_from_physical(keycode))
 		elif key_mouse_input is InputEventMouseButton:
 			var button_index: MouseButton = key_mouse_input.button_index
 			match button_index:
