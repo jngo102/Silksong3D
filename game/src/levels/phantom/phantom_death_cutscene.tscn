@@ -737,16 +737,13 @@ bone_idx = 12
 [node name="Needle" parent="Hornet/Model/Armature/Skeleton3D/NeedleAttach" unique_id=1037699834 instance=ExtResource("5_mv0e0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.277, 1.5)
 
-[node name="Mesh" parent="Hornet/Model/Armature/Skeleton3D/NeedleAttach/Needle" index="1" unique_id=1302043455]
-transform = Transform3D(0.05756267, -0.68949866, -0.28944796, 0.66983724, 0.17659551, -0.28745896, 0.3324229, -0.23644838, 0.62935525, -0.43267757, 3.7365413, -3.5042882)
-
-[node name="DownSpikeDamager" parent="Hornet/Model/Armature/Skeleton3D/NeedleAttach/Needle/Mesh" index="0" unique_id=706411475]
+[node name="DownSpikeDamager" parent="Hornet/Model/Armature/Skeleton3D/NeedleAttach/Needle/Mesh" parent_id_path=PackedInt32Array(1037699834, 1302043455) index="0" unique_id=706411475]
 local_hit_direction = Vector3(0, -16, -16)
 
 [node name="Collision" parent="Hornet/Model/Armature/Skeleton3D/NeedleAttach/Needle/Mesh/DownSpikeDamager" index="0" unique_id=1910053338]
 transform = Transform3D(0.9999996, -1.5795231e-06, -7.584691e-06, 4.172325e-07, 0.99999905, -1.1920929e-06, -4.4703484e-07, 1.0728836e-06, 0.9999977, -0.0094542205, 2.0044737, 0.0029330254)
 
-[node name="StabDamager" parent="Hornet/Model/Armature/Skeleton3D/NeedleAttach/Needle/Mesh" index="1" unique_id=81393513]
+[node name="StabDamager" parent="Hornet/Model/Armature/Skeleton3D/NeedleAttach/Needle/Mesh" parent_id_path=PackedInt32Array(1037699834, 1302043455) index="1" unique_id=81393513]
 local_hit_direction = Vector3(0, 0, -20)
 
 [node name="SlashEffect" parent="Hornet/Model/Armature/Skeleton3D/NeedleAttach/Needle" index="2" unique_id=528815861]
@@ -875,6 +872,8 @@ visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 360.0
+offset_bottom = 360.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3

@@ -27,7 +27,7 @@ func _ready() -> void:
 	_invert_mouse_y_select.current_option = SaveManager.settings.invert_mouse_y
 	_invert_joystick_x_select.current_option = SaveManager.settings.invert_joystick_x
 	_invert_joystick_y_select.current_option = SaveManager.settings.invert_joystick_y
-	for action in InputMap.get_actions().filter(func(action): return not action.contains("ui_")):
+	for action in InputManager.gameplay_actions:
 		var input_rebinder: InputRebinder = _input_rebinder_prefab.instantiate()
 		input_rebinder.action_name = action
 		input_rebinder.rebound.connect(func():

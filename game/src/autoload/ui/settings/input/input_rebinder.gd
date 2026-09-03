@@ -30,31 +30,44 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if not rebinding or not event.is_pressed():
 		return
-	if event.is_action_pressed(&"ui_cancel") or event.is_action_pressed(&"ui_back"):
-		cancel_rebind()
+	if event.is_action_pressed(&"ui_cancel"):
+		_end_rebind()
 		return
-	print("On keys: ", InputManager.on_keys, ",\t\tevent: ", event)
 	if (InputManager.on_keys and not event is InputEventKey and not event is InputEventMouseButton) or \
 		(InputManager.on_joypad and not event is InputEventJoypadButton and not event is InputEventJoypadMotion):
 		return
 	if rebinding:
 		rebind(event)
-	cancel_rebind()
 
 ## Rebind a joystick or joypad button on a game controllerr
 func rebind(input: InputEvent) -> void:
-	print("Rebind to: ", input)
 	if input is InputEventKey or input is InputEventMouseButton:
-		if InputHelper.set_keyboard_input_for_action(action_name, input, true) != OK:
-			printerr("Failed to set keyboard input for action \"", action_name, "\" to ", input)
-	elif input is InputEventJoypadButton:
-		if InputHelper.set_joypad_input_for_action(action_name, input, true) != OK:
-			printerr("Failed to set joypad input for action \"", action_name, "\" to ", input)
-	accept_event()
+		var current_binding: InputEvent = InputHelper.get_keyboard_input_for_action(action_name)
+		if InputHelper.set_keyboard_input_for_action(action_name, input, false) != OK:
+			push_error("Failed to set keyboard input for action \"", action_name, "\" to ", input)
+			return
+		for action in InputManager.gameplay_actions:
+			if action != action_name and input.is_action(action):
+				if InputHelper.set_keyboard_input_for_action(action, current_binding, false) != OK:
+					push_error("Failed to swap keyboard input for action \"", action, "\" to ", current_binding)
+					return
+				break
+	elif input is InputEventJoypadButton or input is InputEventJoypadMotion:
+		var current_binding: InputEvent = InputHelper.get_joypad_input_for_action(action_name)
+		if InputHelper.set_joypad_input_for_action(action_name, input, false) != OK:
+			push_error("Failed to set joypad input for action \"", action_name, "\" to ", input)
+			return
+		for action in InputManager.gameplay_actions:
+			if action != action_name and input.is_action(action):
+				if InputHelper.set_joypad_input_for_action(action, current_binding, false) != OK:
+					push_error("Failed to swap keyboard input for action \"", action, "\" to ", current_binding)
+					return
+				break
+	_end_rebind()
 	rebound.emit()
 
 ## Cancel the current rebind process
-func cancel_rebind() -> void:
+func _end_rebind() -> void:
 	accept_event()
 	rebinding = false
 	_rebind_button.grab_focus()

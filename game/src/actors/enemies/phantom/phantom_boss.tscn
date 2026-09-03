@@ -190,7 +190,7 @@ orientation = 2
 [node name="Mesh" parent="." index="1" unique_id=176040917 instance=ExtResource("2_ix5q8")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 
-[node name="Skeleton3D" parent="Mesh/Armature" parent_id_path=PackedInt32Array(176040917, 331937162) index="0" unique_id=1694770403]
+[node name="Skeleton3D" parent="Mesh/Armature" parent_id_path=PackedInt32Array(176040917, 22913490) index="0" unique_id=2134423735]
 bones/0/rotation = Quaternion(0.21599099, 0, -0.97639537, 0)
 bones/2/rotation = Quaternion(0.50000006, 0.49999997, 0.49999997, -0.49999997)
 bones/3/rotation = Quaternion(-0.73563015, 0.13523956, -0.15189423, 0.6461321)
@@ -213,10 +213,10 @@ bones/18/rotation = Quaternion(0.0705894, -0.02419122, -0.0081759365, 0.99717855
 bones/19/position = Vector3(3.7252903e-09, 1.4523029, 1.1175871e-08)
 bones/19/rotation = Quaternion(0, -1.5075784e-08, 1.8626451e-09, 1)
 
-[node name="Mask" parent="Mesh/Armature/Skeleton3D" index="2" unique_id=2014768498]
+[node name="Mask" parent="Mesh/Armature/Skeleton3D" index="2" unique_id=2038854711]
 visible = false
 
-[node name="Pin" parent="Mesh/Armature/Skeleton3D" index="3" unique_id=1823815116]
+[node name="Pin" parent="Mesh/Armature/Skeleton3D" index="3" unique_id=446491627]
 visible = false
 
 [node name="SpineAttach" type="BoneAttachment3D" parent="Mesh/Armature/Skeleton3D" index="4" unique_id=1651600474]

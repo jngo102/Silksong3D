@@ -13,6 +13,10 @@ var action_map: Dictionary:
 			map[action.action_name] = action
 		return map
 
+var gameplay_actions: Array[StringName]:
+	get:
+		return InputMap.get_actions().filter(func(action: StringName): return not action.begins_with("ui_"))
+
 ## Whether the player is using keyboard/mouse
 var on_keys: bool:
 	get:
