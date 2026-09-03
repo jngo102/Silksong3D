@@ -54,7 +54,7 @@ func take_damage(damager: Damager) -> void:
 	var angle: float = atan2(to_damager_direction.z, -to_damager_direction.x)
 	for particles in damage_particles:
 		particles.global_rotation.y = angle
-		particles.set_emitting(true)
+		particles.restart()
 	if is_instance_valid(damage_effect_prefab):
 		var damage_effect: Node3D = damage_effect_prefab.instantiate()
 		add_child(damage_effect)

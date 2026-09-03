@@ -11,6 +11,7 @@ var _title_music: MusicTrack = preload("uid://cq5xyomalenfy")
 
 func _ready() -> void:
 	super._ready()
+	print("PLAY TITLE")
 	AudioManager.play_music(_title_music)
 	Input.mouse_mode = Input.MouseMode.MOUSE_MODE_VISIBLE
 

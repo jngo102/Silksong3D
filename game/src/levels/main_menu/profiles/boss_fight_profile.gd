@@ -48,6 +48,7 @@ func _on_thumbnail_mouse_entered() -> void:
 
 func _on_thumbnail_pressed() -> void:
 	if is_instance_valid(data):
+		AudioManager.stop_music()
 		AudioManager.play_clip(_select_audio, true, "UI")
 		AudioManager.play_clip(_enter_audio, true, "UI")
 		SceneManager.change_scene(data.scene)

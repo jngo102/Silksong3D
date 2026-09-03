@@ -17,11 +17,10 @@ extends Node3D
 ## Emitted when the music reaches a downbeat
 signal downbeat
 
+var audio_off_db: float = ProjectSettings.get_setting("audio/buses/channel_disable_threshold_db")
+
 ## The currently playing music track
-var current_track: MusicTrack:
-	set(value):
-		current_track = value
-		current_music_player.stream = value.music_clip if (value != null) else null
+var current_track: MusicTrack
 
 ## The number of beats into the current track in the previous frame
 var previous_beats_played: int
@@ -94,7 +93,7 @@ func play_clip(clip: AudioStream, global: bool = false, bus: String = "SFX", pla
 func play_music(track: MusicTrack, fade_time: float = 2, immediate: bool = false) -> void:
 	current_track = track
 	# Immediately play music if nothing is currently playing (or if immediate specified)
-	if not current_music_player.stream or immediate:
+	if immediate:
 		current_music_player.set_stream(track.music_clip)
 		current_music_player.play()
 		return
@@ -107,12 +106,12 @@ func play_music(track: MusicTrack, fade_time: float = 2, immediate: bool = false
 	volume_tween = create_tween()
 	volume_tween.finished.connect(_on_volume_tween_finished)
 	next_music_player.play(current_music_player.get_playback_position())
-	volume_tween.tween_property(current_music_player, "volume_db", linear_to_db(0), fade_time) \
+	volume_tween.tween_property(current_music_player, "volume_db", audio_off_db, fade_time) \
 		.from(linear_to_db(music_volume)) \
 		.set_trans(Tween.TRANS_EXPO) \
 		.set_ease(Tween.EASE_IN)
 	volume_tween.parallel().tween_property(next_music_player, "volume_db", linear_to_db(music_volume), fade_time) \
-		.from(linear_to_db(0)) \
+		.from(audio_off_db) \
 		.set_trans(Tween.TRANS_EXPO) \
 		.set_ease(Tween.EASE_OUT)
 
@@ -124,13 +123,15 @@ func stop_music() -> void:
 	next_music_player.stream = null
 	current_track = null
 
+
 ## Update the current music volume
 func update_music_volume() -> void:
-	current_music_player.volume_db = music_volume
+	current_music_player.volume_db = linear_to_db(music_volume)
 
 ## Callback for when the volume tween finishes
 func _on_volume_tween_finished() -> void:
-	current_music_player.set_stream(current_track.music_clip)
+	if is_instance_valid(current_track):
+		current_music_player.set_stream(current_track.music_clip)
 	current_music_player.play(next_music_player.get_playback_position())
-	current_music_player.set_volume_db(music_volume)
+	current_music_player.set_volume_db(linear_to_db(music_volume))
 	next_music_player.stop()
