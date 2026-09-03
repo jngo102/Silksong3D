@@ -29,7 +29,7 @@ func _init() -> void:
 	settings = _load_settings()
 
 func _ready() -> void:
-	_set_up_display_settings()
+	# _set_up_display_settings()
 	tree_exiting.connect(_on_tree_exiting)
 
 ## Load game data and settings from disk
@@ -42,14 +42,20 @@ func _load_game_data() -> SaveData:
 	if not ResourceLoader.exists(save_path):
 		print("No save data found, creating new save")
 		return default_save
-	return load(save_path)
+	var save_data = load(save_path)
+	if not is_instance_of(save_data, SaveData):
+		return default_save
+	return save_data
 	
 ## Load settings from disk
 func _load_settings() -> Settings:
 	if not ResourceLoader.exists(SETTINGS_PATH):
 		print("No settings found, creating new settings")
 		return Settings.new()
-	return load(SETTINGS_PATH)
+	var settings = load(SETTINGS_PATH)
+	if not is_instance_of(settings, Settings):
+		return Settings.new()
+	return settings
 
 func _set_up_display_settings() -> void:
 	DisplayServer.window_set_size(settings.display_resolution)

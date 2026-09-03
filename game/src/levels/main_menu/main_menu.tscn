@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bkekgoy4e6vcl" path="res://src/levels/main_menu/main_menu.gd" id="1_dvq8h"]
 [ext_resource type="PackedScene" uid="uid://hqhyvp4gjw8i" path="res://src/autoload/ui/ui_button.tscn" id="1_kmt2n"]
 [ext_resource type="Script" uid="uid://dkbckojlnpcyg" path="res://src/autoload/ui/wrapping_ui_list.gd" id="2_h51uc"]
-[ext_resource type="Texture2D" uid="uid://nvrq67885fo2" path="res://src/copyrighted/textures/ui/Title.png" id="2_hj0c5"]
+[ext_resource type="Texture2D" uid="uid://nvrq67885fo2" path="res://src/copyrighted/textures/ui/title.png" id="2_hj0c5"]
 [ext_resource type="PackedScene" uid="uid://dymla6ms0yb56" path="res://src/autoload/ui/settings/settings_ui.tscn" id="4_8hw3k"]
 [ext_resource type="PackedScene" uid="uid://c50y1s5he41oo" path="res://src/levels/main_menu/profiles/boss_fight_profiles_page.tscn" id="5_7argb"]
 [ext_resource type="PackedScene" uid="uid://wnb0e26iehfc" path="res://src/levels/main_menu/quit_warning.tscn" id="6_63tbh"]
