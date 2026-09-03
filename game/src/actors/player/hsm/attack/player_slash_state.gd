@@ -16,6 +16,6 @@ func _update(delta: float) -> void:
 
 func _attack() -> void:
 	super._attack()
-	play_anim(_slash_animation_name)
+	_model_animator.play(_slash_animation_name, 0.125, 2)
 	_needle_animator.play(_slash_needle_animation_name)
 	_player.move(Vector2.ZERO)

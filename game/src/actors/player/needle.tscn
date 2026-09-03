@@ -251,7 +251,7 @@ tracks/7/keys = {
 
 [sub_resource type="Animation" id="Animation_a8o31"]
 resource_name = "Slash"
-length = 0.45
+length = 0.25
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -259,10 +259,10 @@ tracks/0/path = NodePath("Mesh:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0667, 0.13630144, 0.2, 0.45),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.13333334, 0.23333333),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(-0.831, 2.9363298, -1.1879411), Vector3(-0.831, 2.9363298, -1.1879411), Vector3(-1.2181699, 2.7483468, -0.7143259), Vector3(-1.572504, 2.5763066, -0.28087783), Vector3(-0.43267757, 3.7365413, -3.5042882)]
+"values": [Vector3(-1.86402, 2.2493792, -2.800856), Vector3(-1.86402, 2.2493792, -2.800856), Vector3(-0.43267757, 3.7365413, -3.5042882)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -271,10 +271,10 @@ tracks/1/path = NodePath("Mesh:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.06666667, 0.13630144, 0.2, 0.45),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.13333334, 0.23333333),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(0.2487293, -0.97262764, -2.2276864), Vector3(0.2487293, -0.97262764, -2.2276864), Vector3(-0.48520154, 0.44156832, -3.0386183), Vector3(-0.17278759, 1.6336281, -3.626794), Vector3(0.3926991, 5.852089, 1.3124876)]
+"values": [Vector3(-0.4036365, -0.56355464, -3.0700145), Vector3(-0.4036365, -0.56355464, -3.0700145), Vector3(0.3926991, 5.852089, 1.3124876)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -435,7 +435,7 @@ libraries/ = SubResource("AnimationLibrary_a8o31")
 autoplay = &"RESET"
 
 [node name="Mesh" type="MeshInstance3D" parent="." unique_id=1302043455]
-transform = Transform3D(0.05756267, -0.68949866, -0.28944796, 0.66983724, 0.17659551, -0.28745896, 0.3324229, -0.23644838, 0.62935525, -0.43267757, 3.7365413, -3.5042882)
+transform = Transform3D(0.057562653, -0.6894986, -0.28944793, 0.669837, 0.17659548, -0.28745893, 0.3324228, -0.23644833, 0.6293552, -0.43267757, 3.7365413, -3.5042882)
 mesh = SubResource("ArrayMesh_sev4e")
 skeleton = NodePath("")
 
@@ -462,7 +462,7 @@ shape = SubResource("CapsuleShape3D_m1lj5")
 disabled = true
 
 [node name="SlashEffect" parent="." unique_id=528815861 instance=ExtResource("3_g78k6")]
-transform = Transform3D(1.1804705, -0.41108325, 0, 0.35600856, 1.0223173, 0.625, -0.20554164, -0.5902352, 1.0825317, 0, 2.2247343, 0)
+transform = Transform3D(1.1804705, -0.41108325, 0, 0.20706356, 0.59460557, 1.0798465, -0.3551255, -1.0197814, 0.6296278, 9.733765, 4.3293486, -11.550995)
 
 [node name="SlashEffectDamager" parent="SlashEffect" index="0" unique_id=960803585]
 transform = Transform3D(0.8000003, 0, 0, 0, 0.8000001, 0, 0, 0, 0.8, 0, 0, 0)
