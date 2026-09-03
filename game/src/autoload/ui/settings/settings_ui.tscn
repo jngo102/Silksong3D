@@ -63,21 +63,21 @@ focus_behavior_recursive = 1
 text = "Input"
 flat = true
 
-[node name="Pages" type="Control" parent="Margins/Page/Contents" parent_id_path=PackedInt32Array(1226700975) index="1" unique_id=1263237972]
+[node name="Pages" type="Control" parent="Margins/Page" parent_id_path=PackedInt32Array(2076434230) index="2" unique_id=1263237972]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="AccessibilitySettingsPage" parent="Margins/Page/Contents/Pages" index="0" unique_id=1450197288 instance=ExtResource("6_mgrx7")]
+[node name="AccessibilitySettingsPage" parent="Margins/Page/Pages" index="0" unique_id=1450197288 instance=ExtResource("6_mgrx7")]
 layout_mode = 1
 
-[node name="AudioSettingsPage" parent="Margins/Page/Contents/Pages" index="1" unique_id=527090798 instance=ExtResource("4_mgrx7")]
+[node name="AudioSettingsPage" parent="Margins/Page/Pages" index="1" unique_id=527090798 instance=ExtResource("4_mgrx7")]
 visible = false
 layout_mode = 1
 
-[node name="GraphicsSettingsPage" parent="Margins/Page/Contents/Pages" index="2" unique_id=1191767147 instance=ExtResource("6_5e0nd")]
+[node name="GraphicsSettingsPage" parent="Margins/Page/Pages" index="2" unique_id=1191767147 instance=ExtResource("6_5e0nd")]
 visible = false
 layout_mode = 1
 
-[node name="InputSettingsPage" parent="Margins/Page/Contents/Pages" index="3" unique_id=1104180198 instance=ExtResource("1_27rnl")]
+[node name="InputSettingsPage" parent="Margins/Page/Pages" index="3" unique_id=1104180198 instance=ExtResource("1_27rnl")]
 visible = false
 layout_mode = 1

@@ -14,8 +14,12 @@ func update_focus() -> void:
 			var current: Control = focusables[i]
 			var next: Control = focusables[wrapi(i + 1, 0, num_focusables)]
 			if vertical:
-				current.focus_neighbor_top = prev.get_path()
-				current.focus_neighbor_bottom = next.get_path()
+				if is_instance_valid(prev):
+					current.focus_neighbor_top = prev.get_path()
+				if is_instance_valid(next):
+					current.focus_neighbor_bottom = next.get_path()
 			else:
-				current.focus_neighbor_left = prev.get_path()
-				current.focus_neighbor_right = next.get_path()
+				if is_instance_valid(prev):
+					current.focus_neighbor_left = prev.get_path()
+				if is_instance_valid(next):
+					current.focus_neighbor_right = next.get_path()

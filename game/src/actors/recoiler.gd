@@ -8,7 +8,6 @@ var _current_recoil_speed: float
 
 func _process(delta: float) -> void:
 	if _current_recoil_speed > 0:
-		#print("RECOIL SPEED: ", _current_recoil_speed)
 		body.move_and_collide(_current_recoil_direction * _current_recoil_speed * delta)
 		_current_recoil_speed -= unrecoil_speed * delta
 

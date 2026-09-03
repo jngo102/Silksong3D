@@ -38,10 +38,9 @@ var _fading: bool:
 	get:
 		if not is_instance_valid(_default_ui):
 			return null
-		var focusables: Array[Node] = find_children("*", "Control", true, false).filter(func(child: Control):
-			return child is Control and child.focus_mode == FocusMode.FOCUS_ALL)
-		if len(focusables) > 0:
-			return focusables[0]
+		for child in find_children("*", "Control", true, false):
+			if child is Control and child.is_visible_in_tree() and child.focus_mode == FocusMode.FOCUS_ALL:
+				return child
 		return null
 				
 
