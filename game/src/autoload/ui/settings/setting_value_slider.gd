@@ -32,6 +32,3 @@ func _on_value_editor_value_changed(value: float) -> void:
 	var normalized_value: float = value / 100
 	_value_slider.value = normalized_value
 	value_changed.emit(normalized_value)
-
-func _on_focus_entered() -> void:
-	_value_slider.grab_focus()

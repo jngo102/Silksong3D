@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://1nnhio1kqrsg" path="res://src/levels/main_menu/profiles/cogwork_dancers.png" id="5_vd6hw"]
 [ext_resource type="PackedScene" uid="uid://tkt0qnsojd35" path="res://src/levels/phantom/phantom_fight.tscn" id="6_rvh5p"]
 [ext_resource type="Texture2D" uid="uid://bw7anmk5elplu" path="res://src/levels/main_menu/profiles/phantom.png" id="7_mvq0l"]
+[ext_resource type="Script" uid="uid://dkbckojlnpcyg" path="res://src/autoload/ui/wrapping_ui_list.gd" id="8_ymsfe"]
 
 [sub_resource type="Resource" id="Resource_vd6hw"]
 script = ExtResource("2_vd6hw")
@@ -28,13 +29,9 @@ metadata/_custom_type_script = "uid://mh6v8w8mh15m"
 script = ExtResource("1_sa8tw")
 profiles = Array[ExtResource("2_vd6hw")]([SubResource("Resource_vd6hw"), SubResource("Resource_ojd61")])
 
-[node name="Title" parent="MarginContainer/Page/Header" index="0"]
-text = "Select Boss Fight"
+[node name="Page" parent="Margins" parent_id_path=PackedInt32Array(1644627099) index="0" unique_id=2076434230]
+theme_override_constants/separation = 8
 
-[node name="Contents" parent="MarginContainer/Page" index="1"]
-focus_mode = 0
-
-[node name="Elements" type="HBoxContainer" parent="MarginContainer/Page/Contents" index="0" unique_id=901854930]
+[node name="Elements" type="HBoxContainer" parent="Margins/Page/Contents" parent_id_path=PackedInt32Array(1226700975) index="0" unique_id=757080393]
 layout_mode = 2
-size_flags_vertical = 3
-alignment = 1
+script = ExtResource("8_ymsfe")

@@ -28,7 +28,8 @@ expand_margin_bottom = 4.0
 
 [resource]
 default_font = ExtResource("1_4exs3")
-default_font_size = 64
+default_font_size = 48
+BoxContainer/constants/separation = 16
 Button/constants/outline_size = 4
 Button/styles/focus = SubResource("StyleBoxEmpty_4exs3")
 HBoxContainer/constants/separation = 16
@@ -43,6 +44,6 @@ Label/constants/outline_size = 4
 MarginContainer/constants/margin_bottom = 64
 MarginContainer/constants/margin_left = 64
 MarginContainer/constants/margin_right = 64
-MarginContainer/constants/margin_top = 32
+MarginContainer/constants/margin_top = 64
 TabBar/constants/tab_separation = 64
-VBoxContainer/constants/separation = 8
+VBoxContainer/constants/separation = 32

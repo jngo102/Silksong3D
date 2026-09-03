@@ -275,7 +275,6 @@ grow_vertical = 2
 pivot_offset = Vector2(256, 384)
 size_flags_horizontal = 3
 size_flags_vertical = 3
-mouse_filter = 2
 script = ExtResource("1_micny")
 
 [node name="Animator" type="AnimationPlayer" parent="." unique_id=1148642389]
@@ -292,6 +291,7 @@ offset_right = -15.999573
 offset_bottom = 448.0
 scale = Vector2(1.5, 1.5)
 size_flags_vertical = 4
+mouse_filter = 2
 stretch_mode = 3
 
 [node name="TopLeftFleur" type="TextureRect" parent="." unique_id=1721672685]
@@ -304,6 +304,7 @@ offset_bottom = 500.0
 scale = Vector2(1.5, 1.5)
 offset_transform_enabled = true
 offset_transform_position = Vector2(-21, 16)
+mouse_filter = 2
 texture = ExtResource("9_micny")
 stretch_mode = 2
 
@@ -378,6 +379,7 @@ offset_bottom = 978.0
 scale = Vector2(-1.5, -1.5)
 offset_transform_enabled = true
 offset_transform_position = Vector2(-12, 12)
+mouse_filter = 2
 texture = ExtResource("9_hrr1x")
 stretch_mode = 2
 flip_h = true
@@ -391,6 +393,7 @@ offset_right = 561.0
 offset_bottom = 448.0
 scale = Vector2(1.5, 1.5)
 size_flags_vertical = 4
+mouse_filter = 2
 stretch_mode = 3
 flip_h = true
 
@@ -399,5 +402,4 @@ flip_h = true
 [connection signal="focus_entered" from="Thumbnail" to="." method="_on_thumbnail_focus_entered"]
 [connection signal="focus_exited" from="Thumbnail" to="." method="_on_thumbnail_focus_exited"]
 [connection signal="mouse_entered" from="Thumbnail" to="." method="_on_thumbnail_mouse_entered"]
-[connection signal="mouse_exited" from="Thumbnail" to="." method="_on_thumbnail_mouse_exited"]
 [connection signal="pressed" from="Thumbnail" to="." method="_on_thumbnail_pressed"]

@@ -16,7 +16,7 @@ func _ready() -> void:
 	_sprint_jump_transition_tree.animation_finished.connect(_on_animation_finish)
 
 func _enter() -> void:
-	AudioManager.play_clip(_sprint_jump_spin_audio, false, _player.global_position, 0.85, 1.15)
+	AudioManager.play_clip(_sprint_jump_spin_audio, false, "SFX", _player.global_position, 0.85, 1.15)
 	_player.move(Vector2.UP * _sprint_jump_speed)
 	_sprint_jump_transition_tree.set_active(true)
 	_queue_stop_jump = false

@@ -43,7 +43,7 @@ func _check_ground() -> void:
 
 func _land() -> void:
 	if is_instance_valid(_current_floor) and is_instance_valid(_current_floor.land_audio):
-		AudioManager.play_clip(_current_floor.land_audio, false, body.global_position, 0.85, 1.15)
+		AudioManager.play_clip(_current_floor.land_audio, false, "SFX", body.global_position, 0.85, 1.15)
 
 func play_footstep() -> void:
 	if is_instance_valid(_current_floor):

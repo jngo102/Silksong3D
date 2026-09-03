@@ -96,3 +96,15 @@ func close_all_uis() -> void:
 	for ui in opened_uis:
 		if not non_closeable_uis.any(func(non_closeable_ui): return non_closeable_ui == ui):
 			ui.close()
+
+func fade_in_ui(ui: Control, fade_time: float = 0.25) -> Tween:
+	var fade_tween: Tween = create_tween()
+	fade_tween.bind_node(ui)
+	fade_tween.tween_property(ui, "modulate", Color.WHITE, fade_time).from(Color.TRANSPARENT)
+	return fade_tween
+
+func fade_out_ui(ui: Control, fade_time: float = 0.25) -> Tween:
+	var fade_tween: Tween = create_tween()
+	fade_tween.bind_node(ui)
+	fade_tween.tween_property(ui, "modulate", Color.TRANSPARENT, fade_time).from(Color.WHITE)
+	return fade_tween

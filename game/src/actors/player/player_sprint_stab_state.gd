@@ -19,7 +19,7 @@ func _ready() -> void:
 func _enter() -> void:
 	_stab_timer = 0
 	_player.move(Vector2.UP * _stab_speed)
-	AudioManager.play_clip(_dash_audio, false, _player.global_position, 0.85, 1.15)
+	AudioManager.play_clip(_dash_audio, false, "SFX", _player.global_position, 0.85, 1.15)
 	play_anim(_sprint_stab_animation_name)
 	super._enter()
 

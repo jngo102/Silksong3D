@@ -1,24 +1,21 @@
-## Vertical list whose contents wrap around
+## List whose contents wrap around
 class_name WrappingUIList extends BoxContainer
 
 func _ready() -> void:
-	set_focus_mode(FOCUS_ALL)
-	var first_child: Control = get_child(0)
-	var last_child: Control = get_child(get_child_count() - 1)
-	if vertical:
-		first_child.focus_neighbor_top = last_child.get_path()
-		last_child.focus_neighbor_bottom = first_child.get_path()
-	else:
-		first_child.focus_neighbor_left = last_child.get_path()
-		last_child.focus_neighbor_right = first_child.get_path()
-	focus_entered.connect(first_child.grab_focus)
-	
-	for i in get_child_count():
-		var element: Control = get_child(i)
-		var child_count: int = get_child_count()
-		if vertical:
-			element.focus_neighbor_bottom = get_child((i + 1) % child_count).get_path()
-			element.focus_neighbor_top = get_child(((i - 1) + child_count) % child_count).get_path()
-		else:
-			element.focus_neighbor_left = get_child((i + 1) % child_count).get_path()
-			element.focus_neighbor_right = get_child(((i - 1) + child_count) % child_count).get_path()
+	update_focus()
+
+func update_focus() -> void:
+	var focusables: Array[Node] = find_children("*", "Control", true, false).filter(func(child):
+		return child is Control and child.is_visible_in_tree() and child.focus_mode == FocusMode.FOCUS_ALL)
+	var num_focusables: int = len(focusables)
+	if num_focusables > 0:
+		for i in num_focusables:
+			var prev: Control = focusables[wrapi(i - 1, 0, num_focusables)]
+			var current: Control = focusables[i]
+			var next: Control = focusables[wrapi(i + 1, 0, num_focusables)]
+			if vertical:
+				current.focus_neighbor_top = prev.get_path()
+				current.focus_neighbor_bottom = next.get_path()
+			else:
+				current.focus_neighbor_left = prev.get_path()
+				current.focus_neighbor_right = next.get_path()

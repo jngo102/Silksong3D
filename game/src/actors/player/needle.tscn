@@ -417,8 +417,8 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_g78k6")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g78k6"]
-radius = 1.5
-height = 8.0
+radius = 2.0
+height = 9.347168
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_m1lj5"]
 radius = 1.0
@@ -435,7 +435,7 @@ libraries/ = SubResource("AnimationLibrary_a8o31")
 autoplay = &"RESET"
 
 [node name="Mesh" type="MeshInstance3D" parent="." unique_id=1302043455]
-transform = Transform3D(0.057562675, -0.6894986, -0.28944796, 0.66983724, 0.17659548, -0.28745896, 0.3324229, -0.23644833, 0.62935525, -0.43267757, 3.7365413, -3.5042882)
+transform = Transform3D(0.05756267, -0.68949866, -0.28944796, 0.66983724, 0.1765955, -0.28745896, 0.3324229, -0.23644835, 0.62935525, -0.43267757, 3.7365413, -3.5042882)
 mesh = SubResource("ArrayMesh_sev4e")
 skeleton = NodePath("")
 
@@ -446,7 +446,7 @@ collision_mask = 2
 damage_amount = 9
 
 [node name="Collision" parent="Mesh/DownSpikeDamager" index="0" unique_id=1910053338]
-transform = Transform3D(0.9999995, -1.5795231e-06, -7.56979e-06, 4.4703484e-07, 0.99999905, -1.2218952e-06, -4.4703484e-07, 1.0728836e-06, 0.99999774, 0, 2, 0)
+transform = Transform3D(0.9999998, -1.6093254e-06, -7.495284e-06, 4.4703484e-07, 1.0000007, 4.172325e-07, -4.0233135e-07, 1.66893e-06, 0.9999987, -7.1525574e-07, 2.673587, 7.1525574e-07)
 shape = SubResource("CapsuleShape3D_g78k6")
 disabled = true
 

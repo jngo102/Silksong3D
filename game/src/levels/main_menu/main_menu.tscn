@@ -11,73 +11,83 @@
 
 [node name="MainMenu" type="Node3D" unique_id=1214712213]
 
-[node name="UI" type="Control" parent="." unique_id=726901776 node_paths=PackedStringArray("child_uis")]
+[node name="UI" type="Control" parent="." unique_id=726901776]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource("1_dvq8h")
-child_uis = [NodePath("MarginContainer/Contents"), NodePath("MarginContainer/SettingsUI"), NodePath("MarginContainer/BossFightProfilesPage"), NodePath("MarginContainer/QuitWarningPage")]
 
 [node name="Animator" type="AnimationPlayer" parent="UI" unique_id=1975133641]
 
-[node name="MarginContainer" type="MarginContainer" parent="UI" unique_id=854340790]
+[node name="Margins" type="MarginContainer" parent="UI" unique_id=854340790]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_bottom = 85.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Contents" type="VBoxContainer" parent="UI/MarginContainer" unique_id=589306897]
+[node name="Contents" type="VBoxContainer" parent="UI/Margins" unique_id=589306897]
 layout_mode = 2
+theme_override_constants/separation = 64
 
-[node name="Title" type="TextureRect" parent="UI/MarginContainer/Contents" unique_id=1467841531]
+[node name="Title" type="TextureRect" parent="UI/Margins/Contents" unique_id=1467841531]
+custom_maximum_size = Vector2(-1, 480)
 layout_mode = 2
 size_flags_vertical = 3
 texture = ExtResource("2_hj0c5")
-stretch_mode = 3
+expand_mode = 2
+stretch_mode = 5
 
-[node name="CenterContainer" type="CenterContainer" parent="UI/MarginContainer/Contents" unique_id=2059771027]
+[node name="MenuButtons" type="VBoxContainer" parent="UI/Margins/Contents" unique_id=225645830]
 layout_mode = 2
-size_flags_vertical = 3
-
-[node name="MenuButtons" type="VBoxContainer" parent="UI/MarginContainer/Contents/CenterContainer" unique_id=225645830]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/separation = 96
+alignment = 1
 script = ExtResource("2_h51uc")
 
-[node name="SelectFightButton" parent="UI/MarginContainer/Contents/CenterContainer/MenuButtons" unique_id=679918748 instance=ExtResource("1_kmt2n")]
+[node name="SelectFightButton" parent="UI/Margins/Contents/MenuButtons" unique_id=679918748 instance=ExtResource("1_kmt2n")]
 layout_mode = 2
 text = "Select Fight"
 
-[node name="OptionsButton" parent="UI/MarginContainer/Contents/CenterContainer/MenuButtons" unique_id=684917942 instance=ExtResource("1_kmt2n")]
+[node name="OptionsButton" parent="UI/Margins/Contents/MenuButtons" unique_id=684917942 instance=ExtResource("1_kmt2n")]
 layout_mode = 2
 text = "Options"
 
-[node name="QuitGameButton" parent="UI/MarginContainer/Contents/CenterContainer/MenuButtons" unique_id=251934007 instance=ExtResource("1_kmt2n")]
+[node name="QuitGameButton" parent="UI/Margins/Contents/MenuButtons" unique_id=251934007 instance=ExtResource("1_kmt2n")]
 layout_mode = 2
 text = "Quit Game"
 
-[node name="SettingsUI" parent="UI/MarginContainer" unique_id=1622924875 instance=ExtResource("4_8hw3k")]
+[node name="SettingsUI" parent="UI" unique_id=1622924875 instance=ExtResource("4_8hw3k")]
 visible = false
-layout_mode = 2
+layout_mode = 1
+offset_top = -42.5
+offset_bottom = -42.5
 
-[node name="BossFightProfilesPage" parent="UI/MarginContainer" unique_id=89841268 instance=ExtResource("5_7argb")]
+[node name="BossFightProfilesPage" parent="UI" unique_id=89841268 instance=ExtResource("5_7argb")]
 visible = false
-layout_mode = 2
+layout_mode = 1
+offset_top = -42.5
+offset_bottom = -42.5
 
-[node name="QuitWarningPage" parent="UI/MarginContainer" unique_id=1192315803 instance=ExtResource("6_63tbh")]
+[node name="QuitWarningPage" parent="UI" unique_id=1192315803 instance=ExtResource("6_63tbh")]
 visible = false
-layout_mode = 2
+layout_mode = 1
+offset_top = -42.5
+offset_bottom = -42.5
 
 [node name="Scene" parent="." unique_id=401339708 instance=ExtResource("8_hj0c5")]
 
-[connection signal="uis_emptied" from="UI" to="UI" method="_on_uis_emptied"]
-[connection signal="pressed" from="UI/MarginContainer/Contents/CenterContainer/MenuButtons/SelectFightButton" to="UI" method="_on_select_fight_button_pressed"]
-[connection signal="pressed" from="UI/MarginContainer/Contents/CenterContainer/MenuButtons/OptionsButton" to="UI" method="_on_options_button_pressed"]
-[connection signal="pressed" from="UI/MarginContainer/Contents/CenterContainer/MenuButtons/QuitGameButton" to="UI" method="_on_quit_game_button_pressed"]
-[connection signal="quit_confirmed" from="UI/MarginContainer/QuitWarningPage" to="UI" method="_on_quit_warning_page_quit_confirmed"]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2092897950]
+
+[connection signal="pressed" from="UI/Margins/Contents/MenuButtons/SelectFightButton" to="UI" method="_on_select_fight_button_pressed"]
+[connection signal="pressed" from="UI/Margins/Contents/MenuButtons/OptionsButton" to="UI" method="_on_options_button_pressed"]
+[connection signal="pressed" from="UI/Margins/Contents/MenuButtons/QuitGameButton" to="UI" method="_on_quit_game_button_pressed"]
+[connection signal="visibility_changed" from="UI/SettingsUI" to="UI/SettingsUI" method="_on_visibility_changed"]
+[connection signal="visibility_changed" from="UI/BossFightProfilesPage" to="UI/BossFightProfilesPage" method="_on_visibility_changed"]
+[connection signal="quit_confirmed" from="UI/QuitWarningPage" to="UI" method="_on_quit_warning_page_quit_confirmed"]
+[connection signal="visibility_changed" from="UI/QuitWarningPage" to="UI/QuitWarningPage" method="_on_visibility_changed"]

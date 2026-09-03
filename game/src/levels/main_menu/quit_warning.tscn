@@ -4,33 +4,33 @@
 [ext_resource type="Script" uid="uid://csxvae054kv83" path="res://src/levels/main_menu/quit_warning_page.gd" id="2_hpjn1"]
 [ext_resource type="PackedScene" uid="uid://hqhyvp4gjw8i" path="res://src/autoload/ui/ui_button.tscn" id="2_jry6w"]
 
-[node name="QuitWarningPage" instance=ExtResource("1_2vlew")]
+[node name="QuitWarningPage" unique_id=996579149 instance=ExtResource("1_2vlew")]
 script = ExtResource("2_hpjn1")
 
-[node name="MarginContainer" parent="." index="1"]
+[node name="Margins" parent="." index="1" unique_id=1644627099]
 theme_override_constants/margin_top = 256
 theme_override_constants/margin_bottom = 256
 
-[node name="Title" parent="MarginContainer/Page/Header" index="0"]
+[node name="Title" parent="Margins/Page/Header" parent_id_path=PackedInt32Array(911594393) index="0" unique_id=420837012]
 text = ""
 
-[node name="Warning" type="Label" parent="MarginContainer/Page/Contents" index="0"]
+[node name="Warning" type="Label" parent="Margins/Page/Contents" parent_id_path=PackedInt32Array(1226700975) index="0" unique_id=753221827]
 layout_mode = 2
 size_flags_vertical = 3
 text = "Quit game?"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="YesButton" parent="MarginContainer/Page/Contents" index="1" instance=ExtResource("2_jry6w")]
+[node name="YesButton" parent="Margins/Page/Contents" parent_id_path=PackedInt32Array(1226700975) index="1" unique_id=1743425713 instance=ExtResource("2_jry6w")]
 layout_mode = 2
 text = "Yes"
 
-[node name="NoButton" parent="MarginContainer/Page/Contents" index="2" instance=ExtResource("2_jry6w")]
+[node name="NoButton" parent="Margins/Page/Contents" parent_id_path=PackedInt32Array(1226700975) index="2" unique_id=607946639 instance=ExtResource("2_jry6w")]
 layout_mode = 2
 text = "No"
 
-[node name="BackButton" parent="MarginContainer/Page" index="2"]
+[node name="BackButton" parent="Margins/Page" parent_id_path=PackedInt32Array(2076434230) index="2" unique_id=1889332863]
 visible = false
 
-[connection signal="pressed" from="MarginContainer/Page/Contents/YesButton" to="." method="_on_yes_button_pressed"]
-[connection signal="pressed" from="MarginContainer/Page/Contents/NoButton" to="." method="_on_no_button_pressed"]
+[connection signal="pressed" from="Margins/Page/Contents/YesButton" to="." method="_on_yes_button_pressed"]
+[connection signal="pressed" from="Margins/Page/Contents/NoButton" to="." method="_on_no_button_pressed"]

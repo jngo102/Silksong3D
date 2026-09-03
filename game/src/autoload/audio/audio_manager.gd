@@ -73,12 +73,13 @@ func check_downbeat() -> void:
 		downbeat.emit()
 	
 ## Play a one shot audio clip
-func play_clip(clip: AudioStream, global: bool = false, play_position := Vector3.ZERO, pitch_min: float = 1, pitch_max: float = 1, volume_scale: float = 1, audio_range: float = 24) -> Node:
+func play_clip(clip: AudioStream, global: bool = false, bus: String = "SFX", play_position := Vector3.ZERO, pitch_min: float = 1, pitch_max: float = 1, volume_scale: float = 1, audio_range: float = 24) -> Node:
 	var audio_player: Variant = null
 	if global:
 		audio_player = global_audio_player_prefab.instantiate()
 	else:
 		audio_player = positional_audio_player_prefab.instantiate()
+	audio_player.bus = bus
 	audio_players.add_child(audio_player)
 	if not global:
 		audio_player.global_position = play_position

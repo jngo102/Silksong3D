@@ -38,19 +38,10 @@ func _on_restart_button_pressed() -> void:
 	SceneManager.reload()
 
 func _on_options_button_pressed() -> void:
-	_stack(_settings_ui)
-
-func _on_settings_ui_hidden() -> void:
-	pop()
+	_show_child(_settings_ui)
 
 func _on_quit_button_pressed() -> void:
-	_stack(_quit_warning_page)
-
-func _on_quit_warning_page_hidden() -> void:
-	pop()
+	_show_child(_quit_warning_page)
 
 func _on_quit_warning_page_quit_confirmed() -> void:
 	SceneManager.go_to_main_menu()
-
-func _on_uis_emptied() -> void:
-	_menu_buttons.get_child(1).grab_focus()

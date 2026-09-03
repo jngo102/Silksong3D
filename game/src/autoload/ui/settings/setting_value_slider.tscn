@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bj7h3fmc1fjpj" path="res://src/autoload/ui/settings/setting_value_slider.gd" id="1_km1ox"]
 
-[node name="SettingValueSlider" type="HBoxContainer"]
+[node name="SettingValueSlider" type="HBoxContainer" unique_id=1472959127]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -10,26 +10,22 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_km1ox")
 
-[node name="SettingTitle" type="Label" parent="."]
+[node name="SettingTitle" type="Label" parent="." unique_id=1783121814]
 layout_mode = 2
 size_flags_horizontal = 2
 text = "Setting"
 
-[node name="ValueSlider" type="HSlider" parent="."]
+[node name="ValueSlider" type="HSlider" parent="." unique_id=1605745386]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
-focus_neighbor_left = NodePath("../ValueLabel")
-focus_neighbor_right = NodePath("../ValueLabel")
 max_value = 1.0
 step = 0.01
 value = 1.0
 
-[node name="ValueLabel" type="Label" parent="."]
+[node name="ValueLabel" type="Label" parent="." unique_id=1819176632]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
-focus_neighbor_left = NodePath("../ValueSlider")
-focus_neighbor_right = NodePath("../ValueSlider")
 text = "100%"
 horizontal_alignment = 2
 vertical_alignment = 1

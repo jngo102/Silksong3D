@@ -19,7 +19,7 @@ var _can_air_dash: bool
 
 func _enter() -> void:
 	_can_air_dash = false
-	AudioManager.play_clip(_dash_audio, false, _player.global_position, 0.85, 1.15)
+	AudioManager.play_clip(_dash_audio, false, "SFX", _player.global_position, 0.85, 1.15)
 	play_anim(_air_dash_animation_name)
 	var input_vector: Vector2 = Input.get_vector(&"Left", &"Right", &"Forward", &"Backward")
 	_player.face_direction(Vector3(input_vector.x, 0, input_vector.y))

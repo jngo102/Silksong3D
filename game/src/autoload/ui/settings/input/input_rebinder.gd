@@ -64,7 +64,7 @@ func _update_device_labels(device: String = InputHelper.device, _device_index: i
 			match button_index:
 				MOUSE_BUTTON_WHEEL_UP, \
 				MOUSE_BUTTON_WHEEL_DOWN, \
-				MOUSE_BUTTON_WHEEL_DOWN, \
+				MOUSE_BUTTON_WHEEL_LEFT, \
 				MOUSE_BUTTON_WHEEL_RIGHT:
 					button_index = MOUSE_BUTTON_MIDDLE
 			_rebind_button.text = InputHelper.get_label_for_input(key_mouse_input)

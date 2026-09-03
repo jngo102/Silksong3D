@@ -16,7 +16,7 @@ func _input(event: InputEvent) -> void:
 		send_event(_hsm.SKILL_EVENT)
 
 func _enter() -> void:
-	AudioManager.play_clip(_float_start_clip, false, _player.global_position, 0.85, 1.15)
+	AudioManager.play_clip(_float_start_clip, false, "SFX", _player.global_position, 0.85, 1.15)
 	_cloak_animator.play(&"Puff Out")
 	_float_transition_tree.set_active(true)
 	_original_gravity_scale = _player.gravity_scale

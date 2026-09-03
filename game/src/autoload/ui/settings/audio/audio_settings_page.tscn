@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://gvrnmvlnm6bl" path="res://src/autoload/ui/settings/audio/audio_settings_page.gd" id="2_3kpoi"]
 [ext_resource type="PackedScene" uid="uid://biisedaow62y2" path="res://src/autoload/ui/settings/setting_value_slider.tscn" id="3_hv8pd"]
 
-[node name="AudioSettingsPage" type="VBoxContainer"]
+[node name="AudioSettingsPage" type="VBoxContainer" unique_id=218583712]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -14,15 +14,15 @@ size_flags_vertical = 3
 alignment = 1
 script = ExtResource("2_3kpoi")
 
-[node name="MasterVolumeSlider" parent="." instance=ExtResource("3_hv8pd")]
+[node name="MasterVolumeSlider" parent="." unique_id=1140091707 instance=ExtResource("3_hv8pd")]
 layout_mode = 2
 setting_name = "Master Volume"
 
-[node name="MusicVolumeSlider" parent="." instance=ExtResource("3_hv8pd")]
+[node name="MusicVolumeSlider" parent="." unique_id=64136380 instance=ExtResource("3_hv8pd")]
 layout_mode = 2
 setting_name = "Music Volume"
 
-[node name="SFXVolumeSlider" parent="." instance=ExtResource("3_hv8pd")]
+[node name="SFXVolumeSlider" parent="." unique_id=650648563 instance=ExtResource("3_hv8pd")]
 layout_mode = 2
 setting_name = "SFX Volume"
 

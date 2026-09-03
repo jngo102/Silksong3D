@@ -21,8 +21,7 @@ var _current_tab_button: Button:
 var _selected_tab_index: int:
 	set(value):
 		_selected_tab_index = value
-		var next_focused: Control = _settings_tab_buttons[value]
-		next_focused.grab_focus.call_deferred()
+		_show_page(value)
 
 func _ready() -> void:
 	_set_up_settings_tabs()
@@ -30,29 +29,29 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if not visible or _input_settings_page.rebinding:
 		return
-	# Check previous focus neighbor before next so because Tab button is evaluated alone first
+	# Check previous focus neighbor before next because Tab button is evaluated alone first
 	if event.is_action_pressed(&"ui_prev_tab"):
 		var tab_button_count: int = len(_settings_tab_buttons)
-		_selected_tab_index = (_selected_tab_index - 1 + tab_button_count) % tab_button_count
+		_selected_tab_index = wrapi(_selected_tab_index - 1, 0, tab_button_count)
 	elif event.is_action_pressed(&"ui_next_tab"):
 		var tab_button_count: int = len(_settings_tab_buttons)
-		_selected_tab_index = (_selected_tab_index + 1) % tab_button_count
+		_selected_tab_index = wrapi(_selected_tab_index + 1, 0, tab_button_count)
 
 func _set_up_settings_tabs() -> void:
 	var tab_button_index: int = 0
 	for tab_button in _settings_tab_buttons:
 		if tab_button is Control:
-			tab_button.mouse_entered.connect(tab_button.grab_focus)
-			tab_button.focus_entered.connect(func():
-				_cursor.show()
-				_cursor.move_to(tab_button)
-				var page_index: int = 0
-				for page in _pages.get_children():
-					if page_index == tab_button_index:
-						page.show()
-					else:
-						page.hide()
-					page_index += 1
-			)
+			tab_button.mouse_entered.connect(func(): _show_page(tab_button_index))
 			tab_button_index += 1
-		var first_tab_button: Button = _settings_tab_buttons[0]
+
+func _show_page(index: int) -> void:
+	_cursor.show()
+	var tab_button: Control = _settings_tab_buttons[index]
+	_cursor.move_to(tab_button)
+	var page_index: int = 0
+	for page in _pages.get_children():
+		if page_index == index:
+			page.show()
+		else:
+			page.hide()
+		page_index += 1

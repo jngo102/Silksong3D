@@ -27,6 +27,3 @@ func _on_focus_exited() -> void:
 
 func _on_mouse_entered() -> void:
 	grab_focus()
-
-func _on_mouse_exited() -> void:
-	release_focus()

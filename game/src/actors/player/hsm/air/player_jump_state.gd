@@ -13,7 +13,7 @@ func _input(event: InputEvent) -> void:
 		send_event(_hsm.SKILL_EVENT)
 
 func _enter() -> void:
-	AudioManager.play_clip(_jump_audio, false, _player.global_position, 0.85, 1.15)
+	AudioManager.play_clip(_jump_audio, false, "SFX", _player.global_position, 0.85, 1.15)
 	if randf_range(0, 1) > 0.25:
 		_jump_voice.play_random(_player.global_position, false, 0.85, 1.15)
 	play_anim(_jump_animation_name)

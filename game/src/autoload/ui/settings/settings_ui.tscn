@@ -8,29 +8,27 @@
 [ext_resource type="PackedScene" uid="uid://c8jlv2oiu45hg" path="res://src/autoload/ui/settings/graphics/graphics_settings_page.tscn" id="6_5e0nd"]
 [ext_resource type="PackedScene" uid="uid://dtetst652jshg" path="res://src/autoload/ui/settings/accessibility/accessibility_settings_page.tscn" id="6_mgrx7"]
 
-[node name="SettingsUI" node_paths=PackedStringArray("child_uis", "default_ui") instance=ExtResource("1_54iid")]
+[node name="SettingsUI" unique_id=1752194448 instance=ExtResource("1_54iid")]
 script = ExtResource("1_5bhgl")
-child_uis = [NodePath("MarginContainer/Page/Contents/Pages/AccessibilitySettingsPage"), NodePath("MarginContainer/Page/Contents/Pages/AudioSettingsPage"), NodePath("MarginContainer/Page/Contents/Pages/GraphicsSettingsPage"), NodePath("MarginContainer/Page/Contents/Pages/InputSettingsPage")]
-default_ui = NodePath("MarginContainer/Page/Contents/Pages/AccessibilitySettingsPage")
 
-[node name="Title" parent="MarginContainer/Page/Header" index="0"]
+[node name="Title" parent="Margins/Page/Header" parent_id_path=PackedInt32Array(911594393) index="0" unique_id=420837012]
 text = "Settings"
 
-[node name="Contents" parent="MarginContainer/Page" index="1"]
-focus_mode = 0
-
-[node name="SettingsTabs" type="HBoxContainer" parent="MarginContainer/Page/Contents" index="0"]
+[node name="SettingsTabs" type="HBoxContainer" parent="Margins/Page/Contents" parent_id_path=PackedInt32Array(1226700975) index="0" unique_id=1639651188]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_behavior_recursive = 1
 theme_override_constants/separation = 64
 alignment = 1
 
-[node name="AccessibilitySettings" type="Button" parent="MarginContainer/Page/Contents/SettingsTabs" index="0"]
+[node name="AccessibilitySettings" type="Button" parent="Margins/Page/Contents/SettingsTabs" index="0" unique_id=1478136863]
 layout_mode = 2
+focus_mode = 0
+focus_behavior_recursive = 1
 text = "Accessibility"
 flat = true
 
-[node name="Cursor" parent="MarginContainer/Page/Contents/SettingsTabs/AccessibilitySettings" index="0" instance=ExtResource("2_54iid")]
+[node name="Cursor" parent="Margins/Page/Contents/SettingsTabs/AccessibilitySettings" index="0" unique_id=31353601 instance=ExtResource("2_54iid")]
 layout_mode = 0
 anchors_preset = 0
 anchor_left = 0.0
@@ -44,36 +42,42 @@ offset_bottom = -404.0
 grow_horizontal = 1
 grow_vertical = 1
 
-[node name="AudioSettings" type="Button" parent="MarginContainer/Page/Contents/SettingsTabs" index="1"]
+[node name="AudioSettings" type="Button" parent="Margins/Page/Contents/SettingsTabs" index="1" unique_id=657982382]
 layout_mode = 2
+focus_mode = 0
+focus_behavior_recursive = 1
 text = "Audio"
 flat = true
 
-[node name="GraphicsSettings" type="Button" parent="MarginContainer/Page/Contents/SettingsTabs" index="2"]
+[node name="GraphicsSettings" type="Button" parent="Margins/Page/Contents/SettingsTabs" index="2" unique_id=1845706553]
 layout_mode = 2
+focus_mode = 0
+focus_behavior_recursive = 1
 text = "Display"
 flat = true
 
-[node name="InputSettings" type="Button" parent="MarginContainer/Page/Contents/SettingsTabs" index="3"]
+[node name="InputSettings" type="Button" parent="Margins/Page/Contents/SettingsTabs" index="3" unique_id=1591378003]
 layout_mode = 2
+focus_mode = 0
+focus_behavior_recursive = 1
 text = "Input"
 flat = true
 
-[node name="Pages" type="Control" parent="MarginContainer/Page/Contents" index="1"]
+[node name="Pages" type="Control" parent="Margins/Page/Contents" parent_id_path=PackedInt32Array(1226700975) index="1" unique_id=1263237972]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="AccessibilitySettingsPage" parent="MarginContainer/Page/Contents/Pages" index="0" instance=ExtResource("6_mgrx7")]
+[node name="AccessibilitySettingsPage" parent="Margins/Page/Contents/Pages" index="0" unique_id=1450197288 instance=ExtResource("6_mgrx7")]
 layout_mode = 1
 
-[node name="AudioSettingsPage" parent="MarginContainer/Page/Contents/Pages" index="1" instance=ExtResource("4_mgrx7")]
+[node name="AudioSettingsPage" parent="Margins/Page/Contents/Pages" index="1" unique_id=527090798 instance=ExtResource("4_mgrx7")]
 visible = false
 layout_mode = 1
 
-[node name="GraphicsSettingsPage" parent="MarginContainer/Page/Contents/Pages" index="2" instance=ExtResource("6_5e0nd")]
+[node name="GraphicsSettingsPage" parent="Margins/Page/Contents/Pages" index="2" unique_id=1191767147 instance=ExtResource("6_5e0nd")]
 visible = false
 layout_mode = 1
 
-[node name="InputSettingsPage" parent="MarginContainer/Page/Contents/Pages" index="3" instance=ExtResource("1_27rnl")]
+[node name="InputSettingsPage" parent="Margins/Page/Contents/Pages" index="3" unique_id=1104180198 instance=ExtResource("1_27rnl")]
 visible = false
 layout_mode = 1

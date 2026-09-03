@@ -6,7 +6,6 @@ class_name BossFightProfile extends Control
 @onready var _high_score_label: Label = _thumbnail_button.get_node_or_null("HighScoreValue")
 @onready var _name_label: Label = _thumbnail_button.get_node_or_null("Name")
 
-var _select_audio: AudioStream = preload("uid://cksekixgpfns6")
 var _enter_audio: AudioStream = preload("uid://dych7ifmqv8j0")
 
 var data: BossFightProfileData
@@ -32,6 +31,9 @@ func hide_profile() -> void:
 	_animator.play(&"Show", 0, -1, true)
 	await _animator.animation_finished
 
+func focus() -> void:
+	_thumbnail_button.grab_focus()
+
 func _on_thumbnail_focus_entered() -> void:
 	_arrows_animator.play(&"Highlight")
 	await _arrows_animator.animation_finished
@@ -41,13 +43,9 @@ func _on_thumbnail_focus_exited() -> void:
 	_arrows_animator.play(&"Highlight", 0, -1, true)
 
 func _on_thumbnail_mouse_entered() -> void:
-	_thumbnail_button.grab_focus()
-
-func _on_thumbnail_mouse_exited() -> void:
-	_thumbnail_button.release_focus()
+	focus()
 
 func _on_thumbnail_pressed() -> void:
 	if is_instance_valid(data):
-		AudioManager.play_clip(_select_audio, true)
-		AudioManager.play_clip(_enter_audio, true)
+		AudioManager.play_clip(_enter_audio, true, "UI")
 		SceneManager.change_scene(data.scene)
