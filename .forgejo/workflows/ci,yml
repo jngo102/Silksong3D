@@ -60,6 +60,6 @@ jobs:
           mkdir ${{ matrix.target.channel }} 
           godot --headless --path game --export-release "${{ matrix.target.channel }}" ../${{ matrix.target.channel }}/${{ secrets.ITCH_GAME }}-${{ matrix.target.channel }}.${{ matrix.target.extension }}
       - name: Publish to Itch.io
-        run: butler push ${{ matrix.target.channel }} ${{ secrets.ITCH_USER }}/${{ secrets.ITCH_GAME }}:${{ matrix.target.channel }} --userversion ${{ needs.setup.outputs.game-version }}
+        run: butler push ${{ matrix.target.channel }} ${{ secrets.ITCH_USER }}/${{ secrets.ITCH_GAME }}-${{ needs.setup.outputs.game-version }}:${{ matrix.target.channel }} --userversion ${{ needs.setup.outputs.game-version }}
         env:
             BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
