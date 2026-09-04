@@ -70,6 +70,11 @@ jobs:
         run: |
           mkdir ${{ matrix.target.channel }} 
           godot --headless --path game --export-release "${{ matrix.target.channel }}" ../${{ matrix.target.channel }}/${{ secrets.ITCH_GAME }}-${{ needs.setup.outputs.game-version }}-${{ matrix.target.channel }}.${{ matrix.target.extension }}
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.target.channel }}
+          path: ./build/${{ matrix.target.channel }}/${{ secrets.ITCH_GAME }}-${{ needs.setup.outputs.game-version }}-${{ matrix.target.channel }}.zip
   publish-release:
     name: Publish GitHub Release
     runs-on: ubuntu-latest
