@@ -46,7 +46,6 @@ jobs:
             extension: zip
           - channel: windows
             extension: exe
-
     permissions: write-all
     steps:
       - name: Configure Git and Checkout

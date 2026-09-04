@@ -1,5 +1,8 @@
 name: Export and Publish
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch:
 jobs:
   setup:
@@ -17,13 +20,13 @@ jobs:
           query_start="config\/features=PackedStringArray\(\""
           query_end="\", \".*\"\)"
           grep_query="^$query_start[0-9]\.[0-9](\.[0-9])?$query_end$"
-          version=$(grep --perl-regexp "$query_start" project.godot | sed --regexp-extended "s#$query_start|$query_end##g")
+          version=$(grep --perl-regexp "$query_start" game/project.godot | sed --regexp-extended "s#$query_start|$query_end##g")
           echo "version=$version" >> $GITHUB_OUTPUT
       - name: Get game version
         id: get-game-version
         run: |
           query="config\/version="
-          version=$(grep "$query" project.godot | sed --expression "s/$query//" --expression 's/\"//g')
+          version=$(grep "$query" game/project.godot | sed --expression "s/$query//" --expression 's/\"//g')
           echo "version=$version" >> $GITHUB_OUTPUT
   export:
     name: Export Game (${{ matrix.target.channel }})
@@ -47,9 +50,10 @@ jobs:
         with:
           lfs: true
           submodules: true
+          token: ${{ secrets.PAT }}
       - name: Set up export templates
         run: |
-          mkdir -v -p ~/.local/share/godot/export_templates ~/.config
+          mkdir -v -p ${{ matrix.target.channel }} ~/.local/share/godot/export_templates ~/.config
           mv /root/.config/godot ~/.config/godot
           mv /root/.local/share/godot/export_templates/${{ needs.setup.outputs.godot-version }}.stable ~/.local/share/godot/export_templates/${{ needs.setup.outputs.godot-version }}.stable
       - name: Cache Godot imports folder
@@ -63,9 +67,17 @@ jobs:
             godot-${{ secrets.ITCH_GAME }}-
             godot-
       - name: Export game
-        run: |
-          mkdir ${{ matrix.target.channel }} 
-          godot --headless --path game --export-release "${{ matrix.target.channel }}" ../${{ matrix.target.channel }}/${{ secrets.ITCH_GAME }}-${{ matrix.target.channel }}.${{ matrix.target.extension }}
+        run: godot --headless --export-release "${{ matrix.target.channel }}" ../${{ matrix.target.channel }}/${{ secrets.ITCH_GAME }}-${{ needs.setup.outputs.game-version }}-${{ matrix.target.channel }}.${{ matrix.target.extension }}
+        working-directory: game
+      - name: Zip build
+        if: ${{ matrix.target.channel != 'osx' }} 
+        run: zip -r ${{ secrets.ITCH_GAME }}-${{ needs.setup.outputs.game-version }}-${{ matrix.target.channel }}.zip .
+        working-directory: ${{ matrix.target.channel }}
+      - name: Upload artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: ${{ matrix.target.channel }}
+          path: ${{ matrix.target.channel }}/${{ secrets.ITCH_GAME }}-${{ needs.setup.outputs.game-version }}-${{ matrix.target.channel }}.zip
   publish-release:
     name: Publish GitHub Release
     runs-on: ubuntu-latest
@@ -99,7 +111,6 @@ jobs:
     strategy:
       matrix:
         target:
-          - channel: html5
           - channel: linux
           - channel: osx
           - channel: windows
@@ -114,6 +125,6 @@ jobs:
       - name: Setup butler
         uses: remarkablegames/setup-butler@v3
       - name: Publish to Itch.io
-        run: butler push ${{ matrix.target.channel }} ${{ secrets.ITCH_USER }}/${{ secrets.ITCH_GAME }}_${{ needs.setup.outputs.game-version }}:${{ matrix.target.channel }} --userversion ${{ needs.setup.outputs.game-version }}
+        run: butler push ${{ matrix.target.channel }} ${{ secrets.ITCH_USER }}/${{ secrets.ITCH_GAME }}:${{ matrix.target.channel }} --userversion ${{ needs.setup.outputs.game-version }}
         env:
           BUTLER_API_KEY: ${{ secrets.BUTLER_CREDENTIALS }}
