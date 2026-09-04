@@ -14,6 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://cv310hh5rgkhq" path="res://src/copyrighted/phantom/sfx/Phantom-Mock-005.wav" id="4_p38gw"]
 [ext_resource type="AudioStream" uid="uid://ddyhbbr47lk5l" path="res://src/copyrighted/phantom/sfx/Phantom-Mock-007.wav" id="5_f4hly"]
 [ext_resource type="AudioStream" uid="uid://dhcoxu0ysewfx" path="res://src/copyrighted/phantom/sfx/Phantom-2-Attack-Big-026.wav" id="5_f6tfq"]
+[ext_resource type="Script" uid="uid://b8x5vu4i0qb52" path="res://src/ai/tasks/audio/stop_music.gd" id="5_nctop"]
 [ext_resource type="Script" uid="uid://cawha32gubgkl" path="res://src/ai/tasks/scene/set_collider.gd" id="5_oyjsi"]
 [ext_resource type="Script" uid="uid://bhbfx0nq52wad" path="res://src/ai/tasks/math/clamp_value.gd" id="6_e1tjg"]
 [ext_resource type="Script" uid="uid://drhn5ng0c18tm" path="res://src/ai/tasks/audio/play_music.gd" id="6_f2o3u"]
@@ -458,6 +459,9 @@ children = [SubResource("BTAction_4anvi")]
 custom_name = "Organ Playing"
 children = [SubResource("BTPlayAnimation_f2o3u"), SubResource("BTAction_3ufb1"), SubResource("BTRepeatUntilSuccess_f2o3u")]
 
+[sub_resource type="BTAction" id="BTAction_nnwmv"]
+script = ExtResource("5_nctop")
+
 [sub_resource type="BBNode" id="BBNode_f2o3u"]
 saved_value = NodePath("Mesh/AnimationPlayer")
 resource_name = "Mesh/AnimationPlayer"
@@ -478,7 +482,7 @@ immediate = true
 
 [sub_resource type="BTSequence" id="BTSequence_ugixi"]
 custom_name = "Organ Hit"
-children = [SubResource("BTPlayAnimation_uywq4"), SubResource("BTWait_uywq4"), SubResource("BTAction_udcfd"), SubResource("BTWait_wor4f")]
+children = [SubResource("BTAction_nnwmv"), SubResource("BTPlayAnimation_uywq4"), SubResource("BTWait_uywq4"), SubResource("BTAction_udcfd"), SubResource("BTWait_wor4f")]
 
 [sub_resource type="BBNode" id="BBNode_xdajs"]
 saved_value = NodePath("Mesh/SteamPoint/DiveSteam/Animator")
