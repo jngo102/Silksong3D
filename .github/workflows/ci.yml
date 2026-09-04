@@ -67,17 +67,17 @@ jobs:
             godot-${{ secrets.ITCH_GAME }}-
             godot-
       - name: Export game
-        run: godot --headless --export-release "${{ matrix.target.channel }}" ../${{ matrix.target.channel }}/${{ secrets.ITCH_GAME }}-${{ needs.setup.outputs.game-version }}-${{ matrix.target.channel }}.${{ matrix.target.extension }}
+        run: godot --headless --export-release "${{ matrix.target.channel }}" ../${{ matrix.target.channel }}/${{ secrets.ITCH_GAME }}-${{ matrix.target.channel }}.${{ matrix.target.extension }}
         working-directory: game
       - name: Zip build
         if: ${{ matrix.target.channel != 'osx' }} 
-        run: zip -r ${{ secrets.ITCH_GAME }}-${{ needs.setup.outputs.game-version }}-${{ matrix.target.channel }}.zip .
+        run: zip -r ${{ secrets.ITCH_GAME }}-${{ matrix.target.channel }}.zip .
         working-directory: ${{ matrix.target.channel }}
       - name: Upload artifact
         uses: actions/upload-artifact@v7
         with:
           name: ${{ matrix.target.channel }}
-          path: ${{ matrix.target.channel }}/${{ secrets.ITCH_GAME }}-${{ needs.setup.outputs.game-version }}-${{ matrix.target.channel }}.zip
+          path: ${{ matrix.target.channel }}/${{ secrets.ITCH_GAME }}-${{ matrix.target.channel }}.zip
   publish-release:
     name: Publish GitHub Release
     runs-on: ubuntu-latest
