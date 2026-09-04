@@ -1,0 +1,21 @@
+@tool
+extends BTAction
+
+## Blackboard variable that stores our target (expecting Node3D).
+@export var target_var: BBVariant
+
+@export var output_direction_var: StringName = &""
+
+func _generate_name() -> String:
+	return "Get Direction to %s%s" % [
+		BBUtil.bb_var(target_var),
+		LimboUtility.decorate_output_var(output_direction_var),
+	]
+
+func _tick(_delta: float) -> Status:
+	var target = BBUtil.bb_value(target_var, blackboard, agent)
+	if not is_instance_valid(target):
+		return FAILURE
+	var direction: Vector3 = agent.global_position.direction_to(target.global_position)
+	blackboard.set_var(output_direction_var, direction)
+	return SUCCESS

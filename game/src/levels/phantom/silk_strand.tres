@@ -1,0 +1,50 @@
+[gd_resource type="VisualShader" format=3 uid="uid://dr7csw7olf1b8"]
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_oif61"]
+input_name = "uv"
+
+[sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_vwyj8"]
+function = 1
+
+[sub_resource type="VisualShaderNodeRandomRange" id="VisualShaderNodeRandomRange_ea6lq"]
+
+[sub_resource type="Gradient" id="Gradient_oif61"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.1940463, 0.4002205, 0.6306505, 0.87872106, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.84313726, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_64vl4"]
+gradient = SubResource("Gradient_oif61")
+fill_from = Vector2(0.4679487, 1)
+fill_to = Vector2(0.48504272, 0)
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_0d5ko"]
+output_port_for_preview = 0
+expanded_output_ports = [0]
+texture = SubResource("GradientTexture2D_64vl4")
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_oif61"]
+default_input_values = [0, 0.0, 1, 16.0]
+operator = 2
+
+[sub_resource type="VisualShaderNodeColorConstant" id="VisualShaderNodeColorConstant_oif61"]
+constant = Color(1, 1, 1, 0)
+
+[resource]
+modes/cull = 1
+nodes/vertex/0/position = Vector2(480, 110)
+nodes/fragment/0/position = Vector2(540, 710)
+nodes/fragment/2/node = SubResource("VisualShaderNodeInput_oif61")
+nodes/fragment/2/position = Vector2(-360, 700)
+nodes/fragment/3/node = SubResource("VisualShaderNodeUVFunc_vwyj8")
+nodes/fragment/3/position = Vector2(-20, 1130)
+nodes/fragment/4/node = SubResource("VisualShaderNodeRandomRange_ea6lq")
+nodes/fragment/4/position = Vector2(-360, 500)
+nodes/fragment/5/node = SubResource("VisualShaderNodeTexture_0d5ko")
+nodes/fragment/5/position = Vector2(-20, 580)
+nodes/fragment/6/node = SubResource("VisualShaderNodeFloatOp_oif61")
+nodes/fragment/6/position = Vector2(260, 920)
+nodes/fragment/connections = PackedInt32Array(2, 0, 3, 0, 5, 0, 0, 0, 2, 0, 5, 0, 5, 4, 0, 1, 5, 0, 6, 0, 6, 0, 0, 5)
+nodes/light/2/node = SubResource("VisualShaderNodeColorConstant_oif61")
+nodes/light/2/position = Vector2(130, 150)
+nodes/light/connections = PackedInt32Array(2, 0, 0, 0, 2, 0, 0, 1)

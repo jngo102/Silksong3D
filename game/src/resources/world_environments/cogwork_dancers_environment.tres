@@ -1,0 +1,15 @@
+[gd_resource type="Environment" format=3 uid="uid://dpsb82o3h1rey"]
+
+[resource]
+background_mode = 1
+background_color = Color(0.9242641, 0.8424377, 0.78621966, 1)
+tonemap_mode = 4
+ssr_enabled = true
+sdfgi_use_occlusion = true
+glow_normalized = true
+glow_bloom = 0.13
+fog_density = 0.0001
+volumetric_fog_density = 0.015
+volumetric_fog_albedo = Color(0.8027823, 0.846402, 0.85877365, 1)
+volumetric_fog_emission = Color(0.070150964, 0.09341682, 0.09924214, 1)
+volumetric_fog_length = 32.0

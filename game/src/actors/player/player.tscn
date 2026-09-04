@@ -1,0 +1,1644 @@
+[gd_scene format=4 uid="uid://tx8iq0rvq40q"]
+
+[ext_resource type="PackedScene" uid="uid://cuw4nfnpxgivn" path="res://src/actors/grounded_actor.tscn" id="1_sl7gj"]
+[ext_resource type="Script" uid="uid://cyskkgbbkdq4d" path="res://src/actors/player/player.gd" id="2_dw050"]
+[ext_resource type="Script" uid="uid://4fhac2e1rdou" path="res://src/actors/player/spool_manager.gd" id="3_hlqpx"]
+[ext_resource type="AudioStream" uid="uid://2gpvvnvm7acy" path="res://src/copyrighted/sfx/hornet/hurt/normal/w2.wav" id="4_b3c30"]
+[ext_resource type="AudioStream" uid="uid://3jsxtwgw1twk" path="res://src/copyrighted/sfx/hornet/hurt/big/w_big_01.wav" id="4_fxn5h"]
+[ext_resource type="Script" uid="uid://htjsg10vl7mo" path="res://src/actors/flasher.gd" id="4_lvele"]
+[ext_resource type="AudioStream" uid="uid://dy7a6nolobf7m" path="res://src/copyrighted/sfx/hornet/hurt/normal/w3.wav" id="5_2vult"]
+[ext_resource type="ArrayMesh" uid="uid://bgirt3tfr1hod" path="res://src/resources/meshes/cloak_mesh.tres" id="5_b26j0"]
+[ext_resource type="AudioStream" uid="uid://vf42youslsnd" path="res://src/copyrighted/sfx/hornet/hurt/big/w_big_02.wav" id="5_cxuv5"]
+[ext_resource type="PackedScene" uid="uid://pj02xii8jggq" path="res://src/actors/player/hornet.glb" id="5_qdo3w"]
+[ext_resource type="Script" uid="uid://b2d3hsg2ryvup" path="res://src/actors/pulser.gd" id="5_rees2"]
+[ext_resource type="AudioStream" uid="uid://ggqairrbmc7p" path="res://src/copyrighted/sfx/hornet/hurt/normal/w4.wav" id="6_41lfd"]
+[ext_resource type="Material" uid="uid://breyp8thk738j" path="res://src/resources/meshes/cloak.tres" id="6_n7ghd"]
+[ext_resource type="AudioStream" uid="uid://baesvr66s2s8r" path="res://src/copyrighted/sfx/hornet/hurt/big/w_big_03.wav" id="6_qq66o"]
+[ext_resource type="AudioStream" uid="uid://bs2vwqdwfqbf0" path="res://src/copyrighted/sfx/hornet/hurt/normal/w5.wav" id="7_4s16b"]
+[ext_resource type="AudioStream" uid="uid://sdosd5pgs43o" path="res://src/copyrighted/sfx/hornet/hurt/big/w_big_04.wav" id="7_x4qyq"]
+[ext_resource type="AudioStream" uid="uid://c2jcr8h0d2fbo" path="res://src/copyrighted/sfx/hornet/hurt/big/w_big_05.wav" id="8_i15os"]
+[ext_resource type="AudioStream" uid="uid://dmwfc0eeacvhl" path="res://src/copyrighted/sfx/hornet/hurt/normal/w6.wav" id="8_m4n5g"]
+[ext_resource type="AudioStream" uid="uid://bxtfhmkcfit05" path="res://src/copyrighted/sfx/hornet/hurt/big/w_big_06.wav" id="9_1svlo"]
+[ext_resource type="PackedScene" uid="uid://i1sx7x4dnk6g" path="res://src/actors/player/bind_silk.glb" id="9_3luqa"]
+[ext_resource type="AudioStream" uid="uid://d264e8o4xp383" path="res://src/copyrighted/sfx/hornet/hurt/normal/w7.wav" id="9_6o7jk"]
+[ext_resource type="AudioStream" uid="uid://cwsuddb6nmww2" path="res://src/copyrighted/sfx/hornet/hurt/big/w_big_07.wav" id="10_a20ea"]
+[ext_resource type="Script" uid="uid://di515m7mr03x5" path="res://src/actors/player/cloak.gd" id="10_rees2"]
+[ext_resource type="Script" uid="uid://iji6ec63s7tt" path="res://src/actors/player/needle.gd" id="11_1xfl2"]
+[ext_resource type="AudioStream" uid="uid://dl40sgxvlqprh" path="res://src/copyrighted/sfx/hornet/hurt/big/w_big_08.wav" id="11_b3c30"]
+[ext_resource type="Script" uid="uid://ct0yv2545p47f" path="res://src/actors/player/hsm/player_bind_state.gd" id="11_ihiqv"]
+[ext_resource type="AudioStream" uid="uid://d008win7xhh1q" path="res://src/copyrighted/sfx/hornet/hurt/big/w_big_09.wav" id="12_2vult"]
+[ext_resource type="Script" uid="uid://c4ctdy3gej7v1" path="res://src/actors/recoiler.gd" id="12_ehw6e"]
+[ext_resource type="PackedScene" uid="uid://xal232da7bpf" path="res://src/gameplay/combat/damager.tscn" id="12_fp7en"]
+[ext_resource type="AudioStream" uid="uid://libnk3xrvcwv" path="res://src/copyrighted/sfx/hornet/bind/bind1.wav" id="13_4y8h1"]
+[ext_resource type="Script" uid="uid://d2a87b3tfbpuf" path="res://src/autoload/audio/random_audio_play.gd" id="13_41lfd"]
+[ext_resource type="PackedScene" uid="uid://dqqog7us3m1g3" path="res://src/gameplay/combat/slash.tscn" id="13_c4e81"]
+[ext_resource type="PackedScene" uid="uid://chmkw4fhny3w0" path="res://src/actors/player/effects/bind_break_effect.tscn" id="13_s8joe"]
+[ext_resource type="PackedScene" uid="uid://kbm2v33787ln" path="res://src/actors/player/effects/combat/double_damage_hit_effect.tscn" id="14_cxuv5"]
+[ext_resource type="AudioStream" uid="uid://l8y0oep47g7o" path="res://src/copyrighted/sfx/hornet/bind/bind2.wav" id="14_s8joe"]
+[ext_resource type="AudioStream" uid="uid://clwvnapdvvi8i" path="res://src/copyrighted/sfx/hornet/bind/bind3.wav" id="15_xrjoj"]
+[ext_resource type="AudioStream" uid="uid://gwuf8liy31vq" path="res://src/copyrighted/sfx/hornet/bind/bind4.wav" id="16_cm075"]
+[ext_resource type="Script" uid="uid://xxdyeyx4oju0" path="res://src/actors/player/hsm/player_thread_storm_state.gd" id="18_xrjoj"]
+[ext_resource type="AudioStream" uid="uid://coj4af6r6q1qi" path="res://src/copyrighted/sfx/hornet/attacks/large/Hornet_attack_large_01.wav" id="19_gu2gy"]
+[ext_resource type="AudioStream" uid="uid://cfb28li3t5pk0" path="res://src/copyrighted/sfx/hornet/attacks/large/Hornet_attack_large_02.wav" id="20_2gkjk"]
+[ext_resource type="PackedScene" uid="uid://b0wa350b6fbky" path="res://src/actors/player/player_corpse.tscn" id="21_2vult"]
+[ext_resource type="AudioStream" uid="uid://bj8jhepeeleal" path="res://src/copyrighted/sfx/hornet/attacks/large/Hornet_attack_large_03.wav" id="21_pg3u5"]
+[ext_resource type="AudioStream" uid="uid://dfgalohn0tbv1" path="res://src/copyrighted/sfx/hornet/attacks/large/Hornet_attack_large_04.wav" id="22_yig60"]
+[ext_resource type="AudioStream" uid="uid://rxaavwnddgka" path="res://src/copyrighted/sfx/hornet/attacks/large/Hornet_attack_large_05.wav" id="23_sl7gj"]
+[ext_resource type="AudioStream" uid="uid://ch1wbook3acdw" path="res://src/copyrighted/sfx/hornet/attacks/large/Hornet_attack_large_06.wav" id="24_4bmqs"]
+[ext_resource type="Resource" uid="uid://b7ygtsgt5ridg" path="res://src/resources/random_audio_plays/hornet_sword.tres" id="25_bu7in"]
+[ext_resource type="AudioStream" uid="uid://ohl336n2mfu6" path="res://src/copyrighted/sfx/hornet/attacks/large/Hornet_attack_large_07.wav" id="25_yt37h"]
+[ext_resource type="AudioStream" uid="uid://xf50w2vu80fb" path="res://src/copyrighted/sfx/hornet/attacks/large/Hornet_attack_large_08.wav" id="26_lvele"]
+[ext_resource type="AudioStream" uid="uid://cbikl5u5yteim" path="res://src/copyrighted/sfx/hornet/attacks/large/Hornet_attack_large_09.wav" id="27_rees2"]
+[ext_resource type="Script" uid="uid://bb0is11tgytjf" path="res://src/actors/player/hsm/player_hsm.gd" id="28_4s16b"]
+[ext_resource type="AudioStream" uid="uid://cksfhx4usq7v" path="res://src/copyrighted/sfx/hornet/attacks/large/Hornet_attack_large_10.wav" id="28_6x7ot"]
+[ext_resource type="Script" uid="uid://cw88wf5nha71c" path="res://src/actors/player/hsm/ground/player_idle_state.gd" id="28_41lfd"]
+[ext_resource type="Script" uid="uid://cb1gvirhlrd0s" path="res://src/actors/player/hsm/air/player_air_dash_state.gd" id="29_0nwbe"]
+[ext_resource type="Script" uid="uid://b81s5wnls83xg" path="res://src/actors/player/hsm/attack/player_down_spike_state.gd" id="29_3do8f"]
+[ext_resource type="Script" uid="uid://cmwcth7t73nqf" path="res://src/actors/player/hsm/air/player_fall_state.gd" id="29_6o7jk"]
+[ext_resource type="Script" uid="uid://bi770lhrtsav7" path="res://src/actors/player/hsm/attack/player_attack_choice_state.gd" id="29_qsypv"]
+[ext_resource type="Script" uid="uid://b8ev8xjwihh7o" path="res://src/actors/player/hsm/attack/player_down_spike_bounce_state.gd" id="30_0fe1s"]
+[ext_resource type="Script" uid="uid://bcr3l3d0e4ull" path="res://src/actors/player/hsm/ground/player_walk_state.gd" id="30_m4n5g"]
+[ext_resource type="Script" uid="uid://bu14sq8r2akpw" path="res://src/actors/player/hsm/player_land_state.gd" id="31_5qatl"]
+[ext_resource type="Script" uid="uid://cenn07tpfvg3y" path="res://src/actors/player/hsm/air/player_jump_state.gd" id="31_747sf"]
+[ext_resource type="Script" uid="uid://bc7x2sxl1h4on" path="res://src/actors/player/hsm/air/player_float_state.gd" id="31_lje7i"]
+[ext_resource type="Script" uid="uid://oygm1ss7hq70" path="res://src/actors/player/hsm/player_recoil_state.gd" id="34_7c4js"]
+[ext_resource type="Script" uid="uid://b7qalgo6bnnuf" path="res://src/actors/player/hsm/air/player_sprint_jump_state.gd" id="36_6xo6p"]
+[ext_resource type="AudioStream" uid="uid://ddbqt2eobg7lk" path="res://src/copyrighted/sfx/hornet/movement/hornet_umbrella_open.wav" id="37_4bmqs"]
+[ext_resource type="Script" uid="uid://cm1b6ilbs3rx" path="res://src/actors/player/hsm/ground/player_sprint_state.gd" id="37_6xo6p"]
+[ext_resource type="Resource" uid="uid://7dldya6ii04d" path="res://src/resources/random_audio_plays/hornet_normal_attack.tres" id="38_0g54q"]
+[ext_resource type="Script" uid="uid://bccpsuvklwdjh" path="res://src/actors/player/hsm/attack/player_slash_state.gd" id="38_d4m7k"]
+[ext_resource type="PackedScene" uid="uid://cwc5xgupucvyt" path="res://src/actors/player/effects/combat/player_hit_effect.tscn" id="40_rsjix"]
+[ext_resource type="Resource" uid="uid://c2lvhhw7n8r7d" path="res://src/resources/random_audio_plays/hornet_grunts.tres" id="41_yt37h"]
+[ext_resource type="Script" uid="uid://y01wnoqk7rh2" path="res://src/actors/player/hsm/player_multi_hit_state.gd" id="48_yig60"]
+[ext_resource type="PackedScene" uid="uid://8h3avd0nw4el" path="res://src/actors/player/effects/combat/multi_hit_final_effect.tscn" id="49_yig60"]
+[ext_resource type="PackedScene" uid="uid://d4l5fnn4yjd3p" path="res://src/actors/player/attacks/thread_storm.tscn" id="52_2gkjk"]
+[ext_resource type="Script" uid="uid://c1dukcde8wlga" path="res://src/actors/player/player_sprint_stab_state.gd" id="52_4bmqs"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jgtgc"]
+radius = 0.8461914
+height = 5.4304857
+
+[sub_resource type="Animation" id="Animation_n7ghd"]
+resource_name = "Puff Out"
+length = 0.0833
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PuffBody/Collision:shape:radius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0833),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.5, 1.5]
+}
+
+[sub_resource type="Animation" id="Animation_nvl01"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PuffBody/Collision:shape:radius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.5]
+}
+
+[sub_resource type="Animation" id="Animation_ivps1"]
+resource_name = "Unpuff"
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PuffBody/Collision:shape:radius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.5, 0.5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ivps1"]
+_data = {
+&"Puff Out": SubResource("Animation_n7ghd"),
+&"RESET": SubResource("Animation_nvl01"),
+&"Unpuff": SubResource("Animation_ivps1")
+}
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rees2"]
+height = 3.7104492
+
+[sub_resource type="Animation" id="Animation_g78k6"]
+resource_name = "Bind"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.2637849, 1.3734114, -1.064395)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mesh:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.4960791, 0.29252458, 2.9921567)]
+}
+
+[sub_resource type="Animation" id="Animation_7s2iq"]
+resource_name = "Down Spike"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0833),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.6567824, 3.2784796, -3.1101298), Vector3(-0.5818429, 2.528932, -1.759332)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mesh:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0833),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.1862362, -0.15824024, 1.3711001), Vector3(-1.1254412, 0.10170506, 1.1692091)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Mesh/DownSpikeDamager/Collision:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.008366674, 0.0833),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_fynfr"]
+resource_name = "Down Spike Bounce"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.2852931, 3.3490186, -3.6169)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mesh:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.082464315, 0.17094637, 1.504756)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Mesh/DownSpikeDamager/Collision:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Mesh/StabDamager/Collision:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_nu6iw"]
+resource_name = "Parry Hit"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.344501, 6.6713843, -0.76029116)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mesh:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.738409, -1.7641243, 3.1242304)]
+}
+
+[sub_resource type="Animation" id="Animation_jkg7i"]
+resource_name = "RESET"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.43267757, 3.7365413, -3.5042882)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mesh:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.3933431, -0.431066, 1.3130227)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SlashEffect:surface_material_override/0:shader_parameter/SlashGradientSliderX")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.5]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SlashEffect/SlashEffectDamager/Collision:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.45031425, -2.4085186, 2.7235012)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SlashEffect/SlashEffectDamager/Collision:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Mesh/DownSpikeDamager/Collision:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Mesh/StabDamager/Collision:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("SlashEffect/SlashEffectDamager/Collision:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.0219219, 2.0750926, 2.2271311)]
+}
+
+[sub_resource type="Animation" id="Animation_a8o31"]
+resource_name = "Slash"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.23333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-1.8640206, 2.2493815, -2.8008573), Vector3(-1.4725053, 2.9432437, -1.8705508), Vector3(-0.43267757, 3.7365413, -3.5042882)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mesh:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.23333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.2761272, -0.7300349, -2.2371452), Vector3(-0.20809565, 1.550498, 1.988818), Vector3(0.3926991, 5.852089, 1.3124876)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SlashEffect:surface_material_override/0:shader_parameter/SlashGradientSliderX")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.06666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.5, -0.5]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SlashEffect/SlashEffectDamager/Collision:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.17071956, -1.0338953, -2.6093678), Vector3(0.1048837, 0.18485427, 0.19994068), Vector3(0.039047834, 1.4036039, 3.009249)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SlashEffect/SlashEffectDamager/Collision:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.06666666),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SlashEffect/SlashEffectDamager/Collision:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-3.1476233, 0.8998825, 0.5851321), Vector3(-0.74812716, 0.5844433, 2.9740338), Vector3(1.6663432, 0.3120029, 0.88406587)]
+}
+
+[sub_resource type="Animation" id="Animation_m1lj5"]
+resource_name = "Stab"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0833),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.65678227, 3.0414107, -0.9511868), Vector3(-0.5818429, 2.528932, -1.759332)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mesh:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0833),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-1.4530145, -0.17815667, 0.075560875), Vector3(-1.1254412, 0.10170506, 1.1692091)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Mesh/StabDamager/Collision:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.008366674, 0.0833),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1xfl2"]
+_data = {
+&"Bind": SubResource("Animation_g78k6"),
+&"Down Spike": SubResource("Animation_7s2iq"),
+&"Down Spike Bounce": SubResource("Animation_fynfr"),
+&"Parry Hit": SubResource("Animation_nu6iw"),
+&"RESET": SubResource("Animation_jkg7i"),
+&"Slash": SubResource("Animation_a8o31"),
+&"Stab": SubResource("Animation_m1lj5")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1isk3"]
+resource_name = "Needle"
+cull_mode = 2
+albedo_color = Color(0.8005629, 0.8005629, 0.8005629, 1)
+metallic = 0.7673716
+roughness = 0.1555891
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_g78k6"]
+_surfaces = [{
+"aabb": AABB(-0.46693188, -0.092570946, -0.7682272, 0.93386376, 0.18514198, 8.958236),
+"format": 34359742465,
+"index_count": 996,
+"index_data": PackedByteArray("HAAPAHAAcAAPAHEAHAByAA8AOQAcAHAAcgBzAA8AOgByABwADwBzACkADwApAHEAcgBAAHMAOwAcADkAOwA6ABwAOgA+AHIAPgBAAHIAPQA6ADsAdAA+ADoAPQB0ADoAdABFAD4APgBBAEAARQBBAD4AQQB1AEAAPwBFAHQATAB0AD0ATAA/AHQASgBMAD0APwArAEUARQAsAEEAKwAsAEUALAAnAEEAQQAnAHUAKwB2ACwALAB3ACcAdgB3ACwALQB2ACsAFQArAD8AFQAtACsALgAVAD8ALgA/AEwAdwA8ACcAdgB4AHcAJwA8AHkAJwB5AHUAPAA5AHkAPAA7ADkAdwB6ADwAegA7ADwAeAB6AHcAegA9ADsASgA9AHoAeABKAHoAeQA5AHsAOQBwAHsAeQB7ACYAdQB5ACYAewBwAHwAcABxAHwAJgB7AEcAewB8AEcAdQAmAEQAQAB1AEQAQABEAHMARAAmAH0AJgBHAH0AcwBEAEMARAB9AEMAcwBDACkAfQBHAH4AQwB9AEYAfQB+AEYAKQBDAH8AQwBGAH8AKQB/AIAAcQApAIAARwAdAH4ARwB8AB0AfABxADgAcQCAADgAfAA4AB0AgAB/AIEAOACAAEIAgACBAEIAHQA4AIIAOABCAIIAHQCCAEgAfgAdAEgAfwCDAIEAfwBGAIMARgB+ACAAfgBIACAARgAgAIMASACCABAAIABIAIQASAAQAIQAgwAgAIUAIACEAIUAgwCFACUAgQCDACUAggCGABAAggBCAIYAQgCBAA4AgQAlAA4AQgAOAIYAJQCFAGcADgAlAIcAJQBnAIcAhgAOAIgADgCHAIgAhgCIAB8AEACGAB8AhQBkAGcAhQCEAGQAhAAQAIkAEAAfAIkAhACJAGQAHwCIAGUAiQAfAIoAHwBlAIoAZACJAGIAiQCKAGIAZABiAIsAZwBkAIsAiABmAGUAiACHAGYAhwBnAGgAZwCLAGgAhwBoAGYAiwBiAGAAaACLAIwAiwBgAIwAZgBoABEAaACMABEAZgARAI0AZQBmAI0AYgBfAGAAYgCKAF8AigBlAGMAZQCNAGMAigBjAF8AjQARAGoAYwCNAGkAjQBqAGkAXwBjAI4AYwBpAI4AXwCOAI8AYABfAI8AEQAeAGoAEQCMAB4AjABgACEAYACPACEAjAAhAB4AjwCOAGEAIQCPACIAjwBhACIAHgAhAF4AIQAiAF4AHgBeAF0AagAeAF0AjgCQAGEAjgBpAJAAaQBqAGwAagBdAGwAaQBsAJAAXQBeAFwAbABdAJEAXQBcAJEAkABsAG0AbACRAG0AkABtAGsAYQCQAGsAXgCSAFwAXgAiAJIAIgBhAJMAYQBrAJMAIgCTAJIAawBtACMAkwBrACgAawAjACgAkgCTAAAAkwAoAAAAkgAAAFoAXACSAFoAbQBZACMAbQCRAFkAkQBcABIAXABaABIAkQASAFkAWgAAAJQAEgBaAJUAWgCUAJUAWQASAFsAEgCVAFsAWQBbAJYAIwBZAJYAAABvAJQAAAAoAG8AKAAjAG4AIwCWAG4AKABuAG8AlgBbAFYAbgCWAJcAlgBWAJcAbwBuAFgAbgCXAFgAbwBYACoAlABvACoAWwBXAFYAWwCVAFcAlQCUAFEAlAAqAFEAlQBRAFcAKgBYAFMAUQAqAJgAKgBTAJgAVwBRAJkAUQCYAJkAVwCZAFIAVgBXAFIAWABVAFMAWACXAFUAlwBWAFQAVgBSAFQAlwBUAFUAUgCZAJoAVABSAJsAUgCaAJsAVQBUABYAVACbABYAUwBVADQAVQAWADQAUwA0ADIAmABTADIAmQCYAFAAmQBQAJoAmAAyAFAAmgBQAJwAUAAyABcAUAAXAJwAmgCcAC8AmwCaAC8AmwAvAE8AFgCbAE8ALwCcAJ0AnAAXAJ4AnACeAJ0ALwCdAJ8ATwAvAJ8AnQCeABMAFgBPACQAnwCdAE4AnQATAE4ATwCfAKAAJABPAKAAnwBOAE0AoACfAE0ATgATAC4ATQBOAKEATgAuAKEAoQAuAEwAoQBMAEoASQChAEoATQChAEkASQBKAHgAoABNAKIAogBNAEkASwBJAHgAogBJAEsASwB4AHYALQBLAHYAFACiAEsAFABLAC0AowCgAKIAowCiABQAJACgAKMALQAxABQAFACkAKMAFAAxAKQALQA3ADEAFQA3AC0AowAaACQAowCkABoAJAAaADYAJAA2ABYAFQAZADcALgAZABUApAAKABoALgAwABkAEwAwAC4ApAAHAAoAMQAHAKQAGgAKAAwAGgAMADYABwADAAoACgADAAwAMQAEAAcANwAEADEABAADAAcANwACAAQAGQACADcAAgADAAQAGQABAAIAAQADAAIAMAABABkAMAAFAAEABQADAAEAGAAFADAAEwAYADAAngAYABMAGAAGAAUABgADAAUAngClABgApQAGABgAFwClAJ4ApQAIAAYACAADAAYAFwAzAKUAMwAIAKUAMgAzABcACQADAAgAMwAJAAgAMgA1ADMANQAJADMANAA1ADIACwADAAkANQALAAkANAAbADUAGwALADUAFgAbADQAFgA2ABsAGwANAAsADQADAAsANgANABsADAADAA0ANgAMAA0A"),
+"lods": [0.019195216, PackedByteArray("HAA4AB0AHQA4ABAAHAAPADgAOQAcAB0ADwApADgAOgAPABwAOwAcADkAOwA6ABwAPAA7ADkAPQA6ADsAPAA9ADsAOgA+AA8APQA/ADoAPwA+ADoAPgBAAA8ADwBAACkAPgBBAEAAOAApAEIAOABCABAAQABDACkAKQAOAEIAKQBDAA4AQABEAEMAQQBEAEAARQBBAD4APwBFAD4AQQAnAEQARQAsAEEALAAnAEEARABGAEMAKwAsAEUAPwArAEUAJwAmAEQARAAmAEYAQwBGACUAQwAlAA4AJgBHAEYARgAgACUARgBHACAAJgA5AEcAOQAdAEcAPAA5ACYAJwA8ACYARwAdAEgARwBIACAAHQAQAEgASQA8ACcALABJACcASQBKADwASgA9ADwASwBJACwASgBMAD0ATAA/AD0ATQBKAEkASwBNAEkASgAuAEwALgA/AEwATQBOAEoATgAuAEoALQBLACwALQAsACsAFQArAD8AFQAtACsALgAVAD8ATwBNAEsAFABLAC0AFABPAEsAFQA3AC0ALQAxABQALQA3ADEAFQAZADcALgAZABUANwAEADEAGQACADcANwACAAQAFAAxABoAMQAEAAcAMQAHABoAAgADAAQABAADAAcAGQABAAIAAQADAAIAMAABABkALgAwABkAMAAFAAEABQADAAEAEwAwAC4AGAAFADAAEwAYADAATgATAC4AGAAGAAUABgADAAUAFwAYABMATgAXABMAGAAIAAYACAADAAYAFwAzABgAMwAIABgAMgAzABcAMwAJAAgACQADAAgANQAJADMAMgA1ADMANQALAAkACwADAAkAUAAXAE4AUAAyABcALwBQAE4ALwBOAE0ATwAvAE0AUQBQAC8AUgAvAE8AUgBRAC8AKgAyAFAAUQAqAFAANAA1ADIAGwALADUANAAbADUAGwANAAsADQADAAsAUwA0ADIAKgBTADIAFgAbADQANgANABsAFgA2ABsADAADAA0ANgAMAA0ACgADAAwABwADAAoAGgAHAAoAGgAKAAwAGgAMADYAJAAaADYAJAA2ABYAFAAaACQAJABPABQAFgBPACQAFgBSAE8AVABSABYAVQAWADQAVQBUABYAUwBVADQAVgBSAFQAVQBWAFQAVgBXAFIAVwBRAFIAWABVAFMAKgBYAFMAWQBWAFUAAAAqAFEAWgBRAFcAWgAAAFEAWwBXAFYAWwBaAFcAWQBbAFYAEgBaAFsAWQASAFsAXABaABIAXAAiAFoAIgAAAFoAXQBcABIAXQASAFkAXgAiAFwAXQBeAFwAIQAiAF4AIQBfACIAHgAhAF4AHgBeAF0AYABfACEAHgBgACEAIgBhAAAAXwBhACIAYQAoAAAAYgBfAGAAXwBjAGEAZABiAGAAZABgAB4AYgAfAF8AHwBjAF8AEAAfAGIASAAQAGIASABiAGQAEABCAB8AIABIAGQAQgBlAB8AHwBlAGMAQgAOAGUADgBmAGUADgAlAGYAJQAgAGcAIABkAGcAJQBnAGYAZwBkAGgAZgBnAGgAaABkAB4AZQBmAGkAZQBpAGMAZgBoABEAaAAeABEAZgARAGkAEQAeAGoAaQARAGoAagAeAF0AYwBpAGsAYwBrAGEAaQBqAGwAagBdAGwAaQBsAGsAbABdAG0AawBsAG0AbQBdAFkAYQBrACgAawBtACMAbQBZACMAawAjACgAIwBZAG4AKAAjAG4AbgBZAFUAbgBVAFgAKABuAG8AbwBuAFgAAAAoAG8AbwBYACoAAABvACoA"), 0.14121534, PackedByteArray("HAAPAB0AHQAPABAAHQAQAB4ADwAfABAAHAAdACAAIAAdAB4AHgAQACEAEAAiACEAEAAfACIAHgAhABIAIQAiABIAIAAeABEAHwAAACIAIgAAABIAIwAeABIAEQAeACMAEgAAACQAJQAgABEAJgAgACUAJgAcACAADgAlABEAJwAmACUAJwAlAA4ADgARAAAAHwAOAAAAAAARACgAEQAjACgAKQAOAB8AKQAnAA4ADwApAB8AAAAoACoAKAAjACoAKwApAA8AHAArAA8ALAAnACkAKwAsACkAFQArABwALQAsACsAFQAtACsALgAVABwAJgAuABwAJwATACYAEwAuACYALAAvACcALwATACcAJAAvACwAJAAAAC8AAAAqAC8ALwAqABMAEwAwAC4AFAAsAC0AFAAkACwAKgAXABMALQAxABQAKgAyABcAKgAjADIAFwAYABMAEwAYADAAMgAzABcAFwAzABgAIwA0ADIAIwASADQAMgA1ADMANAA1ADIAEgAWADQAEgAkABYANAAbADUAFgAbADQANQAJADMAJAA2ABYAFgA2ABsAJAAaADYAFAAaACQAMwAJAAgAMwAIABgANQALAAkAGwALADUACQADAAgACwADAAkAGAAIAAYACAADAAYAGAAGAAUABgADAAUAGAAFADAAGwANAAsADQADAAsANgANABsANgAMAA0ADAADAA0AGgAMADYAGgAKAAwACgADAAwAGgAHAAoABwADAAoAMQAHABoAFAAxABoABAADAAcAMQAEAAcABQADAAEAMAAFAAEAAgADAAQAAQADAAIANwAEADEANwACAAQALQA3ADEAFQA3AC0AGQACADcAFQAZADcAGQABAAIAMAABABkALgAZABUALgAwABkA"), 0.5746727, PackedByteArray("DgAPABAADwAOABAADgAQABEAEQAQABIADgATAA8AEQASAAAADgARAAAAEAAAABIAEAAOAAAAAAATAA4AFAAOAA8AFAAAAA4AFQAUAA8AEwAVAA8AFgAAABQAEgAAABYAAAASABcAAAAXABMAEgAWABcAFwAYABMAFgAYABcAEwAZABUAEwAYABkAFQAaABQAFAAaABYAFQAZABoAFgAbABgAFgAaABsAGAABABkAGQABAAIAGQACABoAGAAFAAEAAQADAAIABQADAAEAGgACAAQAAgADAAQAGgAEAAcABAADAAcAGgAHAAoABwADAAoAGgAKAAwACgADAAwAGgAMAA0AGgANABsADAADAA0AGwANAAsADQADAAsAGwALABgACwADAAkAGAALAAkACQADAAgAGAAJAAgACAADAAYAGAAIAAYABgADAAUAGAAGAAUA"), 4.568006, PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAQACAAAAAQADAAIAAAACAAQAAgADAAQAAAAFAAEABQADAAEAAAAGAAUABgADAAUAAAAEAAcABAADAAcAAAAIAAYACAADAAYACQADAAgAAAAJAAgABwADAAoAAAAHAAoACwADAAkAAAALAAkACgADAAwAAAAKAAwADQADAAsADAADAA0ADQALAAAAAAAMAA0AAAANAAAA")],
+"name": "Needle",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 166,
+"vertex_data": PackedByteArray("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")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_sev4e"]
+resource_name = "hornet_Torus"
+_surfaces = [{
+"aabb": AABB(-0.46693188, -0.092570946, -0.7682272, 0.93386376, 0.18514198, 8.958236),
+"attribute_data": PackedByteArray("AAAApgAAgD8AAACmAAAAAAAAgD8AAIA/AACAPwAAAACrqqo+AAAAP6uqqj4AAAA/q6qqPqqqqj6rqqo+qqoqP6uqqj6qqio/q6qqPqqqqj5VVZU+qqqqPlVVlT6qqio/VVWVPqqqKj9VVZU+qqqqPgAAgD6qqqo+VVVVPqqqqj4AAIA+qqqqPquqKj6qqqo+VVVVPqqqqj6rqio+AAAAP6uqKj6qqqo+q6oqPqqqKj+rqio+AAAAP1VVVT6qqio/q6oqPqqqKj8AAIA+qqoqP1VVVT6qqio/AACAPqqqKj9VVTU/AACAP6uqCj+qqqo+VVU1P6qqqj5VVVU/qqoqPwAAgD+qqqo+VVU1PwAAAABVVZU+qqoqP1VVlT6qqqo+q6qqPgAAAD+rqio+qqqqPlVVVT6qqio/AAAApqqqqj5VVVU+qqqqPquqqj4AAAA/VVWVPqqqKj+rqio+AAAAPwAAAD8AAAA/AAAgPwAAAD8AAGA/AAAAPwAAQD+sqio+q6oqP6qqKj8AAGA/qqqqPquqaj+sqio+AACAP6qqKj8AAIA/VVVVP1VVFT+sqio+VVU1P1VVVT+rquo+AACAP6uqCj9VVVU/q6rqPgAAAABVVdU+rKoqPgAAwD6qqqo+VVVVPgAAAABVVVU+qqqqPquqqj6qqqo+q6qqPqqqKj+rqqo+qqqqPlVVVT4AAIA/VVWVPqqqqj6rqio+qqqqPquqKj4AAAA/AAAApqqqKj+rqio+qqoqP6uqKj6qqio/q6qqPVVVVT8AAACmVVVVP1VVVT6qqio/q6qqPqqqKj8AACA/qqqqPgAAAD+qqio/q6rqPgAAAD+rquo+qqoqP6uq6j5VVVU/VVXVPqqqKj+rquo+qqqqPgAAwD4AAAA/AAAAP6yqKj5VVRU/AAAAAKuqCj8AAAAAq6oqP6yqKj6rqko/AAAAAKuq6j6sqio+VVVVPwAAAABVVdU+qqqqPquqqj4AAAAAVVVVP6yqKj6rqqo+rKoqPquqaj8AAAAAVVWVPgAAAABVVVU+rKoqPgAAAD6sqio+q6qqPQAAAAAAAACmrKoqPquqqj2sqio+q6oqPaqqqj4AAACmAAAAP6uqqj2qqqo+AAAAPqqqqj4AAAA+AAAAP6uqKj2qqio/q6oqPVVVVT+rqqo9qqoqP6uqqj0AAIA/AAAAPqqqKj+rqio+VVVVP1VVlT5VVVU/VVWVPgAAgD8AAMA+VVVVP6uqqj4AAIA/AADAPqqqKj+rqgo/AACAP1VVFT+qqio/AAAgP1VVVT9VVRU/AACAP6uqKj8AAAA/q6pKP6qqqj4AAEA/AAAAP6uqSj9VVVU/AABAP6qqKj+rqko/AACAP1VVVT+qqqo+q6pKP6qqKj8AAIA/rKoqPgAAYD9VVVU/VVVVPwAAgD9VVXU/qqqqPquqaj+qqqo+q6pqPwAAAD8AAIA/AAAAPwAAYD+qqio/VVV1P6qqKj+rqmo/qqoqP1VVdT9VVVU/q6pqPwAAgD+rqgo/AAAAP1VVFT+qqqo+AAAAP6qqqj6rqgo/rKoqPgAAID8AAAAAAAAgP6yqKj6rqio/AAAAAAAAAD8AAAAAVVXVPgAAAABVVdU+AAAAPwAAwD6sqio+AADAPgAAAABVVZU+rKoqPgAAgD6sqio+AACAPgAAAAAAAIA+qqqqPquqKj6sqio+q6oqPgAAAAAAAAA+AAAAAKuqKj2sqio+q6oqPQAAAACrqio9AAAAP6uqqj0AAAA/q6oqPQAAgD8AAAA+VVVVPwAAAD4AAIA/q6oqPgAAgD9VVVU+VVVVPwAAgD5VVVU/AACAPgAAgD8AAIA+qqoqPwAAgD6qqio/q6qqPlVVVT8AAMA+AACAP1VV1T5VVVU/VVXVPgAAgD8AAAA/VVVVPwAAAD8AAIA/q6oKP6qqKj9VVRU/AAAAP1VVFT9VVVU/AAAgP6qqKj8AACA/AACAP6uqKj+qqqo+VVU1P6yqKj4AAEA/AAAAAFVVNT8AAAA/AABAP6qqqj6rqko/rKoqPquqKj9VVVU/q6oqPwAAgD9VVTU/qqoqPwAAQD9VVVU/AABAPwAAgD+rqko/AAAAPwAAYD8AAAAAAABgP6yqKj5VVVU/AAAAP1VVdT8AAAAAVVV1P6yqKj5VVXU/AAAAP1VVVT9VVVU/AABgPwAAgD+rqmo/VVVVP1VVdT8AAIA/AACAPqqqqj4="),
+"format": 34359742487,
+"index_count": 996,
+"index_data": PackedByteArray("LAAdAI4AjgAdAI8ALACQAB0ATQAsAI4AkACRAB0ATgCQACwAHQCRADUAHQA1AI8AkQBVADUANQBVAJIAkQBWAFUANQCSAJMAjwA1AJMAkwCSAJQAVABWAJEAkABUAJEAVACVAFYAUgBUAJAATgBSAJAAWQCVAFQAUgBZAFQAWQA5AJUAOgA5AFkAOgCWADkAWwBZAFIAWwA6AFkAlwBSAE4AlwBbAFIAmACWADoAmACZAJYAOwA6AFsAOwCYADoAUwBbAJcAUwA7AFsAXgCZAJgAXgBcAJkAPgCYADsAPgBeAJgAJAA7AFMAJAA+ADsAmgBcAF4AmgBgAFwAIwBeAD4AIwCaAF4AmwBgAJoAmwCcAGAAnQCaACMAnQCbAJoAYQCcAJsAYQA8AJwAPQCbAJ0APQBhAJsAngA8AGEAngCfADwAJQBhAD0AJQCeAGEAYgCfAJ4AYgCgAJ8AaQBiAJ4AaQCeACUAZQCgAGIAZQBjAKAAaABiAGkAaABlAGIAoQBjAGUAoQCiAGMAZACiAKEAZAABAKIAJwBkAKEAZgChAGUAJwChAGYAZgBlAGgAZwAnAGYAZwBmAKMAowBmAGgARQBnAKMAowBoAKQApABoAGkARQCjAGsAawCjAKQASQBFAGsApABpAGoASQBrAGwAAABJAGwAAABsAKUAawCkAG0AbABrAG0AbQCkAGoApQBsAEgAbABtAEgApQBIAG4AagBpACUASABtAG8AbQBqAG8AbgBIAKYASABvAKYAbgCmAKcAbwBqAEQAagAlAEQApgBvAEcAbwBEAEcApwCmAHAApgBHAHAApwBwAKgAqABwAKkAqACpAEEAcABHACYAcAAmAKkARABGAEcAQQCpAKoAQQCqAKsAqQAmAKwAqQCsAKoARwBKACYARwBGAEoAJgCtAKwAJgBKAK0AqwCqAHEAqwBxAHIAqgCsACIAqgAiAHEArACtACoArAAqACIAcgBxAK4AcgCuAHQAcQAiAD8AcQA/AK4AIgAqAEsAIgBLAD8AdACuAHMAdABzAK8ArgB1AHMArgA/AHUArwBzALAArwCwALEAcwB1AFEAcwBRALAAPwBTAHUAdQBTAJcAdQCXAFEAPwAkAFMAUQCXAE4AUQBOAE8AsABRAE8ATwBOACwATwAsAE0AsABPAFAAsQCwAFAAUABPAE0AsQBQADcANwBQALIAUABNALIANwCyALMAsgBNALQATQCOALQAswCyADgAsgC0ADgAswA4AHYAtACOALUAjgCPALUAOAC0AHcAtAC1AHcAdgA4ALYAOAB3ALYAdgC2AHkAtQCPAEwAjwCTAEwAdwC1AC0AtQBMAC0AtgB3ALcAdwAtALcAeQC2AHgAtgC3AHgAeQB4ALgATACTAFcAkwCUAFcAVwCUACEATABXALkALQBMALkAVwAhALoAuQBXALoAugAhALsALQC5AHoAtwAtAHoAuQC6AB4AegC5AB4AugC7AC8AHgC6AC8ALwC7AFgAtwB6ADAAeAC3ADAAegAeALwAMAB6ALwAHgAvAL0AvAAeAL0ALwBYAL4AvQAvAL4AvgBYAFoAeAAwAL8AuAB4AL8AuAC/AMAAvwAwAMEAMAC8AMEAwAC/ADYAvwDBADYAwAA2ABwAwQC8AHwAvAC9AHwANgDBAH4AwQB8AH4AHAA2AMIANgB+AMIAHADCAMMAfAC9AHsAvQC+AHsAfgB8AMQAfAB7AMQAwgB+AIEAfgDEAIEAwwDCAH0AwgCBAH0AwwB9AH8AewC+AF0AvgBaAF0AXQBaAMUAewBdAIAAxAB7AIAAXQDFAMYAgABdAMYAxgDFAF8AxACAAMcAgQDEAMcAgADGADEAxwCAADEAxgBfADIAMQDGADIAMgBfAMgAgQDHAB8AfQCBAB8AxwAxAC4AHwDHAC4AMQAyAIYALgAxAIYAMgDIAMkAhgAyAMkAyQDIAAMAyQADAIIAhQDJAIIAhgDJAIUAhQCCACAALgCGAIcAhwCGAIUAygCFACAAhwCFAMoAygAgAIgAiQAuAIcAHwAuAIkAiwCHAMoAiQCHAIsAigDKAIgAiwDKAIoAigCIADMAywAfAIkAfQAfAMsAfwB9AMsAfwDLAIQAywCJAIMAhADLAIMAgwCJAIsAhACDAMwAgwCLAM0AzACDAM0AzQCLAIoAzADNAI0AzQCKAIwAjQDNAIwAjACKADMAjQCMAM4AjAAzADQAzgCMADQAzgA0AAIAPwApACQAPwBLACkAJAApAEAAJABAAD4ASwAEACkAKQAGAEAAKQAEAAYABAAFAAYASwAHAAQABwAIAAQAKgAHAEsAKgALAAcACwAMAAcArQALACoArQAZAAsAGQAbAAsASgAZAK0ASgAXABkAFwAaABkARgAXAEoARgAVABcAFQAYABcAKwAVAEYARAArAEYAJQArAEQAKwATABUAEwAWABUAJQBDACsAQwATACsAPQBDACUAQwARABMAEQAUABMAPQAoAEMAKAARAEMAnQAoAD0AKAAPABEADwASABEAnQDPACgAzwAPACgAIwDPAJ0AzwAOAA8ADgAQAA8AIwBCAM8AQgAOAM8APgBCACMAPgBAAEIAQgAKAA4AQAAKAEIACgANAA4AQAAGAAoABgAJAAoA"),
+"lods": [0.019195216, PackedByteArray("LABMAC0ALQBMAB4ALAAdAEwATQAsAC0AHQA1AEwATgAdACwATwAsAE0ATwBOACwAUABPAE0AUQBOAE8AUABRAE8ATgBSAB0AUQBTAE4AUwBSAE4AUgBUAB0AHQBUADUAVABVADUANQBVACEAVABWAFUANQAhAFcATAA1AFcAVwAhAFgATABXAB4AWQBWAFQAUgBZAFQAWQA5AFYAVwBYAC8AHgBXAC8ALwBYAFoAOgA5AFkAWwBZAFIAWwA6AFkAUwBbAFIAOgBcADkALwBaAF0AOwA6AFsAUwA7AFsAXgBcADoAXQBaAF8AXgBgAFwAPgA6ADsAPgBeADoAYQBgAF4AYQA8AGAAIwBeAD4AIwBhAF4AJAA+ADsAJAA7AFMAYgA8AGEAYgBjADwAPQBhACMAJQBhAD0AJQBiAGEAIwAoAD0AZAABAGMAZQBjAGIAZABjAGUAZgBkAGUAJwBkAGYAZwAnAGYAZgBlAGgAZwBmAGgAaABlAGIAaABiAGkAaQBiACUAagBoAGkAZwBoAGoAagBpACUAawBnAGoARQBnAGsASQBFAGsASQBrAGwAAABJAGwAawBqAG0AbABrAG0AAABsAEgAbABtAEgAAABIAG4AbQBqAG8ASABtAG8AbwBqAEQAagAlAEQASABvAEcAbwBEAEcAbgBIAHAASABHAHAAbgBwAEEAQQBwAHEAQQBxAHIAcABHACYAcAAmAHEAcgBxAHMAcgBzAHQAcQAmACIAcQAiAD8AcQA/AHMAJgAqACIARwBKACYAJgBKACoARwBGAEoARABGAEcARAArAEYAJQArAEQARgAXAEoAJQBDACsAPQBDACUAKwAVAEYARgAVABcAFQAYABcAKwATABUAQwATACsAEwAWABUAPQAoAEMAQwARABMAEQAUABMAKAARAEMAKAAPABEADwASABEAKAAOAA8ADgAQAA8AQgAOACgAIwBCACgAPgBCACMAQgAKAA4ACgANAA4APgBAAEIAQAAKAEIAJABAAD4AQAAGAAoABgAJAAoAJAApAEAAKQAGAEAAPwApACQAPwAkAFMAKQAEAAYABAAFAAYAPwBTAHUAdQBTAFEAcwB1AFEAcwA/AHUAcwBRAFAAdABzAFAAdABQADcANwBQADgAUABNADgANwA4AHYAPwBLACkASwAEACkAIgBLAD8AIgAqAEsASwAHAAQAKgAHAEsABwAIAAQAKgALAAcACwAMAAcAKgAZAAsAGQAbAAsASgAZACoASgAXABkAFwAaABkAOABNAHcATQAtAHcAOAB3AHgAdgA4AHgAdgB4AHkAdwAtAHoALQAeAHoAeAB3ADAAdwB6ADAAeQB4ADYAeAAwADYAeQA2ABwAegAeAHsAHgAvAHsAMAB6AHwAegB7AHwAewAvAF0AHAA2AH0ANgAwAH4AMAB8AH4ANgB+AH0AHAB9AH8AewBdAIAAfAB7AIAAfgB8AIEAfQB+AIEAfACAAC4AgQB8AC4AgABdADEALgCAADEAMQBdADIAXQBfADIAMgBfAAMAMgADAIIAfQCBAB8AgQAuAB8AfQAfAIMAfwB9AIMAfwCDAIQAhQAyAIIAhQCCACAAMQAyAIYAhgAyAIUALgAxAIYAhwCFACAAhwCGAIUALgCGAIcAhwAgAIgAHwAuAIkAiQAuAIcAgwAfAIkAigCHAIgAigCIADMAiQCHAIsAiwCHAIoAgwCJAIsAjACKADMAjACLAIoAgwCLAIwAhACDAIwAjAAzADQAhACMAI0AjQCMADQAjQA0AAIA"), 0.14121534, PackedByteArray("LAAdAC0ALQAdAB4ALQAeAC4AHQAvAB4ALAAtADAAMAAtAC4ALgAeADEALgAxACAAHgAyADEAMQAyACAAHgAvADIAMgADACAALwADADIAMwAuACAALwAhAAMAHwAuADMAMAAuAB8AHwAzADQAAgAfADQAHAAfAAIANQAhAC8AHAA2AB8ANgAwAB8ANwA2ABwAOAAwADYANwA4ADYANQA5ACEAHQA1AC8AOAAsADAAOgA5ADUAOwA1AB0ALAA7AB0AOwA6ADUAOgA8ADkAJAA7ACwAPQA8ADoAPQABADwAPgA6ADsAJAA+ADsAJwABAD0AIwA6AD4AIwA9ADoAPwAkACwAOAA/ACwAJABAAD4AIgA/ADgANwAiADgAQQAiADcAPgBCACMAPgBAAEIAIwBCACgAIwAoAD0AQAAKAEIAQgAKAA4AQgAOACgACgANAA4AKAAOAA8ADgAQAA8AKAAPABEADwASABEAKAARAEMAPQAoAEMAQwARABMAEQAUABMAPQBDACUAJwA9ACUAQwATACsAJQBDACsAJwAlAEQAJQArAEQARQAnAEQAKwATABUAEwAWABUARAArAEYAKwAVAEYARQBEAEcARABGAEcASABFAEcASQBFAEgAAABJAEgAAABIAEEAQQBIACIARgAVABcAFQAYABcARwBGAEoARgAXAEoASABHACYASAAmACIARwBKACYAJgAqACIAJgBKACoASgAXABkAFwAaABkASgAZACoAKgAZAAsAGQAbAAsAIgAqAEsAIgBLAD8AKgALAAcAKgAHAEsACwAMAAcAPwBLACkAPwApACQAJAApAEAASwAHAAQASwAEACkABwAIAAQAKQAGAEAAKQAEAAYABAAFAAYAQAAGAAoABgAJAAoA"), 0.5746727, PackedByteArray("HAAdAB4AHAAeAB8AHAAfAAIAHwAgAAIAHwAeACAAHgADACAAHgAhAAMAHQAhAB4AHAAiAB0AAAAiABwAIwAhAB0AIwABACEAJAAjAB0AIgAkAB0AJQABACMAAAAmACIAAAAnACYAJwABACUAJwAlACYAJAAoACMAIwAoACUAIgApACQAJAApACgAJgAqACIAJQAqACYAIgAqACkAJQAoACsAJQArACoAKAATACsAKwATABUAKwAVACoAEwAWABUAFQAYABcAKgAVABcAEQAUABMAKAARABMAFwAaABkAKgAXABkAKgAZAAsAGQAbAAsAKgALAAcACwAMAAcAKgAHAAQABwAIAAQAKgAEACkAKQAEAAYABAAFAAYAKQAGACgAKAAGAAoABgAJAAoAKAAKAA4ACgANAA4AKAAOAA8ADgAQAA8AKAAPABEADwASABEA"), 4.568006, PackedByteArray("AAABAAIAAQADAAIAAgAEAAEABAAFAAYABAAGAAEAAgAHAAQABwAIAAQABgAJAAoAAQAGAAoACwAMAAcAAgALAAcACgANAA4AAQAKAA4AAQAOAA8ADgAQAA8AAQAPABEADwASABEAAQARABMAEQAUABMAAQATAAIAEwAVAAIAEwAWABUAAgAVABcAFQAYABcAAgAXABkAFwAaABkAAgAZAAsAGQAbAAsA")],
+"material": SubResource("StandardMaterial3D_1isk3"),
+"name": "Needle",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 208,
+"vertex_data": PackedByteArray("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zkamPUb+IrIQVeG+Rmp5Pkb+IrIQVbG+eqXLPeBGpj2oa8a+oMOHPUb+IrIgZNe+NxQVPeBGpj0gybO+itICtOBGpj0QVbG+U58GtEb+IrIQVcm+9HH2s+BGpj0QVYG+DgCQveBGpj14+rq+HwBAvUb+IrJYw8++y8OHvUb+IrIkZNe+7hcLvuBGpj2Esua+QnW5vUb+IrK06Oy+6ReLvkb+IrL4D9S+XWp5vkb+IrIQVbG+QnW5vUb+IrK06Oy+qKXLveFGpr2sa8a+y8OHvUb+IrIkZNe+HwBAvUb+IrJYw8++nBQVveFGpr0gybO+itICtOFGpr0QVbG+U58GtEb+IrIQVcm+9HH2s+FGpr0QVYG+AAD4s+FGpr1OEhFA7/+PPeFGpr14+rq+oMOHPUb+IrIgZNe+PGr5PeFGpr0QVdW+zkamPUb+IrIQVeG+9v8PPuFGpr0QVfm+7/+/PUb+IrIQVfm+dNJnPuFGpr3+MQy/Rmp5Pkb+IrKKqiC/PGr5PeFGpr2Iqg6/mrQpPuFGpr2wFye/o8OHPUb+IrIAow2/7P/vPeBGpj2woDC/SRQVPeBGpj2CcB+/U58GtEb+IrKIqhS/WhSVPUb+IrJ8NkK/9HH2s+BGpj2Kqji/ihQVveBGpj2CcB+/7/+PPeFGpr3S1xu/2/8/PUb+IrJkcxG/PXd4PeFGpr0knza/itICtOFGpr2IqiC/U58GtEb+IrKIqhS/eRSVvUb+IrJ8NkK/y8OHvUb+IrIAow2/qKXLveBGpj06Hxa/BwAQvkb+IrIcBTu/QnW5vUb+IrK44AK/7hcLvuBGpj3Q+wW/6ReLvkb+IrIUTQ+/DgCQveFGpr3U1xu/y8OHvUb+IrIAow2/ZGr5veFGpr2Kqg6/QnW5vUb+IrK44AK/AAD4s+BGpj1OEhFA////f/9//7////9//3//v////3//f/+/////f/9//7///9GU////v/9//3////8/VbZK1P///79VtrQr////v/9//3////8//3//f////z8mgP//////vyaAAAD///+//3//f////z//f/9/////PyaA//////+/JoD//////7//f/9/////P6lJStT///+//3//f////z8AANGU////v/9//3////8/qUm0K////7//f/9/////PyaAAAD///+//3//f////z8mgAAA////v/9//3////8//3//f////z/zZP9/AACFzX63OtQAAIWNfrdE9AAAhs0NRZQV2i7/v8ZOxc5+dbe882T/fwAAhc3/fwAA//+Fzf9//////4XN0dz/f///aO7ZYWHQv8Ebx/9/AADy5P+/xk7FzoCKR8NAgf//////v///bJn///+/QIEAAP///78AAGyZ////v////3//////////vwAA/98AAP+//z//v/9/uNMAAP+/8bqUFQAAkajzQ/jh/z//vwmiT8omUf+/xk45MX51R8NGrEYsnnT9vPVdT8oBAGuXXXVRMgAAeLIAAAub//948lBYUTIAAHjyAAALm///ePJQSvXd/f+S6AWe8sP+//+f///y5PLk/7//f///8uT/vyWeYdDG8d+gJZ6dL8bxH9/3tGPV////v///8uTy5P+/QIH//////78HS2PV////vy0j/38to/+/xk45MYCKt7wHS5sq////v9lhnS+/weK4rrUJItiu/79GrEYsYIsBw0CBAAD///+/97SbKv///78LvPjhAAD/nzixOTEAAACA8uT/f///ePLDq383/v+Fja5Nryf+/4WNXaXyOv7/bJfDq3/I/v948v+//3/////fuFO40//////ZLv9/AACS6Awb/38AAHjyWmxPygEAbNcLm/9/DBv/v65NT9j+/3jy2a7/f9ku/79dpQzF/v+S6AAAJdH//2zXpJNPytou/r9QSlns/f+SqCXR/38lUf+/AADy5P//hc1Qsl318uT/v8S2nOT/v/+////Zrtmu/79GrLjTYIv9vK619d3Yrv6/O1R/yAyb/r8AAP9//3//v6FaDMXZrv6/+WHyw/+//7//P/9//7//vztUfzcMm/+/ULKvJwub/7+hWvI62a7/v///2a7Zrv+/+WEMPP+//7+utaUTJdH+v65Nogr+/4XNAADy5P//hc06SWIb/v//3wAAJdH//2zXBZ4MPP7//98MG/9/AAB48vG6XiUAAJLonGTFNgAA/5/ZLv9/AACS6P//JdEAAGzXgEhE9A0b/r//////AAD/v6GKUTIMG/+/OLEAAAAA/78Lm/9/DBv/vw1FauraLv6/gEi6Cw0b/79GrLjTnnQBw2KbxTb/P/+/2a7/f9ku/7+ASDrU8mT/vw1FoNolUf+/AADZriVR/78AAP9//3//v/NDBh7/P/+/gEjEK/Jk/r8NRV4lJVH+v66nUTLzZP+/JdH/fyVR/7///wubAAB48vG6oNoAAGyXOLHFzv//AIBQWK3NAACFjf8//38AAP/fnGQ5yQAA/58lUf9/AABs1wAA/3//////AADZrv//kugl0f9///+S6DpJnOT+//+fAAD/v////9+uTV31/v94skas///+//+//////////7//f///////v661Wewl0f+///8l0SXR/7////+//7//v1CyT9gLm/+///8Lmwub/78MG/9/C5v/v9ku/3/Zrv+///8Lmwub/7/EtmIb/7//v////7//v/+///8l0SXR/79QsqIK8uT/v0asAAD///+//////////7//fwAA/v//v0CBAAD///+/UEqlE/3/bNcAAP+/////31BKCSL9/2uXAADZrv//kui4U0Ys/v8AgAAA/3//////frfEKwAAePL//9muAACS6PVdrzUBAJLoC7wGHgAA/9//P/9/AAD/3/G6auoAAGzXXXWtzQAAhc3/f/9/AAD/v///8uQAAIXNOLH//wAA/7+hiq3NDBv/v1psrzUBAJKoJVH/fwAAbNd+t7oLAAB4sv9/RiwAAP+//3//fwAA/78AAPLkDBv/v/+//3//P/+/Yps5yf8//78AACXR2S7/v/Lk/3/zZP+/rqetzfNk/78AAAub82T/v6STrzXaLv+//7//f/8//78Joq81JlH+v/Lk/3/zZP+/QIH//////78=")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_g78k6")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g78k6"]
+radius = 2.0
+height = 9.347168
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_m1lj5"]
+radius = 1.0
+height = 7.7419434
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nu6iw"]
+size = Vector3(4, 4, 8)
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ihiqv"]
+animation = &"Down Spike Antic"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3luqa"]
+animation = &"Down Spike"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hkbyu"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_il4ec"]
+xfade_time = 0.13
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_0sqxv"]
+"states/Down Spike/node" = SubResource("AnimationNodeAnimation_3luqa")
+"states/Down Spike/position" = Vector2(634.5, 97.5)
+"states/Down Spike Antic/node" = SubResource("AnimationNodeAnimation_ihiqv")
+"states/Down Spike Antic/position" = Vector2(408, 98)
+states/End/position = Vector2(898, 96.75)
+states/Start/position = Vector2(201, 99)
+transitions = ["Start", "Down Spike Antic", SubResource("AnimationNodeStateMachineTransition_hkbyu"), "Down Spike Antic", "Down Spike", SubResource("AnimationNodeStateMachineTransition_il4ec")]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_d4m7k"]
+animation = &"Float Start"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0g54q"]
+animation = &"Float"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bu7in"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rsjix"]
+xfade_time = 0.13
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_elx7m"]
+resource_local_to_scene = true
+states/Float/node = SubResource("AnimationNodeAnimation_0g54q")
+states/Float/position = Vector2(539.5, 97.5)
+"states/Float Start/node" = SubResource("AnimationNodeAnimation_d4m7k")
+"states/Float Start/position" = Vector2(363.5, 99.796875)
+transitions = ["Start", "Float Start", SubResource("AnimationNodeStateMachineTransition_bu7in"), "Float Start", "Float", SubResource("AnimationNodeStateMachineTransition_rsjix")]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bu7in"]
+animation = &"Sprint Jump Antic"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_rsjix"]
+animation = &"Sprint Jump"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ihiqv"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3luqa"]
+xfade_time = 0.13
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_0le53"]
+"states/Sprint Jump/node" = SubResource("AnimationNodeAnimation_rsjix")
+"states/Sprint Jump/position" = Vector2(641, 99)
+"states/Sprint Jump Antic/node" = SubResource("AnimationNodeAnimation_bu7in")
+"states/Sprint Jump Antic/position" = Vector2(420.5, 99.5)
+transitions = ["Start", "Sprint Jump Antic", SubResource("AnimationNodeStateMachineTransition_ihiqv"), "Sprint Jump Antic", "Sprint Jump", SubResource("AnimationNodeStateMachineTransition_3luqa")]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gu2gy"]
+animation = &"Thread Storm Prepare"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2gkjk"]
+animation = &"Thread Storm"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pg3u5"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_yig60"]
+xfade_time = 0.13
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_qjxdb"]
+"states/Thread Storm/node" = SubResource("AnimationNodeAnimation_2gkjk")
+"states/Thread Storm/position" = Vector2(694, 99)
+"states/Thread Storm Prepare/node" = SubResource("AnimationNodeAnimation_gu2gy")
+"states/Thread Storm Prepare/position" = Vector2(427, 98)
+transitions = ["Start", "Thread Storm Prepare", SubResource("AnimationNodeStateMachineTransition_pg3u5"), "Thread Storm Prepare", "Thread Storm", SubResource("AnimationNodeStateMachineTransition_yig60")]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7c4js"]
+animation = &"Walk Backward"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6xo6p"]
+animation = &"Walk Forward"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0nwbe"]
+animation = &"Strafe Right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3do8f"]
+animation = &"Strafe Left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0fe1s"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_0l0iu"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_7c4js")
+blend_point_0/pos = Vector2(0, 1)
+blend_point_0/name = &"0"
+blend_point_1/node = SubResource("AnimationNodeAnimation_6xo6p")
+blend_point_1/pos = Vector2(0, -1)
+blend_point_1/name = &"1"
+blend_point_2/node = SubResource("AnimationNodeAnimation_0nwbe")
+blend_point_2/pos = Vector2(1, 0)
+blend_point_2/name = &"2"
+blend_point_3/node = SubResource("AnimationNodeAnimation_3do8f")
+blend_point_3/pos = Vector2(-1, 0)
+blend_point_3/name = &"3"
+blend_point_4/node = SubResource("AnimationNodeAnimation_0fe1s")
+blend_point_4/pos = Vector2(0, 0)
+blend_point_4/name = &"4"
+
+[sub_resource type="Animation" id="Animation_s8joe"]
+resource_name = "Bind"
+length = 0.25
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BindParticles")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [false],
+"method": &"restart"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BindLight:light_energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [192.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_xrjoj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BindLight:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xrjoj"]
+_data = {
+&"Bind": SubResource("Animation_s8joe"),
+&"RESET": SubResource("Animation_xrjoj")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4y8h1"]
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_jsmki"]
+material = SubResource("StandardMaterial3D_4y8h1")
+radial_segments = 8
+rings = 16
+
+[sub_resource type="Curve" id="Curve_jbv7g"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.7945561, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_tefms"]
+script = ExtResource("13_41lfd")
+clips = Array[AudioStream]([ExtResource("13_4y8h1"), ExtResource("14_s8joe"), ExtResource("15_xrjoj"), ExtResource("16_cm075")])
+metadata/_custom_type_script = "uid://d2a87b3tfbpuf"
+
+[sub_resource type="Resource" id="Resource_tiymp"]
+script = ExtResource("13_41lfd")
+clips = Array[AudioStream]([ExtResource("4_fxn5h"), ExtResource("5_cxuv5"), ExtResource("6_qq66o"), ExtResource("7_x4qyq"), ExtResource("8_i15os"), ExtResource("9_1svlo"), ExtResource("10_a20ea"), ExtResource("11_b3c30"), ExtResource("12_2vult")])
+metadata/_custom_type_script = "uid://d2a87b3tfbpuf"
+
+[sub_resource type="Resource" id="Resource_sguwt"]
+script = ExtResource("13_41lfd")
+clips = Array[AudioStream]([ExtResource("4_b3c30"), ExtResource("5_2vult"), ExtResource("6_41lfd"), ExtResource("7_4s16b"), ExtResource("8_m4n5g"), ExtResource("9_6o7jk")])
+metadata/_custom_type_script = "uid://d2a87b3tfbpuf"
+
+[sub_resource type="Resource" id="Resource_aw6r3"]
+script = ExtResource("13_41lfd")
+clips = Array[AudioStream]([ExtResource("19_gu2gy"), ExtResource("20_2gkjk"), ExtResource("21_pg3u5"), ExtResource("22_yig60"), ExtResource("23_sl7gj"), ExtResource("24_4bmqs"), ExtResource("25_yt37h"), ExtResource("26_lvele"), ExtResource("27_rees2"), ExtResource("28_6x7ot")])
+metadata/_custom_type_script = "uid://d2a87b3tfbpuf"
+
+[node name="Player" unique_id=1407905218 groups=["Players"] instance=ExtResource("1_sl7gj")]
+collision_layer = 1
+script = ExtResource("2_dw050")
+jump_height = 7.0
+walk_speed = 24.0
+sprint_speed = 48.0
+down_spike_speed = 90.0
+down_spike_bounce_spin_speed = 30.0
+
+[node name="Collision" parent="." index="1" unique_id=1496356468]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.63174677, 0)
+shape = SubResource("CapsuleShape3D_jgtgc")
+
+[node name="Health" parent="." index="2" unique_id=1048848430 node_paths=PackedStringArray("damage_particles", "_pulser")]
+collision_mask = 16
+damage_invincibility_time = 1.0
+damage_particles = []
+_pulser = NodePath("../Pulser")
+
+[node name="Collision" parent="Health" index="0" unique_id=76614683]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.13183594, 0)
+
+[node name="Death" parent="." index="3" unique_id=262351254]
+corpse_prefab = ExtResource("21_2vult")
+
+[node name="Flasher" type="Node" parent="." index="4" unique_id=81880987 node_paths=PackedStringArray("_meshes")]
+script = ExtResource("4_lvele")
+_meshes = [NodePath("../Model/Armature/Skeleton3D/Body"), NodePath("../Model/Armature/Skeleton3D/Head"), NodePath("../Model/Armature/Skeleton3D/CloakAttach/Cloak"), NodePath("../Model/Armature/Skeleton3D/NeedleAttach/Needle/Mesh")]
+metadata/_custom_type_script = "uid://htjsg10vl7mo"
+
+[node name="Pulser" type="Node" parent="." index="5" unique_id=578531861 node_paths=PackedStringArray("_flasher")]
+script = ExtResource("5_rees2")
+_flasher = NodePath("../Flasher")
+
+[node name="SpoolManager" type="Node" parent="." index="6" unique_id=1263273380]
+script = ExtResource("3_hlqpx")
+
+[node name="Model" parent="." index="7" unique_id=1386607369 instance=ExtResource("5_qdo3w")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Model/Armature" parent_id_path=PackedInt32Array(1386607369, 198531502) index="0" unique_id=1496948821]
+bones/0/position = Vector3(0.79931, -2.4531221, -0.5239861)
+bones/1/position = Vector3(-0.53858006, -1.7085398, 0.826867)
+bones/2/position = Vector3(0.35971394, -1.4064548, 0.71173114)
+bones/2/rotation = Quaternion(0.5000001, 0.49999997, 0.4999999, 0.5)
+bones/3/position = Vector3(-0.5439561, -1.4064548, 0.9996423)
+bones/3/rotation = Quaternion(0.5000001, -0.49999997, -0.4999999, 0.5)
+bones/4/position = Vector3(0, -0.32481527, 0.551371)
+bones/4/rotation = Quaternion(0.19968137, 0, 0, 0.9798609)
+bones/6/rotation = Quaternion(-0.63705796, 0.12130276, -0.059234217, 0.7589033)
+bones/7/rotation = Quaternion(-9.3132235e-10, -2.3283055e-09, -3.7252903e-09, 1)
+bones/9/rotation = Quaternion(-0.48044273, 0.51438254, 0.40769872, 0.58169353)
+bones/10/rotation = Quaternion(-6.258751e-10, -1.3769265e-08, -0.74401563, 0.6681622)
+bones/11/rotation = Quaternion(0.30768624, 0, 0, 0.9514879)
+bones/12/rotation = Quaternion(-0.19217372, 0, 0, 0.981361)
+
+[node name="CloakAttach" type="BoneAttachment3D" parent="Model/Armature/Skeleton3D" index="0" unique_id=1453873214]
+transform = Transform3D(1, 0, 0, 0, 0.8015981, -0.59786326, 0, 0.59786326, 0.8015981, 0, 0.85146487, 1.450965)
+bone_name = "Neck"
+bone_idx = 13
+
+[node name="Cloak" type="SoftBody3D" parent="Model/Armature/Skeleton3D/CloakAttach" index="0" unique_id=378781349]
+transform = Transform3D(1, 2.4436088e-06, -1.6023201e-05, -2.4436088e-06, 1, -6.473269e-06, 1.6023201e-05, 6.473269e-06, 1, 0, -1.552, 0)
+mesh = ExtResource("5_b26j0")
+surface_material_override/0 = ExtResource("6_n7ghd")
+collision_mask = 5
+parent_collision_ignore = NodePath("../../../../..")
+simulation_precision = 100
+linear_stiffness = 0.85
+damping_coefficient = 1.0
+drag_coefficient = 1.0
+pinned_points = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 42, 43, 50, 51, 52, 60, 62, 69, 70, 71, 85, 90, 91, 99, 100, 102, 108, 109, 110, 116, 120, 128, 146, 154, 176, 177, 192, 193, 194, 195, 196, 197, 198, 199, 200, 201, 202, 208, 209, 217, 218, 235, 236, 238, 247, 248, 249, 250, 252, 253, 258, 259, 281, 282, 283, 297, 298, 299, 313, 314, 315, 316, 322, 323, 324, 325, 326, 327, 328, 329, 330, 331, 332, 333, 334, 335, 336, 337, 338, 339, 340, 341, 342, 343, 344, 345, 346, 347, 348, 349, 350, 351, 352, 353, 354, 355, 356, 357, 358, 359, 360, 361, 362, 363, 364, 365, 373, 374, 375, 376, 377, 394, 395, 396, 397, 400, 414, 415, 416, 417, 418, 419, 420, 432, 433, 434, 449, 450, 451, 452, 463, 464, 465, 478, 479, 480, 495]
+attachments/0/point_index = 0
+attachments/0/spatial_attachment_path = NodePath("..")
+attachments/0/offset = Vector3(-0.34057313, 0.000959754, -0.1685298)
+attachments/1/point_index = 1
+attachments/1/spatial_attachment_path = NodePath("..")
+attachments/1/offset = Vector3(-0.13815665, 0.017300606, -0.3387517)
+attachments/2/point_index = 2
+attachments/2/spatial_attachment_path = NodePath("..")
+attachments/2/offset = Vector3(-0.3966828, 0.41078067, -0.4297237)
+attachments/3/point_index = 3
+attachments/3/spatial_attachment_path = NodePath("..")
+attachments/3/offset = Vector3(-0.46647552, 0.4042344, -0.3469131)
+attachments/4/point_index = 4
+attachments/4/spatial_attachment_path = NodePath("..")
+attachments/4/offset = Vector3(-0.5182049, 0.39663935, -0.25388616)
+attachments/5/point_index = 5
+attachments/5/spatial_attachment_path = NodePath("..")
+attachments/5/offset = Vector3(-0.55008817, 0.389333, -0.15466802)
+attachments/6/point_index = 6
+attachments/6/spatial_attachment_path = NodePath("..")
+attachments/6/offset = Vector3(-0.5607502, 0.381477, -0.051083334)
+attachments/7/point_index = 7
+attachments/7/spatial_attachment_path = NodePath("..")
+attachments/7/offset = Vector3(-0.3116127, 0.41712284, -0.49814254)
+attachments/8/point_index = 8
+attachments/8/spatial_attachment_path = NodePath("..")
+attachments/8/offset = Vector3(-0.34034055, -0.016820312, 0.05618636)
+attachments/9/point_index = 9
+attachments/9/spatial_attachment_path = NodePath("..")
+attachments/9/offset = Vector3(-0.21441145, 0.42248917, -0.53752124)
+attachments/10/point_index = 10
+attachments/10/spatial_attachment_path = NodePath("..")
+attachments/10/offset = Vector3(-0.549723, 0.37293422, 0.053685453)
+attachments/11/point_index = 11
+attachments/11/spatial_attachment_path = NodePath("..")
+attachments/11/offset = Vector3(-0.51774484, 0.36565232, 0.1535656)
+attachments/12/point_index = 12
+attachments/12/spatial_attachment_path = NodePath("..")
+attachments/12/offset = Vector3(-0.46572068, 0.3579588, 0.24562438)
+attachments/13/point_index = 13
+attachments/13/spatial_attachment_path = NodePath("..")
+attachments/13/offset = Vector3(-0.3959524, 0.3517381, 0.32707712)
+attachments/14/point_index = 14
+attachments/14/spatial_attachment_path = NodePath("..")
+attachments/14/offset = Vector3(-0.108668186, 0.42608345, -0.5577388)
+attachments/15/point_index = 15
+attachments/15/spatial_attachment_path = NodePath("..")
+attachments/15/offset = Vector3(-0.13825135, -0.02660489, 0.21976955)
+attachments/16/point_index = 16
+attachments/16/spatial_attachment_path = NodePath("..")
+attachments/16/offset = Vector3(0.0015185392, 0.42808783, -0.55911374)
+attachments/17/point_index = 17
+attachments/17/spatial_attachment_path = NodePath("..")
+attachments/17/offset = Vector3(-0.31121352, 0.34933412, 0.3949419)
+attachments/18/point_index = 18
+attachments/18/spatial_attachment_path = NodePath("..")
+attachments/18/offset = Vector3(0.1121467, 0.4305395, -0.5434466)
+attachments/19/point_index = 19
+attachments/19/spatial_attachment_path = NodePath("..")
+attachments/19/offset = Vector3(0.21913303, 0.4328879, -0.5106637)
+attachments/20/point_index = 20
+attachments/20/spatial_attachment_path = NodePath("..")
+attachments/20/offset = Vector3(0.31803754, 0.43317616, -0.46142697)
+attachments/21/point_index = 21
+attachments/21/spatial_attachment_path = NodePath("..")
+attachments/21/offset = Vector3(0.40489534, 0.43150008, -0.39732683)
+attachments/22/point_index = 22
+attachments/22/spatial_attachment_path = NodePath("..")
+attachments/22/offset = Vector3(-0.21430656, 0.3495983, 0.4391689)
+attachments/23/point_index = 23
+attachments/23/spatial_attachment_path = NodePath("..")
+attachments/23/offset = Vector3(0.35594678, 0.01742673, -0.1547574)
+attachments/24/point_index = 24
+attachments/24/spatial_attachment_path = NodePath("..")
+attachments/24/offset = Vector3(-0.108790204, 0.35122013, 0.46399915)
+attachments/25/point_index = 25
+attachments/25/spatial_attachment_path = NodePath("..")
+attachments/25/offset = Vector3(0.47627962, 0.42819047, -0.32043588)
+attachments/26/point_index = 26
+attachments/26/spatial_attachment_path = NodePath("..")
+attachments/26/offset = Vector3(0.52942467, 0.42368805, -0.23364969)
+attachments/27/point_index = 27
+attachments/27/spatial_attachment_path = NodePath("..")
+attachments/27/offset = Vector3(0.5617762, 0.41694963, -0.13962403)
+attachments/28/point_index = 28
+attachments/28/spatial_attachment_path = NodePath("..")
+attachments/28/offset = Vector3(0.57226276, 0.40888178, -0.04159127)
+attachments/29/point_index = 29
+attachments/29/spatial_attachment_path = NodePath("..")
+attachments/29/offset = Vector3(0.001507429, 0.35644066, 0.47021464)
+attachments/30/point_index = 30
+attachments/30/spatial_attachment_path = NodePath("..")
+attachments/30/offset = Vector3(0.35544407, 0.0010601282, 0.058249723)
+attachments/31/point_index = 31
+attachments/31/spatial_attachment_path = NodePath("..")
+attachments/31/offset = Vector3(0.11238728, 0.36260366, 0.45796943)
+attachments/32/point_index = 32
+attachments/32/spatial_attachment_path = NodePath("..")
+attachments/32/offset = Vector3(0.21941647, 0.36907434, 0.4274145)
+attachments/33/point_index = 33
+attachments/33/spatial_attachment_path = NodePath("..")
+attachments/33/offset = Vector3(0.31828225, 0.37563837, 0.37968913)
+attachments/34/point_index = 34
+attachments/34/spatial_attachment_path = NodePath("..")
+attachments/34/offset = Vector3(0.4050015, 0.38218093, 0.31647527)
+attachments/35/point_index = 35
+attachments/35/spatial_attachment_path = NodePath("..")
+attachments/35/offset = Vector3(0.560888, 0.40075314, 0.058004394)
+attachments/36/point_index = 36
+attachments/36/spatial_attachment_path = NodePath("..")
+attachments/36/offset = Vector3(0.47613603, 0.38872862, 0.23997171)
+attachments/37/point_index = 37
+attachments/37/spatial_attachment_path = NodePath("..")
+attachments/37/offset = Vector3(0.5289301, 0.39535236, 0.15293682)
+attachments/38/point_index = 38
+attachments/38/spatial_attachment_path = NodePath("..")
+attachments/38/offset = Vector3(-0.507493, -0.4012469, -0.41439617)
+attachments/39/point_index = 42
+attachments/39/spatial_attachment_path = NodePath("..")
+attachments/39/offset = Vector3(-0.34057313, 0.000959754, -0.1685298)
+attachments/40/point_index = 43
+attachments/40/spatial_attachment_path = NodePath("..")
+attachments/40/offset = Vector3(-0.13815665, 0.017300606, -0.3387517)
+attachments/41/point_index = 50
+attachments/41/spatial_attachment_path = NodePath("..")
+attachments/41/offset = Vector3(-0.34034055, -0.016820312, 0.05618636)
+attachments/42/point_index = 51
+attachments/42/spatial_attachment_path = NodePath("..")
+attachments/42/offset = Vector3(-0.7165108, -0.42376053, -0.068513066)
+attachments/43/point_index = 52
+attachments/43/spatial_attachment_path = NodePath("..")
+attachments/43/offset = Vector3(-0.34057313, 0.000959754, -0.1685298)
+attachments/44/point_index = 60
+attachments/44/spatial_attachment_path = NodePath("..")
+attachments/44/offset = Vector3(0.35544407, 0.0010601282, 0.058249723)
+attachments/45/point_index = 62
+attachments/45/spatial_attachment_path = NodePath("..")
+attachments/45/offset = Vector3(0.35594678, 0.01742673, -0.1547574)
+attachments/46/point_index = 69
+attachments/46/spatial_attachment_path = NodePath("..")
+attachments/46/offset = Vector3(-0.13815665, 0.017300606, -0.3387517)
+attachments/47/point_index = 70
+attachments/47/spatial_attachment_path = NodePath("..")
+attachments/47/offset = Vector3(0.27385393, -0.2715304, -0.51413876)
+attachments/48/point_index = 71
+attachments/48/spatial_attachment_path = NodePath("..")
+attachments/48/offset = Vector3(0.35594678, 0.01742673, -0.1547574)
+attachments/49/point_index = 85
+attachments/49/spatial_attachment_path = NodePath("..")
+attachments/49/offset = Vector3(0.27325398, -0.3365605, 0.39477468)
+attachments/50/point_index = 90
+attachments/50/spatial_attachment_path = NodePath("..")
+attachments/50/offset = Vector3(-0.13825135, -0.02660489, 0.21976955)
+attachments/51/point_index = 91
+attachments/51/spatial_attachment_path = NodePath("..")
+attachments/51/offset = Vector3(0.35544407, 0.0010601282, 0.058249723)
+attachments/52/point_index = 99
+attachments/52/spatial_attachment_path = NodePath("..")
+attachments/52/offset = Vector3(-0.5071333, -0.4507476, 0.27810276)
+attachments/53/point_index = 100
+attachments/53/spatial_attachment_path = NodePath("..")
+attachments/53/offset = Vector3(-0.13825135, -0.02660489, 0.21976955)
+attachments/54/point_index = 102
+attachments/54/spatial_attachment_path = NodePath("..")
+attachments/54/offset = Vector3(-0.34034055, -0.016820312, 0.05618636)
+attachments/55/point_index = 108
+attachments/55/spatial_attachment_path = NodePath("..")
+attachments/55/offset = Vector3(0.07936787, 0.0051885843, -0.33207998)
+attachments/56/point_index = 109
+attachments/56/spatial_attachment_path = NodePath("..")
+attachments/56/offset = Vector3(0.07874248, -0.037641883, 0.22592467)
+attachments/57/point_index = 110
+attachments/57/spatial_attachment_path = NodePath("..")
+attachments/57/offset = Vector3(0.21577993, -0.027432084, 0.18154083)
+attachments/58/point_index = 116
+attachments/58/spatial_attachment_path = NodePath("..")
+attachments/58/offset = Vector3(0.07874248, -0.037641883, 0.22592467)
+attachments/59/point_index = 120
+attachments/59/spatial_attachment_path = NodePath("..")
+attachments/59/offset = Vector3(0.21577993, -0.027432084, 0.18154083)
+attachments/60/point_index = 128
+attachments/60/spatial_attachment_path = NodePath("..")
+attachments/60/offset = Vector3(0.6686423, -0.30891716, 0.12717582)
+attachments/61/point_index = 146
+attachments/61/spatial_attachment_path = NodePath("..")
+attachments/61/offset = Vector3(0.07936787, 0.0051885843, -0.33207998)
+attachments/62/point_index = 154
+attachments/62/spatial_attachment_path = NodePath("..")
+attachments/62/offset = Vector3(0.6690041, -0.2829181, -0.23811047)
+attachments/63/point_index = 176
+attachments/63/spatial_attachment_path = NodePath("..")
+attachments/63/offset = Vector3(0.6686423, -0.30891716, 0.12717582)
+attachments/64/point_index = 177
+attachments/64/spatial_attachment_path = NodePath("..")
+attachments/64/offset = Vector3(0.6690041, -0.2829181, -0.23811047)
+attachments/65/point_index = 192
+attachments/65/spatial_attachment_path = NodePath("..")
+attachments/65/offset = Vector3(-0.20297816, -0.002409935, -0.30571604)
+attachments/66/point_index = 193
+attachments/66/spatial_attachment_path = NodePath("..")
+attachments/66/offset = Vector3(-0.42597082, 0.17706215, -0.13190658)
+attachments/67/point_index = 194
+attachments/67/spatial_attachment_path = NodePath("..")
+attachments/67/offset = Vector3(-0.36196208, -0.019274473, -0.11445549)
+attachments/68/point_index = 195
+attachments/68/spatial_attachment_path = NodePath("..")
+attachments/68/offset = Vector3(0.21604344, 0.00584507, -0.28093186)
+attachments/69/point_index = 196
+attachments/69/spatial_attachment_path = NodePath("..")
+attachments/69/offset = Vector3(-0.3058645, -0.03731239, 0.10557487)
+attachments/70/point_index = 197
+attachments/70/spatial_attachment_path = NodePath("..")
+attachments/70/offset = Vector3(-0.20286743, -0.04175651, 0.18835844)
+attachments/71/point_index = 198
+attachments/71/spatial_attachment_path = NodePath("..")
+attachments/71/offset = Vector3(0.14972544, -0.016235232, 0.20977217)
+attachments/72/point_index = 199
+attachments/72/spatial_attachment_path = NodePath("..")
+attachments/72/offset = Vector3(0.31658444, 0.17466092, 0.2103836)
+attachments/73/point_index = 200
+attachments/73/spatial_attachment_path = NodePath("..")
+attachments/73/offset = Vector3(0.3769866, -0.012596965, 0.00472922)
+attachments/74/point_index = 201
+attachments/74/spatial_attachment_path = NodePath("..")
+attachments/74/offset = Vector3(0.4133904, 0.20570958, -0.18665546)
+attachments/75/point_index = 202
+attachments/75/spatial_attachment_path = NodePath("..")
+attachments/75/offset = Vector3(0.32123318, 0.0038968325, -0.2024015)
+attachments/76/point_index = 208
+attachments/76/spatial_attachment_path = NodePath("..")
+attachments/76/offset = Vector3(0.1347719, -0.39638066, 0.430781)
+attachments/77/point_index = 209
+attachments/77/spatial_attachment_path = NodePath("..")
+attachments/77/offset = Vector3(0.14972544, -0.016235232, 0.20977217)
+attachments/78/point_index = 217
+attachments/78/spatial_attachment_path = NodePath("..")
+attachments/78/offset = Vector3(0.39447188, -0.3864832, 0.33768758)
+attachments/79/point_index = 218
+attachments/79/spatial_attachment_path = NodePath("..")
+attachments/79/offset = Vector3(0.595319, -0.37274086, 0.20355888)
+attachments/80/point_index = 235
+attachments/80/spatial_attachment_path = NodePath("..")
+attachments/80/offset = Vector3(-0.20297816, -0.002409935, -0.30571604)
+attachments/81/point_index = 236
+attachments/81/spatial_attachment_path = NodePath("..")
+attachments/81/offset = Vector3(-0.4024788, -0.33359587, -0.49106786)
+attachments/82/point_index = 238
+attachments/82/spatial_attachment_path = NodePath("..")
+attachments/82/offset = Vector3(-0.27756363, -0.27120042, -0.5562045)
+attachments/83/point_index = 247
+attachments/83/spatial_attachment_path = NodePath("..")
+attachments/83/offset = Vector3(0.30290997, -0.53900015, -0.72265935)
+attachments/84/point_index = 248
+attachments/84/spatial_attachment_path = NodePath("..")
+attachments/84/offset = Vector3(0.13524301, -0.32526326, -0.56341505)
+attachments/85/point_index = 249
+attachments/85/spatial_attachment_path = NodePath("..")
+attachments/85/offset = Vector3(0.21604344, 0.00584507, -0.28093186)
+attachments/86/point_index = 250
+attachments/86/spatial_attachment_path = NodePath("..")
+attachments/86/offset = Vector3(0.39459252, -0.3308288, -0.45775735)
+attachments/87/point_index = 252
+attachments/87/spatial_attachment_path = NodePath("..")
+attachments/87/offset = Vector3(-0.27756363, -0.27120042, -0.5562045)
+attachments/88/point_index = 253
+attachments/88/spatial_attachment_path = NodePath("..")
+attachments/88/offset = Vector3(0.30290997, -0.53900015, -0.72265935)
+attachments/89/point_index = 258
+attachments/89/spatial_attachment_path = NodePath("..")
+attachments/89/offset = Vector3(0.32123318, 0.0038968325, -0.2024015)
+attachments/90/point_index = 259
+attachments/90/spatial_attachment_path = NodePath("..")
+attachments/90/offset = Vector3(0.5955677, -0.3359121, -0.3194901)
+attachments/91/point_index = 281
+attachments/91/spatial_attachment_path = NodePath("..")
+attachments/91/offset = Vector3(-0.70726323, -0.3551036, -0.16155201)
+attachments/92/point_index = 282
+attachments/92/spatial_attachment_path = NodePath("..")
+attachments/92/offset = Vector3(-0.36196208, -0.019274473, -0.11445549)
+attachments/93/point_index = 283
+attachments/93/spatial_attachment_path = NodePath("..")
+attachments/93/offset = Vector3(-0.6670119, -0.31860483, 0.12994821)
+attachments/94/point_index = 297
+attachments/94/spatial_attachment_path = NodePath("..")
+attachments/94/offset = Vector3(0.7028561, -0.36102366, 0.03386909)
+attachments/95/point_index = 298
+attachments/95/spatial_attachment_path = NodePath("..")
+attachments/95/offset = Vector3(0.3769866, -0.012596965, 0.00472922)
+attachments/96/point_index = 299
+attachments/96/spatial_attachment_path = NodePath("..")
+attachments/96/offset = Vector3(0.70334446, -0.34735322, -0.15249106)
+attachments/97/point_index = 313
+attachments/97/spatial_attachment_path = NodePath("..")
+attachments/97/offset = Vector3(-0.59967554, -0.38291252, 0.21067113)
+attachments/98/point_index = 314
+attachments/98/spatial_attachment_path = NodePath("..")
+attachments/98/offset = Vector3(-0.6670119, -0.31860483, 0.12994821)
+attachments/99/point_index = 315
+attachments/99/spatial_attachment_path = NodePath("..")
+attachments/99/offset = Vector3(-0.3058645, -0.03731239, 0.10557487)
+attachments/100/point_index = 316
+attachments/100/spatial_attachment_path = NodePath("..")
+attachments/100/offset = Vector3(-0.20286743, -0.04175651, 0.18835844)
+attachments/101/point_index = 322
+attachments/101/spatial_attachment_path = NodePath("..")
+attachments/101/offset = Vector3(0.08919891, 0.15866518, 0.3125099)
+attachments/102/point_index = 323
+attachments/102/spatial_attachment_path = NodePath("..")
+attachments/102/offset = Vector3(0.17238009, 0.16413105, 0.29034197)
+attachments/103/point_index = 324
+attachments/103/spatial_attachment_path = NodePath("..")
+attachments/103/offset = Vector3(0.0029624177, 0.15283501, 0.32186693)
+attachments/104/point_index = 325
+attachments/104/spatial_attachment_path = NodePath("..")
+attachments/104/offset = Vector3(0.0053878063, -0.039306164, 0.23437542)
+attachments/105/point_index = 326
+attachments/105/spatial_attachment_path = NodePath("..")
+attachments/105/offset = Vector3(0.24921334, 0.16953468, 0.2559365)
+attachments/106/point_index = 327
+attachments/106/spatial_attachment_path = NodePath("..")
+attachments/106/offset = Vector3(0.2734921, -0.02289927, 0.14680307)
+attachments/107/point_index = 328
+attachments/107/spatial_attachment_path = NodePath("..")
+attachments/107/offset = Vector3(0.32082176, -0.018833876, 0.10494634)
+attachments/108/point_index = 329
+attachments/108/spatial_attachment_path = NodePath("..")
+attachments/108/offset = Vector3(0.37182602, 0.17957342, 0.15520479)
+attachments/109/point_index = 330
+attachments/109/spatial_attachment_path = NodePath("..")
+attachments/109/offset = Vector3(0.412826, 0.18445706, 0.09235815)
+attachments/110/point_index = 331
+attachments/110/spatial_attachment_path = NodePath("..")
+attachments/110/offset = Vector3(0.43762708, 0.1881274, 0.023729496)
+attachments/111/point_index = 332
+attachments/111/spatial_attachment_path = NodePath("..")
+attachments/111/offset = Vector3(0.38451213, -0.007919073, -0.050500493)
+attachments/112/point_index = 333
+attachments/112/spatial_attachment_path = NodePath("..")
+attachments/112/offset = Vector3(0.4464436, 0.19415557, -0.04848525)
+attachments/113/point_index = 334
+attachments/113/spatial_attachment_path = NodePath("..")
+attachments/113/offset = Vector3(0.37754235, -0.0034073591, -0.104077905)
+attachments/114/point_index = 335
+attachments/114/spatial_attachment_path = NodePath("..")
+attachments/114/offset = Vector3(0.43843454, 0.20056343, -0.11889226)
+attachments/115/point_index = 336
+attachments/115/spatial_attachment_path = NodePath("..")
+attachments/115/offset = Vector3(0.3722002, 0.20903933, -0.24933535)
+attachments/116/point_index = 337
+attachments/116/spatial_attachment_path = NodePath("..")
+attachments/116/offset = Vector3(0.2738216, 0.005540371, -0.24475428)
+attachments/117/point_index = 338
+attachments/117/spatial_attachment_path = NodePath("..")
+attachments/117/offset = Vector3(0.3168135, 0.2114222, -0.30496734)
+attachments/118/point_index = 339
+attachments/118/spatial_attachment_path = NodePath("..")
+attachments/118/offset = Vector3(0.24934635, 0.21240962, -0.3514934)
+attachments/119/point_index = 340
+attachments/119/spatial_attachment_path = NodePath("..")
+attachments/119/offset = Vector3(0.14993519, 0.021012902, -0.310314)
+attachments/120/point_index = 341
+attachments/120/spatial_attachment_path = NodePath("..")
+attachments/120/offset = Vector3(0.17245139, 0.211694, -0.387561)
+attachments/121/point_index = 342
+attachments/121/spatial_attachment_path = NodePath("..")
+attachments/121/offset = Vector3(0.089241095, 0.20937955, -0.41221792)
+attachments/122/point_index = 343
+attachments/122/spatial_attachment_path = NodePath("..")
+attachments/122/offset = Vector3(0.0058653066, 0.005330324, -0.3447182)
+attachments/123/point_index = 344
+attachments/123/spatial_attachment_path = NodePath("..")
+attachments/123/offset = Vector3(0.0032905433, 0.2084167, -0.42585254)
+attachments/124/point_index = 345
+attachments/124/spatial_attachment_path = NodePath("..")
+attachments/124/offset = Vector3(-0.06760472, 0.003972411, -0.3473588)
+attachments/125/point_index = 346
+attachments/125/spatial_attachment_path = NodePath("..")
+attachments/125/offset = Vector3(-0.082466125, 0.20693493, -0.42627296)
+attachments/126/point_index = 347
+attachments/126/spatial_attachment_path = NodePath("..")
+attachments/126/offset = Vector3(-0.1647963, 0.20402753, -0.41294837)
+attachments/127/point_index = 348
+attachments/127/spatial_attachment_path = NodePath("..")
+attachments/127/offset = Vector3(-0.24049516, 0.19947302, -0.38159806)
+attachments/128/point_index = 349
+attachments/128/spatial_attachment_path = NodePath("..")
+attachments/128/offset = Vector3(-0.25974235, -0.0060026646, -0.26570442)
+attachments/129/point_index = 350
+attachments/129/spatial_attachment_path = NodePath("..")
+attachments/129/offset = Vector3(-0.3067027, 0.19406307, -0.33079877)
+attachments/130/point_index = 351
+attachments/130/spatial_attachment_path = NodePath("..")
+attachments/130/offset = Vector3(-0.3061995, -0.010888934, -0.21959005)
+attachments/131/point_index = 352
+attachments/131/spatial_attachment_path = NodePath("..")
+attachments/131/offset = Vector3(-0.3609986, 0.18891943, -0.2707949)
+attachments/132/point_index = 353
+attachments/132/spatial_attachment_path = NodePath("..")
+attachments/132/offset = Vector3(-0.40118137, 0.18252158, -0.20349017)
+attachments/133/point_index = 354
+attachments/133/spatial_attachment_path = NodePath("..")
+attachments/133/offset = Vector3(-0.3690393, -0.024000645, -0.05799063)
+attachments/134/point_index = 355
+attachments/134/spatial_attachment_path = NodePath("..")
+attachments/134/offset = Vector3(-0.43423277, 0.17096984, -0.05725533)
+attachments/135/point_index = 356
+attachments/135/spatial_attachment_path = NodePath("..")
+attachments/135/offset = Vector3(-0.36171845, -0.029198885, 4.726621e-05)
+attachments/136/point_index = 357
+attachments/136/spatial_attachment_path = NodePath("..")
+attachments/136/offset = Vector3(-0.42567596, 0.16446531, 0.01862092)
+attachments/137/point_index = 358
+attachments/137/spatial_attachment_path = NodePath("..")
+attachments/137/offset = Vector3(-0.40084478, 0.15933418, 0.090901874)
+attachments/138/point_index = 359
+attachments/138/spatial_attachment_path = NodePath("..")
+attachments/138/offset = Vector3(-0.36044595, 0.15379202, 0.15739799)
+attachments/139/point_index = 360
+attachments/139/spatial_attachment_path = NodePath("..")
+attachments/139/offset = Vector3(-0.2594497, -0.039948463, 0.1504319)
+attachments/140/point_index = 361
+attachments/140/spatial_attachment_path = NodePath("..")
+attachments/140/offset = Vector3(-0.3062127, 0.14941704, 0.2162106)
+attachments/141/point_index = 362
+attachments/141/spatial_attachment_path = NodePath("..")
+attachments/141/offset = Vector3(-0.24024379, 0.14791894, 0.2657042)
+attachments/142/point_index = 363
+attachments/142/spatial_attachment_path = NodePath("..")
+attachments/142/offset = Vector3(-0.16480933, 0.14860058, 0.29989585)
+attachments/143/point_index = 364
+attachments/143/spatial_attachment_path = NodePath("..")
+attachments/143/offset = Vector3(-0.06789773, -0.04094994, 0.23210509)
+attachments/144/point_index = 365
+attachments/144/spatial_attachment_path = NodePath("..")
+attachments/144/offset = Vector3(-0.082709424, 0.14989781, 0.31789076)
+attachments/145/point_index = 373
+attachments/145/spatial_attachment_path = NodePath("..")
+attachments/145/offset = Vector3(-0.004448174, -0.45925283, 0.44695294)
+attachments/146/point_index = 374
+attachments/146/spatial_attachment_path = NodePath("..")
+attachments/146/offset = Vector3(0.0053878063, -0.039306164, 0.23437542)
+attachments/147/point_index = 375
+attachments/147/spatial_attachment_path = NodePath("..")
+attachments/147/offset = Vector3(-0.06789773, -0.04094994, 0.23210509)
+attachments/148/point_index = 376
+attachments/148/spatial_attachment_path = NodePath("..")
+attachments/148/offset = Vector3(-0.14469886, -0.40227175, 0.46195218)
+attachments/149/point_index = 377
+attachments/149/spatial_attachment_path = NodePath("..")
+attachments/149/offset = Vector3(-0.27737424, -0.34163153, 0.4212092)
+attachments/150/point_index = 394
+attachments/150/spatial_attachment_path = NodePath("..")
+attachments/150/offset = Vector3(-0.59984213, -0.34417105, -0.33832917)
+attachments/151/point_index = 395
+attachments/151/spatial_attachment_path = NodePath("..")
+attachments/151/offset = Vector3(-0.66727287, -0.29132843, -0.25179544)
+attachments/152/point_index = 396
+attachments/152/spatial_attachment_path = NodePath("..")
+attachments/152/offset = Vector3(-0.3061995, -0.010888934, -0.21959005)
+attachments/153/point_index = 397
+attachments/153/spatial_attachment_path = NodePath("..")
+attachments/153/offset = Vector3(-0.25974235, -0.0060026646, -0.26570442)
+attachments/154/point_index = 400
+attachments/154/spatial_attachment_path = NodePath("..")
+attachments/154/offset = Vector3(-0.40751448, -0.5370481, -0.76309764)
+attachments/155/point_index = 414
+attachments/155/spatial_attachment_path = NodePath("..")
+attachments/155/offset = Vector3(0.14993519, 0.021012902, -0.310314)
+attachments/156/point_index = 415
+attachments/156/spatial_attachment_path = NodePath("..")
+attachments/156/offset = Vector3(-0.0041612466, -0.38470054, -0.5951962)
+attachments/157/point_index = 416
+attachments/157/spatial_attachment_path = NodePath("..")
+attachments/157/offset = Vector3(0.0058653066, 0.005330324, -0.3447182)
+attachments/158/point_index = 417
+attachments/158/spatial_attachment_path = NodePath("..")
+attachments/158/offset = Vector3(0.2738216, 0.005540371, -0.24475428)
+attachments/159/point_index = 418
+attachments/159/spatial_attachment_path = NodePath("..")
+attachments/159/offset = Vector3(-0.14464149, -0.32510924, -0.6116824)
+attachments/160/point_index = 419
+attachments/160/spatial_attachment_path = NodePath("..")
+attachments/160/offset = Vector3(-0.06760472, 0.003972411, -0.3473588)
+attachments/161/point_index = 420
+attachments/161/spatial_attachment_path = NodePath("..")
+attachments/161/offset = Vector3(-0.40751448, -0.5370481, -0.76309764)
+attachments/162/point_index = 432
+attachments/162/spatial_attachment_path = NodePath("..")
+attachments/162/offset = Vector3(0.50315976, -0.43976796, 0.26625293)
+attachments/163/point_index = 433
+attachments/163/spatial_attachment_path = NodePath("..")
+attachments/163/offset = Vector3(0.2734921, -0.02289927, 0.14680307)
+attachments/164/point_index = 434
+attachments/164/spatial_attachment_path = NodePath("..")
+attachments/164/offset = Vector3(0.32082176, -0.018833876, 0.10494634)
+attachments/165/point_index = 449
+attachments/165/spatial_attachment_path = NodePath("..")
+attachments/165/offset = Vector3(-0.66727287, -0.29132843, -0.25179544)
+attachments/166/point_index = 450
+attachments/166/spatial_attachment_path = NodePath("..")
+attachments/166/offset = Vector3(-0.3690393, -0.024000645, -0.05799063)
+attachments/167/point_index = 451
+attachments/167/spatial_attachment_path = NodePath("..")
+attachments/167/offset = Vector3(-0.7068958, -0.36947322, 0.03271867)
+attachments/168/point_index = 452
+attachments/168/spatial_attachment_path = NodePath("..")
+attachments/168/offset = Vector3(-0.36171845, -0.029198885, 4.726621e-05)
+attachments/169/point_index = 463
+attachments/169/spatial_attachment_path = NodePath("..")
+attachments/169/offset = Vector3(0.71350837, -0.4161582, -0.06343263)
+attachments/170/point_index = 464
+attachments/170/spatial_attachment_path = NodePath("..")
+attachments/170/offset = Vector3(0.38451213, -0.007919073, -0.050500493)
+attachments/171/point_index = 465
+attachments/171/spatial_attachment_path = NodePath("..")
+attachments/171/offset = Vector3(0.37754235, -0.0034073591, -0.104077905)
+attachments/172/point_index = 478
+attachments/172/spatial_attachment_path = NodePath("..")
+attachments/172/offset = Vector3(-0.2594497, -0.039948463, 0.1504319)
+attachments/173/point_index = 479
+attachments/173/spatial_attachment_path = NodePath("..")
+attachments/173/offset = Vector3(-0.4020895, -0.3947147, 0.35645756)
+attachments/174/point_index = 480
+attachments/174/spatial_attachment_path = NodePath("..")
+attachments/174/offset = Vector3(-0.27737424, -0.34163153, 0.4212092)
+attachments/175/point_index = 495
+attachments/175/spatial_attachment_path = NodePath("..")
+attachments/175/offset = Vector3(0.50334084, -0.3937968, -0.3893139)
+script = ExtResource("10_rees2")
+_collar_height_y = 1.0
+_attachment_point_path = NodePath("..")
+
+[node name="CloakAnimator" type="AnimationPlayer" parent="Model/Armature/Skeleton3D/CloakAttach" index="1" unique_id=649912782]
+libraries/ = SubResource("AnimationLibrary_ivps1")
+
+[node name="PuffBody" type="StaticBody3D" parent="Model/Armature/Skeleton3D/CloakAttach" index="2" unique_id=1844093763]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.3118987, 0)
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="Model/Armature/Skeleton3D/CloakAttach/PuffBody" index="0" unique_id=403261323]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.14477539, 0)
+shape = SubResource("CapsuleShape3D_rees2")
+
+[node name="NeedleAttach" type="BoneAttachment3D" parent="Model/Armature/Skeleton3D" index="1" unique_id=1972309379]
+transform = Transform3D(1, 0, 0, 0, 0.8015981, -0.59786326, 0, 0.59786326, 0.8015981, 0, 0.36676976, 1.0894605)
+bone_name = "Spine2"
+bone_idx = 12
+
+[node name="Needle" type="Node3D" parent="Model/Armature/Skeleton3D/NeedleAttach" index="0" unique_id=1037699834 node_paths=PackedStringArray("_recoiler")]
+transform = Transform3D(1, -3.5527137e-15, -7.1054274e-15, 3.5527137e-15, 1.0000001, -2.9802322e-08, 0, 2.9802322e-08, 1.0000001, 1.4210855e-14, -3.2770002, 1.4999999)
+script = ExtResource("11_1xfl2")
+_recoiler = NodePath("../../../../../Recoiler")
+
+[node name="Animator" type="AnimationPlayer" parent="Model/Armature/Skeleton3D/NeedleAttach/Needle" index="0" unique_id=1991879983]
+libraries/ = SubResource("AnimationLibrary_1xfl2")
+autoplay = &"RESET"
+
+[node name="Mesh" type="MeshInstance3D" parent="Model/Armature/Skeleton3D/NeedleAttach/Needle" index="1" unique_id=1302043455]
+transform = Transform3D(0.05756271, -0.68950003, -0.28944808, 0.66983765, 0.17659584, -0.2874591, 0.33242312, -0.23644882, 0.62935555, -0.43267757, 3.7365413, -3.5042882)
+mesh = SubResource("ArrayMesh_sev4e")
+skeleton = NodePath("")
+
+[node name="DownSpikeDamager" parent="Model/Armature/Skeleton3D/NeedleAttach/Needle/Mesh" index="0" unique_id=706411475 node_paths=PackedStringArray("root") instance=ExtResource("12_fp7en")]
+transform = Transform3D(1.3333349, 0, 0, 0, -5.82819e-08, -1.3333347, 0, 1.3333344, -5.828191e-08, 0, 0, 0)
+collision_layer = 8
+collision_mask = 2
+root = NodePath("../../../../../../..")
+damage_amount = 9
+local_hit_direction = Vector3(0, -16, -16)
+
+[node name="Collision" parent="Model/Armature/Skeleton3D/NeedleAttach/Needle/Mesh/DownSpikeDamager" index="0" unique_id=1910053338]
+transform = Transform3D(0.9999996, -1.5795231e-06, -7.584691e-06, 4.172325e-07, 0.99999905, -1.1920929e-06, -4.4703484e-07, 1.0728836e-06, 0.9999977, -0.0094542205, 2.0044737, 0.0029330254)
+shape = SubResource("CapsuleShape3D_g78k6")
+disabled = true
+
+[node name="StabDamager" parent="Model/Armature/Skeleton3D/NeedleAttach/Needle/Mesh" index="1" unique_id=81393513 node_paths=PackedStringArray("root") instance=ExtResource("12_fp7en")]
+transform = Transform3D(1.3333349, 0, 0, 0, -5.82819e-08, -1.3333347, 0, 1.3333344, -5.828191e-08, 0, 0, 0)
+collision_layer = 8
+collision_mask = 2
+root = NodePath("../../../../../../..")
+damage_amount = 9
+local_hit_direction = Vector3(0, 0, -20)
+
+[node name="Collision" parent="Model/Armature/Skeleton3D/NeedleAttach/Needle/Mesh/StabDamager" index="0" unique_id=1910053338]
+transform = Transform3D(0.9999942, -1.5711412e-06, -7.197261e-06, 5.187467e-07, 0.9999932, -1.1250377e-06, -1.1473894e-06, 2.682209e-07, 0.9999914, -1.847744e-06, 3.151974, 1.0728836e-06)
+shape = SubResource("CapsuleShape3D_m1lj5")
+disabled = true
+
+[node name="SlashEffect" parent="Model/Armature/Skeleton3D/NeedleAttach/Needle" index="2" unique_id=528815861 instance=ExtResource("13_c4e81")]
+transform = Transform3D(1.1804703, -0.41108313, -1.7334372e-08, 0.24778901, 0.71155304, 0.99739325, -0.32800916, -0.94191444, 0.75346345, -6.3948846e-14, 2.8491745, -0.46573067)
+
+[node name="SlashEffectDamager" parent="Model/Armature/Skeleton3D/NeedleAttach/Needle/SlashEffect" index="0" unique_id=960803585 node_paths=PackedStringArray("root")]
+transform = Transform3D(0.8000003, 0, 0, 0, 0.8000001, 0, 0, 0, 0.8, 0, 0, 0)
+collision_mask = 2
+root = NodePath("../../../../../../..")
+damage_amount = 9
+local_hit_direction = Vector3(0, 0, -16)
+
+[node name="Collision" parent="Model/Armature/Skeleton3D/NeedleAttach/Needle/SlashEffect/SlashEffectDamager" index="0" unique_id=1910053338]
+transform = Transform3D(0.5608575, 0.56788075, -0.60244805, 0.36553964, -0.8227597, -0.4352477, -0.7428392, 0.023893362, -0.6690382, -1.0219219, 2.0750926, 2.2271311)
+shape = SubResource("BoxShape3D_nu6iw")
+
+[node name="Targeter" type="Marker3D" parent="Model/Armature/Skeleton3D/Head" parent_id_path=PackedInt32Array(1386607369, 1891224450) index="0" unique_id=1500822753]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -3.2549305e-08, 2.233923, 0.37232065)
+
+[node name="AnimationPlayer" parent="Model" index="1" unique_id=5212273]
+autoplay = &"Idle"
+
+[node name="DownSpikeTransition" type="AnimationTree" parent="Model/AnimationPlayer" index="0" unique_id=682122023]
+active = false
+root_node = NodePath("../..")
+tree_root = SubResource("AnimationNodeStateMachine_0sqxv")
+anim_player = NodePath("..")
+
+[node name="FloatTransition" type="AnimationTree" parent="Model/AnimationPlayer" index="1" unique_id=1147619373]
+active = false
+root_node = NodePath("../..")
+tree_root = SubResource("AnimationNodeStateMachine_elx7m")
+anim_player = NodePath("..")
+
+[node name="SprintJumpTransition" type="AnimationTree" parent="Model/AnimationPlayer" index="2" unique_id=1275706493]
+active = false
+root_node = NodePath("../..")
+tree_root = SubResource("AnimationNodeStateMachine_0le53")
+anim_player = NodePath("..")
+
+[node name="ThreadStormTransition" type="AnimationTree" parent="Model/AnimationPlayer" index="3" unique_id=312060919]
+active = false
+root_node = NodePath("../..")
+tree_root = SubResource("AnimationNodeStateMachine_qjxdb")
+anim_player = NodePath("..")
+
+[node name="WalkBlend" type="AnimationTree" parent="Model/AnimationPlayer" index="4" unique_id=2128699487]
+active = false
+root_node = NodePath("../..")
+tree_root = SubResource("AnimationNodeBlendSpace2D_0l0iu")
+anim_player = NodePath("..")
+parameters/blend_position = Vector2(0, 0)
+
+[node name="GroundDetector" parent="." index="9" unique_id=396977272]
+target_position = Vector3(0, -2.5, 0)
+
+[node name="CameraTarget" type="Node3D" parent="." index="10" unique_id=93159821]
+transform = Transform3D(-1, 0, -3.2584137e-07, 0, 1, 0, 3.2584137e-07, 0, -1, 0, 2.515503, 0)
+
+[node name="Recoiler" type="Node3D" parent="." index="11" unique_id=1176358302 node_paths=PackedStringArray("body")]
+script = ExtResource("12_ehw6e")
+body = NodePath("..")
+
+[node name="Bind" type="Node3D" parent="." index="12" unique_id=427455445]
+
+[node name="BindAnimator" type="AnimationPlayer" parent="Bind" index="0" unique_id=1445803146]
+libraries/ = SubResource("AnimationLibrary_xrjoj")
+autoplay = &"RESET"
+
+[node name="BindLight" type="OmniLight3D" parent="Bind" index="1" unique_id=1543224125]
+light_energy = 0.0
+omni_range = 16.0
+
+[node name="BindParticles" type="CPUParticles3D" parent="Bind" index="2" unique_id=1676368405]
+emitting = false
+amount = 256
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+mesh = SubResource("SphereMesh_jsmki")
+direction = Vector3(0, 0, 0)
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 24.0
+initial_velocity_max = 48.0
+damping_min = 64.0
+damping_max = 64.0
+scale_amount_min = 0.5
+scale_amount_curve = SubResource("Curve_jbv7g")
+
+[node name="BindSilk" parent="Bind" index="3" unique_id=1165317557 instance=ExtResource("9_3luqa")]
+visible = false
+
+[node name="PlayerHSM" type="LimboHSM" parent="." index="13" unique_id=1783304164]
+update_mode = 0
+script = ExtResource("28_4s16b")
+
+[node name="AirDashState" type="LimboState" parent="PlayerHSM" index="0" unique_id=1313923699]
+script = ExtResource("29_0nwbe")
+_spin_speed = 1080.0
+
+[node name="BindState" type="LimboState" parent="PlayerHSM" index="1" unique_id=657693573 node_paths=PackedStringArray("_bind_effect", "_bind_animator", "_needle_animator")]
+script = ExtResource("11_ihiqv")
+_bind_effect = NodePath("../../Bind/BindSilk")
+_bind_animator = NodePath("../../Bind/BindAnimator")
+_bind_spin_speed = 720.0
+_bind_time = 1.0
+_bind_voice_clips = SubResource("Resource_tefms")
+_needle_animator = NodePath("../../Model/Armature/Skeleton3D/NeedleAttach/Needle/Animator")
+
+[node name="BigRecoilState" type="LimboState" parent="PlayerHSM" index="2" unique_id=1931673307]
+script = ExtResource("34_7c4js")
+_hurt_voice_clips = SubResource("Resource_tiymp")
+_damage_effect_prefab = ExtResource("14_cxuv5")
+_bind_break_effect_prefab = ExtResource("13_s8joe")
+
+[node name="DownSpikeState" type="LimboState" parent="PlayerHSM" index="3" unique_id=212772296 node_paths=PackedStringArray("_down_spike_transition_tree", "_needle", "_needle_animator")]
+script = ExtResource("29_3do8f")
+_down_spike_transition_tree = NodePath("../../Model/AnimationPlayer/DownSpikeTransition")
+_needle = NodePath("../../Model/Armature/Skeleton3D/NeedleAttach/Needle")
+_needle_animator = NodePath("../../Model/Armature/Skeleton3D/NeedleAttach/Needle/Animator")
+_attack_voice_clips = ExtResource("38_0g54q")
+_attack_effect_clips = ExtResource("25_bu7in")
+
+[node name="DownSpikeBounceState" type="LimboState" parent="PlayerHSM" index="4" unique_id=1673770330 node_paths=PackedStringArray("_needle_animator")]
+script = ExtResource("30_0fe1s")
+_spin_speeds = Dictionary[int, float]({
+1: 1080.0,
+2: 720.0
+})
+_down_spike_bounce_speed = 65.0
+_needle_animator = NodePath("../../Model/Armature/Skeleton3D/NeedleAttach/Needle/Animator")
+_down_spike_bounce_time = 0.4
+
+[node name="AttackChoiceState" type="LimboState" parent="PlayerHSM" index="5" unique_id=463636048]
+script = ExtResource("29_qsypv")
+
+[node name="FallState" type="LimboState" parent="PlayerHSM" index="6" unique_id=566681912]
+script = ExtResource("29_6o7jk")
+_fall_animation_name = &"Fall"
+
+[node name="FloatState" type="LimboState" parent="PlayerHSM" index="7" unique_id=1064302274 node_paths=PackedStringArray("_cloak_animator", "_float_transition_tree")]
+script = ExtResource("31_lje7i")
+_cloak_animator = NodePath("../../Model/Armature/Skeleton3D/CloakAttach/CloakAnimator")
+_float_transition_tree = NodePath("../../Model/AnimationPlayer/FloatTransition")
+_float_start_clip = ExtResource("37_4bmqs")
+
+[node name="IdleState" type="LimboState" parent="PlayerHSM" index="8" unique_id=689924048]
+script = ExtResource("28_41lfd")
+_idle_animation_name = &"Idle"
+_footstep_interval = inf
+
+[node name="LandState" type="LimboState" parent="PlayerHSM" index="9" unique_id=1905285511]
+script = ExtResource("31_5qatl")
+_land_animation_name = &"Land"
+
+[node name="JumpState" type="LimboState" parent="PlayerHSM" index="10" unique_id=1987574905]
+script = ExtResource("31_747sf")
+_jump_height = 28.0
+_jump_voice = ExtResource("41_yt37h")
+
+[node name="NormalRecoilState" type="LimboState" parent="PlayerHSM" index="11" unique_id=1713793089]
+script = ExtResource("34_7c4js")
+_hurt_voice_clips = SubResource("Resource_sguwt")
+_damage_effect_prefab = ExtResource("40_rsjix")
+_bind_break_effect_prefab = ExtResource("13_s8joe")
+
+[node name="MultiHitState" type="LimboState" parent="PlayerHSM" index="12" unique_id=1119652162]
+script = ExtResource("48_yig60")
+_recoil_animation_name = &"Multi Hit"
+_hurt_voice_clips = SubResource("Resource_sguwt")
+_damage_effect_prefab = ExtResource("49_yig60")
+_bind_break_effect_prefab = ExtResource("13_s8joe")
+
+[node name="SlashState" type="LimboState" parent="PlayerHSM" index="13" unique_id=1553669608 node_paths=PackedStringArray("_needle_animator")]
+script = ExtResource("38_d4m7k")
+_needle_animator = NodePath("../../Model/Armature/Skeleton3D/NeedleAttach/Needle/Animator")
+_attack_voice_clips = ExtResource("38_0g54q")
+_attack_effect_clips = ExtResource("25_bu7in")
+
+[node name="SprintState" type="LimboState" parent="PlayerHSM" index="14" unique_id=23586055]
+script = ExtResource("37_6xo6p")
+_footstep_interval = 0.27
+
+[node name="SprintJumpState" type="LimboState" parent="PlayerHSM" index="15" unique_id=448219995 node_paths=PackedStringArray("_sprint_jump_transition_tree")]
+script = ExtResource("36_6xo6p")
+_sprint_jump_transition_tree = NodePath("../../Model/AnimationPlayer/SprintJumpTransition")
+_sprint_jump_height = 24.0
+_spin_speed = 1440.0
+
+[node name="SprintStabState" type="LimboState" parent="PlayerHSM" index="16" unique_id=1162923090 node_paths=PackedStringArray("_needle")]
+script = ExtResource("52_4bmqs")
+_needle = NodePath("../../Model/Armature/Skeleton3D/NeedleAttach/Needle")
+_stab_speed = 75.0
+_stab_time = 0.25
+_attack_voice_clips = ExtResource("38_0g54q")
+_attack_effect_clips = ExtResource("25_bu7in")
+
+[node name="ThreadStormState" type="LimboState" parent="PlayerHSM" index="17" unique_id=175747425 node_paths=PackedStringArray("_thread_storm_transition_tree")]
+script = ExtResource("18_xrjoj")
+_min_attack_time = 0.65
+_max_attack_time = 1.5
+_thread_storm_transition_tree = NodePath("../../Model/AnimationPlayer/ThreadStormTransition")
+_thread_storm_prefab = ExtResource("52_2gkjk")
+_attack_voice_clips = SubResource("Resource_aw6r3")
+
+[node name="WalkState" type="LimboState" parent="PlayerHSM" index="18" unique_id=2060770839 node_paths=PackedStringArray("_walk_blend_tree")]
+script = ExtResource("30_m4n5g")
+_walk_blend_tree = NodePath("../../Model/AnimationPlayer/WalkBlend")
+_footstep_interval = 0.5
+
+[connection signal="area_entered" from="Model/Armature/Skeleton3D/NeedleAttach/Needle/Mesh/DownSpikeDamager" to="Model/Armature/Skeleton3D/NeedleAttach/Needle" method="_on_down_spike_damager_area_entered"]
+[connection signal="area_entered" from="Model/Armature/Skeleton3D/NeedleAttach/Needle/Mesh/StabDamager" to="Model/Armature/Skeleton3D/NeedleAttach/Needle" method="_on_stab_damager_area_entered"]
+[connection signal="damaged" from="Model/Armature/Skeleton3D/NeedleAttach/Needle/SlashEffect/SlashEffectDamager" to="Model/Armature/Skeleton3D/NeedleAttach/Needle" method="_on_slash_effect_damager_damaged"]
+
+[editable path="Health"]
+[editable path="Model"]
+[editable path="Model/Armature/Skeleton3D/NeedleAttach/Needle/Mesh/DownSpikeDamager"]
+[editable path="Model/Armature/Skeleton3D/NeedleAttach/Needle/Mesh/StabDamager"]
+[editable path="Model/Armature/Skeleton3D/NeedleAttach/Needle/SlashEffect"]
+[editable path="Model/Armature/Skeleton3D/NeedleAttach/Needle/SlashEffect/SlashEffectDamager"]

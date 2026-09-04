@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://b37skkjsvgidd"]
+
+[ext_resource type="Script" uid="uid://c26ykjiw2tbxg" path="res://src/gameplay/scene/camera_controller.gd" id="1_ewp70"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ewp70"]
+radius = 0.1
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_bv4xb"]
+dof_blur_far_enabled = true
+dof_blur_far_distance = 64.0
+dof_blur_far_transition = 8.0
+
+[node name="CameraController" type="Node3D" unique_id=1768754009 groups=["Cameras"]]
+process_mode = 3
+script = ExtResource("1_ewp70")
+shake_interval = 0.02
+min_yaw_degrees = -59.0
+max_yaw_degrees = 60.0
+
+[node name="CameraPitch" type="Node3D" parent="." unique_id=1726757360]
+
+[node name="Gimbal" type="SpringArm3D" parent="CameraPitch" unique_id=985846177]
+collision_mask = 32
+shape = SubResource("SphereShape3D_ewp70")
+spring_length = 16.0
+
+[node name="Camera" type="Camera3D" parent="CameraPitch/Gimbal" unique_id=707455384]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 16)
+attributes = SubResource("CameraAttributesPractical_bv4xb")
+current = true
+size = 70.0

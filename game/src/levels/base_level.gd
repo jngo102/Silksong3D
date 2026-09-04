@@ -1,0 +1,37 @@
+## Base class for all levels in the game
+class_name BaseLevel extends Node3D
+
+## The music track played in this scene
+@export var music_track: MusicTrack
+@export var starting_score: int = 100000
+@export var level_over_pause: float = 8
+
+@onready var player: Player = $Player
+@onready var hud: HUD = $HUD
+@onready var _bind_tip: InputPrompt = $BindTip
+@onready var _bind_icon: Button = _bind_tip.get_node_or_null("BindIcon")
+
+var _score_screen: PackedScene = preload("uid://dcvpcta71mmie")
+
+func _ready() -> void:
+	_play_music()
+	if not SaveManager.save_data.first_bind:
+		_show_bind_tip()
+		await get_tree().process_frame
+		player.spool_manager.current_silk = player.spool_manager.bind_silk
+		player.health.current_health -= 3
+
+func _show_bind_tip() -> void:
+	_bind_tip.show()
+	await player.health.healed
+	_bind_tip.hide()
+	SaveManager.save_data.first_bind = true
+
+func _play_music() -> void:
+	if music_track:
+		AudioManager.play_music(music_track, 0, true)
+
+func finish() -> void:
+	ScoreManager.calculate_score()
+	await get_tree().create_timer(level_over_pause, false).timeout
+	SceneManager.change_scene( _score_screen)

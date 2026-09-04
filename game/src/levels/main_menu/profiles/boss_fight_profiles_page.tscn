@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://c50y1s5he41oo"]
+
+[ext_resource type="PackedScene" uid="uid://dvsqiexj1kwm8" path="res://src/autoload/ui/menu_page.tscn" id="1_gd287"]
+[ext_resource type="Script" uid="uid://y801eoanpic5" path="res://src/levels/main_menu/profiles/boss_fight_profiles_page.gd" id="1_sa8tw"]
+[ext_resource type="Script" uid="uid://mh6v8w8mh15m" path="res://src/levels/main_menu/profiles/boss_fight_profile_data.gd" id="2_vd6hw"]
+[ext_resource type="PackedScene" uid="uid://dugp1elqcy03h" path="res://src/levels/cogwork_dancers/cogwork_dancers_fight.tscn" id="3_wrfrw"]
+[ext_resource type="Texture2D" uid="uid://1nnhio1kqrsg" path="res://src/levels/main_menu/profiles/cogwork_dancers.png" id="5_vd6hw"]
+[ext_resource type="PackedScene" uid="uid://tkt0qnsojd35" path="res://src/levels/phantom/phantom_fight.tscn" id="6_rvh5p"]
+[ext_resource type="Texture2D" uid="uid://bw7anmk5elplu" path="res://src/levels/main_menu/profiles/phantom.png" id="7_mvq0l"]
+[ext_resource type="Script" uid="uid://dkbckojlnpcyg" path="res://src/autoload/ui/wrapping_ui_list.gd" id="8_ymsfe"]
+
+[sub_resource type="Resource" id="Resource_vd6hw"]
+script = ExtResource("2_vd6hw")
+scene = ExtResource("3_wrfrw")
+thumbnail = ExtResource("5_vd6hw")
+boss_name = "Cogwork Dancers"
+root_node_name = "CogworkDancersFight"
+metadata/_custom_type_script = "uid://mh6v8w8mh15m"
+
+[sub_resource type="Resource" id="Resource_ojd61"]
+script = ExtResource("2_vd6hw")
+scene = ExtResource("6_rvh5p")
+thumbnail = ExtResource("7_mvq0l")
+boss_name = "Phantom"
+root_node_name = "PhantomFight"
+metadata/_custom_type_script = "uid://mh6v8w8mh15m"
+
+[node name="BossFightProfilesPage" unique_id=382778016 instance=ExtResource("1_gd287")]
+script = ExtResource("1_sa8tw")
+profiles = Array[ExtResource("2_vd6hw")]([SubResource("Resource_vd6hw"), SubResource("Resource_ojd61")])
+
+[node name="Page" parent="Margins" parent_id_path=PackedInt32Array(1644627099) index="0" unique_id=2076434230]
+theme_override_constants/separation = 8
+
+[node name="Elements" type="HBoxContainer" parent="Margins/Page/Contents" parent_id_path=PackedInt32Array(1226700975) index="0" unique_id=757080393]
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("8_ymsfe")

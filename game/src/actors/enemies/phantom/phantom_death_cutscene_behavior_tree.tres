@@ -1,0 +1,1469 @@
+[gd_resource type="BehaviorTree" format=3 uid="uid://dq6nm2vsch3h1"]
+
+[ext_resource type="Script" uid="uid://dfxh5qmwucb7e" path="res://src/ai/tasks/scene/get_first_in_group.gd" id="1_kndcm"]
+[ext_resource type="Script" uid="uid://ciifoff10b56r" path="res://src/ai/tasks/scene/set_visible.gd" id="1_ys6tr"]
+[ext_resource type="Script" uid="uid://cnvl4kjqa7qju" path="res://src/ai/tasks/transform/set_position_x_y_z.gd" id="2_jxs3l"]
+[ext_resource type="Script" uid="uid://cvw5s3jjrdnkq" path="res://src/ai/tasks/transform/face_target.gd" id="2_kndcm"]
+[ext_resource type="Script" uid="uid://drh5rw5qdmeda" path="res://src/ai/tasks/scene/get_node.gd" id="3_jxs3l"]
+[ext_resource type="Script" uid="uid://bip2jd13nei0m" path="res://src/ai/tasks/utility/freeze_time.gd" id="3_otima"]
+[ext_resource type="Script" uid="uid://dt2awuygt37mg" path="res://src/ai/tasks/transform/set_rotation_x_y_z.gd" id="4_fojrl"]
+[ext_resource type="Script" uid="uid://5qpw7k5phkni" path="res://src/ai/tasks/audio/play_random_audio.gd" id="5_dhi3c"]
+[ext_resource type="Script" uid="uid://c4y7yms544etu" path="res://src/ai/tasks/actors/set_camera_target.gd" id="5_e5f8o"]
+[ext_resource type="Script" uid="uid://drhn5ng0c18tm" path="res://src/ai/tasks/audio/play_music.gd" id="6_51aw7"]
+[ext_resource type="AudioStream" uid="uid://blca47u8f3aea" path="res://src/copyrighted/sfx/hornet/attacks/parry/hero_parry.wav" id="6_l4brc"]
+[ext_resource type="Script" uid="uid://bia8f8kue467p" path="res://src/ai/tasks/logic/tween_to_position.gd" id="7_e5f8o"]
+[ext_resource type="AudioStream" uid="uid://ju2fsk38pj5j" path="res://src/copyrighted/phantom/sfx/Phantom-2-Attack-Big-018.wav" id="8_fojrl"]
+[ext_resource type="AudioStream" uid="uid://cq2wlqghv76hj" path="res://src/copyrighted/phantom/sfx/hornet_cross_stitch_1.wav" id="9_8nh1b"]
+[ext_resource type="AudioStream" uid="uid://mbh11xmevdmd" path="res://src/copyrighted/phantom/sfx/Phantom-2-Attack-Big-019.wav" id="9_wp8ke"]
+[ext_resource type="AudioStream" uid="uid://drfyyl74qn6ec" path="res://src/copyrighted/phantom/sfx/Phantom-2-Attack-Big-025.wav" id="10_32sxb"]
+[ext_resource type="AudioStream" uid="uid://dhcoxu0ysewfx" path="res://src/copyrighted/phantom/sfx/Phantom-2-Attack-Big-026.wav" id="11_enyyy"]
+[ext_resource type="Script" uid="uid://drjubt3p6cm1a" path="res://src/ai/tasks/canvas/fade_canvas_item.gd" id="12_5dfb6"]
+[ext_resource type="AudioStream" uid="uid://imcyhmxeul37" path="res://src/copyrighted/sfx/hornet/attacks/normal/a1.wav" id="12_dmpwu"]
+[ext_resource type="AudioStream" uid="uid://ngnqonlasbsk" path="res://src/copyrighted/sfx/hornet/attacks/normal/a2.wav" id="13_ahrbo"]
+[ext_resource type="Script" uid="uid://8itgx7w2jv06" path="res://src/ai/tasks/input/wait_for_input_action.gd" id="13_xi1ww"]
+[ext_resource type="AudioStream" uid="uid://dt7h1ax7ihqog" path="res://src/copyrighted/sfx/hornet/attacks/normal/a16.wav" id="14_5n5ux"]
+[ext_resource type="Script" uid="uid://dsmf4ttn7nrkx" path="res://src/ai/tasks/transform/translate_x_y_z.gd" id="14_s63xx"]
+[ext_resource type="Script" uid="uid://br84132pv8riw" path="res://src/ai/tasks/actors/shake_camera.gd" id="15_0vpcf"]
+[ext_resource type="AudioStream" uid="uid://bbu1ltvlbh4xh" path="res://src/copyrighted/sfx/hornet/attacks/normal/a17.wav" id="15_36s6j"]
+[ext_resource type="AudioStream" uid="uid://d36j8k0lhx0rl" path="res://src/copyrighted/sfx/hornet/attacks/normal/a18.wav" id="16_12qqv"]
+[ext_resource type="AudioStream" uid="uid://b3r1f8n5lpkft" path="res://src/copyrighted/phantom/sfx/Phantom-2-Death.wav" id="16_xcqy1"]
+[ext_resource type="AudioStream" uid="uid://bdhqgr5i1cj47" path="res://src/copyrighted/sfx/hornet/attacks/normal/a23.wav" id="17_2kejp"]
+[ext_resource type="AudioStream" uid="uid://bunblguv0c8dj" path="res://src/copyrighted/phantom/sfx/Phantom-2-Death-001.wav" id="17_peslq"]
+[ext_resource type="AudioStream" uid="uid://b5ro7ho76qmi8" path="res://src/copyrighted/phantom/sfx/Phantom-2-Death-003.wav" id="18_ej2e2"]
+[ext_resource type="AudioStream" uid="uid://b1rvdu3q1jy7d" path="res://src/copyrighted/sfx/hornet/attacks/normal/a3.wav" id="18_flf2k"]
+[ext_resource type="AudioStream" uid="uid://cnqel55i44e6p" path="res://src/copyrighted/phantom/sfx/phantom_deathsteam_shortened.wav" id="19_b3wlm"]
+[ext_resource type="AudioStream" uid="uid://b8p6dy5itt8j3" path="res://src/copyrighted/sfx/hornet/attacks/normal/a4.wav" id="19_fgjbc"]
+[ext_resource type="PackedScene" uid="uid://bqde6vrd6age4" path="res://src/actors/enemies/corpse.tscn" id="20_5ygbr"]
+[ext_resource type="AudioStream" uid="uid://caufav5yujkip" path="res://src/copyrighted/sfx/hornet/attacks/normal/a5.wav" id="20_of8cc"]
+[ext_resource type="AudioStream" uid="uid://liagd70p7lin" path="res://src/copyrighted/sfx/hornet/attacks/normal/a8.wav" id="21_crhlj"]
+[ext_resource type="Script" uid="uid://csgh34cpettq0" path="res://src/ai/tasks/scene/instantiate_scene.gd" id="21_dmpwu"]
+[ext_resource type="Script" uid="uid://clp3rqlu3svk4" path="res://src/ai/tasks/transform/set_position.gd" id="22_ahrbo"]
+[ext_resource type="AudioStream" uid="uid://brv5twf5k441y" path="res://src/copyrighted/sfx/hornet/attacks/normal/a9.wav" id="22_q0xpn"]
+[ext_resource type="Script" uid="uid://dvdqux1hfw046" path="res://src/ai/tasks/scene/queue_free.gd" id="23_5n5ux"]
+[ext_resource type="AudioStream" uid="uid://dhua2djw6tpv2" path="res://src/copyrighted/sfx/hornet/attacks/normal/a11.wav" id="23_nmopw"]
+[ext_resource type="AudioStream" uid="uid://cvnpxebpvii1e" path="res://src/copyrighted/sfx/hornet/attacks/normal/a12.wav" id="24_a72j5"]
+[ext_resource type="AudioStream" uid="uid://b76bs5wjsyqbq" path="res://src/copyrighted/sfx/hornet/attacks/normal/a14.wav" id="25_ykmtk"]
+[ext_resource type="AudioStream" uid="uid://cyvj2wodi6cqc" path="res://src/copyrighted/phantom/sfx/Phantom-2-Attack-Quick-004.wav" id="26_crhlj"]
+[ext_resource type="Script" uid="uid://ycnpkfx0h776" path="res://src/ai/tasks/transform/get_position.gd" id="26_l4brc"]
+[ext_resource type="AudioStream" uid="uid://cr2n2ksan3c8y" path="res://src/copyrighted/phantom/sfx/Phantom-2-Attack-Quick-005.wav" id="27_q0xpn"]
+[ext_resource type="AudioStream" uid="uid://d4jcw38cvxcnj" path="res://src/copyrighted/phantom/sfx/Phantom-2-Attack-Quick-006.wav" id="28_nmopw"]
+[ext_resource type="AudioStream" uid="uid://d15vsf37aju64" path="res://src/copyrighted/phantom/sfx/Phantom-2-Attack-Quick-007.wav" id="29_a72j5"]
+[ext_resource type="AudioStream" uid="uid://d26ubh6xjlesw" path="res://src/copyrighted/phantom/sfx/Phantom-2-Attack-Quick-008.wav" id="30_ykmtk"]
+[ext_resource type="AudioStream" uid="uid://sb2pwyx7p2yc" path="res://src/copyrighted/phantom/sfx/Phantom-2-Attack-Quick-009.wav" id="31_8nh1b"]
+[ext_resource type="AudioStream" uid="uid://bor42jt1xh7v4" path="res://src/copyrighted/phantom/sfx/Phantom-2-Attack-Quick-019.wav" id="32_rb3y3"]
+[ext_resource type="AudioStream" uid="uid://c2inj6p3kwwdr" path="res://src/copyrighted/phantom/sfx/Phantom-2-Attack-Quick-020.wav" id="33_3pjv8"]
+[ext_resource type="AudioStream" uid="uid://b01oy0d845t3h" path="res://src/copyrighted/phantom/sfx/Phantom-2-Attack-Quick-021.wav" id="34_xre5f"]
+[ext_resource type="AudioStream" uid="uid://bg3c7n2pe7sdy" path="res://src/copyrighted/phantom/sfx/hornet_cross_stitch_2.wav" id="35_rb3y3"]
+[ext_resource type="AudioStream" uid="uid://2j2qrtkjt53t" path="res://src/copyrighted/phantom/sfx/hornet_cross_stitch_3.wav" id="36_3pjv8"]
+[ext_resource type="AudioStream" uid="uid://b8ut3phfcu8qb" path="res://src/copyrighted/phantom/sfx/Phantom-2-Attack-Prep-002.wav" id="36_a72j5"]
+[ext_resource type="AudioStream" uid="uid://dkqxxowbyph3e" path="res://src/copyrighted/phantom/sfx/Phantom-2-Attack-Prep-003.wav" id="37_ykmtk"]
+[ext_resource type="AudioStream" uid="uid://4os7tgyl30ga" path="res://src/copyrighted/phantom/sfx/Phantom-2-Attack-Prep-004.wav" id="38_8nh1b"]
+[ext_resource type="AudioStream" uid="uid://wyblle820ktr" path="res://src/copyrighted/sfx/hornet/attacks/cross_stitch/hornet_cross_stitch_ability_v2.wav" id="41_rb3y3"]
+[ext_resource type="AudioStream" uid="uid://bty675obst1gj" path="res://src/copyrighted/sfx/hornet/attacks/parry/hornet_parry.wav" id="47_3pjv8"]
+[ext_resource type="Script" uid="uid://bosj8kfo6spny" path="res://src/ai/tasks/actors/shake_object.gd" id="50_c02nk"]
+[ext_resource type="PackedScene" uid="uid://csdh2rnjby18m" path="res://src/gameplay/combat/cross_stitch_effect.tscn" id="51_e8p82"]
+[ext_resource type="AudioStream" uid="uid://cb0ymwbs4ouhq" path="res://src/copyrighted/sfx/enemy/death/boss_death_pt_1.wav" id="55_2tdqs"]
+[ext_resource type="AudioStream" uid="uid://buw7sjxnil81x" path="res://src/copyrighted/sfx/enemy/death/boss_death_pt_2.wav" id="55_xre5f"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_eep7i"]
+var/stare_hornet_land_position/name = &"stare_hornet_land_position"
+var/stare_hornet_land_position/type = 9
+var/stare_hornet_land_position/value = Vector3(0, 0, 0)
+var/stare_hornet_land_position/hint = 0
+var/stare_hornet_land_position/hint_string = ""
+var/stare_phantom_land_position/name = &"stare_phantom_land_position"
+var/stare_phantom_land_position/type = 9
+var/stare_phantom_land_position/value = Vector3(0, 0, 0)
+var/stare_phantom_land_position/hint = 0
+var/stare_phantom_land_position/hint_string = ""
+var/hornet_dash_to_position/name = &"hornet_dash_to_position"
+var/hornet_dash_to_position/type = 9
+var/hornet_dash_to_position/value = Vector3(0, 0, 0)
+var/hornet_dash_to_position/hint = 0
+var/hornet_dash_to_position/hint_string = ""
+var/phantom_dash_to_position/name = &"phantom_dash_to_position"
+var/phantom_dash_to_position/type = 9
+var/phantom_dash_to_position/value = Vector3(0, 0, 0)
+var/phantom_dash_to_position/hint = 0
+var/phantom_dash_to_position/hint_string = ""
+var/phantom_position/name = &"phantom_position"
+var/phantom_position/type = 9
+var/phantom_position/value = Vector3(0, 0, 0)
+var/phantom_position/hint = 0
+var/phantom_position/hint_string = ""
+var/camera_position/name = &"camera_position"
+var/camera_position/type = 9
+var/camera_position/value = Vector3(0, 0, 0)
+var/camera_position/hint = 0
+var/camera_position/hint_string = ""
+var/camera_controller_path/name = &"camera_controller_path"
+var/camera_controller_path/type = 22
+var/camera_controller_path/value = NodePath("")
+var/camera_controller_path/hint = 0
+var/camera_controller_path/hint_string = ""
+var/camera_target/name = &"camera_target"
+var/camera_target/type = 24
+var/camera_target/hint = 34
+var/camera_target/hint_string = ""
+var/camera_child/name = &"camera_child"
+var/camera_child/type = 24
+var/camera_child/hint = 34
+var/camera_child/hint_string = ""
+var/death_explosion/name = &"death_explosion"
+var/death_explosion/type = 24
+var/death_explosion/hint = 34
+var/death_explosion/hint_string = ""
+var/base_level_path/name = &"base_level_path"
+var/base_level_path/type = 22
+var/base_level_path/value = NodePath("")
+var/base_level_path/hint = 0
+var/base_level_path/hint_string = ""
+var/cross_stitch_effect_path/name = &"cross_stitch_effect_path"
+var/cross_stitch_effect_path/type = 22
+var/cross_stitch_effect_path/value = NodePath("")
+var/cross_stitch_effect_path/hint = 0
+var/cross_stitch_effect_path/hint_string = ""
+
+[sub_resource type="BTAction" id="BTAction_otima"]
+script = ExtResource("1_kndcm")
+group = &"Cameras"
+get_node_path = true
+output_var = &"camera_controller_path"
+
+[sub_resource type="BBVariant" id="BBVariant_enyyy"]
+value_source = 1
+variable = &"camera_controller_path"
+resource_name = "$camera_controller_path"
+
+[sub_resource type="BBVariant" id="BBVariant_xi1ww"]
+type = 3
+saved_value = 0.0
+resource_name = "<null>"
+
+[sub_resource type="BBVariant" id="BBVariant_fgjbc"]
+type = 3
+saved_value = 0.0
+resource_name = "<null>"
+
+[sub_resource type="BBVariant" id="BBVariant_a72j5"]
+type = 3
+saved_value = 0.0
+resource_name = "<null>"
+
+[sub_resource type="BTAction" id="BTAction_ykmtk"]
+script = ExtResource("4_fojrl")
+target_var = SubResource("BBVariant_enyyy")
+x_var = SubResource("BBVariant_xi1ww")
+y_var = SubResource("BBVariant_fgjbc")
+z_var = SubResource("BBVariant_a72j5")
+local = true
+
+[sub_resource type="BBVariant" id="BBVariant_s63xx"]
+value_source = 1
+variable = &"camera_controller_path"
+resource_name = "$camera_controller_path"
+
+[sub_resource type="BTAction" id="BTAction_0vpcf"]
+script = ExtResource("3_jxs3l")
+root_node_var = SubResource("BBVariant_s63xx")
+child_path = "CameraPitch"
+child_output_var = &"camera_child"
+
+[sub_resource type="BBVariant" id="BBVariant_36s6j"]
+value_source = 1
+variable = &"camera_child"
+resource_name = "$camera_child"
+
+[sub_resource type="BBVariant" id="BBVariant_12qqv"]
+type = 3
+saved_value = 0.0
+resource_name = "<null>"
+
+[sub_resource type="BBVariant" id="BBVariant_2kejp"]
+type = 3
+saved_value = 0.0
+resource_name = "<null>"
+
+[sub_resource type="BBVariant" id="BBVariant_flf2k"]
+type = 3
+saved_value = 0.0
+resource_name = "<null>"
+
+[sub_resource type="BTAction" id="BTAction_fgjbc"]
+script = ExtResource("4_fojrl")
+target_var = SubResource("BBVariant_36s6j")
+x_var = SubResource("BBVariant_12qqv")
+y_var = SubResource("BBVariant_2kejp")
+z_var = SubResource("BBVariant_flf2k")
+local = true
+
+[sub_resource type="BBVariant" id="BBVariant_5n5ux"]
+value_source = 1
+variable = &"camera_child"
+resource_name = "$camera_child"
+
+[sub_resource type="BTAction" id="BTAction_36s6j"]
+script = ExtResource("3_jxs3l")
+root_node_var = SubResource("BBVariant_5n5ux")
+child_path = "Gimbal"
+child_output_var = &"camera_child"
+
+[sub_resource type="BBVariant" id="BBVariant_of8cc"]
+value_source = 1
+variable = &"camera_child"
+resource_name = "$camera_child"
+
+[sub_resource type="BBVariant" id="BBVariant_crhlj"]
+type = 3
+saved_value = 0.0
+resource_name = "<null>"
+
+[sub_resource type="BBVariant" id="BBVariant_q0xpn"]
+type = 3
+saved_value = 0.0
+resource_name = "<null>"
+
+[sub_resource type="BBVariant" id="BBVariant_nmopw"]
+type = 3
+saved_value = 0.0
+resource_name = "<null>"
+
+[sub_resource type="BTAction" id="BTAction_a72j5"]
+script = ExtResource("4_fojrl")
+target_var = SubResource("BBVariant_of8cc")
+x_var = SubResource("BBVariant_crhlj")
+y_var = SubResource("BBVariant_q0xpn")
+z_var = SubResource("BBVariant_nmopw")
+local = true
+
+[sub_resource type="BBVariant" id="BBVariant_fojrl"]
+type = 22
+saved_value = NodePath(".")
+resource_name = "."
+
+[sub_resource type="BTAction" id="BTAction_wp8ke"]
+script = ExtResource("3_jxs3l")
+root_node_var = SubResource("BBVariant_fojrl")
+child_path = "CameraTarget"
+child_output_var = &"camera_target"
+
+[sub_resource type="BBVariant" id="BBVariant_dhi3c"]
+type = 3
+saved_value = 0.0
+resource_name = "<null>"
+
+[sub_resource type="BBVariant" id="BBVariant_l4brc"]
+type = 3
+saved_value = 0.0
+resource_name = "<null>"
+
+[sub_resource type="BBVariant" id="BBVariant_wp8ke"]
+type = 3
+saved_value = 0.0
+resource_name = "<null>"
+
+[sub_resource type="BTAction" id="BTAction_32sxb"]
+script = ExtResource("2_jxs3l")
+target_var = &"camera_controller_path"
+x_var = SubResource("BBVariant_dhi3c")
+y_var = SubResource("BBVariant_l4brc")
+z_var = SubResource("BBVariant_wp8ke")
+
+[sub_resource type="BBVariant" id="BBVariant_xcqy1"]
+value_source = 1
+variable = &"camera_target"
+resource_name = "$camera_target"
+
+[sub_resource type="BBVariant" id="BBVariant_peslq"]
+type = 9
+saved_value = Vector3(-24, 8, -20)
+resource_name = "(-24.0, 8.0, -20.0)"
+
+[sub_resource type="BTAction" id="BTAction_ej2e2"]
+script = ExtResource("5_e5f8o")
+target_var = SubResource("BBVariant_xcqy1")
+with_offset_var = SubResource("BBVariant_peslq")
+
+[sub_resource type="BTSequence" id="BTSequence_ys6tr"]
+custom_name = "Reset Camera"
+children = [SubResource("BTAction_otima"), SubResource("BTAction_ykmtk"), SubResource("BTAction_0vpcf"), SubResource("BTAction_fgjbc"), SubResource("BTAction_36s6j"), SubResource("BTAction_a72j5"), SubResource("BTAction_wp8ke"), SubResource("BTAction_32sxb"), SubResource("BTAction_ej2e2")]
+
+[sub_resource type="BBNode" id="BBNode_2tdqs"]
+saved_value = NodePath("Hornet/Model/Flasher")
+resource_name = "Hornet/Model/Flasher"
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_51aw7"]
+node = SubResource("BBNode_2tdqs")
+method = &"reset"
+
+[sub_resource type="BBNode" id="BBNode_w6vsv"]
+saved_value = NodePath("Phantom/Flasher")
+resource_name = "Phantom/Flasher"
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_s1sr5"]
+node = SubResource("BBNode_w6vsv")
+method = &"reset"
+
+[sub_resource type="BTAction" id="BTAction_6yvgk"]
+script = ExtResource("6_51aw7")
+
+[sub_resource type="BTSequence" id="BTSequence_nm84w"]
+custom_name = "Reset"
+children = [SubResource("BTSequence_ys6tr"), SubResource("BTCallMethod_51aw7"), SubResource("BTCallMethod_s1sr5"), SubResource("BTAction_6yvgk")]
+
+[sub_resource type="BBVariant" id="BBVariant_uxuoe"]
+type = 22
+saved_value = NodePath("Canvas/SlashesBackground")
+resource_name = "Canvas/SlashesBackground"
+
+[sub_resource type="BTAction" id="BTAction_cev7j"]
+script = ExtResource("1_ys6tr")
+node_var = SubResource("BBVariant_uxuoe")
+visible = true
+
+[sub_resource type="BBVariant" id="BBVariant_53l7e"]
+type = 20
+saved_value = Color(1, 1, 1, 1)
+resource_name = "(1.0, 1.0, 1.0, 1.0)"
+
+[sub_resource type="BBNode" id="BBNode_cev7j"]
+saved_value = NodePath("Canvas/SlashesBackground")
+resource_name = "Canvas/SlashesBackground"
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_de11o"]
+node = SubResource("BBNode_cev7j")
+method = &"set_modulate"
+args = Array[BBVariant]([SubResource("BBVariant_53l7e")])
+
+[sub_resource type="BTWait" id="BTWait_53l7e"]
+duration = 0.05
+
+[sub_resource type="BBVariant" id="BBVariant_sfncu"]
+type = 20
+saved_value = Color(0, 0, 0, 1)
+resource_name = "(0.0, 0.0, 0.0, 1.0)"
+
+[sub_resource type="BBNode" id="BBNode_kfwpe"]
+saved_value = NodePath("Canvas/SlashesBackground")
+resource_name = "Canvas/SlashesBackground"
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_o3g5l"]
+node = SubResource("BBNode_kfwpe")
+method = &"set_modulate"
+args = Array[BBVariant]([SubResource("BBVariant_sfncu")])
+
+[sub_resource type="BTSequence" id="BTSequence_gwn4k"]
+custom_name = "Start Flash"
+children = [SubResource("BTAction_cev7j"), SubResource("BTCallMethod_de11o"), SubResource("BTWait_53l7e"), SubResource("BTCallMethod_o3g5l")]
+
+[sub_resource type="BTAction" id="BTAction_gwn4k"]
+script = ExtResource("5_dhi3c")
+clips_array = Array[AudioStream]([ExtResource("9_8nh1b")])
+play_position_var = &"camera_position"
+
+[sub_resource type="BTAction" id="BTAction_74uk6"]
+script = ExtResource("5_dhi3c")
+clips_array = Array[AudioStream]([ExtResource("6_l4brc")])
+play_position_var = &"camera_position"
+pitch_min = 0.85
+pitch_max = 1.15
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_vvrqo"]
+streams_count = 14
+stream_0/stream = ExtResource("12_dmpwu")
+stream_1/stream = ExtResource("13_ahrbo")
+stream_2/stream = ExtResource("18_flf2k")
+stream_3/stream = ExtResource("19_fgjbc")
+stream_4/stream = ExtResource("20_of8cc")
+stream_5/stream = ExtResource("21_crhlj")
+stream_6/stream = ExtResource("22_q0xpn")
+stream_7/stream = ExtResource("23_nmopw")
+stream_8/stream = ExtResource("24_a72j5")
+stream_9/stream = ExtResource("25_ykmtk")
+stream_10/stream = ExtResource("14_5n5ux")
+stream_11/stream = ExtResource("15_36s6j")
+stream_12/stream = ExtResource("16_12qqv")
+stream_13/stream = ExtResource("17_2kejp")
+
+[sub_resource type="BTAction" id="BTAction_rb3y3"]
+script = ExtResource("5_dhi3c")
+clips_array = Array[AudioStream]([SubResource("AudioStreamRandomizer_vvrqo")])
+play_position_var = &"camera_position"
+pitch_min = 0.85
+pitch_max = 1.15
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_dmpwu"]
+streams_count = 9
+stream_0/stream = ExtResource("26_crhlj")
+stream_1/stream = ExtResource("27_q0xpn")
+stream_2/stream = ExtResource("28_nmopw")
+stream_3/stream = ExtResource("29_a72j5")
+stream_4/stream = ExtResource("30_ykmtk")
+stream_5/stream = ExtResource("31_8nh1b")
+stream_6/stream = ExtResource("32_rb3y3")
+stream_7/stream = ExtResource("33_3pjv8")
+stream_8/stream = ExtResource("34_xre5f")
+
+[sub_resource type="BTAction" id="BTAction_ahrbo"]
+script = ExtResource("5_dhi3c")
+clips_array = Array[AudioStream]([SubResource("AudioStreamRandomizer_dmpwu")])
+play_position_var = &"camera_position"
+pitch_min = 0.85
+pitch_max = 1.15
+
+[sub_resource type="BBVariant" id="BBVariant_v128t"]
+type = 20
+saved_value = Color(0.5033745, 0.5033746, 0.5033746, 1)
+resource_name = "(0.5034, 0.5034, 0.5034, 1.0)"
+
+[sub_resource type="BBNode" id="BBNode_5vmgv"]
+saved_value = NodePath("Canvas/SlashesBackground")
+resource_name = "Canvas/SlashesBackground"
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_mv0e0"]
+node = SubResource("BBNode_5vmgv")
+method = &"set_modulate"
+args = Array[BBVariant]([SubResource("BBVariant_v128t")])
+
+[sub_resource type="BTWait" id="BTWait_qegn4"]
+duration = 0.05
+
+[sub_resource type="BBVariant" id="BBVariant_ihkj8"]
+type = 20
+saved_value = Color(0, 0, 0, 1)
+resource_name = "(0.0, 0.0, 0.0, 1.0)"
+
+[sub_resource type="BBNode" id="BBNode_y4p71"]
+saved_value = NodePath("Canvas/SlashesBackground")
+resource_name = "Canvas/SlashesBackground"
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_jar1a"]
+node = SubResource("BBNode_y4p71")
+method = &"set_modulate"
+args = Array[BBVariant]([SubResource("BBVariant_ihkj8")])
+
+[sub_resource type="BTWait" id="BTWait_85yog"]
+duration = 0.23
+
+[sub_resource type="BTSequence" id="BTSequence_v128t"]
+custom_name = "Clash 1"
+children = [SubResource("BTAction_gwn4k"), SubResource("BTAction_74uk6"), SubResource("BTAction_rb3y3"), SubResource("BTAction_ahrbo"), SubResource("BTCallMethod_mv0e0"), SubResource("BTWait_qegn4"), SubResource("BTCallMethod_jar1a"), SubResource("BTWait_85yog")]
+
+[sub_resource type="BTAction" id="BTAction_xre5f"]
+script = ExtResource("5_dhi3c")
+clips_array = Array[AudioStream]([ExtResource("35_rb3y3")])
+play_position_var = &"camera_position"
+
+[sub_resource type="BTAction" id="BTAction_v128t"]
+script = ExtResource("5_dhi3c")
+clips_array = Array[AudioStream]([ExtResource("6_l4brc")])
+play_position_var = &"camera_position"
+pitch_min = 0.85
+pitch_max = 1.15
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_crhlj"]
+streams_count = 14
+stream_0/stream = ExtResource("12_dmpwu")
+stream_1/stream = ExtResource("13_ahrbo")
+stream_2/stream = ExtResource("18_flf2k")
+stream_3/stream = ExtResource("19_fgjbc")
+stream_4/stream = ExtResource("20_of8cc")
+stream_5/stream = ExtResource("21_crhlj")
+stream_6/stream = ExtResource("22_q0xpn")
+stream_7/stream = ExtResource("23_nmopw")
+stream_8/stream = ExtResource("24_a72j5")
+stream_9/stream = ExtResource("25_ykmtk")
+stream_10/stream = ExtResource("14_5n5ux")
+stream_11/stream = ExtResource("15_36s6j")
+stream_12/stream = ExtResource("16_12qqv")
+stream_13/stream = ExtResource("17_2kejp")
+
+[sub_resource type="BTAction" id="BTAction_q0xpn"]
+script = ExtResource("5_dhi3c")
+clips_array = Array[AudioStream]([SubResource("AudioStreamRandomizer_crhlj")])
+play_position_var = &"camera_position"
+pitch_min = 0.85
+pitch_max = 1.15
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_nmopw"]
+streams_count = 9
+stream_0/stream = ExtResource("26_crhlj")
+stream_1/stream = ExtResource("27_q0xpn")
+stream_2/stream = ExtResource("28_nmopw")
+stream_3/stream = ExtResource("29_a72j5")
+stream_4/stream = ExtResource("30_ykmtk")
+stream_5/stream = ExtResource("31_8nh1b")
+stream_6/stream = ExtResource("32_rb3y3")
+stream_7/stream = ExtResource("33_3pjv8")
+stream_8/stream = ExtResource("34_xre5f")
+
+[sub_resource type="BTAction" id="BTAction_3pjv8"]
+script = ExtResource("5_dhi3c")
+clips_array = Array[AudioStream]([SubResource("AudioStreamRandomizer_nmopw")])
+play_position_var = &"camera_position"
+pitch_min = 0.85
+pitch_max = 1.15
+
+[sub_resource type="BBVariant" id="BBVariant_74uk6"]
+type = 20
+saved_value = Color(0.5019608, 0.5019608, 0.5019608, 1)
+resource_name = "(0.502, 0.502, 0.502, 1.0)"
+
+[sub_resource type="BBNode" id="BBNode_v128t"]
+saved_value = NodePath("Canvas/SlashesBackground")
+resource_name = "Canvas/SlashesBackground"
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_q7uxx"]
+node = SubResource("BBNode_v128t")
+method = &"set_modulate"
+args = Array[BBVariant]([SubResource("BBVariant_74uk6")])
+
+[sub_resource type="BTWait" id="BTWait_5vmgv"]
+duration = 0.05
+
+[sub_resource type="BBVariant" id="BBVariant_qegn4"]
+type = 20
+saved_value = Color(0, 0, 0, 1)
+resource_name = "(0.0, 0.0, 0.0, 1.0)"
+
+[sub_resource type="BBNode" id="BBNode_ihkj8"]
+saved_value = NodePath("Canvas/SlashesBackground")
+resource_name = "Canvas/SlashesBackground"
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_y4p71"]
+node = SubResource("BBNode_ihkj8")
+method = &"set_modulate"
+args = Array[BBVariant]([SubResource("BBVariant_qegn4")])
+
+[sub_resource type="BTWait" id="BTWait_jar1a"]
+duration = 0.23
+
+[sub_resource type="BTSequence" id="BTSequence_5vmgv"]
+custom_name = "Clash 2"
+children = [SubResource("BTAction_xre5f"), SubResource("BTAction_v128t"), SubResource("BTAction_q0xpn"), SubResource("BTAction_3pjv8"), SubResource("BTCallMethod_q7uxx"), SubResource("BTWait_5vmgv"), SubResource("BTCallMethod_y4p71"), SubResource("BTWait_jar1a")]
+
+[sub_resource type="BTAction" id="BTAction_2tdqs"]
+script = ExtResource("5_dhi3c")
+clips_array = Array[AudioStream]([ExtResource("36_3pjv8")])
+play_position_var = &"camera_position"
+
+[sub_resource type="BTAction" id="BTAction_mv0e0"]
+script = ExtResource("5_dhi3c")
+clips_array = Array[AudioStream]([ExtResource("6_l4brc")])
+play_position_var = &"camera_position"
+pitch_min = 0.85
+pitch_max = 1.15
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_xre5f"]
+streams_count = 14
+stream_0/stream = ExtResource("12_dmpwu")
+stream_1/stream = ExtResource("13_ahrbo")
+stream_2/stream = ExtResource("18_flf2k")
+stream_3/stream = ExtResource("19_fgjbc")
+stream_4/stream = ExtResource("20_of8cc")
+stream_5/stream = ExtResource("21_crhlj")
+stream_6/stream = ExtResource("22_q0xpn")
+stream_7/stream = ExtResource("23_nmopw")
+stream_8/stream = ExtResource("24_a72j5")
+stream_9/stream = ExtResource("25_ykmtk")
+stream_10/stream = ExtResource("14_5n5ux")
+stream_11/stream = ExtResource("15_36s6j")
+stream_12/stream = ExtResource("16_12qqv")
+stream_13/stream = ExtResource("17_2kejp")
+
+[sub_resource type="BTAction" id="BTAction_c02nk"]
+script = ExtResource("5_dhi3c")
+clips_array = Array[AudioStream]([SubResource("AudioStreamRandomizer_xre5f")])
+play_position_var = &"camera_position"
+pitch_min = 0.85
+pitch_max = 1.15
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_2tdqs"]
+streams_count = 9
+stream_0/stream = ExtResource("26_crhlj")
+stream_1/stream = ExtResource("27_q0xpn")
+stream_2/stream = ExtResource("28_nmopw")
+stream_3/stream = ExtResource("29_a72j5")
+stream_4/stream = ExtResource("30_ykmtk")
+stream_5/stream = ExtResource("31_8nh1b")
+stream_6/stream = ExtResource("32_rb3y3")
+stream_7/stream = ExtResource("33_3pjv8")
+stream_8/stream = ExtResource("34_xre5f")
+
+[sub_resource type="BTAction" id="BTAction_51aw7"]
+script = ExtResource("5_dhi3c")
+clips_array = Array[AudioStream]([SubResource("AudioStreamRandomizer_2tdqs")])
+play_position_var = &"camera_position"
+pitch_min = 0.85
+pitch_max = 1.15
+
+[sub_resource type="BBVariant" id="BBVariant_85yog"]
+type = 20
+saved_value = Color(0.5033745, 0.5033746, 0.5033746, 1)
+resource_name = "(0.5034, 0.5034, 0.5034, 1.0)"
+
+[sub_resource type="BBNode" id="BBNode_recg1"]
+saved_value = NodePath("Canvas/SlashesBackground")
+resource_name = "Canvas/SlashesBackground"
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_t3bk1"]
+node = SubResource("BBNode_recg1")
+method = &"set_modulate"
+args = Array[BBVariant]([SubResource("BBVariant_85yog")])
+
+[sub_resource type="BTWait" id="BTWait_qxcse"]
+duration = 0.05
+
+[sub_resource type="BBVariant" id="BBVariant_ctohn"]
+type = 20
+saved_value = Color(0, 0, 0, 1)
+resource_name = "(0.0, 0.0, 0.0, 1.0)"
+
+[sub_resource type="BBNode" id="BBNode_cxjxr"]
+saved_value = NodePath("Canvas/SlashesBackground")
+resource_name = "Canvas/SlashesBackground"
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_xxmhu"]
+node = SubResource("BBNode_cxjxr")
+method = &"set_modulate"
+args = Array[BBVariant]([SubResource("BBVariant_ctohn")])
+
+[sub_resource type="BTWait" id="BTWait_7306o"]
+duration = 0.23
+
+[sub_resource type="BTSequence" id="BTSequence_ihkj8"]
+custom_name = "Clash 3"
+children = [SubResource("BTAction_2tdqs"), SubResource("BTAction_mv0e0"), SubResource("BTAction_c02nk"), SubResource("BTAction_51aw7"), SubResource("BTCallMethod_t3bk1"), SubResource("BTWait_qxcse"), SubResource("BTCallMethod_xxmhu"), SubResource("BTWait_7306o")]
+
+[sub_resource type="BBVariant" id="BBVariant_q7uxx"]
+type = 20
+saved_value = Color(1, 1, 1, 1)
+resource_name = "(1.0, 1.0, 1.0, 1.0)"
+
+[sub_resource type="BBNode" id="BBNode_mv0e0"]
+saved_value = NodePath("Canvas/SlashesBackground")
+resource_name = "Canvas/SlashesBackground"
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_qegn4"]
+node = SubResource("BBNode_mv0e0")
+method = &"set_modulate"
+args = Array[BBVariant]([SubResource("BBVariant_q7uxx")])
+
+[sub_resource type="BBVariant" id="BBVariant_mv0e0"]
+type = 22
+saved_value = NodePath("Canvas/SlashesBackground")
+resource_name = "Canvas/SlashesBackground"
+
+[sub_resource type="BTAction" id="BTAction_qegn4"]
+script = ExtResource("1_ys6tr")
+node_var = SubResource("BBVariant_mv0e0")
+visible = true
+
+[sub_resource type="BTWait" id="BTWait_ihkj8"]
+duration = 0.05
+
+[sub_resource type="BBVariant" id="BBVariant_cev7j"]
+type = 22
+saved_value = NodePath("Canvas/SlashesBackground")
+resource_name = "Canvas/SlashesBackground"
+
+[sub_resource type="BTAction" id="BTAction_de11o"]
+script = ExtResource("1_ys6tr")
+node_var = SubResource("BBVariant_cev7j")
+
+[sub_resource type="BTWait" id="BTWait_recg1"]
+duration = 0.23
+
+[sub_resource type="BTSequence" id="BTSequence_y4p71"]
+custom_name = "End Flash"
+children = [SubResource("BTCallMethod_qegn4"), SubResource("BTAction_qegn4"), SubResource("BTWait_ihkj8"), SubResource("BTAction_de11o"), SubResource("BTWait_recg1")]
+
+[sub_resource type="BTSequence" id="BTSequence_xdlux"]
+custom_name = "Clashes"
+children = [SubResource("BTSequence_gwn4k"), SubResource("BTSequence_v128t"), SubResource("BTSequence_5vmgv"), SubResource("BTSequence_ihkj8"), SubResource("BTSequence_y4p71")]
+
+[sub_resource type="BBVariant" id="BBVariant_dnjp5"]
+type = 22
+saved_value = NodePath("Hornet")
+resource_name = "Hornet"
+
+[sub_resource type="BBVariant" id="BBVariant_afekt"]
+type = 22
+saved_value = NodePath("Phantom")
+resource_name = "Phantom"
+
+[sub_resource type="BTAction" id="BTAction_m18ey"]
+script = ExtResource("2_kndcm")
+node_var = SubResource("BBVariant_dnjp5")
+target_var = SubResource("BBVariant_afekt")
+
+[sub_resource type="BBVariant" id="BBVariant_tbl23"]
+type = 22
+saved_value = NodePath("Phantom")
+resource_name = "Phantom"
+
+[sub_resource type="BBVariant" id="BBVariant_i5nxl"]
+type = 22
+saved_value = NodePath("Hornet")
+resource_name = "Hornet"
+
+[sub_resource type="BTAction" id="BTAction_geoq6"]
+script = ExtResource("2_kndcm")
+node_var = SubResource("BBVariant_tbl23")
+target_var = SubResource("BBVariant_i5nxl")
+
+[sub_resource type="BBVariant" id="BBVariant_863ep"]
+type = 22
+saved_value = NodePath("Hornet")
+resource_name = "Hornet"
+
+[sub_resource type="BTAction" id="BTAction_7lviu"]
+script = ExtResource("7_e5f8o")
+tween_target_var = SubResource("BBVariant_863ep")
+target_position_var = &"stare_hornet_land_position"
+time = 0.2
+transition_type = 2
+ease_type = 1
+wait_for_finish = false
+
+[sub_resource type="BBVariant" id="BBVariant_dnft3"]
+type = 22
+saved_value = NodePath("Phantom")
+resource_name = "Phantom"
+
+[sub_resource type="BTAction" id="BTAction_r87pe"]
+script = ExtResource("7_e5f8o")
+tween_target_var = SubResource("BBVariant_dnft3")
+target_position_var = &"stare_phantom_land_position"
+time = 0.2
+transition_type = 2
+ease_type = 1
+wait_for_finish = false
+move_to_tween_var = &""
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_avkx2"]
+streams_count = 3
+stream_0/stream = ExtResource("36_a72j5")
+stream_1/stream = ExtResource("37_ykmtk")
+stream_2/stream = ExtResource("38_8nh1b")
+
+[sub_resource type="BTAction" id="BTAction_nmopw"]
+script = ExtResource("5_dhi3c")
+clips_array = Array[AudioStream]([SubResource("AudioStreamRandomizer_avkx2")])
+play_position_var = &"camera_position"
+pitch_min = 0.85
+pitch_max = 1.15
+
+[sub_resource type="BTWait" id="BTWait_863ep"]
+duration = 0.2
+
+[sub_resource type="BBNode" id="BBNode_fbtfg"]
+saved_value = NodePath("Hornet/Model/AnimationPlayer")
+resource_name = "Hornet/Model/AnimationPlayer"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_xdlux"]
+animation_player = SubResource("BBNode_fbtfg")
+animation_name = &"Parry Cutscene Pose"
+blend = 0.125
+
+[sub_resource type="BBNode" id="BBNode_xdlux"]
+saved_value = NodePath("Phantom/Mesh/AnimationPlayer")
+resource_name = "Phantom/Mesh/AnimationPlayer"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_r87pe"]
+animation_player = SubResource("BBNode_xdlux")
+animation_name = &"Recover Pose"
+blend = 0.125
+
+[sub_resource type="BTWait" id="BTWait_t5y0t"]
+duration = 0.8
+
+[sub_resource type="BTSequence" id="BTSequence_t5y0t"]
+custom_name = "Stare"
+children = [SubResource("BTAction_m18ey"), SubResource("BTAction_geoq6"), SubResource("BTAction_7lviu"), SubResource("BTAction_r87pe"), SubResource("BTAction_nmopw"), SubResource("BTWait_863ep"), SubResource("BTPlayAnimation_xdlux"), SubResource("BTPlayAnimation_r87pe"), SubResource("BTWait_t5y0t")]
+
+[sub_resource type="BBNode" id="BBNode_7lviu"]
+saved_value = NodePath("Hornet/Model/AnimationPlayer")
+resource_name = "Hornet/Model/AnimationPlayer"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_dnft3"]
+animation_player = SubResource("BBNode_7lviu")
+animation_name = &"Sprint Jump Antic"
+blend = 0.1
+
+[sub_resource type="BBNode" id="BBNode_r87pe"]
+saved_value = NodePath("Phantom/Mesh/AnimationPlayer")
+resource_name = "Phantom/Mesh/AnimationPlayer"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_t5y0t"]
+animation_player = SubResource("BBNode_r87pe")
+animation_name = &"Stab Recover"
+blend = 0.1
+
+[sub_resource type="BTWait" id="BTWait_geoq6"]
+duration = 0.1
+
+[sub_resource type="BTSequence" id="BTSequence_tbl23"]
+custom_name = "Dash Antic"
+children = [SubResource("BTPlayAnimation_dnft3"), SubResource("BTPlayAnimation_t5y0t"), SubResource("BTWait_geoq6")]
+
+[sub_resource type="BBNode" id="BBNode_ry1kx"]
+saved_value = NodePath("Hornet/Model/AnimationPlayer")
+resource_name = "Hornet/Model/AnimationPlayer"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_fbtfg"]
+animation_player = SubResource("BBNode_ry1kx")
+animation_name = &"Sprint Stab"
+blend = 0.1
+
+[sub_resource type="BBNode" id="BBNode_uxuoe"]
+saved_value = NodePath("Hornet/Model/Armature/Skeleton3D/NeedleAttach/Needle/Animator")
+resource_name = "Hornet/Model/Armature/Skeleton3D/NeedleAttach/Needle/Animator"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_cev7j"]
+animation_player = SubResource("BBNode_uxuoe")
+animation_name = &"Stab"
+blend = 0.1
+
+[sub_resource type="BBNode" id="BBNode_t5y0t"]
+saved_value = NodePath("Phantom/Mesh/AnimationPlayer")
+resource_name = "Phantom/Mesh/AnimationPlayer"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_uxuoe"]
+animation_player = SubResource("BBNode_t5y0t")
+animation_name = &"Stab"
+blend = 0.1
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_t5y0t"]
+random_pitch = 1.0293022
+streams_count = 5
+stream_0/stream = ExtResource("8_fojrl")
+stream_1/stream = ExtResource("9_wp8ke")
+stream_2/stream = ExtResource("10_32sxb")
+stream_3/stream = ExtResource("10_32sxb")
+stream_4/stream = ExtResource("11_enyyy")
+
+[sub_resource type="BTAction" id="BTAction_afekt"]
+script = ExtResource("5_dhi3c")
+clips_array = Array[AudioStream]([SubResource("AudioStreamRandomizer_t5y0t")])
+play_position_var = &"camera_position"
+pitch_min = 0.9
+
+[sub_resource type="BBVariant" id="BBVariant_geoq6"]
+type = 22
+saved_value = NodePath("Hornet")
+resource_name = "Hornet"
+
+[sub_resource type="BTAction" id="BTAction_dnjp5"]
+script = ExtResource("7_e5f8o")
+tween_target_var = SubResource("BBVariant_geoq6")
+target_position_var = &"hornet_dash_to_position"
+time = 0.5
+transition_type = 2
+wait_for_finish = false
+
+[sub_resource type="BBVariant" id="BBVariant_m18ey"]
+type = 22
+saved_value = NodePath("Phantom")
+resource_name = "Phantom"
+
+[sub_resource type="BTAction" id="BTAction_6teki"]
+script = ExtResource("7_e5f8o")
+tween_target_var = SubResource("BBVariant_m18ey")
+target_position_var = &"phantom_dash_to_position"
+time = 0.5
+transition_type = 2
+wait_for_finish = false
+
+[sub_resource type="BTWait" id="BTWait_ry1kx"]
+duration = 2.0
+
+[sub_resource type="BTSequence" id="BTSequence_fbtfg"]
+custom_name = "Dash"
+children = [SubResource("BTPlayAnimation_fbtfg"), SubResource("BTPlayAnimation_cev7j"), SubResource("BTPlayAnimation_uxuoe"), SubResource("BTAction_afekt"), SubResource("BTAction_dnjp5"), SubResource("BTAction_6teki"), SubResource("BTWait_ry1kx")]
+
+[sub_resource type="BBVariant" id="BBVariant_ry1kx"]
+type = 22
+saved_value = NodePath("Canvas/ParryTip")
+resource_name = "Canvas/ParryTip"
+
+[sub_resource type="BBVariant" id="BBVariant_fbtfg"]
+type = 3
+saved_value = 1.0
+resource_name = "1.0"
+
+[sub_resource type="BBVariant" id="BBVariant_xdlux"]
+type = 3
+saved_value = 0.0
+resource_name = "<null>"
+
+[sub_resource type="BBVariant" id="BBVariant_r87pe"]
+type = 3
+saved_value = 1.0
+resource_name = "1.0"
+
+[sub_resource type="BTAction" id="BTAction_t5y0t"]
+script = ExtResource("12_5dfb6")
+canvas_item_var = SubResource("BBVariant_ry1kx")
+from_var = SubResource("BBVariant_xdlux")
+to_var = SubResource("BBVariant_r87pe")
+fade_time_var = SubResource("BBVariant_fbtfg")
+
+[sub_resource type="BTWait" id="BTWait_xdlux"]
+duration = 0.75
+
+[sub_resource type="BBVariant" id="BBVariant_t5y0t"]
+type = 21
+saved_value = &"Skill"
+resource_name = "Skill"
+
+[sub_resource type="BTAction" id="BTAction_uxuoe"]
+script = ExtResource("13_xi1ww")
+input_action_var = SubResource("BBVariant_t5y0t")
+
+[sub_resource type="BTRepeatUntilSuccess" id="BTRepeatUntilSuccess_ry1kx"]
+children = [SubResource("BTAction_uxuoe")]
+
+[sub_resource type="BTSequence" id="BTSequence_uxuoe"]
+custom_name = "Prompt"
+children = [SubResource("BTAction_t5y0t"), SubResource("BTWait_xdlux"), SubResource("BTRepeatUntilSuccess_ry1kx")]
+
+[sub_resource type="BBVariant" id="BBVariant_c02nk"]
+type = 22
+saved_value = NodePath("Canvas/ParryTip")
+resource_name = "Canvas/ParryTip"
+
+[sub_resource type="BTAction" id="BTAction_eswlf"]
+script = ExtResource("1_ys6tr")
+node_var = SubResource("BBVariant_c02nk")
+
+[sub_resource type="BBNode" id="BBNode_qegn4"]
+saved_value = NodePath("Hornet/Model/Armature/Skeleton3D/NeedleAttach/Needle/Animator")
+resource_name = "Hornet/Model/Armature/Skeleton3D/NeedleAttach/Needle/Animator"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_ihkj8"]
+animation_player = SubResource("BBNode_qegn4")
+animation_name = &"Parry Hit"
+
+[sub_resource type="BBNode" id="BBNode_de11o"]
+saved_value = NodePath("Hornet/Model/AnimationPlayer")
+resource_name = "Hornet/Model/AnimationPlayer"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_53l7e"]
+animation_player = SubResource("BBNode_de11o")
+animation_name = &"Parry Cutscene Pose"
+
+[sub_resource type="BTAction" id="BTAction_q5s5a"]
+script = ExtResource("5_dhi3c")
+clips_array = Array[AudioStream]([ExtResource("47_3pjv8")])
+play_position_var = &"camera_position"
+
+[sub_resource type="BBVariant" id="BBVariant_gwn4k"]
+type = 22
+saved_value = NodePath("Phantom")
+resource_name = "Phantom"
+
+[sub_resource type="BBVariant" id="BBVariant_5vmgv"]
+saved_value = null
+resource_name = "<null>"
+
+[sub_resource type="BBVariant" id="BBVariant_y4p71"]
+saved_value = null
+resource_name = "<null>"
+
+[sub_resource type="BBVariant" id="BBVariant_jar1a"]
+type = 3
+saved_value = 4.0
+resource_name = "4.0"
+
+[sub_resource type="BTAction" id="BTAction_85yog"]
+script = ExtResource("14_s63xx")
+target_var = SubResource("BBVariant_gwn4k")
+x_var = SubResource("BBVariant_5vmgv")
+y_var = SubResource("BBVariant_y4p71")
+z_var = SubResource("BBVariant_jar1a")
+
+[sub_resource type="BBVariant" id="BBVariant_recg1"]
+type = 3
+saved_value = 0.25
+resource_name = "0.25"
+
+[sub_resource type="BBVariant" id="BBVariant_t3bk1"]
+type = 3
+saved_value = 0.5
+resource_name = "0.5"
+
+[sub_resource type="BBVariant" id="BBVariant_qxcse"]
+type = 1
+saved_value = false
+resource_name = "<null>"
+
+[sub_resource type="BTAction" id="BTAction_ctohn"]
+script = ExtResource("15_0vpcf")
+shake_amount_var = SubResource("BBVariant_recg1")
+shake_duration_var = SubResource("BBVariant_t3bk1")
+shake_taper_off_var = SubResource("BBVariant_qxcse")
+
+[sub_resource type="BBVariant" id="BBVariant_cxjxr"]
+type = 3
+saved_value = 0.5
+resource_name = "0.5"
+
+[sub_resource type="BTAction" id="BTAction_xxmhu"]
+_enabled = false
+script = ExtResource("3_otima")
+duration_var = SubResource("BBVariant_cxjxr")
+
+[sub_resource type="BTWait" id="BTWait_2tdqs"]
+duration = 0.5
+
+[sub_resource type="BTSequence" id="BTSequence_geoq6"]
+custom_name = "Hornet Parry"
+children = [SubResource("BTAction_eswlf"), SubResource("BTPlayAnimation_ihkj8"), SubResource("BTPlayAnimation_53l7e"), SubResource("BTAction_q5s5a"), SubResource("BTAction_85yog"), SubResource("BTAction_ctohn"), SubResource("BTAction_xxmhu"), SubResource("BTWait_2tdqs")]
+
+[sub_resource type="BBVariant" id="BBVariant_32sxb"]
+type = 22
+saved_value = NodePath("Hornet")
+resource_name = "Hornet"
+
+[sub_resource type="BTAction" id="BTAction_enyyy"]
+script = ExtResource("1_ys6tr")
+node_var = SubResource("BBVariant_32sxb")
+
+[sub_resource type="BBVariant" id="BBVariant_ikqlc"]
+type = 24
+saved_value = ExtResource("51_e8p82")
+resource_name = "(res://src/gameplay/combat/cross_stitch_effect.tscn):<PackedScene#-9220120090639165606>"
+
+[sub_resource type="BTAction" id="BTAction_w6vsv"]
+script = ExtResource("21_dmpwu")
+scene_to_instantiate_var = SubResource("BBVariant_ikqlc")
+output_var = &"cross_stitch_effect_path"
+
+[sub_resource type="BBVariant" id="BBVariant_s1sr5"]
+type = 22
+saved_value = NodePath("Phantom")
+resource_name = "Phantom"
+
+[sub_resource type="BTAction" id="BTAction_nm84w"]
+script = ExtResource("26_l4brc")
+target_var = SubResource("BBVariant_s1sr5")
+output_position_var = &"phantom_position"
+
+[sub_resource type="BBVariant" id="BBVariant_38vvb"]
+value_source = 1
+variable = &"cross_stitch_effect_path"
+resource_name = "$cross_stitch_effect_path"
+
+[sub_resource type="BBVariant" id="BBVariant_d6ump"]
+value_source = 1
+variable = &"phantom_position"
+resource_name = "$phantom_position"
+
+[sub_resource type="BTAction" id="BTAction_5omgc"]
+script = ExtResource("22_ahrbo")
+target_var = SubResource("BBVariant_38vvb")
+vector_var = SubResource("BBVariant_d6ump")
+
+[sub_resource type="BBNode" id="BBNode_53l7e"]
+saved_value = NodePath("Phantom/Mesh/AnimationPlayer")
+resource_name = "Phantom/Mesh/AnimationPlayer"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_gwn4k"]
+animation_player = SubResource("BBNode_53l7e")
+animation_name = &"Death Stagger"
+
+[sub_resource type="BBVariant" id="BBVariant_xxmhu"]
+type = 3
+saved_value = 1.0
+resource_name = "1.0"
+
+[sub_resource type="BBVariant" id="BBVariant_7306o"]
+type = 3
+saved_value = 1.0
+resource_name = "1.0"
+
+[sub_resource type="BBVariant" id="BBVariant_ulits"]
+type = 3
+saved_value = 0.5
+resource_name = "0.5"
+
+[sub_resource type="BBNode" id="BBNode_pfsfd"]
+saved_value = NodePath("Phantom/Flasher")
+resource_name = "Phantom/Flasher"
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_i02io"]
+node = SubResource("BBNode_pfsfd")
+method = &"flash"
+args = Array[BBVariant]([SubResource("BBVariant_xxmhu"), SubResource("BBVariant_7306o"), SubResource("BBVariant_ulits")])
+
+[sub_resource type="BBVariant" id="BBVariant_e5f8o"]
+type = 3
+saved_value = 0.15
+resource_name = "0.15"
+
+[sub_resource type="BBVariant" id="BBVariant_ej2e2"]
+type = 3
+saved_value = 0.5
+resource_name = "0.5"
+
+[sub_resource type="BBVariant" id="BBVariant_b3wlm"]
+type = 1
+saved_value = false
+resource_name = "<null>"
+
+[sub_resource type="BTAction" id="BTAction_5ygbr"]
+script = ExtResource("15_0vpcf")
+shake_amount_var = SubResource("BBVariant_e5f8o")
+shake_duration_var = SubResource("BBVariant_ej2e2")
+shake_taper_off_var = SubResource("BBVariant_b3wlm")
+
+[sub_resource type="BBVariant" id="BBVariant_51aw7"]
+type = 3
+saved_value = 2.0
+resource_name = "2.0"
+
+[sub_resource type="BBVariant" id="BBVariant_e8p82"]
+type = 3
+saved_value = 0.5
+resource_name = "0.5"
+
+[sub_resource type="BBVariant" id="BBVariant_q5s5a"]
+type = 1
+saved_value = true
+resource_name = "true"
+
+[sub_resource type="BBVariant" id="BBVariant_6x23p"]
+type = 1
+saved_value = false
+resource_name = "<null>"
+
+[sub_resource type="BBVariant" id="BBVariant_eswlf"]
+type = 22
+saved_value = NodePath("Phantom/Shaker")
+resource_name = "Phantom/Shaker"
+
+[sub_resource type="BTAction" id="BTAction_ikqlc"]
+script = ExtResource("50_c02nk")
+shaker_component_var = SubResource("BBVariant_eswlf")
+shake_amount_var = SubResource("BBVariant_51aw7")
+shake_duration_var = SubResource("BBVariant_e8p82")
+shake_in_place_var = SubResource("BBVariant_q5s5a")
+shake_taper_off_var = SubResource("BBVariant_6x23p")
+
+[sub_resource type="BTAction" id="BTAction_e8p82"]
+script = ExtResource("5_dhi3c")
+clips_array = Array[AudioStream]([ExtResource("41_rb3y3")])
+play_position_var = &"camera_position"
+volume_scale = 0.7
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_e8p82"]
+streams_count = 3
+stream_0/stream = ExtResource("16_xcqy1")
+stream_1/stream = ExtResource("17_peslq")
+stream_2/stream = ExtResource("18_ej2e2")
+
+[sub_resource type="BTAction" id="BTAction_s1sr5"]
+script = ExtResource("5_dhi3c")
+clips_array = Array[AudioStream]([SubResource("AudioStreamRandomizer_e8p82")])
+play_position_var = &"camera_position"
+
+[sub_resource type="BTWait" id="BTWait_fbtfg"]
+duration = 0.5
+
+[sub_resource type="BBVariant" id="BBVariant_5dfb6"]
+type = 22
+saved_value = NodePath("Hornet")
+resource_name = "Hornet"
+
+[sub_resource type="BTAction" id="BTAction_xi1ww"]
+script = ExtResource("1_ys6tr")
+node_var = SubResource("BBVariant_5dfb6")
+visible = true
+
+[sub_resource type="BBNode" id="BBNode_ys6tr"]
+saved_value = NodePath("Hornet/Model/AnimationPlayer")
+resource_name = "Hornet/Model/AnimationPlayer"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_kndcm"]
+animation_player = SubResource("BBNode_ys6tr")
+animation_name = &"Parry Cutscene Pose"
+
+[sub_resource type="BBVariant" id="BBVariant_ys6tr"]
+type = 3
+saved_value = 1.0
+resource_name = "1.0"
+
+[sub_resource type="BBVariant" id="BBVariant_kndcm"]
+type = 3
+saved_value = 0.0
+resource_name = "0.0"
+
+[sub_resource type="BBVariant" id="BBVariant_otima"]
+type = 3
+saved_value = 0.25
+resource_name = "0.25"
+
+[sub_resource type="BBNode" id="BBNode_jxs3l"]
+saved_value = NodePath("Phantom/Flasher")
+resource_name = "Phantom/Flasher"
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_dhi3c"]
+node = SubResource("BBNode_jxs3l")
+method = &"flash"
+args = Array[BBVariant]([SubResource("BBVariant_ys6tr"), SubResource("BBVariant_kndcm"), SubResource("BBVariant_otima")])
+
+[sub_resource type="BTWait" id="BTWait_l4brc"]
+duration = 1.75
+
+[sub_resource type="BTSequence" id="BTSequence_r87pe"]
+custom_name = "Hornet Parry Retaliate"
+children = [SubResource("BTAction_enyyy"), SubResource("BTAction_w6vsv"), SubResource("BTAction_nm84w"), SubResource("BTAction_5omgc"), SubResource("BTPlayAnimation_gwn4k"), SubResource("BTCallMethod_i02io"), SubResource("BTAction_5ygbr"), SubResource("BTAction_ikqlc"), SubResource("BTAction_e8p82"), SubResource("BTAction_s1sr5"), SubResource("BTWait_fbtfg"), SubResource("BTAction_xi1ww"), SubResource("BTPlayAnimation_kndcm"), SubResource("BTCallMethod_dhi3c"), SubResource("BTWait_l4brc")]
+
+[sub_resource type="BBVariant" id="BBVariant_pfsfd"]
+type = 1
+saved_value = true
+resource_name = "true"
+
+[sub_resource type="BBNode" id="BBNode_i02io"]
+saved_value = NodePath("Phantom/BloodStreamingParticles/BloodStreamBurstParticles")
+resource_name = "Phantom/BloodStreamingParticles/BloodStreamBurstParticles"
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_mqqdn"]
+node = SubResource("BBNode_i02io")
+method = &"set_emitting"
+args = Array[BBVariant]([SubResource("BBVariant_pfsfd")])
+
+[sub_resource type="BBVariant" id="BBVariant_3pjv8"]
+type = 1
+saved_value = true
+resource_name = "true"
+
+[sub_resource type="BBNode" id="BBNode_xre5f"]
+saved_value = NodePath("Phantom/BloodStreamingParticles")
+resource_name = "Phantom/BloodStreamingParticles"
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_c02nk"]
+node = SubResource("BBNode_xre5f")
+method = &"set_emitting"
+args = Array[BBVariant]([SubResource("BBVariant_3pjv8")])
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_gwn4k"]
+streams_count = 3
+stream_0/stream = ExtResource("16_xcqy1")
+stream_1/stream = ExtResource("17_peslq")
+stream_2/stream = ExtResource("18_ej2e2")
+
+[sub_resource type="BTAction" id="BTAction_q7uxx"]
+script = ExtResource("5_dhi3c")
+clips_array = Array[AudioStream]([SubResource("AudioStreamRandomizer_gwn4k")])
+play_position_var = &"camera_position"
+
+[sub_resource type="BTAction" id="BTAction_fx2lo"]
+script = ExtResource("5_dhi3c")
+clips_array = Array[AudioStream]([ExtResource("55_2tdqs")])
+play_position_var = &"camera_position"
+
+[sub_resource type="BBVariant" id="BBVariant_5ygbr"]
+type = 3
+saved_value = 0.25
+resource_name = "0.25"
+
+[sub_resource type="BBVariant" id="BBVariant_dmpwu"]
+type = 3
+saved_value = 0.5
+resource_name = "0.5"
+
+[sub_resource type="BBVariant" id="BBVariant_ahrbo"]
+type = 1
+saved_value = true
+resource_name = "true"
+
+[sub_resource type="BTAction" id="BTAction_5n5ux"]
+script = ExtResource("15_0vpcf")
+shake_amount_var = SubResource("BBVariant_5ygbr")
+shake_duration_var = SubResource("BBVariant_dmpwu")
+shake_taper_off_var = SubResource("BBVariant_ahrbo")
+
+[sub_resource type="BTWait" id="BTWait_mv0e0"]
+duration = 1.5
+
+[sub_resource type="BTSequence" id="BTSequence_74uk6"]
+custom_name = "Blood Stream"
+children = [SubResource("BTCallMethod_mqqdn"), SubResource("BTCallMethod_c02nk"), SubResource("BTAction_q7uxx"), SubResource("BTAction_fx2lo"), SubResource("BTAction_5n5ux"), SubResource("BTWait_mv0e0")]
+
+[sub_resource type="BBVariant" id="BBVariant_xre5f"]
+type = 1
+saved_value = true
+resource_name = "true"
+
+[sub_resource type="BBNode" id="BBNode_c02nk"]
+saved_value = NodePath("Phantom/BloodStreamingParticles/DeathSteamParticles")
+resource_name = "Phantom/BloodStreamingParticles/DeathSteamParticles"
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_2tdqs"]
+node = SubResource("BBNode_c02nk")
+method = &"set_emitting"
+args = Array[BBVariant]([SubResource("BBVariant_xre5f")])
+
+[sub_resource type="BTAction" id="BTAction_5vmgv"]
+script = ExtResource("5_dhi3c")
+clips_array = Array[AudioStream]([ExtResource("19_b3wlm")])
+play_position_var = &"camera_position"
+
+[sub_resource type="BTAction" id="BTAction_6x23p"]
+script = ExtResource("5_dhi3c")
+clips_array = Array[AudioStream]([ExtResource("55_xre5f")])
+play_position_var = &"camera_position"
+
+[sub_resource type="BBVariant" id="BBVariant_i02io"]
+type = 3
+saved_value = 0.5
+resource_name = "0.5"
+
+[sub_resource type="BBVariant" id="BBVariant_mqqdn"]
+type = 3
+saved_value = 3.0
+resource_name = "3.0"
+
+[sub_resource type="BBVariant" id="BBVariant_bmvl8"]
+type = 1
+saved_value = true
+resource_name = "true"
+
+[sub_resource type="BTAction" id="BTAction_cex5a"]
+script = ExtResource("15_0vpcf")
+shake_amount_var = SubResource("BBVariant_i02io")
+shake_duration_var = SubResource("BBVariant_mqqdn")
+shake_taper_off_var = SubResource("BBVariant_bmvl8")
+
+[sub_resource type="BTWait" id="BTWait_de11o"]
+duration = 3.5
+
+[sub_resource type="BTSequence" id="BTSequence_mv0e0"]
+custom_name = "Death Steam"
+children = [SubResource("BTCallMethod_2tdqs"), SubResource("BTAction_5vmgv"), SubResource("BTAction_6x23p"), SubResource("BTAction_cex5a"), SubResource("BTWait_de11o")]
+
+[sub_resource type="BBVariant" id="BBVariant_2tdqs"]
+type = 1
+saved_value = true
+resource_name = "true"
+
+[sub_resource type="BBNode" id="BBNode_51aw7"]
+saved_value = NodePath("ExplodeParticles")
+resource_name = "ExplodeParticles"
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_e8p82"]
+node = SubResource("BBNode_51aw7")
+method = &"set_emitting"
+args = Array[BBVariant]([SubResource("BBVariant_2tdqs")])
+
+[sub_resource type="BBVariant" id="BBVariant_f6exr"]
+type = 24
+saved_value = ExtResource("20_5ygbr")
+resource_name = "(res://src/actors/enemies/corpse.tscn):<PackedScene#-9223370311737464052>"
+
+[sub_resource type="BTAction" id="BTAction_kf0p3"]
+script = ExtResource("21_dmpwu")
+scene_to_instantiate_var = SubResource("BBVariant_f6exr")
+output_var = &"death_explosion"
+
+[sub_resource type="BBVariant" id="BBVariant_0vpcf"]
+type = 22
+saved_value = NodePath("Phantom/Mesh/Armature/Skeleton3D/Head")
+resource_name = "Phantom/Mesh/Armature/Skeleton3D/Head"
+
+[sub_resource type="BTAction" id="BTAction_xcqy1"]
+script = ExtResource("26_l4brc")
+target_var = SubResource("BBVariant_0vpcf")
+output_position_var = &"phantom_position"
+
+[sub_resource type="BBVariant" id="BBVariant_kfwpe"]
+value_source = 1
+variable = &"death_explosion"
+resource_name = "$death_explosion"
+
+[sub_resource type="BBVariant" id="BBVariant_o3g5l"]
+value_source = 1
+variable = &"phantom_position"
+resource_name = "$phantom_position"
+
+[sub_resource type="BTAction" id="BTAction_afxui"]
+script = ExtResource("22_ahrbo")
+target_var = SubResource("BBVariant_kfwpe")
+vector_var = SubResource("BBVariant_o3g5l")
+
+[sub_resource type="BBVariant" id="BBVariant_cex5a"]
+type = 22
+saved_value = NodePath("Phantom")
+resource_name = "Phantom"
+
+[sub_resource type="BTAction" id="BTAction_2ayeh"]
+script = ExtResource("23_5n5ux")
+object_to_free_var = SubResource("BBVariant_cex5a")
+
+[sub_resource type="BBVariant" id="BBVariant_2ayeh"]
+type = 3
+saved_value = 1.0
+resource_name = "1.0"
+
+[sub_resource type="BBVariant" id="BBVariant_kf0p3"]
+type = 3
+saved_value = 1.0
+resource_name = "1.0"
+
+[sub_resource type="BBVariant" id="BBVariant_364rg"]
+type = 1
+saved_value = true
+resource_name = "true"
+
+[sub_resource type="BTAction" id="BTAction_sfncu"]
+script = ExtResource("15_0vpcf")
+shake_amount_var = SubResource("BBVariant_2ayeh")
+shake_duration_var = SubResource("BBVariant_kf0p3")
+shake_taper_off_var = SubResource("BBVariant_364rg")
+
+[sub_resource type="BTWait" id="BTWait_kfwpe"]
+duration = 2.0
+
+[sub_resource type="BTSequence" id="BTSequence_364rg"]
+custom_name = "Explode"
+children = [SubResource("BTCallMethod_e8p82"), SubResource("BTAction_kf0p3"), SubResource("BTAction_xcqy1"), SubResource("BTAction_afxui"), SubResource("BTAction_2ayeh"), SubResource("BTAction_sfncu"), SubResource("BTWait_kfwpe")]
+
+[sub_resource type="BBVariant" id="BBVariant_ykmtk"]
+saved_value = null
+resource_name = "<null>"
+
+[sub_resource type="BTAction" id="BTAction_8nh1b"]
+script = ExtResource("3_jxs3l")
+root_node_var = SubResource("BBVariant_ykmtk")
+child_path = "/root/PhantomFight"
+get_node_path = true
+child_output_var = &"base_level_path"
+
+[sub_resource type="BBNode" id="BBNode_e5f8o"]
+value_source = 1
+variable = &"base_level_path"
+resource_name = "$base_level_path"
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_fojrl"]
+node = SubResource("BBNode_e5f8o")
+method = &"finish"
+
+[sub_resource type="BTWait" id="BTWait_51aw7"]
+
+[sub_resource type="BTRepeat" id="BTRepeat_e8p82"]
+forever = true
+children = [SubResource("BTWait_51aw7")]
+
+[sub_resource type="BTSequence" id="BTSequence_32sxb"]
+custom_name = "Finish Level"
+children = [SubResource("BTAction_8nh1b"), SubResource("BTCallMethod_fojrl"), SubResource("BTRepeat_e8p82")]
+
+[sub_resource type="BTSequence" id="BTSequence_dnft3"]
+custom_name = "Cutscene"
+children = [SubResource("BTSequence_nm84w"), SubResource("BTSequence_xdlux"), SubResource("BTSequence_t5y0t"), SubResource("BTSequence_tbl23"), SubResource("BTSequence_fbtfg"), SubResource("BTSequence_uxuoe"), SubResource("BTSequence_geoq6"), SubResource("BTSequence_r87pe"), SubResource("BTSequence_74uk6"), SubResource("BTSequence_mv0e0"), SubResource("BTSequence_364rg"), SubResource("BTSequence_32sxb")]
+
+[resource]
+blackboard_plan = SubResource("BlackboardPlan_eep7i")
+root_task = SubResource("BTSequence_dnft3")

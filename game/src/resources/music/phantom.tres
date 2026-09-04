@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="MusicTrack" format=3 uid="uid://hsclpld64fxi"]
+
+[ext_resource type="AudioStream" uid="uid://cak1muwygj208" path="res://src/copyrighted/phantom/music/H78 Phantom of the Organ RESTRUCTURE-33.wav" id="1_2ajpy"]
+[ext_resource type="Script" uid="uid://q4qqnvxnwemw" path="res://src/autoload/audio/music_track.gd" id="1_fc5gh"]
+
+[resource]
+script = ExtResource("1_fc5gh")
+music_clip = ExtResource("1_2ajpy")
+metadata/_custom_type_script = "uid://q4qqnvxnwemw"

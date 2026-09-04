@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="MusicTrack" format=3 uid="uid://iuiueea1mjsv"]
+
+[ext_resource type="Script" uid="uid://q4qqnvxnwemw" path="res://src/autoload/audio/music_track.gd" id="1_rlry6"]
+[ext_resource type="AudioStream" uid="uid://kxcsjrt7b67q" path="res://src/copyrighted/phantom/music/H159_MistMazeMain.wav" id="1_txlls"]
+
+[resource]
+script = ExtResource("1_rlry6")
+music_clip = ExtResource("1_txlls")
+metadata/_custom_type_script = "uid://q4qqnvxnwemw"

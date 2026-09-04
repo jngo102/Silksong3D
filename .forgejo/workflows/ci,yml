@@ -1,0 +1,65 @@
+name: Export and Publish
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+jobs:
+  setup:
+    name: Setup for Export
+    runs-on: ubuntu-latest
+    outputs:
+      godot-version: ${{ steps.get-godot-version.outputs.version }}
+      game-version: ${{ steps.get-game-version.outputs.version }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+      - name: Get Godot version
+        id: get-godot-version
+        run: |
+          query_start="config\/features=PackedStringArray\(\""
+          query_end="\", \".*\"\)"
+          grep_query="^$query_start[0-9]\.[0-9](\.[0-9])?$query_end$"
+          version=$(grep --perl-regexp "$query_start" game/project.godot | sed --regexp-extended "s#$query_start|$query_end##g")
+          echo "version=$version" >> $GITHUB_OUTPUT
+      - name: Get game version
+        id: get-game-version
+        run: |
+          query="config\/version="
+          version=$(grep "$query" game/project.godot | sed --expression "s/$query//" --expression 's/\"//g')
+          echo "version=$version" >> $GITHUB_OUTPUT
+  export:
+    name: Export Game
+    runs-on: ubuntu-latest
+    container:
+      image: barichello/godot-ci:${{ needs.setup.outputs.godot-version }}
+    needs: setup
+    strategy:
+      matrix:
+        target:
+          - channel: linux
+            extension: x86_64
+          - channel: osx
+            extension: zip
+          - channel: windows
+            extension: exe
+
+    permissions: write-all
+    steps:
+      - name: Configure Git and Checkout
+        run: |
+          git config --global url."https://x-access-token:${{ secrets.GH_PAT }}@github.com/".insteadOf "https://github.com/"
+          git clone --recurse-submodules ${{ forge.server_url }}/${{ forge.repository }}.git .
+      - name: Set up export templates
+        run: mkdir -v -p ~/.local/share/godot/export_templates ~/.config
+      - name: Export game
+        run: |
+          mkdir ${{ matrix.target.channel }} 
+          godot --headless --path game --export-release "${{ matrix.target.channel }}" ../${{ matrix.target.channel }}/${{ secrets.ITCH_GAME }}-${{ matrix.target.channel }}.${{ matrix.target.extension }}
+      - name: Publish to Itch.io
+        run: butler push ${{ matrix.target.channel }} ${{ secrets.ITCH_USER }}/${{ secrets.ITCH_GAME }}:${{ matrix.target.channel }} --userversion ${{ needs.setup.outputs.game-version }}
+        env:
+            BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}

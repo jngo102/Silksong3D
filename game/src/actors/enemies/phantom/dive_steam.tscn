@@ -1,0 +1,234 @@
+[gd_scene format=3 uid="uid://ci8vhhfslnoce"]
+
+[ext_resource type="AnimationLibrary" uid="uid://boqi0rg25fl8h" path="res://src/resources/animations/steam_anim.tres" id="1_b8yp4"]
+[ext_resource type="PackedScene" uid="uid://xal232da7bpf" path="res://src/gameplay/combat/damager.tscn" id="1_m65xi"]
+[ext_resource type="Material" uid="uid://gy2vjn1xc0sd" path="res://src/actors/enemies/phantom/steam_column_particle_material.tres" id="2_ut1ry"]
+[ext_resource type="Texture2D" uid="uid://d3jm7v8arm3ua" path="res://src/actors/enemies/phantom/steam_particle0.png" id="3_ut1ry"]
+
+[sub_resource type="Curve" id="Curve_gc3yy"]
+_data = [Vector2(0, 0), 0.0, -0.051224705, 0, 0, Vector2(0.49999994, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -4.995711, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_ut1ry"]
+curve = SubResource("Curve_gc3yy")
+
+[sub_resource type="Curve" id="Curve_1y2o3"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.2780735, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_jleah"]
+curve = SubResource("Curve_1y2o3")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ut1ry"]
+emission_shape_offset = Vector3(0, 75, 0)
+emission_shape = 6
+emission_ring_axis = Vector3(0, 90, 1)
+emission_ring_height = 150.0
+emission_ring_radius = 10.0
+emission_ring_inner_radius = 0.0
+emission_ring_cone_angle = 90.0
+spread = 180.0
+flatness = 1.0
+initial_velocity_min = 1.0
+initial_velocity_max = 2.0
+gravity = Vector3(0, 0, 0)
+damping_min = 8.706
+damping_max = 11.059001
+scale_min = 2.0
+scale_max = 4.0
+scale_curve = SubResource("CurveTexture_jleah")
+color = Color(1, 1, 1, 0.2509804)
+alpha_curve = SubResource("CurveTexture_ut1ry")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_246s2"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.8984694, 0.823897, 0.79426247, 1)
+albedo_texture = ExtResource("3_ut1ry")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_64vl4"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_246s2")
+size = Vector2(4, 4)
+orientation = 2
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_25ms4"]
+emission_shape = 6
+emission_ring_axis = Vector3(0, 90, 1)
+emission_ring_height = 0.0
+emission_ring_radius = 10.0
+emission_ring_inner_radius = 10.0
+emission_ring_cone_angle = 90.0
+spread = 180.0
+flatness = 1.0
+initial_velocity_min = 100.0
+initial_velocity_max = 150.0
+gravity = Vector3(0, 0, 0)
+damping_min = 8.706
+damping_max = 11.059001
+scale_min = 2.0
+scale_max = 4.0
+scale_curve = SubResource("CurveTexture_jleah")
+color = Color(1, 1, 1, 0.1254902)
+alpha_curve = SubResource("CurveTexture_ut1ry")
+
+[sub_resource type="Curve" id="Curve_ut1ry"]
+_data = [Vector2(0, 1), 0.0, -0.12533794, 0, 0, Vector2(1, 0.033986926), -3.351273, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_1y2o3"]
+curve = SubResource("Curve_ut1ry")
+
+[sub_resource type="Curve" id="Curve_pijb2"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.2780735, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_s54ku"]
+curve = SubResource("Curve_pijb2")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_m65xi"]
+emission_shape = 1
+emission_sphere_radius = 16.0
+spread = 180.0
+initial_velocity_min = 200.0
+initial_velocity_max = 250.0
+gravity = Vector3(0, 0, 0)
+scale_min = 2.0
+scale_max = 4.0
+scale_curve = SubResource("CurveTexture_s54ku")
+alpha_curve = SubResource("CurveTexture_1y2o3")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h0i2w"]
+transparency = 1
+shading_mode = 0
+specular_mode = 2
+albedo_color = Color(0.6745098, 0.6745098, 0.6745098, 0.49803922)
+disable_receive_shadows = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_h0i2w"]
+material = SubResource("StandardMaterial3D_h0i2w")
+radius = 1.0
+height = 2.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jleah"]
+lifetime_randomness = 0.41
+emission_shape = 6
+emission_ring_axis = Vector3(0, 90, 1)
+emission_ring_height = 0.0
+emission_ring_radius = 10.0
+emission_ring_inner_radius = 10.0
+emission_ring_cone_angle = 90.0
+direction = Vector3(0, 1, 0)
+spread = 0.0
+initial_velocity_max = 64.0
+gravity = Vector3(0, 0, 0)
+damping_min = 8.706
+damping_max = 11.059001
+scale_min = 2.0
+scale_max = 4.0
+scale_curve = SubResource("CurveTexture_jleah")
+color = Color(1, 1, 1, 0.0627451)
+alpha_curve = SubResource("CurveTexture_ut1ry")
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_bfoa7"]
+height = 96.0
+radius = 10.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_64vl4"]
+radius = 20.0
+
+[node name="DiveSteam" type="Node3D" unique_id=1409634913]
+
+[node name="Animator" type="AnimationPlayer" parent="." unique_id=1369293164]
+libraries/ = ExtResource("1_b8yp4")
+
+[node name="SteamColumnParticles" type="Node3D" parent="." unique_id=2012007609]
+
+[node name="AnticParticles" type="GPUParticles3D" parent="SteamColumnParticles" unique_id=1678567091]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.40098953, 0)
+emitting = false
+amount = 128
+lifetime = 2.0
+collision_base_size = 0.5
+visibility_aabb = AABB(-32, 0, -32, 64, 64, 64)
+transform_align = 1
+transform_align_channel_filter = 1
+process_material = SubResource("ParticleProcessMaterial_ut1ry")
+draw_pass_1 = SubResource("PlaneMesh_64vl4")
+
+[node name="ColumnParticles" type="GPUParticles3D" parent="SteamColumnParticles" unique_id=321247775]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 210, 0)
+emitting = false
+amount = 512
+lifetime = 0.25
+visibility_aabb = AABB(-256, -208, -256, 512, 512, 512)
+process_material = ExtResource("2_ut1ry")
+draw_pass_1 = SubResource("PlaneMesh_64vl4")
+
+[node name="SpreadParticles" type="GPUParticles3D" parent="SteamColumnParticles/ColumnParticles" unique_id=1500484103]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -208, 0)
+emitting = false
+amount = 128
+lifetime = 0.25
+collision_base_size = 0.5
+visibility_aabb = AABB(-32, -48, -32, 64, 64, 64)
+process_material = SubResource("ParticleProcessMaterial_25ms4")
+draw_pass_1 = SubResource("PlaneMesh_64vl4")
+
+[node name="SteamBurstBalls" type="GPUParticles3D" parent="." unique_id=1355457599]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.40098953, 0)
+emitting = false
+amount = 1024
+lifetime = 0.25
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+collision_base_size = 0.5
+visibility_aabb = AABB(-32, -48, -32, 64, 64, 64)
+process_material = SubResource("ParticleProcessMaterial_m65xi")
+draw_pass_1 = SubResource("SphereMesh_h0i2w")
+
+[node name="SteamBurst" type="GPUParticles3D" parent="SteamBurstBalls" unique_id=1964477077]
+emitting = false
+amount = 256
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.7
+randomness = 0.53
+collision_base_size = 0.5
+visibility_aabb = AABB(-32, -48, -32, 64, 64, 64)
+process_material = SubResource("ParticleProcessMaterial_jleah")
+draw_pass_1 = SubResource("PlaneMesh_64vl4")
+
+[node name="Sparkle" type="OmniLight3D" parent="." unique_id=1194167530]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2210817, 0)
+visible = false
+light_energy = 64.0
+shadow_enabled = true
+omni_range = 64.0
+
+[node name="Damager" parent="." unique_id=966797267 instance=ExtResource("1_m65xi")]
+collision_layer = 16
+damage_amount = 2
+
+[node name="Collision" parent="Damager" index="0" unique_id=1910053338]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 48, 0)
+shape = SubResource("CylinderShape3D_bfoa7")
+disabled = true
+
+[node name="BurstCollision" type="CollisionShape3D" parent="Damager" unique_id=817613265]
+shape = SubResource("SphereShape3D_64vl4")
+disabled = true
+
+[node name="Audio" type="AudioStreamPlayer3D" parent="." unique_id=106902063]
+unit_size = 64.0
+bus = &"SFX"
+
+[editable path="Damager"]

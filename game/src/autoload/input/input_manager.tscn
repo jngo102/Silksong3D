@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dttrlfktlp4vc"]
+
+[ext_resource type="Script" uid="uid://frnp0rpboi0i" path="res://src/autoload/input/input_manager.gd" id="1_cujxe"]
+[ext_resource type="PackedScene" uid="uid://dgb1dhkamy3l3" path="res://src/autoload/input/jump_action.tscn" id="7_2c4ls"]
+
+[node name="InputManager" type="Node" unique_id=370924654]
+script = ExtResource("1_cujxe")
+
+[node name="InputActions" type="Node" parent="." unique_id=1230921440]
+
+[node name="JumpAction" parent="InputActions" unique_id=1667210222 instance=ExtResource("7_2c4ls")]

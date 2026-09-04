@@ -1,0 +1,38 @@
+[gd_resource type="VisualShader" format=3 uid="uid://d2adeewmk07rq"]
+
+[sub_resource type="Gradient" id="Gradient_33lnv"]
+offsets = PackedFloat32Array(0, 0.33164984, 0.84175086)
+colors = PackedColorArray(0, 0, 0, 1, 0.5890956, 0.5890956, 0.5890956, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_7bbtc"]
+gradient = SubResource("Gradient_33lnv")
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_ayb8v"]
+texture = SubResource("GradientTexture1D_7bbtc")
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_33lnv"]
+input_name = "uv"
+
+[sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_7bbtc"]
+default_input_values = [1, Vector2(1, 0), 2, Vector2(0, 0)]
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_33lnv"]
+parameter_name = "SlashGradientSlider"
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_33lnv"]
+default_input_values = [0, Vector2(0, 0), 1, Vector2(0.125, 0)]
+op_type = 0
+operator = 2
+
+[resource]
+nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_ayb8v")
+nodes/fragment/2/position = Vector2(-660, 160)
+nodes/fragment/3/node = SubResource("VisualShaderNodeInput_33lnv")
+nodes/fragment/3/position = Vector2(-2540, 220)
+nodes/fragment/4/node = SubResource("VisualShaderNodeUVFunc_7bbtc")
+nodes/fragment/4/position = Vector2(-1260, 160)
+nodes/fragment/5/node = SubResource("VisualShaderNodeFloatParameter_33lnv")
+nodes/fragment/5/position = Vector2(-1980, 520)
+nodes/fragment/6/node = SubResource("VisualShaderNodeVectorOp_33lnv")
+nodes/fragment/6/position = Vector2(-1800, 100)
+nodes/fragment/connections = PackedInt32Array(2, 0, 0, 1, 5, 0, 4, 2, 4, 0, 2, 0, 3, 0, 6, 0, 6, 0, 4, 0)

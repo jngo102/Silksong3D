@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SaveData" format=3 uid="uid://3c7fmch5niji"]
+
+[ext_resource type="Script" uid="uid://cicw3xldtdges" path="res://src/autoload/save/save_data.gd" id="1_f7tcb"]
+
+[resource]
+script = ExtResource("1_f7tcb")
+high_scores = Dictionary[String, int]({
+"CogworkDancersFight": 0,
+"Phantom": 0
+})
+metadata/_custom_type_script = "uid://cicw3xldtdges"
