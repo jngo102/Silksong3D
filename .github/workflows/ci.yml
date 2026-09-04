@@ -50,7 +50,7 @@ jobs:
         with:
           lfs: true
           submodules: true
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.PAT }}
       - name: Set up export templates
         run: |
           mkdir -v -p ~/.local/share/godot/export_templates ~/.config
