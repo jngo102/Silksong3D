@@ -69,7 +69,7 @@ jobs:
       - name: Export game
         run: |
           mkdir ${{ matrix.target.channel }} 
-          godot --headless --path game --export-release "${{ matrix.target.channel }}" ${{ matrix.target.channel }}/${{ secrets.ITCH_GAME }}-${{ needs.setup.outputs.game-version }}-${{ matrix.target.channel }}.${{ matrix.target.extension }}
+          godot --headless --path game --export-release "${{ matrix.target.channel }}" ../${{ matrix.target.channel }}/${{ secrets.ITCH_GAME }}-${{ needs.setup.outputs.game-version }}-${{ matrix.target.channel }}.${{ matrix.target.extension }}
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
