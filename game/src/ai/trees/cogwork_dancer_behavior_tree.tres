@@ -337,6 +337,7 @@ script = ExtResource("3_ngxa6")
 
 [sub_resource type="BBVariant" id="BBVariant_rhcob"]
 saved_value = null
+resource_name = "<null>"
 
 [sub_resource type="BTAction" id="BTAction_drhsk"]
 script = ExtResource("9_mmu5o")

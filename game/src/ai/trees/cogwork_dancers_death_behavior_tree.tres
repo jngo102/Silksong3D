@@ -390,6 +390,7 @@ z_var = SubResource("BBVariant_solc0")
 
 [sub_resource type="BBVariant" id="BBVariant_s4tds"]
 saved_value = null
+resource_name = "<null>"
 
 [sub_resource type="BTAction" id="BTAction_ywbep"]
 script = ExtResource("10_ftj12")
