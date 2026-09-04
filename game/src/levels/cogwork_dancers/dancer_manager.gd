@@ -152,6 +152,7 @@ func _reset_default_blackboard_variables(dancer: CogworkDancer) -> void:
 func _set_dancer_death_active(died_dancer: CogworkDancer) -> void:
 	if is_instance_valid(dancer1):
 		_reset_death_blackboard_variables(dancer1)
+		dancer1.health.set_invincible(true)
 		dancer1.behavior_tree.restart()
 		dancer1.behavior_tree.set_active(false)
 		dancer1.death_behavior_tree.set_active(true)
@@ -160,6 +161,7 @@ func _set_dancer_death_active(died_dancer: CogworkDancer) -> void:
 		bb1.set_var(&"should_teleport", false)
 	if is_instance_valid(dancer2):
 		_reset_death_blackboard_variables(dancer2)
+		dancer2.health.set_invincible(true)
 		dancer2.behavior_tree.restart()
 		dancer2.behavior_tree.set_active(false)
 		dancer2.death_behavior_tree.set_active(true)
@@ -264,6 +266,8 @@ func _on_dancer_death(dancer: Actor) -> void:
 	boss_phase += 1
 	if boss_phase > 4:
 		SceneManager.current_level.finish()
+	else:
+		AudioManager.current_music_player.stream = music_list[boss_phase].music_clip
 
 func _on_door_close_trigger_body_entered(body: Node3D) -> void:
 	dancer1.behavior_tree.set_active(true)

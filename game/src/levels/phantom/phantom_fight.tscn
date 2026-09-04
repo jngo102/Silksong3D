@@ -682,7 +682,7 @@ collision_mask = 0
 [node name="Mesh" parent="Environment/Ceiling" index="0" unique_id=1490756872 instance=ExtResource("9_1y2o3")]
 transform = Transform3D(5, 0, 0, 0, 2.5, 0, 0, 0, 6, 0, 5.6903687, -96.500984)
 
-[node name="Circle_005" parent="Environment/Ceiling/Mesh" index="0" unique_id=1275664762]
+[node name="Circle_005" parent="Environment/Ceiling/Mesh" index="0" unique_id=69213236]
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_246s2")
 

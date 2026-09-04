@@ -2,6 +2,9 @@ extends BaseLevel
 
 @export var _doors: Array[Node3D]
 
+func _play_music() -> void:
+	AudioManager.current_music_player.stream = music_track.music_clip
+
 func _on_door_close_trigger_body_entered(body: Node3D) -> void:
 	if body is Player:
 		for door in _doors:

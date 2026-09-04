@@ -645,6 +645,7 @@ size = Vector3(40, 32, 40)
 [node name="CogworkDancersFight" unique_id=1725877029 node_paths=PackedStringArray("_doors") instance=ExtResource("1_frof6")]
 script = ExtResource("2_seyxp")
 _doors = [NodePath("Physical/WallL"), NodePath("Physical/WallR"), NodePath("Physical/WallBack")]
+music_track = ExtResource("2_sd8jx")
 
 [node name="WorldEnvironment" parent="Environment" parent_id_path=PackedInt32Array(921388622) index="0" unique_id=986338651]
 environment = ExtResource("3_fi3d2")

@@ -2,8 +2,6 @@
 
 [ext_resource type="Script" uid="uid://dfxh5qmwucb7e" path="res://src/ai/tasks/scene/get_first_in_group.gd" id="1_lkiki"]
 [ext_resource type="Script" uid="uid://oufr1n61rgt6" path="res://src/ai/tasks/audio/get_current_music_player.gd" id="3_ngxa6"]
-[ext_resource type="Script" uid="uid://ckw2npyc6dwj1" path="res://src/ai/tasks/audio/get_audio_player_duration.gd" id="4_6mje8"]
-[ext_resource type="Script" uid="uid://mlatxrl7ycqj" path="res://src/ai/tasks/audio/get_current_music_bpm.gd" id="5_bljor"]
 [ext_resource type="Script" uid="uid://dk83bvpdnmmni" path="res://src/ai/tasks/math/get_reciprocal.gd" id="6_oa2qd"]
 [ext_resource type="AudioStream" uid="uid://dr5e1h1slykua" path="res://src/copyrighted/cogwork_dancers/sfx/clockwork_dancers_windup_1.wav" id="7_jn4d2"]
 [ext_resource type="Script" uid="uid://cvw5s3jjrdnkq" path="res://src/ai/tasks/transform/face_target.gd" id="7_qj0wi"]
@@ -337,9 +335,12 @@ output_var = &"player"
 [sub_resource type="BTAction" id="BTAction_4gcbf"]
 script = ExtResource("3_ngxa6")
 
+[sub_resource type="BBVariant" id="BBVariant_rhcob"]
+saved_value = null
+
 [sub_resource type="BTAction" id="BTAction_drhsk"]
 script = ExtResource("9_mmu5o")
-target_var = &"current_waypoint"
+target_var = SubResource("BBVariant_rhcob")
 output_position_var = &"waypoint_position"
 
 [sub_resource type="BTAction" id="BTAction_877ps"]
@@ -352,15 +353,6 @@ output_z_var = &""
 [sub_resource type="BTSequence" id="BTSequence_vfpbh"]
 custom_name = "Get Nodes"
 children = [SubResource("BTAction_py6fg"), SubResource("BTAction_57nll"), SubResource("BTAction_4gcbf"), SubResource("BTAction_drhsk"), SubResource("BTAction_877ps")]
-
-[sub_resource type="BTAction" id="BTAction_5382o"]
-script = ExtResource("4_6mje8")
-audio_player_var = &"current_music_player"
-output_duration_var = &"music_duration"
-
-[sub_resource type="BTAction" id="BTAction_nx7ud"]
-script = ExtResource("5_bljor")
-output_bpm_var = &"music_bpm"
 
 [sub_resource type="BBVariant" id="BBVariant_u7re6"]
 value_source = 1
@@ -415,7 +407,7 @@ operation = 4
 
 [sub_resource type="BTSequence" id="BTSequence_nx7ud"]
 custom_name = "Set Music Parameters"
-children = [SubResource("BTAction_5382o"), SubResource("BTAction_nx7ud"), SubResource("BTSetVar_vxhi2"), SubResource("BTAction_io532"), SubResource("BTSetVar_ev603"), SubResource("BTSetVar_maqif"), SubResource("BTSetVar_u7re6"), SubResource("BTSetVar_mexuy")]
+children = [SubResource("BTSetVar_vxhi2"), SubResource("BTAction_io532"), SubResource("BTSetVar_ev603"), SubResource("BTSetVar_maqif"), SubResource("BTSetVar_u7re6"), SubResource("BTSetVar_mexuy")]
 
 [sub_resource type="BBVariant" id="BBVariant_ykvq3"]
 value_source = 1
@@ -442,7 +434,6 @@ children = [SubResource("BTSetVar_vfpbh"), SubResource("BTSetVar_io532")]
 
 [sub_resource type="BTAction" id="BTAction_sh7if"]
 script = ExtResource("9_mmu5o")
-target_var = &"teleport_point"
 output_position_var = &"teleport_point_position"
 
 [sub_resource type="BTSequence" id="BTSequence_tvm2c"]
@@ -513,7 +504,6 @@ args = Array[BBVariant]([SubResource("BBVariant_ojnlc"), SubResource("BBVariant_
 
 [sub_resource type="BTAction" id="BTAction_1k733"]
 script = ExtResource("9_mmu5o")
-target_var = &"self"
 output_position_var = &"self_position"
 
 [sub_resource type="BTAction" id="BTAction_8s2vd"]
@@ -579,7 +569,6 @@ args = Array[BBVariant]([SubResource("BBVariant_ro6js"), SubResource("BBVariant_
 
 [sub_resource type="BTAction" id="BTAction_57pd4"]
 script = ExtResource("9_mmu5o")
-target_var = &"self"
 output_position_var = &"self_position"
 
 [sub_resource type="BTAction" id="BTAction_m1jhj"]
@@ -635,7 +624,6 @@ args = Array[BBVariant]([SubResource("BBVariant_hk0ud"), SubResource("BBVariant_
 
 [sub_resource type="BTAction" id="BTAction_c57wm"]
 script = ExtResource("9_mmu5o")
-target_var = &"self"
 output_position_var = &"self_position"
 
 [sub_resource type="BTAction" id="BTAction_45lfl"]
@@ -679,7 +667,6 @@ value = SubResource("BBVariant_m1jhj")
 
 [sub_resource type="BTAction" id="BTAction_kq56s"]
 script = ExtResource("9_mmu5o")
-target_var = &"next_waypoint"
 output_position_var = &"waypoint_position"
 
 [sub_resource type="BTAction" id="BTAction_uu8my"]
@@ -719,7 +706,6 @@ children = [SubResource("BTAction_yk1c7"), SubResource("BTSetVar_kq56s"), SubRes
 
 [sub_resource type="BTAction" id="BTAction_14n6s"]
 script = ExtResource("7_qj0wi")
-target_var = &"player"
 
 [sub_resource type="BBNode" id="BBNode_1jkmb"]
 saved_value = NodePath("Model/AnimationPlayer")
@@ -748,7 +734,6 @@ children = [SubResource("BTCheckVar_57nll"), SubResource("BTWait_fuw20")]
 
 [sub_resource type="BTAction" id="BTAction_so0oi"]
 script = ExtResource("9_mmu5o")
-target_var = &"self"
 output_position_var = &"self_position"
 
 [sub_resource type="BTAction" id="BTAction_0dlsi"]
@@ -758,7 +743,6 @@ play_position_var = &"self_position"
 
 [sub_resource type="BTAction" id="BTAction_buhy5"]
 script = ExtResource("9_mmu5o")
-target_var = &"roar_point"
 output_position_var = &"roar_position"
 
 [sub_resource type="BBVariant" id="BBVariant_50xhl"]
@@ -1279,19 +1263,14 @@ children = [SubResource("BTSetVar_7weh2"), SubResource("BTSetVar_1jkmb")]
 
 [sub_resource type="BTAction" id="BTAction_qqr1w"]
 script = ExtResource("7_qj0wi")
-target_var = &"spinner"
 
 [sub_resource type="BTAction" id="BTAction_hkw83"]
 script = ExtResource("7_qj0wi")
-node_var = &"direction_light"
-target_var = &"spin_target"
 face_x = true
 face_z = true
 
 [sub_resource type="BTAction" id="BTAction_mb14r"]
 script = ExtResource("48_lgqnu")
-from_var = &"direction_light"
-to_var = &"spin_target"
 output_distance_var = &"waypoint_distance"
 
 [sub_resource type="BBVariant" id="BBVariant_cs13o"]
@@ -1352,7 +1331,6 @@ animation_name = &"Show Direction"
 
 [sub_resource type="BTAction" id="BTAction_a4ig0"]
 script = ExtResource("9_mmu5o")
-target_var = &"self"
 output_position_var = &"self_position"
 
 [sub_resource type="BTAction" id="BTAction_ttsve"]
@@ -1526,7 +1504,6 @@ method = &"reset"
 
 [sub_resource type="BTAction" id="BTAction_kk73g"]
 script = ExtResource("9_mmu5o")
-target_var = &"spin_target"
 output_position_var = &"waypoint_position"
 
 [sub_resource type="BTAction" id="BTAction_3v7kt"]
@@ -1553,14 +1530,12 @@ resource_name = "<null>"
 
 [sub_resource type="BTAction" id="BTAction_efeba"]
 script = ExtResource("21_i3yf6")
-target_var = &"self"
 x_var = SubResource("BBVariant_253gg")
 y_var = SubResource("BBVariant_t1h38")
 z_var = SubResource("BBVariant_l67pb")
 
 [sub_resource type="BTAction" id="BTAction_42gir"]
 script = ExtResource("7_qj0wi")
-target_var = &"spinner"
 
 [sub_resource type="BBNode" id="BBNode_kk73g"]
 saved_value = NodePath("Model/AnimationPlayer")
@@ -1573,7 +1548,6 @@ blend = 0.05
 
 [sub_resource type="BTAction" id="BTAction_x3uvo"]
 script = ExtResource("9_mmu5o")
-target_var = &"self"
 output_position_var = &"self_position"
 
 [sub_resource type="BBNode" id="BBNode_qqr1w"]
@@ -1799,7 +1773,6 @@ animation_name = &"Catch Lift"
 
 [sub_resource type="BTAction" id="BTAction_q81r8"]
 script = ExtResource("9_mmu5o")
-target_var = &"self"
 output_position_var = &"waypoint_position"
 
 [sub_resource type="BBVariant" id="BBVariant_rerkj"]
@@ -2047,7 +2020,6 @@ method = &"reset"
 
 [sub_resource type="BTAction" id="BTAction_qj0wi"]
 script = ExtResource("9_mmu5o")
-target_var = &"self"
 output_position_var = &"waypoint_position"
 
 [sub_resource type="BTAction" id="BTAction_albun"]
@@ -2418,16 +2390,13 @@ args = Array[BBVariant]([SubResource("BBVariant_8sbe4")])
 
 [sub_resource type="BTAction" id="BTAction_6deqr"]
 script = ExtResource("7_qj0wi")
-target_var = &"next_waypoint"
 
 [sub_resource type="BTAction" id="BTAction_egiim"]
 script = ExtResource("9_mmu5o")
-target_var = &"next_waypoint"
 output_position_var = &"waypoint_position"
 
 [sub_resource type="BTAction" id="BTAction_bpi8i"]
 script = ExtResource("17_sh7if")
-target_var = &"next_waypoint"
 output_direction_var = &"dash_direction"
 
 [sub_resource type="BTAction" id="BTAction_rcovl"]
@@ -2489,15 +2458,11 @@ children = [SubResource("BTInvert_d2yui"), SubResource("BTSetVar_vfk1d")]
 
 [sub_resource type="BTAction" id="BTAction_5do71"]
 script = ExtResource("7_qj0wi")
-node_var = &"direction_light"
-target_var = &"next_waypoint"
 face_x = true
 face_z = true
 
 [sub_resource type="BTAction" id="BTAction_ojnlc"]
 script = ExtResource("48_lgqnu")
-from_var = &"direction_light"
-to_var = &"next_waypoint"
 output_distance_var = &"waypoint_distance"
 
 [sub_resource type="BBVariant" id="BBVariant_5g1pi"]
@@ -2545,7 +2510,6 @@ animation_name = &"Show Direction"
 
 [sub_resource type="BTAction" id="BTAction_ksxkt"]
 script = ExtResource("9_mmu5o")
-target_var = &"self"
 output_position_var = &"self_position"
 
 [sub_resource type="BTAction" id="BTAction_yjjwa"]
@@ -2692,7 +2656,6 @@ children = [SubResource("BTRepeatUntilSuccess_4mpcf"), SubResource("BTSequence_k
 
 [sub_resource type="BTAction" id="BTAction_ilgs3"]
 script = ExtResource("9_mmu5o")
-target_var = &"self"
 output_position_var = &"self_position"
 
 [sub_resource type="BTAction" id="BTAction_tbx31"]
@@ -2718,7 +2681,6 @@ value = SubResource("BBVariant_c00ov")
 
 [sub_resource type="BTAction" id="BTAction_20vmj"]
 script = ExtResource("7_qj0wi")
-target_var = &"next_waypoint"
 
 [sub_resource type="BTSelector" id="BTSelector_a5k7h"]
 custom_name = "Check If Should Face"
@@ -2754,8 +2716,6 @@ value = SubResource("BBVariant_u4cgx")
 
 [sub_resource type="BTAction" id="BTAction_o08b3"]
 script = ExtResource("48_lgqnu")
-from_var = &"self"
-to_var = &"next_waypoint"
 output_distance_var = &"waypoint_distance"
 
 [sub_resource type="BBVariant" id="BBVariant_k74v3"]
@@ -2770,7 +2730,6 @@ operation = 1
 
 [sub_resource type="BTAction" id="BTAction_p3fr0"]
 script = ExtResource("9_mmu5o")
-target_var = &"self"
 output_position_var = &"self_position"
 
 [sub_resource type="BBVariant" id="BBVariant_6m1kk"]
@@ -2844,7 +2803,6 @@ animation_name = &"RESET"
 
 [sub_resource type="BTAction" id="BTAction_xgy0o"]
 script = ExtResource("9_mmu5o")
-target_var = &"self"
 output_position_var = &"self_position"
 
 [sub_resource type="BTAction" id="BTAction_4iru6"]
@@ -2904,7 +2862,6 @@ resource_name = "<null>"
 
 [sub_resource type="BTAction" id="BTAction_l67pb"]
 script = ExtResource("21_i3yf6")
-target_var = &"self"
 x_var = SubResource("BBVariant_ud0sg")
 y_var = SubResource("BBVariant_mvymf")
 z_var = SubResource("BBVariant_x2cwm")
@@ -2946,7 +2903,6 @@ value = SubResource("BBVariant_lna21")
 
 [sub_resource type="BTAction" id="BTAction_vlyhi"]
 script = ExtResource("9_mmu5o")
-target_var = &"self"
 output_position_var = &"self_position"
 
 [sub_resource type="BTAction" id="BTAction_5g1pi"]
@@ -3387,13 +3343,11 @@ blend = 0.125
 
 [sub_resource type="BTAction" id="BTAction_pappx"]
 script = ExtResource("7_qj0wi")
-target_var = &"teleport_point"
 face_x = true
 face_z = true
 
 [sub_resource type="BTAction" id="BTAction_iegny"]
 script = ExtResource("9_mmu5o")
-target_var = &"self"
 output_position_var = &"self_position"
 
 [sub_resource type="BTAction" id="BTAction_3g83i"]
@@ -3462,12 +3416,10 @@ children = [SubResource("BTSequence_ipxx0")]
 
 [sub_resource type="BTAction" id="BTAction_fuw20"]
 script = ExtResource("9_mmu5o")
-target_var = &"current_waypoint"
 output_position_var = &"waypoint_position"
 
 [sub_resource type="BTAction" id="BTAction_3b8xs"]
 script = ExtResource("7_qj0wi")
-target_var = &"current_waypoint"
 face_x = true
 face_z = true
 
@@ -3505,7 +3457,6 @@ resource_name = "<null>"
 
 [sub_resource type="BTAction" id="BTAction_biu47"]
 script = ExtResource("21_i3yf6")
-target_var = &"self"
 x_var = SubResource("BBVariant_tj05u")
 y_var = SubResource("BBVariant_sscbu")
 z_var = SubResource("BBVariant_x8iu8")
@@ -3525,7 +3476,6 @@ blend = 0.125
 
 [sub_resource type="BTAction" id="BTAction_lalf6"]
 script = ExtResource("9_mmu5o")
-target_var = &"self"
 output_position_var = &"self_position"
 
 [sub_resource type="BTAction" id="BTAction_bwuyh"]
@@ -4008,16 +3958,13 @@ args = Array[BBVariant]([SubResource("BBVariant_t74qt")])
 
 [sub_resource type="BTAction" id="BTAction_ucsdq"]
 script = ExtResource("7_qj0wi")
-target_var = &"next_waypoint"
 
 [sub_resource type="BTAction" id="BTAction_2ggjy"]
 script = ExtResource("9_mmu5o")
-target_var = &"next_waypoint"
 output_position_var = &"waypoint_position"
 
 [sub_resource type="BTAction" id="BTAction_cbawx"]
 script = ExtResource("17_sh7if")
-target_var = &"next_waypoint"
 output_direction_var = &"dash_direction"
 
 [sub_resource type="BTAction" id="BTAction_ykvq3"]
@@ -4079,15 +4026,11 @@ children = [SubResource("BTInvert_teqfu"), SubResource("BTSetVar_mlmyu")]
 
 [sub_resource type="BTAction" id="BTAction_oa2qd"]
 script = ExtResource("7_qj0wi")
-node_var = &"direction_light"
-target_var = &"next_waypoint"
 face_x = true
 face_z = true
 
 [sub_resource type="BTAction" id="BTAction_i63ae"]
 script = ExtResource("48_lgqnu")
-from_var = &"direction_light"
-to_var = &"next_waypoint"
 output_distance_var = &"waypoint_distance"
 
 [sub_resource type="BBVariant" id="BBVariant_1asp5"]
@@ -4135,7 +4078,6 @@ animation_name = &"Show Direction"
 
 [sub_resource type="BTAction" id="BTAction_ipxx0"]
 script = ExtResource("9_mmu5o")
-target_var = &"self"
 output_position_var = &"self_position"
 
 [sub_resource type="BTAction" id="BTAction_7weh2"]
@@ -4153,7 +4095,6 @@ children = [SubResource("BTCallMethod_1jkmb"), SubResource("BTAction_ucsdq"), Su
 
 [sub_resource type="BTAction" id="BTAction_ueah8"]
 script = ExtResource("9_mmu5o")
-target_var = &"self"
 output_position_var = &"self_position"
 
 [sub_resource type="BTSequence" id="BTSequence_euuuy"]
@@ -4296,7 +4237,6 @@ value = SubResource("BBVariant_ipxx0")
 
 [sub_resource type="BTAction" id="BTAction_jn4d2"]
 script = ExtResource("9_mmu5o")
-target_var = &"self"
 output_position_var = &"self_position"
 
 [sub_resource type="BTAction" id="BTAction_tvm2c"]
@@ -4322,7 +4262,6 @@ value = SubResource("BBVariant_mdpca")
 
 [sub_resource type="BTAction" id="BTAction_tfrvw"]
 script = ExtResource("7_qj0wi")
-target_var = &"next_waypoint"
 
 [sub_resource type="BTSelector" id="BTSelector_wmffp"]
 custom_name = "Check If Should Face"
@@ -4358,8 +4297,6 @@ value = SubResource("BBVariant_lxq5a")
 
 [sub_resource type="BTAction" id="BTAction_8h7gk"]
 script = ExtResource("48_lgqnu")
-from_var = &"self"
-to_var = &"next_waypoint"
 output_distance_var = &"waypoint_distance"
 
 [sub_resource type="BBVariant" id="BBVariant_n2ywm"]
@@ -4374,7 +4311,6 @@ operation = 1
 
 [sub_resource type="BTAction" id="BTAction_b865g"]
 script = ExtResource("9_mmu5o")
-target_var = &"self"
 output_position_var = &"self_position"
 
 [sub_resource type="BBVariant" id="BBVariant_4wwyn"]
@@ -4448,7 +4384,6 @@ resource_name = "<null>"
 
 [sub_resource type="BTAction" id="BTAction_mg4fk"]
 script = ExtResource("21_i3yf6")
-target_var = &"self"
 x_var = SubResource("BBVariant_xgy0o")
 y_var = SubResource("BBVariant_4iru6")
 z_var = SubResource("BBVariant_pgiae")
@@ -4488,7 +4423,6 @@ animation_name = &"RESET"
 
 [sub_resource type="BTAction" id="BTAction_hu6pe"]
 script = ExtResource("9_mmu5o")
-target_var = &"self"
 output_position_var = &"self_position"
 
 [sub_resource type="BTAction" id="BTAction_88qa8"]
@@ -4549,7 +4483,6 @@ resource_name = "<null>"
 
 [sub_resource type="BTAction" id="BTAction_x8iu8"]
 script = ExtResource("21_i3yf6")
-target_var = &"self"
 x_var = SubResource("BBVariant_3gfkp")
 y_var = SubResource("BBVariant_k0swp")
 z_var = SubResource("BBVariant_juop0")
@@ -4591,7 +4524,6 @@ value = SubResource("BBVariant_pdjar")
 
 [sub_resource type="BTAction" id="BTAction_3gfkp"]
 script = ExtResource("9_mmu5o")
-target_var = &"self"
 output_position_var = &"self_position"
 
 [sub_resource type="BTAction" id="BTAction_k0swp"]

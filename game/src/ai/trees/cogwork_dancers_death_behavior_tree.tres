@@ -388,8 +388,12 @@ x_var = SubResource("BBVariant_f8rwa")
 y_var = SubResource("BBVariant_ywbep")
 z_var = SubResource("BBVariant_solc0")
 
+[sub_resource type="BBVariant" id="BBVariant_s4tds"]
+saved_value = null
+
 [sub_resource type="BTAction" id="BTAction_ywbep"]
 script = ExtResource("10_ftj12")
+tween_target_var = SubResource("BBVariant_s4tds")
 target_position_var = &"alcove_position"
 time = 0.4
 

@@ -2308,6 +2308,7 @@ output_position_var = &"waypoint_position"
 
 [sub_resource type="BBVariant" id="BBVariant_qerno"]
 saved_value = null
+resource_name = "<null>"
 
 [sub_resource type="BTAction" id="BTAction_3v7kt"]
 script = ExtResource("28_jen0x")
@@ -2321,6 +2322,7 @@ children = [SubResource("BTPlayAnimation_vdc7o"), SubResource("BTPlayAnimation_q
 
 [sub_resource type="BBVariant" id="BBVariant_npwep"]
 saved_value = null
+resource_name = "<null>"
 
 [sub_resource type="BBVariant" id="BBVariant_wb2ck"]
 type = 3
@@ -2329,9 +2331,11 @@ resource_name = "<null>"
 
 [sub_resource type="BBVariant" id="BBVariant_mxb7v"]
 saved_value = null
+resource_name = "<null>"
 
 [sub_resource type="BBVariant" id="BBVariant_bpiby"]
 saved_value = null
+resource_name = "<null>"
 
 [sub_resource type="BTAction" id="BTAction_efeba"]
 script = ExtResource("46_7sxhv")
@@ -3731,6 +3735,7 @@ ease_type = 1
 
 [sub_resource type="BBVariant" id="BBVariant_oaf88"]
 saved_value = null
+resource_name = "<null>"
 
 [sub_resource type="BBVariant" id="BBVariant_3ilw0"]
 type = 3
@@ -3739,9 +3744,11 @@ resource_name = "<null>"
 
 [sub_resource type="BBVariant" id="BBVariant_4nyab"]
 saved_value = null
+resource_name = "<null>"
 
 [sub_resource type="BBVariant" id="BBVariant_cqyyn"]
 saved_value = null
+resource_name = "<null>"
 
 [sub_resource type="BTAction" id="BTAction_l67pb"]
 script = ExtResource("46_7sxhv")
@@ -4350,6 +4357,7 @@ children = [SubResource("BTAction_fuw20"), SubResource("BTAction_3b8xs"), SubRes
 
 [sub_resource type="BBVariant" id="BBVariant_v5b1c"]
 saved_value = null
+resource_name = "<null>"
 
 [sub_resource type="BBVariant" id="BBVariant_w7jfe"]
 type = 3
@@ -4358,9 +4366,11 @@ resource_name = "<null>"
 
 [sub_resource type="BBVariant" id="BBVariant_4a611"]
 saved_value = null
+resource_name = "<null>"
 
 [sub_resource type="BBVariant" id="BBVariant_6h6re"]
 saved_value = null
+resource_name = "<null>"
 
 [sub_resource type="BTAction" id="BTAction_biu47"]
 script = ExtResource("46_7sxhv")
@@ -5237,10 +5247,6 @@ resource_name = "Direction/Animator"
 animation_player = SubResource("BBNode_i0816")
 animation_name = &"RESET"
 
-[sub_resource type="BTConsolePrint" id="BTConsolePrint_wdbrm"]
-text = "Dash Y: %s"
-bb_format_parameters = PackedStringArray("dash_y")
-
 [sub_resource type="BBVariant" id="BBVariant_lxq5a"]
 type = 3
 saved_value = -0.1
@@ -5335,6 +5341,7 @@ z_var = SubResource("BBVariant_3nrf2")
 
 [sub_resource type="BBVariant" id="BBVariant_8tqy6"]
 saved_value = null
+resource_name = "<null>"
 
 [sub_resource type="BBVariant" id="BBVariant_1gexi"]
 type = 3
@@ -5343,9 +5350,11 @@ resource_name = "<null>"
 
 [sub_resource type="BBVariant" id="BBVariant_ju7ey"]
 saved_value = null
+resource_name = "<null>"
 
 [sub_resource type="BBVariant" id="BBVariant_onhwc"]
 saved_value = null
+resource_name = "<null>"
 
 [sub_resource type="BTAction" id="BTAction_mg4fk"]
 script = ExtResource("46_7sxhv")
@@ -5432,6 +5441,7 @@ move_to_tween_var = &""
 
 [sub_resource type="BBVariant" id="BBVariant_fwpx0"]
 saved_value = null
+resource_name = "<null>"
 
 [sub_resource type="BBVariant" id="BBVariant_f3con"]
 type = 3
@@ -5440,9 +5450,11 @@ resource_name = "<null>"
 
 [sub_resource type="BBVariant" id="BBVariant_trtkh"]
 saved_value = null
+resource_name = "<null>"
 
 [sub_resource type="BBVariant" id="BBVariant_jj4ys"]
 saved_value = null
+resource_name = "<null>"
 
 [sub_resource type="BTAction" id="BTAction_x8iu8"]
 script = ExtResource("46_7sxhv")
@@ -5508,7 +5520,7 @@ custom_name = "Check Dashing Down"
 children = [SubResource("BTCheckVar_knh5b"), SubResource("BTSequence_t1h38")]
 
 [sub_resource type="BTSequence" id="BTSequence_ud0sg"]
-children = [SubResource("BTConsolePrint_wdbrm"), SubResource("BTSelector_gyehm"), SubResource("BTSelector_l67pb")]
+children = [SubResource("BTSelector_gyehm"), SubResource("BTSelector_l67pb")]
 
 [sub_resource type="BTSequence" id="BTSequence_mvymf"]
 custom_name = "Dash To Waypoint"
@@ -5763,7 +5775,7 @@ collision_layer = 16
 collision_mask = 0
 damage_amount = 2
 
-[node name="Collision" parent="Damager" index="0"]
+[node name="Collision" parent="Damager" index="0" unique_id=1910053338]
 transform = Transform3D(0.9922041, 0, 0.12462326, 0, 1, 0, -0.12462326, 0, 0.9922041, 0, 1.508667, 0)
 shape = SubResource("CapsuleShape3D_pnomj")
 disabled = true
@@ -5872,7 +5884,7 @@ collision_layer = 16
 collision_mask = 1
 damage_amount = 2
 
-[node name="Collision" parent="SlashEffectLeft/SlashEffectDamager" index="0"]
+[node name="Collision" parent="SlashEffectLeft/SlashEffectDamager" index="0" unique_id=1910053338]
 transform = Transform3D(-0.1864449, -0.21110281, -0.9595171, -0.7199113, 0.69394535, -0.012787553, 0.6685516, 0.68838376, -0.28135896, -3.9338806, 0.7550101, -0.04474935)
 shape = SubResource("BoxShape3D_etufu")
 
@@ -5886,7 +5898,7 @@ collision_layer = 16
 collision_mask = 1
 damage_amount = 2
 
-[node name="Collision" parent="SlashEffectRight/SlashEffectDamager" index="0"]
+[node name="Collision" parent="SlashEffectRight/SlashEffectDamager" index="0" unique_id=1910053338]
 transform = Transform3D(0.92579067, -0.3080263, 0.2191499, 0.3686109, 0.60695225, -0.7040822, 0.08386243, 0.732613, 0.6754564, -0.10546088, -1.1433492, 2.2193463)
 shape = SubResource("BoxShape3D_tmqvu")
 

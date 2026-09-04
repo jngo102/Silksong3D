@@ -24,7 +24,8 @@ func _tick(_delta: float) -> Status:
 	var old_x: float = node.global_rotation.x
 	var old_y: float = node.global_rotation.y
 	var old_z: float = node.global_rotation.z
-	node.look_at(target.global_position)
+	if not is_equal_approx(node.global_position.distance_to(target.global_position), 0):
+		node.look_at(target.global_position)
 	if not face_x:
 		node.global_rotation.x = old_x
 	if not face_y:
